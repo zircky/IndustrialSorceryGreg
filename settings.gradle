@@ -1,0 +1,23 @@
+pluginManagement {
+  repositories {
+    gradlePluginPortal()
+    maven {
+      url = 'https://maven.minecraftforge.net/'
+    }
+//    maven { url = 'https://maven.parchmentmc.org' }
+  }
+}
+
+dependencyResolutionManagement {
+  repositories {
+    mavenCentral()
+  }
+  versionCatalogs {
+    forge {
+      from(files("gradle/forge.versions.toml"))
+    }
+  }
+}
+
+
+rootProject.name = 'industrialsorcerygreg'

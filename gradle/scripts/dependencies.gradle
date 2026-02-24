@@ -1,0 +1,27 @@
+dependencies {
+  compileOnly(libs.jetbrains.annotations)
+
+  modImplementation(forge.ldlib)
+
+  // Registrate
+  modImplementation(forge.registrate)
+
+  // Configuration
+  modImplementation(forge.configuration)
+
+  // GTCEu
+  modImplementation(forge.gtceu)
+
+  // Mixin (& Extras)
+  annotationProcessor(variantOf(libs.mixin) { classifier("processor") })
+  annotationProcessor(forge.mixinExtras.common)
+  api(forge.mixinExtras.common)
+
+  modCompileOnly(forge.bundles.jei)
+  modImplementation(forge.emi)
+
+  modImplementation(forge.nuclearcraft)
+
+  modImplementation(forge.flywheel)
+
+}

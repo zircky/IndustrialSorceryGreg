@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.zircky.industrialsorcerygreg.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "industrialsorcerygreg.refmap.json",
+  "mixins": [
+    "gregtech.GTValuesAccessor"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
