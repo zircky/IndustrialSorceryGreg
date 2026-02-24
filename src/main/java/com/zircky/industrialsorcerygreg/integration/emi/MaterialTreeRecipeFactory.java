@@ -26,7 +26,7 @@ public class MaterialTreeRecipeFactory {
       final EmiStack key = formResolver.pickKey(material);
       if (key.isEmpty()) continue;
 
-      final List<EmiStack> forms = formResolver.resolveForms(material);
+      final List<FormEntry> forms = formResolver.resolveForms(material);
       if (forms.isEmpty()) continue;
 
       final ResourceLocation id = IndustrialSorceryGreg.id("material_tree/" + sanitize(material.getName()));

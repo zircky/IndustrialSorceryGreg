@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GTFormResolver {
-  private static final TagPrefix[] DEFAULT_FORMS = new TagPrefix[]{
+  public static final TagPrefix[] DEFAULT_FORMS = new TagPrefix[]{
       TagPrefix.ingot,
       TagPrefix.nugget,
 
@@ -21,12 +21,12 @@ public class GTFormResolver {
       TagPrefix.gem,
       TagPrefix.gemChipped,
       TagPrefix.gemFlawed,
-      TagPrefix.gemExquisite,
       TagPrefix.gemFlawless,
+      TagPrefix.gemExquisite,
 
       TagPrefix.plate,
-      TagPrefix.plateDense,
       TagPrefix.plateDouble,
+      TagPrefix.plateDense,
 
       TagPrefix.rod,
       TagPrefix.rodLong,
@@ -36,7 +36,6 @@ public class GTFormResolver {
 
       TagPrefix.gear,
       TagPrefix.gearSmall,
-
 
       TagPrefix.wireFine,
       TagPrefix.wireGtSingle,
@@ -52,18 +51,13 @@ public class GTFormResolver {
       TagPrefix.cableGtHex,
 
       TagPrefix.foil,
-
       TagPrefix.spring,
       TagPrefix.springSmall,
-
       TagPrefix.ring,
-
       TagPrefix.round,
-
       TagPrefix.rotor,
 
       TagPrefix.block,
-
       TagPrefix.frameGt,
 
       TagPrefix.pipeTinyFluid,
@@ -71,7 +65,6 @@ public class GTFormResolver {
       TagPrefix.pipeNormalFluid,
       TagPrefix.pipeLargeFluid,
       TagPrefix.pipeHugeFluid,
-
       TagPrefix.pipeQuadrupleFluid,
       TagPrefix.pipeNonupleFluid,
 
@@ -86,13 +79,13 @@ public class GTFormResolver {
       TagPrefix.pipeHugeRestrictive,
   };
 
-  public List<EmiStack> resolveForms(final Material material) {
-    final List<EmiStack> out = new ArrayList<>();
+  public List<FormEntry> resolveForms(final Material material) {
+    final List<FormEntry> out = new ArrayList<>();
 
     for (final TagPrefix prefix : DEFAULT_FORMS) {
       final ItemStack stack = ChemicalHelper.get(prefix, material, 1);
       if (stack == null || stack.isEmpty()) continue;
-      out.add(EmiStack.of(stack));
+      out.add(new FormEntry(prefix, EmiStack.of(stack)));
     }
 
     return List.copyOf(out);

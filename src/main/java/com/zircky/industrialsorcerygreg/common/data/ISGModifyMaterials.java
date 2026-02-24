@@ -1,5 +1,8 @@
 package com.zircky.industrialsorcerygreg.common.data;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidPipeProperties;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.ItemPipeProperties;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
@@ -21,7 +24,6 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag
 public class ISGModifyMaterials {
   public static void init() {
 //    TagPrefix.ore.setIgnored(GTMaterials.Lithium, ()->);
-
 
     GTMaterials.Hafnium.addFlags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_DENSE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW, GENERATE_RING, GENERATE_ROUND, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_FINE_WIRE);
     GTMaterials.Zirconium.addFlags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_DENSE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW, GENERATE_RING, GENERATE_ROUND, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_FINE_WIRE);
