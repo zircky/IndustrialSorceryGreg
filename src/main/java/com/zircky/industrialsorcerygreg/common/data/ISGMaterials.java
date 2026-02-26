@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
+import com.zircky.industrialsorcerygreg.common.data.materials.CustemMaterials;
 import com.zircky.industrialsorcerygreg.common.data.materials.NuclearMaterials;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class ISGMaterials {
 
   public static void init() {
     NuclearMaterials.register();
+    CustemMaterials.register();
   }
 
   public static void modifyMaterials() {
@@ -58,6 +60,11 @@ public class ISGMaterials {
   public static Material BoronNitride; //
   public static Material Rhodochrosite; //
 
+
+  public static Material Draconium;
+  public static Material AwakenedDraconium;
+  public static Material Chaos;
+  public static Material Infinity;
 
   public static Material MarM200Steel; //
 

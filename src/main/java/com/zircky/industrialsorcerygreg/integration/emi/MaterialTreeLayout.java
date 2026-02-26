@@ -19,7 +19,6 @@ public final class MaterialTreeLayout {
       3, 65,   // dust
       3, 83,   // dustTiny
 
-
       // gems column (1)
       23, 47,  // gem
       23, 65,  // gemChipped
@@ -28,21 +27,21 @@ public final class MaterialTreeLayout {
       23, 119, // gemExquisite
 
       // plates column (2)
-      46, 47,  // plate
-      46, 65,  // plateDouble
-      46, 83,  // plateDense
+      43, 47,  // plate
+      43, 65,  // plateDouble
+      43, 83,  // plateDense
 
       // rods column (3)
-      66, 47,  // rod
-      66, 65,  // rodLong
+      63, 47,  // rod
+      63, 65,  // rodLong
 
       // fasteners column (4)
-      86, 47,  // bolt
-      86, 65,  // screw
+      83, 47,  // bolt
+      83, 65,  // screw
 
       // gears column (5)
-      106, 47, // gear
-      106, 65, // gearSmall
+      103, 47, // gear
+      103, 65, // gearSmall
 
       // wire column (6)
       126, 3,  // wireFine
@@ -60,37 +59,45 @@ public final class MaterialTreeLayout {
       146, 93, // cableGtHex
 
       // misc column (2/3 lower)
-      46, 101, // foil
-      66, 101, // spring
-      66, 119, // springSmall
-      86, 101, // ring
-      86, 119, // round
-      106, 101,// rotor
+      43, 101, // foil
+      63, 101, // spring
+      63, 119, // springSmall
+      83, 101, // ring
+      83, 119, // round
+      103, 101,// rotor
 
       // blocks/frames column (0/1 top)
       23, 3,   // block
-      46, 3,   // frameGt
+      43, 3,   // frameGt
 
       // fluid pipes area (bottom right)
-      3, 128,  // pipeTinyFluid
-      23, 128, // pipeSmallFluid
-      43, 128, // pipeNormalFluid
-      63, 128, // pipeLargeFluid
-      83, 138, // pipeHugeFluid
-      103, 138,// pipeQuadrupleFluid
-      123, 138,// pipeNonupleFluid
+      3, 140,  // pipeTinyFluid
+      23, 140, // pipeSmallFluid
+      43, 140, // pipeNormalFluid
+      63, 140, // pipeLargeFluid
+      3, 158, // pipeHugeFluid
+      23, 158,// pipeQuadrupleFluid
+      43, 158,// pipeNonupleFluid
 
       // item pipes row
-      3, 128,  // pipeSmallItem
-      23, 128, // pipeNormalItem
-      43, 128, // pipeLargeItem
-      63, 128, // pipeHugeItem
+      3, 140,  // pipeSmallItem
+      23, 140, // pipeNormalItem
+      43, 140, // pipeLargeItem
+      63, 140, // pipeHugeItem
 
       // restrictive pipes row
-      3, 146,  // pipeSmallRestrictive
-      23, 146, // pipeNormalRestrictive
-      43, 146, // pipeLargeRestrictive
-      63, 146  // pipeHugeRestrictive
+      3, 158,  // pipeSmallRestrictive
+      23, 158, // pipeNormalRestrictive
+      43, 158, // pipeLargeRestrictive
+      63, 158,  // pipeHugeRestrictive
+
+      103, 140, // curvedPlate
+      123, 140, // motorEnclosure
+      143, 140, // pumpBarrel
+      163, 140, // pistonHousing
+      103, 158, // emitterBase
+      123, 158, // sensorCasing
+      143, 158 // fieldGeneratorCasing
   );
 
   static {

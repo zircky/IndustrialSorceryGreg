@@ -3,6 +3,7 @@ package com.zircky.industrialsorcerygreg.integration.emi;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.world.item.ItemStack;
 
@@ -77,6 +78,14 @@ public class GTFormResolver {
       TagPrefix.pipeNormalRestrictive,
       TagPrefix.pipeLargeRestrictive,
       TagPrefix.pipeHugeRestrictive,
+
+      ISGTagPrefix.CURVED_PLATE,
+      ISGTagPrefix.MOTOR_ENCLOSURE,
+      ISGTagPrefix.PUMP_BARREL,
+      ISGTagPrefix.PISTON_HOUSING,
+      ISGTagPrefix.EMITTER_BASES,
+      ISGTagPrefix.SENSOR_CASING,
+      ISGTagPrefix.FIELD_GENERATOR_CASING
   };
 
   public List<FormEntry> resolveForms(final Material material) {
