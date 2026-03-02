@@ -1,8 +1,7 @@
 {
-  "parent": "item/generated",
+  "parent": "gtceu:item/material_sets/dull/ring",
   "textures": {
-    "layer0": "gtceu:item/material_sets/infinity/ring",
-    "layer1": "gtceu:item/material_sets/infinity/ring_secondary",
-    "layer2": "gtceu:item/material_sets/infinity/ring_overlay"
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/ring",
+    "layer2": "industrialsorcerygreg:item/material_sets/infinity/ring_overlay"
   }
 }

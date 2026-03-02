@@ -47,7 +47,7 @@ public class CustemMaterials {
         .iconSet(INFINITY)
         .appendFlags(SNDART_FLAGS)
         .cableProperties(Integer.MAX_VALUE, 8192, 0, true, 300)
-        .toolStats(ToolProperty.Builder.of(0.1f, Float.MAX_VALUE, Integer.MAX_VALUE, 100).build())
+        .toolStats(ToolProperty.Builder.of(0.1f, Float.POSITIVE_INFINITY, Integer.MAX_VALUE, 100).build())
         .buildAndRegister();
   }
 }

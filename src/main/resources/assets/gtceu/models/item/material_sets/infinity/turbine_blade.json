@@ -1,8 +1,7 @@
 {
-  "parent": "item/generated",
+  "parent": "gtceu:item/material_sets/dull/turbine_blade",
   "textures": {
-    "layer0": "gtceu:item/material_sets/infinity/turbine_blade",
-    "layer1": "gtceu:item/material_sets/infinity/turbine_blade_secondary",
-    "layer2": "gtceu:item/material_sets/infinity/turbine_blade_overlay"
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/turbine_blade",
+    "layer1": "industrialsorcerygreg:item/material_sets/infinity/turbine_blade_overlay"
   }
 }

@@ -1,8 +1,7 @@
 {
-  "parent": "item/generated",
+  "parent": "gtceu:item/material_sets/dull/bolt",
   "textures": {
-    "layer0": "gtceu:item/material_sets/infinity/wire_fine",
-    "layer1": "gtceu:item/material_sets/infinity/wire_fine_secondary",
-    "layer2": "gtceu:item/material_sets/infinity/wire_fine_overlay"
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/wire_fine",
+    "layer1": "industrialsorcerygreg:item/material_sets/infinity/wire_fine_overlay"
   }
 }

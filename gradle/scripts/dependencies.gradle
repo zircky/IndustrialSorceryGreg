@@ -12,6 +12,10 @@ dependencies {
   // GTCEu
   modImplementation(forge.gtceu)
 
+  jarJar(modImplementation(forge.ae2.get()))
+  modImplementation(forge.guideme)
+
+
   // Mixin (& Extras)
   annotationProcessor(variantOf(libs.mixin) { classifier("processor") })
   annotationProcessor(forge.mixinExtras.common)

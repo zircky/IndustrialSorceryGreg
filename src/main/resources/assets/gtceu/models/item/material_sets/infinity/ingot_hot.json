@@ -1,9 +1,7 @@
 {
-  "parent": "gtceu:item/material_sets/dull/ingot",
+  "parent": "gtceu:item/material_sets/dull/ingot_hot",
   "textures": {
-    "layer0": "gtceu:item/material_sets/infinity/ingot",
-    "layer1": "gtceu:item/material_sets/infinity/ingot_secondary",
-    "layer2": "gtceu:item/material_sets/infinity/ingot_overlay",
-    "layer3": "gtceu:item/material_sets/infinity/ingot_hot_overlay"
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/ingot",
+    "layer3": "industrialsorcerygreg:item/material_sets/infinity/ingot_hot_overlay"
   }
 }

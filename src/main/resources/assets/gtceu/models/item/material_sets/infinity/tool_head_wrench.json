@@ -1,8 +1,7 @@
 {
-  "parent": "item/generated",
+  "parent": "gtceu:item/material_sets/dull/tool_head_wrench",
   "textures": {
-    "layer0": "gtceu:item/material_sets/infinity/tool_head_wrench",
-    "layer1": "gtceu:item/material_sets/infinity/tool_head_wrench_secondary",
-    "layer2": "gtceu:item/material_sets/infinity/tool_head_wrench_overlay"
+    "layer1": "industrialsorcerygreg:item/material_sets/infinity/tool_head_wrench",
+    "layer2": "industrialsorcerygreg:item/material_sets/infinity/tool_head_wrench_overlay"
   }
 }

@@ -1,8 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "gtceu:item/material_sets/infinity/rotor",
-    "layer1": "gtceu:item/material_sets/infinity/rotor_secondary",
-    "layer2": "gtceu:item/material_sets/infinity/rotor_overlay"
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/rotor",
+    "layer2": "industrialsorcerygreg:item/material_sets/infinity/rotor_overlay"
   }
 }
