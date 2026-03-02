@@ -1,0 +1,7 @@
+{
+  "parent": "gtceu:item/material_sets/dull/gear",
+  "textures": {
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/gear",
+    "layer2": "industrialsorcerygreg:item/material_sets/infinity/gear_overlay"
+  }
+}

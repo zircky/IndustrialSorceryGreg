@@ -1,0 +1,7 @@
+{
+  "parent": "gtceu:item/material_sets/dull/crushed",
+  "textures": {
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/crushed",
+    "layer1": "industrialsorcerygreg:item/material_sets/infinity/crushed_secondary"
+  }
+}

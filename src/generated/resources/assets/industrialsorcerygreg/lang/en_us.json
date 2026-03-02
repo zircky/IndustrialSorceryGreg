@@ -42,5 +42,15 @@
   "item.industrialsorcerygreg.supracausal_printed_circuit_board": "Supracausal Printed Circuit Board",
   "item.industrialsorcerygreg.supracausal_ram_chip": "Supracausal Ram Chip",
   "item.industrialsorcerygreg.supracausal_ram_wafer": "Supracausal Ram Wafer",
+
+  "tagprefix.emitter_base": "%s Emitter Base",
+  "tagprefix.field_generator_casing": "%s Field Generator Casing",
+  "tagprefix.motor_enclosure": "%s Motor Enclosure",
+  "tagprefix.piston_housing": "%s Piston Housing",
+  "tagprefix.pump_barrel": "%s Pump Barrel",
+  "tagprefix.sensor_casing": "%s Sensor Casing",
+
+
+  "industrialsorcerygreg.emi.category.material_tree": "Material Tree",
   "itemGroup.industrialsorcerygreg.item": "IndustrialSorceryGreg | Items"
 }

@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiStack;
+import net.minecraft.network.chat.Component;
 
 public class MaterialTreeCategory extends EmiRecipeCategory {
   private final EmiStack icon;
@@ -20,11 +21,12 @@ public class MaterialTreeCategory extends EmiRecipeCategory {
   }
 
 
-  private static net.minecraft.network.chat.Component iconName() {
-    return net.minecraft.network.chat.Component.translatable(String.format("emi.%s.category.material_tree", IndustrialSorceryGreg.MODID));
-  }
-
   private static EmiStack iconStack() {
     return EmiStack.of(ChemicalHelper.get(TagPrefix.ingot, GTMaterials.Aluminium));
+  }
+
+  @Override
+  public Component getName() {
+    return Component.translatable(String.format("%s.emi.category.material_tree", IndustrialSorceryGreg.MODID));
   }
 }
