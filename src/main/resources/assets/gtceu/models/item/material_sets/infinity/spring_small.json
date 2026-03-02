@@ -1,0 +1,7 @@
+{
+  "parent": "gtceu:item/material_sets/dull/spring_small",
+  "textures": {
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/spring_small",
+    "layer1": "industrialsorcerygreg:item/material_sets/infinity/spring_small_overlay"
+  }
+}

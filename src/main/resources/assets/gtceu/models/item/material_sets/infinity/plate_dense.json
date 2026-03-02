@@ -1,0 +1,7 @@
+{
+  "parent": "gtceu:item/material_sets/dull/plate_dense",
+  "textures": {
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/plate_dense",
+    "layer2": "industrialsorcerygreg:item/material_sets/infinity/plate_dense_overlay"
+  }
+}

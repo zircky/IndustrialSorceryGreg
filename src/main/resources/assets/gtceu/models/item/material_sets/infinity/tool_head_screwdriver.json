@@ -1,0 +1,7 @@
+{
+  "parent": "gtceu:item/material_sets/dull/tool_head_screwdriver",
+  "textures": {
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/tool_head_screwdriver",
+    "layer2": "industrialsorcerygreg:item/material_sets/infinity/tool_head_screwdriver_overlay"
+  }
+}

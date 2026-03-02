@@ -7,6 +7,7 @@ import com.gregtechceu.gtceu.api.addon.events.MaterialCasingCollectionEvent;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
+import com.zircky.industrialsorcerygreg.common.data.ISGElement;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipes;
 import com.zircky.industrialsorcerygreg.data.recipe.ISGCraftingComponents;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -39,7 +40,7 @@ public class ISGAddon implements IGTAddon {
 
   @Override
   public void registerElements() {
-    IGTAddon.super.registerElements();
+    ISGElement.init();
   }
 
   @Override
