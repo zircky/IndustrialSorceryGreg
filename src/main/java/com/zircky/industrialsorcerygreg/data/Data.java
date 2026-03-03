@@ -1,10 +1,10 @@
 package com.zircky.industrialsorcerygreg.data;
 
-import com.zircky.industrialsorcerygreg.common.data.generated.ForEachMaterial;
-import com.zircky.industrialsorcerygreg.common.data.generated.ISGPartsRecipeHandler;
+import com.zircky.industrialsorcerygreg.data.recipe.generated.ForEachMaterial;
 import com.zircky.industrialsorcerygreg.data.recipe.RecipeRemoval;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.component.ComponentRecipe;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.ChemicalReactor;
+import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.PlatinumLine;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 
@@ -22,6 +22,7 @@ public class Data {
   private static void commonInit(Consumer<FinishedRecipe> provider) {
     ComponentRecipe.init(provider);
     ChemicalReactor.init(provider);
+    PlatinumLine.init(provider);
     ForEachMaterial.init(provider);
   }
 }

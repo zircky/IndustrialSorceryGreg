@@ -1,0 +1,9 @@
+{
+  "tagprefix.curved_plate": "Curved %s Plate",
+  "tagprefix.emitter_base": "%s Emitter Base",
+  "tagprefix.field_generator_casing": "%s Field Generator Casing",
+  "tagprefix.motor_enclosure": "%s Motor Enclosure",
+  "tagprefix.piston_housing": "%s Piston Housing",
+  "tagprefix.pump_barrel": "%s Pump Barrel",
+  "tagprefix.sensor_casing": "%s Sensor Casing"
+}

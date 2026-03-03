@@ -1,6 +1,6 @@
-// 1.20.1	2026-02-23T14:21:52.7412943	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
-2970b2d405e3103e7743e69eb35a1301b3e491f1 assets/industrialsorcerygreg/lang/en_ud.json
-82cc5c3024ebfadf0620d8f424a88ecd81a0b58f assets/industrialsorcerygreg/lang/en_us.json
+// 1.20.1	2026-03-03T22:58:44.2380929	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+b14ef0e936195d5f4fddc1cfd54053aed970e181 assets/industrialsorcerygreg/lang/en_ud.json
+175d6bce2b40fc1f04cb2d384278b44ac6a8e088 assets/industrialsorcerygreg/lang/en_us.json
 85f07d1ced44ec0f31c8e8285088f276f0901f3a assets/industrialsorcerygreg/models/item/bioware_circuit_board.json
 ce514dea0b6c86b33da9cda75debe8034b7617a1 assets/industrialsorcerygreg/models/item/bioware_printed_circuit_board.json
 15704052e7afb564f039fe76653435464a8dfee7 assets/industrialsorcerygreg/models/item/cosmic_circuit_board.json

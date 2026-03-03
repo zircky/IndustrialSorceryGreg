@@ -18,7 +18,7 @@ import static com.zircky.industrialsorcerygreg.integration.emi.ISGMaterialIconSe
 
 public class CustemMaterials {
   public static void register() {
-    Draconium = new Material.Builder(GTCEu.id("draconium"))
+    Draconium = builderISG("draconium")
         .ingot(4)
         .fluid()
         .blastTemp(19200)
@@ -28,7 +28,7 @@ public class CustemMaterials {
         .appendFlags(SNDART_FLAGS, NO_SMELTING)
         .buildAndRegister();
 
-    Chaos = new Material.Builder(GTCEu.id("chaos"))
+    Chaos = builderISG("chaos")
         .ingot()
         .liquid(new FluidBuilder().temperature(1000000).customStill())
         .plasma()
@@ -39,7 +39,7 @@ public class CustemMaterials {
         .flags(GENERATE_FOIL)
         .buildAndRegister();
 
-    Infinity = new Material.Builder(GTCEu.id("infinity"))
+    Infinity = builderISG("infinity")
         .ingot().dust()
         .liquid(new FluidBuilder().temperature(1000000).customStill())
         .blastTemp(32000, BlastProperty.GasTier.HIGHEST, GTValues.VA[GTValues.UEV], 900)
