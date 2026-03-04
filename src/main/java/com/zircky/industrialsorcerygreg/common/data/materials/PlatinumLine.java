@@ -36,7 +36,7 @@ public class PlatinumLine {
         .setFormula("Pt?");
 
     PlatinumMetallicPowder = builderISG("platinum_metallic_powder")
-        .dust().ore()
+        .dust()
         .color(GTMaterials.Platinum.getMaterialARGB())
         .iconSet(MaterialIconSet.METALLIC)
         .buildAndRegister()

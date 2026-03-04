@@ -8,7 +8,12 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
 public class ISGMaterialFlagAddition {
   public static void register() {
-    OreProperty oreProperty = Platinum.getProperty(PropertyKey.ORE);
+    OreProperty oreProperty = Nickel.getProperty(PropertyKey.ORE);
+    oreProperty.setOreByProducts(Cobalt, Iron, PlatinumMetallicPowder);
+    oreProperty.setSeparatedInto(Iron);
+    oreProperty.setWashedIn(Mercury);
+
+    oreProperty = Platinum.getProperty(PropertyKey.ORE);
     oreProperty.setOreByProducts(Nickel, IridiumMetalResidue, Nickel, PlatinumMetallicPowder);
     oreProperty.setWashedIn(Mercury);
 
