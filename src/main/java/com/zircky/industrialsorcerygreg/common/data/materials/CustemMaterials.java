@@ -1,8 +1,6 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
-import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
@@ -13,8 +11,8 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.NO_SMELTING;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
-import static com.zircky.industrialsorcerygreg.integration.emi.ISGMaterialIconSet.CHAOS;
-import static com.zircky.industrialsorcerygreg.integration.emi.ISGMaterialIconSet.INFINITY;
+import static com.zircky.industrialsorcerygreg.integration.emi.materialtree.ISGMaterialIconSet.CHAOS;
+import static com.zircky.industrialsorcerygreg.integration.emi.materialtree.ISGMaterialIconSet.INFINITY;
 
 public class CustemMaterials {
   public static void register() {

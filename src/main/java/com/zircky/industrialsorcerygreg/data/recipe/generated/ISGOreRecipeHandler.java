@@ -39,7 +39,6 @@ public final class ISGOreRecipeHandler {
   }
 
   public static void run(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
-    IndustrialSorceryGreg.LOGGER.info("Ore recipe Handler Test");
     OreProperty property = material.getProperty(PropertyKey.ORE);
     if (property == null) {
       return;
