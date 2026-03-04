@@ -1,4 +1,4 @@
-package com.zircky.industrialsorcerygreg.common.data.generated;
+package com.zircky.industrialsorcerygreg.data.recipe.generated;
 
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
@@ -15,6 +15,7 @@ public class ForEachMaterial {
       }
 
       ISGPartsRecipeHandler.init(provider, material);
+      ISGOreRecipeHandler.run(provider, material);
     }
   }
 }

@@ -4,9 +4,6 @@ package com.zircky.industrialsorcerygreg.integration.emi;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import it.unimi.dsi.fastutil.ints.IntImmutableList;
 
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map;
 
 import static com.zircky.industrialsorcerygreg.integration.emi.GTFormResolver.DEFAULT_FORMS;
 

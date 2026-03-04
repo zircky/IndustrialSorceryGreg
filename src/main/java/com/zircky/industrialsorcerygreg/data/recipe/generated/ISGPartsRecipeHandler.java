@@ -1,4 +1,4 @@
-package com.zircky.industrialsorcerygreg.common.data.generated;
+package com.zircky.industrialsorcerygreg.data.recipe.generated;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;

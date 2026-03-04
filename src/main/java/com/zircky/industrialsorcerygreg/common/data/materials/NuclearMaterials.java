@@ -6,7 +6,6 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.METALLIC;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
@@ -15,7 +14,7 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
 public class NuclearMaterials {
   public static void register() {
-    ManganeseOxide = new Material.Builder(GTCEu.id("manganese_oxide"))
+    ManganeseOxide = builderISG("manganese_oxide")
         .ingot().dust().fluid()
         .color(0x1A3F0D).secondaryColor(0x425E17).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
@@ -24,7 +23,7 @@ public class NuclearMaterials {
         .buildAndRegister()
         .setFormula("MnO", true);
 
-    NiobiumTin = new Material.Builder(GTCEu.id("niobium_tin"))
+    NiobiumTin = builderISG("niobium_tin")
         .ingot().dust()
         .color(0xC4C4C4).secondaryColor(0xC0C0C0).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
@@ -33,7 +32,7 @@ public class NuclearMaterials {
         .buildAndRegister()
         .setFormula("Nb3Sn", true);
 
-    Zircaloy = new Material.Builder(GTCEu.id("zircaloy"))
+    Zircaloy = builderISG("zircaloy")
         .ingot().dust()
         .color(0xF6FAF5).secondaryColor(0xFFCC00).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
@@ -41,7 +40,7 @@ public class NuclearMaterials {
         .components(GTMaterials.Zirconium, 7, GTMaterials.Tin, 2, GTMaterials.Iron, 1, GTMaterials.Chromium, 1)
         .buildAndRegister();
 
-    Thermoconducting = new Material.Builder(GTCEu.id("thermoconducting"))
+    Thermoconducting = builderISG("thermoconducting")
         .ingot().dust()
         .color(0x354630).secondaryColor(0x343B29).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
@@ -49,7 +48,7 @@ public class NuclearMaterials {
 //        .components(Extreme, 3, BoronArsenide, 2, GTMaterials.Niobium, 1)
         .buildAndRegister();
 
-    ZirconiumMolybdenum = new Material.Builder(GTCEu.id("zirconium_molybdenum"))
+    ZirconiumMolybdenum = builderISG("zirconium_molybdenum")
         .ingot().dust()
         .color(0x3C3B3E).secondaryColor(0x6B6A73).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
@@ -57,7 +56,7 @@ public class NuclearMaterials {
         .components(GTMaterials.Zirconium, 19, GTMaterials.Molybdenum, 1)
         .buildAndRegister();
 
-    Extreme = new Material.Builder(GTCEu.id("extreme"))
+    Extreme = builderISG("extreme")
         .ingot().dust()
         .color(0x130F14).secondaryColor(0x353654).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
@@ -65,119 +64,119 @@ public class NuclearMaterials {
         .components(GTMaterials.Tungsten, 4, GTMaterials.Rhenium, 2, GTMaterials.Tantalum, 2, GTMaterials.Niobium, 1)
         .buildAndRegister();
 
-    TinSilver = new Material.Builder(GTCEu.id("tin_silver"))
+    TinSilver = builderISG("tin_silver")
         .ingot().dust()
         .color(0x747670).secondaryColor(0xA2A49D).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
         .components(GTMaterials.Tin, 29, GTMaterials.Silver, 1)
         .buildAndRegister();
 
-    PyroliticCarbon = new Material.Builder(GTCEu.id("pyrolitic_carbon"))
+    PyroliticCarbon = builderISG("pyrolitic_carbon")
         .ingot().dust().fluid()
         .color(0x3C3C3C).secondaryColor(0x5A5A5A).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
         .components(GTMaterials.Carbon, 1)
         .buildAndRegister();
 
-    ManganeseDioxide = new Material.Builder(GTCEu.id("manganese_dioxide"))
+    ManganeseDioxide = builderISG("manganese_dioxide")
         .ingot().dust()
         .color(0x2E2C35).secondaryColor(0x5B556E).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
         .components(GTMaterials.Manganese, 1, GTMaterials.Oxygen, 2)
         .buildAndRegister();
 
-    ToughAlloy = new Material.Builder(GTCEu.id("tough_alloy"))
+    ToughAlloy = builderISG("tough_alloy")
         .ingot().dust()
         .color(0x2B1F20).secondaryColor(0x5C4A4C).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
 //        .components(Ferroboron, 3, GTMaterials.Lithium, 1)
         .buildAndRegister();
 
-    Ferroboron = new Material.Builder(GTCEu.id("ferroboron"))
+    Ferroboron = builderISG("ferroboron")
         .ingot().dust()
         .color(0x535C76).secondaryColor(0x8190AB).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
         .components(GTMaterials.Boron, 1, GTMaterials.Steel, 1)
         .buildAndRegister();
 
-    SuperAlloy = new Material.Builder(GTCEu.id("super_alloy"))
+    SuperAlloy = builderISG("super_alloy")
         .ingot().dust()
         .color(0x2E232F).secondaryColor(0x4B4668).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
         .buildAndRegister();
 
-    Aluminum = new Material.Builder(GTCEu.id("aluminum"))
+    Aluminum = builderISG("aluminum")
         .ingot().dust()
         .color(0x8BA296).secondaryColor(0xABEBCB).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
         .buildAndRegister();
 
-    SicSicCmc = new Material.Builder(GTCEu.id("sic_sic_cmc"))
+    SicSicCmc = builderISG("sic_sic_cmc")
         .ingot().dust()
         .color(0x6A5040).secondaryColor(0xAE8463).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
         .buildAndRegister();
 
-    HardCarbon = new Material.Builder(GTCEu.id("hard_carbon"))
+    HardCarbon = builderISG("hard_carbon")
         .ingot().dust().fluid()
         .color(0x1C1C1C).secondaryColor(0x343434).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
         .buildAndRegister();
 
-    LithiumManganeseDioxide = new Material.Builder(GTCEu.id("lithium_manganese_dioxide"))
+    LithiumManganeseDioxide = builderISG("lithium_manganese_dioxide")
         .ingot().dust()
         .color(0x2E2C35).secondaryColor(0x5B556E).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
         .buildAndRegister();
 
-    LeadPlatinum = new Material.Builder(GTCEu.id("lead_platinum"))
+    LeadPlatinum = builderISG("lead_platinum")
         .ingot().dust()
         .color(0xC9BEB9).secondaryColor(0xC3C3CA).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
         .buildAndRegister();
 
-    Strontium90 = new Material.Builder(GTCEu.id("strontium_90"))
+    Strontium90 = builderISG("strontium_90")
         .dust()
         .color(0x6A6162).secondaryColor(0xAA9A9D).iconSet(METALLIC)
         .buildAndRegister();
 
-    BoronArsenide = new Material.Builder(GTCEu.id("boron_arsenide"))
+    BoronArsenide = builderISG("boron_arsenide")
         .gem().dust()
         .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
-        .appendFlags(SNDART_FLAGS)
+        .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
-    Carobbiite = new Material.Builder(GTCEu.id("carobbiite"))
+    Carobbiite = builderISG("carobbiite")
         .gem().dust()
         .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
-        .appendFlags(SNDART_FLAGS)
+        .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
-    Villiaumite = new Material.Builder(GTCEu.id("villiaumite"))
+    Villiaumite = builderISG("villiaumite")
         .gem().dust()
         .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
-        .appendFlags(SNDART_FLAGS)
+        .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
-    Fluorite = new Material.Builder(GTCEu.id("fluorite"))
+    Fluorite = builderISG("fluorite")
         .gem().dust()
         .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
-        .appendFlags(SNDART_FLAGS)
+        .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
-    BoronNitride = new Material.Builder(GTCEu.id("boron_nitride"))
+    BoronNitride = builderISG("boron_nitride")
         .gem().dust()
         .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
-        .appendFlags(SNDART_FLAGS)
+        .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
-    Rhodochrosite = new Material.Builder(GTCEu.id("rhodochrosite"))
+    Rhodochrosite = builderISG("rhodochrosite")
         .gem().dust()
         .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
-        .appendFlags(SNDART_FLAGS)
+        .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
-    MarM200Steel = new Material.Builder(GTCEu.id("mar_m_200_steel"))
+    MarM200Steel = builderISG("mar_m_200_steel")
         .ingot().dust()
         .fluid()
         .blastTemp(4600, HIGH, GTValues.VA[GTValues.IV], 300)
