@@ -1,4 +1,4 @@
-package com.zircky.industrialsorcerygreg.integration.emi;
+package com.zircky.industrialsorcerygreg.integration.emi.materialtree;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;

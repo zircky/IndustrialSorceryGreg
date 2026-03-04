@@ -1,5 +1,12 @@
 package com.zircky.industrialsorcerygreg.integration.emi;
 
+import com.gregtechceu.gtceu.config.ConfigHolder;
+import com.gregtechceu.gtceu.integration.emi.oreprocessing.GTOreProcessingEmiCategory;
+import com.zircky.industrialsorcerygreg.integration.emi.materialtree.GTFormResolver;
+import com.zircky.industrialsorcerygreg.integration.emi.materialtree.GTMaterialAccess;
+import com.zircky.industrialsorcerygreg.integration.emi.materialtree.MaterialTreeCategory;
+import com.zircky.industrialsorcerygreg.integration.emi.materialtree.MaterialTreeRecipeFactory;
+import com.zircky.industrialsorcerygreg.integration.emi.oreprocessing.ISGOreProcessingEmiCategory;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiInitRegistry;
 import dev.emi.emi.api.EmiPlugin;
@@ -16,6 +23,19 @@ public class ISGEMIPlugin implements EmiPlugin {
     registry.addCategory(category);
     registry.addWorkstation(category, category.icon());
 
+    registry.removeRecipes(recipe ->
+        recipe.getCategory() == GTOreProcessingEmiCategory.CATEGORY
+    );
+
+    if (!ConfigHolder.INSTANCE.compat.hideOreProcessingDiagrams)
+      registry.addCategory(ISGOreProcessingEmiCategory.CATEGORY);
+
+    if (!ConfigHolder.INSTANCE.compat.hideOreProcessingDiagrams)
+      ISGOreProcessingEmiCategory.registerDisplays(registry);
+
+    if (!ConfigHolder.INSTANCE.compat.hideOreProcessingDiagrams)
+      ISGOreProcessingEmiCategory.registerWorkStations(registry);
+
     final MaterialTreeRecipeFactory factory =
         new MaterialTreeRecipeFactory(
             category,
@@ -24,11 +44,11 @@ public class ISGEMIPlugin implements EmiPlugin {
         );
 
     factory.createAll().forEach(registry::addRecipe);
+
   }
 
   @Override
   public void initialize(EmiInitRegistry registry) {
     EmiPlugin.super.initialize(registry);
   }
-
 }
