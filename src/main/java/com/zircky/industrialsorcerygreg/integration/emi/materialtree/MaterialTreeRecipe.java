@@ -1,4 +1,4 @@
-package com.zircky.industrialsorcerygreg.integration.emi;
+package com.zircky.industrialsorcerygreg.integration.emi.materialtree;
 
 import dev.emi.emi.api.recipe.BasicEmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;

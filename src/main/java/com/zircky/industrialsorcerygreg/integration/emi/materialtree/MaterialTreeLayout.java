@@ -1,11 +1,11 @@
-package com.zircky.industrialsorcerygreg.integration.emi;
+package com.zircky.industrialsorcerygreg.integration.emi.materialtree;
 
 
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import it.unimi.dsi.fastutil.ints.IntImmutableList;
 
 
-import static com.zircky.industrialsorcerygreg.integration.emi.GTFormResolver.DEFAULT_FORMS;
+import static com.zircky.industrialsorcerygreg.integration.emi.materialtree.GTFormResolver.DEFAULT_FORMS;
 
 public final class MaterialTreeLayout {
   public static final IntImmutableList ITEM_LOCATIONS = IntImmutableList.of(
