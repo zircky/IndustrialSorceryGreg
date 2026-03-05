@@ -1,6 +1,8 @@
-// 1.20.1	2026-03-03T22:58:44.2380929	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
-b14ef0e936195d5f4fddc1cfd54053aed970e181 assets/industrialsorcerygreg/lang/en_ud.json
-175d6bce2b40fc1f04cb2d384278b44ac6a8e088 assets/industrialsorcerygreg/lang/en_us.json
+// 1.20.1	2026-03-05T03:18:44.8657124	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+6e80af9fc329d7a04a7c9a925e3c3e1528866da8 assets/industrialsorcerygreg/blockstates/rocket_assembler.json
+d8dbe777af6d93c51fde4cf7d747408ee35f4e66 assets/industrialsorcerygreg/lang/en_ud.json
+5f8020b2c498378dcfb52417d8da5335c5faa5eb assets/industrialsorcerygreg/lang/en_us.json
+f117b071fb60aff2db19741decc565b5fbfc5e86 assets/industrialsorcerygreg/models/block/machine/rocket_assembler.json
 85f07d1ced44ec0f31c8e8285088f276f0901f3a assets/industrialsorcerygreg/models/item/bioware_circuit_board.json
 ce514dea0b6c86b33da9cda75debe8034b7617a1 assets/industrialsorcerygreg/models/item/bioware_printed_circuit_board.json
 15704052e7afb564f039fe76653435464a8dfee7 assets/industrialsorcerygreg/models/item/cosmic_circuit_board.json
@@ -15,6 +17,7 @@ fa42752ecb2a73dad0457783e3be03a57b979b2b assets/industrialsorcerygreg/models/ite
 c7d38d7ddf0a6d4fe92a653967338ed870a06bae assets/industrialsorcerygreg/models/item/optical_printed_circuit_board.json
 244b6c2a0c5d4b73c11539597068fc3b9c08dcba assets/industrialsorcerygreg/models/item/optical_ram_chip.json
 3d8d06b6e9dc8f907c69ed359535e645e6a3d89c assets/industrialsorcerygreg/models/item/optical_ram_wafer.json
+ed636493e73f6ba9b1d70360eec38885e2258a3f assets/industrialsorcerygreg/models/item/rocket_assembler.json
 cc3373e826d42074301e36955b36ac706bc38775 assets/industrialsorcerygreg/models/item/smd_capacitor_bioware.json
 731e4fb5ae4452f2d21c2901ee775ee0f4366615 assets/industrialsorcerygreg/models/item/smd_capacitor_cosmic.json
 88dc1dbfc40df987fa176725475b23f9793884c6 assets/industrialsorcerygreg/models/item/smd_capacitor_exotic.json
