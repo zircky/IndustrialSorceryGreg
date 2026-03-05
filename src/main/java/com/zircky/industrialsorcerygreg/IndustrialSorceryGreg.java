@@ -32,6 +32,8 @@ public class IndustrialSorceryGreg {
     IndustrialSorceryGreg.init();
     var bus = FMLJavaModLoadingContext.get().getModEventBus();
     bus.register(this);
+    bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
+    bus.addGenericListener(MachineDefinition.class, this::registerMachines);
 
     bus.addListener(this::commonSetup);
   }
