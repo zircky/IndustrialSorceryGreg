@@ -57,8 +57,6 @@ public class ISGOreProcessingEmiCategory extends EmiRecipeCategory {
     }
   }
 
-
-
   @Override
   public Component getName() {
     return Component.translatable("gtceu.jei.ore_processing_diagram");

@@ -44,5 +44,8 @@ public class ISGModifyMaterials {
     ISGMaterials.addIngot(GTMaterials.Hafnium);
     ISGMaterials.addIngot(GTMaterials.Zirconium);
     ISGMaterials.addIngot(GTMaterials.Strontium);
+
+
+
   }
 }
