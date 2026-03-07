@@ -42,6 +42,8 @@ public class IndustrialSorceryGreg {
     ISGCreativeModeTabs.init();
     ISGItems.init();
 
+    ISGPlaceholders.register();
+
     ISGRegistries.REGISTRATE.registerRegistrate();
   }
 

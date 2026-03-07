@@ -24,6 +24,14 @@ dependencies {
   modCompileOnly(forge.bundles.jei)
   modImplementation(forge.emi)
 
+  // Ad Astra
+  modRuntimeOnly(forge.yabn)
+  modRuntimeOnly(forge.byteCodecs)
+  modImplementation(forge.resourcefullLib)
+  modImplementation(forge.resourcefullConfig)
+  modImplementation(forge.botarium)
+  modImplementation(forge.adAstra)
+
   modImplementation(forge.nuclearcraft)
 
   modImplementation(forge.flywheel)

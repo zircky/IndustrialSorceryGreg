@@ -1,7 +1,7 @@
-// 1.20.1	2026-03-05T03:18:44.8657124	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.20.1	2026-03-07T13:47:09.7445673	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 6e80af9fc329d7a04a7c9a925e3c3e1528866da8 assets/industrialsorcerygreg/blockstates/rocket_assembler.json
-d8dbe777af6d93c51fde4cf7d747408ee35f4e66 assets/industrialsorcerygreg/lang/en_ud.json
-5f8020b2c498378dcfb52417d8da5335c5faa5eb assets/industrialsorcerygreg/lang/en_us.json
+ef4256a2a985fd8fcc6636b835c0007ad40ee495 assets/industrialsorcerygreg/lang/en_ud.json
+f5d25510c456cfdbec1373e800b0b7670d97d4b5 assets/industrialsorcerygreg/lang/en_us.json
 f117b071fb60aff2db19741decc565b5fbfc5e86 assets/industrialsorcerygreg/models/block/machine/rocket_assembler.json
 85f07d1ced44ec0f31c8e8285088f276f0901f3a assets/industrialsorcerygreg/models/item/bioware_circuit_board.json
 ce514dea0b6c86b33da9cda75debe8034b7617a1 assets/industrialsorcerygreg/models/item/bioware_printed_circuit_board.json

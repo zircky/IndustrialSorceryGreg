@@ -3,12 +3,10 @@ package com.zircky.industrialsorcerygreg.common.data;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
-import com.zircky.industrialsorcerygreg.common.data.materials.CustemMaterials;
-import com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialFlagAddition;
-import com.zircky.industrialsorcerygreg.common.data.materials.NuclearMaterials;
-import com.zircky.industrialsorcerygreg.common.data.materials.PlatinumLine;
+import com.zircky.industrialsorcerygreg.common.data.materials.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +23,7 @@ public class ISGMaterials {
     NuclearMaterials.register();
     CustemMaterials.register();
     PlatinumLine.register();
-
+    NaquadahLine.register();
     ISGMaterialFlagAddition.register();
   }
 
@@ -109,9 +107,41 @@ public class ISGMaterials {
   public static Material RhodiumFilterCakeSolution;
   public static Material ReprecipitatedRhodium;
 
+  // Naquadah line
+  public static Material Adamantium;
+  public static Material NaquadahOxideMixture;
+  public static Material LowQualityNaquadahEmulsion;
+  public static Material GalliumHydroxide;
+  public static Material LowQualityNaquadahSolution;
+  public static Material TowEthyl1Hexanol;
+  public static Material P507;
+  public static Material NaquadahAdamantiumSolution;
+  public static Material NaquadahRichSolution;
+  public static Material Naquadahine;
+  public static Material FluorineRichWasteLiquid;
+  public static Material WasteLiquid;
+  public static Material Adamantine;
+  public static Material EnrichedNaquadahOxideMixture;
+  public static Material TriniumSulphate;
+  public static Material EnrichedNaquadahRichSolution;
+  public static Material ConcentratedEnrichedNaquadahSludge;
+  public static Material EnrichedNaquadahSulphate;
+  public static Material NaquadriaOxideMixture;
+  public static Material IndiumPhosphate;
+  public static Material LowQualityNaquadriaPhosphate;
+  public static Material NaquadriaRichSolution;
+  public static Material LowQualityNaquadriaSulphate;
+  public static Material LowQualityNaquadriaSolution;
+  public static Material NaquadriaSulphate;
+
+
 
   public static void addIngot(Material material) {
     material.setProperty(PropertyKey.INGOT, new IngotProperty());
+  }
+
+  public static void addOre(Material material) {
+    material.setProperty(PropertyKey.ORE, new OreProperty());
   }
 
 

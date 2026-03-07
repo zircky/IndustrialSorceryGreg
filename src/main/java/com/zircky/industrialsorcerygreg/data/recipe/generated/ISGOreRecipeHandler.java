@@ -44,16 +44,16 @@ public final class ISGOreRecipeHandler {
       return;
     }
 
-      for (TagPrefix ore : ORES.keySet()) {
-        processOre(provider, ore, property, material);
-      }
+    for (TagPrefix ore : ORES.keySet()) {
+      processOre(provider, ore, property, material);
+    }
 
-      processRawOre(provider, property, material);
-      processCrushedOre(provider, property, material);
-      processCrushedPurified(provider, property, material);
-      processCrushedCentrifuged(provider, property, material);
-      processDirtyDust(provider, property, material);
-      processPureDust(provider, property, material);
+    processRawOre(provider, property, material);
+    processCrushedOre(provider, property, material);
+    processCrushedPurified(provider, property, material);
+    processCrushedCentrifuged(provider, property, material);
+    processDirtyDust(provider, property, material);
+    processPureDust(provider, property, material);
   }
 
 
@@ -526,8 +526,14 @@ public final class ISGOreRecipeHandler {
   }
 
   public static Material getOutputMaterial(@NotNull Material material) {
-     if (material.equals(Platinum)) {
+    if (material.equals(Platinum)) {
       return ISGMaterials.PlatinumMetallicPowder;
+    } else if (material.equals(Naquadah)) {
+      return ISGMaterials.NaquadahOxideMixture;
+    } else if (material.equals(NaquadahEnriched)) {
+      return ISGMaterials.EnrichedNaquadahOxideMixture;
+    } else if (material.equals(Naquadria)) {
+      return ISGMaterials.NaquadriaOxideMixture;
     }
     return material;
   }
