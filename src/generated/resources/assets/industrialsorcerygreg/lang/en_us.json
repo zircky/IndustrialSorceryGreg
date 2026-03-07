@@ -129,7 +129,7 @@
   "material.industrialsorcerygreg.zinc_sulfate": "Zinc Sulfate",
   "material.industrialsorcerygreg.zircaloy": "Zircaloy",
   "material.industrialsorcerygreg.zirconium_molybdenum": "Zirconium Molybdenum",
-
+  "gtceu.multiblock.power_substation.fill_percent": "§7Energy Fill: %s ",
   "gtceu.placeholder_info.psEnergyStored.0": "Returns the amount of energy currently stored in the Power Substation.",
   "gtceu.placeholder_info.psEnergyStored.1": "Usage:",
   "gtceu.placeholder_info.psEnergyStored.2": "  {psEnergyStored} -> stored energy in EU",

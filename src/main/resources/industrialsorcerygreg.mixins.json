@@ -5,7 +5,6 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "industrialsorcerygreg.refmap.json",
   "mixins": [
-    "gregtech.GTValuesAccessor"
   ],
   "client": [
   ],

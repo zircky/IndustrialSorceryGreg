@@ -9,7 +9,6 @@ import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.mojang.logging.LogUtils;
-import com.zircky.industrialsorcerygreg.api.gregtech.AddonTierNamePatcher;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.*;
 import net.minecraft.resources.ResourceLocation;
@@ -32,15 +31,11 @@ public class IndustrialSorceryGreg {
     IndustrialSorceryGreg.init();
     var bus = FMLJavaModLoadingContext.get().getModEventBus();
     bus.register(this);
-    bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
-    bus.addGenericListener(MachineDefinition.class, this::registerMachines);
 
     bus.addListener(this::commonSetup);
   }
 
   public static void init() {
-    ISGCreativeModeTabs.init();
-    ISGItems.init();
 
     ISGPlaceholders.register();
 
@@ -66,32 +61,27 @@ public class IndustrialSorceryGreg {
   }
 
   private void commonSetup(final FMLCommonSetupEvent event) {
-    event.enqueueWork(AddonTierNamePatcher::apply);
+//    event.enqueueWork(AddonTierNamePatcher::apply);
   }
 
   @SubscribeEvent
   public void registerMaterialRegistryEvent(MaterialRegistryEvent event) {
-    MATERIAL_REGISTRY = GTCEuAPI.materialManager.createRegistry(MODID);
   }
 
   @SubscribeEvent
   public void registerMaterials(MaterialEvent event) {
-    ISGMaterials.init();
   }
 
   @SubscribeEvent
   public void modifyMaterials(PostMaterialEvent event) {
-    ISGMaterials.modifyMaterials();
   }
 
   @SubscribeEvent
   public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
-    ISGRecipeTypes.init();
   }
 
   @SubscribeEvent
   public void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
-    ISGMachines.init();
   }
 
 }

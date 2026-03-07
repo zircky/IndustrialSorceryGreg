@@ -12,9 +12,22 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.time.Duration;
 import java.util.List;
+
+/*
+{psEnergyStored}
+{psEnergyCapacity}
+{psFillPercent}
+{psPassiveDrain}
+{psInTicks}
+{psOutTicks}
+{psTimeToFillDrainText}
+{if {active} Work-Paused [WARNING: Machine is waiting.] }
+*/
 
 public class ISGPlaceholders {
   private static final BigInteger BIG_INTEGER_MAX_LONG = BigInteger.valueOf(Long.MAX_VALUE);
@@ -45,6 +58,39 @@ public class ISGPlaceholders {
         return MultiLineComponent.of(Component.translatable("gtceu.multiblock.power_substation.capacity", storedComponent.setStyle(STYLE_GOLD)));
       }
     });
+    PlaceholderHandler.addPlaceholder(new Placeholder("psFillPercent") {
+      @Override
+      public MultiLineComponent apply(
+          final PlaceholderContext ctx,
+          final List<MultiLineComponent> args
+      ) throws PlaceholderException {
+
+        PlaceholderUtils.checkArgs(args, 0);
+
+        final PowerSubstationMachine machine = getPowerSubstationMachine(ctx);
+
+        final BigInteger stored = machine.getEnergyInfo().stored();
+        final BigInteger capacity = machine.getEnergyInfo().capacity();
+
+        if (capacity.signum() <= 0) {
+          return MultiLineComponent.literal("Energy Fill: 0.000000%");
+        }
+
+        final BigDecimal percent = new BigDecimal(stored)
+            .multiply(BigDecimal.valueOf(100))
+            .divide(new BigDecimal(capacity), 6, RoundingMode.HALF_UP);
+
+        final ChatFormatting color = getFillColor(percent);
+
+        final MutableComponent label = Component.literal("§7Energy Fill: ");
+
+        final Component value = Component.literal(percent.toPlainString() + "%")
+            .setStyle(Style.EMPTY.withColor(color));
+
+        return MultiLineComponent.of(label.append(value));
+      }
+    });
+
     PlaceholderHandler.addPlaceholder(new Placeholder("psInTicks") {
       @Override
       public MultiLineComponent apply(PlaceholderContext ctx, List<MultiLineComponent> args) throws PlaceholderException {
@@ -206,6 +252,27 @@ public class ISGPlaceholders {
     }
 
     return Component.translatable(key, FormattingUtil.formatNumbers(value));
+  }
+
+  private static ChatFormatting getFillColor(final BigDecimal percent) {
+
+    if (percent.compareTo(BigDecimal.valueOf(25)) < 0) {
+      return ChatFormatting.DARK_RED;
+    }
+
+    if (percent.compareTo(BigDecimal.valueOf(50)) < 0) {
+      return ChatFormatting.RED;
+    }
+
+    if (percent.compareTo(BigDecimal.valueOf(75)) < 0) {
+      return ChatFormatting.GOLD;
+    }
+
+    if (percent.compareTo(BigDecimal.valueOf(90)) < 0) {
+      return ChatFormatting.YELLOW;
+    }
+
+    return ChatFormatting.GREEN;
   }
 
 

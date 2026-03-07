@@ -5,11 +5,7 @@ import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.addon.events.KJSRecipeKeyEvent;
 import com.gregtechceu.gtceu.api.addon.events.MaterialCasingCollectionEvent;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
-import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
-import com.zircky.industrialsorcerygreg.common.data.ISGElement;
-import com.zircky.industrialsorcerygreg.common.data.ISGRecipes;
-import com.zircky.industrialsorcerygreg.data.recipe.ISGCraftingComponents;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 
@@ -25,7 +21,7 @@ public class ISGAddon implements IGTAddon {
 
   @Override
   public void initializeAddon() {
-    IndustrialSorceryGreg.LOGGER.info("CosmicCoreGTAddon has loaded!");
+    IndustrialSorceryGreg.LOGGER.info("IndustrialSorceryGregAddon has loaded!");
   }
 
   @Override
@@ -35,12 +31,12 @@ public class ISGAddon implements IGTAddon {
 
   @Override
   public void registerTagPrefixes() {
-    ISGTagPrefix.init();
+//    ISGTagPrefix.init();
   }
 
   @Override
   public void registerElements() {
-    ISGElement.init();
+//    ISGElement.init();
   }
 
   @Override
@@ -75,13 +71,15 @@ public class ISGAddon implements IGTAddon {
 
   @Override
   public void addRecipes(Consumer<FinishedRecipe> provider) {
-    ISGCraftingComponents.init();
-    ISGRecipes.recipeAddition(provider);
+//    ISGCraftingComponents.init();
+//    ISGRecipes.recipeAddition(provider);
+    IGTAddon.super.addRecipes(provider);
   }
 
   @Override
   public void removeRecipes(Consumer<ResourceLocation> consumer) {
-    ISGRecipes.recipeRemoval(consumer);
+//    ISGRecipes.recipeRemoval(consumer);
+    IGTAddon.super.removeRecipes(consumer);
   }
 
   @Override
@@ -111,6 +109,6 @@ public class ISGAddon implements IGTAddon {
 
   @Override
   public boolean requiresHighTier() {
-    return true;
+    return false;
   }
 }
