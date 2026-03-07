@@ -128,5 +128,24 @@
   "material.industrialsorcerygreg.waste_liquid": "Waste Liquid",
   "material.industrialsorcerygreg.zinc_sulfate": "Zinc Sulfate",
   "material.industrialsorcerygreg.zircaloy": "Zircaloy",
-  "material.industrialsorcerygreg.zirconium_molybdenum": "Zirconium Molybdenum"
+  "material.industrialsorcerygreg.zirconium_molybdenum": "Zirconium Molybdenum",
+
+  "gtceu.placeholder_info.psEnergyStored.0": "Returns the amount of energy currently stored in the Power Substation.",
+  "gtceu.placeholder_info.psEnergyStored.1": "Usage:",
+  "gtceu.placeholder_info.psEnergyStored.2": "  {psEnergyStored} -> stored energy in EU",
+  "gtceu.placeholder_info.psEnergyCapacity.0": "Returns the maximum energy capacity of the Power Substation.",
+  "gtceu.placeholder_info.psEnergyCapacity.1": "Usage:",
+  "gtceu.placeholder_info.psEnergyCapacity.2": "  {psEnergyCapacity} -> maximum energy capacity in EU",
+  "gtceu.placeholder_info.psInTicks.0": "Returns the average energy input per tick of the Power Substation.",
+  "gtceu.placeholder_info.psInTicks.1": "Usage:",
+  "gtceu.placeholder_info.psInTicks.2": "  {psInTicks} -> energy input per tick",
+  "gtceu.placeholder_info.psOutTicks.0": "Returns the average energy output per tick of the Power Substation.",
+  "gtceu.placeholder_info.psOutTicks.1": "Usage:",
+  "gtceu.placeholder_info.psOutTicks.2": "  {psOutTicks} -> energy output per tick",
+  "gtceu.placeholder_info.psPassiveDrain.0": "Returns the passive energy drain of the Power Substation.",
+  "gtceu.placeholder_info.psPassiveDrain.1": "Usage:",
+  "gtceu.placeholder_info.psPassiveDrain.2": "  {psPassiveDrain} -> passive energy drain in EU/t",
+  "gtceu.placeholder_info.psTimeToFillDrainText.0": "Returns the estimated time until the Power Substation becomes full or empty based on the current energy flow.",
+  "gtceu.placeholder_info.psTimeToFillDrainText.1": "Usage:",
+  "gtceu.placeholder_info.psTimeToFillDrainText.2": "  {psTimeToFillDrainText} -> estimated fill or drain time"
 }

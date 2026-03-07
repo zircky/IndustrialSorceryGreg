@@ -42,7 +42,7 @@ public class ISGPlaceholders {
         final PowerSubstationMachine machine = getPowerSubstationMachine(ctx);
         var STYLE_GOLD = Style.EMPTY.withColor(ChatFormatting.GOLD);
         var storedComponent = Component.literal(FormattingUtil.formatNumbers(machine.getEnergyInfo().capacity()));
-        return MultiLineComponent.of(Component.translatable("gtceu.multiblock.power_substation.stored", storedComponent.setStyle(STYLE_GOLD)));
+        return MultiLineComponent.of(Component.translatable("gtceu.multiblock.power_substation.capacity", storedComponent.setStyle(STYLE_GOLD)));
       }
     });
     PlaceholderHandler.addPlaceholder(new Placeholder("psInTicks") {
