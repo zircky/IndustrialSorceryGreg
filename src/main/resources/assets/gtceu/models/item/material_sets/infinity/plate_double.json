@@ -1,7 +1,0 @@
-{
-    "parent": "gtceu:item/material_sets/dull/plate_double",
-    "textures": {
-        "layer0": "industrialsorcerygreg:item/material_sets/infinity/plate_double",
-        "layer2": "industrialsorcerygreg:item/material_sets/infinity/plate_double_overlay"
-    }
-}

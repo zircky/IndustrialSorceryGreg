@@ -1,6 +1,0 @@
-{
-  "parent": "gtceu:block/material_sets/dull/frame_gt",
-  "textures": {
-    "bot_all": "industrialsorcerygreg:block/material_sets/infinity/frame_gt"
-  }
-}
