@@ -29,7 +29,7 @@ import java.util.List;
 {psInTicks}
 {psOutTicks}
 {psTimeToFillDrainText}
-{if {active} Work-Paused [WARNING: Machine is waiting.] }
+{isgActive}
 */
 
 public class ISGPowerSubstationPlaceholder {
