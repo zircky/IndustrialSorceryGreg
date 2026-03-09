@@ -12,8 +12,8 @@ dependencies {
   // GTCEu
   modImplementation(forge.gtceu)
 
-  jarJar(modImplementation(forge.ae2.get()))
-  modImplementation(forge.guideme)
+//  jarJar(modImplementation(forge.ae2.get()))
+//  modImplementation(forge.guideme)
 
 
   // Mixin (& Extras)
@@ -21,18 +21,18 @@ dependencies {
   annotationProcessor(forge.mixinExtras.common)
   api(forge.mixinExtras.common)
 
-  modCompileOnly(forge.bundles.jei)
+//  modCompileOnly(forge.bundles.jei)
   modImplementation(forge.emi)
 
   // Ad Astra
-  modRuntimeOnly(forge.yabn)
-  modRuntimeOnly(forge.byteCodecs)
-  modImplementation(forge.resourcefullLib)
-  modImplementation(forge.resourcefullConfig)
-  modImplementation(forge.botarium)
-  modImplementation(forge.adAstra)
+//  modRuntimeOnly(forge.yabn)
+//  modRuntimeOnly(forge.byteCodecs)
+//  modImplementation(forge.resourcefullLib)
+//  modImplementation(forge.resourcefullConfig)
+//  modImplementation(forge.botarium)
+//  modImplementation(forge.adAstra)
 
-  modImplementation(forge.nuclearcraft)
+//  modImplementation(forge.nuclearcraft)
 
   modImplementation(forge.flywheel)
 

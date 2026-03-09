@@ -11,15 +11,18 @@ import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
+import static com.zircky.industrialsorcerygreg.common.data.ISGLargeCombustionEnginePlaceholder.largeCombustionEnginePlaceholder;
+import static com.zircky.industrialsorcerygreg.common.data.ISGLargeTurbinePlaceholder.largeTurbinePlaceholder;
 import static com.zircky.industrialsorcerygreg.common.data.ISGPowerSubstationPlaceholder.powerSubstationPlaceholder;
 
 
 public class ISGPlaceholders {
   public static void register() {
     powerSubstationPlaceholder();
+    largeCombustionEnginePlaceholder();
+    largeTurbinePlaceholder();
     all();
   }
-
 
   public static void all() {
     PlaceholderHandler.addPlaceholder(new Placeholder("isgActive") {
