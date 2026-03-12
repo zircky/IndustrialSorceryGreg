@@ -5,7 +5,7 @@ registrate = "MC1.20-1.3.11"
 configuration = "3.1.0-forge"
 mixinExtras = "0.2.0"
 
-ae2 = "15.4.10-cosmolite.34"
+ae2 = "15.4.10"
 botarium = "2.3.3"
 adAstra = "1.15.20"
 guideme = "20.1.11"

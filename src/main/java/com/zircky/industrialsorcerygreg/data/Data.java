@@ -4,7 +4,7 @@ import com.zircky.industrialsorcerygreg.data.recipe.generated.ForEachMaterial;
 import com.zircky.industrialsorcerygreg.data.recipe.RecipeRemoval;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.component.ComponentRecipe;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.ChemicalReactor;
-import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.PlatinumLine;
+import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.platinum.PlatinumLine;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 

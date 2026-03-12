@@ -30,6 +30,7 @@ public class ChemicalReactor {
         .inputFluids(GTMaterials.Oxygen.getFluid(1000))
         .outputItems(TagPrefix.dust, ISGMaterials.ManganeseDioxide)
         .duration(230).EUt(GTValues.VA[GTValues.HV]).save(provider);
+
     CHEMICAL_RECIPES.recipeBuilder("manganese_dioxide")
         .inputItems(TagPrefix.dust, GTMaterials.Manganese)
         .inputFluids(GTMaterials.Oxygen.getFluid(2000))
