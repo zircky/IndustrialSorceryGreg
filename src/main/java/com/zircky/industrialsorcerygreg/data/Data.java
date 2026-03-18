@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.data;
 
+import com.zircky.industrialsorcerygreg.data.recipe.classified.Assembler;
 import com.zircky.industrialsorcerygreg.data.recipe.generated.ForEachMaterial;
 import com.zircky.industrialsorcerygreg.data.recipe.RecipeRemoval;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.component.ComponentRecipe;
@@ -20,6 +21,7 @@ public class Data {
   }
 
   private static void commonInit(Consumer<FinishedRecipe> provider) {
+    Assembler.init(provider);
     ComponentRecipe.init(provider);
     ChemicalReactor.init(provider);
     PlatinumLine.init(provider);

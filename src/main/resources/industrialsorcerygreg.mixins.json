@@ -5,11 +5,15 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "industrialsorcerygreg.refmap.json",
   "mixins": [
+    "adastra.GasTankItemMixin",
+    "adastra.OxygenDistributorBlockEntityMixin",
     "gregtech.GTValuesAccessor",
     "gregtech.RecipeInjectionMixin",
     "gregtech.DoublePlatesTagPrefix"
   ],
   "client": [
+    "adastra.AdAstraClientMixin",
+    "adastra.AdAstraOverlayScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

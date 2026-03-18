@@ -1,7 +1,7 @@
-// 1.20.1	2026-03-07T13:47:09.7445673	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.20.1	2026-03-16T02:19:36.0326605	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 6e80af9fc329d7a04a7c9a925e3c3e1528866da8 assets/industrialsorcerygreg/blockstates/rocket_assembler.json
-ef4256a2a985fd8fcc6636b835c0007ad40ee495 assets/industrialsorcerygreg/lang/en_ud.json
-f5d25510c456cfdbec1373e800b0b7670d97d4b5 assets/industrialsorcerygreg/lang/en_us.json
+f2afaeac0790988493545cd9e168452af9ca4ace assets/industrialsorcerygreg/lang/en_ud.json
+a55d092bb0cfa8248c747af48a2a55845b883296 assets/industrialsorcerygreg/lang/en_us.json
 f117b071fb60aff2db19741decc565b5fbfc5e86 assets/industrialsorcerygreg/models/block/machine/rocket_assembler.json
 85f07d1ced44ec0f31c8e8285088f276f0901f3a assets/industrialsorcerygreg/models/item/bioware_circuit_board.json
 ce514dea0b6c86b33da9cda75debe8034b7617a1 assets/industrialsorcerygreg/models/item/bioware_printed_circuit_board.json
@@ -43,7 +43,13 @@ f568e8349b0792f17e890c45adcd850a0f5c563f assets/industrialsorcerygreg/models/ite
 aa9bb41785437bf103ad06ff192688b6eb3db9b2 assets/industrialsorcerygreg/models/item/smd_transistor_exotic.json
 9532884042ed789b0bf13f2556a8835c8165f953 assets/industrialsorcerygreg/models/item/smd_transistor_optical.json
 cf7822f40472c6f19ea2b21e7b6f86145c5e38c9 assets/industrialsorcerygreg/models/item/smd_transistor_supracausal.json
+680127f8abb435484797ce4a78bd184c75a16352 assets/industrialsorcerygreg/models/item/space_advanced_nanomuscle_chestplate.json
+7bd6a056afcdd96fd335667eef5d8b0f6e7aa0f2 assets/industrialsorcerygreg/models/item/space_advanced_quarktech_chestplate.json
+f579e27ab0e728c40274d2b0be4a0024ca820511 assets/industrialsorcerygreg/models/item/space_nanomuscle_chestplate.json
+c7fac56e8cbef943cdf636174fb4c2b184eea8c8 assets/industrialsorcerygreg/models/item/space_quarktech_chestplate.json
 e8f32dbd5dcf0903417433d4ec6591c5f8dec15a assets/industrialsorcerygreg/models/item/supracausal_circuit_board.json
 10e50d3c7a0123772930e5daa74c8db12548eacc assets/industrialsorcerygreg/models/item/supracausal_printed_circuit_board.json
 90fa57fcc618e6aa339917949a65587701acfc87 assets/industrialsorcerygreg/models/item/supracausal_ram_chip.json
 0f0731653a5dc8345e82cb06ebf0ce14895d9141 assets/industrialsorcerygreg/models/item/supracausal_ram_wafer.json
+e1520addc13e905a925db44d42812e1e8da10818 data/forge/tags/items/armors/chestplates.json
+e1520addc13e905a925db44d42812e1e8da10818 data/gtceu/tags/items/ppe_armor.json

@@ -8,9 +8,11 @@ import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistr
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
+import com.lowdragmc.lowdraglib.Platform;
 import com.mojang.logging.LogUtils;
 import com.zircky.industrialsorcerygreg.api.gregtech.AddonTierNamePatcher;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
+import com.zircky.industrialsorcerygreg.client.ClientProxy;
 import com.zircky.industrialsorcerygreg.common.data.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -36,6 +38,10 @@ public class IndustrialSorceryGreg {
     bus.addGenericListener(MachineDefinition.class, this::registerMachines);
 
     bus.addListener(this::commonSetup);
+
+    if (Platform.isClient()) {
+      ClientProxy.init(bus);
+    }
   }
 
   public static void init() {

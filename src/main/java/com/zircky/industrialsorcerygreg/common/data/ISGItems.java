@@ -1,8 +1,19 @@
 package com.zircky.industrialsorcerygreg.common.data;
 
+import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.item.ComponentItem;
+import com.gregtechceu.gtceu.common.item.armor.*;
+import com.gregtechceu.gtceu.config.ConfigHolder;
+import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
+import com.zircky.industrialsorcerygreg.common.item.armor.SpaceArmorComponentItem;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraftforge.common.Tags;
+
+import static com.gregtechceu.gtceu.common.data.GTItems.attach;
 
 public class ISGItems {
 
@@ -11,7 +22,6 @@ public class ISGItems {
   }
 
   public static void init() {
-
   }
 
   public static final ItemEntry<Item> BIOWARE_CIRCUIT_BOARD = registerLang("bioware_circuit_board", "Bioware Circuit Board");
@@ -61,6 +71,60 @@ public class ISGItems {
   public static final ItemEntry<Item> SMD_RESISTOR_SUPRACAUSAL = registerLang("smd_resistor_supracausal", "Supracausal SMD Resistor");
   public static final ItemEntry<Item> SMD_TRANSISTOR_SUPRACAUSAL = registerLang("smd_transistor_supracausal", "Supracausal SMD Transistor");
   public static final ItemEntry<Item> SMD_INDUCTOR_SUPRACAUSAL = registerLang("smd_inductor_supracausal", "Supracausal SMD Inductor");
+
+  public static ItemEntry<SpaceArmorComponentItem> SPACE_NANOMUSCLE_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_nanomuscle_chestplate",
+          (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR,
+              ArmorItem.Type.CHESTPLATE, 8000, p)
+              .setArmorLogic(new NanoMuscleSuite(
+                  ArmorItem.Type.CHESTPLATE,
+                  (int) GTValues.V[GTValues.HV],
+                  6_400_000L * (long) Math.max(1, Math.pow(4, ConfigHolder.INSTANCE.tools.voltageTierNanoSuit - 3)),
+                  ConfigHolder.INSTANCE.tools.voltageTierNanoSuit)))
+      .lang("NanoMuscle™ Space Suite Chestplate")
+      .properties(p -> p.rarity(Rarity.RARE))
+      .tag(Tags.Items.ARMORS_CHESTPLATES)
+      .tag(CustomTags.PPE_ARMOR)
+      .register();
+
+  public static ItemEntry<SpaceArmorComponentItem> SPACE_ADVANCED_NANOMUSCLE_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_advanced_nanomuscle_chestplate",
+          (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.CHESTPLATE, 16000, p)
+              .setArmorLogic(new AdvancedNanoMuscleSuite(
+                  (int) GTValues.V[GTValues.HV],
+                  12_800_000L * (long) Math.max(1, Math.pow(4,
+                      ConfigHolder.INSTANCE.tools.voltageTierAdvNanoSuit - 3)),
+                  ConfigHolder.INSTANCE.tools.voltageTierAdvNanoSuit)))
+      .lang("Advanced NanoMuscle™ Space Suite Chestplate")
+      .properties(p -> p.rarity(Rarity.EPIC))
+      .tag(Tags.Items.ARMORS_CHESTPLATES)
+      .tag(CustomTags.PPE_ARMOR)
+      .register();
+
+  public static ItemEntry<SpaceArmorComponentItem> SPACE_QUARKTECH_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_quarktech_chestplate",
+          (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.CHESTPLATE, 32000, p)
+              .setArmorLogic(new QuarkTechSuite(
+                  ArmorItem.Type.CHESTPLATE,
+                  (int) GTValues.V[GTValues.IV],
+                  100_000_000L * (long) Math.max(1, Math.pow(4,
+                      ConfigHolder.INSTANCE.tools.voltageTierQuarkTech - 5)),
+                  ConfigHolder.INSTANCE.tools.voltageTierQuarkTech)))
+      .lang("QuarkTech™ Space Suite Chestplate")
+      .properties(p -> p.rarity(Rarity.RARE))
+      .tag(Tags.Items.ARMORS_CHESTPLATES)
+      .tag(CustomTags.PPE_ARMOR)
+      .register();
+
+  public static ItemEntry<SpaceArmorComponentItem> SPACE_ADVANCED_QUARKTECH_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_advanced_quarktech_chestplate",
+          (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.CHESTPLATE, 128000, p)
+              .setArmorLogic(new AdvancedQuarkTechSuite(
+                  (int) GTValues.V[GTValues.IV],
+                  1_000_000_000L * (long) Math.max(1, Math.pow(4,
+                      ConfigHolder.INSTANCE.tools.voltageTierAdvQuarkTech - 6)),
+                  ConfigHolder.INSTANCE.tools.voltageTierAdvQuarkTech)))
+      .lang("Advanced QuarkTech™ Space Suite Chestplate")
+      .properties(p -> p.rarity(Rarity.EPIC))
+      .tag(Tags.Items.ARMORS_CHESTPLATES)
+      .tag(CustomTags.PPE_ARMOR)
+      .register();
 
   private static ItemEntry<Item> registerLang(String id, String name) {
     return ISGRegistries.REGISTRATE.item(id, Item::new)
