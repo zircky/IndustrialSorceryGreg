@@ -96,9 +96,9 @@ public final class SpaceArmorComponentItem extends ArmorComponentItem implements
     if (player.isCreative() || player.isSpectator()) return;
     player.setTicksFrozen(0);
     if (player.tickCount % 12 == 0 && SpaceArmorComponentItem.hasOxygen(player)) {
-      if (!OxygenApi.API.hasOxygen(player)) SpaceArmorComponentItem.consumeOxygen(stack);
+      if (!OxygenApi.API.hasOxygen(player)) SpaceArmorComponentItem.consumeOxygen(stack, 2);
       if (player.isEyeInFluidType(ForgeMod.WATER_TYPE.get())) {
-        SpaceArmorComponentItem.consumeOxygen(stack);
+        SpaceArmorComponentItem.consumeOxygen(stack, 2);
         player.setAirSupply(Math.min(player.getMaxAirSupply(), player.getAirSupply() + 4 * 10));
       }
     }
@@ -125,11 +125,11 @@ public final class SpaceArmorComponentItem extends ArmorComponentItem implements
     return getOxygenAmount(entity) > FluidConstants.fromMillibuckets(1);
   }
 
-  public static void consumeOxygen(ItemStack stack) {
+  public static void consumeOxygen(ItemStack stack, long amount) {
     ItemStackHolder holder = new ItemStackHolder(stack);
     var container = FluidContainer.of(holder);
     if (container == null) return;
-    FluidHolder extracted = container.extractFluid(container.getFirstFluid().copyWithAmount(FluidConstants.fromMillibuckets(2)), false);
+    FluidHolder extracted = container.extractFluid(container.getFirstFluid().copyWithAmount(FluidConstants.fromMillibuckets(amount)), false);
     if (holder.isDirty() || extracted.getFluidAmount() > 0) stack.setTag(holder.getStack().getTag());
   }
 }

@@ -1,4 +1,4 @@
-// 1.20.1	2026-03-16T02:19:36.0326605	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.20.1	2026-03-19T00:38:50.6510141	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 6e80af9fc329d7a04a7c9a925e3c3e1528866da8 assets/industrialsorcerygreg/blockstates/rocket_assembler.json
 f2afaeac0790988493545cd9e168452af9ca4ace assets/industrialsorcerygreg/lang/en_ud.json
 a55d092bb0cfa8248c747af48a2a55845b883296 assets/industrialsorcerygreg/lang/en_us.json
@@ -51,5 +51,10 @@ e8f32dbd5dcf0903417433d4ec6591c5f8dec15a assets/industrialsorcerygreg/models/ite
 10e50d3c7a0123772930e5daa74c8db12548eacc assets/industrialsorcerygreg/models/item/supracausal_printed_circuit_board.json
 90fa57fcc618e6aa339917949a65587701acfc87 assets/industrialsorcerygreg/models/item/supracausal_ram_chip.json
 0f0731653a5dc8345e82cb06ebf0ce14895d9141 assets/industrialsorcerygreg/models/item/supracausal_ram_wafer.json
+bcc40bc5b9286dc4b9ceee8e76f4c72c02bb28c7 data/ad_astra/tags/items/freeze_resistant_armor.json
+bcc40bc5b9286dc4b9ceee8e76f4c72c02bb28c7 data/ad_astra/tags/items/heat_resistant_armor.json
+bcc40bc5b9286dc4b9ceee8e76f4c72c02bb28c7 data/ad_astra/tags/items/space_suit_items.json
 e1520addc13e905a925db44d42812e1e8da10818 data/forge/tags/items/armors/chestplates.json
 e1520addc13e905a925db44d42812e1e8da10818 data/gtceu/tags/items/ppe_armor.json
+34e71079d476c2a0e008e77b2a6064bd2d756af7 data/industrialsorcerygreg/tags/items/nano_space_suite.json
+de93133ddad24fbbbafc5d37a8ace09676a73544 data/industrialsorcerygreg/tags/items/quantum_space_suite.json

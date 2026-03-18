@@ -50,6 +50,8 @@ public class IndustrialSorceryGreg {
 
     ISGPlaceholders.register();
 
+    ISGDatagen.init();
+
     ISGRegistries.REGISTRATE.registerRegistrate();
   }
 

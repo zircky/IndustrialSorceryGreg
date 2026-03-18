@@ -8,6 +8,7 @@ import earth.terrarium.adastra.api.systems.PlanetData;
 import earth.terrarium.adastra.client.config.AdAstraConfigClient;
 import earth.terrarium.adastra.client.screens.player.OverlayScreen;
 import earth.terrarium.adastra.client.utils.ClientData;
+import earth.terrarium.adastra.common.items.armor.SpaceSuitItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import org.objectweb.asm.Opcodes;
@@ -24,7 +25,7 @@ import static earth.terrarium.adastra.client.screens.player.OverlayScreen.OXYGEN
 public abstract class AdAstraOverlayScreenMixin {
 
   @Inject(method = "render", at = @At("TAIL"), remap = false)
-  private static void hookRender(GuiGraphics graphics, float partialTick, CallbackInfo ci) {
+  private static void render(GuiGraphics graphics, float partialTick, CallbackInfo ci) {
     var player = Minecraft.getInstance().player;
     if (player == null || player.isSpectator()) return;
 
@@ -33,7 +34,7 @@ public abstract class AdAstraOverlayScreenMixin {
     var font = minecraft.font;
     PoseStack poseStack = graphics.pose();
     var chestplate = player.getInventory().getArmor(2);
-    if (chestplate.getItem() instanceof SpaceArmorComponentItem spaceSuit) {
+    if (SpaceSuitItem.hasFullSet(player) && chestplate.getItem() instanceof SpaceArmorComponentItem spaceSuit) {
       long amount = SpaceArmorComponentItem.getOxygenAmount(player);
       long capacity = spaceSuit.getFluidContainer(chestplate).getTankCapacity(0);
       double ratio = (double) amount / capacity;

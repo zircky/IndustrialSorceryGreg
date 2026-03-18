@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "industrialsorcerygreg.refmap.json",
   "mixins": [
+    "adastra.AdAstraSpaceSuitItemMixin",
     "adastra.GasTankItemMixin",
     "adastra.OxygenDistributorBlockEntityMixin",
     "gregtech.GTValuesAccessor",

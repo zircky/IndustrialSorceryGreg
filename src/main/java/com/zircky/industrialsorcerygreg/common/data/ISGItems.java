@@ -7,7 +7,9 @@ import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
+import com.zircky.industrialsorcerygreg.common.data.tag.item.ISGItemTag;
 import com.zircky.industrialsorcerygreg.common.item.armor.SpaceArmorComponentItem;
+import earth.terrarium.adastra.common.tags.ModItemTags;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -82,8 +84,8 @@ public class ISGItems {
                   ConfigHolder.INSTANCE.tools.voltageTierNanoSuit)))
       .lang("NanoMuscle™ Space Suite Chestplate")
       .properties(p -> p.rarity(Rarity.RARE))
-      .tag(Tags.Items.ARMORS_CHESTPLATES)
-      .tag(CustomTags.PPE_ARMOR)
+      .tag(ISGItemTag.NANOMUSCLE_SPACE_SUITE, ModItemTags.SPACE_SUITS, ModItemTags.FREEZE_RESISTANT_ARMOR,
+          ModItemTags.HEAT_RESISTANT_ARMOR, Tags.Items.ARMORS_CHESTPLATES, CustomTags.PPE_ARMOR)
       .register();
 
   public static ItemEntry<SpaceArmorComponentItem> SPACE_ADVANCED_NANOMUSCLE_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_advanced_nanomuscle_chestplate",
@@ -95,8 +97,8 @@ public class ISGItems {
                   ConfigHolder.INSTANCE.tools.voltageTierAdvNanoSuit)))
       .lang("Advanced NanoMuscle™ Space Suite Chestplate")
       .properties(p -> p.rarity(Rarity.EPIC))
-      .tag(Tags.Items.ARMORS_CHESTPLATES)
-      .tag(CustomTags.PPE_ARMOR)
+      .tag(ISGItemTag.NANOMUSCLE_SPACE_SUITE, ModItemTags.SPACE_SUITS, ModItemTags.FREEZE_RESISTANT_ARMOR,
+          ModItemTags.HEAT_RESISTANT_ARMOR, Tags.Items.ARMORS_CHESTPLATES, CustomTags.PPE_ARMOR)
       .register();
 
   public static ItemEntry<SpaceArmorComponentItem> SPACE_QUARKTECH_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_quarktech_chestplate",
@@ -109,8 +111,8 @@ public class ISGItems {
                   ConfigHolder.INSTANCE.tools.voltageTierQuarkTech)))
       .lang("QuarkTech™ Space Suite Chestplate")
       .properties(p -> p.rarity(Rarity.RARE))
-      .tag(Tags.Items.ARMORS_CHESTPLATES)
-      .tag(CustomTags.PPE_ARMOR)
+      .tag(ISGItemTag.QUARKTECH_SPACE_SUITE, ModItemTags.SPACE_SUITS, ModItemTags.FREEZE_RESISTANT_ARMOR,
+          ModItemTags.HEAT_RESISTANT_ARMOR, Tags.Items.ARMORS_CHESTPLATES, CustomTags.PPE_ARMOR)
       .register();
 
   public static ItemEntry<SpaceArmorComponentItem> SPACE_ADVANCED_QUARKTECH_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_advanced_quarktech_chestplate",
@@ -122,8 +124,8 @@ public class ISGItems {
                   ConfigHolder.INSTANCE.tools.voltageTierAdvQuarkTech)))
       .lang("Advanced QuarkTech™ Space Suite Chestplate")
       .properties(p -> p.rarity(Rarity.EPIC))
-      .tag(Tags.Items.ARMORS_CHESTPLATES)
-      .tag(CustomTags.PPE_ARMOR)
+      .tag(ISGItemTag.QUARKTECH_SPACE_SUITE, ModItemTags.SPACE_SUITS, ModItemTags.FREEZE_RESISTANT_ARMOR,
+          ModItemTags.HEAT_RESISTANT_ARMOR, Tags.Items.ARMORS_CHESTPLATES, CustomTags.PPE_ARMOR)
       .register();
 
   private static ItemEntry<Item> registerLang(String id, String name) {
