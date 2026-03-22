@@ -16,6 +16,7 @@ public class ForEachMaterial {
 
       ISGPartsRecipeHandler.init(provider, material);
       ISGOreRecipeHandler.run(provider, material);
+      ISGRecyclingRecipeHandler.run(provider, material);
     }
   }
 }

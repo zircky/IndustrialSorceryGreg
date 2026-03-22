@@ -128,6 +128,12 @@ public class ISGItems {
           ModItemTags.HEAT_RESISTANT_ARMOR, Tags.Items.ARMORS_CHESTPLATES, CustomTags.PPE_ARMOR)
       .register();
 
+  public static ItemEntry<Item> RADIOACTIVE_WASTE = ISGRegistries.REGISTRATE.item("radioactive_waste", Item::new)
+      .lang("Radioactive Waste")
+      .properties(p -> p.rarity(Rarity.UNCOMMON))
+      .register();
+
+
   private static ItemEntry<Item> registerLang(String id, String name) {
     return ISGRegistries.REGISTRATE.item(id, Item::new)
         .lang(name)

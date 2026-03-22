@@ -45,6 +45,8 @@ public class IndustrialSorceryGreg {
   }
 
   public static void init() {
+    ISGRecipeConditions.init();
+
     ISGCreativeModeTabs.init();
     ISGItems.init();
 
