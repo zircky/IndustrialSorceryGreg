@@ -25,7 +25,7 @@ public class ISGAddon implements IGTAddon {
 
   @Override
   public void initializeAddon() {
-    IndustrialSorceryGreg.LOGGER.info("CosmicCoreGTAddon has loaded!");
+    IndustrialSorceryGreg.LOGGER.info("IndustrialSorceryGregAddon has loaded!");
   }
 
   @Override
