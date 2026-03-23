@@ -8,9 +8,10 @@
     "adastra.AdAstraSpaceSuitItemMixin",
     "adastra.GasTankItemMixin",
     "adastra.OxygenDistributorBlockEntityMixin",
+    "gregtech.DoublePlatesTagPrefix",
+    "gregtech.GTRecipeConditionsMixin",
     "gregtech.GTValuesAccessor",
-    "gregtech.RecipeInjectionMixin",
-    "gregtech.DoublePlatesTagPrefix"
+    "gregtech.RecipeInjectionMixin"
   ],
   "client": [
     "adastra.AdAstraClientMixin",
