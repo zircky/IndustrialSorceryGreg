@@ -1,6 +1,6 @@
 [versions]
 ldlib = "1.0.40.b"
-gtceu = "7.5.2"
+gtceu = "8.0.0-SNAPSHOT" #8.0.0-SNAPSHOT 7.5.2
 registrate = "MC1.20-1.3.11"
 configuration = "3.1.0-forge"
 mixinExtras = "0.2.0"
@@ -19,7 +19,7 @@ emi = "1.1.22+1.20.1"
 flywheel = "1.0.5"
 
 ## cursemaven ##
-nuclearcraft = "7136984"
+nuclearcraft = "7793967"
 
 [libraries]
 ldlib = { module = "com.lowdragmc.ldlib:ldlib-forge-1.20.1", version.ref = "ldlib" }

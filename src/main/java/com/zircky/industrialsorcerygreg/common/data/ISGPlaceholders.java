@@ -1,7 +1,7 @@
 package com.zircky.industrialsorcerygreg.common.data;
 
-import com.gregtechceu.gtceu.api.machine.IMachineBlockEntity;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
+import com.gregtechceu.gtceu.api.machine.feature.IMachineFeature;
 import com.gregtechceu.gtceu.api.placeholder.*;
 import com.gregtechceu.gtceu.api.placeholder.exceptions.PlaceholderException;
 import com.gregtechceu.gtceu.common.machine.multiblock.electric.PowerSubstationMachine;
@@ -97,11 +97,11 @@ public class ISGPlaceholders {
   ) throws PlaceholderException {
 
     final BlockEntity blockEntity = ctx.level().getBlockEntity(ctx.pos());
-    if (!(blockEntity instanceof IMachineBlockEntity machineBlockEntity)) {
+    if (!(blockEntity instanceof IMachineFeature machineBlockEntity)) {
       throw new PlaceholderException("Block is not a GT machine");
     }
 
-    final MetaMachine machine = machineBlockEntity.getMetaMachine();
+    final MetaMachine machine = machineBlockEntity.self();
     if (!(machine instanceof PowerSubstationMachine powerSubstationMachine)) {
       throw new PlaceholderException("Machine is not Power Substation");
     }
