@@ -14,6 +14,7 @@ import com.zircky.industrialsorcerygreg.api.gregtech.AddonTierNamePatcher;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.client.ClientProxy;
 import com.zircky.industrialsorcerygreg.common.data.*;
+import com.zircky.industrialsorcerygreg.data.ISGDatagen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -50,7 +51,7 @@ public class IndustrialSorceryGreg {
 
     ISGPlaceholders.register();
 
-    ISGDatagen.init();
+    ISGDatagen.initPost();
 
     ISGRegistries.REGISTRATE.registerRegistrate();
   }

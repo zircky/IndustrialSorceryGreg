@@ -7,6 +7,7 @@ import com.gregtechceu.gtceu.api.gui.GuiTextures;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.common.data.GTSoundEntries;
+import com.gregtechceu.gtceu.common.data.GTSoundTypes;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.lowdragmc.lowdraglib.gui.widget.SlotWidget;
 import com.lowdragmc.lowdraglib.utils.CycleItemStackHandler;
@@ -58,6 +59,13 @@ public class ISGRecipeTypes {
         widgetGroup.addWidget(new SlotWidget(new CycleItemStackHandler(items), 0,
             widgetGroup.getSize().width - 25, widgetGroup.getSize().height - 32, false, false));
       });
+
+  public static final GTRecipeType FUEL_REPROCESSOR_RECIPES = GTRecipeTypes.register("fuel_reprocessor", MULTIBLOCK)
+      .setMaxIOSize(1, 6, 1, 6)
+      .setEUIO(IO.IN)
+      .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
+      .setSound(GTSoundEntries.CENTRIFUGE);
+
 
   public static void init() {
     RecipeTypesModify.init();

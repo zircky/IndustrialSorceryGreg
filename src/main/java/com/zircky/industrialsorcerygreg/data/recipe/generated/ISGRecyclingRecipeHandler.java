@@ -61,7 +61,7 @@ public class ISGRecyclingRecipeHandler {
         ignoreArcSmelting, prefix);
 
     if (!material.hasProperty(PropertyKey.FLUID) || material.getFluid() == null || (prefix == TagPrefix.dust && material.hasProperty(PropertyKey.BLAST))) return;
-    ISGRecipeTypes.LIQUEFACTION_FURNACE_RECIPES.recipeBuilder("extract_" + prefix.name + material.getName())
+    ISGRecipeTypes.LIQUEFACTION_FURNACE_RECIPES.recipeBuilder("extract_" + prefix.name + "_" + material.getName())
         .outputFluids(material.getFluid((int) (amount * L / M)))
         .duration((int) Math.max(1, amount * material.getMass() / M))
         .blastFurnaceTemp(Math.max(800, (int) (material.getBlastTemperature() * 0.6)))
@@ -71,7 +71,7 @@ public class ISGRecyclingRecipeHandler {
   }
 
   private static int getVoltageMultiplier(@NotNull Material material) {
-    if (material.getBlastTemperature() >= 870) {
+    if (material.getBlastTemperature() <= 870) {
       return VA[ULV];
     } else if (material.getBlastTemperature() <= 871 && material.getBlastTemperature() >= 1834) {
       return VA[LV];

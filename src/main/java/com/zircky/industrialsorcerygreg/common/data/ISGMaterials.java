@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.IngotProperty
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
+import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.materials.*;
 
 import java.util.ArrayList;
@@ -16,6 +17,11 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag
 
 @SuppressWarnings("unused")
 public class ISGMaterials {
+
+  static {
+    ISGRegistries.REGISTRATE.creativeModeTab(() -> ISGCreativeModeTabs.MATERIAL_ITEM);
+  }
+
   public static final List<MaterialFlag> SNDART_FLAGS = new ArrayList<>();
   public static final List<MaterialFlag> GEM_FLAGS = new ArrayList<>();
 

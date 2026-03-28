@@ -11,7 +11,8 @@
     "gregtech.DoublePlatesTagPrefix",
     "gregtech.GTRecipeConditionsMixin",
     "gregtech.GTValuesAccessor",
-    "gregtech.RecipeInjectionMixin"
+    "gregtech.RecipeInjectionMixin",
+    "nuclearcraft.NuclearCraftBEMixin"
   ],
   "client": [
     "adastra.AdAstraClientMixin",

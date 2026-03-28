@@ -12,6 +12,10 @@ import org.spongepowered.asm.mixin.Overwrite;
 @Debug(export = true)
 @Mixin(value = SpaceSuitItem.class, remap = false)
 public class AdAstraSpaceSuitItemMixin {
+  /**
+   * @author
+   * @reason
+   */
   @Overwrite
   public static long getOxygenAmount(Entity entity) {
     if (!(entity instanceof LivingEntity livingEntity)) return 0;

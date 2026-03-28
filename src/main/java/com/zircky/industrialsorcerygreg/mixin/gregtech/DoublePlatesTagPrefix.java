@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = TagPrefix.class)
+@Mixin(value = TagPrefix.class, remap = false)
 public class DoublePlatesTagPrefix {
 
   @Shadow

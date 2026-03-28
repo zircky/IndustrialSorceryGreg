@@ -1,8 +1,10 @@
-// 1.20.1	2026-03-20T00:14:06.6714004	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.20.1	2026-03-28T18:23:40.5887881	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+3c9004f6f3a3a43673872aad3b3b2cecd9e7c8a6 assets/industrialsorcerygreg/blockstates/fuel_reprocessor.json
 d0bc4b3b137836b0e5c5a60b42534d0c5b5c93ba assets/industrialsorcerygreg/blockstates/liquefaction_furnace.json
 6e80af9fc329d7a04a7c9a925e3c3e1528866da8 assets/industrialsorcerygreg/blockstates/rocket_assembler.json
-93ae0d42cf0f8dbde0f1be8630cb66f7254e0a3d assets/industrialsorcerygreg/lang/en_ud.json
-c2767bb02ee4268ea98070e76a1c11e42ce02c80 assets/industrialsorcerygreg/lang/en_us.json
+85efb20c88a6b62f23e2e6be715819e63c5e5db0 assets/industrialsorcerygreg/lang/en_ud.json
+7f6c94c8e03c696e1c987c3b0fc534046e4b912f assets/industrialsorcerygreg/lang/en_us.json
+db009f47b6d903fe30cf2e90f198f209a273e61e assets/industrialsorcerygreg/models/block/machine/fuel_reprocessor.json
 b361278fbe50d13ae6ccb2d77533278e1b526d29 assets/industrialsorcerygreg/models/block/machine/liquefaction_furnace.json
 f117b071fb60aff2db19741decc565b5fbfc5e86 assets/industrialsorcerygreg/models/block/machine/rocket_assembler.json
 85f07d1ced44ec0f31c8e8285088f276f0901f3a assets/industrialsorcerygreg/models/item/bioware_circuit_board.json
@@ -15,11 +17,13 @@ f204a0bd5a1fcf72bcd8b1b34218eed1b8606f57 assets/industrialsorcerygreg/models/ite
 cdc22023d167a2600adf756a425d2b89b6f6690f assets/industrialsorcerygreg/models/item/exotic_printed_circuit_board.json
 d98101cca64c9685642acc34d689eaeafe9401cd assets/industrialsorcerygreg/models/item/exotic_ram_chip.json
 fa42752ecb2a73dad0457783e3be03a57b979b2b assets/industrialsorcerygreg/models/item/exotic_ram_wafer.json
+bd63f5656b1f3d75e7391585bd4838edc6727ecf assets/industrialsorcerygreg/models/item/fuel_reprocessor.json
 a5bc5ed2e8994a92ca79045b89a1d0b17aec6db3 assets/industrialsorcerygreg/models/item/liquefaction_furnace.json
 22d674f3bb65082185ac4638f248a3533365329e assets/industrialsorcerygreg/models/item/optical_circuit_board.json
 c7d38d7ddf0a6d4fe92a653967338ed870a06bae assets/industrialsorcerygreg/models/item/optical_printed_circuit_board.json
 244b6c2a0c5d4b73c11539597068fc3b9c08dcba assets/industrialsorcerygreg/models/item/optical_ram_chip.json
 3d8d06b6e9dc8f907c69ed359535e645e6a3d89c assets/industrialsorcerygreg/models/item/optical_ram_wafer.json
+556686e30dda15edbd0227d965d513cac2a786ec assets/industrialsorcerygreg/models/item/radioactive_waste.json
 ed636493e73f6ba9b1d70360eec38885e2258a3f assets/industrialsorcerygreg/models/item/rocket_assembler.json
 cc3373e826d42074301e36955b36ac706bc38775 assets/industrialsorcerygreg/models/item/smd_capacitor_bioware.json
 731e4fb5ae4452f2d21c2901ee775ee0f4366615 assets/industrialsorcerygreg/models/item/smd_capacitor_cosmic.json
