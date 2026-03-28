@@ -20,6 +20,7 @@ flywheel = "1.0.5"
 
 ## cursemaven ##
 nuclearcraft = "7793967"
+#deafission = "7633771"
 
 [libraries]
 ldlib = { module = "com.lowdragmc.ldlib:ldlib-forge-1.20.1", version.ref = "ldlib" }
@@ -48,6 +49,7 @@ flywheel = { module = "dev.engine-room.flywheel:flywheel-forge-1.20.1", version.
 
 ## cursemaven ##
 nuclearcraft = { module = "curse.maven:nuclearcraft-neoteric-840010", version.ref = "nuclearcraft" }
+#deafission = { module = "curse.maven:deafission-1354541", version.ref = "deafission" }
 
 [bundles]
 jei = ["jei-common-api", "jei-forge-api", "jei-forge-impl"]

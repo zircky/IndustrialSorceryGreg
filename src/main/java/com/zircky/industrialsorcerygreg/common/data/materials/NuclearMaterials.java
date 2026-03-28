@@ -1,18 +1,19 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
-import com.gregtechceu.gtceu.GTCEu;
-import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
+import com.zircky.industrialsorcerygreg.common.data.ISGCreativeModeTabs;
 
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.METALLIC;
-import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
 public class NuclearMaterials {
+  static {
+    ISGRegistries.REGISTRATE.creativeModeTab(() -> ISGCreativeModeTabs.MATERIAL_ITEM);
+  }
+
   public static void register() {
     ManganeseOxide = builderISG("manganese_oxide")
         .ingot().dust().fluid()
@@ -113,7 +114,7 @@ public class NuclearMaterials {
 
     SicSicCmc = builderISG("sic_sic_cmc")
         .ingot().dust()
-        .color(0x6A5040).secondaryColor(0xAE8463).iconSet(METALLIC)
+        .color(0x6A5040).secondaryColor(0xAE8463).iconSet(DULL)
         .appendFlags(SNDART_FLAGS)
         .buildAndRegister();
 
@@ -130,9 +131,10 @@ public class NuclearMaterials {
         .buildAndRegister();
 
     LeadPlatinum = builderISG("lead_platinum")
-        .ingot().dust()
-        .color(0xC9BEB9).secondaryColor(0xC3C3CA).iconSet(METALLIC)
+        .ingot().dust().liquid(2041)
+        .color(0x8A7F8E).secondaryColor(0xCAC4B0).iconSet(SHINY)
         .appendFlags(SNDART_FLAGS)
+        .components(GTMaterials.Lead, 5, GTMaterials.Platinum, 1)
         .buildAndRegister();
 
     Strontium90 = builderISG("strontium_90")
@@ -142,51 +144,39 @@ public class NuclearMaterials {
 
     BoronArsenide = builderISG("boron_arsenide")
         .gem().dust()
-        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
+        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(DULL)
         .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
     Carobbiite = builderISG("carobbiite")
         .gem().dust()
-        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
+        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(DULL)
         .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
     Villiaumite = builderISG("villiaumite")
         .gem().dust()
-        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
+        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(DULL)
         .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
     Fluorite = builderISG("fluorite")
         .gem().dust()
-        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
+        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(DULL)
         .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
     BoronNitride = builderISG("boron_nitride")
         .gem().dust()
-        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
+        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(DULL)
         .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
     Rhodochrosite = builderISG("rhodochrosite")
         .gem().dust()
-        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(METALLIC)
+        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(DULL)
         .appendFlags(GEM_FLAGS)
         .buildAndRegister();
-
-    MarM200Steel = builderISG("mar_m_200_steel")
-        .ingot().dust()
-        .fluid()
-        .blastTemp(4600, HIGH, GTValues.VA[GTValues.IV], 300)
-        .components(GTMaterials.Niobium, 2, GTMaterials.Chromium, 9, GTMaterials.Aluminium, 5, GTMaterials.Titanium, 2, GTMaterials.Cobalt, 10,
-            GTMaterials.Tungsten, 13, GTMaterials.Nickel, 18)
-        .color(0x515151)
-        .iconSet(METALLIC)
-        .flags(MaterialFlags.GENERATE_GEAR, MaterialFlags.DISABLE_DECOMPOSITION, MaterialFlags.GENERATE_FRAME)
-        .buildAndRegister();
-
 
   }
 
