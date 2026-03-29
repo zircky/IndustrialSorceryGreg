@@ -11,7 +11,7 @@ import com.zircky.industrialsorcerygreg.common.data.ISGElement;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_FOIL;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.NO_SMELTING;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.METALLIC;
+import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
@@ -52,6 +52,24 @@ public class CustemMaterials {
         .toolStats(ToolProperty.Builder.of(0.1f, Float.POSITIVE_INFINITY, Integer.MAX_VALUE, 100).build())
         .buildAndRegister();
 
+    Bedrockium = builderISG("bedrockium")
+        .ingot().fluid().dust()
+        .color(0x11111b).iconSet(SAND)
+        .itemPipeProperties(512, 64)
+        .appendFlags(SNDART_FLAGS)
+        //.element(GTNNElement.SpNt)
+        .cableProperties(GTValues.V[GTValues.UHV], 2, 32)
+        .blastTemp(9900, BlastProperty.GasTier.HIGH, GTValues.VA[GTValues.ZPM], 17460)
+        .buildAndRegister();
+
+    SkySteel = builderISG("sky_steel")
+        .ingot().dust()
+        .color(0x000000).secondaryColor(0xFFFFFF)
+        .iconSet(DULL)
+        .appendFlags(SNDART_FLAGS)
+        .buildAndRegister()
+        .setFormula("SkFe");
+
     MarM200Steel = builderISG("mar_m_200_steel")
         .ingot().dust()
         .fluid()
@@ -62,5 +80,16 @@ public class CustemMaterials {
         .iconSet(METALLIC)
         .flags(MaterialFlags.GENERATE_GEAR, MaterialFlags.DISABLE_DECOMPOSITION, MaterialFlags.GENERATE_FRAME)
         .buildAndRegister();
+
+    CortenSteel = builderISG("corten_steel")
+        .ingot().dust().fluid()
+        .color(0x7C370D).secondaryColor(0x8B4513)
+        .iconSet(SHINY)
+        .appendFlags(SNDART_FLAGS)
+        .blastTemp(3870, HIGH, GTValues.VA[GTValues.IV], 2800)
+        .buildAndRegister()
+        .setFormula("", true);
+
+
   }
 }

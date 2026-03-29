@@ -1,7 +1,4 @@
 repositories {
-  flatDir {
-    dir "libs"
-  }
   mavenLocal()
   mavenCentral()
   maven {
@@ -68,9 +65,12 @@ repositories {
   maven {
     url = "https://maven.shadowsoffire.dev/releases"
   }
-  maven {
-    name = 'GeckoLib'
-    url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+  exclusiveContent { // shedaniel - REI, architectury, cloth-config
+    forRepository { maven { url = "https://maven.shedaniel.me/" } }
+    filter {
+      includeGroupAndSubgroups("me.shedaniel")
+      includeGroup("dev.architectury")
+    }
   }
   maven {
     name = "tterrag maven"
@@ -99,7 +99,9 @@ repositories {
       includeGroup("com.eliotlash.mclib")
     }
   }
+
   maven { url = "https://maven.firstdarkdev.xyz/snapshots" } // LDLib
+
   exclusiveContent { // Configuration
     forRepository { maven { url = "https://repo.repsy.io/mvn/toma/public" } }
     filter { includeGroup("dev.toma.configuration")}

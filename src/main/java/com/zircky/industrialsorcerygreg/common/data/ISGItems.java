@@ -74,6 +74,8 @@ public class ISGItems {
   public static final ItemEntry<Item> SMD_TRANSISTOR_SUPRACAUSAL = registerLang("smd_transistor_supracausal", "Supracausal SMD Transistor");
   public static final ItemEntry<Item> SMD_INDUCTOR_SUPRACAUSAL = registerLang("smd_inductor_supracausal", "Supracausal SMD Inductor");
 
+  public static final ItemEntry<Item> LOGIC_CHIP = registerLang("logic_chip", "Logic Chip");
+
   public static ItemEntry<SpaceArmorComponentItem> SPACE_NANOMUSCLE_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_nanomuscle_chestplate",
           (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR,
               ArmorItem.Type.CHESTPLATE, 8000, p)

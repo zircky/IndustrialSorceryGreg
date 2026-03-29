@@ -4,6 +4,7 @@ import com.zircky.industrialsorcerygreg.data.recipe.classified.Assembler;
 import com.zircky.industrialsorcerygreg.data.recipe.classified.Mixer;
 import com.zircky.industrialsorcerygreg.data.recipe.generated.ForEachMaterial;
 import com.zircky.industrialsorcerygreg.data.recipe.RecipeRemoval;
+import com.zircky.industrialsorcerygreg.data.recipe.integration.ae2.AppliedEnergistics2Recipe;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.component.ComponentRecipe;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.ChemicalReactor;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.FuelReprocessor;
@@ -23,6 +24,7 @@ public class Data {
   }
 
   private static void commonInit(Consumer<FinishedRecipe> provider) {
+    AppliedEnergistics2Recipe.init(provider);
     Assembler.init(provider);
     Mixer.init(provider);
     ComponentRecipe.init(provider);

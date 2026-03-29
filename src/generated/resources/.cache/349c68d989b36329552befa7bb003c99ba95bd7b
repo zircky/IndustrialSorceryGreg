@@ -1,9 +1,9 @@
-// 1.20.1	2026-03-28T18:23:40.5887881	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.20.1	2026-03-29T03:26:22.6757076	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 3c9004f6f3a3a43673872aad3b3b2cecd9e7c8a6 assets/industrialsorcerygreg/blockstates/fuel_reprocessor.json
 d0bc4b3b137836b0e5c5a60b42534d0c5b5c93ba assets/industrialsorcerygreg/blockstates/liquefaction_furnace.json
 6e80af9fc329d7a04a7c9a925e3c3e1528866da8 assets/industrialsorcerygreg/blockstates/rocket_assembler.json
-85efb20c88a6b62f23e2e6be715819e63c5e5db0 assets/industrialsorcerygreg/lang/en_ud.json
-7f6c94c8e03c696e1c987c3b0fc534046e4b912f assets/industrialsorcerygreg/lang/en_us.json
+954f10a99dd64cb45fb073b85a6d3f945f8e201a assets/industrialsorcerygreg/lang/en_ud.json
+10bc29d6a406f08f144f282b97ebfecf5f095675 assets/industrialsorcerygreg/lang/en_us.json
 db009f47b6d903fe30cf2e90f198f209a273e61e assets/industrialsorcerygreg/models/block/machine/fuel_reprocessor.json
 b361278fbe50d13ae6ccb2d77533278e1b526d29 assets/industrialsorcerygreg/models/block/machine/liquefaction_furnace.json
 f117b071fb60aff2db19741decc565b5fbfc5e86 assets/industrialsorcerygreg/models/block/machine/rocket_assembler.json
@@ -19,6 +19,7 @@ d98101cca64c9685642acc34d689eaeafe9401cd assets/industrialsorcerygreg/models/ite
 fa42752ecb2a73dad0457783e3be03a57b979b2b assets/industrialsorcerygreg/models/item/exotic_ram_wafer.json
 bd63f5656b1f3d75e7391585bd4838edc6727ecf assets/industrialsorcerygreg/models/item/fuel_reprocessor.json
 a5bc5ed2e8994a92ca79045b89a1d0b17aec6db3 assets/industrialsorcerygreg/models/item/liquefaction_furnace.json
+af429ccde23c4f5585fb3c557e14d37d3e019d30 assets/industrialsorcerygreg/models/item/logic_chip.json
 22d674f3bb65082185ac4638f248a3533365329e assets/industrialsorcerygreg/models/item/optical_circuit_board.json
 c7d38d7ddf0a6d4fe92a653967338ed870a06bae assets/industrialsorcerygreg/models/item/optical_printed_circuit_board.json
 244b6c2a0c5d4b73c11539597068fc3b9c08dcba assets/industrialsorcerygreg/models/item/optical_ram_chip.json
