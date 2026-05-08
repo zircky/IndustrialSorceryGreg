@@ -8,6 +8,7 @@ import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.ae2.network.*;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.ae2.tools.PaintBalls;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Consumer;
@@ -29,6 +30,10 @@ public class AppliedEnergistics2Recipe {
     Cables.init(provider);
     Slabs.init(provider);
     ae2Recipe(provider);
+  }
+
+  public static void removeInit(Consumer<ResourceLocation> consumer) {
+    AppliedEnergistics2Remove.init(consumer);
   }
 
   private static void ae2Recipe(Consumer<FinishedRecipe> provider) {

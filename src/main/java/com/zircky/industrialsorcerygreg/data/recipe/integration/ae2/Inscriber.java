@@ -24,19 +24,19 @@ public class Inscriber {
   private static void inscriber(Consumer<FinishedRecipe> provider) {
     FORMING_PRESS_RECIPES.recipeBuilder("ae2/inscriber/calculation_processor_print")
         .notConsumable(AEItems.CALCULATION_PROCESSOR_PRESS.asItem())
-        .inputItems(TagPrefix.plateDense, GTMaterials.CertusQuartz)
+        .inputItems(TagPrefix.plateDouble, GTMaterials.CertusQuartz)
         .outputItems(new ItemStack(AEItems.CALCULATION_PROCESSOR_PRINT.asItem()))
         .duration(250).EUt(GTValues.VA[GTValues.EV]).save(provider);
 
     FORMING_PRESS_RECIPES.recipeBuilder("ae2/inscriber/engineering_processor_print")
         .notConsumable(AEItems.ENGINEERING_PROCESSOR_PRESS.asItem())
-        .inputItems(TagPrefix.plateDense, GTMaterials.Diamond)
+        .inputItems(TagPrefix.plateDouble, GTMaterials.Diamond)
         .outputItems(new ItemStack(AEItems.ENGINEERING_PROCESSOR_PRINT.asItem()))
         .duration(250).EUt(GTValues.VA[GTValues.EV]).save(provider);
 
     FORMING_PRESS_RECIPES.recipeBuilder("ae2/inscriber/logic_processor_print")
         .notConsumable(AEItems.LOGIC_PROCESSOR_PRESS.asItem())
-        .inputItems(TagPrefix.plateDense, GTMaterials.RoseGold)
+        .inputItems(TagPrefix.plateDouble, GTMaterials.RoseGold)
         .outputItems(new ItemStack(AEItems.LOGIC_PROCESSOR_PRINT.asItem()))
         .duration(250).EUt(GTValues.VA[GTValues.EV]).save(provider);
 

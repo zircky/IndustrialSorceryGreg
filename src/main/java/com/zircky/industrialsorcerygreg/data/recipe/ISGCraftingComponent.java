@@ -37,7 +37,7 @@ public class ISGCraftingComponent {
     input.ingredients.entrySet().stream()
         .forEach(entry -> {
           int tier = entry.getKey();
-          ChemicalHelper ingredient = (ChemicalHelper) entry.getValue();
+          ItemStack ingredient = (ItemStack) entry.getValue();
           VanillaRecipeHelper.addShapedRecipe(provider, regName + materials[tier], new ItemStack(AEParts.CABLE_ANCHOR),
               "Af", "sA",
               'A', ingredient);
