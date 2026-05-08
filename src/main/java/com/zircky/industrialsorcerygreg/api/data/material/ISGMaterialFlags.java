@@ -7,6 +7,8 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_PLATE;
 
 public class ISGMaterialFlags {
+  public static final MaterialFlag RECIPE_MIXER = new MaterialFlag.Builder("recipe_mixer").build();
+
   public static final MaterialFlag GENERATE_NANITES = new MaterialFlag.Builder("generate_nanites")
       .build();
 

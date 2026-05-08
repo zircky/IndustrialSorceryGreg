@@ -16,11 +16,16 @@ resourcefullConfig = "2.1.2"
 yabn = "1.0.3"
 byteCodecs = "1.0.2"
 
+ftblibrary = "2001.2.4"
+ftbteams = "2001.3.0"
+
 jei = "15.20.0.115"
 emi = "1.1.22+1.20.1"
 flywheel = "1.0.5"
 
 ## cursemaven ##
+ftblibrary-cm = "5567591"
+ftbteams-cm = "6130786"
 nuclearcraft = "7793967"
 #deafission = "7633771"
 ae2wtlib = "7251206"
@@ -55,6 +60,8 @@ resourcefullLib = { module = "com.teamresourceful.resourcefullib:resourcefullib-
 resourcefullConfig = { module = "com.teamresourceful.resourcefulconfig:resourcefulconfig-forge-1.20.1", version.ref = "resourcefullConfig" }
 botarium = { module = "earth.terrarium.botarium:botarium-forge-1.20.1", version.ref = "botarium" }
 adAstra = { module = "earth.terrarium.adastra:ad_astra-forge-1.20.1", version.ref = "adAstra" }
+ftblibrary = { module = "dev.ftb.mods:ftb-library-forge", version.ref = "ftblibrary" }
+ftbteams = { module = "dev.ftb.mods:ftb-teams-forge", version.ref = "ftbteams" }
 
 jei-common-api = { module = "mezz.jei:jei-1.20.1-common-api", version.ref = "jei" }
 jei-forge-api = { module = "mezz.jei:jei-1.20.1-forge-api", version.ref = "jei" }
@@ -64,6 +71,8 @@ emi = { module = "dev.emi:emi-forge", version.ref = "emi" }
 flywheel = { module = "dev.engine-room.flywheel:flywheel-forge-1.20.1", version.ref = "flywheel" }
 
 ## cursemaven ##
+ftblibrary-cm             = { module = "curse.maven:ftb-library-forge-404465", version.ref = "ftblibrary-cm" }
+ftbteams-cm               = { module = "curse.maven:ftb-teams-forge-404468", version.ref = "ftbteams-cm" }
 nuclearcraft = { module = "curse.maven:nuclearcraft-neoteric-840010", version.ref = "nuclearcraft" }
 #deafission = { module = "curse.maven:deafission-1354541", version.ref = "deafission" }
 

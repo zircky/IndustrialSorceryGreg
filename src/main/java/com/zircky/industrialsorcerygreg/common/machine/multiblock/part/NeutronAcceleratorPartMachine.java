@@ -29,8 +29,8 @@ public final class NeutronAcceleratorPartMachine extends EnergyHatchPartMachine 
   @Override
   protected NotifiableEnergyContainer createEnergyContainer() {
     NotifiableEnergyContainer container;
-    container = NotifiableEnergyContainer.receiverContainer(this,
-        GTValues.V[tier] << 1, GTValues.V[tier], 1);
+    container = NotifiableEnergyContainer.receiverContainer(
+            GTValues.V[tier] << 1, GTValues.V[tier], 1);
     container.setSideInputCondition((s) -> s == getFrontFacing() && isWorkingEnabled());
     container.setCapabilityValidator((s) -> s == null || s == getFrontFacing());
     return container;

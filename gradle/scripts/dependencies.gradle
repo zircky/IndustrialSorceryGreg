@@ -39,6 +39,8 @@ dependencies {
   modImplementation(forge.resourcefullConfig)
   modImplementation(forge.botarium)
   modImplementation(forge.adAstra)
+  modImplementation(forge.ftblibrary.cm)
+  modImplementation(forge.ftbteams.cm)
 
   modImplementation(forge.nuclearcraft)
 

@@ -4,6 +4,7 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -20,18 +21,18 @@ public class Decorative {
 
   private static void decorative(Consumer<FinishedRecipe> provider) {
     COMPRESSOR_RECIPES.recipeBuilder("ae2/decorative/quartz_block")
-        .inputItems(ChemicalHelper.get(TagPrefix.gem, GTMaterials.CertusQuartz), 4)
+        .inputItems(TagPrefix.gem, GTMaterials.CertusQuartz, 4)
         .outputItems(new ItemStack(AEBlocks.QUARTZ_BLOCK))
         .duration(600).EUt(16).save(provider);
 
     ALLOY_SMELTER_RECIPES.recipeBuilder("ae2/decorative/quartz_glass_alloy")
-        .inputItems(ChemicalHelper.get(TagPrefix.dust, GTMaterials.CertusQuartz), 5)
+        .inputItems(TagPrefix.dust, GTMaterials.CertusQuartz, 5)
         .inputItems(TagPrefix.block, GTMaterials.Glass, 4)
         .outputItems(new ItemStack(AEBlocks.QUARTZ_GLASS, 4))
         .duration(400).EUt(16).save(provider);
 
     BLAST_RECIPES.recipeBuilder("ae2/decorative/quartz_glass_blast")
-        .inputItems(ChemicalHelper.get(TagPrefix.dust, GTMaterials.CertusQuartz), 5)
+        .inputItems(TagPrefix.dust, GTMaterials.CertusQuartz, 5)
         .inputItems(TagPrefix.block, GTMaterials.Glass, 4)
         .outputItems(new ItemStack(AEBlocks.QUARTZ_GLASS, 4))
         .blastFurnaceTemp(1000)
@@ -45,7 +46,7 @@ public class Decorative {
 
     ASSEMBLER_RECIPES.recipeBuilder("ae2/decorative/quartz_fixture")
         .inputItems(new ItemStack(AEItems.CERTUS_QUARTZ_CRYSTAL_CHARGED))
-        .inputItems(ChemicalHelper.get(TagPrefix.rod, GTMaterials.Tantalum))
+        .inputItems(TagPrefix.rod, GTMaterials.Tantalum)
         .outputItems(new ItemStack(AEBlocks.QUARTZ_FIXTURE))
         .duration(200).EUt(GTValues.VA[GTValues.LV]).save(provider);
 
@@ -55,10 +56,10 @@ public class Decorative {
         .duration(600).EUt(16).save(provider);
 
     ASSEMBLER_RECIPES.recipeBuilder("ae2/decorative/light_detector")
-        .inputItems(ChemicalHelper.get(TagPrefix.gem, GTMaterials.CertusQuartz))
-        .inputItems(ChemicalHelper.get(TagPrefix.rod, GTMaterials.Aluminium))
-        .inputItems(ChemicalHelper.get(TagPrefix.rod, GTMaterials.Aluminium))
-        .outputItems(new ItemStack(AEBlocks.LIGHT_DETECTOR))
+        .inputItems(TagPrefix.gem, GTMaterials.CertusQuartz)
+        .inputItems(TagPrefix.rod, GTMaterials.Aluminium)
+        .inputItems(TagPrefix.rod, GTMaterials.Aluminium)
+        .outputItems(AEBlocks.LIGHT_DETECTOR.asItem())
         .duration(250).EUt(GTValues.VA[GTValues.EV]).save(provider);
   }
 }

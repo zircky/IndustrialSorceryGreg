@@ -4,6 +4,7 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
@@ -87,11 +88,11 @@ public class Crafting {
 
     VanillaRecipeHelper.addShapedRecipe(provider, "ae2/network/crafting/patterns_blank", new ItemStack(AEItems.BLANK_PATTERN),
         "GPG", "PCP", "ATA",
-        'P', ChemicalHelper.get(TagPrefix.plateDouble, GTMaterials.TitaniumTungstenCarbide),
+        'P', new MaterialEntry(TagPrefix.plateDouble, GTMaterials.TitaniumTungstenCarbide),
         'G', new ItemStack(AEBlocks.QUARTZ_GLASS),
-        'C', ChemicalHelper.get(TagPrefix.gem, GTMaterials.CertusQuartz),
-        'A', ChemicalHelper.get(TagPrefix.plateDouble, GTMaterials.Aluminium),
-        'T', ChemicalHelper.get(TagPrefix.plate, GTMaterials.TantalumCarbide));
+        'C', new MaterialEntry(TagPrefix.gem, GTMaterials.CertusQuartz),
+        'A', new MaterialEntry(TagPrefix.plateDouble, GTMaterials.Aluminium),
+        'T', new MaterialEntry(TagPrefix.plate, GTMaterials.TantalumCarbide));
 
     ASSEMBLER_RECIPES.recipeBuilder("megacells/crafting/1m_crafting_storage")
         .inputItems(new ItemStack(MEGABlocks.MEGA_CRAFTING_UNIT))

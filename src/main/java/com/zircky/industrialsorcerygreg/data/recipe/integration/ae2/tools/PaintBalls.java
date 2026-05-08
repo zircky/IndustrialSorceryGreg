@@ -4,6 +4,7 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
@@ -58,27 +59,30 @@ public class PaintBalls {
     chemicalBath("ae2/tools/paintballs_lumen_white", new ItemStack(AEItems.MATTER_BALL, 4), GTMaterials.Glowstone.getFluid(144), new ItemStack(AEItems.COLORED_LUMEN_PAINT_BALL.item(WHITE),4), 1200, GTValues.VA[GTValues.EV], provider);
     chemicalBath("ae2/tools/paintballs_lumen_yellow", new ItemStack(AEItems.MATTER_BALL, 4), GTMaterials.Glowstone.getFluid(144), new ItemStack(AEItems.COLORED_LUMEN_PAINT_BALL.item(YELLOW),4), 1200, GTValues.VA[GTValues.EV], provider);
 
+
+
     VanillaRecipeHelper.addShapedRecipe(provider, "ae2/tools/certus_quartz_wrench", AEItems.CERTUS_QUARTZ_WRENCH.stack(),
         "CwC", "CCC", " C ",
-        'C', ChemicalHelper.get(TagPrefix.gem, GTMaterials.CertusQuartz));
+        'C', new MaterialEntry(TagPrefix.gem, GTMaterials.CertusQuartz));
     VanillaRecipeHelper.addShapedRecipe(provider, "ae2/tools/nether_quartz_wrench", AEItems.NETHER_QUARTZ_WRENCH.stack(),
         "QwQ", "QQQ", " Q ",
         'Q', new ItemStack(Items.QUARTZ));
 
     VanillaRecipeHelper.addShapedRecipe(provider, "ae2/tools/certus_quartz_cutting_knife", AEItems.CERTUS_QUARTZ_KNIFE.stack(),
         "hTS", "CST", "PCf",
-        'C', ChemicalHelper.get(TagPrefix.gem, GTMaterials.CertusQuartz),
-        'P', ChemicalHelper.get(TagPrefix.plate, GTMaterials.CertusQuartz),
-        'T', ChemicalHelper.get(TagPrefix.screw, GTMaterials.CertusQuartz),
-        'S', ChemicalHelper.get(TagPrefix.rod, GTMaterials.Wood));
+        'C', new MaterialEntry(TagPrefix.gem, GTMaterials.CertusQuartz),
+        'P', new MaterialEntry(TagPrefix.plate, GTMaterials.CertusQuartz),
+        'T', new MaterialEntry(TagPrefix.screw, GTMaterials.CertusQuartz),
+        'S', new MaterialEntry(TagPrefix.rod, GTMaterials.Wood));
+
     VanillaRecipeHelper.addShapedRecipe(provider, "ae2/tools/nether_quartz_cutting_knife", AEItems.NETHER_QUARTZ_KNIFE.stack(),
         "hTS",
         "QST",
         "PQf",
-        'Q', ChemicalHelper.get(TagPrefix.gem, GTMaterials.NetherQuartz),
-        'P', ChemicalHelper.get(TagPrefix.plate, GTMaterials.NetherQuartz),
-        'T', ChemicalHelper.get(TagPrefix.screw, GTMaterials.NetherQuartz),
-        'S', ChemicalHelper.get(TagPrefix.rod, GTMaterials.Wood));
+        'Q', new MaterialEntry(TagPrefix.gem, GTMaterials.NetherQuartz),
+        'P', new MaterialEntry(TagPrefix.plate, GTMaterials.NetherQuartz),
+        'T', new MaterialEntry(TagPrefix.screw, GTMaterials.NetherQuartz),
+        'S', new MaterialEntry(TagPrefix.rod, GTMaterials.Wood));
 
     VanillaRecipeHelper.addShapedRecipe(provider, "ae2/tools/misctools_entropy_manipulator", AEItems.ENTROPY_MANIPULATOR.stack(),
         "FP ", "EC ", "  T",
@@ -86,23 +90,23 @@ public class PaintBalls {
         'P', new ItemStack(AEItems.LOGIC_PROCESSOR),
         'E', new ItemStack(AEItems.ENGINEERING_PROCESSOR),
         'C', new ItemStack(AEBlocks.ENERGY_CELL),
-        'T', ChemicalHelper.get(TagPrefix.rod, GTMaterials.TitaniumTungstenCarbide));
+        'T', new MaterialEntry(TagPrefix.rod, GTMaterials.TitaniumTungstenCarbide));
 
     VanillaRecipeHelper.addShapedRecipe(provider, "ae2/tools/network_color_applicator", AEItems.COLOR_APPLICATOR.stack(),
         "WFW", "CEC", " R ",
-        'W', ChemicalHelper.get(TagPrefix.wireGtSingle, GTMaterials.BlueAlloy),
+        'W', new MaterialEntry(TagPrefix.wireGtSingle, GTMaterials.BlueAlloy),
         'F', new ItemStack(AEItems.FORMATION_CORE),
         'C', new ItemStack(AEItems.CELL_COMPONENT_4K),
         'E', new ItemStack(AEBlocks.ENERGY_CELL),
-        'R', ChemicalHelper.get(TagPrefix.rod, GTMaterials.Steel));
+        'R', new MaterialEntry(TagPrefix.rod, GTMaterials.Steel));
 
     VanillaRecipeHelper.addShapedRecipe(provider, "ae2/tools/network_memory_card", AEItems.MEMORY_CARD.stack(),
         "LCT", "GRG",
         'L', new ItemStack(AEItems.LOGIC_PROCESSOR),
         'C', CustomTags.EV_CIRCUITS,
-        'T', ChemicalHelper.get(TagPrefix.plate, GTMaterials.TitaniumTungstenCarbide),
-        'G', ChemicalHelper.get(TagPrefix.plate, GTMaterials.Glowstone),
-        'R', ChemicalHelper.get(TagPrefix.plate, GTMaterials.Redstone));
+        'T', new MaterialEntry(TagPrefix.plate, GTMaterials.TitaniumTungstenCarbide),
+        'G', new MaterialEntry(TagPrefix.plate, GTMaterials.Glowstone),
+        'R', new MaterialEntry(TagPrefix.plate, GTMaterials.Redstone));
   }
 
   private static void chemicalBath(String id, ItemStack inputItem, FluidStack inputFluid, ItemStack outputItem, int duration, long EUt, Consumer<FinishedRecipe> provider) {

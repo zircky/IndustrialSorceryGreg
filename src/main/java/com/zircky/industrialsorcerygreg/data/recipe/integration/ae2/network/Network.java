@@ -4,6 +4,7 @@ import appeng.core.definitions.AEBlocks;
 import appeng.core.definitions.AEItems;
 import appeng.core.definitions.AEParts;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
@@ -27,13 +28,13 @@ public class Network {
         'G', new ItemStack(GLASS_CABLE.item(TRANSPARENT)),
         'W', new ItemStack(AEItems.WIRELESS_RECEIVER.asItem()),
         'C', new ItemStack(AEItems.CALCULATION_PROCESSOR.asItem()),
-        'S', ChemicalHelper.get(TagPrefix.screw, GTMaterials.TitaniumTungstenCarbide));
+        'S', new MaterialEntry(TagPrefix.screw, GTMaterials.TitaniumTungstenCarbide));
 
     VanillaRecipeHelper.addShapedRecipe(provider, "ae2/network/wireless_terminal", new ItemStack(AEItems.WIRELESS_TERMINAL.asItem()),
         "WTW", "PEP", "PDP",
         'W', new ItemStack(AEItems.WIRELESS_RECEIVER),
         'T', new ItemStack(AEParts.TERMINAL.asItem()),
-        'P', ChemicalHelper.get(TagPrefix.plate, GTMaterials.NetherQuartz),
+        'P', new MaterialEntry(TagPrefix.plate, GTMaterials.NetherQuartz),
         'E', new ItemStack(AEItems.ENGINEERING_PROCESSOR),
         'D', new ItemStack(AEBlocks.DENSE_ENERGY_CELL));
 
@@ -51,8 +52,8 @@ public class Network {
         "QFQ", " C ", "SES",
         'Q', new ItemStack(AEParts.QUARTZ_FIBER),
         'F', new ItemStack(AEItems.FLUIX_PEARL),
-        'C', ChemicalHelper.get(TagPrefix.rod, GTMaterials.CertusQuartz),
-        'S', ChemicalHelper.get(TagPrefix.plate, GTMaterials.StainlessSteel),
+        'C', new MaterialEntry(TagPrefix.rod, GTMaterials.CertusQuartz),
+        'S', new MaterialEntry(TagPrefix.plate, GTMaterials.StainlessSteel),
         'E', CustomTags.EV_CIRCUITS);
 
   }
