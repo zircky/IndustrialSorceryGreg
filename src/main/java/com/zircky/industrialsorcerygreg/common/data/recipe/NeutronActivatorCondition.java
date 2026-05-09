@@ -9,9 +9,13 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipeConditions;
 import com.zircky.industrialsorcerygreg.common.machine.multiblock.NeutronActivatorMachine;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 
+@Setter
+@Getter
 public class NeutronActivatorCondition extends RecipeCondition<NeutronActivatorCondition> {
   private static final int RANGE_MULTIPLIER = 10_000;
 
@@ -55,7 +59,7 @@ public class NeutronActivatorCondition extends RecipeCondition<NeutronActivatorC
   @Override
   protected boolean testCondition(@NotNull GTRecipe recipe, @NotNull RecipeLogic recipeLogic) {
     return NeutronActivatorMachine.checkNeutronActivatorCondition(
-        (MetaMachine) recipeLogic.machine, recipe
+        (MetaMachine) recipeLogic.getMachine(), recipe
     );
   }
 
@@ -64,11 +68,4 @@ public class NeutronActivatorCondition extends RecipeCondition<NeutronActivatorC
     return new NeutronActivatorCondition();
   }
 
-  public int getEvRange() {
-    return evRange;
-  }
-
-  public void setEvRange(int evRange) {
-    this.evRange = evRange;
-  }
 }

@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "industrialsorcerygreg:block/machine/zpm_substation_wireless_energy_dynamo_64a",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "industrialsorcerygreg:block/machine/zpm_substation_wireless_energy_dynamo_64a",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "industrialsorcerygreg:block/machine/zpm_substation_wireless_energy_dynamo_64a"
+    },
+    "facing=south": {
+      "model": "industrialsorcerygreg:block/machine/zpm_substation_wireless_energy_dynamo_64a",
+      "y": 180
+    },
+    "facing=up": {
+      "gtceu:z": 180,
+      "model": "industrialsorcerygreg:block/machine/zpm_substation_wireless_energy_dynamo_64a",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "industrialsorcerygreg:block/machine/zpm_substation_wireless_energy_dynamo_64a",
+      "y": 270
+    }
+  }
+}

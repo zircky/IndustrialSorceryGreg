@@ -11,9 +11,14 @@ public class MegaTurbineMachine extends WorkableElectricMultiblockMachine {
   private final long baseEUOutput;
   private final int tier;
 
+  public MegaTurbineMachine(BlockEntityCreationInfo info, RecipeLogic recipeLogic, long baseEUOutput, int tier) {
+    super(info, recipeLogic);
+    this.baseEUOutput = baseEUOutput;
+    this.tier = tier;
+  }
 
-  public MegaTurbineMachine(BlockEntityCreationInfo info, Function<WorkableMultiblockMachine, RecipeLogic> recipeLogicSupplier, long baseEUOutput, int tier) {
-    super(info, recipeLogicSupplier);
+  public MegaTurbineMachine(BlockEntityCreationInfo info, long baseEUOutput, int tier) {
+    super(info);
     this.baseEUOutput = baseEUOutput;
     this.tier = tier;
   }

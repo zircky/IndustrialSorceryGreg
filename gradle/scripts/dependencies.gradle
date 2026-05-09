@@ -14,15 +14,28 @@ dependencies {
 
   jarJar(modImplementation(forge.ae2.get()))
   modImplementation(forge.guideme)
+  modImplementation(forge.ae2wtlib)
+  modImplementation(forge.expatternprovider)
+  modImplementation(forge.megacells)
+  modImplementation(forge.clothconfig)
+  modImplementation(forge.glodium)
 
+  modImplementation(forge.curios)
 
   // Mixin (& Extras)
   annotationProcessor(variantOf(libs.mixin) { classifier("processor") })
   annotationProcessor(forge.mixinExtras.common)
   api(forge.mixinExtras.common)
 
+  modImplementation(forge.architectury)
+
   modCompileOnly(forge.bundles.jei)
   modImplementation(forge.emi)
+
+  // Patchouli
+  modRuntimeOnly(forge.patchouli)
+
+  modImplementation(forge.botania)
 
   // Ad Astra
   modRuntimeOnly(forge.yabn)
@@ -31,6 +44,10 @@ dependencies {
   modImplementation(forge.resourcefullConfig)
   modImplementation(forge.botarium)
   modImplementation(forge.adAstra)
+
+
+  modImplementation(forge.ftblibrary.cm)
+  modImplementation(forge.ftbteams.cm)
 
   modImplementation(forge.nuclearcraft)
 

@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "industrialsorcerygreg:block/machine/uxv_4a_wireless_energy_dynamo",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "industrialsorcerygreg:block/machine/uxv_4a_wireless_energy_dynamo",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "industrialsorcerygreg:block/machine/uxv_4a_wireless_energy_dynamo"
+    },
+    "facing=south": {
+      "model": "industrialsorcerygreg:block/machine/uxv_4a_wireless_energy_dynamo",
+      "y": 180
+    },
+    "facing=up": {
+      "gtceu:z": 180,
+      "model": "industrialsorcerygreg:block/machine/uxv_4a_wireless_energy_dynamo",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "industrialsorcerygreg:block/machine/uxv_4a_wireless_energy_dynamo",
+      "y": 270
+    }
+  }
+}

@@ -76,8 +76,11 @@ public class ISGMaterials {
   public static Material AwakenedDraconium;
   public static Material Chaos;
   public static Material Infinity;
+  public static Material Bedrockium;
+  public static Material SkySteel;
 
   public static Material MarM200Steel; //
+  public static Material CortenSteel;
 
   // Platinum line
   public static Material PlatinumConcentrate;

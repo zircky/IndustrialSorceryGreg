@@ -2,6 +2,7 @@ package com.zircky.industrialsorcerygreg.common.data.materials;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.ISGCreativeModeTabs;
 
@@ -18,9 +19,9 @@ public class NuclearMaterials {
     ManganeseOxide = builderISG("manganese_oxide")
         .ingot().dust().fluid()
         .color(0x1A3F0D).secondaryColor(0x425E17).iconSet(METALLIC)
-        .appendFlags(SNDART_FLAGS)
+        .appendFlags(SNDART_FLAGS, ISGMaterialFlags.RECIPE_MIXER)
         .blastTemp(1924)
-        .components(GTMaterials.Manganese, 1, GTMaterials.Oxygen, 1000)
+        .components(GTMaterials.Manganese, 1, GTMaterials.Oxygen, 1)
         .buildAndRegister()
         .setFormula("MnO", true);
 

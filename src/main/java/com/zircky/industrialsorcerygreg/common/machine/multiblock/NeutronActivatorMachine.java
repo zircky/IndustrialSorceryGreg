@@ -26,7 +26,7 @@ import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 import com.zircky.industrialsorcerygreg.common.data.ISGItems;
 import com.zircky.industrialsorcerygreg.common.data.recipe.NeutronActivatorCondition;
 import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.NeutronAcceleratorPartMachine;
-import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.SensorPartMachine;
+import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.NeutronSensorPartMachine;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
 import lombok.Getter;
@@ -40,11 +40,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
 
 import static com.gregtechceu.gtceu.utils.GTUtil.doExplosion;
 
@@ -63,12 +61,12 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine implement
   private final ConditionalSubscriptionHandler moderateSubs = new ConditionalSubscriptionHandler(this, this::moderateUpdate, () -> eV > 0);
   private final ConditionalSubscriptionHandler absorptionSubs = new ConditionalSubscriptionHandler(this, this::absorptionUpdate, () -> eV > 0);
 
-  private Set<SensorPartMachine> sensorPartMachines;
+  private Set<NeutronSensorPartMachine> sensorPartMachines;
   private Set<ItemBusPartMachine> busPartMachines;
   private Set<NeutronAcceleratorPartMachine> acceleratorPartMachines;
 
-  public NeutronActivatorMachine(BlockEntityCreationInfo info, Function<WorkableMultiblockMachine, RecipeLogic> recipeLogicSupplier) {
-    super(info, recipeLogicSupplier);
+  public NeutronActivatorMachine(BlockEntityCreationInfo info, RecipeLogic recipeLogic) {
+    super(info, recipeLogic);
   }
 
   @Override
@@ -112,7 +110,7 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine implement
         busPartMachines.add(busPart);
       }
 
-      if (part instanceof SensorPartMachine sensorMachine) {
+      if (part instanceof NeutronSensorPartMachine sensorMachine) {
         if (sensorPartMachines == null) {
           sensorPartMachines = new HashSet<>();
         }
@@ -179,7 +177,7 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine implement
 
     if (!isFormed() || sensorPartMachines == null) return;
 
-    for (final SensorPartMachine senser : sensorPartMachines) {
+    for (final NeutronSensorPartMachine senser : sensorPartMachines) {
       senser.update(eV);
     }
   }
