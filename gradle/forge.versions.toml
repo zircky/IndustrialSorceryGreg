@@ -16,6 +16,9 @@ resourcefullConfig = "2.1.2"
 yabn = "1.0.3"
 byteCodecs = "1.0.2"
 
+botania = "1.20.1-446-FORGE"
+patchouli = "1.20.1-84-FORGE"
+
 ftblibrary = "2001.2.4"
 ftbteams = "2001.3.0"
 
@@ -62,6 +65,10 @@ botarium = { module = "earth.terrarium.botarium:botarium-forge-1.20.1", version.
 adAstra = { module = "earth.terrarium.adastra:ad_astra-forge-1.20.1", version.ref = "adAstra" }
 ftblibrary = { module = "dev.ftb.mods:ftb-library-forge", version.ref = "ftblibrary" }
 ftbteams = { module = "dev.ftb.mods:ftb-teams-forge", version.ref = "ftbteams" }
+
+
+botania = {module = "vazkii.botania:Botania", version.ref = "botania"}
+patchouli                 = { module = "vazkii.patchouli:Patchouli", version.ref = "patchouli" }
 
 jei-common-api = { module = "mezz.jei:jei-1.20.1-common-api", version.ref = "jei" }
 jei-forge-api = { module = "mezz.jei:jei-1.20.1-forge-api", version.ref = "jei" }

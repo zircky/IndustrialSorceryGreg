@@ -32,6 +32,11 @@ dependencies {
   modCompileOnly(forge.bundles.jei)
   modImplementation(forge.emi)
 
+  // Patchouli
+  modRuntimeOnly(forge.patchouli)
+
+  modImplementation(forge.botania)
+
   // Ad Astra
   modRuntimeOnly(forge.yabn)
   modRuntimeOnly(forge.byteCodecs)
@@ -39,6 +44,8 @@ dependencies {
   modImplementation(forge.resourcefullConfig)
   modImplementation(forge.botarium)
   modImplementation(forge.adAstra)
+
+
   modImplementation(forge.ftblibrary.cm)
   modImplementation(forge.ftbteams.cm)
 
