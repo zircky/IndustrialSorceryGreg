@@ -1,4 +1,4 @@
-package com.zircky.industrialsorcerygreg.integration.emi.materialtree;
+package com.zircky.industrialsorcerygreg.common.data.materials;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 

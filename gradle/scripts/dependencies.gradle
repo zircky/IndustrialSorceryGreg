@@ -12,6 +12,10 @@ dependencies {
   // GTCEu
   modImplementation(forge.gtceu)
 
+  // WAILA-likes
+  modImplementation(forge.jade)
+
+  // AE2
   jarJar(modImplementation(forge.ae2.get()))
   modImplementation(forge.guideme)
   modImplementation(forge.ae2wtlib)
@@ -20,6 +24,7 @@ dependencies {
   modImplementation(forge.clothconfig)
   modImplementation(forge.glodium)
 
+  // Curios
   modImplementation(forge.curios)
 
   // Mixin (& Extras)
@@ -35,6 +40,7 @@ dependencies {
   // Patchouli
   modRuntimeOnly(forge.patchouli)
 
+  // Botania
   modImplementation(forge.botania)
 
   // Ad Astra
@@ -45,7 +51,7 @@ dependencies {
   modImplementation(forge.botarium)
   modImplementation(forge.adAstra)
 
-
+  // FTB
   modImplementation(forge.ftblibrary.cm)
   modImplementation(forge.ftbteams.cm)
 

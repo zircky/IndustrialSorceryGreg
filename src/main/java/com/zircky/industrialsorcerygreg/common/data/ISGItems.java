@@ -1,8 +1,11 @@
 package com.zircky.industrialsorcerygreg.common.data;
 
+import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.item.ComponentItem;
 import com.gregtechceu.gtceu.common.item.armor.*;
+import com.gregtechceu.gtceu.common.item.behavior.CoverPlaceBehavior;
+import com.gregtechceu.gtceu.common.item.behavior.TooltipBehavior;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
@@ -10,11 +13,15 @@ import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.tag.item.ISGItemTag;
 import com.zircky.industrialsorcerygreg.common.item.armor.SpaceArmorComponentItem;
 import earth.terrarium.adastra.common.tags.ModItemTags;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.Tags;
 
+import java.util.Locale;
+
+import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.common.data.GTItems.attach;
 
 public class ISGItems {
@@ -81,7 +88,7 @@ public class ISGItems {
               ArmorItem.Type.CHESTPLATE, 8000, p)
               .setArmorLogic(new NanoMuscleSuite(
                   ArmorItem.Type.CHESTPLATE,
-                  (int) GTValues.V[GTValues.HV],
+                  (int) GTValues.V[HV],
                   6_400_000L * (long) Math.max(1, Math.pow(4, ConfigHolder.INSTANCE.tools.voltageTierNanoSuit - 3)),
                   ConfigHolder.INSTANCE.tools.voltageTierNanoSuit)))
       .lang("NanoMuscle™ Space Suite Chestplate")
@@ -93,7 +100,7 @@ public class ISGItems {
   public static ItemEntry<SpaceArmorComponentItem> SPACE_ADVANCED_NANOMUSCLE_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_advanced_nanomuscle_chestplate",
           (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.CHESTPLATE, 16000, p)
               .setArmorLogic(new AdvancedNanoMuscleSuite(
-                  (int) GTValues.V[GTValues.HV],
+                  (int) GTValues.V[HV],
                   12_800_000L * (long) Math.max(1, Math.pow(4,
                       ConfigHolder.INSTANCE.tools.voltageTierAdvNanoSuit - 3)),
                   ConfigHolder.INSTANCE.tools.voltageTierAdvNanoSuit)))
@@ -135,11 +142,62 @@ public class ISGItems {
       .properties(p -> p.rarity(Rarity.UNCOMMON))
       .register();
 
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_LV = registerTieredCover(LV, 1);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_MV = registerTieredCover(MV, 1);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_HV = registerTieredCover(HV, 1);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_EV = registerTieredCover(EV, 1);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_IV = registerTieredCover(IV, 1);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_LUV = registerTieredCover(LuV, 1);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_ZPM = registerTieredCover(ZPM, 1);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_UV = registerTieredCover(UV, 1);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_UHV = GTCEuAPI.isHighTier() ?
+      registerTieredCover(UHV, 1) : null;
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_UEV = GTCEuAPI.isHighTier() ?
+      registerTieredCover(UEV, 1) : null;
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_UIV = GTCEuAPI.isHighTier() ?
+      registerTieredCover(UIV, 1) : null;
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_UXV = GTCEuAPI.isHighTier() ?
+      registerTieredCover(UXV, 1) : null;
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_OPV = GTCEuAPI.isHighTier() ?
+      registerTieredCover(OpV, 1) : null;
+
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_LV_4A = registerTieredCover(LV, 4);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_MV_4A = registerTieredCover(MV, 4);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_HV_4A = registerTieredCover(HV, 4);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_EV_4A = registerTieredCover(EV, 4);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_IV_4A = registerTieredCover(IV, 4);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_LUV_4A = registerTieredCover(LuV, 4);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_ZPM_4A = registerTieredCover(ZPM, 4);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_UV_4A = registerTieredCover(UV, 4);
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_UHV_4A = GTCEuAPI.isHighTier() ?
+      registerTieredCover(UHV, 4) : null;
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_UEV_4A = GTCEuAPI.isHighTier() ?
+      registerTieredCover(UEV, 4) : null;
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_UIV_4A = GTCEuAPI.isHighTier() ?
+      registerTieredCover(UIV, 4) : null;
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_UXV_4A = GTCEuAPI.isHighTier() ?
+      registerTieredCover(UXV, 4) : null;
+  public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_OPV_4A = GTCEuAPI.isHighTier() ?
+      registerTieredCover(OpV, 4) : null;
+
 
   private static ItemEntry<Item> registerLang(String id, String name) {
     return ISGRegistries.REGISTRATE.item(id, Item::new)
         .lang(name)
         .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/%s", id))))
         .register();
+  }
+
+  private static ItemEntry<ComponentItem> registerTieredCover(int tier, int amperage) {
+    String id = GTValues.VN[tier].toLowerCase(Locale.ROOT) + "_" + (amperage == 1 ? "" : amperage + "a_") + "wireless_energy_receive_cover";
+    return ISGRegistries.REGISTRATE
+        .item(id, ComponentItem::create)
+        .lang(VNF[tier] + " " + "Wireless Energy Receive Cover")
+        .onRegister(item -> item.attachComponents(new TooltipBehavior(lines -> {
+          lines.add(Component.translatable("item.isg.wireless_energy_receive_cover.tooltip.1"));
+          lines.add(Component.translatable("item.isg.wireless_energy_receive_cover.tooltip.2"));
+          lines.add(Component.translatable("item.isg.wireless_energy_receive_cover.tooltip.3", GTValues.VEX[tier] * amperage));
+        }), new CoverPlaceBehavior(amperage == 1 ? ISGCovers.WIRELESS_ENERGY_RECEIVE[tier - 1] : ISGCovers.WIRELESS_ENERGY_RECEIVE_4A[tier - 1])))
+        .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/wireless/%s", id)))).register();
   }
 }
