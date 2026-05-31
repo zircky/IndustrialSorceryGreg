@@ -81,14 +81,14 @@ public class WirelessEnergyCommand {
 
   private static int displayPlayerInfo(CommandContext<CommandSourceStack> context, ServerPlayer player) {
     var message = generateInfoMessage(context.getSource().getLevel(), player.getUUID(),
-        Component.translatable("cosmic.command.wireless.energy.player", player.getName()));
+        Component.translatable("isg.command.wireless.energy.player", player.getName()));
     context.getSource().sendSuccess(() -> message, false);
     return 1;
   }
 
   private static int displayTeamInfo(CommandContext<CommandSourceStack> context, Team team) {
     var message = generateInfoMessage(context.getSource().getLevel(), team.getTeamId(),
-        Component.translatable("cosmic.command.wireless.energy.team", team.getName()));
+        Component.translatable("isg.command.wireless.energy.team", team.getName()));
     context.getSource().sendSuccess(() -> message, false);
     return 1;
   }
@@ -96,23 +96,23 @@ public class WirelessEnergyCommand {
   private static Component generateInfoMessage(ServerLevel serverLevel, UUID owner, Component ownerName) {
     var wirelessData = WirelessEnergySavedData.getOrCreate(serverLevel);
 
-    var message = Component.translatable("cosmic.command.wireless.energy.header", ownerName).append("\n")
-        .append(Component.translatable("cosmic.command.wireless.energy.capacity",
+    var message = Component.translatable("isg.command.wireless.energy.header", ownerName).append("\n")
+        .append(Component.translatable("isg.command.wireless.energy.capacity",
             FormattingUtil.formatNumbers(wirelessData.getEnergyCapacity(owner))))
         .append("\n")
-        .append(Component.translatable("cosmic.command.wireless.energy.stored",
+        .append(Component.translatable("isg.command.wireless.energy.stored",
             FormattingUtil.formatNumbers(wirelessData.getEnergyStored(owner))))
         .append("\n")
-        .append(Component.translatable("cosmic.command.wireless.energy.input",
+        .append(Component.translatable("isg.command.wireless.energy.input",
             FormattingUtil.formatNumbers(wirelessData.getEnergyInput(owner))))
         .append("\n")
-        .append(Component.translatable("cosmic.command.wireless.energy.output",
+        .append(Component.translatable("isg.command.wireless.energy.output",
             FormattingUtil.formatNumbers(wirelessData.getEnergyOutput(owner))))
         .append("\n")
-        .append(Component.translatable("cosmic.command.wireless.energy.buffered",
+        .append(Component.translatable("isg.command.wireless.energy.buffered",
             FormattingUtil.formatNumbers(wirelessData.getEnergyBuffered(owner))))
         .append("\n")
-        .append(Component.translatable("cosmic.command.wireless.energy.active", wirelessData.isActive(owner)));
+        .append(Component.translatable("isg.command.wireless.energy.active", wirelessData.isActive(owner)));
 
     return message;
   }

@@ -20,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ELECTRIC;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.MULTIBLOCK;
 import static com.lowdragmc.lowdraglib.gui.texture.ProgressTexture.FillDirection.LEFT_TO_RIGHT;
 
@@ -65,6 +66,12 @@ public class ISGRecipeTypes {
       .setEUIO(IO.IN)
       .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, LEFT_TO_RIGHT)
       .setSound(GTSoundEntries.CENTRIFUGE);
+
+  public static final GTRecipeType DEHYDRATOR_RECIPES = GTRecipeTypes.register("dehydrator", ELECTRIC)
+      .setMaxIOSize(2, 6, 2, 2)
+      .setEUIO(IO.IN)
+      .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, LEFT_TO_RIGHT)
+      .setSound(GTSoundEntries.ARC);
 
 
   public static void init() {

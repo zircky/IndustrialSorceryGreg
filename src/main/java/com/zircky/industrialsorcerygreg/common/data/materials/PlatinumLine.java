@@ -28,7 +28,7 @@ public class PlatinumLine {
         .setFormula("Pt?");
 
     RefinedPlatinumSalt = builderISG("refined_platinum_salt")
-        .dust()
+        .dust(2)
         .color(GTMaterials.Platinum.getMaterialARGB())
         .iconSet(MaterialIconSet.METALLIC)
         .flags(MaterialFlags.NO_UNIFICATION)
@@ -92,7 +92,7 @@ public class PlatinumLine {
 
     SodiumSulfate = builderISG("sodium_sulfate")
         .dust()
-        .color(0xffffff)
+        .color(0xc6c6c6)
         .iconSet(MaterialIconSet.FLUID)
         .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
         .components(GTMaterials.Sodium, 3, GTMaterials.Sulfur, 1, GTMaterials.Oxygen, 4)

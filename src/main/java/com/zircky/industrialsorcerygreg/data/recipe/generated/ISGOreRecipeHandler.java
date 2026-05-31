@@ -14,7 +14,6 @@ import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
 import com.gregtechceu.gtceu.utils.GTUtil;
-import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import it.unimi.dsi.fastutil.objects.ObjectIntPair;
 import net.minecraft.data.recipes.FinishedRecipe;

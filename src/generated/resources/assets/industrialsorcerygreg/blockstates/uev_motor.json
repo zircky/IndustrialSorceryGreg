@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "industrialsorcerygreg:block/casing/motor/uev_motor"
+    }
+  }
+}

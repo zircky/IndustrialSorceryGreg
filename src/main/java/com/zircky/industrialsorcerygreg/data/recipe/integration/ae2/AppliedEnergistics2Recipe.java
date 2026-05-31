@@ -4,7 +4,7 @@ import appeng.core.definitions.AEItems;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.ae2.network.*;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.ae2.tools.PaintBalls;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -37,7 +37,7 @@ public class AppliedEnergistics2Recipe {
   }
 
   private static void ae2Recipe(Consumer<FinishedRecipe> provider) {
-    CENTRIFUGE_RECIPES.recipeBuilder(IndustrialSorceryGreg.id("ae2/sky_dust_x1"))
+    CENTRIFUGE_RECIPES.recipeBuilder(ISGCore.id("ae2/sky_dust_x1"))
         .inputItems(new ItemStack(AEItems.SKY_DUST))
         .circuitMeta(1)
         .chancedOutput(TagPrefix.dustSmall, GTMaterials.BasalticMineralSand, 1, 2000, 0)
@@ -48,7 +48,7 @@ public class AppliedEnergistics2Recipe {
         .chancedOutput(TagPrefix.dustSmall, GTMaterials.RareEarth, 1, 2000, 0)
         .duration(64).EUt(GTValues.VA[GTValues.LV]).save(provider);
 
-    CENTRIFUGE_RECIPES.recipeBuilder(IndustrialSorceryGreg.id("ae2/sky_dust_x9"))
+    CENTRIFUGE_RECIPES.recipeBuilder(ISGCore.id("ae2/sky_dust_x9"))
         .inputItems(new ItemStack(AEItems.SKY_DUST, 18))
         .circuitMeta(2)
         .chancedOutput(TagPrefix.dust, GTMaterials.BasalticMineralSand, 1, 9000, 0)

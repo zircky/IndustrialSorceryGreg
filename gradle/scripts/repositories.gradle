@@ -76,7 +76,7 @@ repositories {
     name = "tterrag maven"
     url = "https://maven.tterrag.com/"
   }
-  maven {
+  maven { // jade
     url = "https://api.modrinth.com/maven"
   }
   maven {

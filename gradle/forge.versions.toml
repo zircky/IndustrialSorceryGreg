@@ -26,6 +26,9 @@ jei = "15.20.0.115"
 emi = "1.1.22+1.20.1"
 flywheel = "1.0.5"
 
+## modrinth maven ##
+jade = "11.12.3+forge"
+
 ## cursemaven ##
 ftblibrary-cm = "5567591"
 ftbteams-cm = "6130786"
@@ -67,8 +70,8 @@ ftblibrary = { module = "dev.ftb.mods:ftb-library-forge", version.ref = "ftblibr
 ftbteams = { module = "dev.ftb.mods:ftb-teams-forge", version.ref = "ftbteams" }
 
 
-botania = {module = "vazkii.botania:Botania", version.ref = "botania"}
-patchouli                 = { module = "vazkii.patchouli:Patchouli", version.ref = "patchouli" }
+botania = { module = "vazkii.botania:Botania", version.ref = "botania" }
+patchouli = { module = "vazkii.patchouli:Patchouli", version.ref = "patchouli" }
 
 jei-common-api = { module = "mezz.jei:jei-1.20.1-common-api", version.ref = "jei" }
 jei-forge-api = { module = "mezz.jei:jei-1.20.1-forge-api", version.ref = "jei" }
@@ -77,9 +80,12 @@ emi = { module = "dev.emi:emi-forge", version.ref = "emi" }
 
 flywheel = { module = "dev.engine-room.flywheel:flywheel-forge-1.20.1", version.ref = "flywheel" }
 
+## modrinth maven ##
+jade = { module = "maven.modrinth:jade", version.ref = "jade" }
+
 ## cursemaven ##
-ftblibrary-cm             = { module = "curse.maven:ftb-library-forge-404465", version.ref = "ftblibrary-cm" }
-ftbteams-cm               = { module = "curse.maven:ftb-teams-forge-404468", version.ref = "ftbteams-cm" }
+ftblibrary-cm = { module = "curse.maven:ftb-library-forge-404465", version.ref = "ftblibrary-cm" }
+ftbteams-cm = { module = "curse.maven:ftb-teams-forge-404468", version.ref = "ftbteams-cm" }
 nuclearcraft = { module = "curse.maven:nuclearcraft-neoteric-840010", version.ref = "nuclearcraft" }
 #deafission = { module = "curse.maven:deafission-1354541", version.ref = "deafission" }
 

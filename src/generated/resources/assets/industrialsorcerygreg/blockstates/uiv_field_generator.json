@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "industrialsorcerygreg:block/casing/field_generator/uiv_field_generator"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "industrialsorcerygreg:block/casing/sensor/opv_sensor"
+    }
+  }
+}

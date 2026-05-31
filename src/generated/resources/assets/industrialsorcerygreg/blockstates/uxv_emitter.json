@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "industrialsorcerygreg:block/casing/emitter/uxv_emitter"
+    }
+  }
+}

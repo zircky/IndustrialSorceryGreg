@@ -16,7 +16,7 @@ public class NaquadahLine {
         .iconSet(MaterialIconSet.SHINY)
         .appendFlags(SNDART_FLAGS)
         .toolStats(ToolProperty.Builder.of(32.0f, 10, 8192, 3).build())
-        .blast(b -> b.temp(7200, BlastProperty.GasTier.LOW))
+        .blast(b -> b.temp(8200, BlastProperty.GasTier.HIGH))
         .buildAndRegister()
         .setFormula("Ad");
 
