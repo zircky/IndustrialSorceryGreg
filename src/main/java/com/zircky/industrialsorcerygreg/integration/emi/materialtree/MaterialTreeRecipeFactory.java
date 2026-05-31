@@ -1,7 +1,7 @@
 package com.zircky.industrialsorcerygreg.integration.emi.materialtree;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.resources.ResourceLocation;
 
@@ -29,7 +29,7 @@ public class MaterialTreeRecipeFactory {
       final List<FormEntry> forms = formResolver.resolveForms(material);
       if (forms.isEmpty()) continue;
 
-      final ResourceLocation id = IndustrialSorceryGreg.id("material_tree/" + sanitize(material.getName()));
+      final ResourceLocation id = ISGCore.id("material_tree/" + sanitize(material.getName()));
 
       recipes.add(
           new  MaterialTreeRecipe(

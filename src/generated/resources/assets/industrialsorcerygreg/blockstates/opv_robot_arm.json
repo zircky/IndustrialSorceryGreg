@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "industrialsorcerygreg:block/casing/robot_arm/opv_robot_arm"
+    }
+  }
+}

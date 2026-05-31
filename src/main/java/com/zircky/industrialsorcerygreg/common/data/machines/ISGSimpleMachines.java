@@ -5,13 +5,19 @@ import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
+import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
+import com.gregtechceu.gtceu.common.data.machines.GTMachineUtils;
 import com.zircky.industrialsorcerygreg.api.machine.part.WirelessEnergyHatchPartMachine;
+import com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes;
 
 import static com.gregtechceu.gtceu.api.GTValues.VNF;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.HIGH_TIERS;
+import static com.zircky.industrialsorcerygreg.common.data.machines.ISGMachineUtils.registerSimpleMachines;
 import static com.zircky.industrialsorcerygreg.common.data.machines.ISGMachineUtils.registerTieredMachines;
 
 public class ISGSimpleMachines {
+
+  public static final MachineDefinition[] DEHYDRATOR = registerSimpleMachines("dehydrator", ISGRecipeTypes.DEHYDRATOR_RECIPES, GTMachineUtils.defaultTankSizeFunction);
 
   public static final MachineDefinition[] WIRELESS_ENERGY_INPUT_HATCH = registerWirelessEnergyTieredHatch(
       "wireless_energy_hatch", "Wireless Energy Hatch", "wireless_energy_1a",
@@ -57,4 +63,5 @@ public class ISGSimpleMachines {
             .register(),
         tiers);
   }
+
 }

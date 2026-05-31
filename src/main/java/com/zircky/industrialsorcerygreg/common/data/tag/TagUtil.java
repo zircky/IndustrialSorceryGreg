@@ -1,6 +1,6 @@
 package com.zircky.industrialsorcerygreg.common.data.tag;
 
-import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -22,7 +22,7 @@ public class TagUtil {
   }
 
   public static <T> TagKey<T> createModTag(ResourceKey<? extends Registry<T>> registry, String path) {
-    return optionalTag(registry, IndustrialSorceryGreg.id(path));
+    return optionalTag(registry, ISGCore.id(path));
   }
 
   public static TagKey<Block> createBlockTag(String path) {

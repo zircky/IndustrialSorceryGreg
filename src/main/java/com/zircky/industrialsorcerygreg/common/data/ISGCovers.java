@@ -5,7 +5,7 @@ import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.cover.CoverDefinition;
 import com.gregtechceu.gtceu.client.renderer.cover.ICoverRenderer;
 import com.gregtechceu.gtceu.client.renderer.cover.SimpleCoverRenderer;
-import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.cover.WirelessEnergyReceiverCover;
 
@@ -28,8 +28,8 @@ public class ISGCovers {
 
   public static CoverDefinition register(String id, CoverDefinition.CoverBehaviourProvider behaviorCreator,
                                          Supplier<Supplier<ICoverRenderer>> coverRenderer) {
-    var definition = new CoverDefinition(IndustrialSorceryGreg.id(id), behaviorCreator, coverRenderer);
-    ISGRegistries.COVERS.register(IndustrialSorceryGreg.id(id), definition);
+    var definition = new CoverDefinition(ISGCore.id(id), behaviorCreator, coverRenderer);
+    ISGRegistries.COVERS.register(ISGCore.id(id), definition);
     return definition;
   }
 
@@ -37,7 +37,7 @@ public class ISGCovers {
     return Arrays.stream(tiers).mapToObj(tier -> {
       var name = id + "." + GTValues.VN[tier].toLowerCase(Locale.ROOT);
       return register(name, (holder, coverable, side) -> new WirelessEnergyReceiverCover(holder, coverable, side, tier, amperage),
-          () -> () -> new SimpleCoverRenderer(IndustrialSorceryGreg.id("block/cover/overlay_" + (amperage == 1 ? "" : "4a_") + "wireless_energy_receive")));
+          () -> () -> new SimpleCoverRenderer(ISGCore.id("block/cover/overlay_" + (amperage == 1 ? "" : "4a_") + "wireless_energy_receive")));
     }).toArray(CoverDefinition[]::new);
   }
 

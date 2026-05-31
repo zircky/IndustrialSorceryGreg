@@ -5,10 +5,11 @@ import com.zircky.industrialsorcerygreg.data.recipe.classified.MixerRecipes;
 import com.zircky.industrialsorcerygreg.data.recipe.generated.ForEachMaterial;
 import com.zircky.industrialsorcerygreg.data.recipe.RecipeRemoval;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.ae2.AppliedEnergistics2Recipe;
+import com.zircky.industrialsorcerygreg.data.recipe.misc.MetaTileEntityLoader;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.component.ComponentRecipe;
-import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.CannerRecipes;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.ChemicalReactorRecipes;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.FuelReprocessorRecipes;
+import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.ChromiumLine;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.platinum.PlatinumLine;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
@@ -23,6 +24,7 @@ public class Data {
   public static void removeInit(Consumer<ResourceLocation> consumer) {
     RecipeRemoval.init(consumer);
     AppliedEnergistics2Recipe.removeInit(consumer);
+    ChromiumLine.remove(consumer);
   }
 
   private static void commonInit(Consumer<FinishedRecipe> provider) {
@@ -32,8 +34,10 @@ public class Data {
     ComponentRecipe.init(provider);
     ChemicalReactorRecipes.init(provider);
     PlatinumLine.init(provider);
+    ChromiumLine.init(provider);
     FuelReprocessorRecipes.init(provider);
     //CannerRecipes.init(provider);
+    MetaTileEntityLoader.init(provider);
     ForEachMaterial.init(provider);
   }
 }

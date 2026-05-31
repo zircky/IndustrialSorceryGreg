@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "industrialsorcerygreg:block/casing/sensor/zpm_sensor"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "industrialsorcerygreg:block/casing/conveyor/mv_conveyor"
+    }
+  }
+}

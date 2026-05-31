@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.common.data;
 
+import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.item.ComponentItem;
@@ -32,6 +33,43 @@ public class ISGItems {
 
   public static void init() {
   }
+
+//  public static final ItemEntry<Item> SMD_CAPACITOR_REFINED = registerLang("smd_capacitor_refined", "Refined SMD Capacitor");
+//  public static final ItemEntry<Item> SMD_DIODE_REFINED = registerLang("smd_diode_refined", "Refined SMD Diode");
+//  public static final ItemEntry<Item> SMD_RESISTOR_REFINED = registerLang("smd_resistor_refined", "Refined SMD Resistor");
+//  public static final ItemEntry<Item> SMD_TRANSISTOR_REFINED = registerLang("smd_transistor_refined", "Refined SMD Transistor");
+//  public static final ItemEntry<Item> SMD_INDUCTOR_REFINED = registerLang("smd_inductor_refined", "Refined SMD Inductor");
+//
+//  public static final ItemEntry<Item> SMD_CAPACITOR_MICRO = registerLang("smd_capacitor_micro", "Micro SMD Capacitor");
+//  public static final ItemEntry<Item> SMD_DIODE_MICRO = registerLang("smd_diode_micro", "Micro SMD Diode");
+//  public static final ItemEntry<Item> SMD_RESISTOR_MICRO = registerLang("smd_resistor_micro", "Micro SMD Resistor");
+//  public static final ItemEntry<Item> SMD_TRANSISTOR_MICRO = registerLang("smd_transistor_micro", "Micro SMD Transistor");
+//  public static final ItemEntry<Item> SMD_INDUCTOR_MICRO = registerLang("smd_inductor_micro", "Micro SMD Inductor");
+//
+//  public static final ItemEntry<Item> SMD_CAPACITOR_NANO = registerLang("smd_capacitor_nano", "Nano SMD Capacitor");
+//  public static final ItemEntry<Item> SMD_DIODE_NANO = registerLang("smd_diode_nano", "Nano SMD Diode");
+//  public static final ItemEntry<Item> SMD_RESISTOR_NANO = registerLang("smd_resistor_nano", "Nano SMD Resistor");
+//  public static final ItemEntry<Item> SMD_TRANSISTOR_NANO = registerLang("smd_transistor_nano", "Nano SMD Transistor");
+//  public static final ItemEntry<Item> SMD_INDUCTOR_NANO = registerLang("smd_inductor_nano", "Nano SMD Inductor");
+//
+//  public static final ItemEntry<Item> SMD_CAPACITOR_QUANTUM = registerLang("smd_capacitor_quantum", "Quantum SMD Capacitor");
+//  public static final ItemEntry<Item> SMD_DIODE_QUANTUM = registerLang("smd_diode_quantum", "Quantum SMD Diode");
+//  public static final ItemEntry<Item> SMD_RESISTOR_QUANTUM = registerLang("smd_resistor_quantum", "Quantum SMD Resistor");
+//  public static final ItemEntry<Item> SMD_TRANSISTOR_QUANTUM = registerLang("smd_transistor_quantum", "Quantum SMD Transistor");
+//  public static final ItemEntry<Item> SMD_INDUCTOR_QUANTUM = registerLang("smd_inductor_quantum", "Quantum SMD Inductor");
+//
+//  public static final ItemEntry<Item> SMD_CAPACITOR_CRYSTAL = registerLang("smd_capacitor_crystal", "Crystal SMD Capacitor");
+//  public static final ItemEntry<Item> SMD_DIODE_CRYSTAL = registerLang("smd_diode_crystal", "Crystal SMD Diode");
+//  public static final ItemEntry<Item> SMD_RESISTOR_CRYSTAL = registerLang("smd_resistor_crystal", "Crystal SMD Resistor");
+//  public static final ItemEntry<Item> SMD_TRANSISTOR_CRYSTAL = registerLang("smd_transistor_crystal", "Crystal SMD Transistor");
+//  public static final ItemEntry<Item> SMD_INDUCTOR_CRYSTAL = registerLang("smd_inductor_crystal", "Crystal SMD Inductor");
+//
+//  public static final ItemEntry<Item> SMD_CAPACITOR_WETWARE = registerLang("smd_capacitor_wetware", "Wetware SMD Capacitor");
+//  public static final ItemEntry<Item> SMD_DIODE_WETWARE = registerLang("smd_diode_wetware", "Wetware SMD Diode");
+//  public static final ItemEntry<Item> SMD_RESISTOR_WETWARE = registerLang("smd_resistor_wetware", "Wetware SMD Resistor");
+//  public static final ItemEntry<Item> SMD_TRANSISTOR_WETWARE = registerLang("smd_transistor_wetware", "Wetware SMD Transistor");
+//  public static final ItemEntry<Item> SMD_INDUCTOR_WETWARE = registerLang("smd_inductor_wetware", "Wetware SMD Inductor");
+
 
   public static final ItemEntry<Item> BIOWARE_CIRCUIT_BOARD = registerLang("bioware_circuit_board", "Bioware Circuit Board");
   public static final ItemEntry<Item> BIOWARE_PRINTED_CIRCUIT_BOARD = registerLang("bioware_printed_circuit_board", "Bioware Printed Circuit Board");

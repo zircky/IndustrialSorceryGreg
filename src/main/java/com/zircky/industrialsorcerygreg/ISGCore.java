@@ -2,7 +2,6 @@ package com.zircky.industrialsorcerygreg;
 
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
-import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
@@ -22,8 +21,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-@Mod(IndustrialSorceryGreg.MODID)
-public class IndustrialSorceryGreg {
+@Mod(ISGCore.MODID)
+public class ISGCore {
 
   public static final String MODID = "industrialsorcerygreg";
   private static final ResourceLocation TEMPLATE_LOCATION = new ResourceLocation(MODID, "");
@@ -31,9 +30,12 @@ public class IndustrialSorceryGreg {
   public static final Logger LOGGER = LogUtils.getLogger();
   public static MaterialRegistry MATERIAL_REGISTRY;
 
-  public IndustrialSorceryGreg() {
-    IndustrialSorceryGreg.init();
+  public ISGCore() {
+    ISGCore.init();
     var bus = FMLJavaModLoadingContext.get().getModEventBus();
+
+    ISGRegistries.REGISTRATE.registerEventListeners(bus);
+
     bus.register(this);
     bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
     bus.addGenericListener(MachineDefinition.class, this::registerMachines);
@@ -48,13 +50,13 @@ public class IndustrialSorceryGreg {
   public static void init() {
     ISGCreativeModeTabs.init();
 
+    ISGBlocks.init();
+
     ISGItems.init();
 
     ISGPlaceholders.register();
 
     ISGDatagen.initPost();
-
-    ISGRegistries.REGISTRATE.registerRegistrate();
   }
 
   public static ResourceLocation id(String path) {
@@ -80,8 +82,8 @@ public class IndustrialSorceryGreg {
   }
 
   @SubscribeEvent
-  public void registerMaterialRegistryEvent(MaterialRegistryEvent event) {
-    MATERIAL_REGISTRY = GTCEuAPI.materialManager.createRegistry(MODID);
+  public void registerMaterialRegistryEvent(MaterialEvent event) {
+    MATERIAL_REGISTRY = ISGRegistries.MATERIALS;
   }
 
   @SubscribeEvent

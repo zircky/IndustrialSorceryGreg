@@ -9,6 +9,7 @@ import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.ISGCovers;
 import com.zircky.industrialsorcerygreg.common.data.ISGElement;
+import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipes;
 import com.zircky.industrialsorcerygreg.data.recipe.ISGCraftingComponents;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -25,12 +26,12 @@ public class ISGAddon implements IGTAddon {
 
   @Override
   public void initializeAddon() {
-    IndustrialSorceryGreg.LOGGER.info("IndustrialSorceryGregAddon has loaded!");
+    ISGCore.LOGGER.info("IndustrialSorceryGregAddon has loaded!");
   }
 
   @Override
   public String addonModId() {
-    return IndustrialSorceryGreg.MODID;
+    return ISGCore.MODID;
   }
 
   @Override

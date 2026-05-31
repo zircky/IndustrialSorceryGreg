@@ -1,6 +1,6 @@
 package com.zircky.industrialsorcerygreg.client.hud;
 
-import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import dev.emi.emi.config.EmiConfig;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import net.minecraft.client.Minecraft;
@@ -91,7 +91,7 @@ public interface IMoveableHUD extends IGuiOverlay, GuiEventListener, Renderable 
     return b;
   }
 
-  @Mod.EventBusSubscriber(modid = IndustrialSorceryGreg.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
+  @Mod.EventBusSubscriber(modid = ISGCore.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
   class EventHandler {
 
     @SubscribeEvent

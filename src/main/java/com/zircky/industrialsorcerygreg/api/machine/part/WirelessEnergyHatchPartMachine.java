@@ -13,7 +13,6 @@ import com.gregtechceu.gtceu.utils.ISubscription;
 
 import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 
-import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
 import com.zircky.industrialsorcerygreg.api.data.wireless.WirelessEnergySavedData;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.Util;

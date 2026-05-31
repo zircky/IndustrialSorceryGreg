@@ -1,7 +1,6 @@
 package com.zircky.industrialsorcerygreg.mixin.adastra;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
 import com.zircky.industrialsorcerygreg.client.hud.AdAstraHUD;
 import com.zircky.industrialsorcerygreg.common.item.armor.SpaceArmorComponentItem;
 import earth.terrarium.adastra.api.systems.PlanetData;

@@ -1,7 +1,7 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
 import com.gregtechceu.gtceu.api.GTValues;
-import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
@@ -497,7 +497,7 @@ public class FuelReprocessorRecipes {
       throw new IllegalArgumentException("outputs must not be empty");
     }
 
-    final var builder = ISGRecipeTypes.FUEL_REPROCESSOR_RECIPES.recipeBuilder(IndustrialSorceryGreg.id(name))
+    final var builder = ISGRecipeTypes.FUEL_REPROCESSOR_RECIPES.recipeBuilder(ISGCore.id(name))
         .inputItems(getItem(MODID_NUCLERCRAFT, input));
 
     for (final ItemOutput output : outputs) {

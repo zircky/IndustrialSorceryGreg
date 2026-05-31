@@ -7,7 +7,7 @@ import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
-import com.zircky.industrialsorcerygreg.IndustrialSorceryGreg;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.common.data.ISGItems;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import gripe._90.megacells.definition.MEGAItems;
@@ -27,7 +27,7 @@ public class NetworkCells {
   }
 
   private static void cells(Consumer<FinishedRecipe> provider) {
-    CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder(IndustrialSorceryGreg.id("ae2/network/cells/item_storage_components_cell_1k_part"))
+    CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder(ISGCore.id("ae2/network/cells/item_storage_components_cell_1k_part"))
         .inputItems(CustomTags.ULV_CIRCUITS, 2)
         .inputItems(TagPrefix.plate, GTMaterials.CertusQuartz, 2)
         .inputItems(ISGItems.LOGIC_CHIP)
