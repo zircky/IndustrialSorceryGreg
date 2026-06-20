@@ -14,6 +14,7 @@ import com.gregtechceu.gtceu.api.pattern.util.RelativeDirection;
 import com.gregtechceu.gtceu.common.data.*;
 import com.zircky.industrialsorcerygreg.api.ISGValues;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes;
+import com.zircky.industrialsorcerygreg.common.machine.multiblock.electric.DissolvingTankMachine;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Blocks;
 
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import static com.gregtechceu.gtceu.api.machine.multiblock.PartAbility.*;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTMachines.*;
@@ -90,7 +92,7 @@ public class ISGMultiMachines {
           .where('A', blocks(GTBlocks.CASING_INVAR_HEATPROOF.get())
               .setMinGlobalLimited(20)
               .or(autoAbilities(definition.getRecipeTypes()))
-              .or(abilities(PartAbility.MAINTENANCE).setExactLimit(1)))
+              .or(abilities(MAINTENANCE).setExactLimit(1)))
           .where('F', abilities(PartAbility.MUFFLER))
           .where('S', controller(blocks(definition.getBlock())))
           .where(' ', any())
@@ -105,7 +107,7 @@ public class ISGMultiMachines {
           .aisle("AAA    ", "AAA    ", "AAA    ")
           .where('A', blocks(GTBlocks.CASING_INVAR_HEATPROOF.get())
               .or(autoAbilities(definition.getRecipeTypes(), false, false, true, true, true, true))
-              .or(abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1)))
+              .or(abilities(PARALLEL_HATCH).setMaxGlobalLimited(1)))
           .where('B', blocks(GTBlocks.CASING_STAINLESS_TURBINE.get()))
           .where('C', controller(blocks(definition.getBlock())))
           .where('D', blocks(GTBlocks.CASING_STAINLESS_STEEL_GEARBOX.get()))
@@ -164,5 +166,49 @@ public class ISGMultiMachines {
       .workableCasingModel(GTCEu.id("block/casings/gcym/atomic_casing"),
           GTCEu.id("block/multiblock/gcym/large_centrifuge"))
       .register();
+
+//  public static final MultiblockMachineDefinition DIGESTION_TANK = REGISTRATE.multiblock("digestion_tank", CoilWorkableElectricMultiblockMachine::new)
+//      .rotationState(RotationState.NON_Y_AXIS)
+//      .recipeTypes(ISGRecipeTypes.DIGESTION_TREATMENT_RECIPES)
+//      .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, BATCH_MODE)
+//      .appearanceBlock(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST)
+//      .pattern(definition -> FactoryBlockPattern.start()
+//          .where('S', controller(blocks(definition.get())))
+//          .where('X', blocks(GTBlocks.CASING_STAINLESS_CLEAN.get()))
+//          .where('K', blocks(GTBlocks.CASING_INVAR_HEATPROOF.get()))
+//          .where('Y', blocks(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get()))
+//          .where('M', heatingCoils())
+//          .where('O', blocks(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get())
+//              .or(autoAbilities(definition.getRecipeTypes()))
+//              .or(abilities(PARALLEL_HATCH).setMaxGlobalLimited(1))
+//              .or(abilities(MAINTENANCE).setExactLimit(1)))
+//          .where('A', air())
+//          .where('#', any())
+//          .build())
+//      .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"), GTCEu.id("block/multiblock/gcym/large_maceration_tower"))
+//      .register();
+
+  public static final MultiblockMachineDefinition DISSOLVING_TANK = REGISTRATE.multiblock("dissolving_tank", DissolvingTankMachine::new)
+      .rotationState(RotationState.NON_Y_AXIS)
+      .recipeTypes(ISGRecipeTypes.DISSOLUTION_TREATMENT_RECIPES)
+      .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
+      .pattern(definition -> FactoryBlockPattern.start()
+          .aisle("X###X", "OOOOO", "XGGGX", "XGGGX", "#XXX#")
+          .aisle("#####", "OKKKO", "G###G", "G###G", "XXXXX")
+          .aisle("#####", "OKKKO", "G###G", "G###G", "XXXXX")
+          .aisle("#####", "OKKKO", "G###G", "G###G", "XXXXX")
+          .aisle("X###X", "OOSOO", "XGGGX", "XGGGX", "#XXX#")
+          .where('S', controller(blocks(definition.get())))
+          .where('X', blocks(GTBlocks.CASING_STAINLESS_CLEAN.get()))
+          .where('K', blocks(GTBlocks.CASING_INVAR_HEATPROOF.get()))
+          .where('O', blocks(GTBlocks.CASING_STAINLESS_CLEAN.get())
+              .or(autoAbilities(definition.getRecipeTypes()))
+              .or(autoAbilities(true, false, true)))
+          .where('G', blocks(GTBlocks.CASING_TEMPERED_GLASS.get()))
+          .where('#', any())
+          .build())
+      .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"), GTCEu.id("block/multiblock/generator/large_gas_turbine"))
+      .register();
+
 
 }

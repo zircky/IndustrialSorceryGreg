@@ -9,8 +9,8 @@ import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.ISGCovers;
 import com.zircky.industrialsorcerygreg.common.data.ISGElement;
-import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipes;
+import com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet;
 import com.zircky.industrialsorcerygreg.data.recipe.ISGCraftingComponents;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
@@ -19,6 +19,10 @@ import java.util.function.Consumer;
 
 @GTAddon
 public class ISGAddon implements IGTAddon {
+  static {
+    ISGMaterialIconSet.init();
+  }
+
   @Override
   public GTRegistrate getRegistrate() {
     return ISGRegistries.REGISTRATE;
@@ -26,6 +30,7 @@ public class ISGAddon implements IGTAddon {
 
   @Override
   public void initializeAddon() {
+//    ISGPlaceholders.register();
     ISGCore.LOGGER.info("IndustrialSorceryGregAddon has loaded!");
   }
 

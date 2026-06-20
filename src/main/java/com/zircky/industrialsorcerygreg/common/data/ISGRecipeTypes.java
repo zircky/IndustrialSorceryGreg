@@ -27,6 +27,8 @@ import static com.lowdragmc.lowdraglib.gui.texture.ProgressTexture.FillDirection
 
 public class ISGRecipeTypes {
 
+  public final static GTRecipeType LARGE_MIXER_RECIPES = GTRecipeTypes.MIXER_RECIPES.setMaxIOSize(6, 1, 6, 1);
+
   public final static GTRecipeType ROCKET_ASSEMBLER_RECIPES = GTRecipeTypes.register("rocket_assembler", MULTIBLOCK).setEUIO(IO.IN)
       .setMaxIOSize(9, 1, 3, 0)
       .setSlotOverlay(false, false, GuiTextures.SLOT)
@@ -61,6 +63,31 @@ public class ISGRecipeTypes {
             widgetGroup.getSize().width - 25, widgetGroup.getSize().height - 32, false, false));
       });
 
+  public static final GTRecipeType DISSOLUTION_TREATMENT_RECIPES = GTRecipeTypes.register("dissolution_treatment", MULTIBLOCK)
+      .setMaxIOSize(2, 2, 2, 1)
+      .setEUIO(IO.IN)
+      .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, LEFT_TO_RIGHT)
+      .setSound(GTSoundEntries.ARC);
+
+  public static final GTRecipeType DIGESTION_TREATMENT_RECIPES = GTRecipeTypes.register("digestion_treatment", MULTIBLOCK)
+      .setMaxIOSize(1, 1, 1, 1)
+      .setEUIO(IO.IN)
+      .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, LEFT_TO_RIGHT)
+      .setSound(GTSoundEntries.COOLING)
+      .addDataInfo(data -> {
+        int temp = data.getInt("ebf_temp");
+        return LocalizationUtils.format("gtceu.recipe.temperature", FormattingUtil.formatTemperature(temp));
+      })
+      .addDataInfo(data -> {
+        int temp = data.getInt("ebf_temp");
+        ICoilType requiredCoil = ICoilType.getMinRequiredType(temp);
+
+        if (requiredCoil != null && !requiredCoil.getMaterial().isNull()) {
+          return LocalizationUtils.format("gtceu.recipe.coil.tier", I18n.get(requiredCoil.getMaterial().getUnlocalizedName()));
+        }
+        return "";
+      });
+
   public static final GTRecipeType FUEL_REPROCESSOR_RECIPES = GTRecipeTypes.register("fuel_reprocessor", MULTIBLOCK)
       .setMaxIOSize(1, 6, 1, 6)
       .setEUIO(IO.IN)
@@ -72,6 +99,7 @@ public class ISGRecipeTypes {
       .setEUIO(IO.IN)
       .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, LEFT_TO_RIGHT)
       .setSound(GTSoundEntries.ARC);
+
 
 
   public static void init() {

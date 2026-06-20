@@ -54,8 +54,6 @@ public class ISGCore {
 
     ISGItems.init();
 
-    ISGPlaceholders.register();
-
     ISGDatagen.initPost();
   }
 

@@ -1,7 +1,8 @@
 package com.zircky.industrialsorcerygreg.data;
 
-import com.zircky.industrialsorcerygreg.data.recipe.classified.AssemblerRecipes;
-import com.zircky.industrialsorcerygreg.data.recipe.classified.MixerRecipes;
+import com.zircky.industrialsorcerygreg.data.recipe.misc.CosmicChain;
+import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.AssemblerRecipes;
+import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.MixerRecipes;
 import com.zircky.industrialsorcerygreg.data.recipe.generated.ForEachMaterial;
 import com.zircky.industrialsorcerygreg.data.recipe.RecipeRemoval;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.ae2.AppliedEnergistics2Recipe;
@@ -17,6 +18,10 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.function.Consumer;
 
 public class Data {
+  private Data() {
+    /* This utility class should not be instantiated */
+  }
+
   public static void init(Consumer<FinishedRecipe> provider) {
     commonInit(provider);
   }
@@ -32,6 +37,7 @@ public class Data {
     AssemblerRecipes.init(provider);
     MixerRecipes.init(provider);
     ComponentRecipe.init(provider);
+    CosmicChain.init(provider);
     ChemicalReactorRecipes.init(provider);
     PlatinumLine.init(provider);
     ChromiumLine.init(provider);

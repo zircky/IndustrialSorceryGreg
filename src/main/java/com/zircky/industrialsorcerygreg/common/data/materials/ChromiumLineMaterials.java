@@ -20,6 +20,7 @@ public class ChromiumLineMaterials {
         .flags(MaterialFlags.DISABLE_DECOMPOSITION)
         .buildAndRegister();
     ChromiumIIIOxide = builderISG("chromium_iii_oxide")
+        .langValue("Chromium III Oxide")
         .dust()
         .color(0x3dc34d).iconSet(MaterialIconSet.DULL)
         .element(ISGElement.CHROMIOMIIIOXIDE)

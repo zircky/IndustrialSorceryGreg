@@ -201,31 +201,31 @@ public class NetworkCells {
 
     PACKER_RECIPES.recipeBuilder("ae2/network/cells/fluid_storage_cell_1k")
         .inputItems(AEItems.CELL_COMPONENT_1K.asItem())
-        .inputItems(AEItems.ITEM_CELL_HOUSING.asItem())
+        .inputItems(AEItems.FLUID_CELL_HOUSING.asItem())
         .outputItems(AEItems.FLUID_CELL_1K.asItem())
         .duration(5).EUt(GTValues.VA[GTValues.HV]).save(provider);
 
     PACKER_RECIPES.recipeBuilder("ae2/network/cells/fluid_storage_cell_4k")
         .inputItems(AEItems.CELL_COMPONENT_4K.asItem())
-        .inputItems(AEItems.ITEM_CELL_HOUSING.asItem())
+        .inputItems(AEItems.FLUID_CELL_HOUSING.asItem())
         .outputItems(AEItems.FLUID_CELL_4K.asItem())
         .duration(5).EUt(GTValues.VA[GTValues.HV]).save(provider);
 
     PACKER_RECIPES.recipeBuilder("ae2/network/cells/fluid_storage_cell_16k")
         .inputItems(AEItems.CELL_COMPONENT_16K.asItem())
-        .inputItems(AEItems.ITEM_CELL_HOUSING.asItem())
+        .inputItems(AEItems.FLUID_CELL_HOUSING.asItem())
         .outputItems(AEItems.FLUID_CELL_16K.asItem())
         .duration(5).EUt(GTValues.VA[GTValues.EV]).save(provider);
 
     PACKER_RECIPES.recipeBuilder("ae2/network/cells/fluid_storage_cell_64k")
         .inputItems(AEItems.CELL_COMPONENT_64K.asItem())
-        .inputItems(AEItems.ITEM_CELL_HOUSING.asItem())
+        .inputItems(AEItems.FLUID_CELL_HOUSING.asItem())
         .outputItems(AEItems.FLUID_CELL_64K.asItem())
         .duration(5).EUt(GTValues.VA[GTValues.EV]).save(provider);
 
     PACKER_RECIPES.recipeBuilder("ae2/network/cells/fluid_storage_cell_256k")
         .inputItems(AEItems.CELL_COMPONENT_256K.asItem())
-        .inputItems(AEItems.ITEM_CELL_HOUSING.asItem())
+        .inputItems(AEItems.FLUID_CELL_HOUSING.asItem())
         .outputItems(AEItems.FLUID_CELL_256K.asItem())
         .duration(5).EUt(GTValues.VA[GTValues.IV]).save(provider);
 
@@ -261,51 +261,34 @@ public class NetworkCells {
 
     PACKER_RECIPES.recipeBuilder("megacells/cells/fluid_storage_cell_1m")
         .inputItems(MEGAItems.CELL_COMPONENT_1M.asItem())
-        .inputItems(MEGAItems.MEGA_ITEM_CELL_HOUSING.asItem())
+        .inputItems(MEGAItems.MEGA_FLUID_CELL_HOUSING.asItem())
         .outputItems(MEGAItems.ITEM_CELL_1M.asItem())
         .duration(5).EUt(GTValues.VA[GTValues.LuV]).save(provider);
 
     PACKER_RECIPES.recipeBuilder("megacells/cells/fluid_storage_cell_4m")
         .inputItems(MEGAItems.CELL_COMPONENT_4M.asItem())
-        .inputItems(MEGAItems.MEGA_ITEM_CELL_HOUSING.asItem())
+        .inputItems(MEGAItems.MEGA_FLUID_CELL_HOUSING.asItem())
         .outputItems(MEGAItems.ITEM_CELL_4M.asItem())
         .duration(5).EUt(GTValues.VA[GTValues.LuV]).save(provider);
 
     PACKER_RECIPES.recipeBuilder("megacells/cells/fluid_storage_cell_16m")
         .inputItems(MEGAItems.CELL_COMPONENT_16M.asItem())
-        .inputItems(MEGAItems.MEGA_ITEM_CELL_HOUSING.asItem())
+        .inputItems(MEGAItems.MEGA_FLUID_CELL_HOUSING.asItem())
         .outputItems(MEGAItems.ITEM_CELL_16M.asItem())
         .duration(5).EUt(GTValues.VA[GTValues.ZPM]).save(provider);
 
     PACKER_RECIPES.recipeBuilder("megacells/cells/fluid_storage_cell_64m")
         .inputItems(MEGAItems.CELL_COMPONENT_64M.asItem())
-        .inputItems(MEGAItems.MEGA_ITEM_CELL_HOUSING.asItem())
+        .inputItems(MEGAItems.MEGA_FLUID_CELL_HOUSING.asItem())
         .outputItems(MEGAItems.ITEM_CELL_64M.asItem())
         .duration(5).EUt(GTValues.VA[GTValues.ZPM]).save(provider);
 
     PACKER_RECIPES.recipeBuilder("megacells/cells/fluid_storage_cell_256m")
         .inputItems(MEGAItems.CELL_COMPONENT_256M.asItem())
-        .inputItems(MEGAItems.MEGA_ITEM_CELL_HOUSING.asItem())
+        .inputItems(MEGAItems.MEGA_FLUID_CELL_HOUSING.asItem())
         .outputItems(MEGAItems.ITEM_CELL_256M.asItem())
         .duration(5).EUt(GTValues.VA[GTValues.UV]).save(provider);
 
   }
-
-  private static void vanillaRecipeHelper(Consumer<FinishedRecipe> provider, String id, ItemStack result, ItemStack input1, ItemStack input2, ItemStack input3) {
-    VanillaRecipeHelper.addShapedRecipe(provider, id, result,
-        "UPU", "PIP", "UPU",
-        'P', input1,
-        'I', input2,
-        'U', input3);
-  }
-
-  private static void vanillaRecipeHelper(Consumer<FinishedRecipe> provider, String id, ItemStack result, ItemStack input1, ItemStack input2, TagKey<Item> input3) {
-    VanillaRecipeHelper.addShapedRecipe(provider, id, result,
-        "UPU", "PIP", "UPU",
-        'P', input1,
-        'I', input2,
-        'U', input3);
-  }
-
 
 }

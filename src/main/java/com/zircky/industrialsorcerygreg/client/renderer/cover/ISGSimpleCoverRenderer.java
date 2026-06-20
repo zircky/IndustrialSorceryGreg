@@ -1,9 +1,9 @@
 package com.zircky.industrialsorcerygreg.client.renderer.cover;
 
 import com.gregtechceu.gtceu.api.cover.CoverBehavior;
+import com.gregtechceu.gtceu.client.model.quad.StaticFaceBakery;
 import com.gregtechceu.gtceu.client.renderer.cover.ICoverRenderer;
-import com.gregtechceu.gtceu.client.util.ModelUtils;
-import com.gregtechceu.gtceu.client.util.StaticFaceBakery;
+import com.gregtechceu.gtceu.client.util.ModelEventHelper;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -21,6 +21,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+
 public class ISGSimpleCoverRenderer implements ICoverRenderer {
 
   @OnlyIn(Dist.CLIENT)
@@ -33,7 +34,7 @@ public class ISGSimpleCoverRenderer implements ICoverRenderer {
   }
 
   public ISGSimpleCoverRenderer(ResourceLocation texture, ResourceLocation emissiveTexture) {
-    ModelUtils.registerAtlasStitchedEventListener(false, InventoryMenu.BLOCK_ATLAS, event -> {
+    ModelEventHelper.registerAtlasStitchedEventListener(false, InventoryMenu.BLOCK_ATLAS, event -> {
       var atlas = event.getAtlas();
 
       sprite = atlas.getSprite(texture);

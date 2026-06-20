@@ -6,4 +6,7 @@ public class ISGMaterialIconSet {
 
   public static final MaterialIconSet CHAOS = new MaterialIconSet("chaos", MaterialIconSet.METALLIC);
   public static final MaterialIconSet INFINITY = new MaterialIconSet("infinity", MaterialIconSet.DULL);
+
+  public static void init() {
+  }
 }

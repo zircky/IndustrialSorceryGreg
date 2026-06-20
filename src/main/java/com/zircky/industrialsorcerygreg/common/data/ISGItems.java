@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.item.ComponentItem;
+import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.common.item.armor.*;
 import com.gregtechceu.gtceu.common.item.behavior.CoverPlaceBehavior;
 import com.gregtechceu.gtceu.common.item.behavior.TooltipBehavior;
@@ -14,16 +15,21 @@ import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.tag.item.ISGItemTag;
 import com.zircky.industrialsorcerygreg.common.item.armor.SpaceArmorComponentItem;
 import earth.terrarium.adastra.common.tags.ModItemTags;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.common.Tags;
 
 import java.util.Locale;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.common.data.GTItems.attach;
+import static com.gregtechceu.gtceu.utils.FormattingUtil.toEnglishName;
 
 public class ISGItems {
 
@@ -35,7 +41,7 @@ public class ISGItems {
   }
 
 //  public static final ItemEntry<Item> SMD_CAPACITOR_REFINED = registerLang("smd_capacitor_refined", "Refined SMD Capacitor");
-//  public static final ItemEntry<Item> SMD_DIODE_REFINED = registerLang("smd_diode_refined", "Refined SMD Diode");
+//  public static final ItemEntry<Item> SMD_DIODE_REFINED = registerSmd("smd_diode_refined", "Refined SMD Diode");
 //  public static final ItemEntry<Item> SMD_RESISTOR_REFINED = registerLang("smd_resistor_refined", "Refined SMD Resistor");
 //  public static final ItemEntry<Item> SMD_TRANSISTOR_REFINED = registerLang("smd_transistor_refined", "Refined SMD Transistor");
 //  public static final ItemEntry<Item> SMD_INDUCTOR_REFINED = registerLang("smd_inductor_refined", "Refined SMD Inductor");
@@ -118,6 +124,76 @@ public class ISGItems {
   public static final ItemEntry<Item> SMD_RESISTOR_SUPRACAUSAL = registerLang("smd_resistor_supracausal", "Supracausal SMD Resistor");
   public static final ItemEntry<Item> SMD_TRANSISTOR_SUPRACAUSAL = registerLang("smd_transistor_supracausal", "Supracausal SMD Transistor");
   public static final ItemEntry<Item> SMD_INDUCTOR_SUPRACAUSAL = registerLang("smd_inductor_supracausal", "Supracausal SMD Inductor");
+
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_LV = registerCircuit("universal_circuit_lv", "Universal Circuit LV", CustomTags.LV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_MV = registerCircuit("universal_circuit_mv", "Universal Circuit MV", CustomTags.MV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_HV = registerCircuit("universal_circuit_hv", "Universal Circuit HV", CustomTags.HV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_EV = registerCircuit("universal_circuit_ev", "Universal Circuit EV", CustomTags.EV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_IV = registerCircuit("universal_circuit_iv", "Universal Circuit IV", CustomTags.IV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_LuV = registerCircuit("universal_circuit_luv", "Universal Circuit LuV", CustomTags.LuV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_ZPM = registerCircuit("universal_circuit_zpm", "Universal Circuit ZPM", CustomTags.ZPM_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_UV = registerCircuit("universal_circuit_uv", "Universal Circuit UV", CustomTags.UV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_UHV = registerCircuit("universal_circuit_uhv", "Universal Circuit UHV", CustomTags.UHV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_UEV = registerCircuit("universal_circuit_uev", "Universal Circuit UEV", CustomTags.UEV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_UIV = registerCircuit("universal_circuit_uiv", "Universal Circuit UIV", CustomTags.UIV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_UXV = registerCircuit("universal_circuit_uxv", "Universal Circuit UXV", CustomTags.UXV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_OpV = registerCircuit("universal_circuit_opv", "Universal Circuit OpV", CustomTags.OpV_CIRCUITS);
+  public static final ItemEntry<Item> UNIVERSAL_CIRCUIT_MAX = registerCircuit("universal_circuit_max", "Universal Circuit MAX", CustomTags.MAX_CIRCUITS);
+
+  public static final ItemEntry<Item> BIOWARE_PROCESSOR = registerCircuit("bioware_processor", CustomTags.ZPM_CIRCUITS);
+  public static final ItemEntry<Item> BIOWARE_ASSEMBLY = registerCircuit("bioware_assembly", CustomTags.UV_CIRCUITS);
+  public static final ItemEntry<Item> BIOWARE_COMPUTER = registerCircuit("bioware_computer", CustomTags.UHV_CIRCUITS);
+  public static final ItemEntry<Item> BIOWARE_MAINFRAME = registerCircuit("bioware_mainframe", CustomTags.UEV_CIRCUITS);
+
+  public static final ItemEntry<Item> OPTICAL_PROCESSOR = registerCircuit("optical_processor", CustomTags.UV_CIRCUITS);
+  public static final ItemEntry<Item> OPTICAL_ASSEMBLY = registerCircuit("optical_assembly", CustomTags.UHV_CIRCUITS);
+  public static final ItemEntry<Item> OPTICAL_COMPUTER = registerCircuit("optical_computer", CustomTags.UEV_CIRCUITS);
+  public static final ItemEntry<Item> OPTICAL_MAINFRAME = registerCircuit("optical_mainframe", CustomTags.UIV_CIRCUITS);
+
+  public static final ItemEntry<Item> EXOTIC_PROCESSOR = registerCircuit("exotic_processor", CustomTags.UHV_CIRCUITS);
+  public static final ItemEntry<Item> EXOTIC_ASSEMBLY = registerCircuit("exotic_assembly", CustomTags.UEV_CIRCUITS);
+  public static final ItemEntry<Item> EXOTIC_COMPUTER = registerCircuit("exotic_computer", CustomTags.UIV_CIRCUITS);
+  public static final ItemEntry<Item> EXOTIC_MAINFRAME = registerCircuit("exotic_mainframe", CustomTags.UXV_CIRCUITS);
+
+  public static final ItemEntry<Item> COSMIC_PROCESSOR = registerCircuit("cosmic_processor", CustomTags.UEV_CIRCUITS);
+  public static final ItemEntry<Item> COSMIC_ASSEMBLY = registerCircuit("cosmic_assembly", CustomTags.UIV_CIRCUITS);
+  public static final ItemEntry<Item> COSMIC_COMPUTER = registerCircuit("cosmic_computer", CustomTags.UXV_CIRCUITS);
+  public static final ItemEntry<Item> COSMIC_MAINFRAME = registerCircuit("cosmic_mainframe", CustomTags.OpV_CIRCUITS);
+
+  public static final ItemEntry<Item> SUPRACAUSAL_PROCESSOR = registerCircuit("supracausal_processor", CustomTags.UIV_CIRCUITS);
+  public static final ItemEntry<Item> SUPRACAUSAL_ASSEMBLY = registerCircuit("supracausal_assembly", CustomTags.UXV_CIRCUITS);
+  public static final ItemEntry<Item> SUPRACAUSAL_COMPUTER = registerCircuit("supracausal_computer", CustomTags.OpV_CIRCUITS);
+  public static final ItemEntry<Item> SUPRACAUSAL_MAINFRAME = registerCircuit("supracausal_mainframe", CustomTags.MAX_CIRCUITS);
+
+
+  public static final ItemEntry<Item> LOW_FREQUENCY_LASER = registerLang("low_frequency_laser", "Low frequency laser");
+  public static final ItemEntry<Item> MEDIUM_FREQUENCY_LASER = registerLang("medium_frequency_laser", "Medium Frequency Laser");
+  public static final ItemEntry<Item> HIGH_FREQUENCY_LASER  = registerLang("high_frequency_laser", "High Frequency Laser");
+
+  public static final ItemEntry<Item> PLASMA_CONTAINMENT_CELL = registerLang("plasma_containment_cell", "Plasma Containment Cell");
+  public static final ItemEntry<Item> RHENIUM_PLASMA_CONTAINMENT_CELL = registerLang("rhenium_plasma_containment_cell", "Rhenium Plasma Containment Cell");
+  public static final ItemEntry<Item> ACTINIUM_SUPERHYDRIDE_PLASMA_CONTAINMENT_CELL = registerLang("actinium_superhydride_plasma_containment_cell", "Actinium Auperhydride Plasma Containment Cell");
+  public static final ItemEntry<Item> OPTICAL_SOC_CONTAINMENT_HOUSING = registerLang("optical_soc_containment_housing", "Optical SoC Containment Housing");
+
+  public static final ItemEntry<Item> NEUTRON_PLASMA_CONTAINMENT_CELL = register("neutron_plasma_containment_cell");
+  public static final ItemEntry<Item> CRYSTAL_MATRIX_PLASMA_CONTAINMENT_CELL = register("crystal_matrix_plasma_containment_cell");
+  public static final ItemEntry<Item> AWAKENED_DRACONIUM_PLASMA_CONTAINMENT_CELL = register("awakened_draconium_plasma_containment_cell");
+
+  public static final ItemEntry<Item> EMPTY_LASER_COOLING_CONTAINER = register("empty_laser_cooling_container");
+  public static final ItemEntry<Item> BOSE_EINSTEIN_COOLING_CONTAINER = register("bose_einstein_cooling_container");
+  public static final ItemEntry<Item> TIME_DILATION_CONTAINMENT_UNIT = register("time_dilation_containment_unit");
+  public static final ItemEntry<Item> CONTAINED_HIGH_DENSITY_PROTONIC_MATTER = register("contained_high_density_protonic_matter");
+  public static final ItemEntry<Item> CHAOS_CONTAINMENT_UNIT = register("chaos_containment_unit");
+  public static final ItemEntry<Item> COSMIC_MESH_CONTAINMENT_UNIT = register("cosmic_mesh_containment_unit");
+
+  public static final ItemEntry<Item> CONTAINED_REISSNER_NORDSTROM_SINGULARITY = register("contained_reissner_nordstrom_singularity");
+  public static final ItemEntry<Item> CONTAINED_KERR_NEWMANN_SINGULARITY = register("contained_kerr_newmann_singularity");
+  public static final ItemEntry<Item> CONTAINED_KERR_SINGULARITY = register("contained_kerr_singularity");
+  public static final ItemEntry<Item> CONTAINED_EXOTIC_MATTER = register("contained_exotic_matter");
+  public static final ItemEntry<Item> CLOSED_TIMELIKE_CURVE_COMPUTATIONAL_UNIT_CONTAINER = register("closed_timelike_curve_computational_unit_container");
+  public static final ItemEntry<Item> CONTAMINATED_PETRI_DISH = register("contaminated_petri_dish");
+
+
 
   public static final ItemEntry<Item> LOGIC_CHIP = registerLang("logic_chip", "Logic Chip");
 
@@ -219,10 +295,22 @@ public class ISGItems {
       registerTieredCover(OpV, 4) : null;
 
 
+  private static ItemEntry<Item> register(String id) {
+    return ISGRegistries.REGISTRATE.item(id, Item::new)
+        .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/%s", id))))
+        .register();
+  }
+
   private static ItemEntry<Item> registerLang(String id, String name) {
     return ISGRegistries.REGISTRATE.item(id, Item::new)
         .lang(name)
         .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/%s", id))))
+        .register();
+  }
+  private static ItemEntry<Item> registerSmd(String id, String name) {
+    return ISGRegistries.REGISTRATE.item(id, Item::new)
+        .lang(name)
+        .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/smd/%s", id))))
         .register();
   }
 
@@ -237,5 +325,20 @@ public class ISGItems {
           lines.add(Component.translatable("item.isg.wireless_energy_receive_cover.tooltip.3", GTValues.VEX[tier] * amperage));
         }), new CoverPlaceBehavior(amperage == 1 ? ISGCovers.WIRELESS_ENERGY_RECEIVE[tier - 1] : ISGCovers.WIRELESS_ENERGY_RECEIVE_4A[tier - 1])))
         .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/wireless/%s", id)))).register();
+  }
+  public static ItemEntry<Item> registerCircuit(String paramString1, String paramString2, TagKey<Item> paramTagKey) {
+    return ISGRegistries.REGISTRATE.item(paramString1, Item::new)
+        .lang(paramString2)
+        .tag(paramTagKey)
+        .model((ctx, prov) -> prov.generated(ctx, prov.modLoc("item/circuit/%s".formatted(paramString1))))
+        .register();
+  }
+
+  public static ItemEntry<Item> registerCircuit(String paramString1, TagKey<Item> paramTagKey) {
+    return ISGRegistries.REGISTRATE.item(paramString1, Item::new)
+        .lang(toEnglishName(paramString1))
+        .tag(paramTagKey)
+        .model((ctx, prov) -> prov.generated(ctx, prov.modLoc("item/circuit/%s".formatted(paramString1))))
+        .register();
   }
 }
