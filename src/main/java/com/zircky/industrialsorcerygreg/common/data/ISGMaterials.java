@@ -2257,6 +2257,10 @@ public class ISGMaterials {
   public static Material DilutedImpureNaquahamericiumHydroxide;
   public static Material SuperfluidCarbonOxygenMixture;
   public static Material Butene1;
+  public static Material Prisma;
+  public static Material Ultimentium;
+  public static Material UltimentiumMatterCrystal;
+
 
 
 

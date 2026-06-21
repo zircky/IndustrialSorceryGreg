@@ -14,7 +14,9 @@ import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
 import com.gregtechceu.gtceu.utils.GTUtil;
+import com.zircky.industrialsorcerygreg.api.ISGValues;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
+import com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes;
 import it.unimi.dsi.fastutil.objects.ObjectIntPair;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
@@ -32,6 +34,9 @@ import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.dustPure;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Water;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
+import static com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix.crushedLeached;
+import static com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix.prismaFrothed;
+import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.Prisma;
 
 public final class ISGOreRecipeHandler {
   private ISGOreRecipeHandler() {
@@ -49,8 +54,16 @@ public final class ISGOreRecipeHandler {
 
     processRawOre(provider, property, material);
     processCrushedOre(provider, property, material);
+
+    processCrushedLeachedBad(provider, property, material);
+    processLeachedRefined(provider, property, material);
+
     processCrushedPurified(provider, property, material);
+    processRefinedFrothed(provider, property, material);
+
     processCrushedCentrifuged(provider, property, material);
+    processFrothedPure(provider, property, material);
+
     processDirtyDust(provider, property, material);
     processPureDust(provider, property, material);
   }
@@ -326,40 +339,47 @@ public final class ISGOreRecipeHandler {
     processMetalSmelting(provider, property, crushed, material);
   }
 
-  private static void processCrushedCentrifuged(@NotNull Consumer<FinishedRecipe> provider,
-                                                @NotNull OreProperty property, @NotNull Material material) {
-    if (!material.shouldGenerateRecipesFor(crushedRefined)) {
-      return;
+  private static void processCrushedLeachedBad(Consumer<FinishedRecipe> provider, @NotNull OreProperty property, Material material) {
+    if (!material.shouldGenerateRecipesFor(crushed)) return;
+    ItemStack leachedStack = ChemicalHelper.get(crushedLeached, material);
+
+    Material byproduct = property.getOreByProduct(0, material);
+    Material byproduct2 = property.getOreByProduct(1, material);
+
+    var builder = ISGRecipeTypes.LEACHING_PLANT_RECIPES.recipeBuilder("crushed_" + material.getName() + "_to_crushedleached")
+        .inputItems(crushedPurified, material)
+        .inputFluids(Water.getFluid(100))
+        .inputFluids(SulfuricAcid.getFluid(200))
+        .circuitMeta(1)
+        .outputItems(leachedStack)
+        .chancedOutput(leachedStack, 5500, 750);
+    if (byproduct != GTMaterials.NULL && !ChemicalHelper.get(dustPure, byproduct).isEmpty()) {
+      builder.chancedOutput(dustPure, byproduct, 1500, 1350);
     }
+    if (byproduct2 != GTMaterials.NULL && !ChemicalHelper.get(dustPure, byproduct2).isEmpty()) {
+      builder.chancedOutput(dustPure, byproduct2, 2200, 1150);
+    }
+    builder.outputFluids(DilutedSulfuricAcid.getFluid(300));
+    builder.duration(ISGValues.SECONDS*10).EUt(VA[MV]).save(provider);
+  }
 
-    ItemStack dustStack = ChemicalHelper.get(dust, getOutputMaterial(material));
-    ItemStack byproductStack = ChemicalHelper.get(dust, property.getOreByProduct(2, material), 1);
+  public static void processLeachedRefined(Consumer<FinishedRecipe> provider, @NotNull OreProperty property, Material material) {
+    if (!material.shouldGenerateRecipesFor(crushedLeached)) return;
+    ItemStack refinedStack = ChemicalHelper.get(crushedRefined, material);
 
-    FORGE_HAMMER_RECIPES.recipeBuilder("hammer_" + material.getName() + "_refined_ore_to_dust")
-        .inputItems(crushedRefined, material)
-        .outputItems(dustStack)
-        .duration(10).EUt(16)
-        .category(GTRecipeCategories.ORE_FORGING)
-        .save(provider);
+    Material byproduct = property.getOreByProduct(1);
 
-    MACERATOR_RECIPES.recipeBuilder("macerate_" + material.getName() + "_refined_ore_to_dust")
-        .inputItems(crushedRefined, material)
-        .outputItems(dustStack)
-        .chancedOutput(byproductStack, 1400, 0)
-        .duration(400).EUt(2)
-        .category(GTRecipeCategories.ORE_CRUSHING)
-        .save(provider);
-
-    VanillaRecipeHelper.addShapelessRecipe(provider,
-        String.format("centrifuged_ore_to_dust_%s", material.getName()), dustStack,
-        'h', new MaterialEntry(crushedRefined, material));
-
-    processMetalSmelting(provider, property, crushedRefined, material);
+    var builder = THERMAL_CENTRIFUGE_RECIPES.recipeBuilder("leached_" + material.getName() + "_to_refined")
+        .inputItems(crushedLeached, material)
+        .outputItems(refinedStack);
+    if (byproduct != GTMaterials.NULL && !ChemicalHelper.get(dust, byproduct).isEmpty()) {
+      builder.chancedOutput(dust, byproduct, 2500, 1000);
+    }
+    builder.duration(40).EUt(VA[HV]).save(provider);
   }
 
   private static void processCrushedPurified(@NotNull Consumer<FinishedRecipe> provider,
-                                             @NotNull OreProperty property,
-                                             @NotNull Material material) {
+                                             @NotNull OreProperty property, @NotNull Material material) {
     if (!material.shouldGenerateRecipesFor(crushedPurified)) {
       return;
     }
@@ -440,6 +460,84 @@ public final class ISGOreRecipeHandler {
       }
     }
     processMetalSmelting(provider, property, crushedPurified, material);
+  }
+
+  private static void processRefinedFrothed(Consumer<FinishedRecipe> provider, @NotNull OreProperty property, Material material) {
+    if (!material.shouldGenerateRecipesFor(crushedRefined) || !material.hasProperty(PropertyKey.ORE)) return;
+    ItemStack frothedStack = ChemicalHelper.get(prismaFrothed, material);
+
+    Material byproduct = property.getOreByProduct(0, material);
+    Material byproduct2 = property.getOreByProduct(1, material);
+    Material byproduct3 = property.getOreByProduct(2, material);
+    Material byproduct4 = property.getOreByProduct(Integer.MAX_VALUE, material);
+
+    var builder = ISGRecipeTypes.CHROMATIC_FLOTATION_PLANT_RECIPES.recipeBuilder("refined_" + material.getName() + "_to_frothed")
+        .inputItems(crushedRefined, material)
+        .inputFluids(Prisma.getFluid(1000))
+        .outputItems(frothedStack.copyWithCount(2));
+    if (byproduct != GTMaterials.NULL && !ChemicalHelper.get(dustImpure, byproduct).isEmpty()) {
+      builder.chancedOutput(dustImpure, byproduct, 3500, 1450);
+    }
+    if (byproduct2 != GTMaterials.NULL && !ChemicalHelper.get(dustImpure, byproduct2).isEmpty()) {
+      builder.chancedOutput(dustImpure, byproduct2, 1800, 1750);
+    }
+    if (byproduct3 != GTMaterials.NULL && !ChemicalHelper.get(dustPure, byproduct3).isEmpty()) {
+      builder.chancedOutput(dustImpure, byproduct3, 1500, 1950);
+    }
+    if (byproduct4 != GTMaterials.NULL && !ChemicalHelper.get(dustPure, byproduct4).isEmpty()) {
+      builder.chancedOutput(dustImpure, byproduct4, 1500, 1950);
+    }
+    builder.outputFluids(Prisma.getFluid(500));
+    builder.duration(40).EUt(VA[IV]).save(provider);
+  }
+
+  private static void processCrushedCentrifuged(@NotNull Consumer<FinishedRecipe> provider,
+                                                @NotNull OreProperty property, @NotNull Material material) {
+    if (!material.shouldGenerateRecipesFor(crushedRefined)) {
+      return;
+    }
+
+    ItemStack dustStack = ChemicalHelper.get(dust, getOutputMaterial(material));
+    ItemStack byproductStack = ChemicalHelper.get(dust, property.getOreByProduct(2, material), 1);
+
+    FORGE_HAMMER_RECIPES.recipeBuilder("hammer_" + material.getName() + "_refined_ore_to_dust")
+        .inputItems(crushedRefined, material)
+        .outputItems(dustStack)
+        .duration(10).EUt(16)
+        .category(GTRecipeCategories.ORE_FORGING)
+        .save(provider);
+
+    MACERATOR_RECIPES.recipeBuilder("macerate_" + material.getName() + "_refined_ore_to_dust")
+        .inputItems(crushedRefined, material)
+        .outputItems(dustStack)
+        .chancedOutput(byproductStack, 1400, 0)
+        .duration(400).EUt(2)
+        .category(GTRecipeCategories.ORE_CRUSHING)
+        .save(provider);
+
+    VanillaRecipeHelper.addShapelessRecipe(provider,
+        String.format("centrifuged_ore_to_dust_%s", material.getName()), dustStack,
+        'h', new MaterialEntry(crushedRefined, material));
+
+    processMetalSmelting(provider, property, crushedRefined, material);
+  }
+
+  public static void processFrothedPure(Consumer<FinishedRecipe> provider, @NotNull OreProperty property, Material material) {
+    if (!material.shouldGenerateRecipesFor(prismaFrothed)) return;
+    ItemStack refinedStack = ChemicalHelper.get(prismaFrothed, material);
+    ItemStack pureStack = ChemicalHelper.get(dustPure, material);
+
+    Material byproduct = property.getOreByProduct(0, material);
+
+    var builder = CHEMICAL_BATH_RECIPES.recipeBuilder("frothed_" + material.getName() + "_to_purified")
+        .inputItems(refinedStack)
+        .inputFluids(Water.getFluid(1000))
+        .outputItems(pureStack);
+    if (byproduct != GTMaterials.NULL && !ChemicalHelper.get(dustPure, byproduct).isEmpty()) {
+      builder.chancedOutput(dustPure, byproduct, 1500, 1950);
+    }
+    builder.outputFluids(Prisma.getFluid(500));
+    builder.duration(40).EUt(VA[IV]).save(provider);
   }
 
   private static void processDirtyDust(@NotNull Consumer<FinishedRecipe> provider, @NotNull OreProperty property,

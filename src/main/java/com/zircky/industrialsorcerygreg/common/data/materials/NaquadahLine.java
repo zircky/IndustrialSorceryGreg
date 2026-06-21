@@ -21,7 +21,7 @@ public class NaquadahLine {
         .setFormula("Ad");
 
     NaquadahOxideMixture = builderISG("naquadah_oxide_mixture")
-        .dust()
+        .dust().ore()
         .color(0x4c4c4c)
         .iconSet(MaterialIconSet.METALLIC)
         .buildAndRegister()
@@ -119,7 +119,7 @@ public class NaquadahLine {
 
     EnrichedNaquadahOxideMixture = builderISG("enriched_naquadah_oxide_mixture")
         .langValue("Enriched-Naquadah Oxide Mixture")
-        .dust()
+        .dust().ore()
         .color(0x826868)
         .iconSet(MaterialIconSet.METALLIC)
         .radioactiveHazard(1)
@@ -160,7 +160,7 @@ public class NaquadahLine {
         .setFormula("Na+(SO4)2", true);
 
     NaquadriaOxideMixture = builderISG("naquadria_oxide_mixture")
-        .dust()
+        .dust().ore()
         .color(0x4d4d55)
         .iconSet(MaterialIconSet.METALLIC)
         .buildAndRegister()

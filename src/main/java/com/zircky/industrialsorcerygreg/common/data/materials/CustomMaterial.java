@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
+import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.FluidState;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 
@@ -5506,6 +5507,11 @@ public class CustomMaterial {
         .fluid()
         .color(0xB75B5B)
         .iconSet(FLUID)
+        .buildAndRegister();
+
+    Prisma = builderISG("prisma")
+        .liquid(new FluidBuilder().state(FluidState.LIQUID).customStill())
+        .formula("֍")
         .buildAndRegister();
   }
 }
