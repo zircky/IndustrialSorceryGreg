@@ -7,6 +7,8 @@ import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 public class ItemLang {
   public static void init(RegistrateLangProvider provider) {
     initGeneratedNames(provider);
+
+    provider.add("isgcore.tooltip.item.tier_circuit", "%s Tier Circuit");
   }
 
   private static void initGeneratedNames(RegistrateLangProvider provider) {

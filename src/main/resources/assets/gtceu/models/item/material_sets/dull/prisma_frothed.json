@@ -1,0 +1,9 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "industrialsorcerygreg:item/material_sets/dull/frothed",
+    "layer1": "industrialsorcerygreg:item/material_sets/dull/frothed_secondary",
+    "layer2": "industrialsorcerygreg:item/material_sets/dull/frothed_overlay",
+    "layer3": "industrialsorcerygreg:item/material_sets/dull/frothed_overlay_glint"
+  }
+}

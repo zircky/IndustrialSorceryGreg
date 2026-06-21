@@ -10,8 +10,7 @@ import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 import org.jetbrains.annotations.Nullable;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.NO_SMASHING;
-import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.Conditions.hasIngotProperty;
-import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.Conditions.hasDustProperty;
+import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.Conditions.*;
 import static com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags.*;
 
 @SuppressWarnings("unused")
@@ -22,6 +21,26 @@ public class ISGTagPrefix extends TagPrefix {
   public ISGTagPrefix(String name) {
     super(name);
   }
+
+
+  public static final TagPrefix crushedLeached = new ISGTagPrefix("leachedOre")
+      .idPattern("leached_%s_ore")
+      .defaultTagPath("leached_ores/%s")
+      .langValue("Leached %s Ore")
+      .defaultTagPath("leached_ores")
+      .materialIconType(new MaterialIconType("crushedLeached"))
+      .unificationEnabled(true)
+      .generateItem(true)
+      .generationCondition(hasOreProperty);
+  public static final TagPrefix prismaFrothed = new ISGTagPrefix("prismaFrothedOre")
+      .idPattern("prisma_frothed_%s_ore")
+      .defaultTagPath("prisma_frothed_ores/%s")
+      .langValue("Prisma Frothed %s Ore")
+      .defaultTagPath("prisma_frothed_ores")
+      .materialIconType(new MaterialIconType("prismaFrothed"))
+      .unificationEnabled(true)
+      .generateItem(true)
+      .generationCondition(hasOreProperty);
 
   public static final TagPrefix CURVED_PLATE = new ISGTagPrefix("curved_plate").idPattern("curved_%s_plate").defaultTagPath("curved_plates/%s").unformattedTagPath("curved_plates").langValue("Curved %s Plate").materialAmount(GTValues.M).materialIconType(new MaterialIconType("curved_plate")).unificationEnabled(true).generateItem(true).enableRecycling().generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_CURVED_PLATE) || mat.hasFlag(MaterialFlags.GENERATE_ROTOR) || ((mat.hasProperty(PropertyKey.FLUID_PIPE) || mat.hasProperty(PropertyKey.ITEM_PIPE)) && !mat.hasFlag(NO_SMASHING) && mat.getMass() < 240 && mat.getBlastTemperature() < 3600));
   public static final TagPrefix MOTOR_ENCLOSURE = new ISGTagPrefix("motor_enclosure").idPattern("%s_motor_enclosure").defaultTagPath("motor_enclosures/%s").unformattedTagPath("motor_enclosures").langValue("%s Motor Enclosure").materialAmount(GTValues.M << 1).materialIconType(new MaterialIconType("motor_enclosure")).unificationEnabled(true).generateItem(true).enableRecycling().generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_COMPONENT));
@@ -47,7 +66,7 @@ public class ISGTagPrefix extends TagPrefix {
       .defaultTagPath("double_ingots/%s")
       .unformattedTagPath("double_ingots")
       .langValue("Double %s Ingot")
-      .materialAmount(GTValues.M*2)
+      .materialAmount(GTValues.M * 2)
       .maxStackSize(32)
       .materialIconType(MaterialIconType.ingotDouble)
       .unificationEnabled(true)
@@ -60,7 +79,7 @@ public class ISGTagPrefix extends TagPrefix {
       .defaultTagPath("triple_ingots/%s")
       .unformattedTagPath("triple_ingots")
       .langValue("Triple %s Ingot")
-      .materialAmount(GTValues.M*3)
+      .materialAmount(GTValues.M * 3)
       .maxStackSize(32)
       .materialIconType(MaterialIconType.ingotTriple)
       .unificationEnabled(true)
@@ -73,7 +92,7 @@ public class ISGTagPrefix extends TagPrefix {
       .defaultTagPath("quadruple_ingots/%s")
       .unformattedTagPath("quadruple_ingots")
       .langValue("Quadruple %s Ingot")
-      .materialAmount(GTValues.M*4)
+      .materialAmount(GTValues.M * 4)
       .maxStackSize(32)
       .materialIconType(MaterialIconType.ingotQuadruple)
       .unificationEnabled(true)
@@ -86,7 +105,7 @@ public class ISGTagPrefix extends TagPrefix {
       .defaultTagPath("quintuple_ingots/%s")
       .unformattedTagPath("quintuple_ingots")
       .langValue("Quintuple %s Ingot")
-      .materialAmount(GTValues.M*5)
+      .materialAmount(GTValues.M * 5)
       .maxStackSize(32)
       .materialIconType(MaterialIconType.ingotQuintuple)
       .unificationEnabled(true)
@@ -99,7 +118,7 @@ public class ISGTagPrefix extends TagPrefix {
       .defaultTagPath("triple_plates/%s")
       .unformattedTagPath("triple_plates")
       .langValue("Triple %s Plate")
-      .materialAmount(GTValues.M*3)
+      .materialAmount(GTValues.M * 3)
       .maxStackSize(32)
       .materialIconType(MaterialIconType.plateTriple)
       .unificationEnabled(true)
@@ -112,7 +131,7 @@ public class ISGTagPrefix extends TagPrefix {
       .defaultTagPath("quadruple_plates/%s")
       .unformattedTagPath("quadruple_plates")
       .langValue("Quadruple %s Plate")
-      .materialAmount(GTValues.M*4)
+      .materialAmount(GTValues.M * 4)
       .maxStackSize(32)
       .materialIconType(MaterialIconType.plateQuadruple)
       .unificationEnabled(true)
@@ -125,7 +144,7 @@ public class ISGTagPrefix extends TagPrefix {
       .defaultTagPath("quintuple_plates/%s")
       .unformattedTagPath("quintuple_plates")
       .langValue("Quintuple %s Plate")
-      .materialAmount(GTValues.M*5)
+      .materialAmount(GTValues.M * 5)
       .maxStackSize(32)
       .materialIconType(MaterialIconType.plateQuintuple)
       .unificationEnabled(true)
@@ -138,7 +157,7 @@ public class ISGTagPrefix extends TagPrefix {
       .defaultTagPath("superdense_plates/%s")
       .unformattedTagPath("superdense_plates")
       .langValue("Superdense %s Plate")
-      .materialAmount(GTValues.M*64)
+      .materialAmount(GTValues.M * 64)
       .maxStackSize(16)
       .materialIconType(new MaterialIconType("plateSuperdense"))
       .unificationEnabled(true)

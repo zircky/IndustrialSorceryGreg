@@ -17,7 +17,7 @@ public class PlatinumLine {
         .inputItems(TagPrefix.crushedPurified, GTMaterials.Chalcopyrite, 9)
         .inputItems(TagPrefix.dust, ISGMaterials.PlatinumMetallicPowder, 9)
         .inputFluids(GTMaterials.AquaRegia.getFluid(20700))
-        .outputItems(ISGMaterials.PlatinumConcentrate.getFluid(20700))
+        .outputFluids(ISGMaterials.PlatinumConcentrate.getFluid(20700))
         .duration((int) (MINUTES + 52 * SECONDS + 10))
         .EUt(VA[MV])
         .save(provider);
@@ -25,7 +25,7 @@ public class PlatinumLine {
         .inputItems(TagPrefix.crushedPurified, GTMaterials.Pentlandite, 9)
         .inputItems(TagPrefix.dust, ISGMaterials.PlatinumMetallicPowder, 9)
         .inputFluids(GTMaterials.AquaRegia.getFluid(20700))
-        .outputItems(ISGMaterials.PlatinumConcentrate.getFluid(20700))
+        .outputFluids(ISGMaterials.PlatinumConcentrate.getFluid(20700))
         .duration((int) (MINUTES + 52 * SECONDS + 10))
         .EUt(VA[MV])
         .save(provider);
@@ -33,7 +33,7 @@ public class PlatinumLine {
         .inputItems(TagPrefix.crushedPurified, GTMaterials.Pentlandite, 9)
         .inputItems(TagPrefix.dust, ISGMaterials.PlatinumMetallicPowder, 9)
         .inputFluids(GTMaterials.AquaRegia.getFluid(20700))
-        .outputItems(ISGMaterials.PlatinumConcentrate.getFluid(20700))
+        .outputFluids(ISGMaterials.PlatinumConcentrate.getFluid(20700))
         .duration((int) (MINUTES + 52 * SECONDS + 10))
         .EUt(VA[MV])
         .save(provider);

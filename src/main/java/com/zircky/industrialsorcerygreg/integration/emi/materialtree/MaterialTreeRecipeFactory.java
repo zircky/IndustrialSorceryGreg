@@ -29,7 +29,7 @@ public class MaterialTreeRecipeFactory {
       final List<FormEntry> forms = formResolver.resolveForms(material);
       if (forms.isEmpty()) continue;
 
-      final ResourceLocation id = ISGCore.id("material_tree/" + sanitize(material.getName()));
+      final ResourceLocation id = ISGCore.id("/material_tree/" + sanitize(material.getName()));
 
       recipes.add(
           new  MaterialTreeRecipe(

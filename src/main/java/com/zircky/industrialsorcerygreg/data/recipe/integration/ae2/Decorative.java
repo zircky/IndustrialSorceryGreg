@@ -20,10 +20,10 @@ public class Decorative {
   }
 
   private static void decorative(Consumer<FinishedRecipe> provider) {
-    COMPRESSOR_RECIPES.recipeBuilder("ae2/decorative/quartz_block")
-        .inputItems(TagPrefix.gem, GTMaterials.CertusQuartz, 4)
-        .outputItems(new ItemStack(AEBlocks.QUARTZ_BLOCK))
-        .duration(600).EUt(16).save(provider);
+//    COMPRESSOR_RECIPES.recipeBuilder("ae2/decorative/quartz_block")
+//        .inputItems(TagPrefix.gem, GTMaterials.CertusQuartz, 4)
+//        .outputItems(new ItemStack(AEBlocks.QUARTZ_BLOCK))
+//        .duration(600).EUt(16).save(provider);
 
     ALLOY_SMELTER_RECIPES.recipeBuilder("ae2/decorative/quartz_glass_alloy")
         .inputItems(TagPrefix.dust, GTMaterials.CertusQuartz, 5)

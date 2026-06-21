@@ -15,6 +15,7 @@
     "gregtech.DoublePlatesTagPrefix",
     "gregtech.GTRecipeConditionsMixin",
     "gregtech.GTValuesAccessor",
+    "gregtech.MultiblockControllerMachineMixin",
     "gregtech.RecipeLogicMixin",
     "gregtech.RecipeInjectionMixin",
     "nuclearcraft.NuclearCraftBEMixin"

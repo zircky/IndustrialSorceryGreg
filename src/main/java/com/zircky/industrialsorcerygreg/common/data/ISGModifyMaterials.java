@@ -2,10 +2,12 @@ package com.zircky.industrialsorcerygreg.common.data;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidPipeProperties;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.ItemPipeProperties;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
+import com.gregtechceu.gtceu.api.fluids.FluidState;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 
@@ -60,6 +62,11 @@ public class ISGModifyMaterials {
     ISGMaterials.addIngot(GTMaterials.Hafnium);
     ISGMaterials.addIngot(GTMaterials.Zirconium);
     ISGMaterials.addIngot(GTMaterials.Strontium);
+    ISGMaterials.addIngot(GTMaterials.Scandium);
+    ISGMaterials.addFluid(GTMaterials.Scandium);
+    ISGMaterials.addFluid(GTMaterials.Radium);
+//    GTMaterials.Scandium.setProperty(PropertyKey.DUST, new DustProperty());
+
 
 //    ISGMaterials.addIngot(GTMaterials.Berkelium);
 //    ISGMaterials.addIngot(GTMaterials.Californium);
