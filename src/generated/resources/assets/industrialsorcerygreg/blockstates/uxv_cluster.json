@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "industrialsorcerygreg:block/machine/uxv_cluster",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "industrialsorcerygreg:block/machine/uxv_cluster"
+    },
+    "facing=south": {
+      "model": "industrialsorcerygreg:block/machine/uxv_cluster",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "industrialsorcerygreg:block/machine/uxv_cluster",
+      "y": 270
+    }
+  }
+}

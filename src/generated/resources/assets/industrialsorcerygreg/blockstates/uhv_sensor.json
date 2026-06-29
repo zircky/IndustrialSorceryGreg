@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "industrialsorcerygreg:block/casing/sensor/uhv_sensor"
+      "model": "industrialsorcerygreg:block/casings/sensor/uhv_sensor"
     }
   }
 }

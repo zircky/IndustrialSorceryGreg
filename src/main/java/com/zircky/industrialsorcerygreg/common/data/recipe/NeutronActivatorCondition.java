@@ -25,6 +25,10 @@ public class NeutronActivatorCondition extends RecipeCondition<NeutronActivatorC
 
   private int evRange = 0;
 
+  public int getEvRange() {
+    return evRange;
+  }
+
   public NeutronActivatorCondition() {
     this(0, 0);
   }

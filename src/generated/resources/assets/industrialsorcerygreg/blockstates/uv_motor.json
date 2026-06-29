@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "industrialsorcerygreg:block/casing/motor/uv_motor"
+      "model": "industrialsorcerygreg:block/casings/motor/uv_motor"
     }
   }
 }

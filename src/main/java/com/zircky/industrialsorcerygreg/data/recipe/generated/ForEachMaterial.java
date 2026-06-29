@@ -19,6 +19,7 @@ public class ForEachMaterial {
       ISGOreRecipeHandler.run(provider, material);
       ISGRecyclingRecipeHandler.run(provider, material);
       ISGRecipeMixerHandler.run(provider, material);
+      ISGWireCombiningHandler.run(provider, material);
     }
   }
 }

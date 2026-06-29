@@ -2,6 +2,7 @@ dependencies {
   compileOnly(libs.jetbrains.annotations)
 
   modImplementation(forge.ldlib)
+  modImplementation(forge.mui)
 
   // Registrate
   modImplementation(forge.registrate)
@@ -40,8 +41,9 @@ dependencies {
   // Patchouli
   modRuntimeOnly(forge.patchouli)
 
-  // Botania
-  modImplementation(forge.botania)
+  // Botania currently crashes in dev on Forge 47.4.x by reading client config before it is loaded.
+  // Re-enable only when the mod actually needs Botania integration.
+  // modImplementation(forge.botania)
 
   // Ad Astra
   modRuntimeOnly(forge.yabn)

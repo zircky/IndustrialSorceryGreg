@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "industrialsorcerygreg:block/casing/piston/max_piston"
+      "model": "industrialsorcerygreg:block/casings/piston/max_piston"
     }
   }
 }

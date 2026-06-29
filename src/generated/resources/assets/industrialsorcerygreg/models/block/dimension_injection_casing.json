@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "industrialsorcerygreg:block/casings/dimension_injection_casing"
+  }
+}

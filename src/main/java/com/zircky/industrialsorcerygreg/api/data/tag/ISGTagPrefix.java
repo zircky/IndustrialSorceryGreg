@@ -5,7 +5,6 @@ import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconType;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
-import com.gregtechceu.gtceu.api.item.component.ICustomRenderer;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,8 +14,6 @@ import static com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlag
 
 @SuppressWarnings("unused")
 public class ISGTagPrefix extends TagPrefix {
-
-  private ICustomRenderer customRenderer;
 
   public ISGTagPrefix(String name) {
     super(name);
@@ -169,8 +166,4 @@ public class ISGTagPrefix extends TagPrefix {
   public static void init() {
   }
 
-  @Nullable
-  public ICustomRenderer customRenderer() {
-    return this.customRenderer;
-  }
 }

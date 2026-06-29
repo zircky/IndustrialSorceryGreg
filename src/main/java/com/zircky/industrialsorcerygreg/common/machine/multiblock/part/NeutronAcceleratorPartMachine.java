@@ -71,7 +71,6 @@ public final class NeutronAcceleratorPartMachine extends EnergyHatchPartMachine 
     }
   }
 
-  @Override
   public boolean shouldOpenUI(Player player, InteractionHand hand, BlockHitResult hit) {
     return true;
   }
@@ -80,7 +79,6 @@ public final class NeutronAcceleratorPartMachine extends EnergyHatchPartMachine 
     return Math.round(GTValues.V[tier] * 0.8D);
   }
 
-  @Override
   public boolean canShared() {
     return false;
   }

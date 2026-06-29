@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.Block;
 public class ISGModels extends GTModels {
   public static NonNullBiConsumer<DataGenContext<Block, Block>, RegistrateBlockstateProvider> createComponentCasingModel(String name, String tierName) {
     return (ctx, prov) -> {
-      prov.simpleBlock(ctx.getEntry(), prov.models().getExistingFile(ISGCore.id("block/casing/%s/%s".formatted(name, tierName))));
+      prov.simpleBlock(ctx.getEntry(), prov.models().getExistingFile(ISGCore.id("block/casings/%s/%s".formatted(name, tierName))));
     };
   }
 }

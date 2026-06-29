@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "industrialsorcerygreg:block/casing/robot_arm/ev_robot_arm"
+      "model": "industrialsorcerygreg:block/casings/robot_arm/ev_robot_arm"
     }
   }
 }

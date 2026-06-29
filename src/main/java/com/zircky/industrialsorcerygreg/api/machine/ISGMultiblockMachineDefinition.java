@@ -1,7 +1,7 @@
 package com.zircky.industrialsorcerygreg.api.machine;
 
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
-import com.gregtechceu.gtceu.api.pattern.BlockPattern;
+import com.gregtechceu.gtceu.api.multiblock.pattern.IBlockPattern;
 import com.gregtechceu.gtceu.utils.memoization.GTMemoizer;
 import lombok.Getter;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -16,13 +16,13 @@ import java.util.function.Supplier;
 @MethodsReturnNonnullByDefault
 public class ISGMultiblockMachineDefinition extends MultiblockMachineDefinition {
   @Getter
-  protected Supplier<BlockPattern>[] subPatternFactory;
+  protected Supplier<IBlockPattern>[] subPatternFactory;
 
   public ISGMultiblockMachineDefinition(ResourceLocation id) {
     super(id);
   }
 
-  public void setSubPatternFactory(final List<Function<ISGMultiblockMachineDefinition, BlockPattern>> subPatternFactory) {
+  public void setSubPatternFactory(final List<Function<ISGMultiblockMachineDefinition, IBlockPattern>> subPatternFactory) {
     this.subPatternFactory = subPatternFactory.stream().map(p -> GTMemoizer.memoize(() -> p.apply(this))).toArray(Supplier[]::new);
   }
 }

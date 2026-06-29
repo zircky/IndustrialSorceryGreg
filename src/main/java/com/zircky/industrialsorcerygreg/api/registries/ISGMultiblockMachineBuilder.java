@@ -5,7 +5,7 @@ import com.gregtechceu.gtceu.api.blockentity.BlockEntityCreationInfo;
 import com.gregtechceu.gtceu.api.item.MetaMachineItem;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
-import com.gregtechceu.gtceu.api.pattern.BlockPattern;
+import com.gregtechceu.gtceu.api.multiblock.pattern.IBlockPattern;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.gregtechceu.gtceu.api.registry.registrate.MultiblockMachineBuilder;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -22,13 +22,13 @@ import java.util.function.Function;
 @MethodsReturnNonnullByDefault
 public final class ISGMultiblockMachineBuilder<DEFINITION extends MultiblockMachineDefinition>
     extends MultiblockMachineBuilder<DEFINITION, ISGMultiblockMachineBuilder<DEFINITION>> {
-  private List<Function<MultiblockMachineDefinition, BlockPattern>> subPattern;
+  private List<Function<MultiblockMachineDefinition, IBlockPattern>> subPattern;
 
   public ISGMultiblockMachineBuilder(GTRegistrate registrate, String name, BiFunction<BlockBehaviour.Properties, DEFINITION, MetaMachineBlock> blockFactory, BiFunction<MetaMachineBlock, Item.Properties, MetaMachineItem> itemFactory, Function<BlockEntityCreationInfo, MetaMachine> blockEntityFactory) {
     super(registrate, name, blockFactory, itemFactory, blockEntityFactory);
   }
 
-  public ISGMultiblockMachineBuilder<DEFINITION> subPattern(Function<MultiblockMachineDefinition, BlockPattern> pattern) {
+  public ISGMultiblockMachineBuilder<DEFINITION> subPattern(Function<MultiblockMachineDefinition, IBlockPattern> pattern) {
     if (subPattern == null) subPattern = new ArrayList<>();
     subPattern.add(pattern);
     return getThis();

@@ -48,6 +48,7 @@ public class ISGMaterials {
     AdvancedChemicalMaterials.register();
     ResidueMaterials.register();
     CustomMaterial.register();
+    WaterPurificationMaterial.register();
     ISGMaterialFlagAddition.register();
 
   }
@@ -1356,7 +1357,7 @@ public class ISGMaterials {
   public static Material Silversteeldust;
   public static Material Silveralloydust;
   public static Material Electricalsteeldust;
-  public static Material Supercooleddust;
+  public static Material SuperCooled;
   public static Material Bisphenolbdust;
   public static Material Titaniumtetrachloridedust;
   public static Material Graphiteuraniummixturedust;
@@ -2233,7 +2234,7 @@ public class ISGMaterials {
   public static Material Crystalkevlar;
   public static Material Supra;
   public static Material Metastableenergeticalalloy;
-  public static Material Supercooledthoriumsolution;
+  public static Material SuperCooledThoriumSolution;
   public static Material Heatedthoriumsolution;
   public static Material Thoriumsolution;
   public static Material Hydrocrackedthoriumsolution;
@@ -2260,6 +2261,19 @@ public class ISGMaterials {
   public static Material Prisma;
   public static Material Ultimentium;
   public static Material UltimentiumMatterCrystal;
+
+  //-- WaterLine --//
+  public static Material FilteredSater;
+  public static Material OzoneWater;
+  public static Material FlocculentWater;
+  public static Material PHNeutralWater;
+  public static Material ExtremeTemperatureWater;
+  public static Material ElectricEquilibriumWater;
+  public static Material DegassedWater;
+  public static Material BaryonicPerfectionWater;
+  public static Material PolyAluminiumChloride;
+  public static Material FlocculationWasteSolution;
+
 
 
 

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "industrialsorcerygreg:block/casing/conveyor/ev_conveyor"
+      "model": "industrialsorcerygreg:block/casings/conveyor/ev_conveyor"
     }
   }
 }

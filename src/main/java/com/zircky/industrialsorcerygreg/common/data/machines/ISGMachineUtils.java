@@ -1,25 +1,29 @@
 package com.zircky.industrialsorcerygreg.common.data.machines;
 
-import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.blockentity.BlockEntityCreationInfo;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
+import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.SimpleTieredMachine;
+import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.gregtechceu.gtceu.api.registry.registrate.MachineBuilder;
 import com.gregtechceu.gtceu.common.data.GTMedicalConditions;
 import com.gregtechceu.gtceu.common.data.GTRecipeModifiers;
 import com.gregtechceu.gtceu.common.data.machines.GTMachineUtils;
+import com.gregtechceu.gtceu.common.mui.GTSingleblockMachinePanels;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.ISGValues;
+import com.zircky.industrialsorcerygreg.api.registries.ISGMultiblockMachineBuilder;
 import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
 import java.util.Locale;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 import static com.gregtechceu.gtceu.api.GTValues.VLVH;
 import static com.gregtechceu.gtceu.api.GTValues.VLVT;
@@ -82,7 +86,7 @@ public class ISGMachineUtils extends GTMachineUtils {
           }
           return builder
               .langValue("%s %s %s".formatted(VLVH[tier], toEnglishName(name), VLVT[tier]))
-              .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(GTCEu.id(name), recipeType))
+              .ui(GTSingleblockMachinePanels.GENERAL_MACHINE)
               .rotationState(RotationState.NON_Y_AXIS)
               .recipeType(recipeType)
               .workableTieredHullModel(ISGCore.id("block/machines/" + name))

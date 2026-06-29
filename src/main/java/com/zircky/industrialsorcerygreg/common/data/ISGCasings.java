@@ -2,15 +2,21 @@ package com.zircky.industrialsorcerygreg.common.data;
 
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.common.data.models.GTModels;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.common.data.models.ISGModels;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.GlassBlock;
 
 import java.util.Locale;
+import java.util.function.Supplier;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.zircky.industrialsorcerygreg.api.registries.ISGRegistries.REGISTRATE;
@@ -137,6 +143,27 @@ public class ISGCasings {
   public static final BlockEntry<Block> SENSOR_OpV = createComponentCasingBlock("Sensor", OpV);
   public static final BlockEntry<Block> SENSOR_MAX = createComponentCasingBlock("Sensor", MAX);
 
+  public static final BlockEntry<Block> STERILE_WATER_PLANT_CASING = createCasingBlock("sterile_water_plant_casing", ISGCore.id("block/casings/sterile_water_plant_casing"));
+  public static final BlockEntry<Block> HIGH_STRENGTH_CONCRETE = createCasingBlock("high_strength_concrete", ISGCore.id("block/casings/space_elevator_module_base/side"));
+  public static final BlockEntry<GlassBlock> CHEMICAL_GRADE_GLASS = createGlassCasingBlock("chemical_grade_glass", ISGCore.id("block/casings/chemical_grade_glass"), () -> RenderType::translucent);
+  public static final BlockEntry<Block> REINFORCED_STERILE_WATER_PLANT_CASING = createCasingBlock("reinforced_sterile_water_plant_casing", ISGCore.id("block/casings/reinforced_sterile_water_plant_casing"));
+  public static final BlockEntry<Block> HIGH_PRESSURE_RESISTANT_CASING = createCasingBlock("high_pressure_resistant_casing", ISGCore.id("block/casings/high_pressure_resistant_casing"));
+  public static final BlockEntry<Block> OZONE_CASING = createCasingBlock("ozone_casing", ISGCore.id("block/casings/ozone_casing"));
+  public static final BlockEntry<Block> FLOCCULATION_CASING = createCasingBlock("flocculation_casing", ISGCore.id("block/casings/flocculation_casing"));
+  public static final BlockEntry<Block> STABILIZED_NAQUADAH_WATER_PLANT_CASING = createCasingBlock("stabilized_naquadah_water_plant_casing", ISGCore.id("block/casings/stabilized_naquadah_water_plant_casing"));
+  public static final BlockEntry<Block> INERT_NEUTRALIZATION_WATER_PLANT_CASING = createCasingBlock("inert_neutralization_water_plant_casing", ISGCore.id("block/casings/inert_neutralization_water_plant_casing"));
+  public static final BlockEntry<Block> PLASMA_HEATER_CASING = createCasingBlock("plasma_heater_casing", ISGCore.id("block/casings/plasma_heater_casing"));
+  public static final BlockEntry<Block> IMPROVED_SUPERCONDUCTOR_COIL = createCasingBlock("improved_superconductor_coil", ISGCore.id("block/casings/improved_superconductor_coil"));
+  public static final BlockEntry<Block> SPEEDING_PIPE = createCasingBlock("speeding_pipe", ISGCore.id("block/casings/speeding_pipe/side")); // app
+  public static final BlockEntry<Block> NAQUADAH_REINFORCED_PLANT_CASING = createCasingBlock("naquadah_reinforced_plant_casing", ISGCore.id("block/casings/naquadah_reinforced_plant_casing"));
+  public static final BlockEntry<Block> HIGH_ENERGY_ULTRAVIOLET_EMITTER_CASING = createCasingBlock("high_energy_ultraviolet_emitter_casing", ISGCore.id("block/casings/high_energy_ultraviolet_emitter_casing"));
+  public static final BlockEntry<GlassBlock> ELECTRON_PERMEABLE_NEUTRONIUM_COATED_GLASS = createGlassCasingBlock("electron_permeable_neutronium_coated_glass", ISGCore.id("block/casings/electron_permeable_neutronium_coated_glass"), () -> RenderType::translucent);
+  public static final BlockEntry<GlassBlock> OMNI_PURPOSE_INFINITY_FUSED_GLASS = createGlassCasingBlock("omni_purpose_infinity_fused_glass", ISGCore.id("block/casings/omni_purpose_infinity_fused_glass"), () -> RenderType::translucent);
+  public static final BlockEntry<Block> DIMENSION_INJECTION_CASING = createCasingBlock("dimension_injection_casing", ISGCore.id("block/casings/dimension_injection_casing"));
+  public static final BlockEntry<GlassBlock> NON_PHOTONIC_MATTER_EXCLUSION_GLASS = createGlassCasingBlock("non_photonic_matter_exclusion_glass", ISGCore.id("block/casings/non_photonic_matter_exclusion_glass"), () -> RenderType::translucent);
+  public static final BlockEntry<Block> QUARK_PIPE = createCasingBlock("quark_pipe", ISGCore.id("block/casings/quark_pipe"));
+  public static final BlockEntry<Block> QUARK_EXCLUSION_CASING = createCasingBlock("quark_exclusion_casing", ISGCore.id("block/casings/quark_exclusion_casing"));
+
 
   private static BlockEntry<Block> createComponentCasingBlock(String id, int tier) {
     String tierName = GTValues.VN[tier].toLowerCase(Locale.ROOT);
@@ -152,13 +179,38 @@ public class ISGCasings {
         .addLayer(() -> RenderType::translucent)
         .tag(CustomTags.MINEABLE_WITH_CONFIG_VALID_PICKAXE_WRENCH)
         .item(BlockItem::new)
-        .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), prov.modLoc("block/casing/%s/%s".formatted(name, model))))
+        .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), prov.modLoc("block/casings/%s/%s".formatted(name, model))))
         .build()
         .register();
     if (!GTCEuAPI.isHighTier() && tier > GTValues.UHV) {
       REGISTRATE.setCreativeTab(entry, null);
     }
     return entry;
+  }
+
+  private static BlockEntry<Block> createCasingBlock(String name, ResourceLocation texture) {
+    return REGISTRATE.block(name, Block::new)
+        .initialProperties(() -> Blocks.IRON_BLOCK)
+        .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
+        .addLayer(() -> RenderType::solid)
+        .exBlockstate(GTModels.cubeAllModel(texture))
+        .tag(CustomTags.MINEABLE_WITH_CONFIG_VALID_PICKAXE_WRENCH)
+        .item(BlockItem::new)
+        .build()
+        .register();
+  }
+
+  private static BlockEntry<GlassBlock> createGlassCasingBlock(String name, ResourceLocation texture,
+                                                               Supplier<Supplier<RenderType>> type) {
+    return REGISTRATE.block(name, GlassBlock::new)
+        .initialProperties(() -> Blocks.GLASS)
+        .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
+        .addLayer(type)
+        .exBlockstate(GTModels.cubeAllModel(texture))
+        .tag(BlockTags.MINEABLE_WITH_PICKAXE)
+        .item(BlockItem::new)
+        .build()
+        .register();
   }
 
   public static void init() {}

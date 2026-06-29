@@ -15,14 +15,14 @@
     "gregtech.DoublePlatesTagPrefix",
     "gregtech.GTRecipeConditionsMixin",
     "gregtech.GTValuesAccessor",
-    "gregtech.MultiblockControllerMachineMixin",
     "gregtech.RecipeLogicMixin",
     "gregtech.RecipeInjectionMixin",
     "nuclearcraft.NuclearCraftBEMixin"
   ],
   "client": [
     "adastra.AdAstraClientMixin",
-    "adastra.AdAstraOverlayScreenMixin"
+    "adastra.AdAstraOverlayScreenMixin",
+    "gregtech.PatternPreviewWidgetMixin"
   ],
   "injectors": {
     "defaultRequire": 1

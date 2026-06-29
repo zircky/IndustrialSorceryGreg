@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "industrialsorcerygreg:block/casing/field_generator/ev_field_generator"
+      "model": "industrialsorcerygreg:block/casings/field_generator/ev_field_generator"
     }
   }
 }

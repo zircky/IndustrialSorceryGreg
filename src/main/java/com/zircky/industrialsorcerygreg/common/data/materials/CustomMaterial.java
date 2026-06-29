@@ -105,8 +105,8 @@ public class CustomMaterial {
         .iconSet(DULL)
         .buildAndRegister();
 
-    Supercooleddust = builderISG("supercooleddust")
-        .dust()
+    SuperCooled = builderISG("super_cooled")
+        .dust().fluid()
         .color(0x0F5C6E)
         .iconSet(DULL)
         .buildAndRegister();
@@ -5365,7 +5365,7 @@ public class CustomMaterial {
         .iconSet(FLUID)
         .buildAndRegister();
 
-    Supercooledthoriumsolution = builderISG("supercooledthoriumsolution")
+    SuperCooledThoriumSolution = builderISG("super_cooled_thorium_solution")
         .fluid()
         .color(0xB3E5FC)
         .iconSet(FLUID)

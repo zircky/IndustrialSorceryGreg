@@ -3,6 +3,7 @@ package com.zircky.industrialsorcerygreg.common.data;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.machines.ISGMultiMachines;
 import com.zircky.industrialsorcerygreg.common.data.machines.ISGSimpleMachines;
+import com.zircky.industrialsorcerygreg.common.data.machines.WaterPurificationUnit;
 
 public class ISGMachines {
 
@@ -13,5 +14,6 @@ public class ISGMachines {
   public static void init() {
     ISGMultiMachines.init();
     ISGSimpleMachines.init();
+    WaterPurificationUnit.init();
   }
 }

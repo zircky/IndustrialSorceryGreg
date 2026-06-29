@@ -37,4 +37,5 @@ public final class ISGRegistrate extends GTRegistrate {
     return new ISGMultiblockMachineBuilder<>(this, name, MetaMachineBlock::new, MetaMachineItem::new,
         blockEntityFactory);
   }
+
 }

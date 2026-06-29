@@ -1,15 +1,13 @@
 package com.zircky.industrialsorcerygreg.data;
 
+import com.zircky.industrialsorcerygreg.data.recipe.classified.WaterPurificationPlant;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.CosmicChain;
-import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.AssemblerRecipes;
-import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.MixerRecipes;
+import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.*;
 import com.zircky.industrialsorcerygreg.data.recipe.generated.ForEachMaterial;
 import com.zircky.industrialsorcerygreg.data.recipe.RecipeRemoval;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.ae2.AppliedEnergistics2Recipe;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.MetaTileEntityLoader;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.component.ComponentRecipe;
-import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.ChemicalReactorRecipes;
-import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.FuelReprocessorRecipes;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.ChromiumLine;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.platinum.PlatinumLine;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -33,6 +31,8 @@ public class Data {
   }
 
   private static void commonInit(Consumer<FinishedRecipe> provider) {
+    MachineRecipe.init(provider);
+
     AppliedEnergistics2Recipe.init(provider);
     AssemblerRecipes.init(provider);
     MixerRecipes.init(provider);
@@ -44,6 +44,7 @@ public class Data {
     FuelReprocessorRecipes.init(provider);
     //CannerRecipes.init(provider);
     MetaTileEntityLoader.init(provider);
+    WaterPurificationPlant.init(provider);
     ForEachMaterial.init(provider);
   }
 }

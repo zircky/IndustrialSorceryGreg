@@ -1,7 +1,7 @@
 package com.zircky.industrialsorcerygreg.integration.emi;
 
 import com.gregtechceu.gtceu.config.ConfigHolder;
-import com.gregtechceu.gtceu.integration.emi.oreprocessing.GTOreProcessingEmiCategory;
+import com.gregtechceu.gtceu.integration.recipeviewer.emi.GTOreProcessingEmiCategory;
 import com.zircky.industrialsorcerygreg.integration.emi.materialtree.GTFormResolver;
 import com.zircky.industrialsorcerygreg.integration.emi.materialtree.GTMaterialAccess;
 import com.zircky.industrialsorcerygreg.integration.emi.materialtree.MaterialTreeCategory;

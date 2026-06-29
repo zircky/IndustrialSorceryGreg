@@ -193,6 +193,7 @@ public class ISGItems {
   public static final ItemEntry<Item> CLOSED_TIMELIKE_CURVE_COMPUTATIONAL_UNIT_CONTAINER = register("closed_timelike_curve_computational_unit_container");
   public static final ItemEntry<Item> CONTAMINATED_PETRI_DISH = register("contaminated_petri_dish");
 
+  public static final ItemEntry<Item> ACTIVATED_CARBON_FILTER_MESH = register("activated_carbon_filter_mesh");
 
 
   public static final ItemEntry<Item> LOGIC_CHIP = registerLang("logic_chip", "Logic Chip");

@@ -1,7 +1,6 @@
 {
   "values": [
-    "industrialsorcerygreg:universal_circuit_uv",
-    "industrialsorcerygreg:bioware_assembly",
-    "industrialsorcerygreg:optical_processor"
+    "gtceu:crystal_processor_mainframe",
+    "gtceu:wetware_processor_computer"
   ]
 }

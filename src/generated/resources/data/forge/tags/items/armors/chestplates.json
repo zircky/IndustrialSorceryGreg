@@ -1,8 +1,13 @@
 {
   "values": [
-    "industrialsorcerygreg:space_nanomuscle_chestplate",
-    "industrialsorcerygreg:space_advanced_nanomuscle_chestplate",
-    "industrialsorcerygreg:space_quarktech_chestplate",
-    "industrialsorcerygreg:space_advanced_quarktech_chestplate"
+    "gtceu:nanomuscle_chestplate",
+    "gtceu:rubber_gloves",
+    "gtceu:hazmat_chestpiece",
+    "gtceu:quarktech_chestplate",
+    "gtceu:liquid_fuel_jetpack",
+    "gtceu:electric_jetpack",
+    "gtceu:advanced_electric_jetpack",
+    "gtceu:advanced_nanomuscle_chestplate",
+    "gtceu:advanced_quarktech_chestplate"
   ]
 }

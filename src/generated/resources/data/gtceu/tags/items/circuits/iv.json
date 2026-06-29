@@ -1,5 +1,8 @@
-﻿{
+{
   "values": [
-    "industrialsorcerygreg:universal_circuit_iv"
+    "gtceu:micro_processor_mainframe",
+    "gtceu:nano_processor_computer",
+    "gtceu:quantum_processor_assembly",
+    "gtceu:crystal_processor"
   ]
 }

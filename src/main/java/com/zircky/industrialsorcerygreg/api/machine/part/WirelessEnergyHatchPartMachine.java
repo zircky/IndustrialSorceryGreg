@@ -76,7 +76,6 @@ public class WirelessEnergyHatchPartMachine extends TieredIOPartMachine {
     return voltage * amperage * ticks;
   }
 
-  @Override
   public boolean shouldOpenUI(Player player, InteractionHand hand, BlockHitResult hit) {
     return false;
   }

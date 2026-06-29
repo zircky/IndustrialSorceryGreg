@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "industrialsorcerygreg:block/machine/lens_housing",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "industrialsorcerygreg:block/machine/lens_housing",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "industrialsorcerygreg:block/machine/lens_housing"
+    },
+    "facing=south": {
+      "model": "industrialsorcerygreg:block/machine/lens_housing",
+      "y": 180
+    },
+    "facing=up": {
+      "gtceu:z": 180,
+      "model": "industrialsorcerygreg:block/machine/lens_housing",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "industrialsorcerygreg:block/machine/lens_housing",
+      "y": 270
+    }
+  }
+}

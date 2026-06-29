@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "industrialsorcerygreg:block/casing/piston/opv_piston"
+      "model": "industrialsorcerygreg:block/casings/piston/opv_piston"
     }
   }
 }

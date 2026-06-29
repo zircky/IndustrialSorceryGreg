@@ -1,5 +1,7 @@
-﻿{
+{
   "values": [
-    "industrialsorcerygreg:universal_circuit_lv"
+    "gtceu:basic_electronic_circuit",
+    "gtceu:basic_integrated_circuit",
+    "gtceu:microchip_processor"
   ]
 }

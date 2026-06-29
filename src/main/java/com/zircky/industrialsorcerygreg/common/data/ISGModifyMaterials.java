@@ -53,6 +53,9 @@ public class ISGModifyMaterials {
     GTMaterials.HSSS.addFlags(ISGMaterialFlags.GENERATE_COMPONENT);
     GTMaterials.Osmiridium.addFlags(ISGMaterialFlags.GENERATE_COMPONENT);
     GTMaterials.Tritanium.addFlags(ISGMaterialFlags.GENERATE_COMPONENT);
+    GTMaterials.Naquadria.addFlags(GENERATE_FRAME);
+    GTMaterials.Naquadah.addFlags(GENERATE_FRAME);
+    GTMaterials.DamascusSteel.addFlags(GENERATE_FRAME);
 
     GTMaterials.Ruby.addFlags(DECOMPOSITION_BY_ELECTROLYZING, DISABLE_DECOMPOSITION);
     GTMaterials.RubySlurry.addFlags(DECOMPOSITION_BY_CENTRIFUGING);
