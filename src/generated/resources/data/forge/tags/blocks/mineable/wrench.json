@@ -1,0 +1,27 @@
+{
+  "values": [
+    "industrialsorcerygreg:uruium_coil_block",
+    "industrialsorcerygreg:abyssalalloy_coil_block",
+    "industrialsorcerygreg:titansteel_coil_block",
+    "industrialsorcerygreg:adamantine_coil_block",
+    "industrialsorcerygreg:naquadriatictaranium_coil_block",
+    "industrialsorcerygreg:starmetal_coil_block",
+    "industrialsorcerygreg:infinity_coil_block",
+    "industrialsorcerygreg:hypogen_coil_block",
+    "industrialsorcerygreg:eternity_coil_block",
+    "industrialsorcerygreg:component_assembly_line_casing_lv",
+    "industrialsorcerygreg:component_assembly_line_casing_mv",
+    "industrialsorcerygreg:component_assembly_line_casing_hv",
+    "industrialsorcerygreg:component_assembly_line_casing_ev",
+    "industrialsorcerygreg:component_assembly_line_casing_iv",
+    "industrialsorcerygreg:component_assembly_line_casing_luv",
+    "industrialsorcerygreg:component_assembly_line_casing_zpm",
+    "industrialsorcerygreg:component_assembly_line_casing_uv",
+    "industrialsorcerygreg:component_assembly_line_casing_uhv",
+    "industrialsorcerygreg:component_assembly_line_casing_uev",
+    "industrialsorcerygreg:component_assembly_line_casing_uiv",
+    "industrialsorcerygreg:component_assembly_line_casing_uxv",
+    "industrialsorcerygreg:component_assembly_line_casing_opv",
+    "industrialsorcerygreg:component_assembly_line_casing_max"
+  ]
+}
