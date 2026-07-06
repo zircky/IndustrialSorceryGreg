@@ -3,9 +3,12 @@ package com.zircky.industrialsorcerygreg.api.registries;
 import com.gregtechceu.gtceu.api.block.MetaMachineBlock;
 import com.gregtechceu.gtceu.api.blockentity.BlockEntityCreationInfo;
 import com.gregtechceu.gtceu.api.item.MetaMachineItem;
+import com.gregtechceu.gtceu.api.machine.MachineInstanceFactory;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
+import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
+import com.gregtechceu.gtceu.api.registry.registrate.MultiblockMachineBuilder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -23,19 +26,20 @@ public final class ISGRegistrate extends GTRegistrate {
   }
 
   @Override
-  public ISGMultiblockMachineBuilder<MultiblockMachineDefinition> multiblock(String name,
-                                                                             BiFunction<BlockBehaviour.Properties, MultiblockMachineDefinition, MetaMachineBlock> blockFactory,
-                                                                             BiFunction<MetaMachineBlock, Item.Properties, MetaMachineItem> itemFactory,
-                                                                             Function<BlockEntityCreationInfo, MetaMachine> blockEntityFactory) {
-    return new ISGMultiblockMachineBuilder<>(this, name,
+  public <MACHINE extends MultiblockControllerMachine> MultiblockMachineBuilder<MultiblockMachineDefinition, MACHINE, ?> multiblock(String name,
+                                                                                                                                    BiFunction<BlockBehaviour.Properties, MultiblockMachineDefinition, MetaMachineBlock> blockFactory,
+                                                                                                                                    BiFunction<MetaMachineBlock, Item.Properties, MetaMachineItem> itemFactory,
+                                                                                                                                    MachineInstanceFactory<MACHINE> blockEntityFactory) {
+    return new MultiblockMachineBuilder<>(this, name,
         blockFactory, itemFactory, blockEntityFactory);
   }
 
   @Override
-  public ISGMultiblockMachineBuilder<MultiblockMachineDefinition> multiblock(String name,
-                                                                                Function<BlockEntityCreationInfo, MetaMachine> blockEntityFactory) {
-    return new ISGMultiblockMachineBuilder<>(this, name, MetaMachineBlock::new, MetaMachineItem::new,
+  public <MACHINE extends MultiblockControllerMachine> MultiblockMachineBuilder<MultiblockMachineDefinition, MACHINE, ?> multiblock(String name,
+                                                                                                                                    MachineInstanceFactory<MACHINE> blockEntityFactory) {
+    return new MultiblockMachineBuilder<>(this, name, MetaMachineBlock::new, MetaMachineItem::new,
         blockEntityFactory);
   }
+
 
 }

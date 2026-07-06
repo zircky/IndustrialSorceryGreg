@@ -9,7 +9,7 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.ConditionalSubscriptionHandler;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine;
-import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
+import com.gregtechceu.gtceu.api.machine.trait.recipe.RecipeLogic;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.content.Content;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
@@ -236,7 +236,7 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine {
     return Math.pow(0.95D, Math.max(height - 4, 0));
   }
 
-  @Override
+//  @Override
   public boolean alwaysTryModifyRecipe() {
     return true;
   }
@@ -259,7 +259,7 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine {
         newRecipe.outputs.clear();
         newRecipe.outputs.put(
             ItemRecipeCapability.CAP,
-            List.of(new Content(Ingredient.of(ISGItems.RADIOACTIVE_WASTE), 1, 1, 0))
+            List.of(new Content(Ingredient.of(ISGItems.RADIOACTIVE_WASTE), 1, 1))
         );
       }
     }

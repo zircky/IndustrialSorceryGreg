@@ -24,7 +24,7 @@ import static com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlag
 public class ISGMaterials {
 
   static {
-    ISGRegistries.REGISTRATE.creativeModeTab(() -> ISGCreativeModeTabs.MATERIAL_ITEM);
+    ISGRegistries.REGISTRATE.creativeModeTab(() -> ISGCreativeModeTabs.ISG_MATERIAL_ITEM);
   }
 
   public static final List<MaterialFlag> SNDART_FLAGS = new ArrayList<>();
@@ -32,6 +32,7 @@ public class ISGMaterials {
 
   public static void init() {
 //    modifyMaterials();
+    MagicMaterial.register();
     NuclearMaterials.register();
     PlatinumLine.register();
     NaquadahLine.register();
@@ -62,6 +63,30 @@ public class ISGMaterials {
         GENERATE_DOUBLE_PLATE, GENERATE_DOUBLE_INGOT, GENERATE_TRIPLE_INGOT, GENERATE_TRIPLE_PLATE, GENERATE_QUADRUPLE_INGOT, GENERATE_QUADRUPLE_PLATE, GENERATE_QUINTUPLE_INGOT, GENERATE_QUINTUPLE_PLATE, GENERATE_CURVED_PLATE));
     GEM_FLAGS.addAll(Arrays.asList(GENERATE_PLATE, GENERATE_BOLT_SCREW, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_LENS));
   }
+
+  // MagicMaterial
+  public static Material Manasteel;
+  public static Material Terrasteel;
+  public static Material Elementium;
+  public static Material Mana;
+  public static Material Livingclay;
+  public static Material Livingwood;
+  public static Material Dreamwood;
+  public static Material Shimmerwood;
+  public static Material Livingrock;
+  public static Material Runerock;
+  public static Material Shimmerrock;
+  public static Material StarStone;
+  public static Material ManaGlass;
+  public static Material ElfGlass;
+  public static Material BifrostPerm;
+  public static Material Livingsteel;
+  public static Material Alfsteel;
+  public static Material Gaiasteel;
+  public static Material GaiaCore;
+  public static Material Gaia;
+  public static Material ManaDiamond;
+  public static Material Dragonstone;
 
 
   public static Material ManganeseOxide; //
@@ -103,7 +128,24 @@ public class ISGMaterials {
   public static Material AwakenedDraconium;
   public static Material Chaos;
   public static Material Infinity;
+  public static Material SpaceTime;
+  public static Material WhiteDwarfMatter;
+  public static Material BlackDwarfMatter;
+  public static Material Magmatter;
+  public static Material MagnetohydrodynamicallyConstrainedStarMatter;
+  public static Material Eternity;
+  public static Material ChaosInfinityAlloy;
+
+  public static Material QuantumChromoDynamicallyConfinedMatter;
+  public static Material HexaphaseCopper;
+  public static Material Hypogen;
+  public static Material ChromaticGlass;
+
+  public static Material Etrium;
   public static Material Bedrockium;
+  public static Material Starmetal;
+  public static Material Uruium;
+
   public static Material SkySteel;
 
   public static Material MarM200Steel; //
@@ -1942,7 +1984,6 @@ public class ISGMaterials {
   public static Material AlphaLinolenicAcid;
   public static Material Dilutedmilkslurry;
   public static Material Draconiumsolution;
-  public static Material Mana;
   public static Material PurifiedDraconiumSlurry;
   public static Material Draconiumimpureslurry;
   public static Material Draconiumslurry;
@@ -2055,7 +2096,6 @@ public class ISGMaterials {
   public static Material Adamantane;
   public static Material Furfural;
   public static Material Btex;
-  public static Material Eternity;
   public static Material UsedFrothFlotationFluid;
   public static Material Galliteslurry;
   public static Material Stibniteslurry;

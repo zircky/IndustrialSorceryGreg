@@ -1,5 +1,8 @@
 {
   "values": [
-    "gtceu:wetware_processor_mainframe"
+    "industrialsorcerygreg:universal_circuit_uhv",
+    "industrialsorcerygreg:bioware_computer",
+    "industrialsorcerygreg:optical_assembly",
+    "industrialsorcerygreg:exotic_processor"
   ]
 }

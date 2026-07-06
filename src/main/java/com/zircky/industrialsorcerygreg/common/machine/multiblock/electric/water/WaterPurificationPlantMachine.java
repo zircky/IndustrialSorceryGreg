@@ -2,7 +2,6 @@ package com.zircky.industrialsorcerygreg.common.machine.multiblock.electric.wate
 
 import com.gregtechceu.gtceu.api.blockentity.BlockEntityCreationInfo;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
-import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
 
 import static com.zircky.industrialsorcerygreg.api.ISGValues.SECONDS;
 
@@ -14,7 +13,4 @@ public class WaterPurificationPlantMachine extends WorkableElectricMultiblockMac
     super(info);
   }
 
-  public WaterPurificationPlantMachine(BlockEntityCreationInfo info, RecipeLogic recipeLogic) {
-    super(info, recipeLogic);
-  }
 }

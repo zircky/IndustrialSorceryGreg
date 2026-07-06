@@ -1,0 +1,6 @@
+{
+  "parent": "gtceu:block/cube/tinted/all_0",
+  "textures": {
+    "all": "industrialsorcerygreg:block/material_sets/eternity/frame_gt"
+  }
+}

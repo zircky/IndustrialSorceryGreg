@@ -1,0 +1,9 @@
+{
+  "gtceu": {
+    "connection_texture": "industrialsorcerygreg:block/coil/titansteel_coil_block_bloom_ctm",
+    "emissive": true
+  },
+  "shimmer": {
+    "bloom": true
+  }
+}

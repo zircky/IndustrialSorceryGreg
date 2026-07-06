@@ -136,7 +136,7 @@ public final class ISGOreRecipeHandler {
           .recipeBuilder("macerate_" + prefixString + material.getName() + "_ore_to_crushed_ore")
           .inputItems(inputStack)
           .outputItems(crushedStack.copyWithCount(crushedCount * 2))
-          .chancedOutput(byproductStack, 1400, 0)
+          .chancedOutput(byproductStack, 1400)
           .EUt(2)
           .duration(400)
           .category(GTRecipeCategories.ORE_CRUSHING);
@@ -144,7 +144,7 @@ public final class ISGOreRecipeHandler {
       for (MaterialStack secondaryMaterial : orePrefix.secondaryMaterials()) {
         if (secondaryMaterial.material().hasProperty(PropertyKey.DUST)) {
           ItemStack dustStack = ChemicalHelper.getGem(secondaryMaterial);
-          builder.chancedOutput(dustStack, 6700, 0);
+          builder.chancedOutput(dustStack, 6700);
         }
       }
 
@@ -209,7 +209,7 @@ public final class ISGOreRecipeHandler {
           .recipeBuilder("macerate_raw_" + material.getName() + "_ore_to_crushed_ore")
           .inputItems(rawOre, material)
           .outputItems(crushedStack.copyWithCount(property.getOreMultiplier() * 2))
-          .chancedOutput(byproductStack, 1400, 0)
+          .chancedOutput(byproductStack, 1400)
           .EUt(2)
           .category(GTRecipeCategories.ORE_CRUSHING)
           .duration(400);
@@ -273,8 +273,7 @@ public final class ISGOreRecipeHandler {
         .inputItems(crushed, material)
         .outputItems(impureDustStack)
         .duration(400).EUt(2)
-        .chancedOutput(ChemicalHelper.get(dust, byproductMaterial, property.getByProductMultiplier()), 1400,
-            0)
+        .chancedOutput(ChemicalHelper.get(dust, byproductMaterial, property.getByProductMultiplier()), 1400)
         .category(GTRecipeCategories.ORE_CRUSHING)
         .save(provider);
 
@@ -297,7 +296,7 @@ public final class ISGOreRecipeHandler {
         .inputFluids(Water.getFluid(1000))
         .circuitMeta(1)
         .outputItems(crushedPurifiedOre)
-        .chancedOutput(TagPrefix.dust, byproductMaterial, "1/3", 0)
+        .chancedOutput(TagPrefix.dust, byproductMaterial, "1/3")
         .outputItems(TagPrefix.dust, GTMaterials.Stone)
         .save(provider);
 
@@ -305,7 +304,7 @@ public final class ISGOreRecipeHandler {
         .inputItems(crushed, material)
         .inputFluids(DistilledWater.getFluid(100))
         .outputItems(crushedPurifiedOre)
-        .chancedOutput(TagPrefix.dust, byproductMaterial, "1/3", 0)
+        .chancedOutput(TagPrefix.dust, byproductMaterial, "1/3")
         .outputItems(TagPrefix.dust, GTMaterials.Stone)
         .duration(200)
         .save(provider);
@@ -314,7 +313,7 @@ public final class ISGOreRecipeHandler {
         .inputItems(crushed, material)
         .outputItems(crushedCentrifugedOre)
         .chancedOutput(TagPrefix.dust, property.getOreByProduct(1, material), property.getByProductMultiplier(),
-            "1/3", 0)
+            "1/3")
         .outputItems(TagPrefix.dust, GTMaterials.Stone)
         .save(provider);
 
@@ -325,9 +324,8 @@ public final class ISGOreRecipeHandler {
           .inputItems(crushed, material)
           .inputFluids(washedInTuple.first().getFluid(washedInTuple.secondInt()))
           .outputItems(crushedPurifiedOre)
-          .chancedOutput(ChemicalHelper.get(dust, washingByproduct, property.getByProductMultiplier()), 7000,
-              0)
-          .chancedOutput(ChemicalHelper.get(dust, Stone), 4000, 0)
+          .chancedOutput(ChemicalHelper.get(dust, washingByproduct, property.getByProductMultiplier()), 7000)
+          .chancedOutput(ChemicalHelper.get(dust, Stone), 4000)
           .duration(200).EUt(VA[LV])
           .category(GTRecipeCategories.ORE_BATHING)
           .save(provider);
@@ -352,12 +350,12 @@ public final class ISGOreRecipeHandler {
         .inputFluids(SulfuricAcid.getFluid(200))
         .circuitMeta(1)
         .outputItems(leachedStack)
-        .chancedOutput(leachedStack, 5500, 750);
+        .chancedOutput(leachedStack, 5500);
     if (byproduct != GTMaterials.NULL && !ChemicalHelper.get(dustPure, byproduct).isEmpty()) {
-      builder.chancedOutput(dustPure, byproduct, 1500, 1350);
+      builder.chancedOutput(dustPure, byproduct, 1350);
     }
     if (byproduct2 != GTMaterials.NULL && !ChemicalHelper.get(dustPure, byproduct2).isEmpty()) {
-      builder.chancedOutput(dustPure, byproduct2, 2200, 1150);
+      builder.chancedOutput(dustPure, byproduct2, 1150);
     }
     builder.outputFluids(DilutedSulfuricAcid.getFluid(300));
     builder.duration(ISGValues.SECONDS*10).EUt(VA[MV]).save(provider);
@@ -373,7 +371,7 @@ public final class ISGOreRecipeHandler {
         .inputItems(crushedLeached, material)
         .outputItems(refinedStack);
     if (byproduct != GTMaterials.NULL && !ChemicalHelper.get(dust, byproduct).isEmpty()) {
-      builder.chancedOutput(dust, byproduct, 2500, 1000);
+      builder.chancedOutput(dust, byproduct, 1000);
     }
     builder.duration(40).EUt(VA[HV]).save(provider);
   }
@@ -400,7 +398,7 @@ public final class ISGOreRecipeHandler {
     MACERATOR_RECIPES.recipeBuilder("macerate_" + material.getName() + "_crushed_ore_to_dust")
         .inputItems(crushedPurified, material)
         .outputItems(dustStack)
-        .chancedOutput(byproductStack, 1400, 0)
+        .chancedOutput(byproductStack, 1400)
         .duration(400).EUt(2)
         .category(GTRecipeCategories.ORE_CRUSHING)
         .save(provider);
@@ -414,7 +412,7 @@ public final class ISGOreRecipeHandler {
           .recipeBuilder("centrifuge_" + material.getName() + "_purified_ore_to_refined_ore")
           .inputItems(crushedPurified, material)
           .outputItems(crushedCentrifugedStack)
-          .chancedOutput(TagPrefix.dust, byproductMaterial, "1/3", 0)
+          .chancedOutput(TagPrefix.dust, byproductMaterial, "1/3")
           .save(provider);
     }
 
@@ -429,32 +427,32 @@ public final class ISGOreRecipeHandler {
         GTRecipeBuilder builder = SIFTER_RECIPES
             .recipeBuilder("sift_" + material.getName() + "_purified_ore_to_gems")
             .inputItems(crushedPurified, material)
-            .chancedOutput(exquisiteStack, 500, 0)
-            .chancedOutput(flawlessStack, 1500, 0)
-            .chancedOutput(gemStack, 5000, 0)
-            .chancedOutput(dustStack, 2500, 0)
+            .chancedOutput(exquisiteStack, 500)
+            .chancedOutput(flawlessStack, 1500)
+            .chancedOutput(gemStack, 5000)
+            .chancedOutput(dustStack, 2500)
             .duration(400).EUt(16);
 
         if (!flawedStack.isEmpty())
-          builder.chancedOutput(flawedStack, 2000, 0);
+          builder.chancedOutput(flawedStack, 2000);
         if (!chippedStack.isEmpty())
-          builder.chancedOutput(chippedStack, 3000, 0);
+          builder.chancedOutput(chippedStack, 3000);
 
         builder.save(provider);
       } else {
         GTRecipeBuilder builder = SIFTER_RECIPES
             .recipeBuilder("sift_" + material.getName() + "_purified_ore_to_gems")
             .inputItems(crushedPurified, material)
-            .chancedOutput(exquisiteStack, 300, 0)
-            .chancedOutput(flawlessStack, 1000, 0)
-            .chancedOutput(gemStack, 3500, 0)
-            .chancedOutput(dustStack, 5000, 0)
+            .chancedOutput(exquisiteStack, 300)
+            .chancedOutput(flawlessStack, 1000)
+            .chancedOutput(gemStack, 3500)
+            .chancedOutput(dustStack, 5000)
             .duration(400).EUt(16);
 
         if (!flawedStack.isEmpty())
-          builder.chancedOutput(flawedStack, 2500, 0);
+          builder.chancedOutput(flawedStack, 2500);
         if (!chippedStack.isEmpty())
-          builder.chancedOutput(chippedStack, 3500, 0);
+          builder.chancedOutput(chippedStack, 3500);
 
         builder.save(provider);
       }
@@ -476,16 +474,16 @@ public final class ISGOreRecipeHandler {
         .inputFluids(Prisma.getFluid(1000))
         .outputItems(frothedStack.copyWithCount(2));
     if (byproduct != GTMaterials.NULL && !ChemicalHelper.get(dustImpure, byproduct).isEmpty()) {
-      builder.chancedOutput(dustImpure, byproduct, 3500, 1450);
+      builder.chancedOutput(dustImpure, byproduct, 3500);
     }
     if (byproduct2 != GTMaterials.NULL && !ChemicalHelper.get(dustImpure, byproduct2).isEmpty()) {
-      builder.chancedOutput(dustImpure, byproduct2, 1800, 1750);
+      builder.chancedOutput(dustImpure, byproduct2, 1800);
     }
     if (byproduct3 != GTMaterials.NULL && !ChemicalHelper.get(dustPure, byproduct3).isEmpty()) {
-      builder.chancedOutput(dustImpure, byproduct3, 1500, 1950);
+      builder.chancedOutput(dustImpure, byproduct3, 1500);
     }
     if (byproduct4 != GTMaterials.NULL && !ChemicalHelper.get(dustPure, byproduct4).isEmpty()) {
-      builder.chancedOutput(dustImpure, byproduct4, 1500, 1950);
+      builder.chancedOutput(dustImpure, byproduct4, 1500);
     }
     builder.outputFluids(Prisma.getFluid(500));
     builder.duration(40).EUt(VA[IV]).save(provider);
@@ -510,7 +508,7 @@ public final class ISGOreRecipeHandler {
     MACERATOR_RECIPES.recipeBuilder("macerate_" + material.getName() + "_refined_ore_to_dust")
         .inputItems(crushedRefined, material)
         .outputItems(dustStack)
-        .chancedOutput(byproductStack, 1400, 0)
+        .chancedOutput(byproductStack, 1400)
         .duration(400).EUt(2)
         .category(GTRecipeCategories.ORE_CRUSHING)
         .save(provider);
@@ -534,7 +532,7 @@ public final class ISGOreRecipeHandler {
         .inputFluids(Water.getFluid(1000))
         .outputItems(pureStack);
     if (byproduct != GTMaterials.NULL && !ChemicalHelper.get(dustPure, byproduct).isEmpty()) {
-      builder.chancedOutput(dustPure, byproduct, 1500, 1950);
+      builder.chancedOutput(dustPure, byproduct, 1500);
     }
     builder.outputFluids(Prisma.getFluid(500));
     builder.duration(40).EUt(VA[IV]).save(provider);
@@ -556,7 +554,7 @@ public final class ISGOreRecipeHandler {
         .duration((int) (material.getMass() * 4)).EUt(24);
 
     if (byproduct.hasProperty(PropertyKey.DUST)) {
-      builder.chancedOutput(TagPrefix.dust, byproduct, "1/9", 0);
+      builder.chancedOutput(TagPrefix.dust, byproduct, "1/9");
     } else {
       builder.outputFluids(byproduct.getFluid(L / 9));
     }
@@ -594,8 +592,8 @@ public final class ISGOreRecipeHandler {
       ELECTROMAGNETIC_SEPARATOR_RECIPES.recipeBuilder("separate_" + material.getName() + "_pure_dust_to_dust")
           .inputItems(dustPure, material)
           .outputItems(dustStack)
-          .chancedOutput(TagPrefix.dust, separatedMaterial.get(0), 1000, 0)
-          .chancedOutput(separatedStack2, prefix == TagPrefix.dust ? 500 : 2000, 0)
+          .chancedOutput(TagPrefix.dust, separatedMaterial.get(0), 1000)
+          .chancedOutput(separatedStack2, prefix == TagPrefix.dust ? 500 : 2000)
           .duration(200).EUt(24)
           .save(provider);
     }
@@ -603,7 +601,7 @@ public final class ISGOreRecipeHandler {
     CENTRIFUGE_RECIPES.recipeBuilder("centrifuge_" + material.getName() + "_pure_dust_to_dust")
         .inputItems(dustPure, material)
         .outputItems(dustStack)
-        .chancedOutput(TagPrefix.dust, byproductMaterial, "1/9", 0)
+        .chancedOutput(TagPrefix.dust, byproductMaterial, "1/9")
         .duration(100)
         .EUt(5)
         .save(provider);

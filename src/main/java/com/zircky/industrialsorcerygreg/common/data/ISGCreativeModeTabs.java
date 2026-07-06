@@ -15,21 +15,21 @@ public class ISGCreativeModeTabs {
       .defaultCreativeTab( "item",builder -> builder
           .displayItems(new GTCreativeModeTabs.RegistrateDisplayItemsGenerator("item", REGISTRATE))
           .icon(() -> ISGItems.SMD_CAPACITOR_SUPRACAUSAL.asStack())
-          .title(REGISTRATE.addLang("itemGroup", ISGCore.id("item"), ISGCore.NAME + " | Items"))
+          .title(REGISTRATE.addLang("itemGroup", ISGCore.id("item"), ISGCore.TABNAME + " | Items"))
           .build())
       .register();
 
   public static RegistryEntry<CreativeModeTab> ISG_MACHINE = REGISTRATE.defaultCreativeTab("machine",
           builder -> builder.displayItems(new GTCreativeModeTabs.RegistrateDisplayItemsGenerator("machine", REGISTRATE))
               .icon(ISGMultiMachines.FUEL_REPROCESSOR::asStack)
-              .title(REGISTRATE.addLang("itemGroup", ISGCore.id("machine"), ISGCore.NAME + " | Machines"))
+              .title(REGISTRATE.addLang("itemGroup", ISGCore.id("machine"), ISGCore.TABNAME + " | Machines"))
               .build())
       .register();
 
-  public static RegistryEntry<CreativeModeTab> MATERIAL_ITEM = REGISTRATE.defaultCreativeTab("material_item",
+  public static RegistryEntry<CreativeModeTab> ISG_MATERIAL_ITEM = REGISTRATE.defaultCreativeTab("material_item",
           builder -> builder.displayItems(new GTCreativeModeTabs.RegistrateDisplayItemsGenerator("material_item", REGISTRATE))
               .icon(() -> ChemicalHelper.get(TagPrefix.ingot, ISGMaterials.Infinity))
-              .title(REGISTRATE.addLang("itemGroup", ISGCore.id("material_item"), ISGCore.NAME + " | Material Items"))
+              .title(REGISTRATE.addLang("itemGroup", ISGCore.id("material_item"), ISGCore.TABNAME + " | Material Items"))
               .build())
       .register();
 

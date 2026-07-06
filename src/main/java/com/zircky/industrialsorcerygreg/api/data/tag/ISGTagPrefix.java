@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconType;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
+import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.Nullable;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.NO_SMASHING;
@@ -38,6 +39,24 @@ public class ISGTagPrefix extends TagPrefix {
       .unificationEnabled(true)
       .generateItem(true)
       .generationCondition(hasOreProperty);
+
+  public static final TagPrefix CATALYST = new ISGTagPrefix("catalyst").tooltip((mat, list) -> {
+    list.add(Component.translatable("isgcore.tooltip.item.catalyst.1"));
+    list.add(Component.translatable("isgcore.tooltip.item.catalyst.2"));
+    list.add(Component.translatable("isgcore.tooltip.item.catalyst.3"));
+  }).idPattern("%s_catalyst")
+      .defaultTagPath("catalyst/%s")
+      .unformattedTagPath("catalyst")
+      .materialAmount(GTValues.M)
+      .materialIconType(new MaterialIconType("catalyst"))
+      .unificationEnabled(true)
+      .generateItem(true)
+//      .maxDamage(m -> 10000)
+      .generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_CATALYST));
+
+  private static final MaterialIconType NANITES_ICON = new MaterialIconType("nanites");
+  public static final TagPrefix NANITES = new ISGTagPrefix("nanites").idPattern("%s_nanites").defaultTagPath("nanites/%s").unformattedTagPath("nanites").materialAmount(GTValues.M).materialIconType(NANITES_ICON).unificationEnabled(true).generateItem(true).generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_NANITES));
+  public static final TagPrefix CONTAMINABLE_NANITES = new ISGTagPrefix("contaminable_nanites").idPattern("contaminable_%s_nanites").defaultTagPath("contaminable_nanites/%s").unformattedTagPath("contaminable_nanites").materialAmount(GTValues.M).materialIconType(NANITES_ICON).unificationEnabled(true).generateItem(true).generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_NANITES));
 
   public static final TagPrefix CURVED_PLATE = new ISGTagPrefix("curved_plate").idPattern("curved_%s_plate").defaultTagPath("curved_plates/%s").unformattedTagPath("curved_plates").langValue("Curved %s Plate").materialAmount(GTValues.M).materialIconType(new MaterialIconType("curved_plate")).unificationEnabled(true).generateItem(true).enableRecycling().generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_CURVED_PLATE) || mat.hasFlag(MaterialFlags.GENERATE_ROTOR) || ((mat.hasProperty(PropertyKey.FLUID_PIPE) || mat.hasProperty(PropertyKey.ITEM_PIPE)) && !mat.hasFlag(NO_SMASHING) && mat.getMass() < 240 && mat.getBlastTemperature() < 3600));
   public static final TagPrefix MOTOR_ENCLOSURE = new ISGTagPrefix("motor_enclosure").idPattern("%s_motor_enclosure").defaultTagPath("motor_enclosures/%s").unformattedTagPath("motor_enclosures").langValue("%s Motor Enclosure").materialAmount(GTValues.M << 1).materialIconType(new MaterialIconType("motor_enclosure")).unificationEnabled(true).generateItem(true).enableRecycling().generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_COMPONENT));
@@ -161,6 +180,16 @@ public class ISGTagPrefix extends TagPrefix {
       .enableRecycling()
       .generateItem(true)
       .generationCondition(hasDustProperty.and(mat -> mat.hasFlag(GENERATE_QUINTUPLE_PLATE)));
+
+  public static final TagPrefix singularity = new ISGTagPrefix("singularity")
+      .idPattern("%s_singularity")
+      .defaultTagPath("singularities/%s")
+      .unformattedTagPath("singularities")
+      .langValue("%s Singularity")
+      .materialIconType(new MaterialIconType("singularity"))
+      .unificationEnabled(true)
+      .generateItem(true)
+      .generationCondition(mat -> mat.hasFlag(GENERATE_SINGULARITY));
 
 
   public static void init() {

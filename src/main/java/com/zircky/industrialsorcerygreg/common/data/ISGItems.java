@@ -3,32 +3,36 @@ package com.zircky.industrialsorcerygreg.common.data;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.data.chemical.material.ItemMaterialData;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.ItemMaterialInfo;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
 import com.gregtechceu.gtceu.api.item.ComponentItem;
-import com.gregtechceu.gtceu.api.machine.MachineDefinition;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.item.armor.*;
 import com.gregtechceu.gtceu.common.item.behavior.CoverPlaceBehavior;
 import com.gregtechceu.gtceu.common.item.behavior.TooltipBehavior;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
+import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
+import com.zircky.industrialsorcerygreg.client.renderer.item.MaterialsColorMap;
 import com.zircky.industrialsorcerygreg.common.data.tag.item.ISGItemTag;
 import com.zircky.industrialsorcerygreg.common.item.armor.SpaceArmorComponentItem;
 import earth.terrarium.adastra.common.tags.ModItemTags;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
 
 import java.util.Locale;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.common.data.GTItems.attach;
 import static com.gregtechceu.gtceu.utils.FormattingUtil.toEnglishName;
 
 public class ISGItems {
@@ -38,7 +42,14 @@ public class ISGItems {
   }
 
   public static void init() {
+    ISGMaterialItems.generateMaterialItems();
   }
+
+  public static final ItemEntry<Item> SHAPE_EXTRUDER_ROD_LONG = ISGRegistries.REGISTRATE.item("long_rod_extruder_mold", Item::new)
+      .lang("Extruder Mold (Long Rod)")
+//      .model((ctx, prov) -> prov.generated(ctx, prov.modLoc("item/long_rod_extruder_mold")))
+      .onRegister(materialInfo(() -> new ItemMaterialInfo(new MaterialStack(GTMaterials.Steel, GTValues.M << 2))))
+      .register();
 
 //  public static final ItemEntry<Item> SMD_CAPACITOR_REFINED = registerLang("smd_capacitor_refined", "Refined SMD Capacitor");
 //  public static final ItemEntry<Item> SMD_DIODE_REFINED = registerSmd("smd_diode_refined", "Refined SMD Diode");
@@ -195,8 +206,29 @@ public class ISGItems {
 
   public static final ItemEntry<Item> ACTIVATED_CARBON_FILTER_MESH = register("activated_carbon_filter_mesh");
 
-
   public static final ItemEntry<Item> LOGIC_CHIP = registerLang("logic_chip", "Logic Chip");
+
+  public static ItemEntry<Item> INFINITY_SINGULARITY = ISGRegistries.REGISTRATE.item("infinity_singularity", Item::new)
+      .model(NonNullBiConsumer.noop())
+      .color(() -> () -> (item, i) -> MaterialsColorMap.getCurrentRainbowColor())
+      .register();
+
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_0 = registerCustomModel("combined_singularity_0");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_1 = registerCustomModel("combined_singularity_1");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_2 = registerCustomModel("combined_singularity_2");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_3 = registerCustomModel("combined_singularity_3");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_4 = registerCustomModel("combined_singularity_4");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_5 = registerCustomModel("combined_singularity_5");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_6 = registerCustomModel("combined_singularity_6");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_7 = registerCustomModel("combined_singularity_7");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_8 = registerCustomModel("combined_singularity_8");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_9 = registerCustomModel("combined_singularity_9");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_10 = registerCustomModel("combined_singularity_10");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_11 = registerCustomModel("combined_singularity_11");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_12 = registerCustomModel("combined_singularity_12");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_13 = registerCustomModel("combined_singularity_13");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_14 = registerCustomModel("combined_singularity_14");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_15 = registerCustomModel("combined_singularity_15");
 
   public static ItemEntry<SpaceArmorComponentItem> SPACE_NANOMUSCLE_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_nanomuscle_chestplate",
           (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR,
@@ -295,6 +327,8 @@ public class ISGItems {
   public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_OPV_4A = GTCEuAPI.isHighTier() ?
       registerTieredCover(OpV, 4) : null;
 
+  public static final ItemEntry<Item> CATALYST_BASE = register("catalyst_base");
+
 
   private static ItemEntry<Item> register(String id) {
     return ISGRegistries.REGISTRATE.item(id, Item::new)
@@ -308,10 +342,16 @@ public class ISGItems {
         .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/%s", id))))
         .register();
   }
-  private static ItemEntry<Item> registerSmd(String id, String name) {
+
+  private static ItemEntry<Item> registerSmd(String id) {
     return ISGRegistries.REGISTRATE.item(id, Item::new)
-        .lang(name)
         .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/smd/%s", id))))
+        .register();
+  }
+
+  private static ItemEntry<Item> registerCustomModel(String id) {
+    return ISGRegistries.REGISTRATE.item(id, Item::new)
+        .model(NonNullBiConsumer.noop())
         .register();
   }
 
@@ -327,7 +367,7 @@ public class ISGItems {
         }), new CoverPlaceBehavior(amperage == 1 ? ISGCovers.WIRELESS_ENERGY_RECEIVE[tier - 1] : ISGCovers.WIRELESS_ENERGY_RECEIVE_4A[tier - 1])))
         .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/wireless/%s", id)))).register();
   }
-  public static ItemEntry<Item> registerCircuit(String paramString1, String paramString2, TagKey<Item> paramTagKey) {
+  private static ItemEntry<Item> registerCircuit(String paramString1, String paramString2, TagKey<Item> paramTagKey) {
     return ISGRegistries.REGISTRATE.item(paramString1, Item::new)
         .lang(paramString2)
         .tag(paramTagKey)
@@ -335,11 +375,15 @@ public class ISGItems {
         .register();
   }
 
-  public static ItemEntry<Item> registerCircuit(String paramString1, TagKey<Item> paramTagKey) {
+  private static ItemEntry<Item> registerCircuit(String paramString1, TagKey<Item> paramTagKey) {
     return ISGRegistries.REGISTRATE.item(paramString1, Item::new)
         .lang(toEnglishName(paramString1))
         .tag(paramTagKey)
         .model((ctx, prov) -> prov.generated(ctx, prov.modLoc("item/circuit/%s".formatted(paramString1))))
         .register();
+  }
+
+  public static <T extends ItemLike> NonNullConsumer<T> materialInfo(Supplier<ItemMaterialInfo> materialInfo) {
+    return item -> ItemMaterialData.registerMaterialInfo(item, materialInfo.get());
   }
 }

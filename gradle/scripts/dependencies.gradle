@@ -43,7 +43,7 @@ dependencies {
 
   // Botania currently crashes in dev on Forge 47.4.x by reading client config before it is loaded.
   // Re-enable only when the mod actually needs Botania integration.
-  // modImplementation(forge.botania)
+   modImplementation(forge.botania)
 
   // Ad Astra
   modRuntimeOnly(forge.yabn)
@@ -57,6 +57,10 @@ dependencies {
   modImplementation(forge.ftblibrary.cm)
   modImplementation(forge.ftbteams.cm)
 
+
+
+  modImplementation("curse.maven:render-blender-1346485:7035162")
+  modImplementation("curse.maven:modernfix-790626:8335833")
   modImplementation(forge.nuclearcraft)
 
   modImplementation(forge.flywheel)

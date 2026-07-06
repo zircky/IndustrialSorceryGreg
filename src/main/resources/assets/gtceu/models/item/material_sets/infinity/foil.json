@@ -1,7 +1,0 @@
-{
-  "parent": "gtceu:item/material_sets/dull/foil",
-  "textures": {
-    "layer0": "industrialsorcerygreg:item/material_sets/infinity/foil",
-    "layer2": "industrialsorcerygreg:item/material_sets/infinity/foil_overlay"
-  }
-}

@@ -28,94 +28,201 @@ public class NetworkCells {
 
   private static void cells(Consumer<FinishedRecipe> provider) {
     CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder(ISGCore.id("ae2/network/cells/item_storage_components_cell_1k_part"))
-        .inputItems(CustomTags.ULV_CIRCUITS, 2)
+        .inputItems(CustomTags.ULV_CIRCUITS, 4)
         .inputItems(TagPrefix.plate, GTMaterials.CertusQuartz, 2)
-        .inputItems(ISGItems.LOGIC_CHIP)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 16)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 16)
         .inputItems(GTItems.COATED_BOARD)
         .circuitMeta(1)
         .outputItems(AEItems.CELL_COMPONENT_1K.asItem())
-        .duration(400).EUt(GTValues.VA[GTValues.HV]).save(provider);
+        .duration(400).EUt(GTValues.VA[GTValues.LV]).save(provider);
 
     CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("ae2/network/cells/item_storage_components_cell_4k_part")
         .inputItems(CustomTags.LV_CIRCUITS, 4)
         .inputItems(CustomTags.ULV_CIRCUITS, 16)
-        .inputItems(ISGItems.LOGIC_CHIP)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 16)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 16)
         .inputItems(GTItems.BASIC_CIRCUIT_BOARD)
         .circuitMeta(1)
         .outputItems(AEItems.CELL_COMPONENT_4K.asItem())
         .duration(400).EUt(GTValues.VA[GTValues.HV]).save(provider);
 
+    CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("ae2/network/cells/item_storage_components_cell_4k_part_alt")
+        .inputItems(CustomTags.LV_CIRCUITS, 4)
+        .inputItems(AEItems.CELL_COMPONENT_1K.asItem(), 4)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 8)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 8)
+        .inputItems(GTItems.BASIC_CIRCUIT_BOARD)
+        .circuitMeta(2)
+        .outputItems(AEItems.CELL_COMPONENT_4K.asItem())
+        .duration(400).EUt(GTValues.VA[GTValues.MV]).save(provider);
+
     CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("ae2/network/cells/item_storage_components_cell_16k_part")
         .inputItems(CustomTags.MV_CIRCUITS, 4)
         .inputItems(CustomTags.LV_CIRCUITS, 16)
-        .inputItems(ISGItems.LOGIC_CHIP)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 16)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 16)
         .inputItems(GTItems.GOOD_CIRCUIT_BOARD)
         .circuitMeta(1)
+        .outputItems(AEItems.CELL_COMPONENT_16K.asItem())
+        .duration(400).EUt(GTValues.VA[GTValues.EV]).save(provider);
+
+
+    CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("ae2/network/cells/item_storage_components_cell_16k_part_alt")
+        .inputItems(CustomTags.MV_CIRCUITS, 4)
+        .inputItems(AEItems.CELL_COMPONENT_4K.asItem(), 4)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 8)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 8)
+        .inputItems(GTItems.GOOD_CIRCUIT_BOARD)
+        .circuitMeta(2)
         .outputItems(AEItems.CELL_COMPONENT_16K.asItem())
         .duration(400).EUt(GTValues.VA[GTValues.HV]).save(provider);
 
     CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("ae2/network/cells/item_storage_components_cell_64k_part")
         .inputItems(CustomTags.HV_CIRCUITS, 4)
         .inputItems(CustomTags.MV_CIRCUITS, 16)
-        .inputItems(ISGItems.LOGIC_CHIP)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 16)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 16)
         .inputItems(GTItems.ADVANCED_CIRCUIT_BOARD)
         .circuitMeta(1)
+        .outputItems(AEItems.CELL_COMPONENT_64K.asItem())
+        .duration(400).EUt(GTValues.VA[GTValues.EV]).save(provider);
+
+    CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("ae2/network/cells/item_storage_components_cell_64k_part_alt")
+        .inputItems(CustomTags.HV_CIRCUITS, 4)
+        .inputItems(AEItems.CELL_COMPONENT_16K.asItem(), 4)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 8)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 8)
+        .inputItems(GTItems.ADVANCED_CIRCUIT_BOARD)
+        .circuitMeta(2)
         .outputItems(AEItems.CELL_COMPONENT_64K.asItem())
         .duration(400).EUt(GTValues.VA[GTValues.EV]).save(provider);
 
     CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("ae2/network/cells/item_storage_components_cell_256k_part")
         .inputItems(CustomTags.EV_CIRCUITS, 4)
         .inputItems(CustomTags.HV_CIRCUITS, 16)
-        .inputItems(ISGItems.LOGIC_CHIP)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 16)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 16)
         .inputItems(GTItems.FIBER_BOARD)
         .circuitMeta(1)
         .outputItems(AEItems.CELL_COMPONENT_256K.asItem())
         .duration(400).EUt(GTValues.VA[GTValues.IV]).save(provider);
 
+    CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("ae2/network/cells/item_storage_components_cell_256k_part_alt")
+        .inputItems(CustomTags.EV_CIRCUITS, 4)
+        .inputItems(AEItems.CELL_COMPONENT_64K.asItem(), 4)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 8)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 8)
+        .inputItems(GTItems.FIBER_BOARD)
+        .circuitMeta(2)
+        .outputItems(AEItems.CELL_COMPONENT_256K.asItem())
+        .duration(400).EUt(GTValues.VA[GTValues.IV]).save(provider);
+
+
     CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("megacell/cells/cell_component_1m")
         .inputItems(CustomTags.IV_CIRCUITS, 4)
         .inputItems(CustomTags.EV_CIRCUITS, 16)
-        .inputItems(ISGItems.LOGIC_CHIP)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 16)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 16)
         .inputItems(GTItems.ELITE_CIRCUIT_BOARD)
         .circuitMeta(1)
         .outputItems(MEGAItems.CELL_COMPONENT_1M.asItem())
         .duration(400).EUt(GTValues.VA[GTValues.LuV]).save(provider);
 
+    CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("megacell/cells/cell_component_1m_alt")
+        .inputItems(CustomTags.IV_CIRCUITS, 4)
+        .inputItems(AEItems.CELL_COMPONENT_256K.asItem(), 4)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 8)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 8)
+        .inputItems(GTItems.ELITE_CIRCUIT_BOARD)
+        .circuitMeta(2)
+        .outputItems(MEGAItems.CELL_COMPONENT_1M.asItem())
+        .duration(400).EUt(GTValues.VA[GTValues.LuV]).save(provider);
+
+
     CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("megacell/cells/cell_component_4m")
         .inputItems(CustomTags.LuV_CIRCUITS, 4)
         .inputItems(CustomTags.IV_CIRCUITS, 16)
-        .inputItems(ISGItems.LOGIC_CHIP)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 16)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 16)
         .inputItems(GTItems.WETWARE_BOARD)
         .circuitMeta(1)
+        .outputItems(MEGAItems.CELL_COMPONENT_4M.asItem())
+        .duration(400).EUt(GTValues.VA[GTValues.ZPM]).save(provider);
+
+    CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("megacell/cells/cell_component_4m_alt")
+        .inputItems(CustomTags.LuV_CIRCUITS, 4)
+        .inputItems(MEGAItems.CELL_COMPONENT_1M.asItem(), 4)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 8)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 8)
+        .inputItems(GTItems.WETWARE_BOARD)
+        .circuitMeta(2)
         .outputItems(MEGAItems.CELL_COMPONENT_4M.asItem())
         .duration(400).EUt(GTValues.VA[GTValues.ZPM]).save(provider);
 
     CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("megacell/cells/cell_component_16m")
         .inputItems(CustomTags.ZPM_CIRCUITS, 4)
         .inputItems(CustomTags.LuV_CIRCUITS, 16)
-        .inputItems(ISGItems.LOGIC_CHIP)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 16)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 16)
         .inputItems(GTItems.WETWARE_BOARD)
         .circuitMeta(1)
         .outputItems(MEGAItems.CELL_COMPONENT_16M.asItem())
         .duration(400).EUt(GTValues.VA[GTValues.UV]).save(provider);
 
+    CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("megacell/cells/cell_component_16m_alt")
+        .inputItems(CustomTags.ZPM_CIRCUITS, 4)
+        .inputItems(MEGAItems.CELL_COMPONENT_4M.asItem(), 4)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 8)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 8)
+        .inputItems(GTItems.WETWARE_BOARD)
+        .circuitMeta(2)
+        .outputItems(MEGAItems.CELL_COMPONENT_16M.asItem())
+        .duration(400).EUt(GTValues.VA[GTValues.UV]).save(provider);
+
+
     CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("megacell/cells/cell_component_64m")
         .inputItems(CustomTags.UV_CIRCUITS, 4)
         .inputItems(CustomTags.ZPM_CIRCUITS, 16)
-        .inputItems(ISGItems.LOGIC_CHIP)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 16)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 16)
         .inputItems(GTItems.WETWARE_BOARD)
         .circuitMeta(1)
         .outputItems(MEGAItems.CELL_COMPONENT_64M.asItem())
         .duration(400).EUt(GTValues.VA[GTValues.UHV]).save(provider);
 
+    CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("megacell/cells/cell_component_64m_alt")
+        .inputItems(CustomTags.UV_CIRCUITS, 4)
+        .inputItems(CustomTags.ZPM_CIRCUITS, 16)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 8)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 8)
+        .inputItems(GTItems.WETWARE_BOARD)
+        .circuitMeta(2)
+        .outputItems(MEGAItems.CELL_COMPONENT_64M.asItem())
+        .duration(400).EUt(GTValues.VA[GTValues.UHV]).save(provider);
+
+
     CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("megacell/cells/cell_component_256m")
         .inputItems(CustomTags.UHV_CIRCUITS, 4)
         .inputItems(CustomTags.UV_CIRCUITS, 16)
-        .inputItems(ISGItems.LOGIC_CHIP)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 16)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 16)
         .inputItems(GTItems.WETWARE_BOARD)
         .circuitMeta(1)
         .outputItems(MEGAItems.CELL_COMPONENT_256M.asItem())
         .duration(400).EUt(GTValues.VA[GTValues.UEV]).save(provider);
+
+    CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder("megacell/cells/cell_component_256m_alt")
+        .inputItems(CustomTags.UHV_CIRCUITS, 4)
+        .inputItems(CustomTags.UV_CIRCUITS, 16)
+        .inputItems(AEItems.LOGIC_PROCESSOR.asItem(), 8)
+        .inputItems(AEItems.CALCULATION_PROCESSOR.asItem(), 8)
+        .inputItems(GTItems.WETWARE_BOARD)
+        .circuitMeta(2)
+        .outputItems(MEGAItems.CELL_COMPONENT_256M.asItem())
+        .duration(400).EUt(GTValues.VA[GTValues.UEV]).save(provider);
+
+
 
     ASSEMBLER_RECIPES.recipeBuilder("ae2/network/cells/item_cell_housing")
         .inputItems(Blocks.GLASS_PANE.asItem())

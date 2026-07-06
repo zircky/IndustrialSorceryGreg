@@ -1,21 +1,13 @@
 package com.zircky.industrialsorcerygreg.common.data;
 
-import com.gregtechceu.gtceu.api.GTCEuAPI;
-import com.gregtechceu.gtceu.api.block.ICoilType;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.common.data.GTSoundEntries;
 import com.gregtechceu.gtceu.common.mui.GTGuiTextures;
 import com.gregtechceu.gtceu.common.recipe.gui.GTRecipeUIModifiers;
-import com.gregtechceu.gtceu.utils.FormattingUtil;
-import com.lowdragmc.lowdraglib.gui.texture.ProgressTexture;
-import com.lowdragmc.lowdraglib.gui.widget.SlotWidget;
-import com.lowdragmc.lowdraglib.utils.CycleItemStackHandler;
-import com.lowdragmc.lowdraglib.utils.LocalizationUtils;
 import com.zircky.industrialsorcerygreg.common.data.recipe.RecipeTypesModify;
-import net.minecraft.client.resources.language.I18n;
-import net.minecraft.world.item.ItemStack;
+import com.zircky.industrialsorcerygreg.common.recipe.gui.ISGRecipeUIModifiers;
 
 
 import java.util.ArrayList;
@@ -23,7 +15,6 @@ import java.util.List;
 
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.ELECTRIC;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.MULTIBLOCK;
-import static com.lowdragmc.lowdraglib.gui.texture.ProgressTexture.FillDirection.LEFT_TO_RIGHT;
 
 
 public class ISGRecipeTypes {
@@ -164,7 +155,12 @@ public class ISGRecipeTypes {
       .setEUIO(IO.IN)
       .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_ARROW));
 
-
+  public static final GTRecipeType COMPONENT_ASSEMBLY_RECIPES = GTRecipeTypes.register("component_assembly", MULTIBLOCK)
+      .setMaxIOSize(9, 1, 9, 0)
+      .setEUIO(IO.IN)
+      .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_ASSEMBLER)
+          .addRecipeUIModifier(ISGRecipeUIModifiers.COMPONENT_ASSEMBLY_CASING_TIER))
+      .setSound(GTSoundEntries.ASSEMBLER);
 
 
   public static void init() {

@@ -1,7 +1,0 @@
-{
-  "parent": "gtceu:item/material_sets/dull/tool_head_buzz_saw",
-  "textures": {
-    "layer0": "industrialsorcerygreg:item/material_sets/infinity/tool_head_buzz_saw",
-    "layer1": "industrialsorcerygreg:item/material_sets/infinity/tool_head_buzz_saw_overlay"
-  }
-}

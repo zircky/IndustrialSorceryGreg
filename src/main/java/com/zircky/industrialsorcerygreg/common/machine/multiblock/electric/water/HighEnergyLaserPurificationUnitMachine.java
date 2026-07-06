@@ -5,7 +5,6 @@ import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.MarkerMaterials;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
-import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -29,7 +28,4 @@ public class HighEnergyLaserPurificationUnitMachine extends WorkableElectricMult
     super(info);
   }
 
-  public HighEnergyLaserPurificationUnitMachine(BlockEntityCreationInfo info, RecipeLogic recipeLogic) {
-    super(info, recipeLogic);
-  }
 }

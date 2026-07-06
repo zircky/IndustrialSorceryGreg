@@ -3,15 +3,12 @@ package com.zircky.industrialsorcerygreg.common.data.machines;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.data.RotationState;
-import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
 import com.gregtechceu.gtceu.common.data.GTMachines;
-import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.common.data.machines.GTMachineUtils;
 import com.gregtechceu.gtceu.common.machine.multiblock.part.ItemBusPartMachine;
-import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.machine.part.WirelessEnergyHatchPartMachine;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes;
 import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.IndicatorHatchPartMachine;
@@ -20,8 +17,8 @@ import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.SensorPar
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.HIGH_TIERS;
 import static com.zircky.industrialsorcerygreg.api.registries.ISGRegistries.REGISTRATE;
-import static com.zircky.industrialsorcerygreg.common.data.machines.ISGMachineUtils.registerSimpleMachines;
-import static com.zircky.industrialsorcerygreg.common.data.machines.ISGMachineUtils.registerTieredMachines;
+import static com.zircky.industrialsorcerygreg.utils.register.MachineRegisterUtils.registerSimpleMachines;
+import static com.zircky.industrialsorcerygreg.utils.register.MachineRegisterUtils.registerTieredMachines;
 
 public class ISGSimpleMachines {
 

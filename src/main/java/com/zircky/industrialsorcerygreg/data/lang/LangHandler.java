@@ -2,6 +2,7 @@ package com.zircky.industrialsorcerygreg.data.lang;
 
 import com.tterrag.registrate.providers.RegistrateLangProvider;
 import com.zircky.industrialsorcerygreg.ISGCore;
+import com.zircky.industrialsorcerygreg.api.ISGValues;
 
 public class LangHandler {
   public static void init(RegistrateLangProvider provider) {
@@ -12,6 +13,7 @@ public class LangHandler {
     RecipeLang.init(provider);
 
 
+    provider.add("isgcore.tier.%s".formatted(ISGValues.COMPONENT_ASSEMBLY_CASING_TIER), "Casing Tier: %s");
     provider.add("item.isg.wireless_energy_receive_cover.tooltip.1", "§bPull Energy§7 from EU network to the machine as §fCover§7.");
     provider.add("item.isg.wireless_energy_receive_cover.tooltip.2", "§7Can only used for §esingle block machine§7.Can't put on the machine blow the cover's voltage");
     provider.add("item.isg.wireless_energy_receive_cover.tooltip.3", "§bEnergy transfer speed: §f%s §7EU/t");
@@ -21,5 +23,7 @@ public class LangHandler {
     provider.add("industrialsorcerygreg.machine.drone_maintenance_hatch.tooltip.range", "Range: %s blocks");
     provider.add("industrialsorcerygreg.machine.drone_maintenance_hatch.tooltip.consumption_chance", "Drone consumption chance: %s%% per service cycle");
     provider.add("industrialsorcerygreg.machine.drone_maintenance_hatch.tooltip.eut", "Energy usage: %s EU/t while servicing");
+    provider.add("isgcore.machine.sensor.invert.disabled", "Redstone Output: Normal");
+    provider.add("isgcore.machine.sensor.invert.enabled", "Redstone Output: Inverted");
   }
 }

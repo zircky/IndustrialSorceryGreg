@@ -16,7 +16,6 @@
     "gregtech.GTRecipeConditionsMixin",
     "gregtech.GTValuesAccessor",
     "gregtech.RecipeLogicMixin",
-    "gregtech.RecipeInjectionMixin",
     "nuclearcraft.NuclearCraftBEMixin"
   ],
   "client": [

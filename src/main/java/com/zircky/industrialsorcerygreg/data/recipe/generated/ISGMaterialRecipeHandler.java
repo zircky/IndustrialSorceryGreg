@@ -5,34 +5,36 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
+import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
+import com.zircky.industrialsorcerygreg.utils.ISGUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
+import static com.gregtechceu.gtceu.api.GTValues.MV;
+import static com.gregtechceu.gtceu.api.GTValues.VA;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
-import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.plate;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.plateDouble;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.BENDER_RECIPES;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.CHEMICAL_BATH_RECIPES;
 import static com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags.*;
 import static com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix.*;
 
 public class ISGMaterialRecipeHandler {
   public static void run(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
-    processPlateDoubleAddition(provider,material);
+    processPlateDoubleAddition(provider, material);
 
-    processPlateTriple(provider,material);
-    processPlateQuadruple(provider,material);
-    processPlateQuintuple(provider,material);
-    processPlateSuperdense(provider,material);
-
-    processIngotDouble(provider,material);
-    processIngotTriple(provider,material);
-    processIngotQuadruple(provider,material);
-    processIngotQuintuple(provider,material);
+    processIngot(provider, material);
+    processIngotDouble(provider, material);
+    processIngotTriple(provider, material);
+    processIngotQuadruple(provider, material);
+    processIngotQuintuple(provider, material);
   }
-  private static void processPlateDoubleAddition(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material){
-    if (!material.shouldGenerateRecipesFor(plateDouble) || !material.hasProperty(PropertyKey.INGOT)){
+
+  private static void processPlateDoubleAddition(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
+    if (!material.shouldGenerateRecipesFor(plateDouble) || !material.hasProperty(PropertyKey.INGOT)) {
       return;
     }
 
@@ -48,235 +50,25 @@ public class ISGMaterialRecipeHandler {
           .save(provider);
     }
   }
-  private static void processPlateTriple(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
 
-    if (!material.shouldGenerateRecipesFor(triplePlate) || !material.hasProperty(PropertyKey.INGOT)){
-      return;
-    }
+  private static void processIngot(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
+    ItemStack stack = ChemicalHelper.get(ingot, material);
+    if (stack.isEmpty()) return;
+    int mass = (int) material.getMass();
 
-    var magMaterial = material.hasFlag(IS_MAGNETIC) ?
-        material.getProperty(PropertyKey.INGOT).getMacerateInto() : material;
-    if (material.hasFlag(GENERATE_PLATE)) {
-      if (!material.hasFlag(NO_SMASHING)) {
-        VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_plates_to_triple_plate_1", material.getName()),
-            ChemicalHelper.get(triplePlate, magMaterial),
-            "h", "P", "D",
-            'P', new MaterialEntry(plate, material),
-            'D', new MaterialEntry(plateDouble,material)
-        );
-        VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_plates_to_triple_plate_2", material.getName()),
-            ChemicalHelper.get(triplePlate, magMaterial),
-            "h", "D", "P",
-            'D', new MaterialEntry(plateDouble,material),
-            'P', new MaterialEntry(plate, material)
-        );
-        if(material.hasFlag(GENERATE_TRIPLE_INGOT)) {
-          VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_ingots_to_triple_plate", material.getName()),
-              ChemicalHelper.get(triplePlate, magMaterial),
-              "h", "I", "I",
-              'I', new MaterialEntry(tripleIngot, material)
-          );
-        }
-
-      }
-
-      BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_plate_to_triple_plate")
-          .EUt(96).duration((int) material.getMass() * 3)
-          .inputItems(plate, material, 3)
-          .outputItems(triplePlate, magMaterial)
-          .circuitMeta(3)
-          .save(provider);
-
-      BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_ingot_to_triple_plate")
-          .inputItems(ingot, material, 3)
-          .circuitMeta(3)
-          .outputItems(triplePlate, magMaterial)
-          .duration((int) material.getMass() * 3)
-          .EUt(96)
-          .save(provider);
-
-      if(material.hasFlag(GENERATE_TRIPLE_INGOT)){
-        BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_triple_ingot_to_triple_plate")
-            .EUt(96).duration((int) material.getMass() * 3)
-            .inputItems(tripleIngot, material)
-            .outputItems(triplePlate, magMaterial)
-            .circuitMeta(1)
-            .save(provider);
-
-      }
-
+    if (ISGUtils.isGeneration(ingotHot, material) && material.hasFlag(CAN_BE_COOLED_DOWN_BY_BATHING)) {
+      CHEMICAL_BATH_RECIPES.recipeBuilder("%s_cool_down".formatted(material))
+          .inputItems(ingotHot, material)
+          .inputFluids(ISGMaterials.Ic2coolant, 100)
+          .outputItems(ingot, material)
+          .duration(mass * 5).EUt(VA[MV]).save(provider);
     }
   }
 
-  private static void processPlateQuadruple(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
-
-    if (!material.shouldGenerateRecipesFor(quadruplePlate) || !material.hasProperty(PropertyKey.INGOT)){
-      return;
-    }
-
-    var magMaterial = material.hasFlag(IS_MAGNETIC) ?
-        material.getProperty(PropertyKey.INGOT).getMacerateInto() : material;
-    if (material.hasFlag(GENERATE_PLATE)) {
-      if (!material.hasFlag(NO_SMASHING)) {
-
-        VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_plates_to_quadruple_plate_1", material.getName()),
-            ChemicalHelper.get(quadruplePlate, magMaterial),
-            "h", "P", "D",
-            'P', new MaterialEntry(plate, material),
-            'D', new MaterialEntry(triplePlate,material)
-        );
-
-        VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_plates_to_quadruple_plate_2", material.getName()),
-            ChemicalHelper.get(quadruplePlate, magMaterial),
-            "h", "D", "P",
-            'D', new MaterialEntry(triplePlate,material),
-            'P', new MaterialEntry(plate, material)
-        );
-
-        VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_double_plates_to_quadruple_plate", material.getName()),
-            ChemicalHelper.get(quadruplePlate, magMaterial),
-            "h", "P", "P",
-            'P', new MaterialEntry(plateDouble, material)
-        );
-        if(material.hasFlag(GENERATE_QUADRUPLE_INGOT)) {
-          VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_ingots_to_quadruple_plate", material.getName()),
-              ChemicalHelper.get(quadruplePlate, magMaterial),
-              "h", "P", "P",
-              'P', new MaterialEntry(quadrupleIngot, material)
-          );
-        }
-
-      }
-
-      BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_plate_to_quadruple_plate")
-          .EUt(96).duration((int) material.getMass() * 4)
-          .inputItems(plate, material, 4)
-          .outputItems(quadruplePlate, magMaterial)
-          .circuitMeta(4)
-          .save(provider);
-
-      BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_ingot_to_quadruple_plate")
-          .inputItems(ingot, material, 4)
-          .circuitMeta(4)
-          .outputItems(quadruplePlate, magMaterial)
-          .duration((int) material.getMass() * 4)
-          .EUt(96)
-          .save(provider);
-
-      if(material.hasFlag(GENERATE_QUADRUPLE_PLATE)){
-        BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_quadruple_ingot_to_quadruple_plate")
-            .EUt(96).duration((int) material.getMass() * 4)
-            .inputItems(quadrupleIngot, material)
-            .outputItems(quadruplePlate, magMaterial)
-            .circuitMeta(1)
-            .save(provider);
-        BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_double_ingots_to_quadruple_plate")
-            .EUt(96).duration((int) material.getMass() * 4)
-            .inputItems(doubleIngot, material,2)
-            .outputItems(quadruplePlate, magMaterial)
-            .circuitMeta(2)
-            .save(provider);
-
-      }
-    }
-  }
-
-  private static void processPlateQuintuple(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
-
-    if (!material.shouldGenerateRecipesFor(quintuplePlate) || !material.hasProperty(PropertyKey.INGOT)){
-      return;
-    }
-
-    var magMaterial = material.hasFlag(IS_MAGNETIC) ?
-        material.getProperty(PropertyKey.INGOT).getMacerateInto() : material;
-    if (material.hasFlag(GENERATE_PLATE)) {
-      if (!material.hasFlag(NO_SMASHING)) {
-
-        VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_plates_to_quintuple_plate_1", material.getName()),
-            ChemicalHelper.get(quintuplePlate, magMaterial),
-            "h", "P", "D",
-            'P', new MaterialEntry(plate, material),
-            'D', new MaterialEntry(quadruplePlate,material));
-        VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_plates_to_quintuple_plate_2", material.getName()),
-            ChemicalHelper.get(quintuplePlate, magMaterial),
-            "h", "D", "P",
-            'P', new MaterialEntry(plate, material),
-            'D', new MaterialEntry(quadruplePlate,material));
-
-        VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_double_plates_to_quintuple_plate_1", material.getName()),
-            ChemicalHelper.get(quintuplePlate, magMaterial),
-            "h", "P", "D",
-            'P', new MaterialEntry(plateDouble, material),
-            'D', new MaterialEntry(triplePlate,material));
-        VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_double_plates_to_quintuple_plate_2", material.getName()),
-            ChemicalHelper.get(quintuplePlate, magMaterial),
-            "h", "D", "P",
-            'P', new MaterialEntry(plateDouble, material),
-            'D', new MaterialEntry(triplePlate,material));
-        if(material.hasFlag(GENERATE_QUINTUPLE_INGOT)) {
-          VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_ingots_to_quintuple_plate", material.getName()),
-              ChemicalHelper.get(quadruplePlate, magMaterial),
-              "h", "P", "P",
-              'P', new MaterialEntry(quintupleIngot, material)
-          );
-        }
-      }
-
-      BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_plate_to_quintuple_plate")
-          .EUt(96).duration((int) material.getMass() * 5)
-          .inputItems(plate, material, 5)
-          .outputItems(quintuplePlate, magMaterial)
-          .circuitMeta(5)
-          .save(provider);
-
-      BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_ingot_to_quintuple_plate")
-          .inputItems(ingot, material, 5)
-          .circuitMeta(5)
-          .outputItems(quintuplePlate, magMaterial)
-          .duration((int) material.getMass() * 5)
-          .EUt(96)
-          .save(provider);
-
-      if(material.hasFlag(GENERATE_QUINTUPLE_PLATE)){
-        BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_quintuple_ingot_to_quintuple_plate")
-            .EUt(96).duration((int) material.getMass() * 5)
-            .inputItems(quintupleIngot, material)
-            .outputItems(quintuplePlate, magMaterial)
-            .circuitMeta(1)
-            .save(provider);
-      }
-    }
-  }
-
-  private static void processPlateSuperdense(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
-    if (!material.shouldGenerateRecipesFor(superdensePlate) || !material.hasProperty(PropertyKey.DUST)) {
-      return;
-    }
-
-    var magMaterial = material.hasFlag(IS_MAGNETIC) && material.hasProperty(PropertyKey.INGOT) ?
-        material.getProperty(PropertyKey.INGOT).getMacerateInto() : material;
-    BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_plate_to_superdense_plate")
-        .inputItems(plate, material, 64)
-        .circuitMeta(6)
-        .outputItems(superdensePlate, magMaterial)
-        .duration((int) Math.max(material.getMass() * 64L, 1L))
-        .EUt(96)
-        .save(provider);
-
-    if (material.hasProperty(PropertyKey.INGOT)) {
-      BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_ingot_to_superdense_plate")
-          .inputItems(ingot, material, 64)
-          .circuitMeta(6)
-          .outputItems(superdensePlate, magMaterial)
-          .duration((int) Math.max(material.getMass() * 64L, 1L))
-          .EUt(96)
-          .save(provider);
-    }
-  }
 
   private static void processIngotDouble(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
 
-    if (!material.shouldGenerateRecipesFor(doubleIngot) || !material.hasProperty(PropertyKey.INGOT)){
+    if (!material.shouldGenerateRecipesFor(doubleIngot) || !material.hasProperty(PropertyKey.INGOT)) {
       return;
     }
 
@@ -301,7 +93,7 @@ public class ISGMaterialRecipeHandler {
 
   private static void processIngotTriple(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
 
-    if (!material.shouldGenerateRecipesFor(tripleIngot) || !material.hasProperty(PropertyKey.INGOT)){
+    if (!material.shouldGenerateRecipesFor(tripleIngot) || !material.hasProperty(PropertyKey.INGOT)) {
       return;
     }
 
@@ -313,7 +105,7 @@ public class ISGMaterialRecipeHandler {
           ChemicalHelper.get(tripleIngot, magMaterial),
           "D", "P", "h",
           'P', new MaterialEntry(ingot, material),
-          'D', new MaterialEntry(doubleIngot,material));
+          'D', new MaterialEntry(doubleIngot, material));
 
     }
 
@@ -326,9 +118,10 @@ public class ISGMaterialRecipeHandler {
         .save(provider);
 
   }
+
   private static void processIngotQuadruple(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
 
-    if (!material.shouldGenerateRecipesFor(quadrupleIngot) || !material.hasProperty(PropertyKey.INGOT)){
+    if (!material.shouldGenerateRecipesFor(quadrupleIngot) || !material.hasProperty(PropertyKey.INGOT)) {
       return;
     }
 
@@ -340,7 +133,7 @@ public class ISGMaterialRecipeHandler {
           ChemicalHelper.get(quadrupleIngot, magMaterial),
           "D", "P", "h",
           'P', new MaterialEntry(ingot, material),
-          'D', new MaterialEntry(tripleIngot,material));
+          'D', new MaterialEntry(tripleIngot, material));
 
       VanillaRecipeHelper.addShapedRecipe(provider, String.format("double_ingots_quadruple_%s", material.getName()),
           ChemicalHelper.get(quadrupleIngot, magMaterial),
@@ -366,9 +159,10 @@ public class ISGMaterialRecipeHandler {
         .save(provider);
 
   }
+
   private static void processIngotQuintuple(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
 
-    if (!material.shouldGenerateRecipesFor(quintupleIngot) || !material.hasProperty(PropertyKey.INGOT)){
+    if (!material.shouldGenerateRecipesFor(quintupleIngot) || !material.hasProperty(PropertyKey.INGOT)) {
       return;
     }
 
@@ -380,12 +174,12 @@ public class ISGMaterialRecipeHandler {
           ChemicalHelper.get(quintupleIngot, magMaterial),
           "D", "P", "h",
           'P', new MaterialEntry(ingot, material),
-          'D', new MaterialEntry(quadrupleIngot,material));
+          'D', new MaterialEntry(quadrupleIngot, material));
       VanillaRecipeHelper.addShapedRecipe(provider, String.format("double_ingots_quintuple_%s", material.getName()),
           ChemicalHelper.get(quintupleIngot, magMaterial),
           "D", "P", "h",
           'P', new MaterialEntry(doubleIngot, material),
-          'D',new MaterialEntry(tripleIngot,material));
+          'D', new MaterialEntry(tripleIngot, material));
 
     }
 

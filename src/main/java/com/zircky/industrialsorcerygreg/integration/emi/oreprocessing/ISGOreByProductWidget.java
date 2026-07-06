@@ -125,7 +125,7 @@ public class ISGOreByProductWidget extends ParentWidget<ISGOreByProductWidget> {
       Content chance = recipeWrapper.getChance(i / 2 + itemInputs.size());
       IDrawable overlay = null;
       if (chance != null) {
-        overlay = new ContentOverlay(chance, false, 0, 0, null);
+        overlay = new ContentOverlay(chance, false);
       }
       if (itemOutputs.get(slotIndex).isEmpty()) {
         continue;

@@ -1,7 +1,6 @@
 {
-  "parent": "gtceu:item/material_sets/dull/ingot",
+  "parent": "item/generated",
   "textures": {
-    "layer0": "industrialsorcerygreg:item/material_sets/infinity/ingot",
-    "layer2": "industrialsorcerygreg:item/material_sets/infinity/ingot_overlay"
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/ingot"
   }
 }

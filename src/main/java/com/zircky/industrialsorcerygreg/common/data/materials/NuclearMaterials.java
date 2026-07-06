@@ -11,9 +11,6 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_F
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
 public class NuclearMaterials {
-  static {
-    ISGRegistries.REGISTRATE.creativeModeTab(() -> ISGCreativeModeTabs.MATERIAL_ITEM);
-  }
 
   public static void register() {
     ManganeseOxide = builderISG("manganese_oxide")

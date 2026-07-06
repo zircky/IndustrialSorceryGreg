@@ -1,5 +1,30 @@
 {
   "variants": {
+    "facing=down,upwards_facing=down": {
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace"
+    },
+    "facing=down,upwards_facing=east": {
+      "gtceu:z": 90,
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace",
+      "x": 90
+    },
+    "facing=down,upwards_facing=north": {
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace",
+      "x": 90
+    },
+    "facing=down,upwards_facing=south": {
+      "gtceu:z": 180,
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace",
+      "x": 90
+    },
+    "facing=down,upwards_facing=up": {
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace"
+    },
+    "facing=down,upwards_facing=west": {
+      "gtceu:z": 270,
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace",
+      "x": 90
+    },
     "facing=east,upwards_facing=down": {
       "gtceu:z": 180,
       "model": "industrialsorcerygreg:block/machine/liquefaction_furnace",
@@ -70,6 +95,31 @@
       "gtceu:z": 90,
       "model": "industrialsorcerygreg:block/machine/liquefaction_furnace",
       "y": 180
+    },
+    "facing=up,upwards_facing=down": {
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace"
+    },
+    "facing=up,upwards_facing=east": {
+      "gtceu:z": 90,
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace",
+      "x": 270
+    },
+    "facing=up,upwards_facing=north": {
+      "gtceu:z": 180,
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace",
+      "x": 270
+    },
+    "facing=up,upwards_facing=south": {
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace",
+      "x": 270
+    },
+    "facing=up,upwards_facing=up": {
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace"
+    },
+    "facing=up,upwards_facing=west": {
+      "gtceu:z": 270,
+      "model": "industrialsorcerygreg:block/machine/liquefaction_furnace",
+      "x": 270
     },
     "facing=west,upwards_facing=down": {
       "gtceu:z": 180,

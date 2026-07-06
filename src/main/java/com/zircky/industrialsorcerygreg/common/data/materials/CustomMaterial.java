@@ -4297,12 +4297,6 @@ public class CustomMaterial {
         .iconSet(FLUID)
         .buildAndRegister();
 
-    Eternity = builderISG("eternity")
-        .fluid()
-        .color(0x46008b)
-        .iconSet(FLUID)
-        .buildAndRegister();
-
     UsedFrothFlotationFluid = builderISG("used_froth_flotation_fluid")
         .fluid()
         .color(0x281D1D)

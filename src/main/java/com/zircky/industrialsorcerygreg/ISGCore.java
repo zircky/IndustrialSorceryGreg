@@ -27,6 +27,7 @@ public class ISGCore {
   public static final String MODID = "industrialsorcerygreg";
   private static final ResourceLocation TEMPLATE_LOCATION = new ResourceLocation(MODID, "");
   public static final String NAME = "IndustrialSorceryGreg";
+  public static final String TABNAME = "ISGCore";
   public static final Logger LOGGER = LogUtils.getLogger();
   public static MaterialRegistry MATERIAL_REGISTRY;
 
@@ -47,15 +48,17 @@ public class ISGCore {
     }
   }
 
+
   public static void init() {
     ISGCreativeModeTabs.init();
 
-    ISGBlocks.init();
+
 
     ISGItems.init();
 
     ISGDatagen.initPost();
   }
+
 
   public static ResourceLocation id(String path) {
     if (path.isBlank()) {
@@ -76,7 +79,12 @@ public class ISGCore {
   }
 
   private void commonSetup(final FMLCommonSetupEvent event) {
+    blockinit();
     event.enqueueWork(AddonTierNamePatcher::apply);
+  }
+
+  public static void blockinit() {
+    ISGBlocks.init();
   }
 
   @SubscribeEvent

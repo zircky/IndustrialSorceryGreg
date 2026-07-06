@@ -62,8 +62,8 @@ public class SensorPartMachine extends MultiblockPartMachine implements IMuiMach
         .overlay(false, GTGuiTextures.BUTTON_DETECTOR_INVERT)
         .overlay(true, GTGuiTextures.BUTTON_DETECTOR_INVERT)
         .value(new BooleanSyncValue(this::isInverted, this::setInverted))
-        .addTooltip(false, "gtocore.machine.sensor.invert.disabled")
-        .addTooltip(true, "gtocore.machine.sensor.invert.enabled"), 5);
+        .addTooltip(false, "isgcore.machine.sensor.invert.disabled")
+        .addTooltip(true, "isgcore.machine.sensor.invert.enabled"), 5);
   }
 
   private static IWidget text(String text, int x, int y, int width) {
@@ -88,8 +88,6 @@ public class SensorPartMachine extends MultiblockPartMachine implements IMuiMach
       }
     }
   }
-
-
 
   private static int computeRedstoneBetweenValues(float value, float maxValue, float minValue, boolean isInverted) {
     if (maxValue <= minValue) {

@@ -1,7 +1,6 @@
 {
-  "parent": "gtceu:item/material_sets/dull/bolt",
+  "parent": "item/generated",
   "textures": {
-    "layer0": "industrialsorcerygreg:item/material_sets/infinity/bolt",
-    "layer2": "industrialsorcerygreg:item/material_sets/infinity/bolt_overlay"
+    "layer0": "industrialsorcerygreg:item/material_sets/infinity/bolt"
   }
 }
