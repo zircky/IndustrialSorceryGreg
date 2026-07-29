@@ -1,6 +1,11 @@
 package com.zircky.industrialsorcerygreg.common.data.models;
 
+import com.gregtechceu.gtceu.GTCEu;
+import com.gregtechceu.gtceu.api.block.ActiveBlock;
+import com.gregtechceu.gtceu.api.block.IFusionCasingType;
+import com.gregtechceu.gtceu.api.block.property.GTBlockStateProperties;
 import com.gregtechceu.gtceu.api.registry.registrate.provider.GTBlockstateProvider;
+import com.gregtechceu.gtceu.common.block.FusionCasingBlock;
 import com.gregtechceu.gtceu.common.data.models.GTModels;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
@@ -8,6 +13,7 @@ import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.zircky.industrialsorcerygreg.ISGCore;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.client.model.generators.ModelFile;
 
 public class ISGModels extends GTModels {
   public static NonNullBiConsumer<DataGenContext<Block, Block>, RegistrateBlockstateProvider> createComponentCasingModel(String name, String tierName) {

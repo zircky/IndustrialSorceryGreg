@@ -29,8 +29,9 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
       minecraft_version   : libs.versions.minecraft.get(),
       loader_version      : forgeVers,
       forge_version       : forgeVers, // only specify major version of forge
-      ldlib_version       : forge.versions.ldlib.get(),
+//      configuration_version: forge.versions.configuration.get().split("-")[0],
       gtceu_version       : forge.versions.gtceu.get(),
+//      modernfix_version   : forge.versions.modernfix.get(),
       mod_license         : mod_license,
       mod_name            : mod_name,
       mod_authors         : mod_authors,

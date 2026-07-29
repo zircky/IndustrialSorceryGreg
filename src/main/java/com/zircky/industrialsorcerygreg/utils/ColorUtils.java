@@ -37,7 +37,7 @@ public class ColorUtils {
    */
   public static int[] generateStepGradient(int deepestColor, int lightestColor, int alpha, int steps) {
     if (steps < 2) {
-      throw new IllegalArgumentException("阶梯数必须至少为2");
+      throw new IllegalArgumentException("The number of steps must be at least 2");
     }
 
     int[] gradient = new int[steps];

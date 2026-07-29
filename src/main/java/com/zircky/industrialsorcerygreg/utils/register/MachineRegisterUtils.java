@@ -124,6 +124,29 @@ public class MachineRegisterUtils {
         tiers);
   }
 
+  public static MultiblockMachineDefinition registerLargeBoiler(String name, Supplier<? extends Block> casing,
+                                                                Supplier<? extends Block> pipe,
+                                                                Supplier<? extends Block> fireBox,
+                                                                ResourceLocation texture, BoilerFireboxType firebox,
+                                                                int maxTemperature, int heatSpeed) {
+    return registerLargeBoiler(REGISTRATE, name, casing, pipe, fireBox, texture, firebox, maxTemperature,
+        heatSpeed);
+  }
+
+  public static <MACHINE extends MultiblockControllerMachine> MultiblockMachineDefinition[] registerTieredMultis(String name,
+                                                                                                      MachineInstanceFactory.Tiered<MACHINE> factory,
+                                                                                                      BiFunction<Integer, MultiblockMachineBuilder<?, MACHINE, ?>, MultiblockMachineDefinition> builder,
+                                                                                                      int... tiers) {
+    MultiblockMachineDefinition[] definitions = new MultiblockMachineDefinition[GTValues.TIER_COUNT];
+    for (int tier : tiers) {
+      var register = multiblock(GTValues.VN[tier].toLowerCase(Locale.ROOT) + "_" + name,
+              holder -> factory.buildMachine(holder, tier))
+          .tier(tier);
+      definitions[tier] = builder.apply(tier, register);
+    }
+    return definitions;
+  }
+
   public static MultiblockMachineDefinition registerLargeBoiler(GTRegistrate registrate, String name,
                                                                 Supplier<? extends Block> casing,
                                                                 Supplier<? extends Block> pipe,
@@ -207,5 +230,7 @@ public class MachineRegisterUtils {
     }
     return definitions;
   }
+
+
 
 }

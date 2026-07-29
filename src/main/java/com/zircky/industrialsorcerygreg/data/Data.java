@@ -39,6 +39,8 @@ public class Data {
     ComponentRecipe.init(provider);
     CosmicChain.init(provider);
     ChemicalReactorRecipes.init(provider);
+    IndustrialProcessMaterialsRecipe.init(provider);
+    HighEnergyMaterialsRecipe.init(provider);
     PlatinumLine.init(provider);
     ChromiumLine.init(provider);
     FuelReprocessorRecipes.init(provider);

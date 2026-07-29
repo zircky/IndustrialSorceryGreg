@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.common.data;
 
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
@@ -45,7 +46,7 @@ public class ISGModifyMaterials {
     GTMaterials.TitaniumTungstenCarbide.addFlags(GENERATE_DENSE);
     GTMaterials.CertusQuartz.addFlags(GENERATE_BOLT_SCREW);
 
-    GTMaterials.Neutronium.addFlags(ISGMaterialFlags.GENERATE_NANITES);
+    GTMaterials.Neutronium.addFlags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_DENSE);
     GTMaterials.Carbon.addFlags(GENERATE_NANITES);
     GTMaterials.Glowstone.addFlags(GENERATE_NANITES);
     GTMaterials.Copper.addFlags(GENERATE_NANITES);
@@ -56,7 +57,7 @@ public class ISGModifyMaterials {
     GTMaterials.Iridium.addFlags(GENERATE_NANITES);
     GTMaterials.Rhenium.addFlags(GENERATE_NANITES);
 
-
+    GTMaterials.Neutronium.setProperty(PropertyKey.WIRE, new WireProperties((int) GTValues.V[GTValues.UIV], 2, 64));
 
     GTMaterials.Steel.addFlags(ISGMaterialFlags.GENERATE_COMPONENT);
     GTMaterials.Aluminium.addFlags(ISGMaterialFlags.GENERATE_COMPONENT);
@@ -79,8 +80,17 @@ public class ISGModifyMaterials {
     ISGMaterials.addIngot(GTMaterials.Zirconium);
     ISGMaterials.addIngot(GTMaterials.Strontium);
     ISGMaterials.addIngot(GTMaterials.Scandium);
+
+    ISGMaterials.addData(GTMaterials.Astatine);
+    ISGMaterials.addData(GTMaterials.Tellurium);
+    ISGMaterials.addData(GTMaterials.Selenium);
+
     ISGMaterials.addFluid(GTMaterials.Scandium);
     ISGMaterials.addFluid(GTMaterials.Radium);
+    ISGMaterials.addFluid(GTMaterials.Calcium);
+    ISGMaterials.addFluid(GTMaterials.Hafnium);
+    ISGMaterials.addFluid(GTMaterials.PotassiumHydroxide);
+    ISGMaterials.addFluid(GTMaterials.AmmoniumChloride);
 //    GTMaterials.Scandium.setProperty(PropertyKey.DUST, new DustProperty());
 
 

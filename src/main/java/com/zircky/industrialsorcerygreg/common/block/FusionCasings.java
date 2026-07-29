@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.block.FusionCasingBlock;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.ISGCore;
+import com.zircky.industrialsorcerygreg.common.data.ISGCasings;
 import lombok.Getter;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -30,9 +31,9 @@ public final class FusionCasings extends FusionCasingBlock {
 //    };
 //  }
 
-//  public static Block getCoilState(int tier) {
-//    return tier == UHV ? GTEBlocks.ADVANCED_FUSION_COIL.get() : GTEBlocks.FUSION_COIL_MK2.get();
-//  }
+  public static Block getCoilState(int tier) {
+    return tier == UHV ? ISGCasings.ADVANCED_FUSION_COIL.get() : ISGCasings.FUSION_COIL_MK2.get();
+  }
 
   public static Block getFrameState(int tier) {
     return switch (tier) {
@@ -48,9 +49,9 @@ public final class FusionCasings extends FusionCasingBlock {
     return switch (tier) {
       case LuV -> FUSION_CASING.get();
       case ZPM -> FUSION_CASING_MK2.get();
-      default -> FUSION_CASING_MK3.get();
-//      case UHV -> GTEBlocks.FUSION_CASING_MK4.get();
-//      default -> GTEBlocks.FUSION_CASING_MK5.get();
+      case UV -> FUSION_CASING_MK3.get();
+      case UHV -> ISGCasings.FUSION_CASING_MK4.get();
+      default -> ISGCasings.FUSION_CASING_MK5.get();
     };
   }
 

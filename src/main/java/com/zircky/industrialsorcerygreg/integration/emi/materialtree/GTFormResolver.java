@@ -2,10 +2,15 @@ package com.zircky.industrialsorcerygreg.integration.emi.materialtree;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidProperty;
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.material.Fluid;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +66,8 @@ public class GTFormResolver {
       TagPrefix.block,
       TagPrefix.frameGt,
 
+
+
       TagPrefix.pipeTinyFluid,
       TagPrefix.pipeSmallFluid,
       TagPrefix.pipeNormalFluid,
@@ -91,6 +98,10 @@ public class GTFormResolver {
   public List<FormEntry> resolveForms(final Material material) {
     final List<FormEntry> out = new ArrayList<>();
 
+    addFluid(out, material, FluidStorageKeys.LIQUID);
+    addFluid(out, material, FluidStorageKeys.GAS);
+    addFluid(out, material, FluidStorageKeys.PLASMA);
+
     for (final TagPrefix prefix : DEFAULT_FORMS) {
       final ItemStack stack = ChemicalHelper.get(prefix, material, 1);
       if (stack == null || stack.isEmpty()) continue;
@@ -101,7 +112,7 @@ public class GTFormResolver {
   }
 
   public EmiStack pickKey(final Material material) {
-    return firstNonEmpty(material,
+    final EmiStack itemKey = firstNonEmpty(material,
         TagPrefix.ingot,
         TagPrefix.gem,
         TagPrefix.dust,
@@ -110,6 +121,13 @@ public class GTFormResolver {
         TagPrefix.wireFine,
         TagPrefix.nugget,
         TagPrefix.block
+    );
+    if (!itemKey.isEmpty()) return itemKey;
+
+    return firstFluid(material,
+        FluidStorageKeys.LIQUID,
+        FluidStorageKeys.GAS,
+        FluidStorageKeys.PLASMA
     );
   }
 
@@ -121,6 +139,31 @@ public class GTFormResolver {
       }
     }
     return EmiStack.EMPTY;
+  }
+
+  private EmiStack firstFluid(final Material material, final FluidStorageKey... order) {
+    for (final FluidStorageKey key : order) {
+      final EmiStack stack = fluidStack(material, key);
+      if (!stack.isEmpty()) return stack;
+    }
+    return EmiStack.EMPTY;
+  }
+
+  private void addFluid(final List<FormEntry> out, final Material material, final FluidStorageKey key) {
+    final EmiStack stack = fluidStack(material, key);
+    if (!stack.isEmpty()) {
+      out.add(new FormEntry(key, stack));
+    }
+  }
+
+  private EmiStack fluidStack(final Material material, final FluidStorageKey key) {
+    final FluidProperty property = material.getProperty(PropertyKey.FLUID);
+    if (property == null) return EmiStack.EMPTY;
+
+    final Fluid fluid = property.get(key);
+    if (fluid == null) return EmiStack.EMPTY;
+
+    return EmiStack.of(fluid, 1000);
   }
 
 }

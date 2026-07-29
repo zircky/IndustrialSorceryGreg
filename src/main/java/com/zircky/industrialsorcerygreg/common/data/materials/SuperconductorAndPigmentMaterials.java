@@ -446,7 +446,7 @@ final class SuperconductorAndPigmentMaterials {
         .buildAndRegister()
         .setFormula("CdS");
 
-    UnprocessedNdYAGDust = builderISG("unprocessed_ndyag")
+    UnprocessedNdYAG = builderISG("unprocessed_ndyag")
         .langValue("Unprocessed Nd:YAG Dust")
         .dust()
         .color(0xcf8acf)

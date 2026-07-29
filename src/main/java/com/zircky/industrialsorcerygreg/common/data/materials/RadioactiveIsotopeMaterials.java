@@ -136,6 +136,24 @@ public final class RadioactiveIsotopeMaterials {
         .radioactiveHazard(3)
         .buildAndRegister();
 
+    Americium241Ox = builderISG("americium_241_ox")
+        .ingot().fluid()
+        .flags(GENERATE_LONG_ROD)
+        .radioactiveHazard(3)
+        .buildAndRegister();
+
+    Americium241Ni = builderISG("americium_241_ni")
+        .ingot().fluid()
+        .flags(GENERATE_LONG_ROD)
+        .radioactiveHazard(3)
+        .buildAndRegister();
+
+    Americium241Za = builderISG("americium_241_za")
+        .ingot().fluid()
+        .flags(GENERATE_LONG_ROD)
+        .radioactiveHazard(3)
+        .buildAndRegister();
+
     Americium243 = builderISG("americium_243")
         .ingot().fluid()
         .flags(GENERATE_LONG_ROD)

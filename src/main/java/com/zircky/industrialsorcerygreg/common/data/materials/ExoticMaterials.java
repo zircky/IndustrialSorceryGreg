@@ -20,12 +20,13 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.*;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.Europium;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.Sapphire;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Plutonium239;
 import static com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags.GENERATE_CURVED_PLATE;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.*;
+import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
 
 public final class ExoticMaterials {
@@ -33,14 +34,72 @@ public final class ExoticMaterials {
   }
 
   public static void register() {
+    Echoite = builderISG("echoite")
+        .ingot()
+        .fluid()
+        .plasma()
+        .radioactiveHazard(20)
+        .blastTemp(17300, HIGHER)
+        .element(ISGElement.ECHOITE)
+        .color(0x26734d)
+        .iconSet(METALLIC)
+        .flags(GENERATE_ROD, GENERATE_FINE_WIRE)
+        .cableProperties(GTValues.V[GTValues.UIV], 32, 0, true)
+        .buildAndRegister();
+
+    Mithril = builderISG("mithril")
+        .ingot()
+        .fluid()
+        .plasma()
+        .ore()
+        .addOreByproducts(Actinium, Technetium)
+        .blastTemp(14800, HIGHER)
+        .element(ISGElement.MITHRIL)
+        .color(0x4da6ff)
+        .iconSet(METALLIC)
+        .flags(GENERATE_PLATE, GENERATE_SPRING, GENERATE_FRAME, GENERATE_SPRING_SMALL)
+        .cableProperties(GTValues.V[GTValues.UEV], 2, 64)
+        .buildAndRegister();
+
+    EnergeticNetherite = builderISG("energetic_netherite")
+        .ingot()
+        .color(0x4b4042)
+        .blastTemp(10200, HIGHEST, GTValues.VA[GTValues.ZPM], 600)
+        .flags(IS_MAGNETIC, GENERATE_LONG_ROD)
+        .iconSet(MAGNETIC)
+        .buildAndRegister();
+
     Draconium = builderISG("draconium")
-        .ingot(4)
+        .ingot()
         .fluid()
         .blastTemp(19200)
         .element(ISGElement.DRACONIUM)
         .color(0xa300cc)
-        .iconSet(MaterialIconSet.RADIOACTIVE)
-        .appendFlags(SNDART_FLAGS, NO_SMELTING)
+        .iconSet(RADIOACTIVE)
+        .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_GEAR, NO_SMELTING)
+        .buildAndRegister();
+
+    Quantanium = builderISG("quantanium")
+        .ingot()
+        .fluid()
+        .blastTemp(12500, HIGHER)
+        .element(ISGElement.QUANTANIUM)
+        .color(0x0dff02)
+        .iconSet(METALLIC)
+        .flags(GENERATE_ROTOR, GENERATE_SMALL_GEAR, GENERATE_FRAME, GENERATE_DENSE)
+        .buildAndRegister();
+
+    CrystalMatrix = builderISG("crystal_matrix")
+        .ingot()
+        .fluid()
+        .plasma()
+        .radioactiveHazard(40)
+        .blastTemp(19600, HIGHEST)
+        .element(ISGElement.CRYSTALMATRIX)
+        .color(0x33ffff)
+        .iconSet(RADIOACTIVE)
+        .flags(GENERATE_SPRING, GENERATE_SPRING_SMALL)
+        .cableProperties(GTValues.V[GTValues.OpV], 2, 128)
         .buildAndRegister();
 
     Chaos = builderISG("chaos")
@@ -52,6 +111,16 @@ public final class ExoticMaterials {
         .iconSet(CHAOS)
         .color(0x000000)
         .flags(GENERATE_FOIL)
+        .buildAndRegister();
+
+    TranscendentMetal = builderISG("transcendent_metal")
+        .ingot()
+        .fluid()
+        .element(ISGElement.TRANSCENDENTMETAL)
+        .color(0xffffff)
+        .iconSet(TRANSCENDENT)
+        .flags(ISGMaterialFlags.GENERATE_COMPONENT, ISGMaterialFlags.GENERATE_NANITES, GENERATE_ROUND, GENERATE_ROTOR, GENERATE_GEAR,
+            GENERATE_SMALL_GEAR, GENERATE_LONG_ROD)
         .buildAndRegister();
 
     Infinity = builderISG("infinity")
@@ -109,6 +178,18 @@ public final class ExoticMaterials {
         .iconSet(ETERNITY)
         .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_FOIL, GENERATE_FRAME)
         .buildAndRegister();
+
+    ChaosInfinityAlloy = material("chaos_infinity_alloy")
+        .ingot()
+        .radioactiveHazard(100)
+        .liquid(new FluidBuilder().customStill())
+        .color(0x1f0f1f)
+        .blastTemp(32000, HIGHEST)
+        .element(ISGElement.INFINITY)
+        .iconSet(INFINITY_CHAOS)
+        .flags(GENERATE_FRAME, GENERATE_GEAR, GENERATE_BOLT_SCREW, GENERATE_PLATE)
+        .buildAndRegister()
+        .setFormula("§8§kc§r§8∞§r§8§kc", false);
 
     MagnetohydrodynamicallyConstrainedStarMatter = builderISG("magnetohydrodynamically_constrained_star_matter")
         .ingot()
@@ -243,20 +324,29 @@ public final class ExoticMaterials {
         .setFormula("", true);
 
     Vibranium = builderISG("vibranium")
-        .ingot().fluid()
-        .color(0x828aad).iconSet(SHINY)
-        .appendFlags(SNDART_FLAGS)
-        .blastTemp(11220, HIGHEST, GTValues.VA[GTValues.UEV], ISGValues.HOURS * 4)
-        .buildAndRegister().setFormula("Vb");
+        .ingot()
+        .fluid()
+        .plasma()
+        .ore()
+        .addOreByproducts(Plutonium239, Plutonium241)
+        .blastTemp(18500, HIGHER)
+        .element(ISGElement.VIBRANIUM)
+        .color(0xff0000)
+        .iconSet(METALLIC)
+        .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_DENSE)
+        .buildAndRegister();
 
     Taranium = builderISG("taranium")
-        .ingot().fluid()
-        .color(0x0c0c0d)
-        .iconSet(SHINY)
-        .appendFlags(SNDART_FLAGS)
-        .blastTemp(10000, HIGHEST)
-        .buildAndRegister()
-        .setFormula("Tn");
+        .ingot()
+        .fluid()
+        .radioactiveHazard(5)
+        .blastTemp(16200, HIGHEST, GTValues.VA[GTValues.UIV], 1440)
+        .element(ISGElement.TARANIUM)
+        .color(0x000033)
+        .iconSet(RADIOACTIVE)
+        .flags(GENERATE_SPRING, GENERATE_SPRING_SMALL)
+        .cableProperties(GTValues.V[GTValues.UXV], 2, 64)
+        .buildAndRegister();
 
     MetastableOganesson = builderISG("metastable_oganesson")
         .ingot().fluid()
@@ -285,21 +375,80 @@ public final class ExoticMaterials {
         .blastTemp(11240, HIGHEST)
         .buildAndRegister();
 
-    Krypton = builderISG("krypton")
-        .fluid().plasma()
-        .color(0x31C42F)
-        .iconSet(FLUID)
-        .flags(DISABLE_DECOMPOSITION)
-        .element(GTElements.Kr)
+    Orichalcum = builderISG("orichalcum")
+        .ingot()
+        .fluid()
+        .plasma()
+        .ore()
+        .blastTemp(15300, HIGHER)
+        .element(ISGElement.ORICHALCUM)
+        .color(0xff78c9)
+        .iconSet(METALLIC)
+        .flags(ISGMaterialFlags.GENERATE_COMPONENT, ISGMaterialFlags.GENERATE_NANITES, GENERATE_ROUND, GENERATE_ROTOR, GENERATE_GEAR,
+            GENERATE_SMALL_GEAR, GENERATE_LONG_ROD)
         .buildAndRegister();
 
-    Polonium = builderISG("polonium")
-        .dust().fluid()
-        .color(0xC9D47E)
-        .iconSet(DULL)
-        .radioactiveHazard(2)
-        .flags(GENERATE_PLATE, GENERATE_CURVED_PLATE)
+    Infuscolium = material("infuscolium")
+        .ingot()
+        .fluid()
+        .plasma()
+        .radioactiveHazard(20)
+        .blastTemp(17500, HIGHER)
+        .element(ISGElement.INFUSCOLIUM)
+        .color(0xff77ff)
+        .iconSet(RADIOACTIVE)
+        .flags(ISGMaterialFlags.GENERATE_COMPONENT, ISGMaterialFlags.GENERATE_NANITES, GENERATE_ROUND, GENERATE_ROTOR, GENERATE_GEAR,
+            GENERATE_SMALL_GEAR, GENERATE_LONG_ROD)
         .buildAndRegister();
+
+    AstralTitanium = material("astral_titanium")
+        .ingot()
+        .fluid()
+        .plasma()
+        .radioactiveHazard(10)
+        .element(ISGElement.ASTRALTITANIUM)
+        .color(0xf6cbf6)
+        .flags(GENERATE_GEAR)
+        .iconSet(BRIGHT)
+        .buildAndRegister();
+
+    CelestialTungsten = material("celestial_tungsten")
+        .ingot()
+        .fluid()
+        .plasma()
+        .radioactiveHazard(10)
+        .element(ISGElement.CELESTIALTUNGSTEN)
+        .color(0x303030)
+        .flags(GENERATE_GEAR)
+        .iconSet(BRIGHT)
+        .buildAndRegister();
+
+    Vibramantium = material("vibramantium")
+        .ingot()
+        .fluid()
+        .blastTemp(18800, HIGHER, GTValues.VA[GTValues.UXV], 1800)
+        .components(Vibranium, 1, Adamantium, 3)
+        .color(0xff009c)
+        .iconSet(METALLIC)
+        .flags(ISGMaterialFlags.GENERATE_COMPONENT, GENERATE_ROUND, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_LONG_ROD,
+            DISABLE_DECOMPOSITION)
+        .buildAndRegister();
+
+//    Krypton = builderISG("krypton")
+//        .fluid().plasma()
+//        .color(0x31C42F)
+//        .iconSet(FLUID)
+//        .flags(DISABLE_DECOMPOSITION)
+//        .element(GTElements.Kr)
+//        .buildAndRegister();
+
+//    Polonium = builderISG("polonium")
+//        .dust().fluid()
+//        .color(0xC9D47E)
+//        .iconSet(DULL)
+//        .radioactiveHazard(2)
+//        .flags(GENERATE_PLATE, GENERATE_CURVED_PLATE)
+//        .buildAndRegister();
 
   }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "industrialsorcerygreg:item/charm_quark_releasing_catalyst"
+  }
+}

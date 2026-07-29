@@ -1,0 +1,6 @@
+﻿Materials from SuperconductorAndPigmentMaterials without recipe in active Java or data/recipe/misc/test.
+If a recipe is needed, add it to the matching Java class and remove the material from this list.
+
+ISGMaterials.NeodymiumDopedYttrium
+ISGMaterials.NdYAGNanoparticles
+ISGMaterials.UnprocessedNdYAG

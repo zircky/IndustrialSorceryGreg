@@ -46,9 +46,9 @@ public class WaterPurificationPlant {
           .inputFluids(FilteredSater.getFluid(1000))
           .inputFluids(Ozone.getFluid(Math.toIntExact(1000 * (long) ISGUtility.powInt(2, (tier + 6)))))
           .chancedOutput(OzoneWater.getFluid(900), tier * 2000)
-          .chancedOutput(TagPrefix.dust, GTMaterials.Manganese, 500, 0)
-          .chancedOutput(TagPrefix.dust, GTMaterials.Iron, 500, 0)
-          .chancedOutput(TagPrefix.dust, GTMaterials.Sulfur, 500, 0)
+          .chancedOutput(TagPrefix.dust, GTMaterials.Manganese, 500, 150)
+          .chancedOutput(TagPrefix.dust, GTMaterials.Iron, 500, 150)
+          .chancedOutput(TagPrefix.dust, GTMaterials.Sulfur, 500, 150)
           .addData("tier", 2).duration(duration).EUt(VA[LuV]).save(provider);
     }
 
@@ -57,8 +57,8 @@ public class WaterPurificationPlant {
         .chancedOutput(FlocculentWater.getFluid(900), 1000)
         .outputFluids(FlocculationWasteSolution.getFluid(100_000))
         .chancedOutput(new ItemStack(Items.CLAY_BALL), 1000)
-        .chancedOutput(TagPrefix.dust, GTMaterials.NetherQuartz, 500, 0)
-        .chancedOutput(TagPrefix.nugget, GTMaterials.PolyvinylChloride, 100, 0)
+        .chancedOutput(TagPrefix.dust, GTMaterials.NetherQuartz, 500, 1)
+        .chancedOutput(TagPrefix.nugget, GTMaterials.PolyvinylChloride, 100, 1)
         .addData("tier", 3).duration(duration).EUt(VA[ZPM]).save(provider);
 
     PH_NEUTRALIZATION_PURIFICATION_RECIPES.recipeBuilder(ISGCore.id("ph_neutral_water"))

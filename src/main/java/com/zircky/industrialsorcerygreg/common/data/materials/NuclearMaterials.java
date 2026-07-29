@@ -176,6 +176,13 @@ public class NuclearMaterials {
         .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 
+    BismuthStrontiumCalciumCuprate = builderISG("bismuth_strontium_calcium_cuprate")
+        .ingot()
+        .color(GTMaterials.Bismuth.getMaterialRGB() + GTMaterials.Strontium.getMaterialRGB() + GTMaterials.Calcium.getMaterialRGB() + GTMaterials.Copper.getMaterialRGB())
+        .iconSet(DULL)
+        .appendFlags(SNDART_FLAGS)
+        .buildAndRegister();
+
   }
 
 

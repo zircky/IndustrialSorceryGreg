@@ -7,6 +7,16 @@ import java.util.function.Consumer;
 
 public class RecipeRemoval {
   public static void init(Consumer<ResourceLocation> consumer) {
+    consumer.accept(GTCEu.id("assembler/casing_ulv"));
+    consumer.accept(GTCEu.id("assembler/casing_lv"));
+    consumer.accept(GTCEu.id("assembler/casing_mv"));
+    consumer.accept(GTCEu.id("assembler/casing_hv"));
+    consumer.accept(GTCEu.id("assembler/casing_ev"));
+    consumer.accept(GTCEu.id("assembler/casing_iv"));
+    consumer.accept(GTCEu.id("assembler/casing_luv"));
+    consumer.accept(GTCEu.id("assembler/casing_zpm"));
+    consumer.accept(GTCEu.id("assembler/casing_uv"));
+    consumer.accept(GTCEu.id("assembler/casing_uhv"));
     consumer.accept(GTCEu.id("assembler/electric_motor_lv_iron"));
     consumer.accept(GTCEu.id("assembler/electric_motor_lv_steel"));
     consumer.accept(GTCEu.id("shaped/electric_motor_lv_iron"));

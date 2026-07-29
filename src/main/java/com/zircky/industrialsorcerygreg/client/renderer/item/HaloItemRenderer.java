@@ -2,9 +2,6 @@ package com.zircky.industrialsorcerygreg.client.renderer.item;
 
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
-import com.lowdragmc.lowdraglib.client.model.ModelFactory;
-import com.lowdragmc.lowdraglib.client.renderer.IRenderer;
-import com.lowdragmc.lowdraglib.utils.ColorUtils;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
@@ -29,7 +26,7 @@ import org.joml.Matrix4f;
 import java.awt.*;
 import java.util.function.IntSupplier;
 
-public record HaloItemRenderer(float pluse, IntSupplier colour, IntSupplier size, ResourceLocation texture) implements IRenderer {
+public record HaloItemRenderer(float pluse, IntSupplier colour, IntSupplier size, ResourceLocation texture) implements ISGItemRenderer {
 
   public static final HaloItemRenderer WHITE_HALO = HaloItemRenderer.create(0, 0xFFFFFFFF, 4, RenderBlenderLib.rl("misc/halo"));
   public static final HaloItemRenderer QUANTUM_CHROMO_DYNAMICALLY_HALO = HaloItemRenderer.create(0, () -> com.zircky.industrialsorcerygreg.utils.ColorUtils.createARGBColor(MaterialsColorMap.quantumColor.getAsInt(), 150), () -> GTValues.RNG.nextInt(4) + 2, RenderBlenderLib.rl("misc/halo"));
@@ -43,7 +40,7 @@ public record HaloItemRenderer(float pluse, IntSupplier colour, IntSupplier size
   public static final HaloItemRenderer ETERNITY_HALO = HaloItemRenderer.create(0.1F, 0xFF000000, 10, RenderBlenderLib.rl("misc/halo"));
   public static final HaloItemRenderer MAGMATTER_HALO = HaloItemRenderer.create(0.15F, 0xFF212121, 10, RenderBlenderLib.rl("misc/halo"));
   public static final HaloItemRenderer RADIOACTIVE = HaloItemRenderer.create(0F, 0xFF218121, 9, RenderBlenderLib.rl("misc/halo_noise"));
-  public static final HaloItemRenderer ASTRIUM = HaloItemRenderer.create(0F, () -> ColorUtils.blendColor(
+  public static final HaloItemRenderer ASTRIUM = HaloItemRenderer.create(0F, () -> blendColor(
       0xe1ee595a,
       0xe131bad5, (float) (Math.cos(System.currentTimeMillis() * 0.005) * 0.3F + 0.5F)), () -> 6, RenderBlenderLib.rl("misc/halo"));
 
@@ -70,10 +67,10 @@ public record HaloItemRenderer(float pluse, IntSupplier colour, IntSupplier size
         RenderSystem.disableDepthTest();
         RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
         int colour = this.colour.getAsInt();
-        RenderSystem.setShaderColor(ColorUtils.red(colour), ColorUtils.green(colour), ColorUtils.blue(colour), ColorUtils.alpha(colour));
+        RenderSystem.setShaderColor(red(colour), green(colour), blue(colour), alpha(colour));
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
-        TextureAtlasSprite sprite = ModelFactory.getBlockSprite(texture);
+        TextureAtlasSprite sprite = ClientUtil.mc().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(texture);
         float minU = sprite.getU0();
         float maxU = sprite.getU1();
         float minV = sprite.getV0();
@@ -107,5 +104,30 @@ public record HaloItemRenderer(float pluse, IntSupplier colour, IntSupplier size
       }
     }
 
+  }
+
+  private static int blendColor(int color1, int color2, float ratio) {
+    ratio = Math.max(0.0F, Math.min(1.0F, ratio));
+    int a = Math.round(((color1 >>> 24) & 0xFF) * (1.0F - ratio) + ((color2 >>> 24) & 0xFF) * ratio);
+    int r = Math.round(((color1 >>> 16) & 0xFF) * (1.0F - ratio) + ((color2 >>> 16) & 0xFF) * ratio);
+    int g = Math.round(((color1 >>> 8) & 0xFF) * (1.0F - ratio) + ((color2 >>> 8) & 0xFF) * ratio);
+    int b = Math.round((color1 & 0xFF) * (1.0F - ratio) + (color2 & 0xFF) * ratio);
+    return (a << 24) | (r << 16) | (g << 8) | b;
+  }
+
+  private static float alpha(int color) {
+    return ((color >>> 24) & 0xFF) / 255.0F;
+  }
+
+  private static float red(int color) {
+    return ((color >>> 16) & 0xFF) / 255.0F;
+  }
+
+  private static float green(int color) {
+    return ((color >>> 8) & 0xFF) / 255.0F;
+  }
+
+  private static float blue(int color) {
+    return (color & 0xFF) / 255.0F;
   }
 }

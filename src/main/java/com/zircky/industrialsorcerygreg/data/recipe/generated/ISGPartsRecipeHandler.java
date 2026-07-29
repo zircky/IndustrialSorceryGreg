@@ -25,7 +25,6 @@ import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags.*;
 import static com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;

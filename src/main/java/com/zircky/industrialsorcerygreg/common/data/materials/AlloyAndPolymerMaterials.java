@@ -255,7 +255,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0x403e37)
         .iconSet(DULL)
         .components(GTMaterials.Carbon, 20, GTMaterials.Hydrogen, 12, GTMaterials.Oxygen, 3)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(DISABLE_DECOMPOSITION, GENERATE_PLATE)
         .buildAndRegister();
 
     Zylon = builderISG("zylon")
@@ -263,7 +263,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0xFFE000)
         .iconSet(SHINY)
         .components(GTMaterials.Carbon, 14, GTMaterials.Hydrogen, 6, GTMaterials.Nitrogen, 2, GTMaterials.Oxygen, 2)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(DISABLE_DECOMPOSITION, GENERATE_PLATE)
         .buildAndRegister();
 
     FullerenePolymerMatrix = builderISG("fullerene_polymer_matrix")
@@ -271,7 +271,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0x403e37)
         .iconSet(DULL)
         .components(GTMaterials.Palladium, 1, GTMaterials.Iron, 1, GTMaterials.Carbon, 153, GTMaterials.Hydrogen, 36, GTMaterials.Nitrogen, 1, GTMaterials.Oxygen, 2)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(DISABLE_DECOMPOSITION, GENERATE_PLATE)
         .buildAndRegister();
 
     CarbonNanotubes = builderISG("carbon_nanotubes")
@@ -534,12 +534,15 @@ public final class AlloyAndPolymerMaterials {
         .buildAndRegister();
 
     CosmicNeutronium = builderISG("cosmic_neutronium")
-        .ingot(7).fluid()
+        .ingot(7).liquid(new FluidBuilder().temperature(1000000).customStill())
         .color(0x323232)
         .iconSet(SHINY)
+        .radioactiveHazard(50)
         .components(GTMaterials.Neutronium, 1)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_SPRING, GENERATE_FINE_WIRE,
+            GENERATE_SPRING_SMALL)
         .blastTemp(14100, HIGHEST, GTValues.VA[GTValues.UIV], ISGValues.HOURS * 6)
+        .cableProperties(Integer.MAX_VALUE, 2, 128)
         .buildAndRegister();
 
     NaquadriaticTaranium = builderISG("naquadriatic_taranium")

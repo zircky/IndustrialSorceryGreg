@@ -1,6 +1,6 @@
 package com.zircky.industrialsorcerygreg;
 
-import com.lowdragmc.lowdraglib.LDLib;
+import net.minecraftforge.fml.ModList;
 
 import static com.zircky.industrialsorcerygreg.api.ISGValues.*;
 
@@ -14,6 +14,6 @@ public class ISGIntegration {
   }
 
   private static boolean isLoaded(String mod) {
-    return LDLib.isModLoaded(mod);
+    return ModList.get().isLoaded(mod);
   }
 }

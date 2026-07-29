@@ -1,7 +1,8 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc;
 
 
-import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -13,11 +14,25 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGItems.LOW_FREQUENCY_LASER;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.LARGE_MIXER_RECIPES;
+import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.MIXER_RECIPES;
+import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.TEST_RECIPES;
 
 public class CosmicChain {
   public static void init(Consumer<FinishedRecipe> provider) {
-    LARGE_MIXER_RECIPES.recipeBuilder("cosmic_computing_mix")
+    TEST_RECIPES.recipeBuilder("test")
+        .layeredRecipe((layer) -> layer
+            .inputItems(dust, Aluminium, 4)
+            .inputFluids(Radon.getFluid(1400))
+            .next()
+            .inputItems(dust, Titanium, 4)
+            .inputFluids(Water.getFluid(1500))
+            .next()
+            .inputItems(ingot, Steel, 3)
+            .inputFluids(Steel.getFluid(500)))
+        .outputItems(dust, TitaniumCyclopentadienyl, 7)
+        .duration(500).EUt(VA[HV]).save(provider);
+
+    ISGRecipeTypes.MIXER_RECIPES.recipeBuilder("cosmic_computing_mix")
         .inputFluids(HeavyLeptonMix.getFluid(1000))
         .inputFluids(HeavyQuarks.getFluid(1000))
         .inputFluids(Gluons.getFluid(1000))
@@ -38,7 +53,7 @@ public class CosmicChain {
         .inputFluids(Radium.getFluid(144))
         .outputFluids(RadonRadiumMix.getFluid(288))
         .duration(130).EUt(VA[UV]).save(provider);
-    LARGE_MIXER_RECIPES.recipeBuilder("deuterium_superheavy_mix")
+    ISGRecipeTypes.MIXER_RECIPES.recipeBuilder("deuterium_superheavy_mix")
         .inputFluids(Deuterium.getFluid(2000))
         .inputFluids(MetastableHassium.getFluid(144))
         .inputFluids(MetastableFlerovium.getFluid(144))
@@ -140,7 +155,7 @@ public class CosmicChain {
         .duration(340).EUt(VA[MV]).save(provider);
 
     BLAST_RECIPES.recipeBuilder("germanium_oxide")
-        .inputItems(dust,GermaniumSulfide, 3)
+        .inputItems(dust, GermaniumSulfide, 3)
         .inputFluids(Oxygen.getFluid(6000))
         .outputItems(dust, GermaniumOxide, 3)
         .outputFluids(SulfurDioxide.getFluid(2000))

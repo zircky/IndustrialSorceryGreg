@@ -7,7 +7,6 @@ import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistr
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
-import com.lowdragmc.lowdraglib.Platform;
 import com.mojang.logging.LogUtils;
 import com.zircky.industrialsorcerygreg.api.gregtech.AddonTierNamePatcher;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
@@ -16,6 +15,7 @@ import com.zircky.industrialsorcerygreg.common.data.*;
 import com.zircky.industrialsorcerygreg.data.ISGDatagen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -43,7 +43,7 @@ public class ISGCore {
 
     bus.addListener(this::commonSetup);
 
-    if (Platform.isClient()) {
+    if (FMLEnvironment.dist.isClient()) {
       ClientProxy.init(bus);
     }
   }

@@ -8,10 +8,9 @@ import com.gregtechceu.gtceu.api.machine.multiblock.part.TieredIOPartMachine;
 import com.gregtechceu.gtceu.api.machine.trait.notifiable.NotifiableEnergyContainer;
 import com.gregtechceu.gtceu.common.machine.owner.FTBOwner;
 import com.gregtechceu.gtceu.common.machine.trait.EnvironmentalExplosionTrait;
+import com.gregtechceu.gtceu.api.sync_system.annotations.SaveField;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.gregtechceu.gtceu.utils.ISubscription;
-
-import com.lowdragmc.lowdraglib.syncdata.annotation.Persisted;
 
 import com.zircky.industrialsorcerygreg.api.data.wireless.WirelessEnergySavedData;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -38,7 +37,7 @@ public class WirelessEnergyHatchPartMachine extends TieredIOPartMachine {
 
   protected static final long TICKS_BETWEEN_SAVE_DATA_OPERATIONS = 5 * 20L;
 
-  @Persisted
+  @SaveField
   public final NotifiableEnergyContainer energyContainer;
   protected TickableSubscription wirelessSub;
   @Nullable
@@ -57,12 +56,12 @@ public class WirelessEnergyHatchPartMachine extends TieredIOPartMachine {
     NotifiableEnergyContainer container;
     if (io == IO.OUT) {
       container = NotifiableEnergyContainer.emitterContainer(getEnergyCapacity(tier, amperage),
-          GTValues.V[tier], amperage);
+          GTValues.VEX[tier], amperage);
       container.setSideOutputCondition(s -> s == getFrontFacing() && isWorkingEnabled());
       container.setCapabilityValidator(s -> s == null || s == getFrontFacing());
     } else {
       container = NotifiableEnergyContainer.receiverContainer(getEnergyCapacity(tier, amperage),
-          GTValues.V[tier], amperage);
+          GTValues.VEX[tier], amperage);
       container.setSideInputCondition(s -> s == getFrontFacing() && isWorkingEnabled());
       container.setCapabilityValidator(s -> s == null || s == getFrontFacing());
     }
@@ -70,7 +69,7 @@ public class WirelessEnergyHatchPartMachine extends TieredIOPartMachine {
   }
 
   public static long getEnergyCapacity(final int tier, final int amperage) {
-    final long voltage = GTValues.V[tier];
+    final long voltage = GTValues.VEX[tier];
     final long ticks = (long) (TICKS_BETWEEN_SAVE_DATA_OPERATIONS * 1.1D);
 
     return voltage * amperage * ticks;

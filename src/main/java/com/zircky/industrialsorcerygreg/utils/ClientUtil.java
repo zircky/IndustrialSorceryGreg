@@ -1,6 +1,5 @@
 package com.zircky.industrialsorcerygreg.utils;
 
-import com.lowdragmc.lowdraglib.client.renderer.IItemRendererProvider;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -53,8 +52,6 @@ public final class ClientUtil {
   }
 
   public static void vanillaRender(ItemStack stack, ItemDisplayContext transformType, boolean leftHand, PoseStack poseStack, MultiBufferSource buffer, int combinedLight, int combinedOverlay, BakedModel model) {
-    IItemRendererProvider.disabled.set(true);
     getItemRenderer().render(stack, transformType, leftHand, poseStack, buffer, combinedLight, combinedOverlay, model);
-    IItemRendererProvider.disabled.set(false);
   }
 }

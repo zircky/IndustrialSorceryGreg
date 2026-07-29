@@ -111,22 +111,6 @@
     "industrialsorcerygreg:uiv_sensor",
     "industrialsorcerygreg:uxv_sensor",
     "industrialsorcerygreg:opv_sensor",
-    "industrialsorcerygreg:max_sensor",
-    "industrialsorcerygreg:sterile_water_plant_casing",
-    "industrialsorcerygreg:high_strength_concrete",
-    "industrialsorcerygreg:reinforced_sterile_water_plant_casing",
-    "industrialsorcerygreg:high_pressure_resistant_casing",
-    "industrialsorcerygreg:ozone_casing",
-    "industrialsorcerygreg:flocculation_casing",
-    "industrialsorcerygreg:stabilized_naquadah_water_plant_casing",
-    "industrialsorcerygreg:inert_neutralization_water_plant_casing",
-    "industrialsorcerygreg:plasma_heater_casing",
-    "industrialsorcerygreg:improved_superconductor_coil",
-    "industrialsorcerygreg:speeding_pipe",
-    "industrialsorcerygreg:naquadah_reinforced_plant_casing",
-    "industrialsorcerygreg:high_energy_ultraviolet_emitter_casing",
-    "industrialsorcerygreg:dimension_injection_casing",
-    "industrialsorcerygreg:quark_pipe",
-    "industrialsorcerygreg:quark_exclusion_casing"
+    "industrialsorcerygreg:max_sensor"
   ]
 }

@@ -32,7 +32,7 @@ public final class ResidueMaterials {
   }
 
   public static void register() {
-    StoneResidueDust = builderISG("stone_residue_dust")
+    StoneResidue = builderISG("stone_residue")
         .dust()
         .color(GTMaterials.Stone.getMaterialRGB() / 5 * 3)
         .iconSet(ROUGH)
@@ -82,7 +82,7 @@ public final class ResidueMaterials {
 
     PartiallyOxidizedResidues = builderISG("partially_oxidized_residues")
         .dust()
-        .color(StoneResidueDust.getMaterialRGB() + Dioxygendifluoride.getMaterialRGB())
+        .color(StoneResidue.getMaterialRGB() + Dioxygendifluoride.getMaterialRGB())
         .iconSet(DULL)
         .buildAndRegister();
 

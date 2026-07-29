@@ -6,7 +6,7 @@ import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.machine.TickableSubscription;
 import com.gregtechceu.gtceu.api.machine.trait.notifiable.NotifiableEnergyContainer;
 import com.gregtechceu.gtceu.common.machine.multiblock.part.EnergyHatchPartMachine;
-import com.lowdragmc.lowdraglib.syncdata.ISubscription;
+import com.gregtechceu.gtceu.utils.ISubscription;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -50,7 +50,7 @@ public final class NeutronAcceleratorPartMachine extends EnergyHatchPartMachine 
   @Override
   public void onLoad() {
     super.onLoad();
-    powerListener = (ISubscription) energyContainer.addChangedListener(this::updateSubscription);
+    powerListener = energyContainer.addChangedListener(this::updateSubscription);
     updateSubscription();
   }
 

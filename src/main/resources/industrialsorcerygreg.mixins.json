@@ -16,12 +16,13 @@
     "gregtech.GTRecipeConditionsMixin",
     "gregtech.GTValuesAccessor",
     "gregtech.RecipeLogicMixin",
+    "gregtech.item.ComponentItemMixin",
+    "gregtech.chemical.TagPrefixItemMixin",
     "nuclearcraft.NuclearCraftBEMixin"
   ],
   "client": [
     "adastra.AdAstraClientMixin",
-    "adastra.AdAstraOverlayScreenMixin",
-    "gregtech.PatternPreviewWidgetMixin"
+    "adastra.AdAstraOverlayScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,0 +1,7 @@
+{
+  "parent": "gtceu:block/cube_2_layer/all",
+  "textures": {
+    "bot_all": "industrialsorcerygreg:block/casings/fusion/coil/advanced_compressed_fusion_coil",
+    "top_all": "industrialsorcerygreg:block/casings/fusion/coil/fusion_coil_bloom"
+  }
+}

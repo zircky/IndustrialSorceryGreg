@@ -8,34 +8,71 @@ import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+import com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
+import com.gregtechceu.gtceu.api.machine.trait.recipe.RecipeLogic;
 import com.gregtechceu.gtceu.api.multiblock.Predicates;
 import com.gregtechceu.gtceu.api.multiblock.pattern.MultiblockPatternBuilder;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
+import com.gregtechceu.gtceu.client.renderer.machine.DynamicRenderHelper;
+import com.gregtechceu.gtceu.common.block.BoilerFireboxType;
 import com.gregtechceu.gtceu.common.data.*;
+import com.gregtechceu.gtceu.common.machine.multiblock.electric.FusionReactorMachine;
+import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
+import com.zircky.industrialsorcerygreg.ISGCore;
+import com.zircky.industrialsorcerygreg.api.machine.multiblock.LayeredWorkableElectricMultiblockMachine;
+import com.zircky.industrialsorcerygreg.common.block.FusionCasings;
+import com.zircky.industrialsorcerygreg.common.data.ISGCasings;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes;
 import com.zircky.industrialsorcerygreg.common.machine.multiblock.electric.DissolvingTankMachine;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.Locale;
+
+import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.machine.multiblock.PartAbility.*;
 import static com.gregtechceu.gtceu.api.multiblock.Predicates.*;
 import static com.gregtechceu.gtceu.api.multiblock.util.RelativeDirection.*;
 import static com.gregtechceu.gtceu.common.data.GCYMBlocks.CASING_CORROSION_PROOF;
 import static com.gregtechceu.gtceu.common.data.GCYMBlocks.CASING_WATERTIGHT;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
-import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.BATCH_MODE;
-import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.ELECTRIC_OVERCLOCK;
-import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.OC_NON_PERFECT_SUBTICK;
-import static com.zircky.industrialsorcerygreg.api.registries.ISGRegistries.REGISTRATE;
+import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.*;
+import static com.gregtechceu.gtceu.common.data.models.GTMachineModels.createWorkableCasingMachineModel;
+import static com.gregtechceu.gtceu.utils.FormattingUtil.toRomanNumeral;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.LIQUEFACTION_FURNACE_RECIPES;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.ROCKET_ASSEMBLER_RECIPES;
-import static com.zircky.industrialsorcerygreg.utils.register.MachineRegisterUtils.multiblock;
+import static com.zircky.industrialsorcerygreg.utils.register.MachineRegisterUtils.*;
 
 public class ISGMultiMachines {
-  public static void init() {}
+  public static void init() {
+    GTMachineModify.init();
+  }
+
+  public static final MultiblockMachineDefinition LARGE_BOILER_BRONZE = registerLargeBoiler("bronze",
+      CASING_BRONZE_BRICKS, CASING_BRONZE_PIPE, FIREBOX_BRONZE,
+      GTCEu.id("block/casings/solid/machine_casing_bronze_plated_bricks"), BoilerFireboxType.BRONZE_FIREBOX,
+      ConfigHolder.INSTANCE.machines.largeBoilers.bronzeBoilerMaxTemperature,
+      ConfigHolder.INSTANCE.machines.largeBoilers.bronzeBoilerHeatSpeed);
+  public static final MultiblockMachineDefinition LARGE_BOILER_STEEL = registerLargeBoiler("steel",
+      CASING_STEEL_SOLID, CASING_STEEL_PIPE, FIREBOX_STEEL,
+      GTCEu.id("block/casings/solid/machine_casing_solid_steel"), BoilerFireboxType.STEEL_FIREBOX,
+      ConfigHolder.INSTANCE.machines.largeBoilers.steelBoilerMaxTemperature,
+      ConfigHolder.INSTANCE.machines.largeBoilers.steelBoilerHeatSpeed);
+  public static final MultiblockMachineDefinition LARGE_BOILER_TITANIUM = registerLargeBoiler("titanium",
+      CASING_TITANIUM_STABLE, CASING_TITANIUM_PIPE, FIREBOX_TITANIUM,
+      GTCEu.id("block/casings/solid/machine_casing_stable_titanium"), BoilerFireboxType.TITANIUM_FIREBOX,
+      ConfigHolder.INSTANCE.machines.largeBoilers.titaniumBoilerMaxTemperature,
+      ConfigHolder.INSTANCE.machines.largeBoilers.titaniumBoilerHeatSpeed);
+  public static final MultiblockMachineDefinition LARGE_BOILER_TUNGSTENSTEEL = registerLargeBoiler("tungstensteel",
+      CASING_TUNGSTENSTEEL_ROBUST, CASING_TUNGSTENSTEEL_PIPE, FIREBOX_TUNGSTENSTEEL,
+      GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"),
+      BoilerFireboxType.TUNGSTENSTEEL_FIREBOX,
+      ConfigHolder.INSTANCE.machines.largeBoilers.tungstensteelBoilerMaxTemperature,
+      ConfigHolder.INSTANCE.machines.largeBoilers.tungstensteelBoilerHeatSpeed);
 
   public final static MultiblockMachineDefinition ROCKET_ASSEMBLER = multiblock("rocket_assembler", WorkableElectricMultiblockMachine::new)
       .langValue("Rocker Assembler")
@@ -138,26 +175,30 @@ public class ISGMultiMachines {
           GTCEu.id("block/multiblock/gcym/large_centrifuge"))
       .register();
 
-//  public static final MultiblockMachineDefinition DIGESTION_TANK = REGISTRATE.multiblock("digestion_tank", CoilWorkableElectricMultiblockMachine::new)
-//      .rotationState(RotationState.NON_Y_AXIS)
-//      .recipeTypes(ISGRecipeTypes.DIGESTION_TREATMENT_RECIPES)
-//      .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, BATCH_MODE)
-//      .appearanceBlock(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST)
-//      .pattern(definition -> FactoryBlockPattern.start()
-//          .where('S', controller(blocks(definition.get())))
-//          .where('X', blocks(GTBlocks.CASING_STAINLESS_CLEAN.get()))
-//          .where('K', blocks(GTBlocks.CASING_INVAR_HEATPROOF.get()))
-//          .where('Y', blocks(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get()))
-//          .where('M', heatingCoils())
-//          .where('O', blocks(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get())
-//              .or(autoAbilities(definition.getRecipeTypes()))
-//              .or(abilities(PARALLEL_HATCH).setMaxGlobalLimited(1))
-//              .or(abilities(MAINTENANCE).setExactLimit(1)))
-//          .where('A', air())
-//          .where('#', any())
-//          .build())
-//      .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"), GTCEu.id("block/multiblock/gcym/large_maceration_tower"))
-//      .register();
+  public static final MultiblockMachineDefinition DIGESTION_TANK = multiblock("digestion_tank", CoilWorkableElectricMultiblockMachine::new)
+      .rotationState(RotationState.NON_Y_AXIS)
+      .recipeTypes(ISGRecipeTypes.DIGESTION_TREATMENT_RECIPES)
+      .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, BATCH_MODE)
+      .appearanceBlock(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST)
+      .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+          .slice("#OOOOO#", "#O###O#", "#O###O#", "#######", "#######")
+          .slice("OKKKKKO", "OKGGGKO", "OKGGGKO", "##KKK##", "#######")
+          .slice("OKKKKKO", "#GMMMG#", "#GMMMG#", "#KMMMK#", "##KKK##")
+          .slice("OKKKKKO", "#GM#MG#", "#GM#MG#", "#KM#MK#", "##KKK##")
+          .slice("OKKKKKO", "#GMMMG#", "#GMMMG#", "#KMMMK#", "##KKK##")
+          .slice("OKKKKKO", "OKGGGKO", "OKGGGKO", "##KKK##", "#######")
+          .slice("#OOSOO#", "#O###O#", "#O###O#", "#######", "#######")
+          .where('S', controller(blocks(definition.get())))
+          .where('K', blocks(GTBlocks.CASING_INVAR_HEATPROOF.get()))
+          .where('G', blocks(CASING_LAMINATED_GLASS.get()))
+          .where('M', heatingCoils())
+          .where('O', blocks(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get())
+              .or(autoAbilities(definition.getRecipeTypes()))
+              .or(abilities(MAINTENANCE).setExactLimit(1)))
+          .where('#', any())
+          .build())
+      .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"), GTCEu.id("block/multiblock/gcym/large_maceration_tower"))
+      .register();
 
   public static final MultiblockMachineDefinition DISSOLVING_TANK = multiblock("dissolving_tank", DissolvingTankMachine::new)
       .rotationState(RotationState.NON_Y_AXIS)
@@ -271,5 +312,173 @@ public class ISGMultiMachines {
 //      .workableCasingRenderer(GTCEu.id("block/casings/solid/machine_casing_solid_steel"), GTCEu.id("block/multiblock/gcym/large_assembler"))
 //      .register();
 
+  public static final MultiblockMachineDefinition PLASMA_CONDENSER = multiblock("plasma_condenser", WorkableElectricMultiblockMachine::new)
+      .rotationState(RotationState.ALL)
+      .recipeType(ISGRecipeTypes.PLASMA_CONDENSER_RECIPES)
+      .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, OC_PERFECT, BATCH_MODE)
+      .appearanceBlock(ISGCasings.ANTIFREEZE_HEATPROOF_MACHINE_CASING)
+      .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+          .slice("       ", "       ", "  aaa  ", "  aaa  ", "  aaa  ", "       ", "       ")
+          .slice("       ", "  aaa  ", " aaaaa ", " aabaa ", " aaaaa ", "  aaa  ", "       ")
+          .slice("  aaa  ", " aaaaa ", "aabbbaa", "aabcbaa", "aabbbaa", " aaaaa ", "  aaa  ")
+          .slice("  aaa  ", " aabaa ", "aabcbaa", "abcccba", "aabcbaa", " aabaa ", "  aaa  ")
+          .slice("  aaa  ", " aaaaa ", "aabbbaa", "aabcbaa", "aabbbaa", " aaaaa ", "  aaa  ")
+          .slice("       ", "  aaa  ", " aaaaa ", " aabaa ", " aaaaa ", "  aaa  ", "       ")
+          .slice("       ", "       ", "  aaa  ", "  ada  ", "  aaa  ", "       ", "       ")
+          .where('a', blocks(ISGCasings.ANTIFREEZE_HEATPROOF_MACHINE_CASING.get())
+//              .setMinGlobalLimited(120)
+              .or(autoAbilities(definition.getRecipeTypes()))
+              .or(abilities(MAINTENANCE).setExactLimit(1)))
+          .where('b', blocks(ISGCasings.AMPROSIUM_PIPE_CASING.get()))
+          .where('c', blocks(ISGCasings.LASER_COOLING_CASING.get()))
+          .where('d', controller(blocks(definition.get())))
+          .where(' ', any())
+          .build())
+      .workableCasingModel(ISGCore.id("block/casings/antifreeze_heatproof_machine_casing"), GTCEu.id("block/multiblock/vacuum_freezer"))
+      .register();
+
+  public static final MultiblockMachineDefinition GAS_CENTRIFUGE = multiblock("gas_centrifuge", WorkableElectricMultiblockMachine::new)
+      .rotationState(RotationState.ALL)
+      .recipeType(ISGRecipeTypes.GAS_CENTRIFUGE_RECIPES)
+      .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, OC_PERFECT, BATCH_MODE)
+      .appearanceBlock(CASING_STAINLESS_CLEAN)
+      .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+          .slice("#YYY#", "#YYY#", "#####", "#####", "#####", "#####", "#####")
+          .slice("YYYYY", "YYYYY", "#ZCZ#", "#Z#Z#", "#Z#Z#", "#Z#Z#", "#Z#Z#")
+          .slice("YYYYY", "YYYYY", "#CCC#", "#####", "#####", "#####", "#####")
+          .slice("YYYYY", "YYYYY", "#ZCZ#", "#Z#Z#", "#Z#Z#", "#Z#Z#", "#Z#Z#")
+          .slice("#YYY#", "#YSY#", "#####", "#####", "#####", "#####", "#####")
+          .where('S', controller(blocks(definition.get())))
+          .where('Y', blocks(CASING_STAINLESS_CLEAN.get())
+              .or(autoAbilities(definition.getRecipeTypes()))
+              .or(abilities(MAINTENANCE).setExactLimit(1)))
+          .where('Z', blocks(CASING_STEEL_SOLID.get()))
+          .where('C', blocks(CASING_STEEL_PIPE.get()))
+          .where('#', any())
+          .build())
+      .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"),
+          GTCEu.id("block/multiblock/distillation_tower"))
+      .register();
+
+  public static final MultiblockMachineDefinition STELLAR_FORGE = multiblock("stellar_forge", WorkableElectricMultiblockMachine::new)
+      .rotationState(RotationState.ALL)
+      .recipeType(ISGRecipeTypes.STELLAR_FORGE_RECIPES)
+      .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, OC_PERFECT, BATCH_MODE)
+      .appearanceBlock(ISGCasings.ANTIFREEZE_HEATPROOF_MACHINE_CASING)
+      .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+          .slice("       ", "       ", "  aaa  ", "  aaa  ", "  aaa  ", "       ", "       ")
+          .slice("       ", "  aaa  ", " aaaaa ", " aabaa ", " aaaaa ", "  aaa  ", "       ")
+          .slice("  aaa  ", " aaaaa ", "aabbbaa", "aabcbaa", "aabbbaa", " aaaaa ", "  aaa  ")
+          .slice("  aaa  ", " aabaa ", "aabcbaa", "abcccba", "aabcbaa", " aabaa ", "  aaa  ")
+          .slice("  aaa  ", " aaaaa ", "aabbbaa", "aabcbaa", "aabbbaa", " aaaaa ", "  aaa  ")
+          .slice("       ", "  aaa  ", " aaaaa ", " aabaa ", " aaaaa ", "  aaa  ", "       ")
+          .slice("       ", "       ", "  aaa  ", "  ada  ", "  aaa  ", "       ", "       ")
+          .where('a', blocks(ISGCasings.ANTIFREEZE_HEATPROOF_MACHINE_CASING.get())
+//              .setMinGlobalLimited(120)
+              .or(autoAbilities(definition.getRecipeTypes()))
+              .or(abilities(MAINTENANCE).setExactLimit(1)))
+          .where('b', blocks(ISGCasings.AMPROSIUM_PIPE_CASING.get()))
+          .where('c', blocks(ISGCasings.LASER_COOLING_CASING.get()))
+          .where('d', controller(blocks(definition.get())))
+          .where(' ', any())
+          .build())
+      .workableCasingModel(ISGCore.id("block/casings/antifreeze_heatproof_machine_casing"), GTCEu.id("block/multiblock/vacuum_freezer"))
+      .register();
+
+  public static final MultiblockMachineDefinition[] FUSION_REACTOR = registerTieredMultis("fusion_reactor",
+      FusionReactorMachine::new, (tier, builder) -> builder
+          .rotationState(RotationState.ALL)
+          .langValue("Fusion Reactor Computer MK %s".formatted(toRomanNumeral(tier - 5)))
+          .recipeType(GTRecipeTypes.FUSION_RECIPES)
+          .recipeModifiers(DEFAULT_ENVIRONMENT_REQUIREMENT,
+              FusionReactorMachine::recipeModifier, BATCH_MODE)
+          .tooltips(
+              Component.translatable("gtceu.machine.fusion_reactor.capacity",
+                  FusionReactorMachine.calculateEnergyStorageFactor(tier, 16) / 1000000L),
+              Component.translatable("gtceu.machine.fusion_reactor.overclocking"),
+              Component.translatable("gtceu.multiblock.%s_fusion_reactor.description"
+                  .formatted(VN[tier].toLowerCase(Locale.ROOT))))
+          .appearanceBlock(() -> FusionCasings.getCasingState(tier))
+          .pattern((definition) -> {
+            var casing = blocks(FusionCasings.getCasingState(tier));
+            return MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+                .slice("###############", "######OGO######", "###############")
+                .slice("######ICI######", "####GGAAAGG####", "######ICI######")
+                .slice("####CC###CC####", "###EAAOGOAAE###", "####CC###CC####")
+                .slice("###C#######C###", "##EKEG###GEKE##", "###C#######C###")
+                .slice("##C#########C##", "#GAE#######EAG#", "##C#########C##")
+                .slice("##C#########C##", "#GAG#######GAG#", "##C#########C##")
+                .slice("#I###########I#", "OAO#########OAO", "#I###########I#")
+                .slice("#C###########C#", "GAG#########GAG", "#C###########C#")
+                .slice("#I###########I#", "OAO#########OAO", "#I###########I#")
+                .slice("##C#########C##", "#GAG#######GAG#", "##C#########C##")
+                .slice("##C#########C##", "#GAE#######EAG#", "##C#########C##")
+                .slice("###C#######C###", "##EKEG###GEKE##", "###C#######C###")
+                .slice("####CC###CC####", "###EAAOGOAAE###", "####CC###CC####")
+                .slice("######ICI######", "####GGAAAGG####", "######ICI######")
+                .slice("###############", "######OSO######", "###############")
+                .where('S', controller(blocks(definition.get())))
+                .where('G', blocks(FUSION_GLASS.get()).or(casing))
+                .where('E', casing.or(
+                    blocks(PartAbility.INPUT_ENERGY.getBlockRange(tier, UEV).toArray(Block[]::new))
+                        .setMinGlobalLimited(1).setPreviewCount(16)))
+                .where('C', casing)
+                .where('K', blocks(FusionCasings.getCoilState(tier)))
+                .where('O', casing.or(abilities(PartAbility.EXPORT_FLUIDS)))
+                .where('A', air())
+                .where('I', casing.or(abilities(PartAbility.IMPORT_FLUIDS).setMinGlobalLimited(2)))
+                .where('#', any())
+                .build();
+          })
+          .modelProperty(GTMachineModelProperties.RECIPE_LOGIC_STATUS, RecipeLogic.Status.IDLE)
+          .model(createWorkableCasingMachineModel(FusionCasings.getCasingType(tier).getTexture(),
+              GTCEu.id("block/multiblock/fusion_reactor"))
+              .andThen(b -> b.addDynamicRenderer(DynamicRenderHelper::createFusionRingRender)))
+          .hasBER(true)
+          .register(),
+      UHV, UEV);
+
+  public static final MultiblockMachineDefinition LARGE_LASER_WELDER = multiblock("large_laser_welder", WorkableElectricMultiblockMachine::new)
+      .rotationState(RotationState.ALL)
+      .recipeTypes(ISGRecipeTypes.LASER_WELDER_RECIPES)
+      .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, OC_PERFECT, BATCH_MODE)
+      .appearanceBlock(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING)
+      .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+          .slice("AAA", "AAA", "AAA")
+          .slice("ECE", "C C", "FFF")
+          .slice("ECE", "CAC", "FFF")
+          .slice("ECE", "CDC", "FFF")
+          .slice("ACA", "CDC", "CCC")
+          .slice("ACA", "CDC", "CCC")
+          .slice("ACA", "CDC", "CCC")
+          .slice("AAA", "ABA", "AAA")
+          .where('A', blocks(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING.get())
+              .or(autoAbilities(definition.getRecipeTypes()))
+              .or(autoAbilities(true, false, true)))
+          .where('B', controller(blocks(definition.get())))
+          .where('C', blocks(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING.get()))
+          .where('D', blocks(GTBlocks.CASING_TUNGSTENSTEEL_PIPE.get()))
+          .where('E', blocks(GTBlocks.CASING_GRATE.get()))
+          .where('F', blocks(GTBlocks.CASING_TEMPERED_GLASS.get()))
+          .where(' ', any())
+          .build())
+      .workableCasingModel(GTCEu.id("block/casings/gcym/laser_safe_engraving_casing"), GTCEu.id("block/multiblock/gcym/large_assembler"))
+      .register();
+
+  public static final MultiblockMachineDefinition TEST = multiblock("test", LayeredWorkableElectricMultiblockMachine::new)
+      .rotationState(RotationState.ALL)
+      .recipeType(ISGRecipeTypes.TEST_RECIPES)
+      .appearanceBlock(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING)
+      .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+          .slice("AAA", "AAA", "AAA")
+          .slice("AAA", "AAA", "AAA")
+          .slice("AAA", "ASA", "AAA")
+          .where('S', controller(blocks(definition.get())))
+          .where('A', blocks(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING.get())
+              .or(autoAbilities(definition.getRecipeTypes()))
+              .or(autoAbilities(true, false, true)))
+          .build())
+      .workableCasingModel(GTCEu.id("block/casings/gcym/laser_safe_engraving_casing"), GTCEu.id("block/multiblock/gcym/large_assembler"))
+      .register();
 
 }

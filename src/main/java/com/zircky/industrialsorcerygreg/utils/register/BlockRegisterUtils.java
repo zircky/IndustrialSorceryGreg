@@ -73,17 +73,6 @@ public class BlockRegisterUtils {
 
   public static BlockEntry<Block> REACTOR_CORE;
 
-  public static final Map<String, String> LANG = GTCEu.isDataGen() ? new HashMap<>() : null;
-
-  public static void addLang(String name, String cn) {
-    if (LANG == null) return;
-    if (LANG.containsKey(name)) {
-      ISGCore.LOGGER.error("Repetitive Key: {}", name);
-      throw new IllegalStateException();
-    }
-    LANG.put(name, cn);
-  }
-
   public static <T extends Block> GTBlockBuilder<T, GTRegistrate> block(String name, NonNullFunction<BlockBehaviour.Properties, T> factory) {
     return REGISTRATE.block(name, factory);
   }
@@ -196,6 +185,19 @@ public class BlockRegisterUtils {
         .register();
   }
 
+  public static BlockEntry<ActiveBlock> createActiveCasing(String name, String langName, String baseModelPath) {
+    return block(name, ActiveBlock::new)
+        .lang(langName)
+        .initialProperties(() -> Blocks.IRON_BLOCK)
+        .addLayer(() -> RenderType::cutoutMipped)
+        .blockstate(GTModels.createActiveModel(ISGCore.id(baseModelPath)))
+        .tag(GTToolType.WRENCH.harvestTags.get(0), BlockTags.MINEABLE_WITH_PICKAXE)
+        .item(BlockItem::new)
+        .model((ctx, prov) -> prov.withExistingParent(prov.name(ctx), ISGCore.id(baseModelPath)))
+        .build()
+        .register();
+  }
+
   public static BlockEntry<ActiveBlock> createActiveTierCasing(String name, String baseModelPath, Int2ObjectMap<Supplier<?>> map, int tier) {
     BlockEntry<ActiveBlock> Block = block(name, p -> (ActiveBlock) new ActiveBlock(p) {
 
@@ -298,8 +300,9 @@ public class BlockRegisterUtils {
         .register();
   }
 
-  public static BlockEntry<FusionCasingBlock> createFusionCasing(IFusionCasingType casingType) {
+  public static BlockEntry<FusionCasingBlock> createFusionCasing(IFusionCasingType casingType, String langName) {
     BlockEntry<FusionCasingBlock> casingBlock = block(casingType.getSerializedName(), p -> (FusionCasingBlock) new FusionCasings(p, casingType))
+        .lang(langName)
         .initialProperties(() -> Blocks.IRON_BLOCK)
         .properties(properties -> properties.strength(5.0f, 10.0f).sound(SoundType.METAL))
         .addLayer(() -> RenderType::solid)

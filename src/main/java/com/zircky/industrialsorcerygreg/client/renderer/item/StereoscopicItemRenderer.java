@@ -1,6 +1,5 @@
 package com.zircky.industrialsorcerygreg.client.renderer.item;
 
-import com.lowdragmc.lowdraglib.client.renderer.IRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.zircky.industrialsorcerygreg.utils.ClientUtil;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -12,7 +11,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.embeddedt.modernfix.render.RenderState;
 import org.joml.Quaternionf;
 
-public class StereoscopicItemRenderer implements IRenderer {
+public class StereoscopicItemRenderer implements ISGItemRenderer {
   public static final StereoscopicItemRenderer INSTANCE = new StereoscopicItemRenderer();
 
   @Override
