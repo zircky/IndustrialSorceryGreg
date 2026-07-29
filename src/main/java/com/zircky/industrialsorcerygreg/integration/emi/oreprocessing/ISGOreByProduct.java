@@ -12,25 +12,27 @@ import com.gregtechceu.gtceu.api.recipe.chance.logic.ChanceLogic;
 import com.gregtechceu.gtceu.api.recipe.content.Content;
 import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.gregtechceu.gtceu.integration.xei.entry.fluid.FluidEntryList;
-import com.gregtechceu.gtceu.integration.xei.entry.fluid.FluidStackList;
-import com.gregtechceu.gtceu.integration.xei.entry.fluid.FluidTagList;
-import com.gregtechceu.gtceu.integration.xei.entry.item.ItemEntryList;
-import com.gregtechceu.gtceu.integration.xei.entry.item.ItemStackList;
-import com.gregtechceu.gtceu.integration.xei.entry.item.ItemTagList;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.zircky.industrialsorcerygreg.data.recipe.generated.ISGOreRecipeHandler;
+import brachy.modularui.integration.recipeviewer.entry.fluid.FluidEntryList;
+import brachy.modularui.integration.recipeviewer.entry.fluid.FluidStackList;
+import brachy.modularui.integration.recipeviewer.entry.fluid.FluidTagList;
+import brachy.modularui.integration.recipeviewer.entry.item.ItemEntryList;
+import brachy.modularui.integration.recipeviewer.entry.item.ItemStackList;
+import brachy.modularui.integration.recipeviewer.entry.item.ItemTagList;
+import brachy.modularui.screen.RichTooltip;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIntPair;
 import net.minecraft.core.NonNullList;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
 
 public class ISGOreByProduct {
 
@@ -100,9 +102,9 @@ public class ISGOreByProduct {
     ItemTagList oreStacks = new ItemTagList();
     for (TagPrefix prefix : ORES) {
       // get all ores with the relevant oredicts instead of just the first unified ore
-      oreStacks.add(ChemicalHelper.getTag(prefix, material), 1, null);
+      oreStacks.add(Objects.requireNonNull(ChemicalHelper.getTag(prefix, material)), 1, null);
     }
-    oreStacks.add(ChemicalHelper.getTag(TagPrefix.rawOre, material), 1, null);
+    oreStacks.add(Objects.requireNonNull(ChemicalHelper.getTag(TagPrefix.rawOre, material)), 1, null);
     itemInputs.add(oreStacks);
 
     // set up machines as inputs
@@ -146,7 +148,7 @@ public class ISGOreByProduct {
 
     // add prefixes that should count as inputs to input lists (they will not be displayed in actual page)
     for (TagPrefix prefix : IN_PROCESSING_STEPS) {
-      itemInputs.add(ItemTagList.of(ChemicalHelper.getTag(prefix, material), 1, null));
+      itemInputs.add(ItemTagList.of(Objects.requireNonNull(ChemicalHelper.getTag(prefix, material)), 1, null));
     }
 
     // total number of inputs added
@@ -180,22 +182,22 @@ public class ISGOreByProduct {
     } else {
       addToOutputs(byproducts[0], TagPrefix.dust, 1);
     }
-    addChance(1400, 0);
+    addChance(1400);
 
     // macerate crushed -> impure
     addToOutputs(material, TagPrefix.dustImpure, 1);
     addToOutputs(byproducts[0], TagPrefix.dust, byproductMultiplier);
-    addChance(1400, 0);
+    addChance(1400);
 
     // centrifuge impure -> dust
     addToOutputsPatched(material);
     addToOutputs(byproducts[0], TagPrefix.dust, 1);
-    addChance(1111, 0);
+    addChance(1111);
 
     // ore wash crushed -> crushed purified
     addToOutputs(material, TagPrefix.crushedPurified, 1);
     addToOutputs(byproducts[0], TagPrefix.dust, 1);
-    addChance(3333, 0);
+    addChance(3333);
     FluidTagList tagList = new FluidTagList();
     tagList.add(GTMaterials.Water.getFluidTag(), 1000, null);
     tagList.add(GTMaterials.DistilledWater.getFluidTag(), 100, null);
@@ -204,22 +206,22 @@ public class ISGOreByProduct {
     // TC crushed/crushed purified -> centrifuged
     addToOutputs(material, TagPrefix.crushedRefined, 1);
     addToOutputs(byproducts[1], TagPrefix.dust, byproductMultiplier);
-    addChance(3333, 0);
+    addChance(3333);
 
     // macerate centrifuged -> dust
     addToOutputsPatched(material);
     addToOutputs(byproducts[2], TagPrefix.dust, 1);
-    addChance(1400, 0);
+    addChance(1400);
 
     // macerate crushed purified -> purified
     addToOutputs(material, TagPrefix.dustPure, 1);
     addToOutputs(byproducts[1], TagPrefix.dust, 1);
-    addChance(1400, 0);
+    addChance(1400);
 
     // centrifuge purified -> dust
     addToOutputsPatched(material);
     addToOutputs(byproducts[1], TagPrefix.dust, 1);
-    addChance(1111, 0);
+    addChance(1111);
 
     // cauldron/simple washer
     addToOutputs(material, TagPrefix.crushed, 1);
@@ -235,7 +237,7 @@ public class ISGOreByProduct {
     if (hasChemBath) {
       addToOutputs(material, TagPrefix.crushedPurified, 1);
       addToOutputs(byproducts[3], TagPrefix.dust, byproductMultiplier);
-      addChance(7000, 0);
+      addChance(7000);
       fluidInputs.add(FluidTagList.of(washedIn.first().getFluidTag(), washedIn.secondInt(), null));
     } else {
       addEmptyOutputs(2);
@@ -253,9 +255,9 @@ public class ISGOreByProduct {
 
       addToOutputsPatched(material);
       addToOutputs(separatedInto.get(0), TagPrefix.dust, 1);
-      addChance(1000, 0);
+      addChance(1000);
       addToOutputs(separatedStack2);
-      addChance(prefix == TagPrefix.dust ? 500 : 2000, 0);
+      addChance(prefix == TagPrefix.dust ? 500 : 2000);
     } else {
       addEmptyOutputs(3);
     }
@@ -267,23 +269,23 @@ public class ISGOreByProduct {
       ItemStack chippedStack = ChemicalHelper.get(TagPrefix.gemChipped, material);
 
       addToOutputs(material, TagPrefix.gemExquisite, 1);
-      addGemChance(300, 0, 500, 0, highOutput);
+      addGemChance(300, 500, highOutput);
       addToOutputs(material, TagPrefix.gemFlawless, 1);
-      addGemChance(1000, 0, 1500, 0, highOutput);
+      addGemChance(1000, 1500, highOutput);
       addToOutputs(material, TagPrefix.gem, 1);
-      addGemChance(3500, 0, 5000, 0, highOutput);
+      addGemChance(3500, 5000, highOutput);
       addToOutputs(material, TagPrefix.dustPure, 1);
-      addGemChance(5000, 0, 2500, 0, highOutput);
+      addGemChance(5000, 2500, highOutput);
 
       if (!flawedStack.isEmpty()) {
         addToOutputs(flawedStack);
-        addGemChance(2500, 0, 2000, 0, highOutput);
+        addGemChance(2500, 2000, highOutput);
       } else {
         addEmptyOutputs(1);
       }
       if (!chippedStack.isEmpty()) {
         addToOutputs(chippedStack);
-        addGemChance(3500, 0, 3000, 0, highOutput);
+        addGemChance(3500, 3000, highOutput);
       } else {
         addEmptyOutputs(1);
       }
@@ -292,18 +294,15 @@ public class ISGOreByProduct {
     }
   }
 
-  public void getTooltip(int slotIndex, List<Component> tooltips) {
-    if (chances.containsKey(slotIndex)) {
-      Content entry = chances.get(slotIndex);
-      float chance = 100 * (float) entry.chance / entry.maxChance;
-      if (entry.tierChanceBoost != 0) {
-        float boost = entry.tierChanceBoost / 100.0f;
-        tooltips.add(FormattingUtil.formatPercentage2Places("gtceu.gui.content.chance_base", chance));
-        tooltips.add(FormattingUtil.formatPercentage2Places("gtceu.gui.content.chance_tier_boost_plus", boost));
-      } else {
-        tooltips.add(FormattingUtil.formatPercentage2Places("gtceu.gui.content.chance_no_boost", chance));
+  public Consumer<RichTooltip> getTooltip(int slotIndex) {
+    return tooltip -> {
+      if (chances.containsKey(slotIndex)) {
+        Content entry = chances.get(slotIndex);
+        float chance = 100 * (float) entry.chance() / entry.maxChance();
+        tooltip.addLine(
+            FormattingUtil.formatPercentage2Places("gtceu.gui.content.chance_no_boost", chance));
       }
-    }
+    };
   }
 
   public Content getChance(int slot) {
@@ -349,18 +348,18 @@ public class ISGOreByProduct {
     itemInputs.add(ItemStackList.of(stack));
   }
 
-  private void addChance(int base, int tier) {
+  private void addChance(int base) {
     // this is solely for the chance overlay and tooltip, neither of which care about the ItemStack
     chances.put(currentSlot - 1,
-        new Content(ItemStack.EMPTY, base, ChanceLogic.getMaxChancedValue(), tier));
+        new Content(ItemStack.EMPTY, base, ChanceLogic.getMaxChancedValue()));
   }
 
   // make the code less :weary:
-  private void addGemChance(int baseLow, int tierLow, int baseHigh, int tierHigh, boolean high) {
+  private void addGemChance(int baseLow, int baseHigh, boolean high) {
     if (high) {
-      addChance(baseHigh, tierHigh);
+      addChance(baseHigh);
     } else {
-      addChance(baseLow, tierLow);
+      addChance(baseLow);
     }
   }
 }

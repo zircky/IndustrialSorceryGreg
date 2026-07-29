@@ -19,6 +19,8 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIcon
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Concrete;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Gold;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
@@ -1036,5 +1038,18 @@ public final class IndustrialProcessMaterials {
         .buildAndRegister()
         .setFormula("CPP");
 
+    SuperCooled = builderISG("super_cooled")
+        .dust().fluid()
+        .color(0x0F5C6E)
+        .iconSet(DULL)
+        .buildAndRegister();
+
+    Soularium = builderISG("soularium")
+        .ingot()
+        .color(0x7c674d)
+        .iconSet(METALLIC)
+        .flags(DISABLE_DECOMPOSITION)
+        .components(Gold, 1, Concrete, 1)
+        .buildAndRegister();
   }
 }

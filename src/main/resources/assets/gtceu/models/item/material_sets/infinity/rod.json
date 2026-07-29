@@ -1,5 +1,5 @@
 {
-  "parent": "gtceu:item/material_sets/dull/rod",
+  "parent": "item/handheld",
   "textures": {
     "layer0": "industrialsorcerygreg:item/material_sets/infinity/rod"
   }

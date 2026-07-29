@@ -19,6 +19,7 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIcon
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Ethylbenzene;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
@@ -186,7 +187,8 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("TiAlCl7", true);
 
-    Dimethylaminopyridine = builderISG("dimethylaminopyridine")
+    Dimethylaminopyridine = builderISG("Dimethylamino")
+        .langValue("Dimethylamino [DMAP]")
         .dust()
         .color((GTMaterials.Dimethylamine.getMaterialRGB() + Pyridine.getMaterialRGB()) / 2)
         .iconSet(ROUGH)
@@ -297,7 +299,7 @@ final class MetalProcessingCompoundMaterials {
 
     Methylbenzophenanthrene = builderISG("methylbenzophenanthrene")
         .dust()
-        .color((Naphthaldehyde.getMaterialRGB() + ISGMaterials.EthylBenzene.getMaterialRGB()) / 2)
+        .color((Naphthaldehyde.getMaterialRGB() + Ethylbenzene.getMaterialRGB()) / 2)
         .iconSet(FINE)
         .buildAndRegister()
         .setFormula("C19H14", true);
@@ -308,13 +310,6 @@ final class MetalProcessingCompoundMaterials {
         .iconSet(DULL)
         .buildAndRegister()
         .setFormula("(VO)C(TiO2)", true);
-
-    VanadiumSlagDust = builderISG("vanadium_slag_dust")
-        .dust()
-        .color(0xf2ef1b)
-        .iconSet(ROUGH)
-        .buildAndRegister()
-        .setFormula("VO");
 
     SodiumVanadate = builderISG("sodium_vanadate")
         .dust()
@@ -514,7 +509,7 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("?");
 
-    ZincFlueDust = builderISG("zinc_flue_dust")
+    ZincFlue = builderISG("zinc_flue")
         .dust()
         .color(0xfcfca)
         .iconSet(ROUGH)
@@ -528,7 +523,7 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("Ge?");
 
-    FineZincSlagDust = builderISG("fine_zinc_slag_dust")
+    FineZincSlag = builderISG("fine_zinc_slag")
         .dust()
         .color((GTMaterials.Zinc.getMaterialRGB() - 10))
         .iconSet(FINE)
@@ -542,7 +537,7 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("In(OH)3", true);
 
-    CadmiumZincDust = builderISG("cadmium_zinc_dust")
+    CadmiumZinc = builderISG("cadmium_zinc")
         .dust()
         .color((GTMaterials.Cadmium.getMaterialRGB() + GTMaterials.Zinc.getMaterialRGB()) / 2)
         .iconSet(SHINY)

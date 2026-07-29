@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "industrialsorcerygreg:block/casing/pump/uiv_pump"
+      "model": "industrialsorcerygreg:block/casings/pump/uiv_pump"
     }
   }
 }

@@ -2,6 +2,7 @@ package com.zircky.industrialsorcerygreg.mixin.gregtech;
 
 import com.gregtechceu.gtceu.common.machine.multiblock.electric.CleanroomMachine;
 import com.gregtechceu.gtceu.common.machine.trait.CleanroomLogic;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -24,7 +25,8 @@ public abstract class CleanroomLogicMixin {
       return;
     }
 
-    for (var pos : machine.getMultiblockState().getCache()) {
+    for (var posLong : machine.getDefaultPatternState().getCache().keySet()) {
+      BlockPos pos = BlockPos.of(posLong);
       BlockState state = level.getBlockState(pos);
       if (state.getBlock() instanceof DoorBlock && state.hasProperty(DoorBlock.OPEN) && state.getValue(DoorBlock.OPEN)) {
         machine.adjustCleanAmount(-50);

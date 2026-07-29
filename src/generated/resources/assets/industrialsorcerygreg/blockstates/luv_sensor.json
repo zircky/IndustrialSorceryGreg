@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "industrialsorcerygreg:block/casing/sensor/luv_sensor"
+      "model": "industrialsorcerygreg:block/casings/sensor/luv_sensor"
     }
   }
 }

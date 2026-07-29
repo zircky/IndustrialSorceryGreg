@@ -18,7 +18,7 @@ public final class MaterialTreeRecipe extends BasicEmiRecipe {
       final EmiStack materialKey,
       final List<FormEntry> forms
   ) {
-    super(category, id, 176, 180);
+    super(category, id, 186, 180);
 
 //    this.materialKey = materialKey;
     this.forms = List.copyOf(forms);
@@ -32,7 +32,7 @@ public final class MaterialTreeRecipe extends BasicEmiRecipe {
   @Override
   public void addWidgets(final WidgetHolder widgets) {
     for (final FormEntry e : forms) {
-      final var pos = MaterialTreeLayout.pos(e.prefix());
+      final var pos = MaterialTreeLayout.pos(e);
       if (pos.hidden()) continue;
 
       widgets.addSlot(e.stack(), pos.x(), pos.y())

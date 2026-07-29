@@ -1,0 +1,12 @@
+{
+  "animation": {
+    "frametime": 2
+  },
+  "gtceu": {
+    "connection_texture": "industrialsorcerygreg:block/coil/hypogen_coil_block_ctm_bloom",
+    "emissive": true
+  },
+  "shimmer": {
+    "bloom": true
+  }
+}

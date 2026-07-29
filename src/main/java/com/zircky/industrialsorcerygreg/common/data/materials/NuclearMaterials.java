@@ -11,9 +11,6 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_F
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
 public class NuclearMaterials {
-  static {
-    ISGRegistries.REGISTRATE.creativeModeTab(() -> ISGCreativeModeTabs.MATERIAL_ITEM);
-  }
 
   public static void register() {
     ManganeseOxide = builderISG("manganese_oxide")
@@ -177,6 +174,13 @@ public class NuclearMaterials {
         .gem().dust()
         .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(DULL)
         .appendFlags(GEM_FLAGS)
+        .buildAndRegister();
+
+    BismuthStrontiumCalciumCuprate = builderISG("bismuth_strontium_calcium_cuprate")
+        .ingot()
+        .color(GTMaterials.Bismuth.getMaterialRGB() + GTMaterials.Strontium.getMaterialRGB() + GTMaterials.Calcium.getMaterialRGB() + GTMaterials.Copper.getMaterialRGB())
+        .iconSet(DULL)
+        .appendFlags(SNDART_FLAGS)
         .buildAndRegister();
 
   }

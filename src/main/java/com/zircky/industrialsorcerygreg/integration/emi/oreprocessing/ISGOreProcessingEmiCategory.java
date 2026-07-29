@@ -1,7 +1,6 @@
 package com.zircky.industrialsorcerygreg.integration.emi.oreprocessing;
 
 import com.gregtechceu.gtceu.GTCEu;
-import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
@@ -18,7 +17,7 @@ import java.util.List;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.ORE;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
-import static com.gregtechceu.gtceu.integration.emi.recipe.GTRecipeEMICategory.sortDefinition;
+import static com.gregtechceu.gtceu.integration.recipeviewer.emi.recipe.GTRecipeEMICategory.sortDefinition;
 
 public class ISGOreProcessingEmiCategory extends EmiRecipeCategory {
 

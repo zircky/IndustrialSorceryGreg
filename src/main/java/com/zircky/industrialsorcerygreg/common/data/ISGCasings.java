@@ -2,18 +2,31 @@ package com.zircky.industrialsorcerygreg.common.data;
 
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.block.ActiveBlock;
+import com.gregtechceu.gtceu.common.block.CoilBlock;
+import com.gregtechceu.gtceu.common.block.FusionCasingBlock;
+import com.gregtechceu.gtceu.common.data.models.GTModels;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.zircky.industrialsorcerygreg.ISGCore;
+import com.zircky.industrialsorcerygreg.common.block.CoilType;
+import com.zircky.industrialsorcerygreg.common.block.FusionCasings;
 import com.zircky.industrialsorcerygreg.common.data.models.ISGModels;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.GlassBlock;
 
 import java.util.Locale;
+import java.util.function.Supplier;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.zircky.industrialsorcerygreg.api.registries.ISGRegistries.REGISTRATE;
+import static com.zircky.industrialsorcerygreg.common.block.BlockMap.CALMAP;
+import static com.zircky.industrialsorcerygreg.utils.register.BlockRegisterUtils.*;
 
 public class ISGCasings {
 
@@ -137,6 +150,69 @@ public class ISGCasings {
   public static final BlockEntry<Block> SENSOR_OpV = createComponentCasingBlock("Sensor", OpV);
   public static final BlockEntry<Block> SENSOR_MAX = createComponentCasingBlock("Sensor", MAX);
 
+  public static final BlockEntry<Block> STERILE_WATER_PLANT_CASING = createCasingBlock("sterile_water_plant_casing", ISGCore.id("block/casings/sterile_water_plant_casing"));
+  public static final BlockEntry<Block> HIGH_STRENGTH_CONCRETE = createCasingBlock("high_strength_concrete", ISGCore.id("block/casings/space_elevator_module_base/side"));
+  public static final BlockEntry<Block> REINFORCED_STERILE_WATER_PLANT_CASING = createCasingBlock("reinforced_sterile_water_plant_casing", ISGCore.id("block/casings/reinforced_sterile_water_plant_casing"));
+  public static final BlockEntry<Block> HIGH_PRESSURE_RESISTANT_CASING = createCasingBlock("high_pressure_resistant_casing", ISGCore.id("block/casings/high_pressure_resistant_casing"));
+  public static final BlockEntry<Block> OZONE_CASING = createCasingBlock("ozone_casing", ISGCore.id("block/casings/ozone_casing"));
+  public static final BlockEntry<Block> FLOCCULATION_CASING = createCasingBlock("flocculation_casing", ISGCore.id("block/casings/flocculation_casing"));
+  public static final BlockEntry<Block> STABILIZED_NAQUADAH_WATER_PLANT_CASING = createCasingBlock("stabilized_naquadah_water_plant_casing", ISGCore.id("block/casings/stabilized_naquadah_water_plant_casing"));
+  public static final BlockEntry<Block> INERT_NEUTRALIZATION_WATER_PLANT_CASING = createCasingBlock("inert_neutralization_water_plant_casing", ISGCore.id("block/casings/inert_neutralization_water_plant_casing"));
+  public static final BlockEntry<Block> PLASMA_HEATER_CASING = createCasingBlock("plasma_heater_casing", ISGCore.id("block/casings/plasma_heater_casing"));
+  public static final BlockEntry<Block> IMPROVED_SUPERCONDUCTOR_COIL = createCasingBlock("improved_superconductor_coil", ISGCore.id("block/casings/improved_superconductor_coil"));
+  public static final BlockEntry<Block> SPEEDING_PIPE = createCasingBlock("speeding_pipe", ISGCore.id("block/casings/speeding_pipe/side")); // app
+  public static final BlockEntry<Block> NAQUADAH_REINFORCED_PLANT_CASING = createCasingBlock("naquadah_reinforced_plant_casing", ISGCore.id("block/casings/naquadah_reinforced_plant_casing"));
+  public static final BlockEntry<Block> HIGH_ENERGY_ULTRAVIOLET_EMITTER_CASING = createCasingBlock("high_energy_ultraviolet_emitter_casing", ISGCore.id("block/casings/high_energy_ultraviolet_emitter_casing"));
+  public static final BlockEntry<Block> DIMENSION_INJECTION_CASING = createCasingBlock("dimension_injection_casing", ISGCore.id("block/casings/dimension_injection_casing"));
+  public static final BlockEntry<Block> QUARK_PIPE = createCasingBlock("quark_pipe", ISGCore.id("block/casings/quark_pipe"));
+  public static final BlockEntry<Block> QUARK_EXCLUSION_CASING = createCasingBlock("quark_exclusion_casing", ISGCore.id("block/casings/quark_exclusion_casing"));
+  public static final BlockEntry<Block> LASER_COOLING_CASING = createCasingBlock("laser_cooling_casing", ISGCore.id("block/casings/laser_cooling_casing"));
+  public static final BlockEntry<Block> AMPROSIUM_PIPE_CASING = createCasingBlock("neutronium_pipe_casing", ISGCore.id("block/casings/neutronium_pipe_casing"));
+  public static final BlockEntry<Block> ANTIFREEZE_HEATPROOF_MACHINE_CASING = createCasingBlock("antifreeze_heatproof_machine_casing", ISGCore.id("block/casings/antifreeze_heatproof_machine_casing"));
+
+  public static final BlockEntry<FusionCasingBlock> FUSION_CASING_MK4 = createFusionCasing(FusionCasings.CasingType.FUSION_CASING_MK4, "Fusion Casing MK IV");
+  public static final BlockEntry<FusionCasingBlock> FUSION_CASING_MK5 = createFusionCasing(FusionCasings.CasingType.FUSION_CASING_MK5, "Fusion Casing MK V");
+
+  public static final BlockEntry<ActiveBlock> ADVANCED_FUSION_COIL = createActiveCasing("advanced_fusion_coil", "block/variant/advanced_fusion_coil");
+  public static final BlockEntry<ActiveBlock> FUSION_COIL_MK2 = createActiveCasing("fusion_coil_mk2","Fusion Coil MK II", "block/variant/fusion_coil_mk2");
+
+
+  public static final BlockEntry<Block> CHEMICAL_GRADE_GLASS = createGlassCasingBlock("chemical_grade_glass", ISGCore.id("block/casings/chemical_grade_glass"));
+  public static final BlockEntry<Block> ELECTRON_PERMEABLE_NEUTRONIUM_COATED_GLASS = createGlassCasingBlock("electron_permeable_neutronium_coated_glass", ISGCore.id("block/casings/electron_permeable_neutronium_coated_glass"));
+  public static final BlockEntry<Block> OMNI_PURPOSE_INFINITY_FUSED_GLASS = createGlassCasingBlock("omni_purpose_infinity_fused_glass", ISGCore.id("block/casings/omni_purpose_infinity_fused_glass"));
+  public static final BlockEntry<Block> NON_PHOTONIC_MATTER_EXCLUSION_GLASS = createGlassCasingBlock("non_photonic_matter_exclusion_glass", ISGCore.id("block/casings/non_photonic_matter_exclusion_glass"));
+
+  public static final BlockEntry<Block> HERMETIC_CASING_UEV = createHermeticCasing(GTValues.UEV);
+  public static final BlockEntry<Block> HERMETIC_CASING_UIV = createHermeticCasing(GTValues.UIV);
+  public static final BlockEntry<Block> HERMETIC_CASING_UXV = createHermeticCasing(GTValues.UXV);
+  public static final BlockEntry<Block> HERMETIC_CASING_OpV = createHermeticCasing(GTValues.OpV);
+
+  public static final BlockEntry<CoilBlock> URUIUM_COIL_BLOCK = createCoilBlock(CoilType.URUIUM);
+  public static final BlockEntry<CoilBlock> ABYSSALALLOY_COIL_BLOCK = createCoilBlock(CoilType.ABYSSALALLOY);
+  public static final BlockEntry<CoilBlock> TITANSTEEL_COIL_BLOCK = createCoilBlock(CoilType.TITANSTEEL);
+  public static final BlockEntry<CoilBlock> ADAMANTINE_COIL_BLOCK = createCoilBlock(CoilType.ADAMANTINE);
+  public static final BlockEntry<CoilBlock> NAQUADRIATICTARANIUM_COIL_BLOCK = createCoilBlock(CoilType.NAQUADRIATICTARANIUM);
+  public static final BlockEntry<CoilBlock> STARMETAL_COIL_BLOCK = createCoilBlock(CoilType.STARMETAL);
+  public static final BlockEntry<CoilBlock> INFINITY_COIL_BLOCK = createCoilBlock(CoilType.INFINITY);
+  public static final BlockEntry<CoilBlock> HYPOGEN_COIL_BLOCK = createCoilBlock(CoilType.HYPOGEN);
+  public static final BlockEntry<CoilBlock> ETERNITY_COIL_BLOCK = createCoilBlock(CoilType.ETERNITY);
+
+
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_LV = createTierCasings("component_assembly_line_casing_lv", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_lv"), CALMAP, 1);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_MV = createTierCasings("component_assembly_line_casing_mv", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_mv"), CALMAP, 2);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_HV = createTierCasings("component_assembly_line_casing_hv", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_hv"), CALMAP, 3);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_EV = createTierCasings("component_assembly_line_casing_ev", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_ev"), CALMAP, 4);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_IV = createTierCasings("component_assembly_line_casing_iv", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_iv"), CALMAP, 5);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_LUV = createTierCasings("component_assembly_line_casing_luv", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_luv"), CALMAP, 6);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_ZPM = createTierCasings("component_assembly_line_casing_zpm", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_zpm"), CALMAP, 7);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_UV = createTierCasings("component_assembly_line_casing_uv", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_uv"), CALMAP, 8);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_UHV = createTierCasings("component_assembly_line_casing_uhv", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_uhv"), CALMAP, 9);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_UEV = createTierCasings("component_assembly_line_casing_uev", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_uev"), CALMAP, 10);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_UIV = createTierCasings("component_assembly_line_casing_uiv", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_uiv"), CALMAP, 11);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_UXV = createTierCasings("component_assembly_line_casing_uxv", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_uxv"), CALMAP, 12);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_OPV = createTierCasings("component_assembly_line_casing_opv", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_opv"), CALMAP, 13);
+  public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_MAX = createTierCasings("component_assembly_line_casing_max", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_max"), CALMAP, 14);
+
 
   private static BlockEntry<Block> createComponentCasingBlock(String id, int tier) {
     String tierName = GTValues.VN[tier].toLowerCase(Locale.ROOT);
@@ -152,7 +228,7 @@ public class ISGCasings {
         .addLayer(() -> RenderType::translucent)
         .tag(CustomTags.MINEABLE_WITH_CONFIG_VALID_PICKAXE_WRENCH)
         .item(BlockItem::new)
-        .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), prov.modLoc("block/casing/%s/%s".formatted(name, model))))
+        .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), prov.modLoc("block/casings/%s/%s".formatted(name, model))))
         .build()
         .register();
     if (!GTCEuAPI.isHighTier() && tier > GTValues.UHV) {
@@ -161,5 +237,6 @@ public class ISGCasings {
     return entry;
   }
 
-  public static void init() {}
+  public static void init() {
+  }
 }

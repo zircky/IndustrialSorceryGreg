@@ -2,6 +2,7 @@ package com.zircky.industrialsorcerygreg.integration.emi.materialtree;
 
 
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import it.unimi.dsi.fastutil.ints.IntImmutableList;
 
 
@@ -65,7 +66,7 @@ public final class MaterialTreeLayout {
 
       // blocks/frames column (0/1 top)
       23, 3,   // block
-      43, 3,   // frameGt
+      23, 21,   // frameGt
 
       // fluid pipes area (bottom right)
       3, 140,  // pipeTinyFluid
@@ -119,6 +120,14 @@ public final class MaterialTreeLayout {
       }
     }
     return -1;
+  }
+
+  public static SlotPos pos(final FormEntry entry) {
+    if (!entry.isFluid()) return pos(entry.prefix());
+    if (entry.fluidKey() == FluidStorageKeys.LIQUID) return new SlotPos(43, 3);
+    if (entry.fluidKey() == FluidStorageKeys.GAS) return new SlotPos(43, 21);
+    if (entry.fluidKey() == FluidStorageKeys.PLASMA) return new SlotPos(63, 3);
+    return SlotPos.HIDDEN;
   }
 
   public record SlotPos(int x, int y) {

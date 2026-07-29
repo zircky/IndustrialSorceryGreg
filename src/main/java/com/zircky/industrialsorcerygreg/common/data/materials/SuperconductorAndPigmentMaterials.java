@@ -1,28 +1,10 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
-import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
-import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
-import com.gregtechceu.gtceu.api.fluids.attribute.FluidAttributes;
-import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.zircky.industrialsorcerygreg.api.ISGValues;
-import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
-import com.zircky.industrialsorcerygreg.common.data.ISGElement;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
-import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
-import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
-import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
-import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.INFINITY;
 
 
 
@@ -464,7 +446,7 @@ final class SuperconductorAndPigmentMaterials {
         .buildAndRegister()
         .setFormula("CdS");
 
-    UnprocessedNdYAGDust = builderISG("unprocessed_ndyag")
+    UnprocessedNdYAG = builderISG("unprocessed_ndyag")
         .langValue("Unprocessed Nd:YAG Dust")
         .dust()
         .color(0xcf8acf)

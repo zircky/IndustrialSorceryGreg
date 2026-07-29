@@ -19,6 +19,7 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIcon
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
@@ -68,7 +69,7 @@ final class ChemicalPrecursorMaterials {
 
     SelenousAcid = builderISG("selenous_acid")
         .fluid()
-        .color((0xFFFF66 + GTMaterials.Water.getMaterialRGB()) / 2)
+        .color((0xFFFF66 + Water.getMaterialRGB()) / 2)
         .iconSet(FLUID)
         .buildAndRegister()
         .setFormula("H2SeO3", true);
@@ -216,7 +217,7 @@ final class ChemicalPrecursorMaterials {
 
     DiluteHexafluorosilicicAcid = builderISG("dilute_hexafluorosilicic_acid")
         .liquid(new FluidBuilder().attribute(FluidAttributes.ACID))
-        .color((GTMaterials.Water.getMaterialRGB() * 2 + FluorosilicicAcid.getMaterialRGB()) / 3)
+        .color((Water.getMaterialRGB() * 2 + FluorosilicicAcid.getMaterialRGB()) / 3)
         .iconSet(FLUID)
         .buildAndRegister()
         .setFormula("(H2O)2(H2SiF6)", true);
@@ -230,7 +231,7 @@ final class ChemicalPrecursorMaterials {
 
     DiluteHydrofluoricAcid = builderISG("dilute_hydrofluoric_acid")
         .liquid(new FluidBuilder().attribute(FluidAttributes.ACID))
-        .color((GTMaterials.Water.getMaterialRGB() + GTMaterials.HydrofluoricAcid.getMaterialRGB()) / 3)
+        .color((Water.getMaterialRGB() + GTMaterials.HydrofluoricAcid.getMaterialRGB()) / 3)
         .iconSet(FLUID)
         .buildAndRegister()
         .setFormula("(H2O)(HF)", true);
@@ -508,6 +509,15 @@ final class ChemicalPrecursorMaterials {
         .iconSet(GTMaterials.Scandium.getMaterialIconSet())
         .buildAndRegister()
         .setFormula("Sc2O3", true);
+
+    Radox = builderISG("radox")
+        .polymer()
+        .fluid()
+        .components(Carbon, 14, Osmium, 11, Oxygen, 7, Silver, 3, Concrete, 1, Water, 1)
+        .color(0x680064)
+        .iconSet(DULL)
+        .flags(GENERATE_FOIL, GENERATE_PLATE, DISABLE_DECOMPOSITION)
+        .buildAndRegister();
 
   }
 }

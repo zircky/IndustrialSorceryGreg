@@ -3,9 +3,11 @@ package com.zircky.industrialsorcerygreg.api.registries;
 import com.gregtechceu.gtceu.api.block.MetaMachineBlock;
 import com.gregtechceu.gtceu.api.blockentity.BlockEntityCreationInfo;
 import com.gregtechceu.gtceu.api.item.MetaMachineItem;
+import com.gregtechceu.gtceu.api.machine.MachineInstanceFactory;
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
-import com.gregtechceu.gtceu.api.pattern.BlockPattern;
+import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
+import com.gregtechceu.gtceu.api.multiblock.pattern.IBlockPattern;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.gregtechceu.gtceu.api.registry.registrate.MultiblockMachineBuilder;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -20,15 +22,17 @@ import java.util.function.Function;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public final class ISGMultiblockMachineBuilder<DEFINITION extends MultiblockMachineDefinition>
-    extends MultiblockMachineBuilder<DEFINITION, ISGMultiblockMachineBuilder<DEFINITION>> {
-  private List<Function<MultiblockMachineDefinition, BlockPattern>> subPattern;
+public final class ISGMultiblockMachineBuilder<DEFINITION extends MultiblockMachineDefinition,
+    MACHINE extends MultiblockControllerMachine,
+    SELF extends MultiblockMachineBuilder<DEFINITION, MACHINE, SELF>> extends MultiblockMachineBuilder<DEFINITION, MACHINE, SELF>{
+  private List<Function<MultiblockMachineDefinition, IBlockPattern>> subPattern;
 
-  public ISGMultiblockMachineBuilder(GTRegistrate registrate, String name, BiFunction<BlockBehaviour.Properties, DEFINITION, MetaMachineBlock> blockFactory, BiFunction<MetaMachineBlock, Item.Properties, MetaMachineItem> itemFactory, Function<BlockEntityCreationInfo, MetaMachine> blockEntityFactory) {
+  public ISGMultiblockMachineBuilder(GTRegistrate registrate, String name, BiFunction<BlockBehaviour.Properties, DEFINITION, MetaMachineBlock> blockFactory, BiFunction<MetaMachineBlock, Item.Properties, MetaMachineItem> itemFactory, MachineInstanceFactory<MACHINE> blockEntityFactory) {
     super(registrate, name, blockFactory, itemFactory, blockEntityFactory);
   }
 
-  public ISGMultiblockMachineBuilder<DEFINITION> subPattern(Function<MultiblockMachineDefinition, BlockPattern> pattern) {
+
+  public SELF subPattern(Function<MultiblockMachineDefinition, IBlockPattern> pattern) {
     if (subPattern == null) subPattern = new ArrayList<>();
     subPattern.add(pattern);
     return getThis();

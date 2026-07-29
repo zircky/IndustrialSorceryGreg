@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "industrialsorcerygreg:block/machine/uev_laser_welder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "industrialsorcerygreg:block/machine/uev_laser_welder"
+    },
+    "facing=south": {
+      "model": "industrialsorcerygreg:block/machine/uev_laser_welder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "industrialsorcerygreg:block/machine/uev_laser_welder",
+      "y": 270
+    }
+  }
+}

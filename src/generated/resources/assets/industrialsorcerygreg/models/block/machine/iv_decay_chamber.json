@@ -1,0 +1,47 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "gtceu:machine",
+  "machine": "industrialsorcerygreg:iv_decay_chamber",
+  "variants": {
+    "recipe_logic_status=idle": {
+      "model": {
+        "parent": "gtceu:block/casings/voltage/iv",
+        "textures": {
+          "overlay_front": "industrialsorcerygreg:block/machines/decay_chamber/overlay_front",
+          "overlay_side": "industrialsorcerygreg:block/machines/decay_chamber/overlay_side"
+        }
+      }
+    },
+    "recipe_logic_status=suspend": {
+      "model": {
+        "parent": "gtceu:block/casings/voltage/iv",
+        "textures": {
+          "overlay_front": "industrialsorcerygreg:block/machines/decay_chamber/overlay_front",
+          "overlay_side": "industrialsorcerygreg:block/machines/decay_chamber/overlay_side"
+        }
+      }
+    },
+    "recipe_logic_status=waiting": {
+      "model": {
+        "parent": "gtceu:block/casings/voltage/iv",
+        "textures": {
+          "overlay_front": "industrialsorcerygreg:block/machines/decay_chamber/overlay_front_active",
+          "overlay_front_emissive": "industrialsorcerygreg:block/machines/decay_chamber/overlay_front_active_emissive",
+          "overlay_side": "industrialsorcerygreg:block/machines/decay_chamber/overlay_side_active",
+          "overlay_side_emissive": "industrialsorcerygreg:block/machines/decay_chamber/overlay_side_active_emissive"
+        }
+      }
+    },
+    "recipe_logic_status=working": {
+      "model": {
+        "parent": "gtceu:block/casings/voltage/iv",
+        "textures": {
+          "overlay_front": "industrialsorcerygreg:block/machines/decay_chamber/overlay_front_active",
+          "overlay_front_emissive": "industrialsorcerygreg:block/machines/decay_chamber/overlay_front_active_emissive",
+          "overlay_side": "industrialsorcerygreg:block/machines/decay_chamber/overlay_side_active",
+          "overlay_side_emissive": "industrialsorcerygreg:block/machines/decay_chamber/overlay_side_active_emissive"
+        }
+      }
+    }
+  }
+}

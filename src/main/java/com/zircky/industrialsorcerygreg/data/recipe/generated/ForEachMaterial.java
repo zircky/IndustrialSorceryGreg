@@ -1,6 +1,5 @@
 package com.zircky.industrialsorcerygreg.data.recipe.generated;
 
-import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
@@ -19,6 +18,7 @@ public class ForEachMaterial {
       ISGOreRecipeHandler.run(provider, material);
       ISGRecyclingRecipeHandler.run(provider, material);
       ISGRecipeMixerHandler.run(provider, material);
+      ISGWireCombiningHandler.run(provider, material);
     }
   }
 }

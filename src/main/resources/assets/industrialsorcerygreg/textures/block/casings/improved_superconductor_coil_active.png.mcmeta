@@ -1,0 +1,9 @@
+{
+  "gtceu": {
+    "connection_texture": "industrialsorcerygreg:block/casings/improved_superconductor_coil_active_ctm",
+    "emissive": true
+  },
+  "shimmer": {
+    "bloom": true
+  }
+}

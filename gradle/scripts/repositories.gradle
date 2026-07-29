@@ -100,8 +100,6 @@ repositories {
     }
   }
 
-  maven { url = "https://maven.firstdarkdev.xyz/snapshots" } // LDLib
-
   exclusiveContent { // Configuration
     forRepository { maven { url = "https://repo.repsy.io/mvn/toma/public" } }
     filter { includeGroup("dev.toma.configuration")}

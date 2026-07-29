@@ -146,7 +146,7 @@ public class PlatinumLine {
         .buildAndRegister()
         .setFormula("Os?Ir?");
 
-    SludgeDustResidue = builderISG("sludge_dust_residue")
+    SludgeResidue = builderISG("sludge_residue")
         .dust()
         .color(0x846649)
         .iconSet(MaterialIconSet.DULL)
@@ -175,7 +175,7 @@ public class PlatinumLine {
         .buildAndRegister()
         .setFormula("Ir?Cl?");
 
-    MetallicSludgeDustResidue = builderISG("metallic_sludge_dust_residue")
+    MetallicSludgeResidue = builderISG("metallic_sludge_residue")
         .dust()
         .color(0x846649)
         .iconSet(MaterialIconSet.DULL)

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "industrialsorcerygreg:block/casing/motor/zpm_motor"
+      "model": "industrialsorcerygreg:block/casings/motor/zpm_motor"
     }
   }
 }

@@ -1,0 +1,8 @@
+{
+  "gtceu": {
+    "connection_texture": "industrialsorcerygreg:block/coil/eternity_coil_block_ctm"
+  },
+  "animation": {
+    "frametime": 3
+  }
+}

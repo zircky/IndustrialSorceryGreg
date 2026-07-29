@@ -1,7 +1,7 @@
 package com.zircky.industrialsorcerygreg.common.data.recipe;
 
 import com.gregtechceu.gtceu.api.machine.MetaMachine;
-import com.gregtechceu.gtceu.api.machine.trait.RecipeLogic;
+import com.gregtechceu.gtceu.api.machine.trait.recipe.RecipeLogic;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.RecipeCondition;
 import com.gregtechceu.gtceu.api.recipe.condition.RecipeConditionType;
@@ -24,6 +24,10 @@ public class NeutronActivatorCondition extends RecipeCondition<NeutronActivatorC
       .apply(instance, NeutronActivatorCondition::new));
 
   private int evRange = 0;
+
+  public int getEvRange() {
+    return evRange;
+  }
 
   public NeutronActivatorCondition() {
     this(0, 0);

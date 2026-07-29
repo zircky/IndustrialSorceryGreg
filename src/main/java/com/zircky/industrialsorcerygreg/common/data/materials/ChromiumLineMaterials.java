@@ -23,8 +23,8 @@ public class ChromiumLineMaterials {
         .langValue("Chromium III Oxide")
         .dust()
         .color(0x3dc34d).iconSet(MaterialIconSet.DULL)
-        .element(ISGElement.CHROMIOMIIIOXIDE)
-        .buildAndRegister();
+        .buildAndRegister()
+        .setFormula("Cr2O3", true);
     SodiumCarbonateSolution = builderISG("sodium_carbonate_solution")
         .liquid()
         .color(0x636389)

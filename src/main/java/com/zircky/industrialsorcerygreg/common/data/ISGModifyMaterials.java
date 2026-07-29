@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.common.data;
 
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
@@ -37,13 +38,26 @@ public class ISGModifyMaterials {
 
     GTMaterials.Platinum.addFlags(NO_SMELTING, NO_ORE_SMELTING);
 
-    GTMaterials.Iron.addFlags(GENERATE_DOUBLE_INGOT, GENERATE_TRIPLE_INGOT, GENERATE_QUADRUPLE_INGOT, GENERATE_QUINTUPLE_INGOT, GENERATE_TRIPLE_PLATE, GENERATE_QUADRUPLE_PLATE, GENERATE_QUINTUPLE_PLATE, GENERATE_SUPERDENSE, GENERATE_SINGULARITY);
+    GTMaterials.Iron.addFlags(GENERATE_NANITES, GENERATE_DOUBLE_INGOT, GENERATE_TRIPLE_INGOT, GENERATE_QUADRUPLE_INGOT, GENERATE_QUINTUPLE_INGOT, GENERATE_TRIPLE_PLATE, GENERATE_QUADRUPLE_PLATE, GENERATE_QUINTUPLE_PLATE, GENERATE_SUPERDENSE, GENERATE_SINGULARITY);
     GTMaterials.Aluminium.addFlags(GENERATE_DOUBLE_INGOT, GENERATE_TRIPLE_INGOT, GENERATE_QUADRUPLE_INGOT, GENERATE_QUINTUPLE_INGOT, GENERATE_TRIPLE_PLATE, GENERATE_QUADRUPLE_PLATE, GENERATE_QUINTUPLE_PLATE, GENERATE_SUPERDENSE, GENERATE_SINGULARITY);
     GTMaterials.Steel.addFlags(GENERATE_DOUBLE_INGOT, GENERATE_TRIPLE_INGOT, GENERATE_QUADRUPLE_INGOT, GENERATE_QUINTUPLE_INGOT, GENERATE_TRIPLE_PLATE, GENERATE_QUADRUPLE_PLATE, GENERATE_QUINTUPLE_PLATE, GENERATE_SUPERDENSE, GENERATE_SINGULARITY);
     GTMaterials.Silver.addFlags(GENERATE_DOUBLE_INGOT, GENERATE_TRIPLE_INGOT, GENERATE_QUADRUPLE_INGOT, GENERATE_QUINTUPLE_INGOT, GENERATE_TRIPLE_PLATE, GENERATE_QUADRUPLE_PLATE, GENERATE_QUINTUPLE_PLATE, GENERATE_SUPERDENSE, GENERATE_SINGULARITY);
     GTMaterials.Diamond.addFlags(GENERATE_DOUBLE_PLATE, GENERATE_TRIPLE_PLATE, GENERATE_QUADRUPLE_PLATE, GENERATE_QUINTUPLE_PLATE, GENERATE_SUPERDENSE, GENERATE_SINGULARITY);
     GTMaterials.TitaniumTungstenCarbide.addFlags(GENERATE_DENSE);
     GTMaterials.CertusQuartz.addFlags(GENERATE_BOLT_SCREW);
+
+    GTMaterials.Neutronium.addFlags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_DENSE);
+    GTMaterials.Carbon.addFlags(GENERATE_NANITES);
+    GTMaterials.Glowstone.addFlags(GENERATE_NANITES);
+    GTMaterials.Copper.addFlags(GENERATE_NANITES);
+    GTMaterials.Cupronickel.addFlags(GENERATE_NANITES);
+    GTMaterials.Silver.addFlags(GENERATE_NANITES);
+    GTMaterials.Gold.addFlags(GENERATE_NANITES);
+    GTMaterials.Osmium.addFlags(GENERATE_NANITES);
+    GTMaterials.Iridium.addFlags(GENERATE_NANITES);
+    GTMaterials.Rhenium.addFlags(GENERATE_NANITES);
+
+    GTMaterials.Neutronium.setProperty(PropertyKey.WIRE, new WireProperties((int) GTValues.V[GTValues.UIV], 2, 64));
 
     GTMaterials.Steel.addFlags(ISGMaterialFlags.GENERATE_COMPONENT);
     GTMaterials.Aluminium.addFlags(ISGMaterialFlags.GENERATE_COMPONENT);
@@ -53,6 +67,9 @@ public class ISGModifyMaterials {
     GTMaterials.HSSS.addFlags(ISGMaterialFlags.GENERATE_COMPONENT);
     GTMaterials.Osmiridium.addFlags(ISGMaterialFlags.GENERATE_COMPONENT);
     GTMaterials.Tritanium.addFlags(ISGMaterialFlags.GENERATE_COMPONENT);
+    GTMaterials.Naquadria.addFlags(GENERATE_FRAME);
+    GTMaterials.Naquadah.addFlags(GENERATE_FRAME);
+    GTMaterials.DamascusSteel.addFlags(GENERATE_FRAME);
 
     GTMaterials.Ruby.addFlags(DECOMPOSITION_BY_ELECTROLYZING, DISABLE_DECOMPOSITION);
     GTMaterials.RubySlurry.addFlags(DECOMPOSITION_BY_CENTRIFUGING);
@@ -63,8 +80,17 @@ public class ISGModifyMaterials {
     ISGMaterials.addIngot(GTMaterials.Zirconium);
     ISGMaterials.addIngot(GTMaterials.Strontium);
     ISGMaterials.addIngot(GTMaterials.Scandium);
+
+    ISGMaterials.addData(GTMaterials.Astatine);
+    ISGMaterials.addData(GTMaterials.Tellurium);
+    ISGMaterials.addData(GTMaterials.Selenium);
+
     ISGMaterials.addFluid(GTMaterials.Scandium);
     ISGMaterials.addFluid(GTMaterials.Radium);
+    ISGMaterials.addFluid(GTMaterials.Calcium);
+    ISGMaterials.addFluid(GTMaterials.Hafnium);
+    ISGMaterials.addFluid(GTMaterials.PotassiumHydroxide);
+    ISGMaterials.addFluid(GTMaterials.AmmoniumChloride);
 //    GTMaterials.Scandium.setProperty(PropertyKey.DUST, new DustProperty());
 
 

@@ -1,28 +1,16 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
-import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.attribute.FluidAttributes;
-import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.api.ISGValues;
-import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
-import com.zircky.industrialsorcerygreg.common.data.ISGElement;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
-import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
-import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
+import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
-import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
-import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.INFINITY;
 
 
 public final class HighEnergyMaterials {
@@ -31,9 +19,12 @@ public final class HighEnergyMaterials {
 
   public static void register() {
     SuperheavyMix = builderISG("superheavy_mix")
-        .fluid()
+        .fluid().ingot()
         .color(0x403737)
-        .iconSet(FLUID)
+        .iconSet(DULL)
+        .components(GTMaterials.Seaborgium, 1, GTMaterials.Bohrium, 1, GTMaterials.Rutherfordium, 1, GTMaterials.Dubnium, 1)
+        .blastTemp(11000, HIGHER, ISGValues.VA[ISGValues.UIV])
+        .flags(DISABLE_DECOMPOSITION)
         .buildAndRegister()
         .setFormula("SgBhRfDb");
 
@@ -68,49 +59,49 @@ public final class HighEnergyMaterials {
         .color(GTMaterials.Carbon.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("C-12", true);
+        .setFormula("C12", true);
 
     Carbon13 = builderISG("carbon_13")
         .fluid()
         .color(GTMaterials.Carbon.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("C-13", true);
+        .setFormula("C13", true);
 
     Nitrogen14 = builderISG("nitrogen_14")
         .fluid()
         .color(GTMaterials.Nitrogen.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("N-14", true);
+        .setFormula("N14", true);
 
-    NItrogen15 = builderISG("nitrogen_15")
+    Nitrogen15 = builderISG("nitrogen_15")
         .fluid()
         .color(GTMaterials.Nitrogen.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("N-15", true);
+        .setFormula("N15", true);
 
     CNOcatalyst = builderISG("cno_catalyst")
         .fluid()
         .color((GTMaterials.Nitrogen.getMaterialRGB() + GTMaterials.Carbon.getMaterialRGB()) / 2)
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("(C-12)(C-13)(N-14)(N-15)", true);
+        .setFormula("(C12)(C13)(N14)(N15)", true);
 
     Calcium44 = builderISG("calcium_44")
         .fluid()
         .color(GTMaterials.Calcium.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("Ca-44", true);
+        .setFormula("Ca44", true);
 
-    OgannesonBreedingBase = builderISG("oganesson_breeding_base")
+    OganesonBreedingBase = builderISG("oganesson_breeding_base")
         .fluid()
         .color(((GTMaterials.Titanium.getMaterialRGB() + 0xA85A12) / 2))
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("(Ti-50)Cf-252", true);
+        .setFormula("(Ti50)Cf252", true);
 
     Quassifissioning = builderISG("quasifissioning")
         .plasma()
@@ -123,7 +114,7 @@ public final class HighEnergyMaterials {
         .color(GTMaterials.Ytterbium.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("Yb_178", true);
+        .setFormula("Yb178", true);
 
     FlYb = builderISG("flyb")
         .plasma()
@@ -138,7 +129,7 @@ public final class HighEnergyMaterials {
         .color(GTMaterials.Chromium.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("Cr-48", true);
+        .setFormula("Cr48", true);
 
     Iron52 = builderISG("iron_52")
         .fluid()
@@ -1178,14 +1169,14 @@ public final class HighEnergyMaterials {
 
     SuperfluidHelium = builderISG("superfluid_helium")
         .fluid()
-        .color(GTMaterials.Helium.getMaterialRGB())
+        .color(0xFCFF90)
         .iconSet(FLUID)
         .buildAndRegister()
         .setFormula("He");
 
     LiquidEnrichedHelium = builderISG("liquid_enriched_helium")
         .fluid()
-        .color(GTMaterials.Helium.getMaterialRGB())
+        .color(0xFCFF90)
         .iconSet(FLUID)
         .buildAndRegister()
         .setFormula("HeHe-3");

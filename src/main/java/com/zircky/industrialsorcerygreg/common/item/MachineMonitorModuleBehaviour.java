@@ -6,7 +6,8 @@ import com.gregtechceu.gtceu.api.placeholder.PlaceholderContext;
 import com.gregtechceu.gtceu.client.renderer.monitor.IMonitorRenderer;
 import com.gregtechceu.gtceu.common.machine.multiblock.electric.CentralMonitorMachine;
 import com.gregtechceu.gtceu.common.machine.multiblock.electric.monitor.MonitorGroup;
-import com.lowdragmc.lowdraglib.gui.widget.Widget;
+import brachy.modularui.api.IPanelHandler;
+import brachy.modularui.value.sync.PanelSyncManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -32,12 +33,13 @@ public class MachineMonitorModuleBehaviour implements IMonitorModuleItem, IAddIn
   }
 
   @Override
-  public IMonitorRenderer getRenderer(ItemStack stack) {
+  public IMonitorRenderer getRenderer(ItemStack stack, CentralMonitorMachine machine, MonitorGroup group) {
     return null;
   }
 
   @Override
-  public Widget createUIWidget(ItemStack stack, CentralMonitorMachine machine, MonitorGroup group) {
+  public IPanelHandler createModularPanel(ItemStack stack, CentralMonitorMachine machine, MonitorGroup group,
+                                          PanelSyncManager syncManager) {
     return null;
   }
 

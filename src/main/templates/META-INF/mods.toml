@@ -36,11 +36,3 @@ mandatory=true
 versionRange="[${gtceu_version},)"
 ordering="AFTER"
 side="BOTH"
-
-[[dependencies."${mod_id}"]]
-modId = "ldlib"
-mandatory = true
-embedded = true
-versionRange = "[${ldlib_version},)"
-ordering = "AFTER"
-side = "BOTH"

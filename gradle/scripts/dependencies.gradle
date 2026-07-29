@@ -1,7 +1,7 @@
 dependencies {
   compileOnly(libs.jetbrains.annotations)
 
-  modImplementation(forge.ldlib)
+  modImplementation(forge.mui)
 
   // Registrate
   modImplementation(forge.registrate)
@@ -40,8 +40,9 @@ dependencies {
   // Patchouli
   modRuntimeOnly(forge.patchouli)
 
-  // Botania
-  modImplementation(forge.botania)
+  // Botania currently crashes in dev on Forge 47.4.x by reading client config before it is loaded.
+  // Re-enable only when the mod actually needs Botania integration.
+   modImplementation(forge.botania)
 
   // Ad Astra
   modRuntimeOnly(forge.yabn)
@@ -55,6 +56,11 @@ dependencies {
   modImplementation(forge.ftblibrary.cm)
   modImplementation(forge.ftbteams.cm)
 
+
+
+//  modImplementation("curse.maven:gtmthings-1104310:7712957")
+  modImplementation("curse.maven:render-blender-1346485:7035162")
+  modImplementation("curse.maven:modernfix-790626:8335833")
   modImplementation(forge.nuclearcraft)
 
   modImplementation(forge.flywheel)

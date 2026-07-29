@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "industrialsorcerygreg:block/casing/emitter/lv_emitter"
+      "model": "industrialsorcerygreg:block/casings/emitter/lv_emitter"
     }
   }
 }

@@ -1,18 +1,25 @@
 package com.zircky.industrialsorcerygreg.integration.emi.oreprocessing;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.lowdragmc.lowdraglib.emi.ModularEmiRecipe;
+import brachy.modularui.integration.emi.EmiStackConverter;
+import brachy.modularui.integration.emi.recipe.ModularUIEmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
-import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.Nullable;
+import dev.emi.emi.api.stack.EmiIngredient;
+import dev.emi.emi.api.stack.EmiStack;
 
-public class ISGEmiOreProcessing extends ModularEmiRecipe<ISGOreByProductWidget> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ISGEmiOreProcessing extends ModularUIEmiRecipe {
 
   final Material material;
+  final ISGOreByProduct byProduct;
 
   public ISGEmiOreProcessing(Material material) {
-    super(() -> new ISGOreByProductWidget(material));
+    super(material.getResourceLocation().withPrefix("/ore_proc/"),
+        () -> new ISGOreByProductWidget(material));
     this.material = material;
+    this.byProduct = new ISGOreByProduct(material);
   }
 
   @Override
@@ -21,8 +28,20 @@ public class ISGEmiOreProcessing extends ModularEmiRecipe<ISGOreByProductWidget>
   }
 
   @Override
-  public @Nullable ResourceLocation getId() {
-    return material.getResourceLocation();
+  public List<EmiIngredient> getInputs() {
+    List<EmiIngredient> ingredients = new ArrayList<>();
+    ingredients.addAll(byProduct.itemInputs.stream()
+        .map(v -> EmiStackConverter.ITEM.convertTo(v, 1))
+        .toList());
+    ingredients.addAll(byProduct.fluidInputs.stream()
+        .map(v -> EmiStackConverter.FLUID.convertTo(v, 1))
+        .toList());
+    return ingredients;
+  }
+
+  @Override
+  public List<EmiStack> getOutputs() {
+    return byProduct.itemOutputs.stream().map(EmiStack::of).toList();
   }
 
   @Override

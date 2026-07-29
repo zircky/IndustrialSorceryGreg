@@ -11,7 +11,7 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 public class NaquadahLine {
   public static void register() {
     Adamantium = builderISG("adamantium")
-        .dust().ingot().ore()
+        .ingot().ore()
         .color(0x4c4c4c)
         .iconSet(MaterialIconSet.SHINY)
         .appendFlags(SNDART_FLAGS)

@@ -3,33 +3,46 @@ package com.zircky.industrialsorcerygreg.common.data;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.data.chemical.material.ItemMaterialData;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.ItemMaterialInfo;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
 import com.gregtechceu.gtceu.api.item.ComponentItem;
-import com.gregtechceu.gtceu.api.machine.MachineDefinition;
+import com.gregtechceu.gtceu.api.item.component.ElectricStats;
+import com.gregtechceu.gtceu.api.item.component.IItemComponent;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.item.armor.*;
 import com.gregtechceu.gtceu.common.item.behavior.CoverPlaceBehavior;
+import com.gregtechceu.gtceu.common.item.behavior.DataItemBehavior;
 import com.gregtechceu.gtceu.common.item.behavior.TooltipBehavior;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
+import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
+import com.zircky.industrialsorcerygreg.client.renderer.item.MaterialsColorMap;
 import com.zircky.industrialsorcerygreg.common.data.tag.item.ISGItemTag;
 import com.zircky.industrialsorcerygreg.common.item.armor.SpaceArmorComponentItem;
+import com.zircky.industrialsorcerygreg.utils.StringUtils;
 import earth.terrarium.adastra.common.tags.ModItemTags;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
 
 import java.util.Locale;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.common.data.GTItems.attach;
+import static com.gregtechceu.gtceu.common.data.GTItems.modelPredicate;
 import static com.gregtechceu.gtceu.utils.FormattingUtil.toEnglishName;
+import static com.zircky.industrialsorcerygreg.utils.register.ItemRegisterUtils.attach;
+import static com.zircky.industrialsorcerygreg.utils.register.ItemRegisterUtils.item;
 
 public class ISGItems {
 
@@ -38,7 +51,84 @@ public class ISGItems {
   }
 
   public static void init() {
+    ISGMaterialItems.generateMaterialItems();
   }
+
+  public static final ItemEntry<Item> SHAPE_EXTRUDER_ROD_LONG = ISGRegistries.REGISTRATE.item("long_rod_extruder_mold", Item::new)
+      .lang("Extruder Mold (Long Rod)")
+//      .model((ctx, prov) -> prov.generated(ctx, prov.modLoc("item/long_rod_extruder_mold")))
+      .onRegister(materialInfo(() -> new ItemMaterialInfo(new MaterialStack(GTMaterials.Steel, GTValues.M << 2))))
+      .register();
+
+  ItemEntry<ComponentItem> REALLY_MAX_BATTERY = item("really_max_battery", ComponentItem::create)
+      .lang("Really MAX Battery")
+      .onRegister(attach(new TooltipBehavior(lines -> lines.add(Component.translatable("isgcore.tooltip.item.really_max_battery").withStyle(ChatFormatting.GRAY)))))
+      .onRegister(modelPredicate(GTCEu.id("battery"), ElectricStats::getStoredPredicate))
+      .onRegister(attach(ElectricStats.createRechargeableBattery(Long.MAX_VALUE, GTValues.UEV)))
+      .register();
+  ItemEntry<ComponentItem> TRANSCENDENT_MAX_BATTERY = item("transcendent_max_battery", ComponentItem::create)
+      .lang("Transcendent MAX Battery")
+      .onRegister(attach(new TooltipBehavior(lines -> lines.add(Component.translatable("isgcore.tooltip.item.transcendent_max_battery").withStyle(ChatFormatting.GRAY)))))
+      .onRegister(modelPredicate(GTCEu.id("battery"), ElectricStats::getStoredPredicate))
+      .onRegister(attach((IItemComponent) ElectricStats.createRechargeableBattery(Long.MAX_VALUE, UIV)))
+      .register();
+  ItemEntry<ComponentItem> EXTREMELY_MAX_BATTERY = item("extremely_max_battery", ComponentItem::create)
+      .lang("Extremely MAX Battery")
+      .onRegister(attach(new TooltipBehavior(lines -> lines.add(Component.translatable("isgcore.tooltip.item.extremely_max_battery").withStyle(ChatFormatting.GRAY)))))
+      .onRegister(modelPredicate(GTCEu.id("battery"), ElectricStats::getStoredPredicate))
+      .onRegister(attach(ElectricStats.createRechargeableBattery(Long.MAX_VALUE, GTValues.UXV)))
+      .register();
+  ItemEntry<ComponentItem> INSANELY_MAX_BATTERY = item("insanely_max_battery", ComponentItem::create)
+      .lang("Insanely MAX Battery")
+      .onRegister(attach(new TooltipBehavior(lines -> lines.add(Component.literal(StringUtils.dark_purplish_red(I18n.get("isgcore.tooltip.item.insanely_max_battery")))))))
+      .onRegister(modelPredicate(GTCEu.id("battery"), ElectricStats::getStoredPredicate))
+      .onRegister(attach(ElectricStats.createRechargeableBattery(Long.MAX_VALUE, GTValues.OpV)))
+      .register();
+  ItemEntry<ComponentItem> MEGA_MAX_BATTERY = item("mega_max_battery",  ComponentItem::create)
+      .lang("Mega MAX Battery")
+      .onRegister(attach(new TooltipBehavior(lines -> lines.add(Component.literal(StringUtils.full_color(I18n.get("isgcore.tooltip.item.mega_max_battery")))))))
+      .onRegister(modelPredicate(GTCEu.id("battery"), ElectricStats::getStoredPredicate))
+      .onRegister(attach(ElectricStats.createRechargeableBattery(Long.MAX_VALUE, GTValues.MAX)))
+      .register();
+
+  ItemEntry<ComponentItem> SUPER_CAPACITOR = item("super_capacitor", ComponentItem::create)
+      .onRegister(attach(ElectricStats.createRechargeableBattery(100000, GTValues.ULV)))
+      .tag(CustomTags.ULV_BATTERIES).register();
+
+  ItemEntry<ComponentItem> MAX_ELECTRIC_PUMP = item("max_electric_pump", ComponentItem::create)
+      .lang("MAX Electric Pump")
+      .onRegister(attach(new CoverPlaceBehavior(ISGCovers.ELECTRIC_PUMP_MAX)))
+      .onRegister(attach(new TooltipBehavior(lines -> {
+        lines.add(Component.translatable("item.gtceu.electric.pump.tooltip"));
+        lines.add(Component.translatable("gtceu.universal.tooltip.fluid_transfer_rate",
+            1280 * 64 * 64 * 4 / 20));
+      })))
+      .register();
+
+  ItemEntry<ComponentItem> MAX_CONVEYOR_MODULE = item("max_conveyor_module", ComponentItem::create)
+      .lang("MAX Conveyor Module")
+      .onRegister(attach(new CoverPlaceBehavior(ISGCovers.CONVEYOR_MODULE_MAX)))
+      .onRegister(attach(new TooltipBehavior(lines -> {
+        lines.add(Component.translatable("item.gtceu.conveyor.module.tooltip"));
+        lines.add(Component.translatable("gtceu.universal.tooltip.item_transfer_rate_stacks", 16));
+      })))
+      .register();
+
+  ItemEntry<ComponentItem> MAX_ROBOT_ARM = item("max_robot_arm", ComponentItem::create)
+      .lang("MAX Robot Arm")
+      .onRegister(attach(new CoverPlaceBehavior(ISGCovers.ROBOT_ARM_MAX)))
+      .onRegister(attach(new TooltipBehavior(lines -> {
+        lines.add(Component.translatable("item.gtceu.robot.arm.tooltip"));
+        lines.add(Component.translatable("gtceu.universal.tooltip.item_transfer_rate_stacks", 16));
+      })))
+      .register();
+
+  ItemEntry<Item> MAX_ELECTRIC_MOTOR = registerLang("max_electric_motor", "MAX Electric Motor");
+  ItemEntry<Item> MAX_ELECTRIC_PISTON = registerLang("max_electric_piston", "MAX Electric Piston");
+  ItemEntry<Item> MAX_FIELD_GENERATOR = registerLang("max_field_generator", "MAX Field Generator");
+  ItemEntry<Item> MAX_EMITTER = registerLang("max_emitter", "MAX Emitte");
+  ItemEntry<Item> MAX_SENSOR = registerLang("max_sensor", "MAX Sensor");
+  
 
 //  public static final ItemEntry<Item> SMD_CAPACITOR_REFINED = registerLang("smd_capacitor_refined", "Refined SMD Capacitor");
 //  public static final ItemEntry<Item> SMD_DIODE_REFINED = registerSmd("smd_diode_refined", "Refined SMD Diode");
@@ -76,6 +166,10 @@ public class ISGItems {
 //  public static final ItemEntry<Item> SMD_TRANSISTOR_WETWARE = registerLang("smd_transistor_wetware", "Wetware SMD Transistor");
 //  public static final ItemEntry<Item> SMD_INDUCTOR_WETWARE = registerLang("smd_inductor_wetware", "Wetware SMD Inductor");
 
+
+  public static final ItemEntry<Item> QUANTUM_ANOMALY = register("quantum_anomaly");
+  public static final ItemEntry<Item> QUANTUMCHROMODYNAMIC_PROTECTIVE_PLATING = register("quantumchromodynamic_protective_plating");
+  public static final ItemEntry<Item> RECURSIVELY_FOLDED_NEGATIVE_SPACE = register("recursively_folded_negative_space");
 
   public static final ItemEntry<Item> BIOWARE_CIRCUIT_BOARD = registerLang("bioware_circuit_board", "Bioware Circuit Board");
   public static final ItemEntry<Item> BIOWARE_PRINTED_CIRCUIT_BOARD = registerLang("bioware_printed_circuit_board", "Bioware Printed Circuit Board");
@@ -144,21 +238,31 @@ public class ISGItems {
   public static final ItemEntry<Item> BIOWARE_ASSEMBLY = registerCircuit("bioware_assembly", CustomTags.UV_CIRCUITS);
   public static final ItemEntry<Item> BIOWARE_COMPUTER = registerCircuit("bioware_computer", CustomTags.UHV_CIRCUITS);
   public static final ItemEntry<Item> BIOWARE_MAINFRAME = registerCircuit("bioware_mainframe", CustomTags.UEV_CIRCUITS);
+  public static final ItemEntry<Item> BIOWARE_PROCESSING_CORE = register("bioware_processing_core");
 
   public static final ItemEntry<Item> OPTICAL_PROCESSOR = registerCircuit("optical_processor", CustomTags.UV_CIRCUITS);
   public static final ItemEntry<Item> OPTICAL_ASSEMBLY = registerCircuit("optical_assembly", CustomTags.UHV_CIRCUITS);
   public static final ItemEntry<Item> OPTICAL_COMPUTER = registerCircuit("optical_computer", CustomTags.UEV_CIRCUITS);
   public static final ItemEntry<Item> OPTICAL_MAINFRAME = registerCircuit("optical_mainframe", CustomTags.UIV_CIRCUITS);
+  public static final ItemEntry<Item> OPTICAL_SLICE = register("optical_slice");
+  public static final ItemEntry<Item> OPTICAL_PROCESSING_CORE = register("optical_processing_core");
+  public static final ItemEntry<ComponentItem> OPTICAL_DATA_STICK = item("optical_data_stick", ComponentItem::create)
+      .onRegister(attach(new DataItemBehavior(true, 1)))
+      .register();
+  public static final ItemEntry<Item> OPTICAL_WAFER = register("optical_wafer");
 
   public static final ItemEntry<Item> EXOTIC_PROCESSOR = registerCircuit("exotic_processor", CustomTags.UHV_CIRCUITS);
   public static final ItemEntry<Item> EXOTIC_ASSEMBLY = registerCircuit("exotic_assembly", CustomTags.UEV_CIRCUITS);
   public static final ItemEntry<Item> EXOTIC_COMPUTER = registerCircuit("exotic_computer", CustomTags.UIV_CIRCUITS);
   public static final ItemEntry<Item> EXOTIC_MAINFRAME = registerCircuit("exotic_mainframe", CustomTags.UXV_CIRCUITS);
+  public static final ItemEntry<Item> EXOTIC_PROCESSING_CORE = register("exotic_processing_core");
 
   public static final ItemEntry<Item> COSMIC_PROCESSOR = registerCircuit("cosmic_processor", CustomTags.UEV_CIRCUITS);
   public static final ItemEntry<Item> COSMIC_ASSEMBLY = registerCircuit("cosmic_assembly", CustomTags.UIV_CIRCUITS);
   public static final ItemEntry<Item> COSMIC_COMPUTER = registerCircuit("cosmic_computer", CustomTags.UXV_CIRCUITS);
   public static final ItemEntry<Item> COSMIC_MAINFRAME = registerCircuit("cosmic_mainframe", CustomTags.OpV_CIRCUITS);
+  public static final ItemEntry<Item> COSMIC_PROCESSING_CORE = register("cosmic_processing_core");
+  public static final ItemEntry<Item> COSMIC_PROCESSING_UNIT_CORE = register("cosmic_processing_unit_core");
 
   public static final ItemEntry<Item> SUPRACAUSAL_PROCESSOR = registerCircuit("supracausal_processor", CustomTags.UIV_CIRCUITS);
   public static final ItemEntry<Item> SUPRACAUSAL_ASSEMBLY = registerCircuit("supracausal_assembly", CustomTags.UXV_CIRCUITS);
@@ -166,14 +270,29 @@ public class ISGItems {
   public static final ItemEntry<Item> SUPRACAUSAL_MAINFRAME = registerCircuit("supracausal_mainframe", CustomTags.MAX_CIRCUITS);
 
 
+  public static final ItemEntry<Item> ROTATING_TRANSPARENT_SURFACE = register("rotating_transparent_surface");
   public static final ItemEntry<Item> LOW_FREQUENCY_LASER = registerLang("low_frequency_laser", "Low frequency laser");
   public static final ItemEntry<Item> MEDIUM_FREQUENCY_LASER = registerLang("medium_frequency_laser", "Medium Frequency Laser");
   public static final ItemEntry<Item> HIGH_FREQUENCY_LASER  = registerLang("high_frequency_laser", "High Frequency Laser");
+  public static final ItemEntry<Item> RED_HALIDE_LAMP = register("red_halide_lamp");
+  public static final ItemEntry<Item> GREEN_HALIDE_LAMP = register("green_halide_lamp");
+  public static final ItemEntry<Item> BLUE_HALIDE_LAMP = register("blue_halide_lamp");
+
+  public static final ItemEntry<Item> LASER_COOLING_UNIT = register("laser_cooling_unit");
+  public static final ItemEntry<Item> LASER_DIODE = register("laser_diode");
+
+  public static final ItemEntry<Item> INSULATION_WIRE_ASSEMBLY = register("insulation_wire_assembly");
+  public static final ItemEntry<Item> INVERTER = register("inverter");
+  public static final ItemEntry<Item> INGOT_FIELD_SHAPE = register("ingot_field_shape");
 
   public static final ItemEntry<Item> PLASMA_CONTAINMENT_CELL = registerLang("plasma_containment_cell", "Plasma Containment Cell");
   public static final ItemEntry<Item> RHENIUM_PLASMA_CONTAINMENT_CELL = registerLang("rhenium_plasma_containment_cell", "Rhenium Plasma Containment Cell");
   public static final ItemEntry<Item> ACTINIUM_SUPERHYDRIDE_PLASMA_CONTAINMENT_CELL = registerLang("actinium_superhydride_plasma_containment_cell", "Actinium Auperhydride Plasma Containment Cell");
   public static final ItemEntry<Item> OPTICAL_SOC_CONTAINMENT_HOUSING = registerLang("optical_soc_containment_housing", "Optical SoC Containment Housing");
+
+  public static final ItemEntry<Item> RUTHERFORDIUM_AMPROSIUM_BOULE = register("rutherfordium_amprosium_boule");
+  public static final ItemEntry<Item> RUTHERFORDIUM_AMPROSIUM_WAFER = register("rutherfordium_amprosium_wafer");
+  public static final ItemEntry<Item> GRAPHENE_IRON_PLATE = register("graphene_iron_plate");
 
   public static final ItemEntry<Item> NEUTRON_PLASMA_CONTAINMENT_CELL = register("neutron_plasma_containment_cell");
   public static final ItemEntry<Item> CRYSTAL_MATRIX_PLASMA_CONTAINMENT_CELL = register("crystal_matrix_plasma_containment_cell");
@@ -186,16 +305,69 @@ public class ISGItems {
   public static final ItemEntry<Item> CHAOS_CONTAINMENT_UNIT = register("chaos_containment_unit");
   public static final ItemEntry<Item> COSMIC_MESH_CONTAINMENT_UNIT = register("cosmic_mesh_containment_unit");
 
+  public static final ItemEntry<Item> DIAMOND_CRYSTAL_CIRCUIT = register("diamond_crystal_circuit");
+  public static final ItemEntry<Item> RUBY_CRYSTAL_CIRCUIT = register("ruby_crystal_circuit");
+  public static final ItemEntry<Item> EMERALD_CRYSTAL_CIRCUIT = register("emerald_crystal_circuit");
+  public static final ItemEntry<Item> SAPPHIRE_CRYSTAL_CIRCUIT = register("sapphire_crystal_circuit");
+
+  public static final ItemEntry<Item> EXTREMELY_DURABLE_PLASMA_CELL = register("extremely_durable_plasma_cell");
+  public static final ItemEntry<Item> DENSE_NEUTRON_PLASMA_CELL = register("dense_neutron_plasma_cell");
+  public static final ItemEntry<Item> COSMIC_NEUTRON_PLASMA_CELL = register("cosmic_neutron_plasma_cell");
   public static final ItemEntry<Item> CONTAINED_REISSNER_NORDSTROM_SINGULARITY = register("contained_reissner_nordstrom_singularity");
   public static final ItemEntry<Item> CONTAINED_KERR_NEWMANN_SINGULARITY = register("contained_kerr_newmann_singularity");
   public static final ItemEntry<Item> CONTAINED_KERR_SINGULARITY = register("contained_kerr_singularity");
   public static final ItemEntry<Item> CONTAINED_EXOTIC_MATTER = register("contained_exotic_matter");
   public static final ItemEntry<Item> CLOSED_TIMELIKE_CURVE_COMPUTATIONAL_UNIT_CONTAINER = register("closed_timelike_curve_computational_unit_container");
+  public static final ItemEntry<Item> CLOSED_TIMELIKE_CURVE_COMPUTATIONAL_UNIT = register("closed_timelike_curve_computational_unit");
   public static final ItemEntry<Item> CONTAMINATED_PETRI_DISH = register("contaminated_petri_dish");
 
+  public static final ItemEntry<Item> EMPTY_QUARK_RELEASE_CATALYST_HOUSING = register("empty_quark_release_catalyst_housing");
+  public static final ItemEntry<Item> DOWN_QUARK_RELEASING_CATALYST = register("down_quark_releasing_catalyst");
+  public static final ItemEntry<Item> STRANGE_QUARK_RELEASING_CATALYST = register("strange_quark_releasing_catalyst");
+  public static final ItemEntry<Item> BOTTOM_QUARK_RELEASING_CATALYST = register("bottom_quark_releasing_catalyst");
+  public static final ItemEntry<Item> CHARM_QUARK_RELEASING_CATALYST = register("charm_quark_releasing_catalyst");
 
 
-  public static final ItemEntry<Item> LOGIC_CHIP = registerLang("logic_chip", "Logic Chip");
+  public static final ItemEntry<Item> SIMPLE_OPTICAL_SOC = registerLang("simple_optical_soc", "Simple Optical SoC");
+
+  public static final ItemEntry<Item> ACTIVATED_CARBON_FILTER_MESH = register("activated_carbon_filter_mesh");
+
+  public static ItemEntry<Item> INFINITY_SINGULARITY = ISGRegistries.REGISTRATE.item("infinity_singularity", Item::new)
+      .model(NonNullBiConsumer.noop())
+      .color(() -> () -> (item, i) -> MaterialsColorMap.getCurrentRainbowColor())
+      .register();
+
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_0 = registerCustomModel("combined_singularity_0");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_1 = registerCustomModel("combined_singularity_1");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_2 = registerCustomModel("combined_singularity_2");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_3 = registerCustomModel("combined_singularity_3");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_4 = registerCustomModel("combined_singularity_4");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_5 = registerCustomModel("combined_singularity_5");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_6 = registerCustomModel("combined_singularity_6");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_7 = registerCustomModel("combined_singularity_7");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_8 = registerCustomModel("combined_singularity_8");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_9 = registerCustomModel("combined_singularity_9");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_10 = registerCustomModel("combined_singularity_10");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_11 = registerCustomModel("combined_singularity_11");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_12 = registerCustomModel("combined_singularity_12");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_13 = registerCustomModel("combined_singularity_13");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_14 = registerCustomModel("combined_singularity_14");
+  public static final ItemEntry<Item> COMBINED_SINGULARITY_15 = registerCustomModel("combined_singularity_15");
+
+  public static final ItemEntry<Item> HUI_CIRCUIT_1 = registerLang("hui_circuit_1", "High Calculation Workstation MK I");
+  public static final ItemEntry<Item> HUI_CIRCUIT_2 = registerLang("hui_circuit_2", "High Calculation Workstation MK II");
+  public static final ItemEntry<Item> HUI_CIRCUIT_3 = registerLang("hui_circuit_3", "High Calculation Workstation MK III");
+  public static final ItemEntry<Item> HUI_CIRCUIT_4 = registerLang("hui_circuit_4", "High Calculation Workstation MK IV");
+  public static final ItemEntry<Item> HUI_CIRCUIT_5 = registerLang("hui_circuit_5", "High Calculation Workstation MK V");
+
+  public static final ItemEntry<Item> SEPARATION_ELECTROMAGNET = register("separation_electromagnet");
+  public static final ItemEntry<Item> MICROFOCUS_X_RAY_TUBE = register("microfocus_x_ray_tube");
+
+
+  public static final ItemEntry<Item> MICA_BASED_PULP = register("mica_based_pulp");
+  public static final ItemEntry<Item> MICA_BASED_SHEET = register("mica_based_sheet");
+  public static final ItemEntry<Item> MICA_INSULATOR_SHEET = register("mica_insulator_sheet");
+  public static final ItemEntry<Item> MICA_INSULATOR_FOIL = register("mica_insulator_foil");
 
   public static ItemEntry<SpaceArmorComponentItem> SPACE_NANOMUSCLE_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_nanomuscle_chestplate",
           (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR,
@@ -294,6 +466,8 @@ public class ISGItems {
   public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_OPV_4A = GTCEuAPI.isHighTier() ?
       registerTieredCover(OpV, 4) : null;
 
+  public static final ItemEntry<Item> CATALYST_BASE = register("catalyst_base");
+
 
   private static ItemEntry<Item> register(String id) {
     return ISGRegistries.REGISTRATE.item(id, Item::new)
@@ -307,10 +481,16 @@ public class ISGItems {
         .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/%s", id))))
         .register();
   }
-  private static ItemEntry<Item> registerSmd(String id, String name) {
+
+  private static ItemEntry<Item> registerSmd(String id) {
     return ISGRegistries.REGISTRATE.item(id, Item::new)
-        .lang(name)
         .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/smd/%s", id))))
+        .register();
+  }
+
+  private static ItemEntry<Item> registerCustomModel(String id) {
+    return ISGRegistries.REGISTRATE.item(id, Item::new)
+        .model(NonNullBiConsumer.noop())
         .register();
   }
 
@@ -326,7 +506,7 @@ public class ISGItems {
         }), new CoverPlaceBehavior(amperage == 1 ? ISGCovers.WIRELESS_ENERGY_RECEIVE[tier - 1] : ISGCovers.WIRELESS_ENERGY_RECEIVE_4A[tier - 1])))
         .model((ctx, prov) -> prov.generated(ctx, prov.modLoc(String.format("item/wireless/%s", id)))).register();
   }
-  public static ItemEntry<Item> registerCircuit(String paramString1, String paramString2, TagKey<Item> paramTagKey) {
+  private static ItemEntry<Item> registerCircuit(String paramString1, String paramString2, TagKey<Item> paramTagKey) {
     return ISGRegistries.REGISTRATE.item(paramString1, Item::new)
         .lang(paramString2)
         .tag(paramTagKey)
@@ -334,11 +514,15 @@ public class ISGItems {
         .register();
   }
 
-  public static ItemEntry<Item> registerCircuit(String paramString1, TagKey<Item> paramTagKey) {
+  private static ItemEntry<Item> registerCircuit(String paramString1, TagKey<Item> paramTagKey) {
     return ISGRegistries.REGISTRATE.item(paramString1, Item::new)
         .lang(toEnglishName(paramString1))
         .tag(paramTagKey)
         .model((ctx, prov) -> prov.generated(ctx, prov.modLoc("item/circuit/%s".formatted(paramString1))))
         .register();
+  }
+
+  public static <T extends ItemLike> NonNullConsumer<T> materialInfo(Supplier<ItemMaterialInfo> materialInfo) {
+    return item -> ItemMaterialData.registerMaterialInfo(item, materialInfo.get());
   }
 }

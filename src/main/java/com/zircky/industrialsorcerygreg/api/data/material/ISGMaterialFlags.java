@@ -9,6 +9,9 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag
 public class ISGMaterialFlags {
   public static final MaterialFlag RECIPE_MIXER = new MaterialFlag.Builder("recipe_mixer").build();
 
+  public static final MaterialFlag GENERATE_CATALYST = new MaterialFlag.Builder("generate_catalyst")
+      .build();
+
   public static final MaterialFlag GENERATE_NANITES = new MaterialFlag.Builder("generate_nanites")
       .build();
 
@@ -62,5 +65,11 @@ public class ISGMaterialFlags {
 
   public static final MaterialFlag GENERATE_COMPONENT = new MaterialFlag.Builder("generate_component")
       .requireFlags(GENERATE_CURVED_PLATE, MaterialFlags.GENERATE_RING, MaterialFlags.GENERATE_ROUND)
+      .build();
+
+  public static final MaterialFlag CAN_BE_COOLED_DOWN_BY_BATHING = new MaterialFlag.Builder("can_be_cooled_down_by_bathing")
+      .build();
+
+  public static final MaterialFlag MAGICAL = new MaterialFlag.Builder("magical")
       .build();
 }
