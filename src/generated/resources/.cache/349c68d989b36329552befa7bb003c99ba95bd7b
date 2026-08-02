@@ -1,4 +1,4 @@
-// 1.20.1	2026-07-29T18:11:35.1748672	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
+// 1.20.1	2026-08-02T19:06:30.2492213	Registrate Provider for industrialsorcerygreg [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider]
 4bf7291162a1e494785724f5fc2c7d5f1adf9de6 assets/industrialsorcerygreg/blockstates/absolute_baryonic_perfection_purification_unit.json
 ef7b38fde898a2c875659375a0610dd22f0c2a46 assets/industrialsorcerygreg/blockstates/abyssalalloy_coil_block.json
 d5234e1294f3744ee56bc668c9c739283a382b8d assets/industrialsorcerygreg/blockstates/adamantine_coil_block.json
@@ -390,8 +390,8 @@ b6908a2babb6f139925f5912a7089e6d6d54d4af assets/industrialsorcerygreg/blockstate
 5b63edd10d4015ab42d46e9131685d485891421f assets/industrialsorcerygreg/blockstates/zpm_unpacker.json
 92cf2ce95dc345ebb21ebd89060fc566e2196ad6 assets/industrialsorcerygreg/blockstates/zpm_wireless_energy_dynamo.json
 61dcf84ec8fcc5033282b8a910aa381c704394b4 assets/industrialsorcerygreg/blockstates/zpm_wireless_energy_hatch.json
-1401230c1e0fe5367db6303928b37b0e99c3762c assets/industrialsorcerygreg/lang/en_ud.json
-992748eee420f870260d44f8f3e9f6e44466a15e assets/industrialsorcerygreg/lang/en_us.json
+811222a6fb3a8eca63b8f49adf80b952c617d5ef assets/industrialsorcerygreg/lang/en_ud.json
+ca6712356dc37329716c4d4fb1a19a65714f2f2f assets/industrialsorcerygreg/lang/en_us.json
 c2439c6c11a2109e299cc7ee104288f83df57226 assets/industrialsorcerygreg/models/block/antifreeze_heatproof_machine_casing.json
 0ab892d9c44a4067b34dec94c2b3b3070e4f88f1 assets/industrialsorcerygreg/models/block/chemical_grade_glass.json
 10514e76a6fff6c50cf1937c7e0a7a40b4a760d9 assets/industrialsorcerygreg/models/block/component_assembly_line_casing_ev.json

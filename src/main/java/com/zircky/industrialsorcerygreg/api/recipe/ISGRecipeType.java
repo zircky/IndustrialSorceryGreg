@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.recipe.GTRecipeSerializer;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.gui.LayeredRecipeUIHelper;
 import com.zircky.industrialsorcerygreg.data.recipe.builder.ISGRecipeBuilder;
 import lombok.Getter;
@@ -68,11 +69,11 @@ public class ISGRecipeType extends GTRecipeType {
 
   @Override
   public ISGRecipeBuilder recipeBuilder(String id) {
-    return recipeBuilder(GTCEu.id(id));
+    return recipeBuilder(ISGCore.id(id));
   }
 
   @Override
   public ISGRecipeBuilder recipeBuilder(String id, Object... append) {
-    return recipeBuilder(GTCEu.id(id), append);
+    return recipeBuilder(ISGCore.id(id), append);
   }
 }

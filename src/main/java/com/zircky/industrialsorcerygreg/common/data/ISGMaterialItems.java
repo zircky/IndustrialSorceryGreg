@@ -12,6 +12,7 @@ import com.gregtechceu.gtceu.common.data.GTItems;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
+import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import net.minecraft.world.item.Item;
 
 import static com.zircky.industrialsorcerygreg.api.registries.ISGRegistries.REGISTRATE;
@@ -50,7 +51,14 @@ public class ISGMaterialItems {
                     properties, tagPrefix, material))
         .setData(ProviderType.LANG, NonNullBiConsumer.noop())
         .transform(GTItems.unificationItem(tagPrefix, material))
-        .properties(p -> p.stacksTo(tagPrefix.maxStackSize()))
+        .properties(p -> {
+          p.stacksTo(tagPrefix.maxStackSize());
+          if (tagPrefix instanceof ISGTagPrefix prefix && prefix.getMaxDamageProvider() != null) {
+            int maxDamage = prefix.getMaxDamageProvider().applyAsInt(material);
+            if (maxDamage > 0) p.durability(maxDamage);
+          }
+          return p;
+        })
         .model(NonNullBiConsumer.noop())
         .color(() -> () -> TagPrefixItem.tintColor(material))
         .onRegister(GTItems::cauldronInteraction)

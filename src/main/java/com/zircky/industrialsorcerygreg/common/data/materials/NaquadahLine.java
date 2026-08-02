@@ -90,6 +90,7 @@ public class NaquadahLine {
         .dust()
         .iconSet(MaterialIconSet.METALLIC)
         .components(Naquadah, 1, Oxygen, 2)
+        .flags(MaterialFlags.DISABLE_DECOMPOSITION)
         .buildAndRegister()
         .setFormula("Nq02");
 
@@ -130,7 +131,7 @@ public class NaquadahLine {
         .dust()
         .color(0xdadada)
         .iconSet(MaterialIconSet.METALLIC)
-        .components(Titanium, 1, Sulfur, 1, Oxygen, 4)
+        .components(Trinium, 1, Sulfur, 1, Oxygen, 4)
         .buildAndRegister()
         .setFormula("KeSO4", true);
 
@@ -156,6 +157,7 @@ public class NaquadahLine {
         .color(0x523939)
         .iconSet(MaterialIconSet.DULL)
         .components(NaquadahEnriched, 1, Sulfur, 2, Oxygen, 8)
+        .flags(MaterialFlags.DISABLE_DECOMPOSITION)
         .buildAndRegister()
         .setFormula("Na+(SO4)2", true);
 
@@ -207,7 +209,7 @@ public class NaquadahLine {
         .dust()
         .color(0x1f1e33)
         .iconSet(MaterialIconSet.METALLIC)
-        .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
+        .flags(MaterialFlags.DISABLE_DECOMPOSITION)
         .components(Naquadria, 1, Sulfur, 2, Oxygen, 8)
         .buildAndRegister()
         .setFormula("Nq*(SO4)2", false);

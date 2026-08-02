@@ -22,7 +22,10 @@
   ],
   "client": [
     "adastra.AdAstraClientMixin",
-    "adastra.AdAstraOverlayScreenMixin"
+    "adastra.AdAstraOverlayScreenMixin",
+    "ae2.AE2SearchFillMixin",
+    "emi.EmiSearchDragFillMixin",
+    "emi.EmiSearchFillMixin"
   ],
   "injectors": {
     "defaultRequire": 1

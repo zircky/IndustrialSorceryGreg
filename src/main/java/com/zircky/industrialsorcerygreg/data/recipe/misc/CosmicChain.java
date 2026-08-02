@@ -32,12 +32,6 @@ public class CosmicChain {
         .outputItems(dust, TitaniumCyclopentadienyl, 7)
         .duration(500).EUt(VA[HV]).save(provider);
 
-    ISGRecipeTypes.MIXER_RECIPES.recipeBuilder("cosmic_computing_mix")
-        .inputFluids(HeavyLeptonMix.getFluid(1000))
-        .inputFluids(HeavyQuarks.getFluid(1000))
-        .inputFluids(Gluons.getFluid(1000))
-        .outputFluids(CosmicComputingMix.getFluid(3000))
-        .duration(100).EUt(VA[UEV]).save(provider);
     MIXER_RECIPES.recipeBuilder("heavy_quark_enriched_mix")
         .inputFluids(HeavyQuarks.getFluid(750))
         .inputFluids(LightQuarks.getFluid(250))

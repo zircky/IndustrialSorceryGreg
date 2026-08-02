@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
+import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
@@ -173,70 +174,70 @@ public class MachineRecipe {
     registerMachineRecipe(provider, ISGSimpleMachines.LASER_WELDER, "WEW", "CMC", "PPP", 'M', HULL, 'P', PLATE, 'C', CIRCUIT, 'E', EMITTER, 'W', CABLE);
     registerMachineRecipe(provider, ISGSimpleMachines.DECAY_CHAMBER, "RCR", "FMF", "QCQ", 'M', HULL, 'Q', CABLE_DOUBLE, 'C', CIRCUIT, 'F', FIELD_GENERATOR, 'R', ROD_RADIOACTIVE);
 
-    ASSEMBLER_RECIPES.recipeBuilder(ISGCore.id("hull_ulv")).duration(25).EUt(VA[ULV])
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_ulv")).duration(25).EUt(VA[ULV])
         .inputItems(GTBlocks.MACHINE_CASING_ULV.asStack()).inputItems(cableGtSingle, RedAlloy, 2)
         .inputFluids(Polyethylene, L * 2).outputItems(GTMachines.HULL[ULV])
         .addMaterialInfo(true).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_lv").duration(50).EUt(VA[ULV]).inputItems(GTBlocks.MACHINE_CASING_LV.asStack())
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_lv")).duration(50).EUt(VA[ULV]).inputItems(GTBlocks.MACHINE_CASING_LV.asStack())
         .inputItems(cableGtSingle, Tin, 2).inputFluids(Polyethylene, L * 2)
         .outputItems(GTMachines.HULL[LV])
         .addMaterialInfo(true).save(provider);
     Material[] copper = {Copper, AnnealedCopper};
     for (Material material : copper) {
-      ASSEMBLER_RECIPES.recipeBuilder("hull_mv_" + material.getName().toLowerCase()).duration(50).EUt(VA[LV]).inputItems(GTBlocks.MACHINE_CASING_MV.asStack())
+      ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_mv_" + material.getName().toLowerCase())).duration(50).EUt(VA[LV]).inputItems(GTBlocks.MACHINE_CASING_MV.asStack())
           .inputItems(cableGtSingle, material, 2).inputFluids(Polyethylene, L * 2)
           .outputItems(GTMachines.HULL[MV])
           .addMaterialInfo(true).save(provider);
     }
-    ASSEMBLER_RECIPES.recipeBuilder("hull_hv").duration(50).EUt(VA[MV]).inputItems(GTBlocks.MACHINE_CASING_HV.asStack())
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_hv")).duration(50).EUt(VA[MV]).inputItems(GTBlocks.MACHINE_CASING_HV.asStack())
         .inputItems(cableGtSingle, Gold, 2).inputFluids(PolyvinylChloride, L * 2)
         .outputItems(GTMachines.HULL[HV])
         .addMaterialInfo(true).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_ev").duration(50).EUt(VA[HV]).inputItems(GTBlocks.MACHINE_CASING_EV.asStack())
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_ev")).duration(50).EUt(VA[HV]).inputItems(GTBlocks.MACHINE_CASING_EV.asStack())
         .inputItems(cableGtSingle, Aluminium, 2).inputFluids(PolyvinylChloride, L * 2)
         .outputItems(GTMachines.HULL[EV])
         .addMaterialInfo(true).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_iv").duration(50).EUt(VA[EV]).inputItems(GTBlocks.MACHINE_CASING_IV.asStack())
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_iv")).duration(50).EUt(VA[EV]).inputItems(GTBlocks.MACHINE_CASING_IV.asStack())
         .inputItems(cableGtSingle, Platinum, 2).inputFluids(Polytetrafluoroethylene, L * 2)
         .outputItems(GTMachines.HULL[IV])
         .addMaterialInfo(true).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_luv").duration(50).EUt(VA[IV])
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_luv")).duration(50).EUt(VA[IV])
         .inputItems(GTBlocks.MACHINE_CASING_LuV.asStack()).inputItems(cableGtSingle, NiobiumTitanium, 2)
         .inputFluids(Polytetrafluoroethylene, L * 2).outputItems(GTMachines.HULL[LuV])
         .addMaterialInfo(true).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_zpm").duration(50).EUt(VA[LuV])
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_zpm")).duration(50).EUt(VA[LuV])
         .inputItems(GTBlocks.MACHINE_CASING_ZPM.asStack()).inputItems(cableGtSingle, VanadiumGallium, 2)
         .inputFluids(Polybenzimidazole, L * 2).outputItems(GTMachines.HULL[ZPM])
         .addMaterialInfo(true).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_uv").duration(50).EUt(VA[ZPM]).inputItems(GTBlocks.MACHINE_CASING_UV.asStack())
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_uv")).duration(50).EUt(VA[ZPM]).inputItems(GTBlocks.MACHINE_CASING_UV.asStack())
         .inputItems(cableGtSingle, YttriumBariumCuprate, 2).inputFluids(Polybenzimidazole, L * 2)
         .outputItems(GTMachines.HULL[UV])
         .addMaterialInfo(true).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_uhv").duration(50).EUt(VA[UV])
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_uhv")).duration(50).EUt(VA[UV])
         .inputItems(GTBlocks.MACHINE_CASING_UHV.asStack()).inputItems(cableGtSingle, Europium, 2)
         .inputFluids(Polyetheretherketone, L * 2).outputItems(GTMachines.HULL[UHV])
         .addMaterialInfo(true).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_uev").duration(50).EUt(VA[UHV])
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_uev")).duration(50).EUt(VA[UHV])
         .inputItems(GTBlocks.MACHINE_CASING_UEV.asItem())
         .inputItems(cableGtSingle, Mithril, 2)
         .inputFluids(Polyetheretherketone.getFluid(L * 2))
         .outputItems(GTMachines.HULL[UEV]).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_uiv").duration(50).EUt(VA[UEV])
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_uiv")).duration(50).EUt(VA[UEV])
         .inputItems(GTBlocks.MACHINE_CASING_UIV.asItem())
         .inputItems(cableGtSingle, Neutronium, 2)
         .inputFluids(Zylon.getFluid(L * 2))
         .outputItems(GTMachines.HULL[UIV]).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_uxv").duration(50).EUt(VA[UIV])
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_uxv")).duration(50).EUt(VA[UIV])
         .inputItems(GTBlocks.MACHINE_CASING_UXV.asItem())
         .inputItems(cableGtSingle, Taranium, 2)
         .inputFluids(Zylon.getFluid(L * 2))
         .outputItems(GTMachines.HULL[UXV]).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_opv").duration(50).EUt(VA[UXV])
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_opv")).duration(50).EUt(VA[UXV])
         .inputItems(GTBlocks.MACHINE_CASING_OpV.asItem())
         .inputItems(cableGtSingle, CrystalMatrix, 2)
         .inputFluids(FullerenePolymerMatrix.getFluid(L * 2))
         .outputItems(GTMachines.HULL[OpV]).save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("hull_max").duration(50).EUt(VA[OpV])
+    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_max")).duration(50).EUt(VA[OpV])
         .inputItems(GTBlocks.MACHINE_CASING_MAX.asItem())
         .inputItems(cableGtSingle, CosmicNeutronium, 2)
         .inputFluids(Radox.getFluid(L * 2))

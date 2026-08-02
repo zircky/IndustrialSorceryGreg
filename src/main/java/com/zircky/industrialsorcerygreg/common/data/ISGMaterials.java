@@ -47,7 +47,7 @@ public class ISGMaterials {
     ResidueMaterials.register();
     WaterPurificationMaterial.register();
     ISGMaterialFlagAddition.register();
-
+    UnsortedMaterials.register();
   }
 
   public static void modifyMaterials() {
@@ -1927,7 +1927,6 @@ public class ISGMaterials {
   public static Material AdamantiumPentoxide;
   public static Material EnrichedNaquadahNitrate;
   public static Material NaquadriaNitrate;
-  public static Material TriniumSulfide;
   public static Material Pxylene;
   public static Material Amococatalyst;
   public static Material IsophthalicAcid;

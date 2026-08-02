@@ -1,9 +1,11 @@
 package com.zircky.industrialsorcerygreg.common.data.machines;
 
+import brachy.modularui.api.drawable.Text;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.IntSyncValue;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.RotationState;
-import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
@@ -31,6 +33,7 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.Collections;
 import java.util.Locale;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
@@ -137,16 +140,23 @@ public class ISGMultiMachines {
           .where(' ', any())
           .build())
       .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_heatproof"), GTCEu.id("block/multiblock/multi_furnace"))
-      .additionalDisplay((controller, components) -> {
-        // spotless:off
-        if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {
-          components.add(Component.translatable("gtceu.multiblock.blast_furnace.max_temperature",
-              Component.translatable(
-                      FormattingUtil.formatNumbers(coilMachine.getCoilType().getCoilTemperature() +
-                          100L * Math.max(0, coilMachine.getTier() - GTValues.MV)) + "K")
-                  .setStyle(Style.EMPTY.withColor(ChatFormatting.RED))));
-        }
-        // spotless:on
+      .additionalDisplay((controller, syncManager) -> {
+        if (!(controller instanceof CoilWorkableElectricMultiblockMachine coilMachine))
+          return Collections.emptyList();
+        BooleanSyncValue isFormed = syncManager.getOrCreateSyncHandler("isFormed", BooleanSyncValue.class,
+            () -> new BooleanSyncValue(controller::isFormed));
+        IntSyncValue coilTemperature = syncManager.getOrCreateSyncHandler("coilTemperature", IntSyncValue.class,
+            () -> new IntSyncValue(() -> coilMachine.getCoilType().getCoilTemperature()));
+        IntSyncValue machineTier = syncManager.getOrCreateSyncHandler("machineTier", IntSyncValue.class,
+            () -> new IntSyncValue(() -> coilMachine.getTier()));
+
+        return Collections.singletonList(Text
+            .dynamic(() -> Component.translatable("gtceu.multiblock.blast_furnace.max_temperature",
+                Component.literal(
+                        FormattingUtil.formatNumbers(coilTemperature.getIntValue() +
+                            100L * Math.max(0, machineTier.getIntValue() - GTValues.MV)) + "K")
+                    .setStyle(Style.EMPTY.withColor(ChatFormatting.RED))))
+            .asWidget().setEnabledIf(w -> isFormed.getBoolValue()));
       })
       .register();
 

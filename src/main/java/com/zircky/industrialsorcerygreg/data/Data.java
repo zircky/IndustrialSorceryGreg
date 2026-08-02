@@ -9,6 +9,7 @@ import com.zircky.industrialsorcerygreg.data.recipe.integration.ae2.AppliedEnerg
 import com.zircky.industrialsorcerygreg.data.recipe.misc.MetaTileEntityLoader;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.component.ComponentRecipe;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.ChromiumLine;
+import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.NaquadahLine;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.platinum.PlatinumLine;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
@@ -43,6 +44,7 @@ public class Data {
     HighEnergyMaterialsRecipe.init(provider);
     PlatinumLine.init(provider);
     ChromiumLine.init(provider);
+    NaquadahLine.init(provider);
     FuelReprocessorRecipes.init(provider);
     //CannerRecipes.init(provider);
     MetaTileEntityLoader.init(provider);

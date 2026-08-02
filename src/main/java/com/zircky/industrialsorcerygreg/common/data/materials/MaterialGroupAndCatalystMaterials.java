@@ -1289,12 +1289,6 @@ final class MaterialGroupAndCatalystMaterials {
         .iconSet(SHINY)
         .buildAndRegister();
 
-    TriniumSulfide = builderISG("trinium_sulfide")
-        .dust()
-        .color(0x7A807A)
-        .iconSet(SHINY)
-        .buildAndRegister();
-
     Pxylene = builderISG("pxylene")
         .dust()
         .color(0x252525)

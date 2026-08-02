@@ -1,13 +1,28 @@
 package com.zircky.industrialsorcerygreg.api.data.tag;
 
+import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconType;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
+import lombok.Getter;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+import java.util.Set;
+import java.util.function.*;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.NO_SMASHING;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.Conditions.*;
@@ -16,10 +31,13 @@ import static com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlag
 @SuppressWarnings("unused")
 public class ISGTagPrefix extends TagPrefix {
 
+
   public ISGTagPrefix(String name) {
     super(name);
   }
 
+  public static void init() {
+  }
 
   public static final TagPrefix crushedLeached = new ISGTagPrefix("leachedOre")
       .idPattern("leached_%s_ore")
@@ -40,7 +58,7 @@ public class ISGTagPrefix extends TagPrefix {
       .generateItem(true)
       .generationCondition(hasOreProperty);
 
-  public static final TagPrefix CATALYST = new ISGTagPrefix("catalyst").tooltip((mat, list) -> {
+  public static final TagPrefix CATALYST = new ISGTagPrefix("catalyst").maxDamage(m -> 10000).tooltip((mat, list) -> {
     list.add(Component.translatable("isgcore.tooltip.item.catalyst.1"));
     list.add(Component.translatable("isgcore.tooltip.item.catalyst.2"));
     list.add(Component.translatable("isgcore.tooltip.item.catalyst.3"));
@@ -51,12 +69,13 @@ public class ISGTagPrefix extends TagPrefix {
       .materialIconType(new MaterialIconType("catalyst"))
       .unificationEnabled(true)
       .generateItem(true)
-//      .maxDamage(m -> 10000)
       .generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_CATALYST));
 
   private static final MaterialIconType NANITES_ICON = new MaterialIconType("nanites");
   public static final TagPrefix NANITES = new ISGTagPrefix("nanites").idPattern("%s_nanites").defaultTagPath("nanites/%s").unformattedTagPath("nanites").materialAmount(GTValues.M).materialIconType(NANITES_ICON).unificationEnabled(true).generateItem(true).generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_NANITES));
   public static final TagPrefix CONTAMINABLE_NANITES = new ISGTagPrefix("contaminable_nanites").idPattern("contaminable_%s_nanites").defaultTagPath("contaminable_nanites/%s").unformattedTagPath("contaminable_nanites").materialAmount(GTValues.M).materialIconType(NANITES_ICON).unificationEnabled(true).generateItem(true).generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_NANITES));
+
+  public static final TagPrefix MILLED = new ISGTagPrefix("milled").idPattern("milled_%s").defaultTagPath("milleds/%s").unformattedTagPath("milleds").materialAmount(GTValues.M).materialIconType(new MaterialIconType("milled")).unificationEnabled(true).generateItem(true).generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_MILLED));
 
   public static final TagPrefix CURVED_PLATE = new ISGTagPrefix("curved_plate").idPattern("curved_%s_plate").defaultTagPath("curved_plates/%s").unformattedTagPath("curved_plates").langValue("Curved %s Plate").materialAmount(GTValues.M).materialIconType(new MaterialIconType("curved_plate")).unificationEnabled(true).generateItem(true).enableRecycling().generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_CURVED_PLATE) || mat.hasFlag(MaterialFlags.GENERATE_ROTOR) || ((mat.hasProperty(PropertyKey.FLUID_PIPE) || mat.hasProperty(PropertyKey.ITEM_PIPE)) && !mat.hasFlag(NO_SMASHING) && mat.getMass() < 240 && mat.getBlastTemperature() < 3600));
   public static final TagPrefix MOTOR_ENCLOSURE = new ISGTagPrefix("motor_enclosure").idPattern("%s_motor_enclosure").defaultTagPath("motor_enclosures/%s").unformattedTagPath("motor_enclosures").langValue("%s Motor Enclosure").materialAmount(GTValues.M << 1).materialIconType(new MaterialIconType("motor_enclosure")).unificationEnabled(true).generateItem(true).enableRecycling().generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_COMPONENT));
@@ -192,7 +211,15 @@ public class ISGTagPrefix extends TagPrefix {
       .generationCondition(mat -> mat.hasFlag(GENERATE_SINGULARITY));
 
 
-  public static void init() {
-  }
+  @Getter
+  private ToIntFunction<Material> maxDamageProvider;
+
+  /**
+     * @return {@code this}.
+     */
+    public ISGTagPrefix maxDamage(final ToIntFunction<Material> maxDamageProvider) {
+      this.maxDamageProvider = maxDamageProvider;
+      return this;
+    }
 
 }

@@ -1,14 +1,7 @@
 package com.zircky.industrialsorcerygreg.common.data;
 
 import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
-import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
-import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
-import com.gregtechceu.gtceu.api.fluids.FluidState;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 
@@ -25,8 +18,8 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_SMALL_GEAR;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_SPRING;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.GENERATE_SPRING_SMALL;
+import static com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey.BLAST;
 import static com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 
 public class ISGModifyMaterials {
   public static void init() {
@@ -36,7 +29,8 @@ public class ISGModifyMaterials {
     GTMaterials.Zirconium.addFlags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_DENSE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW, GENERATE_RING, GENERATE_ROUND, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_FINE_WIRE);
     GTMaterials.Strontium.addFlags(GENERATE_PLATE, GENERATE_FOIL, GENERATE_DENSE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW, GENERATE_RING, GENERATE_ROUND, GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_FINE_WIRE);
 
-    GTMaterials.Platinum.addFlags(NO_SMELTING, NO_ORE_SMELTING);
+    GTMaterials.Platinum.addFlags(NO_SMELTING, NO_ORE_SMELTING, GENERATE_MILLED, GENERATE_CATALYST);
+    GTMaterials.Platinum.setProperty(BLAST, new BlastProperty(1810, BlastProperty.GasTier.MID, 480, 820, 120, 110));
 
     GTMaterials.Iron.addFlags(GENERATE_NANITES, GENERATE_DOUBLE_INGOT, GENERATE_TRIPLE_INGOT, GENERATE_QUADRUPLE_INGOT, GENERATE_QUINTUPLE_INGOT, GENERATE_TRIPLE_PLATE, GENERATE_QUADRUPLE_PLATE, GENERATE_QUINTUPLE_PLATE, GENERATE_SUPERDENSE, GENERATE_SINGULARITY);
     GTMaterials.Aluminium.addFlags(GENERATE_DOUBLE_INGOT, GENERATE_TRIPLE_INGOT, GENERATE_QUADRUPLE_INGOT, GENERATE_QUINTUPLE_INGOT, GENERATE_TRIPLE_PLATE, GENERATE_QUADRUPLE_PLATE, GENERATE_QUINTUPLE_PLATE, GENERATE_SUPERDENSE, GENERATE_SINGULARITY);
@@ -91,6 +85,7 @@ public class ISGModifyMaterials {
     ISGMaterials.addFluid(GTMaterials.Hafnium);
     ISGMaterials.addFluid(GTMaterials.PotassiumHydroxide);
     ISGMaterials.addFluid(GTMaterials.AmmoniumChloride);
+
 //    GTMaterials.Scandium.setProperty(PropertyKey.DUST, new DustProperty());
 
 

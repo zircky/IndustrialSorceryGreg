@@ -3,6 +3,7 @@ package com.zircky.industrialsorcerygreg.api.recipe;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.data.recipe.builder.ISGRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 
@@ -35,7 +36,7 @@ public class ISGRecipeTypeProxy {
   }
 
   public ISGRecipeBuilder recipeBuilder(String id) {
-    return recipeBuilder(GTCEu.id(id));
+    return recipeBuilder(ISGCore.id(id));
   }
 
   public ISGRecipeBuilder recipeBuilder(String id, Object... append) {
