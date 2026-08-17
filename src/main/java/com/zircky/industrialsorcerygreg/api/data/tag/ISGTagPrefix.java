@@ -9,6 +9,8 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
+import com.zircky.industrialsorcerygreg.api.item.component.ICustomRenderer;
+import com.zircky.industrialsorcerygreg.client.renderer.item.HaloItemRenderer;
 import lombok.Getter;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -30,7 +32,7 @@ import static com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlag
 
 @SuppressWarnings("unused")
 public class ISGTagPrefix extends TagPrefix {
-
+  private ICustomRenderer customRenderer;
 
   public ISGTagPrefix(String name) {
     super(name);
@@ -210,6 +212,17 @@ public class ISGTagPrefix extends TagPrefix {
       .generateItem(true)
       .generationCondition(mat -> mat.hasFlag(GENERATE_SINGULARITY));
 
+  public static final TagPrefix PARTICLE_SOURCE = new ISGTagPrefix("particle_source")
+      .useRenderer(() -> HaloItemRenderer.RADIOACTIVE)
+      .idPattern("%s_particle_source")
+      .defaultTagPath("particle_source/%s")
+      .unformattedTagPath("particle_source")
+      .materialAmount(GTValues.M * 2)
+      .materialIconType(new MaterialIconType("particle_source"))
+      .unificationEnabled(true)
+      .generateItem(true)
+      .generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_PARTICLE_SOURCE));
+
 
   @Getter
   private ToIntFunction<Material> maxDamageProvider;
@@ -221,5 +234,15 @@ public class ISGTagPrefix extends TagPrefix {
       this.maxDamageProvider = maxDamageProvider;
       return this;
     }
+
+  private ISGTagPrefix useRenderer(final ICustomRenderer renderer) {
+    this.customRenderer = renderer;
+    return this;
+  }
+
+  @Nullable
+  public ICustomRenderer customRenderer() {
+    return this.customRenderer;
+  }
 
 }

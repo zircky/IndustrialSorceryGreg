@@ -25,5 +25,13 @@ public class LangHandler {
     provider.add("industrialsorcerygreg.machine.drone_maintenance_hatch.tooltip.eut", "Energy usage: %s EU/t while servicing");
     provider.add("isgcore.machine.sensor.invert.disabled", "Redstone Output: Normal");
     provider.add("isgcore.machine.sensor.invert.enabled", "Redstone Output: Inverted");
+    provider.add("isgcore.machine.neutron_accelerator.tooltip.0", "§6Max EU Consumption: §r%s");
+    provider.add("isgcore.machine.neutron_accelerator.tooltip.1", "§bEach point of EU converts to §e10~20-eV§b neutron kinetic energy");
+    provider.add("isgcore.machine.neutron_activator.efficiency", "Kinetic Energy Consumption Multiplier: %s");
+    provider.add("isgcore.machine.neutron_activator.ev", "Current Neutron Kinetic Energy: %seV");
+    provider.add("isgcore.recipe.neutron_activator.ev_min", "Minimum Neutron Kinetic Energy: %s MeV");
+    provider.add("isgcore.recipe.neutron_activator.ev_max", "Maximum Neutron Kinetic Energy: %s MeV");
+    provider.add("isgcore.recipe.neutron_activator.evt", "Neutron Kinetic Energy Consumption: %s eV/t");
+    provider.add("isgcore.recipe.condition.neutron_activator_condition_tooltip", "Neutron Kinetic Energy: %s-%s MeV");
   }
 }

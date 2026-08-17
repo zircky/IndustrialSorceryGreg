@@ -14,51 +14,23 @@ public class NaquadahLine {
   public static void init(Consumer<FinishedRecipe> provider) {
     registerOreTapProcessing(provider);
 
-    // Nq + 2[HNO3 + HCl] -> Naquadric Solution [Nq + NO2] + [H2O + HNO3] + HCl + Cl
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("naquadah_line_naquadric_solution")
-        .inputDust(NaquadricCompound)
-        .inputFluids(AquaRegia.getFluid(4000))
-        .outputFluids(NaquadricSolution.getFluid(1000))
-        .outputFluids(DiluteNitricAcid.getFluid(2000))
-        .outputFluids(HydrochloricAcid.getFluid(1000))
-        .outputFluids(Chlorine.getFluid(1000))
-        .EUt(480)
-        .duration(100)
-        .save(provider);
-
-    // Nq + 2[HNO3 + HCl] = Enriched Naquadric Solution [Nq + NO2] + [H2O + HNO3] + HCl + Cl
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("naquadah_line_enriched_naquadric_solution")
-        .inputDust(EnrichedNaquadricCompound)
-        .inputFluids(AquaRegia.getFluid(4000))
-        .outputFluids(EnrichedNaquadricSolution.getFluid(1000))
-        .outputFluids(DiluteNitricAcid.getFluid(2000))
-        .outputFluids(HydrochloricAcid.getFluid(1000))
-        .outputFluids(Chlorine.getFluid(1000))
-        .EUt(480)
-        .duration(100)
-        .save(provider);
-
-    // Nq + 2[HNO3 + HCl] = Naquadriatic Solution [Nq + NO2] + [H2O + HNO3] + HCl + Cl
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("naquadah_line_naquadriatic_solution")
-        .inputDust(NaquadriaticCompound)
-        .inputFluids(AquaRegia.getFluid(4000))
-        .outputFluids(NaquadriaticSolution.getFluid(1000))
-        .outputFluids(DiluteNitricAcid.getFluid(2000))
-        .outputFluids(HydrochloricAcid.getFluid(1000))
-        .outputFluids(Chlorine.getFluid(1000))
-        .EUt(480)
-        .duration(100)
-        .save(provider);
-
     // Sb2O3 + 6HF = 2SbF3 + 3H2O
     CHEMICAL_RECIPES.recipeBuilder("naquadah_line_antimony_trifluoride")
         .inputDust(AntimonyTrioxide, 5)
         .inputFluids(HydrofluoricAcid.getFluid(6000))
-        .outputDust(AntimonyTrifluoride, 8 )
+        .outputDust(AntimonyTrifluoride, 8)
         .outputFluids(Water.getFluid(3000))
         .EUt(480)
         .duration(200)
         .save(provider);
+
+    NEUTRON_ACTIVATOR_RECIPES.recipeBuilder("naquadah_line_antimony_trifluoride_alt")
+        .inputDust(AntimonyTrioxide, 5)
+        .inputFluids(HydrofluoricAcid.getFluid(6000))
+        .outputDust(AntimonyTrifluoride, 8)
+        .outputFluids(Water.getFluid(3000))
+        .neutronKineticEnergy(220, 230, 54)
+        .duration(500).save(provider);
 
     // SbF3 + 2F = SbF5
     CHEMICAL_RECIPES.recipeBuilder("naquadah_line_antimony_pentafluoride")
@@ -827,7 +799,6 @@ public class NaquadahLine {
 
     CHEMICAL_RECIPES.recipeBuilder("naquadah_line_naquadah_adamantium_solution")
         .inputFluids(AcidicNaquadahConcentrate.getFluid(1000))
-        .inputDust(Adamantine, 5)
         .outputFluids(NaquadahAdamantiumSolution.getFluid(1000))
         .outputFluids(FluorineRichWasteLiquid.getFluid(500))
         .EUt(30720)
@@ -838,7 +809,7 @@ public class NaquadahLine {
         .inputFluids(NaquadahAdamantiumSolution.getFluid(1000))
         .inputDust(Carbon, 2)
         .outputDust(NaquadahConcentrate, 2)
-        .outputDust(Adamantium)
+        .outputDust(Adamantine, 5)
         .outputFluids(CarbonDioxide.getFluid(2000))
         .EUt(30720)
         .duration(300)

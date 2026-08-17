@@ -101,10 +101,11 @@ final class InorganicOrganicCompoundMaterials {
         .buildAndRegister()
         .setFormula("LiOH");
 
-    RhReNqCatalyst = builderISG("rhrenq_catalyst")
+    RhodiumRheniumNaquadahCatalyst = builderISG("rhodium_rhenium_naquadah")
         .dust()
         .color((GTMaterials.Rhenium.getMaterialRGB() + GTMaterials.Rhodium.getMaterialRGB() + GTMaterials.Naquadah.getMaterialRGB()) / 3)
         .iconSet(SHINY)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister()
         .setFormula("ReRhNq");
 

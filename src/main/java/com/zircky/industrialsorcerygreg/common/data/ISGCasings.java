@@ -169,6 +169,8 @@ public class ISGCasings {
   public static final BlockEntry<Block> LASER_COOLING_CASING = createCasingBlock("laser_cooling_casing", ISGCore.id("block/casings/laser_cooling_casing"));
   public static final BlockEntry<Block> AMPROSIUM_PIPE_CASING = createCasingBlock("neutronium_pipe_casing", ISGCore.id("block/casings/neutronium_pipe_casing"));
   public static final BlockEntry<Block> ANTIFREEZE_HEATPROOF_MACHINE_CASING = createCasingBlock("antifreeze_heatproof_machine_casing", ISGCore.id("block/casings/antifreeze_heatproof_machine_casing"));
+  public static final BlockEntry<Block> PROCESS_MACHINE_CASING = createCasingBlock("process_machine_casing", ISGCore.id("block/casings/process_machine_casing"));
+
 
   public static final BlockEntry<FusionCasingBlock> FUSION_CASING_MK4 = createFusionCasing(FusionCasings.CasingType.FUSION_CASING_MK4, "Fusion Casing MK IV");
   public static final BlockEntry<FusionCasingBlock> FUSION_CASING_MK5 = createFusionCasing(FusionCasings.CasingType.FUSION_CASING_MK5, "Fusion Casing MK V");
@@ -176,6 +178,7 @@ public class ISGCasings {
   public static final BlockEntry<ActiveBlock> ADVANCED_FUSION_COIL = createActiveCasing("advanced_fusion_coil", "block/variant/advanced_fusion_coil");
   public static final BlockEntry<ActiveBlock> FUSION_COIL_MK2 = createActiveCasing("fusion_coil_mk2","Fusion Coil MK II", "block/variant/fusion_coil_mk2");
 
+  public static final BlockEntry<ActiveBlock> QUANTUM_FORCE_TRANSFORMER_COIL = createActiveCasing("quantum_force_transformer_coil", "block/variant/quantum_force_transformer_coil");
 
   public static final BlockEntry<Block> CHEMICAL_GRADE_GLASS = createGlassCasingBlock("chemical_grade_glass", ISGCore.id("block/casings/chemical_grade_glass"));
   public static final BlockEntry<Block> ELECTRON_PERMEABLE_NEUTRONIUM_COATED_GLASS = createGlassCasingBlock("electron_permeable_neutronium_coated_glass", ISGCore.id("block/casings/electron_permeable_neutronium_coated_glass"));

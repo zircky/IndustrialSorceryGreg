@@ -55,6 +55,7 @@ public class PlatinumLine {
         .color(GTMaterials.Palladium.getMaterialARGB())
         .iconSet(MaterialIconSet.FLUID)
         .components(GTMaterials.Ammonia, 1, GTMaterials.Palladium, 1)
+        .flags(MaterialFlags.DISABLE_DECOMPOSITION)
         .buildAndRegister()
         .setFormula("Pd?");
 

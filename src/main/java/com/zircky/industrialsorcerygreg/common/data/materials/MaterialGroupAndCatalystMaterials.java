@@ -1,12 +1,16 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.fluids.FluidState;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
+import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
 
 final class MaterialGroupAndCatalystMaterials {
@@ -23,7 +27,7 @@ final class MaterialGroupAndCatalystMaterials {
 
     Actinoids = builderISG("actinoids")
         .dust()
-        .color((GTMaterials.Actinium.getMaterialRGB() + GTMaterials.Thorium.getMaterialRGB() + GTMaterials.Protactinium.getMaterialRGB() + GTMaterials.Uranium238.getMaterialRGB() + ISGMaterials.Neptunium.getMaterialRGB() + GTMaterials.Plutonium241.getMaterialRGB() + GTMaterials.Americium.getMaterialRGB() + GTMaterials.Curium.getMaterialRGB() + GTMaterials.Berkelium.getMaterialRGB() + GTMaterials.Californium.getMaterialRGB() + GTMaterials.Einsteinium.getMaterialRGB() + GTMaterials.Fermium.getMaterialRGB() + GTMaterials.Mendelevium.getMaterialRGB()) / 13)
+        .color((GTMaterials.Actinium.getMaterialRGB() + GTMaterials.Thorium.getMaterialRGB() + GTMaterials.Protactinium.getMaterialRGB() + GTMaterials.Uranium238.getMaterialRGB() + Neptunium.getMaterialRGB() + GTMaterials.Plutonium241.getMaterialRGB() + GTMaterials.Americium.getMaterialRGB() + GTMaterials.Curium.getMaterialRGB() + GTMaterials.Berkelium.getMaterialRGB() + GTMaterials.Californium.getMaterialRGB() + GTMaterials.Einsteinium.getMaterialRGB() + GTMaterials.Fermium.getMaterialRGB() + GTMaterials.Mendelevium.getMaterialRGB()) / 13)
         .iconSet(SHINY)
         .buildAndRegister()
         .setFormula("AcThPaNpPuAmCmBkCfEsFmMd");
@@ -291,12 +295,12 @@ final class MaterialGroupAndCatalystMaterials {
         .buildAndRegister()
         .setFormula("KHSO5", true);
 
-    CoAcABCatalyst = builderISG("coacab_catalyst")
+    CoAcABCatalyst = material("co_ac_ab", "Co/AC-AB")
         .dust()
         .color(0x755f30)
-        .iconSet(FINE)
-        .buildAndRegister()
-        .setFormula("Co/AC-AB");
+        .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
+        .buildAndRegister();
 
     SilverPerchlorate = builderISG("silver_perchlorate")
         .dust()
@@ -445,11 +449,11 @@ final class MaterialGroupAndCatalystMaterials {
         .buildAndRegister()
         .setFormula("(CH2)6N4", true);
 
-    PdCCatalyst = builderISG("pdc_catalyst")
-        .langValue("Palladium on Carbon")
+    PdCCatalyst = material("pdc", "Palladium on Carbon")
         .dust()
         .color((GTMaterials.Palladium.getMaterialRGB() + GTMaterials.Carbon.getMaterialRGB()) / 2)
         .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister()
         .setFormula("PdC");
 
@@ -534,6 +538,7 @@ final class MaterialGroupAndCatalystMaterials {
         .dust()
         .color(0x7452DC)
         .iconSet(ROUGH)
+        .components(Caesium, 1, Nitrogen, 1, Oxygen, 3)
         .buildAndRegister()
         .setFormula("CsNO3", true);
 
@@ -562,6 +567,8 @@ final class MaterialGroupAndCatalystMaterials {
         .dust()
         .color(YttriumNitrate.getMaterialRGB())
         .iconSet(ROUGH)
+        .components(Actinium, 1, Nitrogen, 3, Oxygen, 9)
+        .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
         .buildAndRegister()
         .setFormula("Ac(NO3)3", true);
 
@@ -569,6 +576,7 @@ final class MaterialGroupAndCatalystMaterials {
         .dust()
         .color(BariumNitrate.getMaterialRGB())
         .iconSet(DULL)
+        .components(Radium, 1, Nitrogen, 2, Oxygen, 9)
         .buildAndRegister()
         .setFormula("Ra(NO3)2", true);
 
@@ -586,22 +594,25 @@ final class MaterialGroupAndCatalystMaterials {
         .buildAndRegister()
         .setFormula("HNO3", true);
 
-    Kaminskycatalyst = builderISG("kaminskycatalyst")
+    Kaminskycatalyst = builderISG("kaminsky")
         .dust()
         .color(0x372927)
         .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
-    Philipscatalyst = builderISG("philipscatalyst")
+    Philipscatalyst = builderISG("philips")
         .dust()
         .color(0xB45D83)
         .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
-    Zieglernattacatalyst = builderISG("zieglernattacatalyst")
+    Zieglernattacatalyst = builderISG("zieglernatta")
         .dust()
         .color(0x8BC34A)
         .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
     Blackiron = builderISG("blackiron")
@@ -796,16 +807,18 @@ final class MaterialGroupAndCatalystMaterials {
         .iconSet(SHINY)
         .buildAndRegister();
 
-    Dehydratedaluminiumcatalyst = builderISG("dehydratedaluminiumcatalyst")
+    Dehydratedaluminiumcatalyst = builderISG("dehydratedaluminium")
         .dust()
         .color(0x5D87E8)
         .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
-    Aluminiumcatalyst = builderISG("aluminiumcatalyst")
+    Aluminiumcatalyst = builderISG("aluminium")
         .dust()
         .color(0x5487FF)
         .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
     Rdx = builderISG("rdx")
@@ -817,12 +830,6 @@ final class MaterialGroupAndCatalystMaterials {
     Hdx = builderISG("hdx")
         .dust()
         .color(0xE0D9B8)
-        .iconSet(SHINY)
-        .buildAndRegister();
-
-    Formaldehyde = builderISG("formaldehyde")
-        .dust()
-        .color(0x88BD3D)
         .iconSet(SHINY)
         .buildAndRegister();
 
@@ -958,10 +965,11 @@ final class MaterialGroupAndCatalystMaterials {
         .iconSet(SHINY)
         .buildAndRegister();
 
-    CrackingCatalystPreparation = builderISG("cracking_catalyst_preparation")
+    CrackingCatalystPreparation = builderISG("cracking_preparation")
         .dust()
         .color(0x7d7d3c)
         .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
     Pentaerythritol = builderISG("pentaerythritol")
@@ -970,22 +978,25 @@ final class MaterialGroupAndCatalystMaterials {
         .iconSet(DULL)
         .buildAndRegister();
 
-    Oranorhodiumcatalyst = builderISG("oranorhodiumcatalyst")
+    Oranorhodiumcatalyst = builderISG("oranorhodium")
         .dust()
         .color(0x942942)
         .iconSet(SHINY)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
-    PolyurethanecatalystB = builderISG("polyurethanecatalyst_b")
+    PolyurethanecatalystB = builderISG("polyurethane_b")
         .dust()
         .color(0x946f29)
         .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
-    PolyurethanecatalystA = builderISG("polyurethanecatalyst_a")
+    PolyurethanecatalystA = builderISG("polyurethane_a")
         .dust()
         .color(0x946f29)
         .iconSet(SHINY)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
     Leadmetallicpowder = builderISG("leadmetallicpowder")
@@ -1015,12 +1026,6 @@ final class MaterialGroupAndCatalystMaterials {
     Terephthaloylchloride = builderISG("terephthaloylchloride")
         .dust()
         .color(0x5e240c)
-        .iconSet(DULL)
-        .buildAndRegister();
-
-    Lapotron = builderISG("lapotron")
-        .dust()
-        .color(0x392d75)
         .iconSet(DULL)
         .buildAndRegister();
 
@@ -1265,12 +1270,6 @@ final class MaterialGroupAndCatalystMaterials {
         .iconSet(DULL)
         .buildAndRegister();
 
-    DarmstadtiumCatalyst = builderISG("darmstadtium_catalyst")
-        .dust()
-        .color(0x202122)
-        .iconSet(SHINY)
-        .buildAndRegister();
-
     AdamantiumPentoxide = builderISG("adamantium_pentoxide")
         .dust()
         .color(0x323F52)
@@ -1295,10 +1294,11 @@ final class MaterialGroupAndCatalystMaterials {
         .iconSet(DULL)
         .buildAndRegister();
 
-    Amococatalyst = builderISG("amococatalyst")
+    Amococatalyst = builderISG("amoco")
         .dust()
         .color(0xB0583E)
-        .iconSet(SHINY)
+        .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
     IsophthalicAcid = builderISG("isophthalic_acid")
@@ -1313,10 +1313,11 @@ final class MaterialGroupAndCatalystMaterials {
         .iconSet(DULL)
         .buildAndRegister();
 
-    RawAtomicSeperationCatalyst = builderISG("raw_atomic_seperation_catalyst")
+    RawAtomicSeperationCatalyst = builderISG("raw_atomic_seperation")
         .dust()
         .color(0xBF360C)
         .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
     SoulariumMetallicPowder = builderISG("soularium_metallic_powder")
@@ -1427,10 +1428,11 @@ final class MaterialGroupAndCatalystMaterials {
         .iconSet(SHINY)
         .buildAndRegister();
 
-    CucrmgbaCatalyst = builderISG("cucrmgba_catalyst")
+    CucrmgbaCatalyst = builderISG("cucrmgba")
         .dust()
         .color(0x512DA8)
-        .iconSet(SHINY)
+        .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
     DefattedSoybeanFlour = builderISG("defatted_soybean_flour")
@@ -1503,12 +1505,6 @@ final class MaterialGroupAndCatalystMaterials {
         .dust()
         .color(0xE6D5AF)
         .iconSet(DULL)
-        .buildAndRegister();
-
-    ActivatedCarbon = builderISG("activated_carbon")
-        .dust()
-        .color(0x272727)
-        .iconSet(SHINY)
         .buildAndRegister();
 
     YeastExtractMannitolMedium = builderISG("yeast_extract_mannitol_medium")
@@ -1610,12 +1606,6 @@ final class MaterialGroupAndCatalystMaterials {
     WhitePhosporus = builderISG("white_phosporus")
         .dust()
         .color(0xfffbc7)
-        .iconSet(SHINY)
-        .buildAndRegister();
-
-    PhosphorusPentoxide = builderISG("phosphorus_pentoxide")
-        .dust()
-        .color(0xBA68C8)
         .iconSet(SHINY)
         .buildAndRegister();
 
@@ -1817,10 +1807,11 @@ final class MaterialGroupAndCatalystMaterials {
         .iconSet(SHINY)
         .buildAndRegister();
 
-    Lafeaso1CatalystPreparation = builderISG("lafeaso1_catalyst_preparation")
+    Lafeaso1CatalystPreparation = builderISG("lafeaso1_preparation")
         .dust()
         .color(0x987064)
         .iconSet(SHINY)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
     RaneyNickel = builderISG("raney_nickel")

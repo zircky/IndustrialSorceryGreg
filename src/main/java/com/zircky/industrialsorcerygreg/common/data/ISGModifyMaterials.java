@@ -1,6 +1,7 @@
 package com.zircky.industrialsorcerygreg.common.data;
 
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
@@ -39,6 +40,7 @@ public class ISGModifyMaterials {
     GTMaterials.Diamond.addFlags(GENERATE_DOUBLE_PLATE, GENERATE_TRIPLE_PLATE, GENERATE_QUADRUPLE_PLATE, GENERATE_QUINTUPLE_PLATE, GENERATE_SUPERDENSE, GENERATE_SINGULARITY);
     GTMaterials.TitaniumTungstenCarbide.addFlags(GENERATE_DENSE);
     GTMaterials.CertusQuartz.addFlags(GENERATE_BOLT_SCREW);
+    GTMaterials.Darmstadtium.addFlags(GENERATE_CATALYST);
 
     GTMaterials.Neutronium.addFlags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_DENSE);
     GTMaterials.Carbon.addFlags(GENERATE_NANITES);
@@ -74,8 +76,32 @@ public class ISGModifyMaterials {
     ISGMaterials.addIngot(GTMaterials.Zirconium);
     ISGMaterials.addIngot(GTMaterials.Strontium);
     ISGMaterials.addIngot(GTMaterials.Scandium);
+    ISGMaterials.addIngot(GTMaterials.Rhenium);
+    ISGMaterials.addIngot(GTMaterials.Radium);
+    ISGMaterials.addIngot(GTMaterials.Protactinium);
+    ISGMaterials.addIngot(GTMaterials.Francium);
+    ISGMaterials.addIngot(GTMaterials.Germanium);
+    ISGMaterials.addIngot(GTMaterials.Californium);
+    ISGMaterials.addIngot(GTMaterials.Einsteinium);
+    ISGMaterials.addIngot(GTMaterials.Fermium);
+    ISGMaterials.addIngot(GTMaterials.Mendelevium);
+    ISGMaterials.addIngot(GTMaterials.Curium);
+    ISGMaterials.addIngot(GTMaterials.Actinium);
+    ISGMaterials.addIngot(GTMaterials.Technetium);
+    ISGMaterials.addIngot(GTMaterials.Thallium);
+    ISGMaterials.addIngot(GTMaterials.Astatine);
+    ISGMaterials.addIngot(GTMaterials.Rutherfordium);
+    ISGMaterials.addIngot(GTMaterials.Dubnium);
+    ISGMaterials.addIngot(GTMaterials.Seaborgium);
+    ISGMaterials.addIngot(GTMaterials.Bohrium);
+    ISGMaterials.addIngot(GTMaterials.Tennessine);
+    ISGMaterials.addIngot(GTMaterials.Livermorium);
+    ISGMaterials.addIngot(GTMaterials.Moscovium);
+    ISGMaterials.addIngot(GTMaterials.Nihonium);
+    ISGMaterials.addIngot(GTMaterials.Roentgenium);
+    ISGMaterials.addIngot(GTMaterials.Meitnerium);
+    ISGMaterials.addIngot(GTMaterials.Neptunium);
 
-    ISGMaterials.addData(GTMaterials.Astatine);
     ISGMaterials.addData(GTMaterials.Tellurium);
     ISGMaterials.addData(GTMaterials.Selenium);
 
@@ -85,55 +111,9 @@ public class ISGModifyMaterials {
     ISGMaterials.addFluid(GTMaterials.Hafnium);
     ISGMaterials.addFluid(GTMaterials.PotassiumHydroxide);
     ISGMaterials.addFluid(GTMaterials.AmmoniumChloride);
+    ISGMaterials.addFluid(GTMaterials.RutheniumTetroxide);
+    ISGMaterials.addFluid(GTMaterials.Neptunium);
 
-//    GTMaterials.Scandium.setProperty(PropertyKey.DUST, new DustProperty());
-
-
-//    ISGMaterials.addIngot(GTMaterials.Berkelium);
-//    ISGMaterials.addIngot(GTMaterials.Californium);
-//    ISGMaterials.addIngot(GTMaterials.Einsteinium);
-//    ISGMaterials.addIngot(GTMaterials.Fermium);
-//    ISGMaterials.addIngot(GTMaterials.Mendelevium);
-//    ISGMaterials.addIngot(GTMaterials.Francium);
-//    ISGMaterials.addIngot(GTMaterials.Curium);
-//    ISGMaterials.addIngot(GTMaterials.Radium);
-//    ISGMaterials.addIngot(GTMaterials.Actinium);
-//    ISGMaterials.addIngot(GTMaterials.Hafnium);
-//    ISGMaterials.addIngot(GTMaterials.Rhenium);
-//    ISGMaterials.addIngot(GTMaterials.Technetium);
-//    ISGMaterials.addIngot(GTMaterials.Thallium);
-//    ISGMaterials.addIngot(GTMaterials.Germanium);
-//    ISGMaterials.addIngot(GTMaterials.Selenium);
-//    ISGMaterials.addIngot(GTMaterials.Astatine);
-//    ISGMaterials.addIngot(GTMaterials.Rutherfordium);
-//    ISGMaterials.addIngot(GTMaterials.Dubnium);
-//    ISGMaterials.addIngot(GTMaterials.Seaborgium);
-//    ISGMaterials.addIngot(GTMaterials.Bohrium);
-//    ISGMaterials.addIngot(GTMaterials.Tennessine);
-//    ISGMaterials.addIngot(GTMaterials.Livermorium);
-//    ISGMaterials.addIngot(GTMaterials.Moscovium);
-//    ISGMaterials.addIngot(GTMaterials.Nihonium);
-//    ISGMaterials.addIngot(GTMaterials.Roentgenium);
-//    ISGMaterials.addIngot(GTMaterials.Meitnerium);
-
-//    GTMaterials.Berkelium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Californium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Einsteinium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Fermium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Mendelevium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Francium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Curium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Radium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Hafnium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Rhenium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Technetium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Thallium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Germanium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Selenium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Dubnium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Seaborgium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Bohrium.addFlags((MaterialFlag) SNDART_FLAGS);
-//    GTMaterials.Livermorium.addFlags((MaterialFlag) SNDART_FLAGS);
 
   }
 }

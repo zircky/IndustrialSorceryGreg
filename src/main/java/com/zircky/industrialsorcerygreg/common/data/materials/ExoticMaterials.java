@@ -434,21 +434,12 @@ public final class ExoticMaterials {
             DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
-//    Krypton = builderISG("krypton")
-//        .fluid().plasma()
-//        .color(0x31C42F)
-//        .iconSet(FLUID)
-//        .flags(DISABLE_DECOMPOSITION)
-//        .element(GTElements.Kr)
-//        .buildAndRegister();
-
-//    Polonium = builderISG("polonium")
-//        .dust().fluid()
-//        .color(0xC9D47E)
-//        .iconSet(DULL)
-//        .radioactiveHazard(2)
-//        .flags(GENERATE_PLATE, GENERATE_CURVED_PLATE)
-//        .buildAndRegister();
-
+    Kevlar = material("kevlar")
+        .polymer()
+        .fluid()
+        .color(0x9f9f53)
+        .iconSet(DULL)
+        .flags(GENERATE_FOIL)
+        .buildAndRegister();
   }
 }

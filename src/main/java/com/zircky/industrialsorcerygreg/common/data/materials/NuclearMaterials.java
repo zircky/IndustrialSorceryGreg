@@ -159,8 +159,8 @@ public class NuclearMaterials {
         .buildAndRegister();
 
     Fluorite = builderISG("fluorite")
-        .gem().dust()
-        .color(0xFFFFFF).secondaryColor(0xFFFFFF).iconSet(DULL)
+        .gem().dust().liquid()
+        .color(GTMaterials.Calcium.getMaterialRGB()).iconSet(DULL)
         .appendFlags(GEM_FLAGS)
         .buildAndRegister();
 

@@ -183,13 +183,13 @@ final class ChemicalPrecursorMaterials {
         .setFormula("C8H5F3O2S", true);
 
     ActiniumRadiumNitrateSolution = builderISG("actinium_radium_nitrate_solution")
-        .fluid()
+        .liquid()
         .color(0xd2f0df)
         .iconSet(FLUID)
         .buildAndRegister();
 
     ActiniumRadiumHydroxideSolution = builderISG("actinium_radium_hydroxide_solution")
-        .fluid()
+        .liquid()
         .color(0xe2f5ef)
         .iconSet(FLUID)
         .buildAndRegister();

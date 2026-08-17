@@ -8,9 +8,7 @@ import com.zircky.industrialsorcerygreg.data.recipe.RecipeRemoval;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.ae2.AppliedEnergistics2Recipe;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.MetaTileEntityLoader;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.component.ComponentRecipe;
-import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.ChromiumLine;
-import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.NaquadahLine;
-import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.platinum.PlatinumLine;
+import com.zircky.industrialsorcerygreg.data.recipe.misc.processecing.*;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 
@@ -35,17 +33,25 @@ public class Data {
     MachineRecipe.init(provider);
 
     AppliedEnergistics2Recipe.init(provider);
+    AlloyBlast.init(provider);
+    AluminiumLine.init(provider);
+    AlloySmelterRecipes.init(provider);
     AssemblerRecipes.init(provider);
+    AssemblyLine.init(provider);
+    ArcFurnaceRecipes.init(provider);
     MixerRecipes.init(provider);
     ComponentRecipe.init(provider);
     CosmicChain.init(provider);
     ChemicalReactorRecipes.init(provider);
+    ClusterRecipes.init(provider);
     IndustrialProcessMaterialsRecipe.init(provider);
     HighEnergyMaterialsRecipe.init(provider);
     PlatinumLine.init(provider);
     ChromiumLine.init(provider);
     NaquadahLine.init(provider);
     FuelReprocessorRecipes.init(provider);
+    FormingPressRecipes.init(provider);
+    TriniumLine.init(provider);
     //CannerRecipes.init(provider);
     MetaTileEntityLoader.init(provider);
     WaterPurificationPlant.init(provider);

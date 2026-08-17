@@ -32,7 +32,6 @@ public class RecipeRemoval {
     consumer.accept(new ResourceLocation("gtceu:shaped/electric_motor_hv"));
     consumer.accept(new ResourceLocation("gtceu:shaped/electric_motor_ev"));
     consumer.accept(new ResourceLocation("gtceu:shaped/electric_motor_iv"));
-
     consumer.accept(GTCEu.id("assembler/conveyor_module_lv_styrene_butadiene_rubber"));
     consumer.accept(GTCEu.id("assembler/conveyor_module_lv_silicone_rubber"));
     consumer.accept(GTCEu.id("assembler/conveyor_module_lv_rubber"));
@@ -142,6 +141,21 @@ public class RecipeRemoval {
     consumer.accept(GTCEu.id("shaped/field_generator_ev"));
     consumer.accept(GTCEu.id("shaped/field_generator_iv"));
 
+    consumer.accept(GTCEu.id("large_chemical_reactor/naquadah_separation"));
+    consumer.accept(GTCEu.id("centrifuge/impure_enriched_naquadah_solution_separation"));
+    consumer.accept(GTCEu.id("mixer/enriched_naquadah_solution_separation"));
+    consumer.accept(GTCEu.id("centrifuge/acidic_enriched_naquadah_separation"));
+    consumer.accept(GTCEu.id("distillation_tower/enriched_naquadah_waste_separation"));
+    consumer.accept(GTCEu.id("distillery/enriched_naquadah_waste_separation_to_enriched_naquadah_solution"));
+    consumer.accept(GTCEu.id("distillery/enriched_naquadah_waste_separation_to_naquadria_solution"));
+    consumer.accept(GTCEu.id("distillery/enriched_naquadah_waste_separation_to_sulfuric_acid"));
+    consumer.accept(GTCEu.id("centrifuge/acidic_naquadria_solution_separation"));
+    consumer.accept(GTCEu.id("mixer/naquadria_solution_separation"));
+    consumer.accept(GTCEu.id("centrifuge/impure_naquadria_solution_separation"));
+    consumer.accept(GTCEu.id("chemical_reactor/antimony_trioxide"));
+    consumer.accept(GTCEu.id("large_chemical_reactor/antimony_trioxide"));
+    consumer.accept(GTCEu.id("electric_blast_furnace/nickel_zinc_ferrite"));
+    consumer.accept(GTCEu.id("alloy_blast_smelter/nickel_zinc_ferrite"));
 
   }
 }

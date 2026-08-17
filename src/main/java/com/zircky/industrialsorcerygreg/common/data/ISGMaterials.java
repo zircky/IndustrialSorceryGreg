@@ -35,8 +35,9 @@ public class ISGMaterials {
     NaquadahLine.register();
     ChromiumLineMaterials.register();
     ExoticMaterials.register();
-    RadioactiveIsotopeMaterials.register();
     ChemicalFluidMaterials.register();
+    RadioactiveIsotopeMaterials.register();
+    RareEarthMaterial.register();
     MineralMaterials.register();
     AlloyAndPolymerMaterials.register();
     NaquadahFuelMaterials.register();
@@ -48,6 +49,7 @@ public class ISGMaterials {
     WaterPurificationMaterial.register();
     ISGMaterialFlagAddition.register();
     UnsortedMaterials.register();
+    MaterialIgnored.init();
   }
 
   public static void modifyMaterials() {
@@ -179,6 +181,99 @@ public class ISGMaterials {
   public static Material LowQualityNaquadriaSolution;
   public static Material NaquadriaSulphate;
 
+  public static Material NaquadahConcentrateSlurry;
+  public static Material NaquadahOxideSolution;
+  public static Material AcidicNaquadahConcentrate;
+  public static Material NaquadahExtractionMixture;
+  public static Material NaquadahExtract;
+  public static Material NaquadahMotherLiqour;
+  public static Material CopperSulfateSolution;
+
+  /**
+   * NaquadahFuelMaterials
+   */
+  public static Material NaquadricSolution;
+  public static Material EnrichedNaquadricSolution;
+  public static Material NaquadriaticSolution;
+  public static Material AntimonyPentafluoride;
+  public static Material FluoronaquadricAcid;
+  public static Material EnrichedFluoronaquadricAcid;
+  public static Material FluoronaquadriaticAcid;
+  public static Material NaquadahDifluoride;
+  public static Material EnrichedNaquadahDifluoride;
+  public static Material NaquadriaDifluoride;
+  public static Material NaquadriaHexafluoride;
+  public static Material RadonDifluoride;
+  public static Material RadonNaquadriaoctafluoride;
+  public static Material XenonTrioxide;
+  public static Material CesiumFluoride;
+  public static Material CesiumXenontrioxideFluoride;
+  public static Material RadonTrioxide;
+  public static Material NaquadriaCesiumXenonNonfluoride;
+  public static Material NitrylFluoride;
+  public static Material NitrosoniumOctafluoroxenate;
+  public static Material NaquadriaCesiumfluoride;
+  public static Material EnrichedNaquadahhexafluoride;
+  public static Material EnrichedXenonHexafluoronaquadate;
+  public static Material AuricChloride;
+  public static Material BromineTrifluoride;
+  public static Material XenoauricFluoroantimonicAcid;
+  public static Material NaquadahSulfate;
+  public static Material NaquadahSolution;
+  public static Material ClearNaquadahLiquid;
+  public static Material ComplicatedNaquadahGas;
+  public static Material ComplicatedHeavyNaquadah;
+  public static Material ComplicatedMediumNaquadah;
+  public static Material ComplicatedLightNaquadah;
+  public static Material NaquadahGas;
+  public static Material LightNaquadah;
+  public static Material MediumNaquadah;
+  public static Material HeavyNaquadah;
+  public static Material FCrackedLightNaquadah;
+  public static Material FCrackedMediumNaquadah;
+  public static Material FCrackedHeavyNaquadah;
+  public static Material LightNaquadahFuel;
+  public static Material MediumNaquadahFuel;
+  public static Material HeavyNaquadahFuel;
+  public static Material AmmoniumNitrate;
+  public static Material ENaquadahSolution;
+  public static Material ClearENaquadahLiquid;
+  public static Material ComplicatedHeavyENaquadah;
+  public static Material ComplicatedMediumENaquadah;
+  public static Material ComplicatedLightENaquadah;
+  public static Material LightENaquadah;
+  public static Material MediumENaquadah;
+  public static Material HeavyENaquadah;
+  public static Material RnCrackedLightNaquadah;
+  public static Material RnCrackedMediumENaquadah;
+  public static Material RnCrackedHeavyENaquadah;
+  public static Material LightENaquadahFuel;
+  public static Material MediumENaquadahFuel;
+  public static Material HeavyENaquadahFuel;
+  public static Material HyperFuelI;
+  public static Material HyperFuelII;
+  public static Material HyperFuelIII;
+  public static Material HyperFuelIV;
+  public static Material AcidicSaltWater;
+  public static Material SulfuricBromineSolution;
+  public static Material HotVapourMixture;
+  public static Material DampBromine;
+  public static Material Ethylhexanol;
+  public static Material DiethylhexylPhosphoricAcid;
+
+  /**
+   *  RareEarthMaterial
+   */
+
+  public static Material RareEarthHydroxidesSolution;
+  public static Material RareEarthChloridesSolution;
+  public static Material LaNdOxidesSolution;
+  public static Material SmGdOxidesSolution;
+  public static Material TbHoOxidesSolution;
+  public static Material ErLuOxidesSolution;
+  public static Material SupercooledCryotheum;
+
+
   /**
    * ChromiumLineMaterials
    */
@@ -228,14 +323,12 @@ public class ISGMaterials {
   public static Material AstralTitanium;
   public static Material CelestialTungsten;
   public static Material Vibramantium;
+  public static Material Kevlar;
 
 
   /**
    * RadioactiveIsotopeMaterials
    */
-  public static Material UraniumRadioactive;
-  public static Material Neptunium;
-  public static Material PlutoniumRadioactive;
   public static Material Thorium233;
   public static Material Protactinium233;
   public static Material Uranium233;
@@ -421,12 +514,6 @@ public class ISGMaterials {
   public static Material MethylMethacrylate;
   public static Material MethylMethacrylateEmulsion;
   public static Material PotassiumAmylXanthate;
-  public static Material NaquadahConcentrateSlurry;
-  public static Material NaquadahOxideSolution;
-  public static Material AcidicNaquadahConcentrate;
-  public static Material NaquadahExtractionMixture;
-  public static Material NaquadahExtract;
-  public static Material NaquadahMotherLiqour;
   public static Material ArsenicSolution;
   public static Material Pmma;
   public static Material DilutedHydrofluoricAcid;
@@ -547,7 +634,6 @@ public class ISGMaterials {
   public static Material ArsineVapor;
   public static Material Arsine;
   public static Material TinLeadSolution6040;
-  public static Material CopperSulfateSolution;
   public static Material PolyethyleneNaphthalate;
   public static Material NaphthaleneDicarboxaldehyde;
   public static Material DielectricPaste;
@@ -996,9 +1082,6 @@ public class ISGMaterials {
   public static Material CalciumTungstate;
   public static Material TungstenTrioxide;
   public static Material TungstenHexachloride;
-  public static Material NaquadricCompound;
-  public static Material EnrichedNaquadricCompound;
-  public static Material NaquadriaticCompound;
   public static Material Caliche;
   public static Material Rhodocrosite;
   public static Material Columbite;
@@ -1018,6 +1101,8 @@ public class ISGMaterials {
   public static Material MagnetoResonatic;
   public static Material Zircon;
   public static Material LeadZirconateTitanate;
+  public static Material Jasper;
+  public static Material UuAmplifier;
 
   /**
    * AlloyAndPolymerMaterials
@@ -1084,84 +1169,6 @@ public class ISGMaterials {
   public static Material Polyimide;
   public static Material FluorinatedEthylenePropylene;
 
-  /**
-   * NaquadahFuelMaterials
-   */
-  public static Material NaquadricSolution;
-  public static Material EnrichedNaquadricSolution;
-  public static Material NaquadriaticSolution;
-  public static Material AntimonyPentafluoride;
-  public static Material FluoronaquadricAcid;
-  public static Material EnrichedFluoronaquadricAcid;
-  public static Material FluoronaquadriaticAcid;
-  public static Material NaquadahDifluoride;
-  public static Material EnrichedNaquadahDifluoride;
-  public static Material NaquadriaDifluoride;
-  public static Material NaquadriaHexafluoride;
-  public static Material RadonDifluoride;
-  public static Material RadonNaquadriaoctafluoride;
-  public static Material XenonTrioxide;
-  public static Material CesiumFluoride;
-  public static Material CesiumXenontrioxideFluoride;
-  public static Material RadonTrioxide;
-  public static Material NaquadriaCesiumXenonNonfluoride;
-  public static Material NitrylFluoride;
-  public static Material NitrosoniumOctafluoroxenate;
-  public static Material NaquadriaCesiumfluoride;
-  public static Material EnrichedNaquadahhexafluoride;
-  public static Material EnrichedXenonHexafluoronaquadate;
-  public static Material AuricChloride;
-  public static Material BromineTrifluoride;
-  public static Material XenoauricFluoroantimonicAcid;
-  public static Material NaquadahSulfate;
-  public static Material NaquadahSolution;
-  public static Material ClearNaquadahLiquid;
-  public static Material ComplicatedNaquadahGas;
-  public static Material ComplicatedHeavyNaquadah;
-  public static Material ComplicatedMediumNaquadah;
-  public static Material ComplicatedLightNaquadah;
-  public static Material NaquadahGas;
-  public static Material LightNaquadah;
-  public static Material MediumNaquadah;
-  public static Material HeavyNaquadah;
-  public static Material FCrackedLightNaquadah;
-  public static Material FCrackedMediumNaquadah;
-  public static Material FCrackedHeavyNaquadah;
-  public static Material LightNaquadahFuel;
-  public static Material MediumNaquadahFuel;
-  public static Material HeavyNaquadahFuel;
-  public static Material AmmoniumNitrate;
-  public static Material ENaquadahSolution;
-  public static Material ClearENaquadahLiquid;
-  public static Material ComplicatedHeavyENaquadah;
-  public static Material ComplicatedMediumENaquadah;
-  public static Material ComplicatedLightENaquadah;
-  public static Material LightENaquadah;
-  public static Material MediumENaquadah;
-  public static Material HeavyENaquadah;
-  public static Material RnCrackedLightNaquadah;
-  public static Material RnCrackedMediumENaquadah;
-  public static Material RnCrackedHeavyENaquadah;
-  public static Material LightENaquadahFuel;
-  public static Material MediumENaquadahFuel;
-  public static Material HeavyENaquadahFuel;
-  public static Material HyperFuelI;
-  public static Material HyperFuelII;
-  public static Material HyperFuelIII;
-  public static Material HyperFuelIV;
-  public static Material AcidicSaltWater;
-  public static Material SulfuricBromineSolution;
-  public static Material HotVapourMixture;
-  public static Material DampBromine;
-  public static Material Ethylhexanol;
-  public static Material DiethylhexylPhosphoricAcid;
-  public static Material RareEarthHydroxidesSolution;
-  public static Material RareEarthChloridesSolution;
-  public static Material LaNdOxidesSolution;
-  public static Material SmGdOxidesSolution;
-  public static Material TbHoOxidesSolution;
-  public static Material ErLuOxidesSolution;
-  public static Material SupercooledCryotheum;
 
   /**
    * BiologicalMaterials
@@ -1522,7 +1529,7 @@ public class ISGMaterials {
   public static Material Ethylamine;
   public static Material Trimethylsilane;
   public static Material KryptonDifluoride;
-  public static Material QuarkGluonPlasma;
+  public static Material QuarkGluon;
   public static Material HeavyQuarks;
   public static Material LightQuarks;
   public static Material Gluons;
@@ -1691,7 +1698,7 @@ public class ISGMaterials {
   public static Material MagnesiumFluoride;
   public static Material LithiumNiobateNanoparticles;
   public static Material LithiumHydroxide;
-  public static Material RhReNqCatalyst;
+  public static Material RhodiumRheniumNaquadahCatalyst;
   public static Material PalladiumAcetate;
   public static Material FranciumCaesiumCadmiumBromide;
   public static Material ZincSelenide;
@@ -1849,7 +1856,6 @@ public class ISGMaterials {
   public static Material Aluminiumcatalyst;
   public static Material Rdx;
   public static Material Hdx;
-  public static Material Formaldehyde;
   public static Material Hexamine;
   public static Material Dialuminiumtrioxide;
   public static Material Dialuminiumcobalttetroxide;
@@ -1882,7 +1888,6 @@ public class ISGMaterials {
   public static Material Paraphenylenediamine;
   public static Material Mudresidues;
   public static Material Terephthaloylchloride;
-  public static Material Lapotron;
   public static Material RadiumCake;
   public static Material RadiumMetallicPowder;
   public static Material ThoriumRadioactive;
@@ -1923,7 +1928,6 @@ public class ISGMaterials {
   public static Material OilyBedrock;
   public static Material FineBedrock;
   public static Material Adamantite;
-  public static Material DarmstadtiumCatalyst;
   public static Material AdamantiumPentoxide;
   public static Material EnrichedNaquadahNitrate;
   public static Material NaquadriaNitrate;
@@ -1963,7 +1967,6 @@ public class ISGMaterials {
   public static Material SupraFertilizer;
   public static Material GristPowder;
   public static Material SolidGrain;
-  public static Material ActivatedCarbon;
   public static Material YeastExtractMannitolMedium;
   public static Material TitaniumSludge;
   public static Material RefabricatedDraconium;
@@ -1981,7 +1984,6 @@ public class ISGMaterials {
   public static Material Cobalt60;
   public static Material Magnesiumtetrachloride;
   public static Material WhitePhosporus;
-  public static Material PhosphorusPentoxide;
   public static Material FloatedAndesite;
   public static Material DigestedAndesite;
   public static Material Iriditus;
@@ -2105,7 +2107,7 @@ public class ISGMaterials {
   public static Material Fullerene;
   public static Material TiAlChloride;
   public static Material Dimethylaminopyridine;
-  public static Material PdIrReOCeOS;
+  public static Material PdIrReOCeOsSiCatalyst;
   public static Material SodiumEthoxide;
   public static Material MgClBromide;
   public static Material Sarcosine;

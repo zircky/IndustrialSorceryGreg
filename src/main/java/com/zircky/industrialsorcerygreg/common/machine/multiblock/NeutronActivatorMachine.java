@@ -35,6 +35,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import static com.gregtechceu.gtceu.utils.GTUtil.doExplosion;
@@ -49,6 +50,7 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine {
 
   @SaveField
   private boolean isWorking = false;
+  private int currentRecipeEnergyConsumption;
 
   private final ConditionalSubscriptionHandler neutronEnergySubs = new ConditionalSubscriptionHandler(this, this::neutronEnergyUpdate, () -> isFormed);
   private final ConditionalSubscriptionHandler moderateSubs = new ConditionalSubscriptionHandler(this, this::moderateUpdate, () -> eV > 0);
@@ -57,6 +59,10 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine {
   private Set<SensorPartMachine> sensorPartMachines;
   private Set<ItemBusPartMachine> busPartMachines;
   private Set<NeutronAcceleratorPartMachine> acceleratorPartMachines;
+
+  public NeutronActivatorMachine(BlockEntityCreationInfo info) {
+    super(info);
+  }
 
   public NeutronActivatorMachine(BlockEntityCreationInfo info, RecipeLogic recipeLogic) {
     super(info, recipeLogic);
@@ -121,6 +127,7 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine {
   public void invalidateStructure(String name) {
     super.invalidateStructure(name);
     height = 0;
+    currentRecipeEnergyConsumption = 0;
     sensorPartMachines = null;
     busPartMachines = null;
     acceleratorPartMachines = null;
@@ -216,13 +223,13 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine {
   public List<IWidget> getWidgetsForDisplay(PanelSyncManager syncManager) {
     List<IWidget> widgets = new ArrayList<>(super.getWidgetsForDisplay(syncManager));
     widgets.add(Text.dynamic(() -> Component.translatable(
-        "industrialsorcerygreg.multiblock.neutronactivator.ev", processNumber(eV))
+        "isgcore.multiblock.neutronactivator.ev", processNumber(eV))
         .withStyle(ChatFormatting.WHITE)).asWidget());
     widgets.add(Text.dynamic(() -> Component.translatable(
-        "industrialsorcerygreg.multiblock.neutronactivator.height", FormattingUtil.formatNumbers(height))
+        "isgcore.multiblock.neutronactivator.height", FormattingUtil.formatNumbers(height))
         .withStyle(ChatFormatting.WHITE)).asWidget());
     widgets.add(Text.dynamic(() -> Component.translatable(
-        "industrialsorcerygreg.multiblock.neutronactivator.efficiency",
+        "isgcore.multiblock.neutronactivator.efficiency",
         FormattingUtil.formatNumbers(getEfficiencyFactor() * 100))
         .withStyle(ChatFormatting.WHITE)).asWidget());
     return widgets;
@@ -242,18 +249,35 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine {
   }
 
   @Override
-  protected @Nullable GTRecipe getRealRecipe(final GTRecipe recipe) {
-    final List<?> conditions = recipe.conditions.stream()
-        .filter(NeutronActivatorCondition.class::isInstance)
-        .toList();
+  public boolean beforeWorking(GTRecipe recipe) {
+    if (!super.beforeWorking(recipe)) {
+      return false;
+    }
+    currentRecipeEnergyConsumption = getRecipeEnergyConsumption(recipe);
+    return true;
+  }
 
+  @Override
+  public boolean onWorking() {
+    if (!super.onWorking()) {
+      return false;
+    }
+    if (currentRecipeEnergyConsumption > 0) {
+      eV = Math.max(eV - currentRecipeEnergyConsumption, 0);
+    }
+    return true;
+  }
+
+  @Override
+  protected @Nullable GTRecipe getRealRecipe(final GTRecipe recipe) {
     final GTRecipe newRecipe = recipe.copy();
     newRecipe.duration = (int) Math.round(Math.max(newRecipe.duration * getVelocityFactor(), 1.0D));
 
-    if (!conditions.isEmpty()) {
-      final NeutronActivatorCondition condition = (NeutronActivatorCondition) conditions.get(0);
-      final int maxRange = (condition.getEvRange() / 10000) * 1_000_000;
-      final int minRange = (condition.getEvRange() % 10000) * 1_000_000;
+    final int minMeV = getMinRecipeEnergyMeV(recipe);
+    final int maxMeV = getMaxRecipeEnergyMeV(recipe);
+    if (maxMeV > 0) {
+      final int minRange = minMeV * M;
+      final int maxRange = maxMeV * M;
 
       if (eV > maxRange || eV < minRange) {
         newRecipe.outputs.clear();
@@ -268,8 +292,45 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine {
 
   public static boolean checkNeutronActivatorCondition(final MetaMachine metaMachine, final GTRecipe recipe) {
     return metaMachine instanceof NeutronActivatorMachine
-        && !recipe.conditions.isEmpty()
-        && recipe.conditions.get(0) instanceof NeutronActivatorCondition;
+        && (hasNeutronActivatorData(recipe) || getLegacyCondition(recipe).isPresent());
+  }
+
+  private static boolean hasNeutronActivatorData(final GTRecipe recipe) {
+    return recipe.data.contains(NeutronActivatorCondition.KEY_EV_MIN)
+        || recipe.data.contains(NeutronActivatorCondition.KEY_EV_MAX)
+        || recipe.data.contains(NeutronActivatorCondition.KEY_EVT);
+  }
+
+  private static int getMinRecipeEnergyMeV(final GTRecipe recipe) {
+    if (recipe.data.contains(NeutronActivatorCondition.KEY_EV_MIN)) {
+      return recipe.data.getInt(NeutronActivatorCondition.KEY_EV_MIN);
+    }
+    return getLegacyCondition(recipe)
+        .map(condition -> condition.getEvRange() % 10000)
+        .orElse(0);
+  }
+
+  private static int getMaxRecipeEnergyMeV(final GTRecipe recipe) {
+    if (recipe.data.contains(NeutronActivatorCondition.KEY_EV_MAX)) {
+      return recipe.data.getInt(NeutronActivatorCondition.KEY_EV_MAX);
+    }
+    return getLegacyCondition(recipe)
+        .map(condition -> condition.getEvRange() / 10000)
+        .orElse(0);
+  }
+
+  private static int getRecipeEnergyConsumption(final GTRecipe recipe) {
+    if (recipe.data.contains(NeutronActivatorCondition.KEY_EVT)) {
+      return Math.max(recipe.data.getInt(NeutronActivatorCondition.KEY_EVT), 0);
+    }
+    return 0;
+  }
+
+  private static Optional<NeutronActivatorCondition> getLegacyCondition(final GTRecipe recipe) {
+    return recipe.conditions.stream()
+        .filter(NeutronActivatorCondition.class::isInstance)
+        .map(NeutronActivatorCondition.class::cast)
+        .findFirst();
   }
 
   private static final int M = 1_000_000;

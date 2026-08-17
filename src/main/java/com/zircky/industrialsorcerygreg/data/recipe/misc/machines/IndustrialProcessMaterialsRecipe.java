@@ -12,7 +12,7 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 public class IndustrialProcessMaterialsRecipe {
   public static void init(Consumer<FinishedRecipe> provider) {
 
-    CHEMICAL_RECIPES.recipeBuilder("pcba")
+    LARGE_CHEMICAL_RECIPES.recipeBuilder("pcba")
         .inputDust(Fullerene, 2)
         .notConsumableFluid(BenzoylPeroxide.getFluid(1000))
         .inputFluids(Chlorobenzene.getFluid(2000))
@@ -22,7 +22,7 @@ public class IndustrialProcessMaterialsRecipe {
         .outputFluids(PCBA.getFluid(2000))
         .duration(SECONDS * 22).EUt(VA[UV]).save(provider);
 
-    CHEMICAL_RECIPES.recipeBuilder("pcbs")
+    LARGE_CHEMICAL_RECIPES.recipeBuilder("pcbs")
         .notConsumableDust(Dimethylaminopyridine)
         .notConsumableFluid(Diisopropylcarbodiimide.getFluid(1000))
         .inputFluids(Styrene.getFluid(1000))

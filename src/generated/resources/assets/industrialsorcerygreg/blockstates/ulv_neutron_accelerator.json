@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "industrialsorcerygreg:block/machine/ulv_neutron_accelerator",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "industrialsorcerygreg:block/machine/ulv_neutron_accelerator",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "industrialsorcerygreg:block/machine/ulv_neutron_accelerator"
+    },
+    "facing=south": {
+      "model": "industrialsorcerygreg:block/machine/ulv_neutron_accelerator",
+      "y": 180
+    },
+    "facing=up": {
+      "gtceu:z": 180,
+      "model": "industrialsorcerygreg:block/machine/ulv_neutron_accelerator",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "industrialsorcerygreg:block/machine/ulv_neutron_accelerator",
+      "y": 270
+    }
+  }
+}

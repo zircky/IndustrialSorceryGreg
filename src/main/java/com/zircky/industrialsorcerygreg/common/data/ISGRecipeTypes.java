@@ -33,7 +33,7 @@ public class ISGRecipeTypes {
   public final static ISGRecipeTypeProxy BREWING_RECIPES = gt(GTRecipeTypes.BREWING_RECIPES);
   public final static ISGRecipeTypeProxy MACERATOR_RECIPES = gt(GTRecipeTypes.MACERATOR_RECIPES);
   public final static ISGRecipeTypeProxy CANNER_RECIPES = gt(GTRecipeTypes.CANNER_RECIPES);
-  public final static ISGRecipeTypeProxy CENTRIFUGE_RECIPES = gt(GTRecipeTypes.CENTRIFUGE_RECIPES);
+  public final static ISGRecipeTypeProxy CENTRIFUGE_RECIPES = gt(GTRecipeTypes.CENTRIFUGE_RECIPES.setMaxIOSize(2, 6, 2, 6));
   public final static ISGRecipeTypeProxy CHEMICAL_BATH_RECIPES = gt(GTRecipeTypes.CHEMICAL_BATH_RECIPES);
   public final static ISGRecipeTypeProxy CHEMICAL_RECIPES = gt(GTRecipeTypes.CHEMICAL_RECIPES);
   public final static ISGRecipeTypeProxy COMPRESSOR_RECIPES = gt(GTRecipeTypes.COMPRESSOR_RECIPES);
@@ -117,7 +117,7 @@ public class ISGRecipeTypes {
       .setSound(GTSoundEntries.ARC);
 
   public static final ISGRecipeType DIGESTION_TREATMENT_RECIPES = (ISGRecipeType) ISGRecipeType.register("digestion_treatment", MULTIBLOCK)
-      .setMaxIOSize(1, 2, 1, 1)
+      .setMaxIOSize(1, 2, 2, 1)
       .setEUIO(IO.IN)
       .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_ARROW)
           .addRecipeUIModifier(GTRecipeUIModifiers.TEMP_COIL_INFO))
@@ -193,7 +193,7 @@ public class ISGRecipeTypes {
 
   public static final ISGRecipeType CHROMATIC_FLOTATION_PLANT_RECIPES = (ISGRecipeType) ISGRecipeType
       .register("chromatic_flotation_plant", MULTIBLOCK)
-      .setMaxIOSize(3, 4, 3, 3)
+      .setMaxIOSize(3, 6, 3, 3)
       .setEUIO(IO.IN)
       .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_ARROW));
 
@@ -291,6 +291,13 @@ public class ISGRecipeTypes {
       .setEUIO(IO.IN)
       .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_ARROW))
       .setSound(GTSoundEntries.ARC);
+
+  public static final ISGRecipeType NEUTRON_ACTIVATOR_RECIPES = (ISGRecipeType) ISGRecipeType.register("neutron_activator", MULTIBLOCK)
+      .setMaxIOSize(9, 9, 1, 1)
+      .setEUIO(IO.IN)
+      .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_ARROW)
+          .addRecipeUIModifier(ISGRecipeUIModifiers.NEUTRON_ACTIVATOR_INFO))
+      .setSound(GTSoundEntries.COOLING);
 
   public static final ISGRecipeType TEST_RECIPES = ((ISGRecipeType) ISGRecipeType.register("test", MULTIBLOCK)
       .setMaxIOSize(6, 6, 6, 6)

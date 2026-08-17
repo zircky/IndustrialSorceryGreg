@@ -3672,10 +3672,11 @@ public final class ChemicalFluidMaterials {
         .iconSet(FLUID)
         .buildAndRegister();
 
-    Protoadamantiumalloycatalyst = builderISG("protoadamantiumalloycatalyst")
+    Protoadamantiumalloycatalyst = builderISG("protoadamantiumalloy")
         .fluid().dust()
         .color(0x2c3393)
         .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
     Refinedglue = builderISG("refinedglue")

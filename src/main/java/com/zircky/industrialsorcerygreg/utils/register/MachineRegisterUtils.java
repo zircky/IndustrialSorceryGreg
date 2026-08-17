@@ -2,7 +2,6 @@ package com.zircky.industrialsorcerygreg.utils.register;
 
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.blockentity.BlockEntityCreationInfo;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.*;
@@ -10,7 +9,7 @@ import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
 import com.gregtechceu.gtceu.api.machine.trait.recipe.RecipeLogic;
-import com.gregtechceu.gtceu.api.multiblock.PatternPredicate;
+import com.gregtechceu.gtceu.api.multiblock.MultiPredicate;
 import com.gregtechceu.gtceu.api.multiblock.Predicates;
 import com.gregtechceu.gtceu.api.multiblock.pattern.MultiblockPatternBuilder;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
@@ -26,7 +25,6 @@ import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.ISGValues;
-import com.zircky.industrialsorcerygreg.api.registries.ISGMultiblockMachineBuilder;
 import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -36,17 +34,14 @@ import net.minecraft.world.level.block.Block;
 
 import java.util.Locale;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.gregtechceu.gtceu.api.GTValues.VLVH;
 import static com.gregtechceu.gtceu.api.GTValues.VLVT;
 import static com.gregtechceu.gtceu.api.multiblock.Predicates.blocks;
-import static com.gregtechceu.gtceu.api.multiblock.Predicates.controller;
 import static com.gregtechceu.gtceu.api.multiblock.util.RelativeDirection.*;
 import static com.gregtechceu.gtceu.common.data.GTBlocks.ALL_FIREBOXES;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.*;
-import static com.gregtechceu.gtceu.common.data.machines.GTMultiMachines.LARGE_BOILER_BRONZE;
 import static com.gregtechceu.gtceu.common.data.models.GTMachineModels.createWorkableCasingMachineModel;
 import static com.gregtechceu.gtceu.utils.FormattingUtil.toEnglishName;
 import static com.zircky.industrialsorcerygreg.api.registries.ISGRegistries.REGISTRATE;
@@ -167,7 +162,7 @@ public class MachineRegisterUtils {
             controller.getBlockPos().below().getY() == part.getBlockPos().getY() ?
                 fireBox.get().defaultBlockState() : casing.get().defaultBlockState())
         .pattern((definition) -> {
-          PatternPredicate fireboxPred = blocks(ALL_FIREBOXES.get(firebox).get()).setMinGlobalLimited(3)
+          MultiPredicate fireboxPred = blocks(ALL_FIREBOXES.get(firebox).get()).setMinGlobalLimited(3)
               .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setMinGlobalLimited(1)
                   .setPreviewCount(1))
               .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setMaxGlobalLimited(1)

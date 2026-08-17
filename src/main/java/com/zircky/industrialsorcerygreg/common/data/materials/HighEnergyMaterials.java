@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.attribute.FluidAttributes;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.api.ISGValues;
+import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
@@ -82,7 +83,7 @@ public final class HighEnergyMaterials {
         .buildAndRegister()
         .setFormula("N15", true);
 
-    CNOcatalyst = builderISG("cno_catalyst")
+    CNOcatalyst = builderISG("cno")
         .fluid()
         .color((GTMaterials.Nitrogen.getMaterialRGB() + GTMaterials.Carbon.getMaterialRGB()) / 2)
         .iconSet(FLUID)
@@ -1002,7 +1003,7 @@ public final class HighEnergyMaterials {
         .buildAndRegister()
         .setFormula("KrF2");
 
-    QuarkGluonPlasma = builderISG("quark_gluon")
+    QuarkGluon = builderISG("quark_gluon")
         .plasma()
         .color(0x8f00ff)
         .iconSet(FLUID)

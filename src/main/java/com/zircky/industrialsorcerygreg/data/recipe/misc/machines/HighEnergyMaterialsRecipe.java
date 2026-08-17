@@ -1,7 +1,7 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
-import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
+import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -447,34 +447,19 @@ public class HighEnergyMaterialsRecipe {
     BLAST_RECIPES.recipeBuilder("dilute_nitric_acid").duration(200).EUt(VA[MV]).blastFurnaceTemp(500)
     .inputDust(UranylNitrate, 11)
     .inputFluids(Water.getFluid(1000))
-    .outputDust(UraniumRadioactive, 3)
+    .outputDust(Uranium238, 3)
     .outputFluids(DiluteNitricAcid.getFluid(2000))
     .save(provider);
 
     // From misc/test/CosmicChain.txt:41
     CENTRIFUGE_RECIPES.recipeBuilder("heavy_quarks").duration(200).EUt(VA[UHV])
-    .inputFluids(QuarkGluonPlasma.getFluid(1000 * 5))
+    .inputFluids(QuarkGluon.getFluid(FluidStorageKeys.PLASMA, 1000 * 5))
     .notConsumable(SEPARATION_ELECTROMAGNET.asItem())
     .outputFluids(HeavyQuarks.getFluid(750 * 5))
     .outputFluids(Gluons.getFluid(500 * 5))
     .outputFluids(LightQuarks.getFluid(250 * 5))
     .save(provider);
 
-    // From misc/test/CosmicChain.txt:18
-    STELLAR_FORGE_RECIPES.recipeBuilder("quark_gluon_plasma_from_degenerate_rhenium_dust")
-        .inputDust(ElectronDegenerateRhenium)
-        .circuitMeta(1)
-        .outputFluids(QuarkGluonPlasma.getFluid(4000))
-        .duration(60).EUt(VH[UIV])
-        .save(provider);
-
-    // From misc/test/CosmicChain.txt:25
-    STELLAR_FORGE_RECIPES.recipeBuilder("quark_gluon_plasma_from_degenerate_rhenium_plate")
-        .inputItems(plate, ElectronDegenerateRhenium)
-        .circuitMeta(2)
-        .outputFluids(QuarkGluonPlasma.getFluid(2000))
-        .duration(60).EUt(VH[UIV])
-        .save(provider);
 
     // From misc/test/UltimateMaterials.txt:218
     STELLAR_FORGE_RECIPES.recipeBuilder("dense_neutron")
@@ -575,7 +560,7 @@ public class HighEnergyMaterialsRecipe {
     CHEMICAL_RECIPES.recipeBuilder("ndifluorophenylpyrrole").duration(180).EUt(VA[HV])
     .inputFluids(Difluoroaniline.getFluid(1000))
     .inputFluids(Succinaldehyde.getFluid(1000))
-    .notConsumableDust(com.zircky.industrialsorcerygreg.common.data.ISGMaterials.PhosphorusPentoxide)
+    .notConsumableDust(PhosphorusPentoxide)
     .outputFluids(NDifluorophenylpyrrole.getFluid(1000))
     .outputFluids(Water.getFluid(2000))
     .save(provider);
@@ -745,7 +730,7 @@ public class HighEnergyMaterialsRecipe {
 
     // From misc/test/InsulationWireAssemblyChain.txt:25
     CHEMICAL_RECIPES.recipeBuilder("hexanediol").duration(180).EUt(VA[MV])
-    .notConsumableDust(PdIrReOCeOS)
+    .notConsumableDust(PdIrReOCeOsSiCatalyst)
     .inputFluids(Water.getFluid(1000))
     .inputDust(Fructose, 24)
     .notConsumableFluid(TetraethylammoniumBromide.getFluid(1))
@@ -836,42 +821,6 @@ public class HighEnergyMaterialsRecipe {
     .inputDust(Fullerene)
     .notConsumable(plate, Rhenium)
     .outputFluids(FullereneDopedNanotubes.getFluid(18000))
-    .save(provider);
-
-    // From misc/test/NaquadahChain.txt:17
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("dilute_nitric_acid_2")
-    .inputDust(NaquadricCompound)
-    .inputFluids(AquaRegia.getFluid(4000))
-    .outputFluids(NaquadricSolution.getFluid(1000))
-    .outputFluids(DiluteNitricAcid.getFluid(2000))
-    .outputFluids(HydrochloricAcid.getFluid(1000))
-    .outputFluids(Chlorine.getFluid(1000))
-    .EUt(VA[HV])
-    .duration(100)
-    .save(provider);
-
-    // From misc/test/NaquadahChain.txt:29
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("dilute_nitric_acid_3")
-    .inputDust(EnrichedNaquadricCompound)
-    .inputFluids(AquaRegia.getFluid(4000))
-    .outputFluids(EnrichedNaquadricSolution.getFluid(1000))
-    .outputFluids(DiluteNitricAcid.getFluid(2000))
-    .outputFluids(HydrochloricAcid.getFluid(1000))
-    .outputFluids(Chlorine.getFluid(1000))
-    .EUt(VA[HV])
-    .duration(100)
-    .save(provider);
-
-    // From misc/test/NaquadahChain.txt:41
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("dilute_nitric_acid_4")
-    .inputDust(NaquadriaticCompound)
-    .inputFluids(AquaRegia.getFluid(4000))
-    .outputFluids(NaquadriaticSolution.getFluid(1000))
-    .outputFluids(DiluteNitricAcid.getFluid(2000))
-    .outputFluids(HydrochloricAcid.getFluid(1000))
-    .outputFluids(Chlorine.getFluid(1000))
-    .EUt(VA[HV])
-    .duration(100)
     .save(provider);
 
     // From misc/test/NiobiumTantalumChain.txt:76
@@ -1534,7 +1483,7 @@ public class HighEnergyMaterialsRecipe {
     .inputFluids(IodineMonochloride.getFluid(1000))
     .inputFluids(Chlorine.getFluid(2000))
     .inputDust(Bromosuccinimide, 12)
-    .notConsumableDust(RhReNqCatalyst)
+    .notConsumable(ISGTagPrefix.CATALYST, RhodiumRheniumNaquadahCatalyst)
     .outputDust(MgClBromide, 6)
     .outputDust(Succinimide, 12)
     .outputFluids(Dihydroiodotetracene.getFluid(1000))

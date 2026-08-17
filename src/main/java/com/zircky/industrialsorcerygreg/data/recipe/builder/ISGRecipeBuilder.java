@@ -18,6 +18,7 @@ import com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicate;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
 import com.zircky.industrialsorcerygreg.api.recipe.ISGRecipeType;
 import com.zircky.industrialsorcerygreg.api.recipe.LayeredRecipeHelper;
+import com.zircky.industrialsorcerygreg.common.data.recipe.NeutronActivatorCondition;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceKey;
@@ -722,6 +723,22 @@ public class ISGRecipeBuilder extends GTRecipeBuilder {
   @Override
   public ISGRecipeBuilder addData(String key, boolean data) {
     super.addData(key, data);
+    return this;
+  }
+
+  public ISGRecipeBuilder neutronKineticEnergy(int minMeV, int maxMeV) {
+    return neutronKineticEnergy(minMeV, maxMeV, 0);
+  }
+
+  public ISGRecipeBuilder neutronKineticEnergy(int minMeV, int maxMeV, int eVt) {
+    if (minMeV > maxMeV) {
+      throw new IllegalArgumentException("Minimum neutron kinetic energy cannot be greater than maximum");
+    }
+    addData(NeutronActivatorCondition.KEY_EV_MIN, minMeV);
+    addData(NeutronActivatorCondition.KEY_EV_MAX, maxMeV);
+    if (eVt > 0) {
+      addData(NeutronActivatorCondition.KEY_EVT, eVt);
+    }
     return this;
   }
 

@@ -1,30 +1,15 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
-import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.attribute.FluidAttributes;
-import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.zircky.industrialsorcerygreg.api.ISGValues;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
-import com.zircky.industrialsorcerygreg.common.data.ISGElement;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
-import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
-import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Ethylbenzene;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
-import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
-import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.INFINITY;
-
+import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
 
 final class MetalProcessingCompoundMaterials {
@@ -195,11 +180,11 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("(CH3)2NC5H4N", true);
 
-    PdIrReOCeOS = builderISG("pdirreoceos")
-        .langValue("PdIrReOCeOsSi Catalyst")
+    PdIrReOCeOsSiCatalyst = material("pd_ir_re_o_ce_os_si", "PdIrReOCeOsSi")
         .dust()
         .color((GTMaterials.Palladium.getMaterialRGB() + GTMaterials.Iridium.getMaterialRGB() + GTMaterials.Rhenium.getMaterialRGB() + GTMaterials.Cerium.getMaterialRGB() + GTMaterials.Osmium.getMaterialRGB() + GTMaterials.Silicon.getMaterialRGB() + GTMaterials.Oxygen.getMaterialRGB()) / 7)
-        .iconSet(SHINY)
+        .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister()
         .setFormula("PdIrReCeOsSiO4", true);
 
@@ -225,13 +210,12 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("C3H7NO2", true);
 
-    ZnFeAlClCatalyst = builderISG("znfealcl_catalyst")
-        .langValue("ZnFeAlCl Catalyst")
+    ZnFeAlClCatalyst = builderISG("znfealcl")
         .dust()
         .color((GTMaterials.Zinc.getMaterialRGB() + GTMaterials.Iron.getMaterialRGB() + GTMaterials.Aluminium.getMaterialRGB() + GTMaterials.Chlorine.getMaterialRGB()) / 4)
-        .iconSet(METALLIC)
-        .buildAndRegister()
-        .setFormula("ZnFeAlCl");
+        .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
+        .buildAndRegister();
 
     Difluorobenzophenone = builderISG("difluorobenzophenone")
         .dust()
@@ -268,11 +252,11 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("C20H22N2O2", true);
 
-    AuPdCCatalyst = builderISG("aupdc_catalyst")
-        .langValue("AuPdC Catalyst")
+    AuPdCCatalyst = material("aupdc", "AuPdC")
         .dust()
         .color((GTMaterials.Gold.getMaterialRGB() + GTMaterials.Palladium.getMaterialRGB() + GTMaterials.Carbon.getMaterialRGB()) / 3)
-        .iconSet(SHINY)
+        .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister()
         .setFormula("AuPdC");
 
@@ -416,19 +400,19 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("(KMnO4)(NaNO3)(H2SO4)", true);
 
-    NiAlOCatalyst = builderISG("nialo_catalyst")
-        .langValue("Nickel Oxide Alumina Catalyst")
+    NiAlOCatalyst = material("nickel_oxide_alumina")
         .dust()
         .color(0x0af0af)
-        .iconSet(SHINY)
+        .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister()
         .setFormula("NiAl2O4", true);
 
-    FeCrOCatalyst = builderISG("fecro_catalyst")
-        .langValue("Iron Chromium Oxide Catalyst")
+    FeCrOCatalyst = material("fe_cr_o", "Iron Chromium Oxide")
         .dust()
         .color(0x8C4517)
         .iconSet(SHINY)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister()
         .setFormula("FeCrO3", true);
 
@@ -683,10 +667,11 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("NaH");
 
-    DehydrogenationCatalyst = builderISG("dehydrogenation_catalyst")
+    DehydrogenationCatalyst = builderISG("dehydrogenation")
         .dust()
         .color(0x6464f5)
-        .iconSet(SHINY)
+        .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister()
         .setFormula("?");
 
@@ -816,10 +801,11 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("(C)C30H20", true);
 
-    NiAlCatalyst = builderISG("nickel_aluminium_catalyst")
+    NiAlCatalyst = builderISG("nickel_aluminium")
         .dust()
         .color(0x6ea2ff)
-        .iconSet(SHINY)
+        .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister()
         .setFormula("NiAl");
 
@@ -973,7 +959,8 @@ final class MetalProcessingCompoundMaterials {
     IronSulfate = builderISG("iron_sulfate")
         .dust()
         .color((GTMaterials.Iron.getMaterialRGB() + GTMaterials.Sulfur.getMaterialRGB()) / 2)
-        .iconSet(SHINY)
+        .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister()
         .setFormula("FeSO4", true);
 
@@ -1039,10 +1026,11 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("AlC9H7NO", true);
 
-    IronPlatinumCatalyst = builderISG("iron_platinum_catalyst")
+    IronPlatinumCatalyst = builderISG("iron_platinum")
         .dust()
         .color(GTMaterials.Iron.getMaterialRGB() / 2 + GTMaterials.Platinum.getMaterialRGB() / 2)
-        .iconSet(SHINY)
+        .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister()
         .setFormula("FePt");
 

@@ -274,9 +274,12 @@ public class ISGItems {
   public static final ItemEntry<Item> LOW_FREQUENCY_LASER = registerLang("low_frequency_laser", "Low frequency laser");
   public static final ItemEntry<Item> MEDIUM_FREQUENCY_LASER = registerLang("medium_frequency_laser", "Medium Frequency Laser");
   public static final ItemEntry<Item> HIGH_FREQUENCY_LASER  = registerLang("high_frequency_laser", "High Frequency Laser");
+  public static final ItemEntry<Item> UVA_HALIDE_LAMP = register("uva_halide_lamp");
   public static final ItemEntry<Item> RED_HALIDE_LAMP = register("red_halide_lamp");
   public static final ItemEntry<Item> GREEN_HALIDE_LAMP = register("green_halide_lamp");
   public static final ItemEntry<Item> BLUE_HALIDE_LAMP = register("blue_halide_lamp");
+
+  public static final ItemEntry<Item> ALUMINO_SILICATE_GLASS_TUBE = register("alumino_silicate_glass_tube");
 
   public static final ItemEntry<Item> LASER_COOLING_UNIT = register("laser_cooling_unit");
   public static final ItemEntry<Item> LASER_DIODE = register("laser_diode");
@@ -363,11 +366,15 @@ public class ISGItems {
   public static final ItemEntry<Item> SEPARATION_ELECTROMAGNET = register("separation_electromagnet");
   public static final ItemEntry<Item> MICROFOCUS_X_RAY_TUBE = register("microfocus_x_ray_tube");
 
+  public static final ItemEntry<Item> PROTONATED_FULLERENE_SIEVING_MATRIX = register("protonated_fullerene_sieving_matrix");
+  public static final ItemEntry<Item> SATURATED_FULLERENE_SIEVING_MATRIX = register("saturated_fullerene_sieving_matrix");
 
   public static final ItemEntry<Item> MICA_BASED_PULP = register("mica_based_pulp");
   public static final ItemEntry<Item> MICA_BASED_SHEET = register("mica_based_sheet");
   public static final ItemEntry<Item> MICA_INSULATOR_SHEET = register("mica_insulator_sheet");
   public static final ItemEntry<Item> MICA_INSULATOR_FOIL = register("mica_insulator_foil");
+
+  public static final ItemEntry<Item> COSMIC_FABRIC = register("cosmic_fabric");
 
   public static ItemEntry<SpaceArmorComponentItem> SPACE_NANOMUSCLE_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_nanomuscle_chestplate",
           (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR,

@@ -1,10 +1,12 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 
+import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHER;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
@@ -110,11 +112,13 @@ public class NaquadahLine {
         .setFormula("????");
 
     Adamantine = builderISG("adamantine")
-        .dust()
+        .ingot().fluid()
         .color(0xb7b7b7)
-        .iconSet(MaterialIconSet.DULL)
+        .blastTemp(14400, HIGHER)
+        .iconSet(MaterialIconSet.METALLIC)
         .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
         .components(Adamantium, 2, Oxygen, 3)
+        .cableProperties(GTValues.V[GTValues.UIV], 4, 128)
         .buildAndRegister()
         .setFormula("Ad2O3", true);
 
