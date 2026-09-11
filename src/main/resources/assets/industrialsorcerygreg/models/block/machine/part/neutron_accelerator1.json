@@ -1,0 +1,21 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "gtceu:block/overlay/front_emissive",
+  "textures": {
+    "overlay_emissive": "industrialsorcerygreg:block/overlay/machine/overlay_na"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 0],
+      "faces": {
+        "north": {
+          "uv": [0, 0, 16, 16],
+          "texture": "#overlay_emissive",
+          "cullface": "north",
+          "tintindex": 2
+        }
+      }
+    }
+  ]
+}

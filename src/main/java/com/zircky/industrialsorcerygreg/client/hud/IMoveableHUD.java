@@ -17,6 +17,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
@@ -96,7 +97,7 @@ public interface IMoveableHUD extends IGuiOverlay, GuiEventListener, Renderable 
 
     @SubscribeEvent
     public static void onGuiRender(ScreenEvent.Render.Post event) {
-      for (IMoveableHUD hud : activeHuds) {
+      for (IMoveableHUD hud : new ArrayList<>(activeHuds)) {
         if (hud.isEnabled()) {
           hud.render(event.getGuiGraphics(), event.getMouseX(), event.getMouseY(), event.getPartialTick());
         }
@@ -106,7 +107,7 @@ public interface IMoveableHUD extends IGuiOverlay, GuiEventListener, Renderable 
     @SubscribeEvent
     public static void onMouseClicked(ScreenEvent.MouseButtonPressed.Pre event) {
       boolean handled = false;
-      for (IMoveableHUD hud : activeHuds) {
+      for (IMoveableHUD hud : new ArrayList<>(activeHuds)) {
         if (hud.isEnabled() && !handled) {
           handled = hud.mouseClicked(event.getMouseX(), event.getMouseY(), event.getButton());
         }
@@ -117,7 +118,7 @@ public interface IMoveableHUD extends IGuiOverlay, GuiEventListener, Renderable 
     @SubscribeEvent
     public static void onMouseDragged(ScreenEvent.MouseDragged.Pre event) {
       boolean handled = false;
-      for (IMoveableHUD hud : activeHuds) {
+      for (IMoveableHUD hud : new ArrayList<>(activeHuds)) {
         if (hud.isEnabled() && !handled) {
           handled = hud.mouseDragged(event.getMouseX(), event.getMouseY(),
               event.getMouseButton(), event.getDragX(), event.getDragY());
@@ -129,7 +130,7 @@ public interface IMoveableHUD extends IGuiOverlay, GuiEventListener, Renderable 
     @SubscribeEvent
     public static void onMouseReleased(ScreenEvent.MouseButtonReleased.Pre event) {
       boolean handled = false;
-      for (IMoveableHUD hud : activeHuds) {
+      for (IMoveableHUD hud : new ArrayList<>(activeHuds)) {
         if (hud.isEnabled() && !handled) {
           handled = hud.mouseReleased(event.getMouseX(), event.getMouseY(), event.getButton());
         }

@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.OreProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
+import com.zircky.industrialsorcerygreg.common.data.ISGModifyMaterials;
 
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
@@ -34,15 +35,15 @@ public class ISGMaterialFlagAddition {
     oreProperty.getOreByProducts().clear();
     oreProperty.setOreByProducts(EnrichedNaquadahOxideMixture);
 
-    ISGMaterials.addOre(GTMaterials.NaquadahEnriched);
+    ISGModifyMaterials.addOre(GTMaterials.NaquadahEnriched);
     oreProperty = NaquadahEnriched.getProperty(PropertyKey.ORE);
     oreProperty.setOreByProducts(NaquadahOxideMixture, NaquadriaOxideMixture);
 
-    ISGMaterials.addOre(GTMaterials.Naquadria);
+    ISGModifyMaterials.addOre(GTMaterials.Naquadria);
     oreProperty = Naquadria.getProperty(PropertyKey.ORE);
     oreProperty.setOreByProducts(NaquadriaOxideMixture);
 
-    ISGMaterials.addOre(GTMaterials.Iridium);
+    ISGModifyMaterials.addOre(GTMaterials.Iridium);
     oreProperty = Iridium.getProperty(PropertyKey.ORE);
     oreProperty.setOreByProducts(PlatinumMetallicPowder, RarestMetalResidue, PlatinumMetallicPowder, RarestMetalResidue);
     oreProperty.setWashedIn(Mercury);

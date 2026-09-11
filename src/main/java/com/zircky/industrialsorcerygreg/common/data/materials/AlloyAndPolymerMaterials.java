@@ -1,6 +1,7 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
@@ -17,12 +18,13 @@ import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
-import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
-import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
+import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.INFINITY;
+import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
 
 public final class AlloyAndPolymerMaterials {
@@ -184,6 +186,13 @@ public final class AlloyAndPolymerMaterials {
         .components(GTMaterials.Lithium, 1, GTMaterials.Fluorine, 1)
         .buildAndRegister();
 
+    BerylliumFluoride = builderISG("beryllium_fluoride")
+        .ingot(2).fluid()
+        .color(Beryllium.getMaterialARGB() + Fluorine.getMaterialARGB())
+        .iconSet(SHINY)
+        .components(Beryllium, 1, GTMaterials.Fluorine, 1)
+        .buildAndRegister();
+
     LeadBismuthEutectic = builderISG("lead_bismuth_eutatic")
         .ingot(2).fluid()
         .color(0x757575)
@@ -195,10 +204,13 @@ public final class AlloyAndPolymerMaterials {
         .ingot(6).fluid()
         .color(0x9E706A)
         .iconSet(METALLIC)
-        .components(GTMaterials.StainlessSteel, 5, GTMaterials.TungstenCarbide, 5, GTMaterials.Nichrome, 5, GTMaterials.Bronze, 5, GTMaterials.IncoloyMA956, 5, GTMaterials.Iodine, 1, GTMaterials.Germanium, 1, GTMaterials.Radon, 1)
-        .flags(DISABLE_DECOMPOSITION)
-        .appendFlags(SNDART_FLAGS)
-        .blastTemp(9625)
+        .radioactiveHazard(10)
+        .blastTemp(10800, HIGHER, GTValues.VA[GTValues.UV], 1800)
+        .components(GTMaterials.StainlessSteel, 5,
+            GTMaterials.TungstenCarbide, 5, GTMaterials.Nichrome, 5, GTMaterials.Bronze, 5,
+            GTMaterials.IncoloyMA956, 5, GTMaterials.Iodine, 1, GTMaterials.Germanium, 1, GTMaterials.Radon, 1, GTMaterials.Hafnium, 1)
+        .appendFlags(SNDART_FLAGS, DISABLE_DECOMPOSITION)
+        .cableProperties(GTValues.V[GTValues.UHV], 4, 64)
         .buildAndRegister();
 
     ReactorSteel = builderISG("reactor_steel")
@@ -214,8 +226,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0x37bf7e)
         .iconSet(SHINY)
         .components(GTMaterials.VanadiumSteel, 4, GTMaterials.Osmiridium, 2, GTMaterials.Technetium, 3, GTMaterials.Germanium, 4, GTMaterials.Iridium, 7, GTMaterials.Duranium, 5, ISGMaterials.Californium252, 1)
-        .flags(DISABLE_DECOMPOSITION)
-        .appendFlags(SNDART_FLAGS)
+        .appendFlags(SNDART_FLAGS, DISABLE_DECOMPOSITION)
         .blastTemp(10000)
         .buildAndRegister();
 
@@ -224,8 +235,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0x403f3d)
         .iconSet(SHINY)
         .components(GTMaterials.NaquadahEnriched, 4, GTMaterials.Rhodium, 2, GTMaterials.Ruthenium, 2, GTMaterials.Dubnium, 1, GTMaterials.Rubidium, 2, ISGMaterials.Einsteinium255, 1)
-        .flags(DISABLE_DECOMPOSITION)
-        .appendFlags(SNDART_FLAGS)
+        .appendFlags(SNDART_FLAGS, DISABLE_DECOMPOSITION)
         .blastTemp(10000)
         .fluidPipeProperties(2200, 2500, true)
         .buildAndRegister();
@@ -234,9 +244,8 @@ public final class AlloyAndPolymerMaterials {
         .ingot(2).fluid()
         .color(0x6ba3e3)
         .iconSet(SHINY)
-        .components(GTMaterials.NaquadahAlloy, 10, GTMaterials.Rhenium, 5, GTMaterials.Naquadria, 4, GTMaterials.Gadolinium, 3, GTMaterials.Strontium, 2, GTMaterials.Polonium, 3, GTMaterials.Rutherfordium, 2, ISGMaterials.Fermium258, 1)
-        .flags(DISABLE_DECOMPOSITION)
-        .appendFlags(SNDART_FLAGS)
+        .components(GTMaterials.NaquadahAlloy, 10, Rhenium, 5, GTMaterials.Naquadria, 4, GTMaterials.Gadolinium, 3, GTMaterials.Strontium, 2, GTMaterials.Polonium, 3, GTMaterials.Rutherfordium, 2, ISGMaterials.Fermium258, 1)
+        .appendFlags(SNDART_FLAGS, DISABLE_DECOMPOSITION)
         .blastTemp(12000)
         .buildAndRegister();
 
@@ -245,13 +254,13 @@ public final class AlloyAndPolymerMaterials {
         .color(0xa5f564)
         .iconSet(SHINY)
         .components(ISGMaterials.HastelloyX78, 5, GTMaterials.NiobiumNitride, 2, GTMaterials.Tritanium, 4, GTMaterials.TungstenCarbide, 4, GTMaterials.Promethium, 4, ISGMaterials.Mendelevium261, 1)
-        .flags(DISABLE_DECOMPOSITION)
-        .appendFlags(SNDART_FLAGS)
+        .appendFlags(SNDART_FLAGS, DISABLE_DECOMPOSITION)
         .blastTemp(12100)
         .buildAndRegister();
 
     Polyetheretherketone = builderISG("polyetheretherketone")
-        .ingot(2).fluid()
+        .polymer(2)
+        .fluid()
         .color(0x403e37)
         .iconSet(DULL)
         .components(GTMaterials.Carbon, 20, GTMaterials.Hydrogen, 12, GTMaterials.Oxygen, 3)
@@ -259,7 +268,8 @@ public final class AlloyAndPolymerMaterials {
         .buildAndRegister();
 
     Zylon = builderISG("zylon")
-        .ingot(2).fluid()
+        .polymer(2)
+        .fluid()
         .color(0xFFE000)
         .iconSet(SHINY)
         .components(GTMaterials.Carbon, 14, GTMaterials.Hydrogen, 6, GTMaterials.Nitrogen, 2, GTMaterials.Oxygen, 2)
@@ -267,7 +277,8 @@ public final class AlloyAndPolymerMaterials {
         .buildAndRegister();
 
     FullerenePolymerMatrix = builderISG("fullerene_polymer_matrix")
-        .ingot(2).fluid()
+        .polymer(2)
+        .fluid()
         .color(0x403e37)
         .iconSet(DULL)
         .components(GTMaterials.Palladium, 1, GTMaterials.Iron, 1, GTMaterials.Carbon, 153, GTMaterials.Hydrogen, 36, GTMaterials.Nitrogen, 1, GTMaterials.Oxygen, 2)
@@ -279,7 +290,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0x2c2c2c)
         .iconSet(SHINY)
         .components(GTMaterials.Carbon, 1)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(DISABLE_DECOMPOSITION, GENERATE_PLATE, GENERATE_FINE_WIRE, GENERATE_FOIL)
         .buildAndRegister();
 
     BlackTitanium = builderISG("black_titanium")
@@ -304,9 +315,10 @@ public final class AlloyAndPolymerMaterials {
         .ingot(7).fluid()
         .color(0xAA0d0d)
         .iconSet(SHINY)
-        .components(ISGMaterials.TungstenTitaniumCarbide, 3, GTMaterials.Steel, 6) // Jasper
+        .components(TitaniumTungstenCarbide, 4, Plutonium241, 1, Einsteinium, 2, Rhenium, 1, Erbium, 1, Jasper, 3, UuAmplifier, 1)
         .flags(DISABLE_DECOMPOSITION)
-        .blastTemp(9200)
+        .blastTemp(12600, HIGHER, GTValues.VA[GTValues.UHV], 1200)
+        .cableProperties(GTValues.V[GTValues.UEV], 4, 64)
         .buildAndRegister();
 
     Inconel792 = builderISG("inconel_792")
@@ -379,7 +391,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0xfe71a9)
         .iconSet(SHINY)
         .components(GTMaterials.Lithium, 2, GTMaterials.Titanium, 1, GTMaterials.Oxygen, 3)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(GENERATE_FINE_WIRE, DISABLE_DECOMPOSITION)
         .blastTemp(2500)
         .buildAndRegister();
 
@@ -395,7 +407,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0x765A30)
         .iconSet(DULL)
         .components(GTMaterials.Copper, 1, GTMaterials.RareEarth, 1)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
     Polyurethane = builderISG("polyurethane")
@@ -411,7 +423,7 @@ public final class AlloyAndPolymerMaterials {
         .color(GTMaterials.Tungsten.getMaterialRGB())
         .iconSet(SHINY)
         .components(GTMaterials.Thorium, 1, GTMaterials.Tungsten, 9)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(GENERATE_FINE_WIRE, DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
     WoodsGlass = builderISG("woods_glass")
@@ -419,7 +431,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0x730099)
         .iconSet(SHINY)
         .components(GTMaterials.SiliconDioxide, 1, GTMaterials.Barium, 1, GTMaterials.Oxygen, 1, GTMaterials.Garnierite, 1, GTMaterials.SodaAsh, 1)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
     BariumTitanate = builderISG("barium_titanate")
@@ -457,7 +469,7 @@ public final class AlloyAndPolymerMaterials {
         .buildAndRegister();
 
     PEDOT = builderISG("pedot")
-        .ingot(5).fluid()
+        .polymer(5).fluid()
         .color(0x5cef20)
         .iconSet(DULL)
         .components(GTMaterials.Carbon, 6, GTMaterials.Hydrogen, 6, GTMaterials.Oxygen, 2, GTMaterials.Sulfur, 1)
@@ -489,11 +501,17 @@ public final class AlloyAndPolymerMaterials {
         .blastTemp(6700)
         .buildAndRegister();
 
-    HeavyQuarkDegenerateMatter = builderISG("heavy_quark_degenerate_matter")
-        .ingot(6).fluid()
-        .color(0x5dbd3a)
-        .iconSet(SHINY)
-        .blastTemp(13000)
+    HeavyQuarkDegenerateMatter = material("heavy_quark_degenerate_matter")
+        .ingot()
+        .fluid()
+        .plasma()
+        .radioactiveHazard(20)
+        .fluidPipeProperties(1000000, 1000000, true)
+        .element(ISGElement.HEAVY_QUARK_DEGENERATE_MATTER)
+        .blastTemp(178000, HIGHER)
+        .color(0x52a733)
+        .iconSet(BRIGHT)
+        .flags(GENERATE_PLATE, GENERATE_FINE_WIRE)
         .buildAndRegister();
 
     SuperheavyHAlloy = builderISG("superheavy_h_alloy")
@@ -521,6 +539,7 @@ public final class AlloyAndPolymerMaterials {
         .ingot(7).fluid()
         .color(0xeb9e3f)
         .iconSet(SHINY)
+        .flags(GENERATE_FRAME)
         .blastTemp(13100)
         .buildAndRegister();
 
@@ -528,7 +547,7 @@ public final class AlloyAndPolymerMaterials {
         .ingot(6).fluid()
         .color(0x3d4bf6)
         .iconSet(SHINY)
-        .components(GTMaterials.Hydrogen, 1, GTMaterials.Helium, 1, GTMaterials.Lithium, 1, GTMaterials.Beryllium, 1, GTMaterials.Boron, 1, GTMaterials.Carbon, 1, GTMaterials.Nitrogen, 1, GTMaterials.Oxygen, 1, GTMaterials.Fluorine, 1, GTMaterials.Neon, 1, GTMaterials.Sodium, 1, GTMaterials.Magnesium, 1, GTMaterials.Aluminium, 1, GTMaterials.Silicon, 1, GTMaterials.Phosphorus, 1, GTMaterials.Sulfur, 1, GTMaterials.Chlorine, 1, GTMaterials.Argon, 1, GTMaterials.Potassium, 1, GTMaterials.Calcium, 1, GTMaterials.Scandium, 1, GTMaterials.Titanium, 1, GTMaterials.Vanadium, 1, GTMaterials.Chromium, 1, GTMaterials.Manganese, 1, GTMaterials.Iron, 1, GTMaterials.Cobalt, 1, GTMaterials.Nickel, 1, GTMaterials.Copper, 1, GTMaterials.Zinc, 1, GTMaterials.Gallium, 1, GTMaterials.Germanium, 1, GTMaterials.Arsenic, 1, GTMaterials.Selenium, 1, GTMaterials.Bromine, 1, GTMaterials.Krypton, 1, GTMaterials.Rubidium, 1, GTMaterials.Strontium, 1, GTMaterials.Yttrium, 1, GTMaterials.Zirconium, 1, GTMaterials.Niobium, 1, GTMaterials.Molybdenum, 1, GTMaterials.Technetium, 1, GTMaterials.Ruthenium, 1, GTMaterials.Rhodium, 1, GTMaterials.Palladium, 1, GTMaterials.Silver, 1, GTMaterials.Cadmium, 1, GTMaterials.Indium, 1, GTMaterials.Tin, 1, GTMaterials.Antimony, 1, GTMaterials.Tellurium, 1, GTMaterials.Iodine, 1, GTMaterials.Xenon, 1, GTMaterials.Caesium, 1, GTMaterials.Barium, 1, GTMaterials.Lanthanum, 1, GTMaterials.Cerium, 1, GTMaterials.Praseodymium, 1, GTMaterials.Neodymium, 1, GTMaterials.Promethium, 1, GTMaterials.Samarium, 1, GTMaterials.Europium, 1, GTMaterials.Gadolinium, 1, GTMaterials.Terbium, 1, GTMaterials.Dysprosium, 1, GTMaterials.Holmium, 1, GTMaterials.Erbium, 1, GTMaterials.Thulium, 1, GTMaterials.Ytterbium, 1, GTMaterials.Lutetium, 1, GTMaterials.Hafnium, 1, GTMaterials.Tantalum, 1, GTMaterials.Tungsten, 1, GTMaterials.Rhenium, 1, GTMaterials.Osmium, 1, GTMaterials.Iridium, 1, GTMaterials.Platinum, 1, GTMaterials.Gold, 1, GTMaterials.Mercury, 1, GTMaterials.Thallium, 1, GTMaterials.Lead, 1, GTMaterials.Bismuth, 1, GTMaterials.Polonium, 1, GTMaterials.Astatine, 1, GTMaterials.Radon, 1, GTMaterials.Francium, 1, GTMaterials.Radium, 1, GTMaterials.Actinium, 1, GTMaterials.Thorium, 1, GTMaterials.Protactinium, 1, GTMaterials.Uranium238, 1, GTMaterials.Neptunium, 1, GTMaterials.Plutonium241, 1, GTMaterials.Americium, 1, GTMaterials.Curium, 1, GTMaterials.Berkelium, 1, GTMaterials.Californium, 1, GTMaterials.Einsteinium, 1, GTMaterials.Fermium, 1, GTMaterials.Mendelevium, 1, GTMaterials.Rutherfordium, 1, GTMaterials.Dubnium, 1, GTMaterials.Seaborgium, 1, GTMaterials.Bohrium, 1, ISGMaterials.MetastableHassium, 1, GTMaterials.Meitnerium, 1, GTMaterials.Roentgenium, 1, GTMaterials.Copernicium, 1, GTMaterials.Nihonium, 1, ISGMaterials.MetastableFlerovium, 1, GTMaterials.Moscovium, 1, GTMaterials.Livermorium, 1, GTMaterials.Tennessine, 1, ISGMaterials.MetastableOganesson, 1)
+        .components(GTMaterials.Hydrogen, 1, GTMaterials.Helium, 1, GTMaterials.Lithium, 1, GTMaterials.Beryllium, 1, GTMaterials.Boron, 1, GTMaterials.Carbon, 1, GTMaterials.Nitrogen, 1, GTMaterials.Oxygen, 1, GTMaterials.Fluorine, 1, GTMaterials.Neon, 1, GTMaterials.Sodium, 1, GTMaterials.Magnesium, 1, GTMaterials.Aluminium, 1, GTMaterials.Silicon, 1, GTMaterials.Phosphorus, 1, GTMaterials.Sulfur, 1, GTMaterials.Chlorine, 1, GTMaterials.Argon, 1, GTMaterials.Potassium, 1, GTMaterials.Calcium, 1, GTMaterials.Scandium, 1, GTMaterials.Titanium, 1, GTMaterials.Vanadium, 1, GTMaterials.Chromium, 1, GTMaterials.Manganese, 1, GTMaterials.Iron, 1, GTMaterials.Cobalt, 1, GTMaterials.Nickel, 1, GTMaterials.Copper, 1, GTMaterials.Zinc, 1, GTMaterials.Gallium, 1, GTMaterials.Germanium, 1, GTMaterials.Arsenic, 1, GTMaterials.Selenium, 1, GTMaterials.Bromine, 1, GTMaterials.Krypton, 1, GTMaterials.Rubidium, 1, GTMaterials.Strontium, 1, GTMaterials.Yttrium, 1, GTMaterials.Zirconium, 1, GTMaterials.Niobium, 1, GTMaterials.Molybdenum, 1, GTMaterials.Technetium, 1, GTMaterials.Ruthenium, 1, GTMaterials.Rhodium, 1, GTMaterials.Palladium, 1, GTMaterials.Silver, 1, GTMaterials.Cadmium, 1, GTMaterials.Indium, 1, GTMaterials.Tin, 1, GTMaterials.Antimony, 1, GTMaterials.Tellurium, 1, GTMaterials.Iodine, 1, GTMaterials.Xenon, 1, GTMaterials.Caesium, 1, GTMaterials.Barium, 1, GTMaterials.Lanthanum, 1, GTMaterials.Cerium, 1, GTMaterials.Praseodymium, 1, GTMaterials.Neodymium, 1, GTMaterials.Promethium, 1, GTMaterials.Samarium, 1, GTMaterials.Europium, 1, GTMaterials.Gadolinium, 1, GTMaterials.Terbium, 1, GTMaterials.Dysprosium, 1, GTMaterials.Holmium, 1, Erbium, 1, GTMaterials.Thulium, 1, GTMaterials.Ytterbium, 1, GTMaterials.Lutetium, 1, GTMaterials.Hafnium, 1, GTMaterials.Tantalum, 1, GTMaterials.Tungsten, 1, Rhenium, 1, GTMaterials.Osmium, 1, GTMaterials.Iridium, 1, GTMaterials.Platinum, 1, GTMaterials.Gold, 1, GTMaterials.Mercury, 1, GTMaterials.Thallium, 1, GTMaterials.Lead, 1, GTMaterials.Bismuth, 1, GTMaterials.Polonium, 1, GTMaterials.Astatine, 1, GTMaterials.Radon, 1, GTMaterials.Francium, 1, GTMaterials.Radium, 1, GTMaterials.Actinium, 1, GTMaterials.Thorium, 1, GTMaterials.Protactinium, 1, GTMaterials.Uranium238, 1, GTMaterials.Neptunium, 1, GTMaterials.Plutonium241, 1, GTMaterials.Americium, 1, GTMaterials.Curium, 1, GTMaterials.Berkelium, 1, GTMaterials.Californium, 1, Einsteinium, 1, GTMaterials.Fermium, 1, GTMaterials.Mendelevium, 1, GTMaterials.Rutherfordium, 1, GTMaterials.Dubnium, 1, GTMaterials.Seaborgium, 1, GTMaterials.Bohrium, 1, ISGMaterials.MetastableHassium, 1, GTMaterials.Meitnerium, 1, GTMaterials.Roentgenium, 1, GTMaterials.Copernicium, 1, GTMaterials.Nihonium, 1, ISGMaterials.MetastableFlerovium, 1, GTMaterials.Moscovium, 1, GTMaterials.Livermorium, 1, GTMaterials.Tennessine, 1, ISGMaterials.MetastableOganesson, 1)
         .flags(DISABLE_DECOMPOSITION)
         .blastTemp(13500)
         .buildAndRegister();
@@ -540,21 +559,38 @@ public final class AlloyAndPolymerMaterials {
         .radioactiveHazard(50)
         .components(GTMaterials.Neutronium, 1)
         .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_SPRING, GENERATE_FINE_WIRE,
-            GENERATE_SPRING_SMALL)
+            GENERATE_SPRING_SMALL, GENERATE_PLATE)
         .blastTemp(14100, HIGHEST, GTValues.VA[GTValues.UIV], ISGValues.HOURS * 6)
         .cableProperties(Integer.MAX_VALUE, 2, 128)
         .buildAndRegister();
 
-    NaquadriaticTaranium = builderISG("naquadriatic_taranium")
+    ChromeYellow = material("chrome_yellow")
+        .dust()
+        .color(0xffff00)
+        .iconSet(DULL)
+        .buildAndRegister()
+        .setFormula("PbCrO4");
+
+    ChromeOrange = material("chrome_orange")
+        .dust()
+        .color(0xff6600)
+        .iconSet(DULL)
+        .buildAndRegister()
+        .setFormula("Pb2CrO5");
+
+
+    NaquadriaticTaranium = builderISG("naquadriatictaranium")
         .ingot(1).fluid()
         .color((GTMaterials.Naquadria.getMaterialRGB() + ISGMaterials.Taranium.getMaterialRGB()) / 2)
-        .iconSet(SHINY)
+        .iconSet(RADIOACTIVE)
         .components(GTMaterials.Naquadria, 1, ISGMaterials.Taranium, 1)
-        .blastTemp(11200, HIGHEST)
+        .blastTemp(16200, HIGHEST, GTValues.VA[GTValues.UXV], 1400)
+        .appendFlags(SNDART_FLAGS, DISABLE_DECOMPOSITION)
+        .cableProperties(GTValues.V[GTValues.UXV], 4, 128)
         .buildAndRegister();
 
     Polyimide = builderISG("polyimide")
-        .ingot(1).fluid()
+        .polymer(1).fluid()
         .color(0xFF7F50)
         .iconSet(DULL)
         .components(GTMaterials.Carbon, 22, GTMaterials.Hydrogen, 12, GTMaterials.Nitrogen, 2, GTMaterials.Oxygen, 6)
@@ -568,6 +604,15 @@ public final class AlloyAndPolymerMaterials {
         .components(GTMaterials.Carbon, 5, GTMaterials.Fluorine, 10)
         .flags(DISABLE_DECOMPOSITION)
         .buildAndRegister();
+
+    Polystyrene = builderISG("polystyrene")
+        .polymer(1).fluid()
+        .color(0x8945785)
+        .iconSet(DULL)
+        .components(GTMaterials.Carbon, 8, GTMaterials.Hydrogen, 8)
+        .flags(DISABLE_DECOMPOSITION, GENERATE_FOIL, GENERATE_PLATE)
+        .buildAndRegister();
+
 
   }
 }

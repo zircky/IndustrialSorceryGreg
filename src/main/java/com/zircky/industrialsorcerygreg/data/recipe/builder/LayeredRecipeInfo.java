@@ -290,7 +290,7 @@ public record LayeredRecipeInfo(List<Layer> layers, Map<RecipeCapability<?>, Int
     }
 
     public Builder inputItems(TagPrefix tagPrefix, @NotNull Material material, int count) {
-      if (tagPrefix.isEmpty() || material.isNull()) {
+      if (tagPrefix == null || material == null) {
         GTCEu.LOGGER.error(
             "Tried to set input item stack that doesn't exist, id: {}, TagPrefix: {}, Material: {}, Count: {}",
             recipeBuilder.id, tagPrefix, material, count);
@@ -304,7 +304,7 @@ public record LayeredRecipeInfo(List<Layer> layers, Map<RecipeCapability<?>, Int
         return inputItems(tag, count);
       } else {
         var item = ChemicalHelper.get(tagPrefix, material, count);
-        if (item.isEmpty()) {
+        if (item == null) {
           GTCEu.LOGGER.error(
               "Tried to set input item stack that doesn't exist, id: {}, TagPrefix: {}, Material: {}, Count: {}",
               recipeBuilder.id, tagPrefix, material, count);
@@ -437,7 +437,7 @@ public record LayeredRecipeInfo(List<Layer> layers, Map<RecipeCapability<?>, Int
         return this;
       }
       var matStack = ChemicalHelper.getMaterial(input.getFluid());
-      if (!matStack.isNull() && chance != 0 && chance == maxChance) {
+      if (matStack != null && chance != 0 && chance == maxChance) {
         tempFluidStacks.add(new MaterialStack(matStack, input.getAmount() * GTValues.M / GTValues.L));
       }
       return input(FluidRecipeCapability.CAP, FluidIngredient.of(
@@ -453,7 +453,7 @@ public record LayeredRecipeInfo(List<Layer> layers, Map<RecipeCapability<?>, Int
           return this;
         } else {
           var matStack = ChemicalHelper.getMaterial(fluid.getFluid());
-          if (!matStack.isNull()) {
+          if (matStack != null) {
             if (chance == maxChance && chance != 0) {
               tempFluidStacks
                   .add(new MaterialStack(matStack, fluid.getAmount() * GTValues.M / GTValues.L));

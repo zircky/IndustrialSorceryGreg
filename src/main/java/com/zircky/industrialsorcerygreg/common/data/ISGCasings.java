@@ -5,150 +5,145 @@ import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.block.ActiveBlock;
 import com.gregtechceu.gtceu.common.block.CoilBlock;
 import com.gregtechceu.gtceu.common.block.FusionCasingBlock;
-import com.gregtechceu.gtceu.common.data.models.GTModels;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.zircky.industrialsorcerygreg.ISGCore;
+import com.zircky.industrialsorcerygreg.api.ISGValues;
 import com.zircky.industrialsorcerygreg.common.block.CoilType;
 import com.zircky.industrialsorcerygreg.common.block.FusionCasings;
+import com.zircky.industrialsorcerygreg.common.block.components.*;
 import com.zircky.industrialsorcerygreg.common.data.models.ISGModels;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.GlassBlock;
+import org.apache.commons.lang3.StringUtils;
 
-import java.util.Locale;
-import java.util.function.Supplier;
-
-import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.zircky.industrialsorcerygreg.api.registries.ISGRegistries.REGISTRATE;
 import static com.zircky.industrialsorcerygreg.common.block.BlockMap.CALMAP;
 import static com.zircky.industrialsorcerygreg.utils.register.BlockRegisterUtils.*;
 
 public class ISGCasings {
 
-  public static final BlockEntry<Block> MOTOR_LV = createComponentCasingBlock("Motor", LV);
-  public static final BlockEntry<Block> MOTOR_MV = createComponentCasingBlock("Motor", MV);
-  public static final BlockEntry<Block> MOTOR_HV = createComponentCasingBlock("Motor", HV);
-  public static final BlockEntry<Block> MOTOR_EV = createComponentCasingBlock("Motor", EV);
-  public static final BlockEntry<Block> MOTOR_IV = createComponentCasingBlock("Motor", IV);
-  public static final BlockEntry<Block> MOTOR_LuV = createComponentCasingBlock("Motor", LuV);
-  public static final BlockEntry<Block> MOTOR_ZPM = createComponentCasingBlock("Motor", ZPM);
-  public static final BlockEntry<Block> MOTOR_UV = createComponentCasingBlock("Motor", UV);
-  public static final BlockEntry<Block> MOTOR_UHV = createComponentCasingBlock("Motor", UHV);
-  public static final BlockEntry<Block> MOTOR_UEV = createComponentCasingBlock("Motor", UEV);
-  public static final BlockEntry<Block> MOTOR_UIV = createComponentCasingBlock("Motor", UIV);
-  public static final BlockEntry<Block> MOTOR_UXV = createComponentCasingBlock("Motor", UXV);
-  public static final BlockEntry<Block> MOTOR_OpV = createComponentCasingBlock("Motor", OpV);
-  public static final BlockEntry<Block> MOTOR_MAX = createComponentCasingBlock("Motor", MAX);
+  public static final BlockEntry<Block> MOTOR_LV = createComponentMotorCasing(MotorCasingType.MOTOR_LV);
+  public static final BlockEntry<Block> MOTOR_MV = createComponentMotorCasing(MotorCasingType.MOTOR_MV);
+  public static final BlockEntry<Block> MOTOR_HV = createComponentMotorCasing(MotorCasingType.MOTOR_HV);
+  public static final BlockEntry<Block> MOTOR_EV = createComponentMotorCasing(MotorCasingType.MOTOR_EV);
+  public static final BlockEntry<Block> MOTOR_IV = createComponentMotorCasing(MotorCasingType.MOTOR_IV);
+  public static final BlockEntry<Block> MOTOR_LuV = createComponentMotorCasing(MotorCasingType.MOTOR_LUV);
+  public static final BlockEntry<Block> MOTOR_ZPM = createComponentMotorCasing(MotorCasingType.MOTOR_ZPM);
+  public static final BlockEntry<Block> MOTOR_UV = createComponentMotorCasing(MotorCasingType.MOTOR_UV);
+  public static final BlockEntry<Block> MOTOR_UHV = createComponentMotorCasing(MotorCasingType.MOTOR_UHV);
+  public static final BlockEntry<Block> MOTOR_UEV = createComponentMotorCasing(MotorCasingType.MOTOR_UEV);
+  public static final BlockEntry<Block> MOTOR_UIV = createComponentMotorCasing(MotorCasingType.MOTOR_UIV);
+  public static final BlockEntry<Block> MOTOR_UXV = createComponentMotorCasing(MotorCasingType.MOTOR_UXV);
+  public static final BlockEntry<Block> MOTOR_OpV = createComponentMotorCasing(MotorCasingType.MOTOR_OPV);
+  public static final BlockEntry<Block> MOTOR_MAX = createComponentMotorCasing(MotorCasingType.MOTOR_MAX);
 
-  public static final BlockEntry<Block> CONVEYOR_LV = createComponentCasingBlock("Conveyor", LV);
-  public static final BlockEntry<Block> CONVEYOR_MV = createComponentCasingBlock("Conveyor", MV);
-  public static final BlockEntry<Block> CONVEYOR_HV = createComponentCasingBlock("Conveyor", HV);
-  public static final BlockEntry<Block> CONVEYOR_EV = createComponentCasingBlock("Conveyor", EV);
-  public static final BlockEntry<Block> CONVEYOR_IV = createComponentCasingBlock("Conveyor", IV);
-  public static final BlockEntry<Block> CONVEYOR_LuV = createComponentCasingBlock("Conveyor", LuV);
-  public static final BlockEntry<Block> CONVEYOR_ZPM = createComponentCasingBlock("Conveyor", ZPM);
-  public static final BlockEntry<Block> CONVEYOR_UV = createComponentCasingBlock("Conveyor", UV);
-  public static final BlockEntry<Block> CONVEYOR_UHV = createComponentCasingBlock("Conveyor", UHV);
-  public static final BlockEntry<Block> CONVEYOR_UEV = createComponentCasingBlock("Conveyor", UEV);
-  public static final BlockEntry<Block> CONVEYOR_UIV = createComponentCasingBlock("Conveyor", UIV);
-  public static final BlockEntry<Block> CONVEYOR_UXV = createComponentCasingBlock("Conveyor", UXV);
-  public static final BlockEntry<Block> CONVEYOR_OpV = createComponentCasingBlock("Conveyor", OpV);
-  public static final BlockEntry<Block> CONVEYOR_MAX = createComponentCasingBlock("Conveyor", MAX);
+  public static final BlockEntry<Block> CONVEYOR_LV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_LV);
+  public static final BlockEntry<Block> CONVEYOR_MV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_MV);
+  public static final BlockEntry<Block> CONVEYOR_HV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_HV);
+  public static final BlockEntry<Block> CONVEYOR_EV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_EV);
+  public static final BlockEntry<Block> CONVEYOR_IV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_IV);
+  public static final BlockEntry<Block> CONVEYOR_LuV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_LUV);
+  public static final BlockEntry<Block> CONVEYOR_ZPM = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_ZPM);
+  public static final BlockEntry<Block> CONVEYOR_UV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_UV);
+  public static final BlockEntry<Block> CONVEYOR_UHV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_UHV);
+  public static final BlockEntry<Block> CONVEYOR_UEV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_UEV);
+  public static final BlockEntry<Block> CONVEYOR_UIV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_UIV);
+  public static final BlockEntry<Block> CONVEYOR_UXV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_UXV);
+  public static final BlockEntry<Block> CONVEYOR_OpV = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_OPV);
+  public static final BlockEntry<Block> CONVEYOR_MAX = createComponentConveyorCasing(ConveyorCasingType.CONVEYOR_MAX);
 
-  public static final BlockEntry<Block> EMITTER_LV = createComponentCasingBlock("Emitter", LV);
-  public static final BlockEntry<Block> EMITTER_MV = createComponentCasingBlock("Emitter", MV);
-  public static final BlockEntry<Block> EMITTER_HV = createComponentCasingBlock("Emitter", HV);
-  public static final BlockEntry<Block> EMITTER_EV = createComponentCasingBlock("Emitter", EV);
-  public static final BlockEntry<Block> EMITTER_IV = createComponentCasingBlock("Emitter", IV);
-  public static final BlockEntry<Block> EMITTER_LuV = createComponentCasingBlock("Emitter", LuV);
-  public static final BlockEntry<Block> EMITTER_ZPM = createComponentCasingBlock("Emitter", ZPM);
-  public static final BlockEntry<Block> EMITTER_UV = createComponentCasingBlock("Emitter", UV);
-  public static final BlockEntry<Block> EMITTER_UHV = createComponentCasingBlock("Emitter", UHV);
-  public static final BlockEntry<Block> EMITTER_UEV = createComponentCasingBlock("Emitter", UEV);
-  public static final BlockEntry<Block> EMITTER_UIV = createComponentCasingBlock("Emitter", UIV);
-  public static final BlockEntry<Block> EMITTER_UXV = createComponentCasingBlock("Emitter", UXV);
-  public static final BlockEntry<Block> EMITTER_OpV = createComponentCasingBlock("Emitter", OpV);
-  public static final BlockEntry<Block> EMITTER_MAX = createComponentCasingBlock("Emitter", MAX);
+  public static final BlockEntry<Block> EMITTER_LV = createComponentEmitterCasing(EmitterCasingType.EMITTER_LV);
+  public static final BlockEntry<Block> EMITTER_MV = createComponentEmitterCasing(EmitterCasingType.EMITTER_MV);
+  public static final BlockEntry<Block> EMITTER_HV = createComponentEmitterCasing(EmitterCasingType.EMITTER_HV);
+  public static final BlockEntry<Block> EMITTER_EV = createComponentEmitterCasing(EmitterCasingType.EMITTER_EV);
+  public static final BlockEntry<Block> EMITTER_IV = createComponentEmitterCasing(EmitterCasingType.EMITTER_IV);
+  public static final BlockEntry<Block> EMITTER_LuV = createComponentEmitterCasing(EmitterCasingType.EMITTER_LUV);
+  public static final BlockEntry<Block> EMITTER_ZPM = createComponentEmitterCasing(EmitterCasingType.EMITTER_ZPM);
+  public static final BlockEntry<Block> EMITTER_UV = createComponentEmitterCasing(EmitterCasingType.EMITTER_UV);
+  public static final BlockEntry<Block> EMITTER_UHV = createComponentEmitterCasing(EmitterCasingType.EMITTER_UHV);
+  public static final BlockEntry<Block> EMITTER_UEV = createComponentEmitterCasing(EmitterCasingType.EMITTER_UEV);
+  public static final BlockEntry<Block> EMITTER_UIV = createComponentEmitterCasing(EmitterCasingType.EMITTER_UIV);
+  public static final BlockEntry<Block> EMITTER_UXV = createComponentEmitterCasing(EmitterCasingType.EMITTER_UXV);
+  public static final BlockEntry<Block> EMITTER_OpV = createComponentEmitterCasing(EmitterCasingType.EMITTER_OPV);
+  public static final BlockEntry<Block> EMITTER_MAX = createComponentEmitterCasing(EmitterCasingType.EMITTER_MAX);
 
-  public static final BlockEntry<Block> FIELD_GENERATOR_LV = createComponentCasingBlock("Field_generator", LV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_MV = createComponentCasingBlock("Field_generator", MV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_HV = createComponentCasingBlock("Field_generator", HV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_EV = createComponentCasingBlock("Field_generator", EV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_IV = createComponentCasingBlock("Field_generator", IV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_LuV = createComponentCasingBlock("Field_generator", LuV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_ZPM = createComponentCasingBlock("Field_generator", ZPM);
-  public static final BlockEntry<Block> FIELD_GENERATOR_UV = createComponentCasingBlock("Field_generator", UV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_UHV = createComponentCasingBlock("Field_generator", UHV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_UEV = createComponentCasingBlock("Field_generator", UEV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_UIV = createComponentCasingBlock("Field_generator", UIV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_UXV = createComponentCasingBlock("Field_generator", UXV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_OpV = createComponentCasingBlock("Field_generator", OpV);
-  public static final BlockEntry<Block> FIELD_GENERATOR_MAX = createComponentCasingBlock("Field_generator", MAX);
+  public static final BlockEntry<Block> FIELD_GENERATOR_LV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_LV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_MV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_MV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_HV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_HV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_EV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_EV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_IV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_IV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_LuV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_LUV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_ZPM = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_ZPM);
+  public static final BlockEntry<Block> FIELD_GENERATOR_UV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_UV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_UHV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_UHV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_UEV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_UEV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_UIV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_UIV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_UXV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_UXV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_OpV = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_OPV);
+  public static final BlockEntry<Block> FIELD_GENERATOR_MAX = createComponentFieldGeneratorCasing(FieldGeneratorCasingType.FIELD_GENERATOR_MAX);
 
-  public static final BlockEntry<Block> PISTON_LV = createComponentCasingBlock("Piston", LV);
-  public static final BlockEntry<Block> PISTON_MV = createComponentCasingBlock("Piston", MV);
-  public static final BlockEntry<Block> PISTON_HV = createComponentCasingBlock("Piston", HV);
-  public static final BlockEntry<Block> PISTON_EV = createComponentCasingBlock("Piston", EV);
-  public static final BlockEntry<Block> PISTON_IV = createComponentCasingBlock("Piston", IV);
-  public static final BlockEntry<Block> PISTON_LuV = createComponentCasingBlock("Piston", LuV);
-  public static final BlockEntry<Block> PISTON_ZPM = createComponentCasingBlock("Piston", ZPM);
-  public static final BlockEntry<Block> PISTON_UV = createComponentCasingBlock("Piston", UV);
-  public static final BlockEntry<Block> PISTON_UHV = createComponentCasingBlock("Piston", UHV);
-  public static final BlockEntry<Block> PISTON_UEV = createComponentCasingBlock("Piston", UEV);
-  public static final BlockEntry<Block> PISTON_UIV = createComponentCasingBlock("Piston", UIV);
-  public static final BlockEntry<Block> PISTON_UXV = createComponentCasingBlock("Piston", UXV);
-  public static final BlockEntry<Block> PISTON_OpV = createComponentCasingBlock("Piston", OpV);
-  public static final BlockEntry<Block> PISTON_MAX = createComponentCasingBlock("Piston", MAX);
+  public static final BlockEntry<Block> PISTON_LV = createComponentPistonCasing(PistonCasingType.PISTON_LV);
+  public static final BlockEntry<Block> PISTON_MV = createComponentPistonCasing(PistonCasingType.PISTON_MV);
+  public static final BlockEntry<Block> PISTON_HV = createComponentPistonCasing(PistonCasingType.PISTON_HV);
+  public static final BlockEntry<Block> PISTON_EV = createComponentPistonCasing(PistonCasingType.PISTON_EV);
+  public static final BlockEntry<Block> PISTON_IV = createComponentPistonCasing(PistonCasingType.PISTON_IV);
+  public static final BlockEntry<Block> PISTON_LuV = createComponentPistonCasing(PistonCasingType.PISTON_LUV);
+  public static final BlockEntry<Block> PISTON_ZPM = createComponentPistonCasing(PistonCasingType.PISTON_ZPM);
+  public static final BlockEntry<Block> PISTON_UV = createComponentPistonCasing(PistonCasingType.PISTON_UV);
+  public static final BlockEntry<Block> PISTON_UHV = createComponentPistonCasing(PistonCasingType.PISTON_UHV);
+  public static final BlockEntry<Block> PISTON_UEV = createComponentPistonCasing(PistonCasingType.PISTON_UEV);
+  public static final BlockEntry<Block> PISTON_UIV = createComponentPistonCasing(PistonCasingType.PISTON_UIV);
+  public static final BlockEntry<Block> PISTON_UXV = createComponentPistonCasing(PistonCasingType.PISTON_UXV);
+  public static final BlockEntry<Block> PISTON_OpV = createComponentPistonCasing(PistonCasingType.PISTON_OPV);
+  public static final BlockEntry<Block> PISTON_MAX = createComponentPistonCasing(PistonCasingType.PISTON_MAX);
 
-  public static final BlockEntry<Block> PUMP_LV = createComponentCasingBlock("Pump", LV);
-  public static final BlockEntry<Block> PUMP_MV = createComponentCasingBlock("Pump", MV);
-  public static final BlockEntry<Block> PUMP_HV = createComponentCasingBlock("Pump", HV);
-  public static final BlockEntry<Block> PUMP_EV = createComponentCasingBlock("Pump", EV);
-  public static final BlockEntry<Block> PUMP_IV = createComponentCasingBlock("Pump", IV);
-  public static final BlockEntry<Block> PUMP_LuV = createComponentCasingBlock("Pump", LuV);
-  public static final BlockEntry<Block> PUMP_ZPM = createComponentCasingBlock("Pump", ZPM);
-  public static final BlockEntry<Block> PUMP_UV = createComponentCasingBlock("Pump", UV);
-  public static final BlockEntry<Block> PUMP_UHV = createComponentCasingBlock("Pump", UHV);
-  public static final BlockEntry<Block> PUMP_UEV = createComponentCasingBlock("Pump", UEV);
-  public static final BlockEntry<Block> PUMP_UIV = createComponentCasingBlock("Pump", UIV);
-  public static final BlockEntry<Block> PUMP_UXV = createComponentCasingBlock("Pump", UXV);
-  public static final BlockEntry<Block> PUMP_OpV = createComponentCasingBlock("Pump", OpV);
-  public static final BlockEntry<Block> PUMP_MAX = createComponentCasingBlock("Pump", MAX);
+  public static final BlockEntry<Block> PUMP_LV = createComponentPumpCasing(PumpCasingType.PUMP_LV);
+  public static final BlockEntry<Block> PUMP_MV = createComponentPumpCasing(PumpCasingType.PUMP_MV);
+  public static final BlockEntry<Block> PUMP_HV = createComponentPumpCasing(PumpCasingType.PUMP_HV);
+  public static final BlockEntry<Block> PUMP_EV = createComponentPumpCasing(PumpCasingType.PUMP_EV);
+  public static final BlockEntry<Block> PUMP_IV = createComponentPumpCasing(PumpCasingType.PUMP_IV);
+  public static final BlockEntry<Block> PUMP_LuV = createComponentPumpCasing(PumpCasingType.PUMP_LUV);
+  public static final BlockEntry<Block> PUMP_ZPM = createComponentPumpCasing(PumpCasingType.PUMP_ZPM);
+  public static final BlockEntry<Block> PUMP_UV = createComponentPumpCasing(PumpCasingType.PUMP_UV);
+  public static final BlockEntry<Block> PUMP_UHV = createComponentPumpCasing(PumpCasingType.PUMP_UHV);
+  public static final BlockEntry<Block> PUMP_UEV = createComponentPumpCasing(PumpCasingType.PUMP_UEV);
+  public static final BlockEntry<Block> PUMP_UIV = createComponentPumpCasing(PumpCasingType.PUMP_UIV);
+  public static final BlockEntry<Block> PUMP_UXV = createComponentPumpCasing(PumpCasingType.PUMP_UXV);
+  public static final BlockEntry<Block> PUMP_OpV = createComponentPumpCasing(PumpCasingType.PUMP_OPV);
+  public static final BlockEntry<Block> PUMP_MAX = createComponentPumpCasing(PumpCasingType.PUMP_MAX);
 
-  public static final BlockEntry<Block> ROBOT_ARM_LV = createComponentCasingBlock("Robot_arm", LV);
-  public static final BlockEntry<Block> ROBOT_ARM_MV = createComponentCasingBlock("Robot_arm", MV);
-  public static final BlockEntry<Block> ROBOT_ARM_HV = createComponentCasingBlock("Robot_arm", HV);
-  public static final BlockEntry<Block> ROBOT_ARM_EV = createComponentCasingBlock("Robot_arm", EV);
-  public static final BlockEntry<Block> ROBOT_ARM_IV = createComponentCasingBlock("Robot_arm", IV);
-  public static final BlockEntry<Block> ROBOT_ARM_LuV = createComponentCasingBlock("Robot_arm", LuV);
-  public static final BlockEntry<Block> ROBOT_ARM_ZPM = createComponentCasingBlock("Robot_arm", ZPM);
-  public static final BlockEntry<Block> ROBOT_ARM_UV = createComponentCasingBlock("Robot_arm", UV);
-  public static final BlockEntry<Block> ROBOT_ARM_UHV = createComponentCasingBlock("Robot_arm", UHV);
-  public static final BlockEntry<Block> ROBOT_ARM_UEV = createComponentCasingBlock("Robot_arm", UEV);
-  public static final BlockEntry<Block> ROBOT_ARM_UIV = createComponentCasingBlock("Robot_arm", UIV);
-  public static final BlockEntry<Block> ROBOT_ARM_UXV = createComponentCasingBlock("Robot_arm", UXV);
-  public static final BlockEntry<Block> ROBOT_ARM_OpV = createComponentCasingBlock("Robot_arm", OpV);
-  public static final BlockEntry<Block> ROBOT_ARM_MAX = createComponentCasingBlock("Robot_arm", MAX);
+  public static final BlockEntry<Block> ROBOT_ARM_LV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_LV);
+  public static final BlockEntry<Block> ROBOT_ARM_MV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_MV);
+  public static final BlockEntry<Block> ROBOT_ARM_HV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_HV);
+  public static final BlockEntry<Block> ROBOT_ARM_EV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_EV);
+  public static final BlockEntry<Block> ROBOT_ARM_IV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_IV);
+  public static final BlockEntry<Block> ROBOT_ARM_LuV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_LUV);
+  public static final BlockEntry<Block> ROBOT_ARM_ZPM = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_ZPM);
+  public static final BlockEntry<Block> ROBOT_ARM_UV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_UV);
+  public static final BlockEntry<Block> ROBOT_ARM_UHV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_UHV);
+  public static final BlockEntry<Block> ROBOT_ARM_UEV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_UEV);
+  public static final BlockEntry<Block> ROBOT_ARM_UIV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_UIV);
+  public static final BlockEntry<Block> ROBOT_ARM_UXV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_UXV);
+  public static final BlockEntry<Block> ROBOT_ARM_OpV = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_OPV);
+  public static final BlockEntry<Block> ROBOT_ARM_MAX = createComponentRobotArmCasing(RobotArmCasingType.ROBOT_ARM_MAX);
 
-  public static final BlockEntry<Block> SENSOR_LV = createComponentCasingBlock("Sensor", LV);
-  public static final BlockEntry<Block> SENSOR_MV = createComponentCasingBlock("Sensor", MV);
-  public static final BlockEntry<Block> SENSOR_HV = createComponentCasingBlock("Sensor", HV);
-  public static final BlockEntry<Block> SENSOR_EV = createComponentCasingBlock("Sensor", EV);
-  public static final BlockEntry<Block> SENSOR_IV = createComponentCasingBlock("Sensor", IV);
-  public static final BlockEntry<Block> SENSOR_LuV = createComponentCasingBlock("Sensor", LuV);
-  public static final BlockEntry<Block> SENSOR_ZPM = createComponentCasingBlock("Sensor", ZPM);
-  public static final BlockEntry<Block> SENSOR_UV = createComponentCasingBlock("Sensor", UV);
-  public static final BlockEntry<Block> SENSOR_UHV = createComponentCasingBlock("Sensor", UHV);
-  public static final BlockEntry<Block> SENSOR_UEV = createComponentCasingBlock("Sensor", UEV);
-  public static final BlockEntry<Block> SENSOR_UIV = createComponentCasingBlock("Sensor", UIV);
-  public static final BlockEntry<Block> SENSOR_UXV = createComponentCasingBlock("Sensor", UXV);
-  public static final BlockEntry<Block> SENSOR_OpV = createComponentCasingBlock("Sensor", OpV);
-  public static final BlockEntry<Block> SENSOR_MAX = createComponentCasingBlock("Sensor", MAX);
+  public static final BlockEntry<Block> SENSOR_LV = createComponentSensorCasing(SensorCasingTypr.SENSOR_LV);
+  public static final BlockEntry<Block> SENSOR_MV = createComponentSensorCasing(SensorCasingTypr.SENSOR_MV);
+  public static final BlockEntry<Block> SENSOR_HV = createComponentSensorCasing(SensorCasingTypr.SENSOR_HV);
+  public static final BlockEntry<Block> SENSOR_EV = createComponentSensorCasing(SensorCasingTypr.SENSOR_EV);
+  public static final BlockEntry<Block> SENSOR_IV = createComponentSensorCasing(SensorCasingTypr.SENSOR_IV);
+  public static final BlockEntry<Block> SENSOR_LuV = createComponentSensorCasing(SensorCasingTypr.SENSOR_LUV);
+  public static final BlockEntry<Block> SENSOR_ZPM = createComponentSensorCasing(SensorCasingTypr.SENSOR_ZPM);
+  public static final BlockEntry<Block> SENSOR_UV = createComponentSensorCasing(SensorCasingTypr.SENSOR_UV);
+  public static final BlockEntry<Block> SENSOR_UHV = createComponentSensorCasing(SensorCasingTypr.SENSOR_UHV);
+  public static final BlockEntry<Block> SENSOR_UEV = createComponentSensorCasing(SensorCasingTypr.SENSOR_UEV);
+  public static final BlockEntry<Block> SENSOR_UIV = createComponentSensorCasing(SensorCasingTypr.SENSOR_UIV);
+  public static final BlockEntry<Block> SENSOR_UXV = createComponentSensorCasing(SensorCasingTypr.SENSOR_OPV);
+  public static final BlockEntry<Block> SENSOR_OpV = createComponentSensorCasing(SensorCasingTypr.SENSOR_OPV);
+  public static final BlockEntry<Block> SENSOR_MAX = createComponentSensorCasing(SensorCasingTypr.SENSOR_MAX);
 
   public static final BlockEntry<Block> STERILE_WATER_PLANT_CASING = createCasingBlock("sterile_water_plant_casing", ISGCore.id("block/casings/sterile_water_plant_casing"));
   public static final BlockEntry<Block> HIGH_STRENGTH_CONCRETE = createCasingBlock("high_strength_concrete", ISGCore.id("block/casings/space_elevator_module_base/side"));
@@ -169,6 +164,8 @@ public class ISGCasings {
   public static final BlockEntry<Block> LASER_COOLING_CASING = createCasingBlock("laser_cooling_casing", ISGCore.id("block/casings/laser_cooling_casing"));
   public static final BlockEntry<Block> AMPROSIUM_PIPE_CASING = createCasingBlock("neutronium_pipe_casing", ISGCore.id("block/casings/neutronium_pipe_casing"));
   public static final BlockEntry<Block> ANTIFREEZE_HEATPROOF_MACHINE_CASING = createCasingBlock("antifreeze_heatproof_machine_casing", ISGCore.id("block/casings/antifreeze_heatproof_machine_casing"));
+  public static final BlockEntry<Block> PROCESS_MACHINE_CASING = createCasingBlock("process_machine_casing", ISGCore.id("block/casings/process_machine_casing"));
+
 
   public static final BlockEntry<FusionCasingBlock> FUSION_CASING_MK4 = createFusionCasing(FusionCasings.CasingType.FUSION_CASING_MK4, "Fusion Casing MK IV");
   public static final BlockEntry<FusionCasingBlock> FUSION_CASING_MK5 = createFusionCasing(FusionCasings.CasingType.FUSION_CASING_MK5, "Fusion Casing MK V");
@@ -176,6 +173,7 @@ public class ISGCasings {
   public static final BlockEntry<ActiveBlock> ADVANCED_FUSION_COIL = createActiveCasing("advanced_fusion_coil", "block/variant/advanced_fusion_coil");
   public static final BlockEntry<ActiveBlock> FUSION_COIL_MK2 = createActiveCasing("fusion_coil_mk2","Fusion Coil MK II", "block/variant/fusion_coil_mk2");
 
+  public static final BlockEntry<ActiveBlock> QUANTUM_FORCE_TRANSFORMER_COIL = createActiveCasing("quantum_force_transformer_coil", "block/variant/quantum_force_transformer_coil");
 
   public static final BlockEntry<Block> CHEMICAL_GRADE_GLASS = createGlassCasingBlock("chemical_grade_glass", ISGCore.id("block/casings/chemical_grade_glass"));
   public static final BlockEntry<Block> ELECTRON_PERMEABLE_NEUTRONIUM_COATED_GLASS = createGlassCasingBlock("electron_permeable_neutronium_coated_glass", ISGCore.id("block/casings/electron_permeable_neutronium_coated_glass"));
@@ -214,21 +212,105 @@ public class ISGCasings {
   public static final BlockEntry<Block> COMPONENT_ASSEMBLY_LINE_CASING_MAX = createTierCasings("component_assembly_line_casing_max", ISGCore.id("block/casings/component_assembly_line/component_assembly_line_casing_max"), CALMAP, 14);
 
 
-  private static BlockEntry<Block> createComponentCasingBlock(String id, int tier) {
-    String tierName = GTValues.VN[tier].toLowerCase(Locale.ROOT);
-    String name = id.toLowerCase(Locale.ROOT);
-    String model = "%s_%s".formatted(tierName, name);
+  private static BlockEntry<Block> createComponentMotorCasing(MotorCasingType motorCasingType) {
+    String name = "motor";
+    String id = motorCasingType.getSerializedName();
+    int tier = motorCasingType.getTier();
 
+    var entry = createComponentCasing(name, id, tier);
+
+    ISGValues.MOTOR.put(motorCasingType, entry);
+    return entry;
+  }
+
+  private static BlockEntry<Block> createComponentConveyorCasing(ConveyorCasingType conveyorCasingType) {
+    String name = "conveyor";
+    String id = conveyorCasingType.getSerializedName();
+    int tier = conveyorCasingType.getTier();
+
+    var entry = createComponentCasing(name, id, tier);
+
+    ISGValues.CONVEYOR.put(conveyorCasingType, entry);
+    return entry;
+  }
+
+  private static BlockEntry<Block> createComponentEmitterCasing(EmitterCasingType emitterCasingType) {
+    String name = "emitter";
+    String id = emitterCasingType.getSerializedName();
+    int tier = emitterCasingType.getTier();
+
+    var entry = createComponentCasing(name, id, tier);
+
+    ISGValues.EMITTER.put(emitterCasingType, entry);
+    return entry;
+  }
+
+  private static BlockEntry<Block> createComponentFieldGeneratorCasing(FieldGeneratorCasingType fieldGeneratorCasingType) {
+    String name = "field_generator";
+    String id = fieldGeneratorCasingType.getSerializedName();
+    int tier = fieldGeneratorCasingType.getTier();
+
+    var entry = createComponentCasing(name, id, tier);
+
+    ISGValues.FIELD_GENERATOR.put(fieldGeneratorCasingType, entry);
+    return entry;
+  }
+
+  private static BlockEntry<Block> createComponentPistonCasing(PistonCasingType pistonCasingType) {
+    String name = "piston";
+    String id = pistonCasingType.getSerializedName();
+    int tier = pistonCasingType.getTier();
+
+    var entry = createComponentCasing(name, id, tier);
+
+    ISGValues.PISTON.put(pistonCasingType, entry);
+    return entry;
+  }
+
+  private static BlockEntry<Block> createComponentPumpCasing(PumpCasingType pumpCasingType) {
+    String name = "pump";
+    String id = pumpCasingType.getSerializedName();
+    int tier = pumpCasingType.getTier();
+
+    var entry = createComponentCasing(name, id, tier);
+
+    ISGValues.PUMP.put(pumpCasingType, entry);
+    return entry;
+  }
+
+  private static BlockEntry<Block> createComponentRobotArmCasing(RobotArmCasingType robotArmCasingType) {
+    String name = "robot_arm";
+    String id = robotArmCasingType.getSerializedName();
+    int tier = robotArmCasingType.getTier();
+
+    var entry = createComponentCasing(name, id, tier);
+
+    ISGValues.ROBOT_ARM.put(robotArmCasingType, entry);
+    return entry;
+  }
+
+  private static BlockEntry<Block> createComponentSensorCasing(SensorCasingTypr sensorCasingTypr) {
+    String name = "sensor";
+    String id = sensorCasingTypr.getSerializedName();
+    int tier = sensorCasingTypr.getTier();
+
+    var entry = createComponentCasing(name, id, tier);
+
+    ISGValues.SENSOR.put(sensorCasingTypr, entry);
+    return entry;
+  }
+
+  private static BlockEntry<Block> createComponentCasing(String name, String id, int tier) {
     var entry = REGISTRATE
-        .block(model, Block::new)
-        .lang("%s Block (%s)".formatted(id, GTValues.VN[tier]))
+        .block(id, Block::new)
+        .lang("%s Block (%s)".formatted(StringUtils.capitalize(name), GTValues.VN[tier]))
         .initialProperties(() -> Blocks.IRON_BLOCK)
         .properties(p -> p.isValidSpawn((state, level, pos, ent) -> false))
-        .blockstate(ISGModels.createComponentCasingModel(name, model))
+        .blockstate(ISGModels.createComponentCasingModel(name, id))
         .addLayer(() -> RenderType::translucent)
         .tag(CustomTags.MINEABLE_WITH_CONFIG_VALID_PICKAXE_WRENCH)
         .item(BlockItem::new)
-        .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), prov.modLoc("block/casings/%s/%s".formatted(name, model))))
+        .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), prov.modLoc("block/casings/%s/%s".formatted(name, id))))
         .build()
         .register();
     if (!GTCEuAPI.isHighTier() && tier > GTValues.UHV) {
@@ -237,6 +319,7 @@ public class ISGCasings {
     return entry;
   }
 
+  
   public static void init() {
   }
 }

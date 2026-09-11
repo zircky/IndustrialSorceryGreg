@@ -15,6 +15,7 @@
     "gregtech.DoublePlatesTagPrefix",
     "gregtech.GTRecipeConditionsMixin",
     "gregtech.GTValuesAccessor",
+    "gregtech.MEPatternBufferPartMachineMixin",
     "gregtech.RecipeLogicMixin",
     "gregtech.item.ComponentItemMixin",
     "gregtech.chemical.TagPrefixItemMixin",
@@ -22,7 +23,11 @@
   ],
   "client": [
     "adastra.AdAstraClientMixin",
-    "adastra.AdAstraOverlayScreenMixin"
+    "adastra.AdAstraOverlayScreenMixin",
+    "ae2.AE2SearchFillMixin",
+    "emi.EmiSearchDragFillMixin",
+    "emi.EmiSearchFillMixin",
+    "modularui.OverlayStackMixin"
   ],
   "injectors": {
     "defaultRequire": 1

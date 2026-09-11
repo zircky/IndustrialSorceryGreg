@@ -30,7 +30,7 @@ public abstract class RecipeLogicMixin {
     }
 
     MetaMachine recipeMachine = ((RecipeLogic) (Object) this).getRLMachine().self();
-    CleanroomReceiverTrait receiver = recipeMachine.getTraitHolder().getTrait(CleanroomReceiverTrait.TYPE);
+    CleanroomReceiverTrait receiver = recipeMachine.getTraitHolder().getTrait(CleanroomReceiverTrait.class);
     if (receiver == null) {
       return;
     }

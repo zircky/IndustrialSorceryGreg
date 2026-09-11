@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "industrialsorcerygreg:block/variant/quantum_force_transformer_coil"
+    },
+    "active=true": {
+      "model": "industrialsorcerygreg:block/variant/quantum_force_transformer_coil_active"
+    }
+  }
+}

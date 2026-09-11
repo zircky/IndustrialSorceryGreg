@@ -1,11 +1,13 @@
 package com.zircky.industrialsorcerygreg;
 
 import com.gregtechceu.gtceu.api.GTCEuAPI;
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.registry.MaterialRegistry;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
+import com.gregtechceu.gtceu.common.machine.multiblock.electric.FusionReactorMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.mojang.logging.LogUtils;
 import com.zircky.industrialsorcerygreg.api.gregtech.AddonTierNamePatcher;
@@ -85,6 +87,8 @@ public class ISGCore {
 
   public static void blockinit() {
     ISGBlocks.init();
+    FusionReactorMachine.registerFusionTier(GTValues.UHV, " (MKIV)");
+    FusionReactorMachine.registerFusionTier(GTValues.UEV, " (MKV)");
   }
 
   @SubscribeEvent
@@ -94,6 +98,7 @@ public class ISGCore {
 
   @SubscribeEvent
   public void registerMaterials(MaterialEvent event) {
+    ISGModifyMaterials.initFluidStorage();
     ISGMaterials.init();
   }
 

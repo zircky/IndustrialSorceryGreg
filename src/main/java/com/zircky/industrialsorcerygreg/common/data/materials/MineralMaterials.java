@@ -19,10 +19,13 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIcon
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Boron;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Talc;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.INFINITY;
+import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
 
 public final class MineralMaterials {
@@ -54,25 +57,6 @@ public final class MineralMaterials {
         .flags(DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
-    NaquadricCompound = builderISG("naquadric_compound")
-        .ore()
-        .dust()
-        .color(GTMaterials.Naquadah.getMaterialRGB())
-        .iconSet(GTMaterials.Naquadah.getMaterialIconSet())
-        .buildAndRegister();
-
-    EnrichedNaquadricCompound = builderISG("enriched_naquadric_compound")
-        .ore().dust()
-        .color(GTMaterials.NaquadahEnriched.getMaterialRGB())
-        .iconSet(GTMaterials.NaquadahEnriched.getMaterialIconSet())
-        .buildAndRegister();
-
-    NaquadriaticCompound = builderISG("naquadriatic_compound")
-        .ore()
-        .dust(GTMaterials.Naquadria.getBlockHarvestLevel())
-        .color(GTMaterials.Naquadria.getMaterialRGB())
-        .iconSet(GTMaterials.Naquadria.getMaterialIconSet())
-        .buildAndRegister();
 
     Caliche = builderISG("caliche")
         .ore()
@@ -191,6 +175,7 @@ public final class MineralMaterials {
         .color(0xFFDFE2)
         .iconSet(DIAMOND)
         .components(GTMaterials.Zirconium, 1, GTMaterials.Oxygen, 2)
+        .flags(GENERATE_PLATE)
         .buildAndRegister();
 
     Prasiolite = builderISG("prasiolite")
@@ -226,5 +211,18 @@ public final class MineralMaterials {
         .flags(DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
+    Jasper = material("jasper")
+        .gem()
+        .ore()
+        .addOreByproducts(Talc, Boron)
+        .color(0xc85050)
+        .iconSet(EMERALD)
+        .buildAndRegister().setFormula("?", false);
+
+    UuAmplifier = material("uu_amplifier")
+        .fluid()
+        .color(0xaa2b9f)
+        .iconSet(BRIGHT)
+        .buildAndRegister().setFormula("?", false);
   }
 }

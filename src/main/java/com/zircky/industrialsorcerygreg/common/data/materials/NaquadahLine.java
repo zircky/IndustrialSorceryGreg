@@ -1,10 +1,12 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
+import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 
+import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHER;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
@@ -90,6 +92,7 @@ public class NaquadahLine {
         .dust()
         .iconSet(MaterialIconSet.METALLIC)
         .components(Naquadah, 1, Oxygen, 2)
+        .flags(MaterialFlags.DISABLE_DECOMPOSITION)
         .buildAndRegister()
         .setFormula("Nq02");
 
@@ -109,11 +112,13 @@ public class NaquadahLine {
         .setFormula("????");
 
     Adamantine = builderISG("adamantine")
-        .dust()
+        .ingot().fluid()
         .color(0xb7b7b7)
-        .iconSet(MaterialIconSet.DULL)
+        .blastTemp(14400, HIGHER)
+        .iconSet(MaterialIconSet.METALLIC)
         .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
         .components(Adamantium, 2, Oxygen, 3)
+        .cableProperties(GTValues.V[GTValues.UIV], 4, 128)
         .buildAndRegister()
         .setFormula("Ad2O3", true);
 
@@ -130,7 +135,7 @@ public class NaquadahLine {
         .dust()
         .color(0xdadada)
         .iconSet(MaterialIconSet.METALLIC)
-        .components(Titanium, 1, Sulfur, 1, Oxygen, 4)
+        .components(Trinium, 1, Sulfur, 1, Oxygen, 4)
         .buildAndRegister()
         .setFormula("KeSO4", true);
 
@@ -156,6 +161,7 @@ public class NaquadahLine {
         .color(0x523939)
         .iconSet(MaterialIconSet.DULL)
         .components(NaquadahEnriched, 1, Sulfur, 2, Oxygen, 8)
+        .flags(MaterialFlags.DISABLE_DECOMPOSITION)
         .buildAndRegister()
         .setFormula("Na+(SO4)2", true);
 
@@ -207,7 +213,7 @@ public class NaquadahLine {
         .dust()
         .color(0x1f1e33)
         .iconSet(MaterialIconSet.METALLIC)
-        .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
+        .flags(MaterialFlags.DISABLE_DECOMPOSITION)
         .components(Naquadria, 1, Sulfur, 2, Oxygen, 8)
         .buildAndRegister()
         .setFormula("Nq*(SO4)2", false);

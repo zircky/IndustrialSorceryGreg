@@ -21,10 +21,12 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIcon
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Titanium;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.INFINITY;
+import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
 
 public final class ChemicalFluidMaterials {
@@ -1474,11 +1476,12 @@ public final class ChemicalFluidMaterials {
         .iconSet(FLUID)
         .buildAndRegister();
 
-//    Toluene = builderISG("toluene")
-//        .fluid()
-//        .color(0x9b9b9b)
-//        .iconSet(FLUID)
-//        .buildAndRegister();
+    Iodobenzene = builderISG("iodobenzene")
+        .fluid()
+        .color(0x2c2c6c0)
+        .iconSet(FLUID)
+        .buildAndRegister()
+        .setFormula("C6H5I", true);
 
     GlycidolPreparationMixture = builderISG("glycidol_preparation_mixture")
         .fluid()
@@ -3672,10 +3675,11 @@ public final class ChemicalFluidMaterials {
         .iconSet(FLUID)
         .buildAndRegister();
 
-    Protoadamantiumalloycatalyst = builderISG("protoadamantiumalloycatalyst")
+    Protoadamantiumalloycatalyst = builderISG("protoadamantiumalloy")
         .fluid().dust()
         .color(0x2c3393)
         .iconSet(DULL)
+        .flags(ISGMaterialFlags.GENERATE_CATALYST)
         .buildAndRegister();
 
     Refinedglue = builderISG("refinedglue")

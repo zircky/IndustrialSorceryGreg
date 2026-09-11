@@ -7,6 +7,8 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.api.data.medicalcondition.MedicalCondition;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.item.component.IDataItem;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
@@ -16,8 +18,10 @@ import com.gregtechceu.gtceu.api.recipe.chance.logic.ChanceLogic;
 import com.gregtechceu.gtceu.api.recipe.ingredient.*;
 import com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicate;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.recipe.ISGRecipeType;
 import com.zircky.industrialsorcerygreg.api.recipe.LayeredRecipeHelper;
+import com.zircky.industrialsorcerygreg.common.data.recipe.NeutronActivatorCondition;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceKey;
@@ -668,6 +672,14 @@ public class ISGRecipeBuilder extends GTRecipeBuilder {
     return this;
   }
 
+  public ISGRecipeBuilder outputFluids(Material material, int amount) {
+    return outputFluids(material.getFluid(amount));
+  }
+
+  public ISGRecipeBuilder outputFluids(Material material, FluidStorageKey fluidStorageKey, int amount) {
+    return outputFluids(material.getFluid(fluidStorageKey, amount));
+  }
+
   @Override
   public ISGRecipeBuilder outputFluidsRanged(IntProviderFluidIngredient provider) {
     super.outputFluidsRanged(provider);
@@ -722,6 +734,22 @@ public class ISGRecipeBuilder extends GTRecipeBuilder {
   @Override
   public ISGRecipeBuilder addData(String key, boolean data) {
     super.addData(key, data);
+    return this;
+  }
+
+  public ISGRecipeBuilder neutronKineticEnergy(int minMeV, int maxMeV) {
+    return neutronKineticEnergy(minMeV, maxMeV, 0);
+  }
+
+  public ISGRecipeBuilder neutronKineticEnergy(int minMeV, int maxMeV, int eVt) {
+    if (minMeV > maxMeV) {
+      throw new IllegalArgumentException("Minimum neutron kinetic energy cannot be greater than maximum");
+    }
+    addData(NeutronActivatorCondition.KEY_EV_MIN, minMeV);
+    addData(NeutronActivatorCondition.KEY_EV_MAX, maxMeV);
+    if (eVt > 0) {
+      addData(NeutronActivatorCondition.KEY_EVT, eVt);
+    }
     return this;
   }
 

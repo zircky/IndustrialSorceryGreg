@@ -111,7 +111,7 @@ public class ISGOreByProductWidget extends ParentWidget<ISGOreByProductWidget> {
     List<ItemEntryList> itemInputs = recipeWrapper.itemInputs;
     ParentWidget<?> itemStackGroup = new ParentWidget<>().sizeRel(1f);
     for (int i = 0; i < ITEM_INPUT_LOCATIONS.size(); i += 2) {
-      itemStackGroup.child(RecipeViewerSlotWidget.create()
+      itemStackGroup.child(RecipeViewerSlotWidget.create(ItemStack.class)
           .recipeSlotRole(RecipeSlotRole.INPUT)
           .pos(ITEM_INPUT_LOCATIONS.getInt(i), ITEM_INPUT_LOCATIONS.getInt(i + 1))
           .tooltipBuilder(recipeWrapper.getTooltip(i / 2))
@@ -131,7 +131,7 @@ public class ISGOreByProductWidget extends ParentWidget<ISGOreByProductWidget> {
         continue;
       }
 
-      itemStackGroup.child(RecipeViewerSlotWidget.create()
+      itemStackGroup.child(RecipeViewerSlotWidget.create(ItemStack.class)
           .pos(ITEM_OUTPUT_LOCATIONS.getInt(i), ITEM_OUTPUT_LOCATIONS.getInt(i + 1))
           .recipeSlotRole(FINAL_OUTPUT_INDICES.contains(i) ? RecipeSlotRole.OUTPUT : RecipeSlotRole.CATALYST)
           .tooltipBuilder(recipeWrapper.getTooltip(slotIndex + itemInputs.size()))
@@ -144,7 +144,7 @@ public class ISGOreByProductWidget extends ParentWidget<ISGOreByProductWidget> {
     for (int i = 0; i < FLUID_LOCATIONS.size(); i += 2) {
       int slotIndex = i / 2;
       if (!fluidInputs.get(slotIndex).isEmpty()) {
-        fluidStackGroup.child(RecipeViewerSlotWidget.create()
+        fluidStackGroup.child(RecipeViewerSlotWidget.create(net.minecraftforge.fluids.FluidStack.class)
             .recipeSlotRole(RecipeSlotRole.INPUT)
             .pos(FLUID_LOCATIONS.getInt(i), FLUID_LOCATIONS.getInt(i + 1))
             .value(fluidInputs.get(slotIndex)));

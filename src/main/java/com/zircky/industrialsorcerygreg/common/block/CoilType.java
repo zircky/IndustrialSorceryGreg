@@ -4,7 +4,6 @@ import com.gregtechceu.gtceu.api.block.ICoilType;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
-import lombok.Getter;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
@@ -22,21 +21,15 @@ public enum CoilType implements StringRepresentable, ICoilType {
   URUIUM("uruium", 273, 1, 1, ISGMaterials.Uruium, ISGCore.id("block/coil/uruium_coil_block"));
 
   @NotNull
-  @Getter
   private final String name;
   // electric blast furnace properties
-  @Getter
   private final int coilTemperature;
   // multi smelter properties
-  @Getter
   private final int level;
-  @Getter
   private final int energyDiscount;
   @NotNull
-  @Getter
   private final Material material;
   @NotNull
-  @Getter
   private final ResourceLocation texture;
 
   CoilType(String name, int coilTemperature, int level, int energyDiscount, Material material,
@@ -51,6 +44,36 @@ public enum CoilType implements StringRepresentable, ICoilType {
 
   public int getTier() {
     return this.ordinal();
+  }
+
+  @Override
+  public @NotNull String getName() {
+    return name;
+  }
+
+  @Override
+  public int getCoilTemperature() {
+    return coilTemperature;
+  }
+
+  @Override
+  public int getLevel() {
+    return level;
+  }
+
+  @Override
+  public int getEnergyDiscount() {
+    return energyDiscount;
+  }
+
+  @Override
+  public @NotNull Material getMaterial() {
+    return material;
+  }
+
+  @Override
+  public @NotNull ResourceLocation getTexture() {
+    return texture;
   }
 
   @NotNull

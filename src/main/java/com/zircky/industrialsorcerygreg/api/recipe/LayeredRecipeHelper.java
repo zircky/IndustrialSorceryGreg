@@ -186,7 +186,7 @@ public class LayeredRecipeHelper {
         copiedData,
         fullRecipe.duration,
         fullRecipe.recipeCategory,
-        fullRecipe.groupColor);
+        fullRecipe.groupColor, fullRecipe.keepSpoilingProgress);
   }
 
   public static @Nullable LayeredRecipeInfo parseRecipeInfo(CompoundTag data) {

@@ -1,7 +1,7 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
-import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
+import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -21,56 +21,6 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 public class HighEnergyMaterialsRecipe {
   public static void init(Consumer<FinishedRecipe> provider) {
 
-    FUSION_RECIPES.recipeBuilder("neutron_plasma")
-        .inputFluids(SuperheavyMix.getFluid(1000), Taranium.getFluid(144))
-        .outputFluids(Neutron.getFluid(8000))
-        .fusionStartEU(20_000_000_000L).EUt(VH[UIV]).duration(10)
-        .save(provider);
-
-    FUSION_RECIPES.recipeBuilder("hot_metastable_oganesson")
-        .inputFluids(Curium250.getFluid(144), OganesonBreedingBase.getFluid(500))
-        .outputFluids(HotMetastableOganesson.getFluid(500))
-        .fusionStartEU(2_500_000_000L).duration(100).EUt(600_000)
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("titanium_tetrafluoride")
-        .inputDust(Titanium)
-        .inputFluids(HydrobromicAcid.getFluid(4000))
-        .outputFluids(TitaniumTetrafluoride.getFluid(1000), Hydrogen.getFluid(4000))
-        .duration(300).EUt(VA[MV]).save(provider);
-
-    GAS_CENTRIFUGE_RECIPES.recipeBuilder("titanium_50_tetrafluoride")
-        .circuitMeta(0)
-        .inputFluids(TitaniumTetrafluoride.getFluid(10000))
-        .outputFluids(Titanium50Tetrafluoride.getFluid(518), Fluorine.getFluid(9482))
-        .duration(210).EUt(VA[LuV]).save(provider);
-
-    CENTRIFUGE_RECIPES.recipeBuilder("carbon_12_and_carbon_13")
-        .inputFluids(Carbon.getFluid(10_000))
-        .outputFluids(Carbon12.getFluid(9893), Carbon13.getFluid(107))
-        .duration(340).EUt(VA[EV]).save(provider);
-
-    CENTRIFUGE_RECIPES.recipeBuilder("nitrogen_14_and_nitrogen_15")
-        .inputFluids(Nitrogen.getFluid(100_000))
-        .outputFluids(Nitrogen14.getFluid(99636), Nitrogen15.getFluid(364))
-        .duration(340).EUt(VA[EV]).save(provider);
-
-    LARGE_MIXER_RECIPES.recipeBuilder("cno_catalyst")
-        .inputFluids(Nitrogen14.getFluid(1000), Nitrogen15.getFluid(1000), Carbon12.getFluid(1000), Carbon13.getFluid(1000))
-        .outputFluids(CNOcatalyst.getFluid(4000))
-        .duration(340).EUt(VA[IV]).save(provider);
-
-    MIXER_RECIPES.recipeBuilder("oganeson_breeding_base")
-        .inputFluids(Titanium50.getFluid(288), Californium252.getFluid(2000))
-        .outputFluids(OganesonBreedingBase.getFluid(4000))
-        .duration(SECONDS * 6).EUt(VA[IV]).save(provider);
-
-    FUSION_RECIPES.recipeBuilder("quasifissioning")
-        .inputFluids(Uranium238.getFluid(500), Uranium238.getFluid(500))
-        .outputFluids(Quassifissioning.getFluid(500))
-        .fusionStartEU(2_500_000_000L)
-        .duration(75).EUt(600_000).save(provider);
-
     MIXER_RECIPES.recipeBuilder("chlorinated_solvents")
         .inputFluids(Methane.getFluid(2000))
         .inputFluids(Chlorine.getFluid(5000))
@@ -84,61 +34,6 @@ public class HighEnergyMaterialsRecipe {
         .outputFluids(Chloroform.getFluid(2170))
         .outputFluids(CarbonTetrachloride.getFluid(1330))
         .duration(SECONDS * 12).EUt(VA[EV]).save(provider);
-
-    CENTRIFUGE_RECIPES.recipeBuilder("helium_cno_separation")
-        .inputFluids(HeliumCNO.getFluid(800))
-        .outputFluids(Helium.getFluid(640), CNOcatalyst.getFluid(160))
-        .duration(150).EUt(VA[IV]).save(provider);
-
-    BLAST_RECIPES.recipeBuilder("titanium_50")
-        .inputFluids(Titanium50Tetrafluoride.getFluid(1000))
-        .inputDust(Sodium, 4)
-        .outputItems(ingotHot, Titanium50)
-        .outputDust(SodiumFluoride, 8)
-        .blastFurnaceTemp(Titanium.getBlastTemperature())
-        .duration(340).EUt(VA[MV]).save(provider);
-
-    VACUUM_RECIPES.recipeBuilder("metastable_oganesson")
-        .notConsumable(SHAPE_MOLD_INGOT)
-        .inputFluids(HotMetastableOganesson.getFluid(125))
-        .outputItems(ingotHot, MetastableOganesson)
-        .duration(3800).EUt(VA[MV]).save(provider);
-
-    FUSION_RECIPES.recipeBuilder("titanium_44_plasma")
-        .inputFluids(Calcium.getFluid(250), Helium.getFluid(250))
-        .outputFluids(Titanium44.getFluid(250))
-        .fusionStartEU(200_000_000L).duration(128).EUt(VA[IV])
-        .save(provider);
-
-    FUSION_RECIPES.recipeBuilder("chromium_48_plasma")
-        .inputFluids(Titanium44.getFluid(250), Helium.getFluid(250))
-        .outputFluids(Chromium48.getFluid(250))
-        .fusionStartEU(220_000_000L).duration(128).EUt(VA[IV])
-        .save(provider);
-
-    FUSION_RECIPES.recipeBuilder("iron_52_plasma")
-        .inputFluids(Chromium48.getFluid(250), Helium.getFluid(250))
-        .outputFluids(Iron52.getFluid(250))
-        .fusionStartEU(240_000_000L).duration(128).EUt(VA[IV])
-        .save(provider);
-
-    FUSION_RECIPES.recipeBuilder("nickel_56_plasma")
-        .inputFluids(Iron52.getFluid(250), Helium.getFluid(250))
-        .outputFluids(Nickel56.getFluid(250))
-        .fusionStartEU(250_000_000L).duration(128).EUt(VA[IV])
-        .save(provider);
-
-    FUSION_RECIPES.recipeBuilder("helium_rich_cno_plasma")
-        .inputFluids(CNOcatalyst.getFluid(320), Hydrogen.getFluid(1280))
-        .outputFluids(HeliumCNO.getFluid(1600))
-        .fusionStartEU(100_000_000L).duration(128).EUt(VA[IV])
-        .save(provider);
-
-    FUSION_RECIPES.recipeBuilder("carbon_burning_process")
-        .inputFluids(Carbon12.getFluid(250), Carbon12.getFluid(250))
-        .outputFluids(Neon.getFluid(250), Helium4.getFluid(250))
-        .fusionStartEU(2_500_000_000L).duration(100).EUt(600_000)
-        .save(provider);
 
     MIXER_RECIPES.recipeBuilder("sodium_hydroxide_bauxite")
         .inputFluids(SodiumHydroxideSolution.getFluid(24000))
@@ -295,41 +190,6 @@ public class HighEnergyMaterialsRecipe {
         .outputFluids(ViscoelasticPolyurethaneFoam.getFluid(2000))
         .duration(150).EUt(VA[MV]).save(provider);
 
-    DECAY_CHAMBERS_RECIPES.recipeBuilder("calcium_44")
-        .inputFluids(Titanium44.getFluid(144))
-        .outputFluids(Calcium44.getFluid(144))
-        .duration(180).EUt(VA[IV]).save(provider);
-
-    DECAY_CHAMBERS_RECIPES.recipeBuilder("chromium_48_decay")
-        .inputFluids(Chromium48.getFluid(144))
-        .outputFluids(Titanium.getFluid(144))
-        .duration(180).EUt(VA[IV]).save(provider);
-
-    DECAY_CHAMBERS_RECIPES.recipeBuilder("iron_52_decay")
-        .inputFluids(Iron52.getFluid(144))
-        .outputFluids(Chromium.getFluid(144))
-        .duration(180).EUt(VA[IV]).save(provider);
-
-    DECAY_CHAMBERS_RECIPES.recipeBuilder("nickel_56_decay")
-        .inputFluids(Nickel56.getFluid(144))
-        .outputFluids(Iron.getFluid(144))
-        .duration(180).EUt(VA[IV]).save(provider);
-
-    DECAY_CHAMBERS_RECIPES.recipeBuilder("flyb")
-        .inputFluids(Quassifissioning.getFluid(1000))
-        .outputFluids(FlYb.getFluid(1000))
-        .duration(160).EUt(VA[LuV]).save(provider);
-
-    CENTRIFUGE_RECIPES.recipeBuilder("flyb_separation")
-        .inputFluids(FlYb.getFluid(1000))
-        .outputFluids(MetastableFlerovium.getFluid(288), Ytterbium178.getFluid(288))
-        .duration(290).EUt(VA[EV]).save(provider);
-
-    DECAY_CHAMBERS_RECIPES.recipeBuilder("ytterbium_178_decay")
-        .inputFluids(Ytterbium178.getFluid(144))
-        .outputFluids(Hafnium.getFluid(144))
-        .duration(VA[MV]).EUt(VA[IV]).save(provider);
-
     CENTRIFUGE_RECIPES.recipeBuilder("calcium_carbonate_solution")
         .inputFluids(CalciumCarbonateSolution.getFluid(1000))
         .outputDust(Calcite)
@@ -433,7 +293,7 @@ public class HighEnergyMaterialsRecipe {
 
     CHEMICAL_RECIPES.recipeBuilder("ascorbic_acid")
         .inputFluids(DehydroascorbicAcid.getFluid(1000), Hydrogen.getFluid(2000))
-        .notConsumable(com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust, Nickel)
+        .notConsumableDust(Nickel)
         .outputFluids(AscorbicAcid.getFluid(1000))
         .duration(280).EUt(VA[HV]).save(provider);
 
@@ -447,34 +307,9 @@ public class HighEnergyMaterialsRecipe {
     BLAST_RECIPES.recipeBuilder("dilute_nitric_acid").duration(200).EUt(VA[MV]).blastFurnaceTemp(500)
     .inputDust(UranylNitrate, 11)
     .inputFluids(Water.getFluid(1000))
-    .outputDust(UraniumRadioactive, 3)
+    .outputDust(Uranium238, 3)
     .outputFluids(DiluteNitricAcid.getFluid(2000))
     .save(provider);
-
-    // From misc/test/CosmicChain.txt:41
-    CENTRIFUGE_RECIPES.recipeBuilder("heavy_quarks").duration(200).EUt(VA[UHV])
-    .inputFluids(QuarkGluonPlasma.getFluid(1000 * 5))
-    .notConsumable(SEPARATION_ELECTROMAGNET.asItem())
-    .outputFluids(HeavyQuarks.getFluid(750 * 5))
-    .outputFluids(Gluons.getFluid(500 * 5))
-    .outputFluids(LightQuarks.getFluid(250 * 5))
-    .save(provider);
-
-    // From misc/test/CosmicChain.txt:18
-    STELLAR_FORGE_RECIPES.recipeBuilder("quark_gluon_plasma_from_degenerate_rhenium_dust")
-        .inputDust(ElectronDegenerateRhenium)
-        .circuitMeta(1)
-        .outputFluids(QuarkGluonPlasma.getFluid(4000))
-        .duration(60).EUt(VH[UIV])
-        .save(provider);
-
-    // From misc/test/CosmicChain.txt:25
-    STELLAR_FORGE_RECIPES.recipeBuilder("quark_gluon_plasma_from_degenerate_rhenium_plate")
-        .inputItems(plate, ElectronDegenerateRhenium)
-        .circuitMeta(2)
-        .outputFluids(QuarkGluonPlasma.getFluid(2000))
-        .duration(60).EUt(VH[UIV])
-        .save(provider);
 
     // From misc/test/UltimateMaterials.txt:218
     STELLAR_FORGE_RECIPES.recipeBuilder("dense_neutron")
@@ -496,127 +331,6 @@ public class HighEnergyMaterialsRecipe {
         .duration(10).EUt(100000000)
         .save(provider);
 
-    // From misc/test/CosmicChain.txt:49
-    LARGE_MIXER_RECIPES.recipeBuilder("cosmic_computing_mix").duration(100).EUt(VHA[UEV])
-    .inputFluids(HeavyLeptonMix.getFluid(1000))
-    .inputFluids(HeavyQuarks.getFluid(1000))
-    .inputFluids(Gluons.getFluid(1000))
-    .outputFluids(CosmicComputingMix.getFluid(3000))
-    .save(provider);
-
-    // From misc/test/CosmicChain.txt:56
-    MIXER_RECIPES.recipeBuilder("heavy_quark_enriched_mix").duration(100).EUt(3250000)
-    .inputFluids(HeavyQuarks.getFluid(750))
-    .inputFluids(LightQuarks.getFluid(250))
-    .outputFluids(HeavyQuarkEnrichedMix.getFluid(1000))
-    .save(provider);
-
-    // From misc/test/CosmicChain.txt:62
-    MIXER_RECIPES.recipeBuilder("scandium_titanium50_mix").duration(130).EUt(450000)
-    .inputFluids(Titanium50.getFluid(144))
-    .inputFluids(Scandium.getFluid(144))
-    .outputFluids(ScandiumTitanium50Mix.getFluid(288))
-    .save(provider);
-
-    // From misc/test/CosmicChain.txt:68
-    MIXER_RECIPES.recipeBuilder("radon_radium_mix").duration(130).EUt(450000)
-    .inputFluids(Radon.getFluid(1000))
-    .inputFluids(Radium.getFluid(144))
-    .outputFluids(RadonRadiumMix.getFluid(288))
-    .save(provider);
-
-    // From misc/test/CosmicChain.txt:74
-    LARGE_MIXER_RECIPES.recipeBuilder("deuterium_superheavy_mix").duration(140).EUt(4500000)
-    .inputFluids(Deuterium.getFluid(2000))
-    .inputFluids(MetastableHassium.getFluid(144))
-    .inputFluids(MetastableFlerovium.getFluid(144))
-    .inputFluids(MetastableOganesson.getFluid(144))
-    .outputFluids(DeuteriumSuperheavyMix.getFluid(2592))
-    .save(provider);
-
-    // From misc/test/CosmicChain.txt:89
-    CHEMICAL_RECIPES.recipeBuilder("trichloroferane").duration(150).EUt(VA[IV])
-    .inputFluids(HydrochloricAcid.getFluid(3000))
-    .inputDust(MetastableFlerovium)
-    .outputFluids(Trichloroferane.getFluid(1000))
-    .outputFluids(Hydrogen.getFluid(3000))
-    .save(provider);
-
-    // From misc/test/CosmicChain.txt:97
-    CHEMICAL_RECIPES.recipeBuilder("phenylsodium").duration(210).EUt(VA[HV])
-    .inputFluids(FluoroBenzene.getFluid(1000))
-    .inputDust(Sodium, 2)
-    .outputFluids(Phenylsodium.getFluid(1000))
-    .outputDust(SodiumFluoride, 2)
-    .save(provider);
-
-    // From misc/test/CosmicChain.txt:105
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("succinaldehyde").duration(180).EUt(VHA[LuV])
-    .inputDust(LithiumAluminiumHydride, 4)
-    .inputDust(SuccinicAcid, 14)
-    .outputFluids(Succinaldehyde.getFluid(1000))
-    .outputDust(Lithium)
-    .outputDust(Aluminium)
-    .outputFluids(Water.getFluid(2000))
-    .save(provider);
-
-    // From misc/test/CosmicChain.txt:115
-    CHEMICAL_RECIPES.recipeBuilder("difluoroaniline").duration(160).EUt(VA[HV])
-    .inputDust(PotassiumFluoride, 4)
-    .inputFluids(Hydrogen.getFluid(1000))
-    .inputFluids(Dichlorobenzene.getFluid(1000))
-    .inputFluids(Nitrogen.getFluid(1000))
-    .notConsumableDust(AluminiumChloride)
-    .outputDust(RockSalt, 4)
-    .outputFluids(Difluoroaniline.getFluid(1000))
-    .save(provider);
-
-    // From misc/test/CosmicChain.txt:126
-    CHEMICAL_RECIPES.recipeBuilder("ndifluorophenylpyrrole").duration(180).EUt(VA[HV])
-    .inputFluids(Difluoroaniline.getFluid(1000))
-    .inputFluids(Succinaldehyde.getFluid(1000))
-    .notConsumableDust(com.zircky.industrialsorcerygreg.common.data.ISGMaterials.PhosphorusPentoxide)
-    .outputFluids(NDifluorophenylpyrrole.getFluid(1000))
-    .outputFluids(Water.getFluid(2000))
-    .save(provider);
-
-    // From misc/test/CosmicChain.txt:135
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("photopolymer_solution").duration(350).EUt(VA[LuV])
-    .inputFluids(HydrochloricAcid.getFluid(2000))
-    .inputFluids(Silvertetrafluoroborate.getFluid(2000))
-    .inputFluids(Phenylsodium.getFluid(8000))
-    .inputFluids(TetraethylammoniumBromide.getFluid(2000))
-    .inputDust(SilverPerchlorate, 12)
-    .inputDust(TitaniumCyclopentadienyl, 69)
-    .inputDust(Ice, 42)
-    .inputFluids(NDifluorophenylpyrrole.getFluid(6000))
-    .outputDust(SilverChloride, 8)
-    .outputDust(SodiumBromide, 4)
-    .outputFluids(SaltWater.getFluid(6000))
-    .outputFluids(PhotopolymerSolution.getFluid(8000))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:39
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("phosphorous_arsenic_solution").duration(260).EUt(500)
-    .inputDust(SodaAsh, 6)
-    .inputFluids(ApatiteAcidicLeach.getFluid(12000))
-    .inputDust(SiliconDioxide, 3)
-    .inputFluids(HydrochloricAcid.getFluid(1000))
-    .outputFluids(PhosphorousArsenicSolution.getFluid(3000))
-    .outputDust(ApatiteSolidResidue, 11)
-    .outputFluids(CarbonDioxide.getFluid(1000))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:68
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("phosphorous_arsenic_solution_2").duration(260).EUt(500)
-    .inputDust(SodaAsh, 6)
-    .inputFluids(FluoroapatiteAcidicLeach.getFluid(12000))
-    .inputDust(SiliconDioxide, 3)
-    .inputFluids(HydrochloricAcid.getFluid(1000))
-    .outputFluids(PhosphorousArsenicSolution.getFluid(3000))
-    .outputDust(FluoroapatiteSolidResidue, 11)
-    .outputFluids(CarbonDioxide.getFluid(1000))
-    .save(provider);
 
     // From misc/test/Dyes.txt:79
     CENTRIFUGE_RECIPES.recipeBuilder("fluorosilicic_acid").duration(320).EUt(500)
@@ -626,95 +340,6 @@ public class HighEnergyMaterialsRecipe {
     .outputDust(Salt, 2)
     .outputFluids(IronChloride.getFluid(500))
     .outputFluids(Water.getFluid(750))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:172
-    CHEMICAL_RECIPES.recipeBuilder("mercury_nitrate").duration(210).EUt(500)
-    .inputFluids(Mercury.getFluid(1000))
-    .inputFluids(NitricAcid.getFluid(4000))
-    .inputFluids(NitrogenDioxide.getFluid(2000))
-    .outputFluids(Water.getFluid(2000))
-    .outputFluids(MercuryNitrate.getFluid(1000))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:198
-    CHEMICAL_RECIPES.recipeBuilder("bismuth_vanadate_solution").duration(220).EUt(640)
-    .inputDust(AmmoniumVanadate, 9)
-    .inputFluids(BismuthNitrateSoluton.getFluid(1000))
-    .inputFluids(Ammonia.getFluid(2000))
-    .inputFluids(Water.getFluid(1000))
-    .outputFluids(AmmoniumNitrate.getFluid(3000))
-    .outputFluids(BismuthVanadateSolution.getFluid(1000))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:313
-    CHEMICAL_RECIPES.recipeBuilder("nitrotoluene").duration(340).EUt(1350)
-    .inputFluids(Toluene.getFluid(1000))
-    .inputFluids(NitrationMixture.getFluid(2000))
-    .inputFluids(SulfuricAcid.getFluid(1000))
-    .outputFluids(Nitrotoluene.getFluid(1000))
-    .outputFluids(DilutedSulfuricAcid.getFluid(3000))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:355
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("naphthylamine").duration(230).EUt(1400)
-    .inputFluids(NitrationMixture.getFluid(2000))
-    .inputFluids(Naphthalene.getFluid(1000))
-    .inputFluids(Hydrogen.getFluid(6000))
-    .outputFluids(Naphthylamine.getFluid(1000))
-    .outputFluids(SulfuricAcid.getFluid(1000))
-    .outputFluids(Water.getFluid(3000))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:395
-    CHEMICAL_RECIPES.recipeBuilder("acetoacetanilide").duration(350).EUt(1350)
-    .inputFluids(Ethenone.getFluid(2000))
-    .inputFluids(Aniline.getFluid(1000))
-    .outputFluids(Acetoacetanilide.getFluid(1000))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:413
-    CHEMICAL_RECIPES.recipeBuilder("toluenesulfonate").duration(220).EUt(950)
-    .inputDust(Salt, 2)
-    .inputFluids(Toluene.getFluid(1000))
-    .inputFluids(SulfurTrioxide.getFluid(1000))
-    .outputFluids(Toluenesulfonate.getFluid(1000))
-    .outputFluids(HydrochloricAcid.getFluid(1000))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:422
-    CHEMICAL_RECIPES.recipeBuilder("quinizarin").duration(240).EUt(1400)
-    .inputFluids(Hydroquinone.getFluid(1000))
-    .inputDust(PhthalicAnhydride, 15)
-    .notConsumableFluid(Toluenesulfonate.getFluid(1))
-    .outputFluids(Quinizarin.getFluid(1000))
-    .outputFluids(Water.getFluid(1000))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:522
-    CHEMICAL_RECIPES.recipeBuilder("maleic_anhydride").duration(520).EUt(1340)
-    .notConsumableDust(BismuthVanadate)
-    .inputFluids(Butane.getFluid(1000))
-    .inputFluids(Oxygen.getFluid(7000))
-    .outputFluids(Water.getFluid(4000))
-    .outputFluids(MaleicAnhydride.getFluid(1000))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:540
-    CHEMICAL_RECIPES.recipeBuilder("isopropylsuccinate").duration(260).EUt(1400)
-    .inputDust(SuccinicAcid, 14)
-    .inputFluids(IsopropylAlcohol.getFluid(2000))
-    .outputFluids(Isopropylsuccinate.getFluid(1000))
-    .outputFluids(Water.getFluid(2000))
-    .save(provider);
-
-    // From misc/test/Dyes.txt:548
-    CHEMICAL_RECIPES.recipeBuilder("benzonitrile").duration(200).EUt(1700)
-    .inputFluids(Toluene.getFluid(1000))
-    .inputFluids(Ammonia.getFluid(1000))
-    .inputFluids(Oxygen.getFluid(3000))
-    .outputFluids(Benzonitrile.getFluid(1000))
-    .outputFluids(Water.getFluid(3000))
     .save(provider);
 
     // From misc/test/FullereneChain.txt:352
@@ -745,7 +370,7 @@ public class HighEnergyMaterialsRecipe {
 
     // From misc/test/InsulationWireAssemblyChain.txt:25
     CHEMICAL_RECIPES.recipeBuilder("hexanediol").duration(180).EUt(VA[MV])
-    .notConsumableDust(PdIrReOCeOS)
+    .notConsumableDust(PdIrReOCeOsSiCatalyst)
     .inputFluids(Water.getFluid(1000))
     .inputDust(Fructose, 24)
     .notConsumableFluid(TetraethylammoniumBromide.getFluid(1))
@@ -836,42 +461,6 @@ public class HighEnergyMaterialsRecipe {
     .inputDust(Fullerene)
     .notConsumable(plate, Rhenium)
     .outputFluids(FullereneDopedNanotubes.getFluid(18000))
-    .save(provider);
-
-    // From misc/test/NaquadahChain.txt:17
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("dilute_nitric_acid_2")
-    .inputDust(NaquadricCompound)
-    .inputFluids(AquaRegia.getFluid(4000))
-    .outputFluids(NaquadricSolution.getFluid(1000))
-    .outputFluids(DiluteNitricAcid.getFluid(2000))
-    .outputFluids(HydrochloricAcid.getFluid(1000))
-    .outputFluids(Chlorine.getFluid(1000))
-    .EUt(VA[HV])
-    .duration(100)
-    .save(provider);
-
-    // From misc/test/NaquadahChain.txt:29
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("dilute_nitric_acid_3")
-    .inputDust(EnrichedNaquadricCompound)
-    .inputFluids(AquaRegia.getFluid(4000))
-    .outputFluids(EnrichedNaquadricSolution.getFluid(1000))
-    .outputFluids(DiluteNitricAcid.getFluid(2000))
-    .outputFluids(HydrochloricAcid.getFluid(1000))
-    .outputFluids(Chlorine.getFluid(1000))
-    .EUt(VA[HV])
-    .duration(100)
-    .save(provider);
-
-    // From misc/test/NaquadahChain.txt:41
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("dilute_nitric_acid_4")
-    .inputDust(NaquadriaticCompound)
-    .inputFluids(AquaRegia.getFluid(4000))
-    .outputFluids(NaquadriaticSolution.getFluid(1000))
-    .outputFluids(DiluteNitricAcid.getFluid(2000))
-    .outputFluids(HydrochloricAcid.getFluid(1000))
-    .outputFluids(Chlorine.getFluid(1000))
-    .EUt(VA[HV])
-    .duration(100)
     .save(provider);
 
     // From misc/test/NiobiumTantalumChain.txt:76
@@ -1032,7 +621,7 @@ public class HighEnergyMaterialsRecipe {
     // From misc/test/OpticalChain.txt:282
     LARGE_CHEMICAL_RECIPES.recipeBuilder("edtasolution").duration(250).EUt(VA[IV])
     .inputFluids(Ethylenediamine.getFluid(2000))
-    .inputFluids(com.gregtechceu.gtceu.common.data.GTMaterials.Formaldehyde.getFluid(24000))
+    .inputFluids(Formaldehyde.getFluid(24000))
     .inputFluids(HydrochloricAcid.getFluid(8000))
     .inputFluids(SodiumCyanide.getFluid(8000))
     .inputFluids(Oxygen.getFluid(6000))
@@ -1135,47 +724,19 @@ public class HighEnergyMaterialsRecipe {
     .outputDust(LithiumChloride, 6)
     .outputFluids(CaliforniumCyclopentadienide.getFluid(1000))
     .save(provider);
+    // TODO migrated disabled: unresolved old test symbol `Oil`.
+    // 
+    //     // From misc/test/QuantumDotsChain.txt:16
+    //     CHEMICAL_RECIPES.recipeBuilder("soap").duration(160).EUt(2000)
+    //     .inputFluids(Oil.getFluid(1000))
+    //     .inputFluids(Steam.getFluid(200))
+    //     .inputFluids(PotassiumHydroxide.getFluid(1000))
+    //     .outputFluids(Soap.getFluid(1000))
+    //     .save(provider);
+    // 
+    //     
 
-    // From misc/test/PolymerChain.txt:150
-    CHEMICAL_RECIPES.recipeBuilder("oxydianiline")
-    .notConsumableDust(Tin)
-    .notConsumableFluid(HydrochloricAcid.getFluid(1))
-    .inputFluids(Aniline.getFluid(2000))
-    .inputFluids(Phenol.getFluid(1000))
-    .outputFluids(Oxydianiline.getFluid(1000))
-    .outputFluids(Methane.getFluid(2000))
-    .EUt(VA[MV])
-    .duration(150)
-    .save(provider);
-
-    // From misc/test/PolymerChain.txt:162
-    CHEMICAL_RECIPES.recipeBuilder("polyamic_acid")
-    .inputDust(PyromelliticDianhydride, 18)
-    .inputFluids(Oxydianiline.getFluid(1000))
-    .outputFluids(PolyamicAcid.getFluid(1000))
-    .EUt(VA[IV])
-    .duration(400)
-    .save(provider);
-
-    // From misc/test/PolymerChain.txt:184
-    PYROLYSE_RECIPES.recipeBuilder("hexafluoropropylene")
-    .circuitMeta(1)
-    .notConsumable(rod, Steel)
-    .inputFluids(Tetrafluoroethylene.getFluid(3000))
-    .outputFluids(Hexafluoropropylene.getFluid(2000))
-    .EUt(96)
-    .duration(460)
-    .save(provider);
-
-    // From misc/test/QuantumDotsChain.txt:16
-    CHEMICAL_RECIPES.recipeBuilder("soap").duration(160).EUt(2000)
-    .inputFluids(Oil.getFluid(1000))
-    .inputFluids(Steam.getFluid(200))
-    .inputFluids(PotassiumHydroxide.getFluid(1000))
-    .outputFluids(Soap.getFluid(1000))
-    .save(provider);
-
-    // From misc/test/QuantumDotsChain.txt:24
+// From misc/test/QuantumDotsChain.txt:24
     CHEMICAL_RECIPES.recipeBuilder("deglycerated_soap").duration(160).EUt(2000)
     .inputFluids(Soap.getFluid(1000))
     .inputDust(Salt, 1)
@@ -1476,7 +1037,7 @@ public class HighEnergyMaterialsRecipe {
     LARGE_CHEMICAL_RECIPES.recipeBuilder("trimethylchlorosilane").duration(250).EUt(VA[IV])
     .inputFluids(Trimethylsilane.getFluid(1000))
     .inputFluids(Chlorobenzene.getFluid(1000))
-    .inputFluids(com.gregtechceu.gtceu.common.data.GTMaterials.Formaldehyde.getFluid(2000))
+    .inputFluids(Formaldehyde.getFluid(2000))
     .inputDust(IBX, 17)
     .notConsumableDust(CobaltOxide)
     .outputFluids(Trimethylchlorosilane.getFluid(1000))
@@ -1534,7 +1095,7 @@ public class HighEnergyMaterialsRecipe {
     .inputFluids(IodineMonochloride.getFluid(1000))
     .inputFluids(Chlorine.getFluid(2000))
     .inputDust(Bromosuccinimide, 12)
-    .notConsumableDust(RhReNqCatalyst)
+    .notConsumable(ISGTagPrefix.CATALYST, RhodiumRheniumNaquadahCatalyst)
     .outputDust(MgClBromide, 6)
     .outputDust(Succinimide, 12)
     .outputFluids(Dihydroiodotetracene.getFluid(1000))
@@ -1845,21 +1406,6 @@ public class HighEnergyMaterialsRecipe {
     .outputFluids(FluorosilicicAcid.getFluid(1000))
     .duration(160)
     .EUt(200)
-    .save(provider);
-
-    // From misc/test/TriniumChain.txt:94
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("trimethylchlorosilane_4").duration(320).EUt(2000)
-    .inputDust(CesiumCarborane, 50)
-    .inputDust(SilverNitrate, 10)
-    .inputDust(Iodine, 2)
-    .inputFluids(Fluorine.getFluid(44000))
-    .inputFluids(HydrochloricAcid.getFluid(1000))
-    .inputFluids(Trimethylsilane.getFluid(1000))
-    .outputDust(Fluorocarborane, 50)
-    .outputDust(CaesiumNitrate, 10)
-    .outputDust(SilverIodide, 4)
-    .outputFluids(HydrofluoricAcid.getFluid(22000))
-    .outputFluids(Trimethylchlorosilane.getFluid(1000))
     .save(provider);
 
     // From misc/test/UHVMaterials.txt:116

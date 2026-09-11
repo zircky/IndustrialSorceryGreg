@@ -1,0 +1,7 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "gtceu:block/overlay/front_emissive",
+  "textures": {
+    "overlay_emissive": "industrialsorcerygreg:block/overlay/machine/overlay_na"
+  }
+}

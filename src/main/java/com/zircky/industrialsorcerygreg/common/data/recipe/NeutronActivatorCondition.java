@@ -18,6 +18,9 @@ import org.jetbrains.annotations.NotNull;
 @Getter
 public class NeutronActivatorCondition extends RecipeCondition<NeutronActivatorCondition> {
   private static final int RANGE_MULTIPLIER = 10_000;
+  public static final String KEY_EV_MIN = "neutron_ev_min";
+  public static final String KEY_EV_MAX = "neutron_ev_max";
+  public static final String KEY_EVT = "neutron_evt";
 
   public static final Codec<NeutronActivatorCondition> CODEC = RecordCodecBuilder.create(instance -> isReverse(instance)
       .and(Codec.INT.fieldOf("evRange").forGetter(condition -> condition.evRange))
@@ -57,7 +60,7 @@ public class NeutronActivatorCondition extends RecipeCondition<NeutronActivatorC
   public Component getTooltips() {
     final int max = evRange / RANGE_MULTIPLIER;
     final int min = evRange % RANGE_MULTIPLIER;
-    return Component.translatable("industrialsorcerygreg.recipe.condition.neutron_activator_condition_tooltip", max, min);
+    return Component.translatable("isgcore.recipe.condition.neutron_activator_condition_tooltip", max, min);
   }
 
   @Override

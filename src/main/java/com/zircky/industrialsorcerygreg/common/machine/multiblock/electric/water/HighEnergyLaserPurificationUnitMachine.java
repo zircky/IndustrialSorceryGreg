@@ -1,28 +1,26 @@
 package com.zircky.industrialsorcerygreg.common.machine.multiblock.electric.water;
 
 import com.gregtechceu.gtceu.api.blockentity.BlockEntityCreationInfo;
-import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import com.gregtechceu.gtceu.api.data.chemical.material.MarkerMaterials;
-import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
+import com.gregtechceu.gtceu.data.recipe.CustomTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
 public class HighEnergyLaserPurificationUnitMachine extends WorkableElectricMultiblockMachine {
 
-  public static final List<ItemStack> LENS = List.of(
-      ChemicalHelper.get(TagPrefix.lens, MarkerMaterials.Color.Red),
-      ChemicalHelper.get(TagPrefix.lens, MarkerMaterials.Color.Orange),
-      ChemicalHelper.get(TagPrefix.lens, MarkerMaterials.Color.Brown),
-      ChemicalHelper.get(TagPrefix.lens, MarkerMaterials.Color.Yellow),
-      ChemicalHelper.get(TagPrefix.lens, MarkerMaterials.Color.Green),
-      ChemicalHelper.get(TagPrefix.lens, MarkerMaterials.Color.Cyan),
-      ChemicalHelper.get(TagPrefix.lens, MarkerMaterials.Color.Blue),
-      ChemicalHelper.get(TagPrefix.lens, MarkerMaterials.Color.Purple),
-      ChemicalHelper.get(TagPrefix.lens, MarkerMaterials.Color.Magenta),
-      ChemicalHelper.get(TagPrefix.lens, MarkerMaterials.Color.Pink));
+  public static final List<TagKey<Item>> LENS = List.of(
+      CustomTags.RED_LENS,
+      CustomTags.ORANGE_LENS,
+      CustomTags.BROWN_LENS,
+      CustomTags.YELLOW_LENS,
+      CustomTags.GREEN_LENS,
+      CustomTags.CYAN_LENS,
+      CustomTags.BLUE_LENS,
+      CustomTags.PURPLE_LENS,
+      CustomTags.MAGENTA_LENS,
+      CustomTags.PINK_LENS);
 
   public HighEnergyLaserPurificationUnitMachine(BlockEntityCreationInfo info) {
     super(info);

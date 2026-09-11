@@ -25,6 +25,7 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.INFINITY;
+import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
 
 public final class IndustrialProcessMaterials {
@@ -136,9 +137,10 @@ public final class IndustrialProcessMaterials {
         .buildAndRegister();
 
     ElectronDegenerateRhenium = builderISG("degenerate_rhenium")
-        .plasma()
+        .plasma().ingot()
         .color(0x6666FF)
         .iconSet(FLUID)
+        .flags(GENERATE_PLATE)
         .buildAndRegister()
         .setFormula("Rh");
 
@@ -197,7 +199,7 @@ public final class IndustrialProcessMaterials {
         .buildAndRegister()
         .setFormula("C6H4(CH3)2", true);
 
-    OrthoXyleneZeoliteMixture = builderISG("ortho_xylene_zeolite")
+    OrthoXyleneZeoliteMixture = builderISG("ortho_xylene_zeolite_mixture")
         .fluid()
         .color(0xB9785E)
         .iconSet(FLUID)
@@ -302,14 +304,14 @@ public final class IndustrialProcessMaterials {
         .buildAndRegister()
         .setFormula("AgBF4", true);
 
-    PCBA = builderISG("pcba")
+    PCBA = material("pcba", "PCBA")
         .fluid()
         .color((GTMaterials.Chlorobenzene.getMaterialRGB() + Dimethylsulfide.getMaterialRGB() + Phenylpentanoicacid.getMaterialRGB()) / 3)
         .iconSet(FLUID)
         .buildAndRegister()
         .setFormula("C72H14O2", true);
 
-    PCBS = builderISG("pcbs")
+    PCBS = material("pcbs", "PCBS")
         .fluid()
         .color((GTMaterials.Styrene.getMaterialRGB() + PCBA.getMaterialRGB() - 40) / 2)
         .iconSet(FLUID)
@@ -669,7 +671,7 @@ public final class IndustrialProcessMaterials {
         .buildAndRegister()
         .setFormula("In(OH)3", true);
 
-    CadmiumThalliumLiquor = builderISG("cdtl_liquor")
+    CadmiumThalliumLiquor = builderISG("cadmium_thallium_liquor")
         .fluid()
         .color((GTMaterials.Cadmium.getMaterialRGB() + GTMaterials.Thallium.getMaterialRGB() + GTMaterials.RareEarth.getMaterialRGB()) / 3)
         .iconSet(FLUID)
@@ -753,7 +755,7 @@ public final class IndustrialProcessMaterials {
         .buildAndRegister()
         .setFormula("(H2O)LiOH", true);
 
-    LithiumPeroxideSolution = builderISG("lithium_peroxide")
+    LithiumPeroxideSolution = builderISG("lithium_peroxide_solution")
         .fluid()
         .color((GTMaterials.Lithium.getMaterialRGB() + GTMaterials.Oxygen.getMaterialRGB()) / 2)
         .iconSet(FLUID)

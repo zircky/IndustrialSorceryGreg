@@ -1,8 +1,8 @@
 package com.zircky.industrialsorcerygreg.data.recipe.classified;
 
-import com.gregtechceu.gtceu.api.data.chemical.material.MarkerMaterials;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.util.ISGUtility;
 import com.zircky.industrialsorcerygreg.common.data.ISGItems;
@@ -36,7 +36,7 @@ public class WaterPurificationPlant {
     // ACTIVATED_CARBON_FILTER_MESH Add Recipe
 
     LASER_ENGRAVER_RECIPES.recipeBuilder(ISGCore.id("ozon"))
-        .notConsumable(TagPrefix.lens, MarkerMaterials.Color.Blue)
+        .notConsumable(CustomTags.BLUE_LENS)
         .inputFluids(GTMaterials.Oxygen.getFluid(16000))
         .outputFluids(Ozone.getFluid(4000))
         .duration(10 * SECONDS).EUt(VA[IV]).save(provider);
@@ -75,7 +75,7 @@ public class WaterPurificationPlant {
         .duration(duration).EUt(VA[UV]).save(provider);
 
     HIGH_ENERGY_LASER_PURIFICATION_RECIPES.recipeBuilder(ISGCore.id("electric_equilibrium_water"))
-        .inputItems(LENS)
+        .inputItems(LENS.toArray())
         .inputFluids(ExtremeTemperatureWater.getFluid(1000))
         .chancedOutput(ElectricEquilibriumWater.getFluid(900), 1)
         .duration(duration).EUt(VA[UV]).save(provider);

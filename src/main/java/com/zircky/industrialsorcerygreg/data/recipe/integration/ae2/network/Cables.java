@@ -8,7 +8,7 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
-import com.zircky.industrialsorcerygreg.data.recipe.tag.AE2Tags;
+import com.zircky.industrialsorcerygreg.data.tags.AE2Tags;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;

@@ -12,7 +12,13 @@ public class ISGMaterialFlags {
   public static final MaterialFlag GENERATE_CATALYST = new MaterialFlag.Builder("generate_catalyst")
       .build();
 
+  public static final MaterialFlag GENERATE_FUEL = new MaterialFlag.Builder("generate_fuel")
+      .build();
+
   public static final MaterialFlag GENERATE_NANITES = new MaterialFlag.Builder("generate_nanites")
+      .build();
+
+  public static final MaterialFlag GENERATE_MILLED = new MaterialFlag.Builder("generate_milled")
       .build();
 
   public static final MaterialFlag GENERATE_CURVED_PLATE = new MaterialFlag.Builder("generate_curved_plate")
@@ -72,4 +78,5 @@ public class ISGMaterialFlags {
 
   public static final MaterialFlag MAGICAL = new MaterialFlag.Builder("magical")
       .build();
+
 }

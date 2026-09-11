@@ -7,7 +7,6 @@ import com.gregtechceu.gtceu.common.block.FusionCasingBlock;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.common.data.ISGCasings;
-import lombok.Getter;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
@@ -71,12 +70,16 @@ public final class FusionCasings extends FusionCasingBlock {
     FUSION_CASING_MK5("fusion_casing_mk5");
 
     private final String name;
-    @Getter
     private final int harvestLevel;
 
     CasingType(String name) {
       this.name = name;
       harvestLevel = 3;
+    }
+
+    @Override
+    public int getHarvestLevel() {
+      return harvestLevel;
     }
 
     @Override

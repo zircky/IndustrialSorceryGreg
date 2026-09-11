@@ -1,9 +1,11 @@
 package com.zircky.industrialsorcerygreg.common.data.machines;
 
+import brachy.modularui.api.drawable.Text;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.IntSyncValue;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.RotationState;
-import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.MultiblockMachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
@@ -20,10 +22,13 @@ import com.gregtechceu.gtceu.common.machine.multiblock.electric.FusionReactorMac
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.zircky.industrialsorcerygreg.ISGCore;
+import com.zircky.industrialsorcerygreg.api.machine.multiblock.ISGPartAbility;
+import com.zircky.industrialsorcerygreg.api.machine.multiblock.ISGPredicates;
 import com.zircky.industrialsorcerygreg.api.machine.multiblock.LayeredWorkableElectricMultiblockMachine;
 import com.zircky.industrialsorcerygreg.common.block.FusionCasings;
 import com.zircky.industrialsorcerygreg.common.data.ISGCasings;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes;
+import com.zircky.industrialsorcerygreg.common.machine.multiblock.NeutronActivatorMachine;
 import com.zircky.industrialsorcerygreg.common.machine.multiblock.electric.DissolvingTankMachine;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -31,10 +36,12 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.Collections;
 import java.util.Locale;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.machine.multiblock.PartAbility.*;
+import static com.gregtechceu.gtceu.api.machine.multiblock.PartAbility.PARALLEL_HATCH;
 import static com.gregtechceu.gtceu.api.multiblock.Predicates.*;
 import static com.gregtechceu.gtceu.api.multiblock.util.RelativeDirection.*;
 import static com.gregtechceu.gtceu.common.data.GCYMBlocks.CASING_CORROSION_PROOF;
@@ -104,8 +111,8 @@ public class ISGMultiMachines {
           .where('H', blocks(GTBlocks.CASING_STAINLESS_STEEL_GEARBOX.get()))
           .where('I', blocks(GTBlocks.CASING_STEEL_PIPE.get()))
           .where('J', blocks(GTBlocks.CASING_STAINLESS_CLEAN.get())
-              .or(autoAbilities(definition.getRecipeTypes()))
-              .or(autoAbilities(true, false, true)))
+              .and(autoAbilities(definition.getRecipeTypes()))
+              .and(autoAbilities(true, false, true)))
           .where('K', controller(blocks(definition.get())))
           .where(' ', any())
           .build())
@@ -129,24 +136,31 @@ public class ISGMultiMachines {
           .where('E', blocks(GTBlocks.CASING_STEEL_PIPE.get()))
           .where('A', blocks(GTBlocks.CASING_INVAR_HEATPROOF.get())
               .setMinGlobalLimited(20)
-              .or(autoAbilities(definition.getRecipeTypes()))
-              .or(abilities(MAINTENANCE).setExactLimit(1)))
+              .and(autoAbilities(definition.getRecipeTypes()))
+              .and(abilities(MAINTENANCE).setExactLimit(1)))
           .where('F', abilities(PartAbility.MUFFLER))
           .where('S', controller(blocks(definition.getBlock())))
           .where('#', air())
           .where(' ', any())
           .build())
       .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_heatproof"), GTCEu.id("block/multiblock/multi_furnace"))
-      .additionalDisplay((controller, components) -> {
-        // spotless:off
-        if (controller instanceof CoilWorkableElectricMultiblockMachine coilMachine && controller.isFormed()) {
-          components.add(Component.translatable("gtceu.multiblock.blast_furnace.max_temperature",
-              Component.translatable(
-                      FormattingUtil.formatNumbers(coilMachine.getCoilType().getCoilTemperature() +
-                          100L * Math.max(0, coilMachine.getTier() - GTValues.MV)) + "K")
-                  .setStyle(Style.EMPTY.withColor(ChatFormatting.RED))));
-        }
-        // spotless:on
+      .additionalDisplay((controller, syncManager) -> {
+        if (!(controller instanceof CoilWorkableElectricMultiblockMachine coilMachine))
+          return Collections.emptyList();
+        BooleanSyncValue isFormed = syncManager.getOrCreateSyncHandler("isFormed", BooleanSyncValue.class,
+            () -> new BooleanSyncValue(controller::isFormed));
+        IntSyncValue coilTemperature = syncManager.getOrCreateSyncHandler("coilTemperature", IntSyncValue.class,
+            () -> new IntSyncValue(() -> coilMachine.getCoilType().getCoilTemperature()));
+        IntSyncValue machineTier = syncManager.getOrCreateSyncHandler("machineTier", IntSyncValue.class,
+            () -> new IntSyncValue(() -> coilMachine.getTier()));
+
+        return Collections.singletonList(Text
+            .dynamic(() -> Component.translatable("gtceu.multiblock.blast_furnace.max_temperature",
+                Component.literal(
+                        FormattingUtil.formatNumbers(coilTemperature.getIntValue() +
+                            100L * Math.max(0, machineTier.getIntValue() - GTValues.MV)) + "K")
+                    .setStyle(Style.EMPTY.withColor(ChatFormatting.RED))))
+            .asWidget().setEnabledIf(w -> isFormed.getBoolValue()));
       })
       .register();
 
@@ -163,8 +177,8 @@ public class ISGMultiMachines {
           .slice("#XXX#", "XXSXX", "#XXX#")
           .where('S', controller(blocks(definition.get())))
           .where('X', blocks(GCYMBlocks.CASING_ATOMIC.get()).setMinGlobalLimited(40)
-              .or(Predicates.autoAbilities(definition.getRecipeTypes()))
-              .or(Predicates.autoAbilities(true, false, true)))
+              .and(Predicates.autoAbilities(definition.getRecipeTypes()))
+              .and(Predicates.autoAbilities(true, false, true)))
           .where('R', Predicates.blocks(GTBlocks.CASING_TITANIUM_GEARBOX.get()))
           .where('C', Predicates.blocks(GTBlocks.CASING_ENGINE_INTAKE.get()))
           .where('P', Predicates.blocks(GTBlocks.CASING_TITANIUM_PIPE.get()))
@@ -193,8 +207,8 @@ public class ISGMultiMachines {
           .where('G', blocks(CASING_LAMINATED_GLASS.get()))
           .where('M', heatingCoils())
           .where('O', blocks(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get())
-              .or(autoAbilities(definition.getRecipeTypes()))
-              .or(abilities(MAINTENANCE).setExactLimit(1)))
+              .and(autoAbilities(definition.getRecipeTypes()))
+              .and(abilities(MAINTENANCE).setExactLimit(1)))
           .where('#', any())
           .build())
       .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"), GTCEu.id("block/multiblock/gcym/large_maceration_tower"))
@@ -214,8 +228,8 @@ public class ISGMultiMachines {
           .where('X', blocks(GTBlocks.CASING_STAINLESS_CLEAN.get()))
           .where('K', blocks(GTBlocks.CASING_INVAR_HEATPROOF.get()))
           .where('O', blocks(GTBlocks.CASING_STAINLESS_CLEAN.get())
-              .or(autoAbilities(definition.getRecipeTypes()))
-              .or(autoAbilities(true, false, true)))
+              .and(autoAbilities(definition.getRecipeTypes()))
+              .and(autoAbilities(true, false, true)))
           .where('G', blocks(GTBlocks.CASING_TEMPERED_GLASS.get()))
           .where('#', any())
           .build())
@@ -236,8 +250,8 @@ public class ISGMultiMachines {
           .slice("AAAAA", "S   A", "     ")
           .slice("AAAAA", "AAAAA", "     ")
           .where('S', controller(blocks(definition.get())))
-          .where('A', blocks(CASING_STAINLESS_CLEAN.get()).or(autoAbilities(definition.getRecipeTypes()))
-              .or(autoAbilities(true, false, true)))
+          .where('A', blocks(CASING_STAINLESS_CLEAN.get()).and(autoAbilities(definition.getRecipeTypes()))
+              .and(autoAbilities(true, false, true)))
           .where('C', blocks(CASING_STEEL_PIPE.get()))
           .where(' ', any())
           .build())
@@ -270,12 +284,12 @@ public class ISGMultiMachines {
           .where('E', blocks(CASING_STEEL_SOLID.get()))
           .where('B', blocks(Blocks.WATER))
           .where('D', blocks(CASING_WATERTIGHT.get())
-              .or(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(1))
-              .or(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(1))
-              .or(Predicates.abilities(PartAbility.INPUT_ENERGY).setMinGlobalLimited(1)
+              .and(Predicates.abilities(PartAbility.EXPORT_ITEMS).setMaxGlobalLimited(1))
+              .and(Predicates.abilities(PartAbility.EXPORT_FLUIDS).setMaxGlobalLimited(1))
+              .and(Predicates.abilities(PartAbility.INPUT_ENERGY).setMinGlobalLimited(1)
                   .setMaxGlobalLimited(2))
-              .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setExactLimit(1))
-              .or(Predicates.abilities(PartAbility.IMPORT_ITEMS).setExactLimit(1)))
+              .and(Predicates.abilities(PartAbility.IMPORT_FLUIDS).setExactLimit(1))
+              .and(Predicates.abilities(PartAbility.IMPORT_ITEMS).setExactLimit(1)))
           .build())
       .workableCasingModel(GTCEu.id("block/casings/gcym/watertight_casing"),
           GTCEu.id("block/multiblock/generator/large_gas_turbine"))
@@ -288,11 +302,11 @@ public class ISGMultiMachines {
 //      .overclock()
 //      .block(GTBlocks.CASING_STEEL_SOLID)
 //      .pattern(definition -> FactoryBlockPattern.start()
-//          .aisle("AaaaaaA", "ACDDDCA", "ACDDDCA", "ACDDDCA", "AAAAAAA")
-//          .aisle("aAEEEAa", "FG   GF", "FG   GF", "FG   GF", "AACACAA")
-//          .aisle("aAEEEAa", "FHI IHF", "FJI IJF", "FG   GF", "AACACAA")
-//          .aisle("aAEEEAa", "FG   GF", "FG   GF", "FG   GF", "AACACAA")
-//          .aisle("AaaBaaA", "ACDDDCA", "ACDDDCA", "ACDDDCA", "AAAAAAA")
+//          .slice("AaaaaaA", "ACDDDCA", "ACDDDCA", "ACDDDCA", "AAAAAAA")
+//          .slice("aAEEEAa", "FG   GF", "FG   GF", "FG   GF", "AACACAA")
+//          .slice("aAEEEAa", "FHI IHF", "FJI IJF", "FG   GF", "AACACAA")
+//          .slice("aAEEEAa", "FG   GF", "FG   GF", "FG   GF", "AACACAA")
+//          .slice("AaaBaaA", "ACDDDCA", "ACDDDCA", "ACDDDCA", "AAAAAAA")
 //          .where('A', blocks(GTBlocks.CASING_STEEL_SOLID.get()))
 //          .where('a', blocks(GTBlocks.CASING_STEEL_SOLID.get())
 //              .or(autoAbilities(definition.getRecipeTypes()))
@@ -327,8 +341,8 @@ public class ISGMultiMachines {
           .slice("       ", "       ", "  aaa  ", "  ada  ", "  aaa  ", "       ", "       ")
           .where('a', blocks(ISGCasings.ANTIFREEZE_HEATPROOF_MACHINE_CASING.get())
 //              .setMinGlobalLimited(120)
-              .or(autoAbilities(definition.getRecipeTypes()))
-              .or(abilities(MAINTENANCE).setExactLimit(1)))
+              .and(autoAbilities(definition.getRecipeTypes()))
+              .and(abilities(MAINTENANCE).setExactLimit(1)))
           .where('b', blocks(ISGCasings.AMPROSIUM_PIPE_CASING.get()))
           .where('c', blocks(ISGCasings.LASER_COOLING_CASING.get()))
           .where('d', controller(blocks(definition.get())))
@@ -350,8 +364,8 @@ public class ISGMultiMachines {
           .slice("#YYY#", "#YSY#", "#####", "#####", "#####", "#####", "#####")
           .where('S', controller(blocks(definition.get())))
           .where('Y', blocks(CASING_STAINLESS_CLEAN.get())
-              .or(autoAbilities(definition.getRecipeTypes()))
-              .or(abilities(MAINTENANCE).setExactLimit(1)))
+              .and(autoAbilities(definition.getRecipeTypes()))
+              .and(abilities(MAINTENANCE).setExactLimit(1)))
           .where('Z', blocks(CASING_STEEL_SOLID.get()))
           .where('C', blocks(CASING_STEEL_PIPE.get()))
           .where('#', any())
@@ -375,8 +389,8 @@ public class ISGMultiMachines {
           .slice("       ", "       ", "  aaa  ", "  ada  ", "  aaa  ", "       ", "       ")
           .where('a', blocks(ISGCasings.ANTIFREEZE_HEATPROOF_MACHINE_CASING.get())
 //              .setMinGlobalLimited(120)
-              .or(autoAbilities(definition.getRecipeTypes()))
-              .or(abilities(MAINTENANCE).setExactLimit(1)))
+              .and(autoAbilities(definition.getRecipeTypes()))
+              .and(abilities(MAINTENANCE).setExactLimit(1)))
           .where('b', blocks(ISGCasings.AMPROSIUM_PIPE_CASING.get()))
           .where('c', blocks(ISGCasings.LASER_COOLING_CASING.get()))
           .where('d', controller(blocks(definition.get())))
@@ -418,15 +432,15 @@ public class ISGMultiMachines {
                 .slice("######ICI######", "####GGAAAGG####", "######ICI######")
                 .slice("###############", "######OSO######", "###############")
                 .where('S', controller(blocks(definition.get())))
-                .where('G', blocks(FUSION_GLASS.get()).or(casing))
-                .where('E', casing.or(
+                .where('G', blocks(FUSION_GLASS.get()).and(casing))
+                .where('E', casing.and(
                     blocks(PartAbility.INPUT_ENERGY.getBlockRange(tier, UEV).toArray(Block[]::new))
                         .setMinGlobalLimited(1).setPreviewCount(16)))
                 .where('C', casing)
                 .where('K', blocks(FusionCasings.getCoilState(tier)))
                 .where('O', casing.or(abilities(PartAbility.EXPORT_FLUIDS)))
                 .where('A', air())
-                .where('I', casing.or(abilities(PartAbility.IMPORT_FLUIDS).setMinGlobalLimited(2)))
+                .where('I', casing.and(abilities(PartAbility.IMPORT_FLUIDS).setMinGlobalLimited(2)))
                 .where('#', any())
                 .build();
           })
@@ -453,8 +467,8 @@ public class ISGMultiMachines {
           .slice("ACA", "CDC", "CCC")
           .slice("AAA", "ABA", "AAA")
           .where('A', blocks(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING.get())
-              .or(autoAbilities(definition.getRecipeTypes()))
-              .or(autoAbilities(true, false, true)))
+              .and(autoAbilities(definition.getRecipeTypes()))
+              .and(autoAbilities(true, false, true)))
           .where('B', controller(blocks(definition.get())))
           .where('C', blocks(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING.get()))
           .where('D', blocks(GTBlocks.CASING_TUNGSTENSTEEL_PIPE.get()))
@@ -463,6 +477,208 @@ public class ISGMultiMachines {
           .where(' ', any())
           .build())
       .workableCasingModel(GTCEu.id("block/casings/gcym/laser_safe_engraving_casing"), GTCEu.id("block/multiblock/gcym/large_assembler"))
+      .register();
+
+  public static final MultiblockMachineDefinition NEUTRON_ACTIVATOR = multiblock("neutron_activator", NeutronActivatorMachine::new)
+      .rotationState(RotationState.NON_Y_AXIS)
+      .tooltips()
+      .recipeType(ISGRecipeTypes.NEUTRON_ACTIVATOR_RECIPES)
+      .recipeModifiers(true, NeutronActivatorMachine::recipeModifier, OC_NON_PERFECT)
+      .appearanceBlock(CASING_STAINLESS_CLEAN)
+      .pattern(definition -> MultiblockPatternBuilder.start(UP, RIGHT, BACK)
+          .slice("AAGAA", "ADDDA", "ADDDA", "ADDDA", "AAAAA")
+          .sliceRepeatable(4, 17, "B   B", " EEE ", " EFE ", " EEE ", "B   B")
+          .slice("CCCCC", "CDDDC", "CDDDC", "CDDDC", "CCCCC")
+          .where('G', controller(blocks(definition.get())))
+          .where('A', blocks(GTBlocks.CASING_STAINLESS_CLEAN.get())
+              .or(blocks(ISGSimpleMachines.NEUTRON_SENSOR.get()).setMaxGlobalLimited(1).setPreviewCount(1))
+              .or(abilities(EXPORT_FLUIDS).setMaxGlobalLimited(1).setPreviewCount(1))
+              .or(abilities(EXPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1))
+              .or(abilities(ISGPartAbility.NEUTRON_ACCELERATOR).setMaxGlobalLimited(2).setPreviewCount(1))
+              .or(abilities(PARALLEL_HATCH).setMaxGlobalLimited(1))
+              .or(abilities(MAINTENANCE).setExactLimit(1)))
+          .where('B', frames(GTMaterials.Tungsten))
+          .where('C', blocks(GTBlocks.CASING_STAINLESS_CLEAN.get())
+              .or(abilities(IMPORT_FLUIDS).setMaxGlobalLimited(1).setPreviewCount(1))
+              .or(abilities(IMPORT_ITEMS).setMaxGlobalLimited(2).setPreviewCount(1)))
+          .where('D', blocks(ISGCasings.PROCESS_MACHINE_CASING.get()))
+          .where('E', blocks(GTBlocks.CASING_LAMINATED_GLASS.get()))
+          .where('F', blocks(ISGCasings.SPEEDING_PIPE.get()))
+          .where(' ', any())
+          .build())
+      .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"), GTCEu.id("block/multiblock/fusion_reactor"))
+      .register();
+
+  public static final MultiblockMachineDefinition VACUUM_DISTILLATION_TOWER = multiblock("vacuum_distillation_tower", WorkableElectricMultiblockMachine::new)
+      .rotationState(RotationState.ALL)
+      .recipeType(ISGRecipeTypes.VACUUM_DISTILLATION_RECIPES)
+      .appearanceBlock(CASING_STAINLESS_CLEAN)
+      .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+          .slice(" SSSSS ", " S   S ", "       ", "       ", "       ", "       ", "       ", "  CCC  ", "  CCC  ", "  CCC  ", "  CCC  ", "  CCC  ", "       ", "       ", "       ", "       ")
+          .slice("SSSPSSS", "SCF FCS", " FF FF ", " F   F ", " FHHHF ", " FHHHF ", " FHHHF ", " C   C ", " C   C ", " C   C ", " C   C ", " C   C ", "  HHH  ", "  HHH  ", "  HHH  ", "       ")
+          .slice("SSSPSSS", " F   F ", " F   F ", "  HHH  ", " H   H ", " H   H ", " H   H ", "C     C", "C     C", "C     C", "C     C", "C     C", " H   H ", " H   H ", " H   H ", "  HHH  ")
+          .slice("SPPPPPS", "   P   ", "   P   ", "  HHH  ", " H   H ", " H   H ", " H   H ", "C     C", "C     C", "C     C", "C     C", "C     C", " H   H ", " H   H ", " H   H ", "  HHH  ")
+          .slice("SSSPSSS", " F   F ", " F   F ", "  HHH  ", " H   H ", " H   H ", " H   H ", "C     C", "C     C", "C     C", "C     C", "C     C", " H   H ", " H   H ", " H   H ", "  HHH  ")
+          .slice("SSSPSSS", "SCF FCS", " FF FF ", " F   F ", " FHHHF ", " FHHHF ", " FHHHF ", " C   C ", " C   C ", " C   C ", " C   C ", " C   C ", "  HHH  ", "  HHH  ", "  HHH  ", "       ")
+          .slice(" SS~SS ", " S   S ", "       ", "       ", "       ", "       ", "       ", "  CCC  ", "  CCC  ", "  CCC  ", "  CCC  ", "  CCC  ", "       ", "       ", "       ", "       ")
+          .where('~', controller(blocks(definition.get())))
+          .where('S', blocks(CASING_STAINLESS_CLEAN.get())
+              .and(autoAbilities(definition.getRecipeTypes()))
+              .and(autoAbilities(true, false, true)))
+          .where('C', blocks(CASING_STAINLESS_CLEAN.get()))
+          .where('F', frames(GTMaterials.BlackSteel))
+          .where('H', blocks(CASING_INVAR_HEATPROOF.get()))
+          .where('P', blocks(CASING_STEEL_PIPE.get()))
+          .where(' ', any())
+          .build())
+      .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"), GTCEu.id("block/multiblock/vacuum_freezer"))
+      .register();
+
+  public static final MultiblockMachineDefinition POLYMERIZATION_REACTOR = multiblock("polymerization_reactor", CoilWorkableElectricMultiblockMachine::new)
+      .rotationState(RotationState.ALL)
+      .recipeType(ISGRecipeTypes.POLYMERIZATION_REACTOR_RECIPES)
+      .recipeModifiers(OC_PERFECT_SUBTICK, BATCH_MODE)
+      .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
+      .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+          .slice(
+              "  CCC  ",
+              " CCCCC ",
+              "CCGGGCC",
+              "CCGGGCC",
+              "CCGGGCC",
+              "CCGGGCC",
+              "CCGGGCC",
+              " CCCCC ",
+              "  CCC  "
+          )
+          .slice(
+              "  CCC  ",
+              " CHHHC ",
+              "CH###HC",
+              "CG###GC",
+              "CG###GC",
+              "CG###GC",
+              "CH###HC",
+              " CHHHC ",
+              "  CCC  "
+          )
+          .slice(
+              "  CPC  ",
+              " CHHHC ",
+              "CH#S#HC",
+              "CG#S#GC",
+              "CG#S#GC",
+              "CG#S#GC",
+              "CH#S#HC",
+              " CHHHC ",
+              "  CCC  "
+          )
+          .slice(
+              "  CPC  ",
+              " CHHHC ",
+              "CH#S#HC",
+              "CGSSSGC",
+              "CGSSSGC",
+              "CGSSSGC",
+              "CH#S#HC",
+              " CHHHC ",
+              "  CCC  "
+          )
+          .slice(
+              "  CPC  ",
+              " CHHHC ",
+              "CH#S#HC",
+              "CG#S#GC",
+              "CG#S#GC",
+              "CG#S#GC",
+              "CH#S#HC",
+              " CHHHC ",
+              "  CCC  "
+          )
+          .slice(
+              "  CCC  ",
+              " CHHHC ",
+              "CH###HC",
+              "CG###GC",
+              "CG###GC",
+              "CG###GC",
+              "CH###HC",
+              " CHHHC ",
+              "  CCC  "
+          )
+          .slice(
+              "  CCC  ",
+              " CCCCC ",
+              "CCGGGCC",
+              "CCGGGCC",
+              "CCGGGCC",
+              "CCGGGCC",
+              "CCG@GCC",
+              " CCCCC ",
+              "  CCC  ")
+          .where('@', controller(blocks(definition.getBlock())))
+          .where('C', blocks(CASING_STAINLESS_CLEAN.get())
+              .setMinGlobalLimited(40).and(autoAbilities(definition.getRecipeTypes()))
+              .and(autoAbilities(true, false, false)))
+          .where('G', blocks(CASING_LAMINATED_GLASS.get()))
+          .where('H', heatingCoils())
+          .where('S', blocks(CASING_STEEL_SOLID.get()))
+          .where('P', blocks(CASING_STEEL_PIPE.get()))
+          .where('#', air())
+          .build())
+      .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"), GTCEu.id("block/multiblock/large_chemical_reactor"))
+      .register();
+
+  public static final MultiblockMachineDefinition CHEMICAL_PLANT = multiblock("chemical_plant", CoilWorkableElectricMultiblockMachine::new)
+      .rotationState(RotationState.ALL)
+      .recipeType(ISGRecipeTypes.CHEMICAL_PLANT_RECIPES)
+      .recipeModifier(BATCH_MODE)
+      .appearanceBlock(CASING_PTFE_INERT)
+      .pattern((definition) -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+          .slice("b   b", "bbbbb", "b   b", "bbbbb", "b   b")
+          .slice("bbbbb", "bcccb", "bdddb", "bcccb", "bbbbb")
+          .slice("b   b", "bdddb", "bcccb", "bdddb", "b   b")
+          .slice("bbbbb", "bcccb", "bdddb", "bcccb", "bbbbb")
+          .slice("b   b", "abbbb", "b   b", "bbbbb", "b   b")
+          .where('a', controller(blocks(definition.get())))
+          .where('b', blocks(GTBlocks.CASING_PTFE_INERT.get())
+              .setMinGlobalLimited(60)
+              .or(autoAbilities(definition.getRecipeTypes()))
+              .or(abilities(PARALLEL_HATCH).setMaxGlobalLimited(1))
+              .or(abilities(MAINTENANCE).setExactLimit(1)))
+          .where('c', heatingCoils())
+          .where('d', blocks(GTBlocks.CASING_POLYTETRAFLUOROETHYLENE_PIPE.get()))
+          .where(' ', any())
+          .build())
+      .additionalDisplay(CHEMICAL_PLANT_DISPLAY)
+      .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_inert_ptfe"), GTCEu.id("block/multiblock/large_chemical_reactor"))
+      .register();
+
+  public static final MultiblockMachineDefinition BIO_REACTOR = multiblock("bio_reactor", CoilWorkableElectricMultiblockMachine::new)
+      .rotationState(RotationState.ALL)
+      .recipeType(ISGRecipeTypes.BIO_REACTOR_RECIPES)
+      .recipeModifier(BATCH_MODE)
+      .appearanceBlock(CASING_STAINLESS_CLEAN)
+      .pattern((definition) -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+          .slice("XXXXX", "XGGGX", "XGGGX", "XGGGX", "XXXXX")
+          .slice("XXXXX", "G###G", "G#s#G", "G###G", "XXXXX")
+          .slice("XXXXX", "G#p#G", "GefeG", "G#p#G", "XXXXX")
+          .slice("XXXXX", "G###G", "G#s#G", "G###G", "XXXXX")
+          .slice("XXSXX", "XGGGX", "XGGGX", "XGGGX", "XXXXX")
+          .where('S', controller(blocks(definition.get())))
+          .where('X', blocks(GTBlocks.CASING_STAINLESS_CLEAN.get())
+              .setMinGlobalLimited(10)
+              .and(autoAbilities(definition.getRecipeTypes()))
+              .or(abilities(PARALLEL_HATCH).setMaxGlobalLimited(1))
+              .or(abilities(MAINTENANCE).setExactLimit(1)))
+          .where('G', blocks(CASING_TEMPERED_GLASS.get()))
+          .where('s', ISGPredicates.sensorPredicate())
+          .where('f', ISGPredicates.fieldGeneratorPredicate())
+          .where('e', ISGPredicates.emitterPredicate())
+          .where('p', ISGPredicates.pumpPredicate())
+          .where('#', air())
+          .build())
+      .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"), GTCEu.id("block/multiblock/large_chemical_reactor"))
       .register();
 
   public static final MultiblockMachineDefinition TEST = multiblock("test", LayeredWorkableElectricMultiblockMachine::new)
@@ -475,8 +691,8 @@ public class ISGMultiMachines {
           .slice("AAA", "ASA", "AAA")
           .where('S', controller(blocks(definition.get())))
           .where('A', blocks(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING.get())
-              .or(autoAbilities(definition.getRecipeTypes()))
-              .or(autoAbilities(true, false, true)))
+              .and(autoAbilities(definition.getRecipeTypes()))
+              .and(autoAbilities(true, false, true)))
           .build())
       .workableCasingModel(GTCEu.id("block/casings/gcym/laser_safe_engraving_casing"), GTCEu.id("block/multiblock/gcym/large_assembler"))
       .register();

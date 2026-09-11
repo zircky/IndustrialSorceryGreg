@@ -23,6 +23,18 @@ public class AdAstraHUD implements IMoveableHUD {
   private int isg$pendingMovedY = 0;
   public static final AdAstraHUD isg$INSTANCE = new AdAstraHUD();
 
+  public boolean isIsg$containerScreenEnv() {
+    return isg$containerScreenEnv;
+  }
+
+  public int getIsg$pendingMovedX() {
+    return isg$pendingMovedX;
+  }
+
+  public int getIsg$pendingMovedY() {
+    return isg$pendingMovedY;
+  }
+
   @Override
   public void render(@NotNull GuiGraphics guiGraphics, int i, int i1, float v) {
     try {

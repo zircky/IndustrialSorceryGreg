@@ -1,6 +1,6 @@
 [versions]
 gtceu = "8.0.0-SNAPSHOT" #8.0.0-SNAPSHOT 7.5.2
-mui = "3.3.0-SNAPSHOT"
+mui = "3.3.1-SNAPSHOT"
 registrate = "MC1.20-1.3.11"
 configuration = "3.1.0-forge"
 mixinExtras = "0.2.0"
@@ -32,7 +32,7 @@ jade = "11.12.3+forge"
 ## cursemaven ##
 ftblibrary-cm = "5567591"
 ftbteams-cm = "6130786"
-nuclearcraft = "7793967"
+nuclearcraft = "8581060"
 #deafission = "7633771"
 ae2wtlib = "7251206"
 expatternprovider = "7804654"

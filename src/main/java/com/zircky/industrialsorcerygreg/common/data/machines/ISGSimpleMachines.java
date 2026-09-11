@@ -7,15 +7,17 @@ import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
-import com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
 import com.gregtechceu.gtceu.common.data.GTMachines;
 import com.gregtechceu.gtceu.common.data.machines.GTMachineUtils;
+import com.gregtechceu.gtceu.common.machine.multiblock.part.DualHatchPartMachine;
 import com.gregtechceu.gtceu.common.machine.multiblock.part.EnergyHatchPartMachine;
 import com.gregtechceu.gtceu.common.machine.multiblock.part.ItemBusPartMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
+import com.zircky.industrialsorcerygreg.api.machine.multiblock.ISGPartAbility;
 import com.zircky.industrialsorcerygreg.api.machine.part.WirelessEnergyHatchPartMachine;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes;
 import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.IndicatorHatchPartMachine;
+import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.NeutronAcceleratorPartMachine;
 import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.SensorPartMachine;
 import net.minecraft.network.chat.Component;
 
@@ -102,6 +104,28 @@ public class ISGSimpleMachines {
           .overlayTieredHullModel("energy_output_hatch_64a")
           .register(),
       GTValues.tiersBetween(IV, GTCEuAPI.isHighTier() ? MAX : UHV));
+
+  public static final MachineDefinition[] NEUTRON_ACCELERATOR = registerTieredMachines(REGISTRATE, "neutron_accelerator",
+      NeutronAcceleratorPartMachine::new,
+      (tier, builder) -> builder
+          .langValue(VNF[tier] + " Neutron Accelerator")
+          .rotationState(RotationState.ALL)
+          .abilities(ISGPartAbility.NEUTRON_ACCELERATOR)
+          .tooltips(Component.translatable("gtceu.universal.tooltip.max_voltage_in", V[tier], VNF[tier]),
+              Component.translatable("isgcore.machine.neutron_accelerator.tooltip.0", (V[tier] << 3) / 10),
+              Component.translatable("isgcore.machine.neutron_accelerator.tooltip.1"),
+              Component.translatable("gtceu.universal.tooltip.energy_storage_capacity", 2 * V[tier]))
+          .overlayTieredHullModel("neutron_accelerator")
+          .register(),
+      GTMachineUtils.ALL_TIERS);
+
+  public static final MachineDefinition NEUTRON_SENSOR = REGISTRATE.machine("neutron_sensor", SensorPartMachine::new)
+      .tier(IV)
+      .rotationState(RotationState.ALL)
+//      .tooltips(GTOMachineTooltips.SensorTooltips)
+//      .notAllowSharedTooltips()
+      .colorOverlayTieredHullModel("overlay_neutron_sensor", null, "overlay_neutron_sensor_emissive")
+      .register();
 
   public static final MachineDefinition PH_SENSOR = REGISTRATE.machine("ph_sensor", SensorPartMachine::new)
       .langValue("pH Sensor")

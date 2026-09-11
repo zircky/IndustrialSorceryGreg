@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "industrialsorcerygreg:block/casings/robot_arm/robot_arm_uhv"
+    }
+  }
+}

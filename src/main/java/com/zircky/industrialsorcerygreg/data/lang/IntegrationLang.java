@@ -9,5 +9,6 @@ public class IntegrationLang {
 
   private static void initRecipeViewerLang(RegistrateLangProvider provider) {
     provider.add("industrialsorcerygreg.emi.category.material_tree", "Material Tree");
+    provider.add("industrialsorcerygreg.emi.category.naquadah_production_lines", "Naquadah Production Lines");
   }
 }
