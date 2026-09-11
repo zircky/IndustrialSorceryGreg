@@ -12,6 +12,8 @@ import com.gregtechceu.gtceu.api.machine.multiblock.WorkableMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.trait.recipe.RecipeLogic;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.content.Content;
+import com.gregtechceu.gtceu.api.recipe.modifier.ModifierFunction;
+import com.gregtechceu.gtceu.api.recipe.modifier.RecipeModifier;
 import com.gregtechceu.gtceu.api.sync_system.annotations.SaveField;
 import com.gregtechceu.gtceu.api.sync_system.annotations.SyncToClient;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
@@ -30,7 +32,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -268,8 +269,14 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine {
     return true;
   }
 
-  @Override
-  protected @Nullable GTRecipe getRealRecipe(final GTRecipe recipe) {
+  public static ModifierFunction recipeModifier(final MetaMachine machine, final GTRecipe recipe) {
+    if (!(machine instanceof NeutronActivatorMachine neutronActivator)) {
+      return RecipeModifier.nullWrongType(NeutronActivatorMachine.class, machine);
+    }
+    return neutronActivator::modifyRecipe;
+  }
+
+  private GTRecipe modifyRecipe(final GTRecipe recipe) {
     final GTRecipe newRecipe = recipe.copy();
     newRecipe.duration = (int) Math.round(Math.max(newRecipe.duration * getVelocityFactor(), 1.0D));
 
@@ -287,7 +294,7 @@ public class NeutronActivatorMachine extends WorkableMultiblockMachine {
         );
       }
     }
-    return super.getRealRecipe(newRecipe);
+    return newRecipe;
   }
 
   public static boolean checkNeutronActivatorCondition(final MetaMachine metaMachine, final GTRecipe recipe) {

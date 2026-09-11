@@ -175,6 +175,7 @@ public final class MineralMaterials {
         .color(0xFFDFE2)
         .iconSet(DIAMOND)
         .components(GTMaterials.Zirconium, 1, GTMaterials.Oxygen, 2)
+        .flags(GENERATE_PLATE)
         .buildAndRegister();
 
     Prasiolite = builderISG("prasiolite")

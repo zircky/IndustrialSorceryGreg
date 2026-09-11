@@ -1,0 +1,22 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "gtceu:machine",
+  "machine": "industrialsorcerygreg:me_wildcard_pattern_buffer",
+  "replaceable_textures": [
+    "bottom",
+    "top",
+    "side"
+  ],
+  "variants": {
+    "": {
+      "model": {
+        "parent": "industrialsorcerygreg:block/machine/part/me_pattern_buffer_red",
+        "textures": {
+          "bottom": "gtceu:block/casings/voltage/uhv/bottom",
+          "side": "gtceu:block/casings/voltage/uhv/side",
+          "top": "gtceu:block/casings/voltage/uhv/top"
+        }
+      }
+    }
+  }
+}

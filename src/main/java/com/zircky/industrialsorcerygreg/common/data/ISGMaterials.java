@@ -48,7 +48,6 @@ public class ISGMaterials {
     ResidueMaterials.register();
     WaterPurificationMaterial.register();
     ISGMaterialFlagAddition.register();
-    UnsortedMaterials.register();
     MaterialIgnored.init();
   }
 
@@ -86,6 +85,8 @@ public class ISGMaterials {
   public static Material Gaiasteel;
   public static Material GaiaCore;
   public static Material Gaia;
+
+  public static Material Piezoelectric;
 
   /**
    * NuclearMaterials
@@ -258,11 +259,11 @@ public class ISGMaterials {
   public static Material SulfuricBromineSolution;
   public static Material HotVapourMixture;
   public static Material DampBromine;
-  public static Material Ethylhexanol;
+  public static Material EthylHexanol;
   public static Material DiethylhexylPhosphoricAcid;
 
   /**
-   *  RareEarthMaterial
+   * RareEarthMaterial
    */
 
   public static Material RareEarthHydroxidesSolution;
@@ -324,11 +325,21 @@ public class ISGMaterials {
   public static Material CelestialTungsten;
   public static Material Vibramantium;
   public static Material Kevlar;
-
+  public static Material ChaosInfinityAlloy;
+  public static Material AwakenedDraconium;
 
   /**
    * RadioactiveIsotopeMaterials
    */
+
+  public static Material Thorium230;
+  public static Material Thorium230Ox;
+  public static Material Thorium230Ni;
+  public static Material Thorium230Za;
+  public static Material Thorium232;
+  public static Material Thorium232Ox;
+  public static Material Thorium232Ni;
+  public static Material Thorium232Za;
   public static Material Thorium233;
   public static Material Protactinium233;
   public static Material Uranium233;
@@ -339,24 +350,53 @@ public class ISGMaterials {
   public static Material Uranium234Ox;
   public static Material Uranium234Ni;
   public static Material Uranium234Za;
+  public static Material Uranium235Ox;
+  public static Material Uranium235Ni;
+  public static Material Uranium235Za;
+  public static Material Uranium238Ox;
+  public static Material Uranium238Ni;
+  public static Material Uranium238Za;
   public static Material Uranium239;
   public static Material Neptunium235;
+  public static Material Neptunium236;
+  public static Material Neptunium236Ox;
+  public static Material Neptunium236Ni;
+  public static Material Neptunium236Za;
   public static Material Neptunium237;
   public static Material Neptunium237Ox;
   public static Material Neptunium237Ni;
   public static Material Neptunium237Za;
   public static Material Neptunium239;
+  public static Material Plutonium239Ox;
+  public static Material Plutonium239Ni;
+  public static Material Plutonium239Za;
   public static Material Plutonium240;
+  public static Material Plutonium241Ox;
+  public static Material Plutonium241Ni;
+  public static Material Plutonium241Za;
+  public static Material Plutonium242;
+  public static Material Plutonium242Ox;
+  public static Material Plutonium242Ni;
+  public static Material Plutonium242Za;
+  public static Material Plutonium244;
   public static Material Plutonium245;
   public static Material Americium241;
   public static Material Americium241Ox;
   public static Material Americium241Ni;
   public static Material Americium241Za;
+  public static Material Americium242;
+  public static Material Americium242Ox;
+  public static Material Americium242Ni;
+  public static Material Americium242Za;
   public static Material Americium243;
   public static Material Americium243Ox;
   public static Material Americium243Ni;
   public static Material Americium243Za;
   public static Material Americium245;
+  public static Material Curium243;
+  public static Material Curium243Ox;
+  public static Material Curium243Ni;
+  public static Material Curium243Za;
   public static Material Curium245;
   public static Material Curium245Ox;
   public static Material Curium245Ni;
@@ -375,8 +415,20 @@ public class ISGMaterials {
   public static Material Berkelium247Ox;
   public static Material Berkelium247Ni;
   public static Material Berkelium247Za;
+  public static Material Berkelium248;
+  public static Material Berkelium248Ox;
+  public static Material Berkelium248Ni;
+  public static Material Berkelium248Za;
   public static Material Berkelium249;
   public static Material Berkelium251;
+  public static Material Californium249;
+  public static Material Californium249Ox;
+  public static Material Californium249Ni;
+  public static Material Californium249Za;
+  public static Material Californium250;
+  public static Material Californium250Ox;
+  public static Material Californium250Ni;
+  public static Material Californium250Za;
   public static Material Californium251;
   public static Material Californium251Ox;
   public static Material Californium251Ni;
@@ -399,6 +451,170 @@ public class ISGMaterials {
   public static Material Mendelevium259;
   public static Material Mendelevium261;
   public static Material Mendelevium263;
+  public static Material Copernicium291;
+  public static Material Copernicium291Ox;
+  public static Material Copernicium291Ni;
+  public static Material Copernicium291Za;
+  public static Material Iridium192;
+  public static Material Xenorium298;
+  public static Material Lithium6;
+  public static Material Lithium6Ox;
+  public static Material Lithium6Ni;
+  public static Material Lithium6Za;
+  public static Material Lithium7;
+  public static Material Lithium7Ox;
+  public static Material Lithium7Ni;
+  public static Material Lithium7Za;
+  public static Material Quantite;
+  public static Material Sodium22;
+  public static Material Boron10;
+  public static Material Boron11;
+  public static Material Beryllium7;
+  public static Material Magnesium24;
+  public static Material Magnesium26;
+  public static Material Calcium48;
+
+  /**
+   * Fuel
+   */
+  public static Material NeptuniumLEN236;
+  public static Material NeptuniumLEN236Ox;
+  public static Material NeptuniumLEN236Ni;
+  public static Material NeptuniumLEN236Za;
+  public static Material NeptuniumLEN236TR;
+  public static Material NeptuniumHEN236;
+  public static Material NeptuniumHEN236Ox;
+  public static Material NeptuniumHEN236Ni;
+  public static Material NeptuniumHEN236Za;
+  public static Material NeptuniumHEN236TR;
+  public static Material CuriumLECM243;
+  public static Material CuriumLECM243Ox;
+  public static Material CuriumLECM243Ni;
+  public static Material CuriumLECM243Za;
+  public static Material CuriumLECM243TR;
+  public static Material CuriumHECM243;
+  public static Material CuriumHECM243Ox;
+  public static Material CuriumHECM243Ni;
+  public static Material CuriumHECM243Za;
+  public static Material CuriumHECM243TR;
+  public static Material CuriumLECM245;
+  public static Material CuriumLECM245Ox;
+  public static Material CuriumLECM245Ni;
+  public static Material CuriumLECM245Za;
+  public static Material CuriumLECM245TR;
+  public static Material CuriumHECM245;
+  public static Material CuriumHECM245Ox;
+  public static Material CuriumHECM245Ni;
+  public static Material CuriumHECM245Za;
+  public static Material CuriumHECM245TR;
+  public static Material CuriumLECM247;
+  public static Material CuriumLECM247Ox;
+  public static Material CuriumLECM247Ni;
+  public static Material CuriumLECM247Za;
+  public static Material CuriumLECM247TR;
+  public static Material CuriumHECM247;
+  public static Material CuriumHECM247Ox;
+  public static Material CuriumHECM247Ni;
+  public static Material CuriumHECM247Za;
+  public static Material CuriumHECM247TR;
+  public static Material BerkeliumLEB248;
+  public static Material BerkeliumLEB248Ox;
+  public static Material BerkeliumLEB248Ni;
+  public static Material BerkeliumLEB248Za;
+  public static Material BerkeliumLEB248TR;
+  public static Material BerkeliumHEB248;
+  public static Material BerkeliumHEB248Ox;
+  public static Material BerkeliumHEB248Ni;
+  public static Material BerkeliumHEB248Za;
+  public static Material BerkeliumHEB248TR;
+  public static Material ThoriumTBU;
+  public static Material ThoriumTBUOx;
+  public static Material ThoriumTBUNi;
+  public static Material ThoriumTBUZa;
+  public static Material ThoriumTBUTR;
+  public static Material MixedMIX239;
+  public static Material MixedMIX239Ox;
+  public static Material MixedMIX239Ni;
+  public static Material MixedMIX239Za;
+  public static Material MixedMIX239TR;
+  public static Material MixedMIX241;
+  public static Material MixedMIX241Ox;
+  public static Material MixedMIX241Ni;
+  public static Material MixedMIX241Za;
+  public static Material MixedMIX241TR;
+  public static Material UraniumLEU233;
+  public static Material UraniumLEU233Ox;
+  public static Material UraniumLEU233Ni;
+  public static Material UraniumLEU233Za;
+  public static Material UraniumLEU233TR;
+  public static Material UraniumLEU235;
+  public static Material UraniumLEU235Ox;
+  public static Material UraniumLEU235Ni;
+  public static Material UraniumLEU235Za;
+  public static Material UraniumLEU235TR;
+  public static Material UraniumHEU235;
+  public static Material UraniumHEU235Ox;
+  public static Material UraniumHEU235Ni;
+  public static Material UraniumHEU235Za;
+  public static Material UraniumHEU235TR;
+  public static Material UraniumHEU233;
+  public static Material UraniumHEU233Ox;
+  public static Material UraniumHEU233Ni;
+  public static Material UraniumHEU233Za;
+  public static Material UraniumHEU233TR;
+  public static Material AmericiumHEA242;
+  public static Material AmericiumHEA242Ox;
+  public static Material AmericiumHEA242Ni;
+  public static Material AmericiumHEA242Za;
+  public static Material AmericiumHEA242TR;
+  public static Material AmericiumLEA242;
+  public static Material AmericiumLEA242Ox;
+  public static Material AmericiumLEA242Ni;
+  public static Material AmericiumLEA242Za;
+  public static Material AmericiumLEA242TR;
+  public static Material PlutoniumLEP241;
+  public static Material PlutoniumLEP241Ox;
+  public static Material PlutoniumLEP241Ni;
+  public static Material PlutoniumLEP241Za;
+  public static Material PlutoniumLEP241TR;
+  public static Material PlutoniumHEP241;
+  public static Material PlutoniumHEP241Ox;
+  public static Material PlutoniumHEP241Ni;
+  public static Material PlutoniumHEP241Za;
+  public static Material PlutoniumHEP241TR;
+  public static Material PlutoniumHEP239;
+  public static Material PlutoniumHEP239Ox;
+  public static Material PlutoniumHEP239Ni;
+  public static Material PlutoniumHEP239Za;
+  public static Material PlutoniumHEP239TR;
+  public static Material PlutoniumLEP239;
+  public static Material PlutoniumLEP239Ox;
+  public static Material PlutoniumLEP239Ni;
+  public static Material PlutoniumLEP239Za;
+  public static Material PlutoniumLEP239TR;
+  public static Material CaliforniumLECF251;
+  public static Material CaliforniumLECF251Ox;
+  public static Material CaliforniumLECF251Ni;
+  public static Material CaliforniumLECF251Za;
+  public static Material CaliforniumLECF251TR;
+  public static Material CaliforniumHECF251;
+  public static Material CaliforniumHECF251Ox;
+  public static Material CaliforniumHECF251Ni;
+  public static Material CaliforniumHECF251Za;
+  public static Material CaliforniumHECF251TR;
+  public static Material CaliforniumLECF249;
+  public static Material CaliforniumLECF249Ox;
+  public static Material CaliforniumLECF249Ni;
+  public static Material CaliforniumLECF249Za;
+  public static Material CaliforniumLECF249TR;
+  public static Material CaliforniumHECF249;
+  public static Material CaliforniumHECF249Ox;
+  public static Material CaliforniumHECF249Ni;
+  public static Material CaliforniumHECF249Za;
+  public static Material CaliforniumHECF249TR;
+  public static Material XenoriumXEN298;
+
+
 
   /**
    * ChemicalFluidMaterials
@@ -622,7 +838,7 @@ public class ISGMaterials {
   public static Material Glycidol;
   public static Material GlycidolEther;
   public static Material Hexafluoroacetone;
-//  public static Material Toluene;
+  public static Material Iodobenzene;
   public static Material GlycidolPreparationMixture;
   public static Material UnrefinedEpoxyResin;
   public static Material ResinEnhancer;
@@ -1124,6 +1340,7 @@ public class ISGMaterials {
   public static Material GoldAlloy;
   public static Material PreciousMetal;
   public static Material LithiumFluoride;
+  public static Material BerylliumFluoride;
   public static Material LeadBismuthEutectic;
   public static Material AbyssalAlloy;
   public static Material ReactorSteel;
@@ -1165,9 +1382,12 @@ public class ISGMaterials {
   public static Material QCDMatter;
   public static Material Periodicium;
   public static Material CosmicNeutronium;
+  public static Material ChromeYellow;
+  public static Material ChromeOrange;
   public static Material NaquadriaticTaranium;
   public static Material Polyimide;
   public static Material FluorinatedEthylenePropylene;
+  public static Material Polystyrene;
 
 
   /**
@@ -1187,6 +1407,8 @@ public class ISGMaterials {
   public static Material CleanAmmoniaSolution;
   public static Material Catalase;
   public static Material Blood;
+  public static Material BloodCells;
+  public static Material BloodPlasma;
   public static Material BFGF;
   public static Material EGF;
   public static Material NitroBenzene;
@@ -2366,44 +2588,17 @@ public class ISGMaterials {
    * UnsortedMaterials
    */
 //  public static Material Krypton;
-  public static Material Polonium;
-  public static Material AwakenedDraconium;
-  public static Material ChaosInfinityAlloy;
-  public static Material Thorium232Isotope;
   public static Material Uranium238Isotope;
   public static Material Uranium235Isotope;
-  public static Material Plutonium239;
-  public static Material Plutonium241Isotope;
-  public static Material Plutonium244Isotope;
   public static Material AmericiumRadioactive;
-  public static Material LiquidOxygen;
-  public static Material BloodCells;
-  public static Material BloodPlasma;
-//  public static Material LiquidHelium;
+
   public static Material LiquidZBLAN;
-  public static Material Iodobenzene;
-  public static Material ChromeYellow;
-  public static Material ChromeOrange;
+
+
+
   public static Material Waterplasma;
   public static Material Ultimentium;
   public static Material UltimentiumMatterCrystal;
-
-  public static void addIngot(Material material) {
-    material.setProperty(PropertyKey.INGOT, new IngotProperty());
-  }
-
-  public static void addData(Material material) {
-    material.setProperty(PropertyKey.DUST, new DustProperty());
-  }
-
-  public static void addFluid(Material material) {
-    material.setProperty(PropertyKey.FLUID, new FluidProperty(FluidStorageKeys.LIQUID, new FluidBuilder().state(FluidState.LIQUID)));
-  }
-
-  public static void addOre(Material material) {
-    material.setProperty(PropertyKey.ORE, new OreProperty());
-  }
-
 
   public static Material.Builder builderISG(String id) {
     return new Material.Builder(ISGCore.id(id));

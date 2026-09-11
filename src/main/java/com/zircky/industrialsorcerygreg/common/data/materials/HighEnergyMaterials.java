@@ -11,6 +11,7 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
 
@@ -57,52 +58,52 @@ public final class HighEnergyMaterials {
 
     Carbon12 = builderISG("carbon_12")
         .fluid()
-        .color(GTMaterials.Carbon.getMaterialRGB())
+        .color(Carbon.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("C12", true);
+        .setFormula("C-12", true);
 
     Carbon13 = builderISG("carbon_13")
         .fluid()
-        .color(GTMaterials.Carbon.getMaterialRGB())
+        .color(Carbon.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("C13", true);
+        .setFormula("C-13", true);
 
     Nitrogen14 = builderISG("nitrogen_14")
         .fluid()
-        .color(GTMaterials.Nitrogen.getMaterialRGB())
+        .color(Nitrogen.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("N14", true);
+        .setFormula("N-14", true);
 
     Nitrogen15 = builderISG("nitrogen_15")
         .fluid()
-        .color(GTMaterials.Nitrogen.getMaterialRGB())
+        .color(Nitrogen.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("N15", true);
+        .setFormula("N-15", true);
 
     CNOcatalyst = builderISG("cno")
         .fluid()
-        .color((GTMaterials.Nitrogen.getMaterialRGB() + GTMaterials.Carbon.getMaterialRGB()) / 2)
+        .color((Nitrogen.getMaterialRGB() + Carbon.getMaterialRGB()) / 2)
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("(C12)(C13)(N14)(N15)", true);
+        .setFormula("(C-12)(C-13)(N-14)(N-15)", true);
 
-    Calcium44 = builderISG("calcium_44")
+    Calcium44 = builderISG("calcium-44")
         .fluid()
         .color(GTMaterials.Calcium.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("Ca44", true);
+        .setFormula("Ca-44", true);
 
     OganesonBreedingBase = builderISG("oganesson_breeding_base")
         .fluid()
         .color(((GTMaterials.Titanium.getMaterialRGB() + 0xA85A12) / 2))
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("(Ti50)Cf252", true);
+        .setFormula("(Ti-50)Cf-252", true);
 
     Quassifissioning = builderISG("quasifissioning")
         .plasma()
@@ -130,7 +131,7 @@ public final class HighEnergyMaterials {
         .color(GTMaterials.Chromium.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("Cr48", true);
+        .setFormula("Cr-48", true);
 
     Iron52 = builderISG("iron_52")
         .fluid()
@@ -201,7 +202,7 @@ public final class HighEnergyMaterials {
 
     PureAluminiumHydroxideSolution = builderISG("pure_aluminium_hydroxide_soution")
         .fluid()
-        .color((GTMaterials.Aluminium.getMaterialRGB() + GTMaterials.Oxygen.getMaterialRGB() + GTMaterials.Hydrogen.getMaterialRGB() + 40) / 2)
+        .color((GTMaterials.Aluminium.getMaterialRGB() + Oxygen.getMaterialRGB() + GTMaterials.Hydrogen.getMaterialRGB() + 40) / 2)
         .iconSet(FLUID)
         .buildAndRegister()
         .setFormula("(H2O)Al2(OH)6", true);
@@ -304,7 +305,7 @@ public final class HighEnergyMaterials {
         .buildAndRegister()
         .setFormula("?NO3", true);
 
-    AlkalineEarthSulfateSolution = builderISG("alkalineearth_sulfate")
+    AlkalineEarthSulfateSolution = builderISG("alkaline_earth_sulfate")
         .fluid()
         .color(0xe6ebff)
         .iconSet(FLUID)
@@ -348,7 +349,7 @@ public final class HighEnergyMaterials {
 
     HotNitrogen = builderISG("hot_nitrogen")
         .fluid()
-        .color(GTMaterials.Nitrogen.getMaterialRGB())
+        .color(Nitrogen.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
         .setFormula("N");
@@ -1151,7 +1152,7 @@ public final class HighEnergyMaterials {
 
     NonMetals = builderISG("non_metals")
         .fluid()
-        .color((GTMaterials.Hydrogen.getMaterialRGB() + GTMaterials.Boron.getMaterialRGB() + GTMaterials.Carbon.getMaterialRGB() + GTMaterials.Nitrogen.getMaterialRGB() + GTMaterials.Oxygen.getMaterialRGB() + GTMaterials.Fluorine.getMaterialRGB() + GTMaterials.Phosphorus.getMaterialRGB() + GTMaterials.Sulfur.getMaterialRGB() + GTMaterials.Chlorine.getMaterialRGB() + GTMaterials.Arsenic.getMaterialRGB() + GTMaterials.Selenium.getMaterialRGB() + GTMaterials.Bromine.getMaterialRGB() + GTMaterials.Tellurium.getMaterialRGB() + GTMaterials.Iodine.getMaterialRGB() + GTMaterials.Astatine.getMaterialRGB()))
+        .color((GTMaterials.Hydrogen.getMaterialRGB() + GTMaterials.Boron.getMaterialRGB() + Carbon.getMaterialRGB() + Nitrogen.getMaterialRGB() + Oxygen.getMaterialRGB() + GTMaterials.Fluorine.getMaterialRGB() + GTMaterials.Phosphorus.getMaterialRGB() + GTMaterials.Sulfur.getMaterialRGB() + GTMaterials.Chlorine.getMaterialRGB() + GTMaterials.Arsenic.getMaterialRGB() + GTMaterials.Selenium.getMaterialRGB() + GTMaterials.Bromine.getMaterialRGB() + GTMaterials.Tellurium.getMaterialRGB() + GTMaterials.Iodine.getMaterialRGB() + GTMaterials.Astatine.getMaterialRGB()))
         .iconSet(FLUID)
         .buildAndRegister()
         .setFormula("BCPSAsSeTeIAtONHFClBr");
@@ -1184,7 +1185,7 @@ public final class HighEnergyMaterials {
 
     LiquidNitrogen = builderISG("liquid_nitrogen")
         .fluid()
-        .color(GTMaterials.Nitrogen.getMaterialRGB())
+        .color(Nitrogen.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
         .setFormula("N");
@@ -1463,9 +1464,10 @@ public final class HighEnergyMaterials {
     PolyamicAcid = builderISG("polyamic_acid")
         .liquid(new FluidBuilder().attribute(FluidAttributes.ACID))
         .color(0xFFAE42)
-        .iconSet(FLUID)
-        .buildAndRegister()
-        .setFormula("C22H14N2O7", true);
+        .iconSet(DULL)
+        .components(Carbon, 22, Hydrogen, 14, Nitrogen, 2, Oxygen, 7)
+        .flags(DISABLE_DECOMPOSITION)
+        .buildAndRegister();
 
     Hexafluoropropylene = builderISG("hexafluoropropylene")
         .fluid()

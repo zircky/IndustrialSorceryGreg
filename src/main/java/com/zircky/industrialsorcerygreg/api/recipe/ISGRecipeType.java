@@ -9,7 +9,6 @@ import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.gui.LayeredRecipeUIHelper;
 import com.zircky.industrialsorcerygreg.data.recipe.builder.ISGRecipeBuilder;
-import lombok.Getter;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -17,8 +16,11 @@ import net.minecraft.world.item.crafting.RecipeType;
 import java.util.Arrays;
 
 public class ISGRecipeType extends GTRecipeType {
-  @Getter
   private boolean layered;
+
+  public boolean isLayered() {
+    return layered;
+  }
 
   public ISGRecipeType(ResourceLocation registryName, String group, RecipeType<?>... proxyRecipes) {
     super(registryName, group, proxyRecipes);

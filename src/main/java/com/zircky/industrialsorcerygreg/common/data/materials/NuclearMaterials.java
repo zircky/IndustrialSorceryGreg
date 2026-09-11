@@ -15,7 +15,7 @@ public class NuclearMaterials {
   public static void register() {
     ManganeseOxide = builderISG("manganese_oxide")
         .ingot().dust().fluid()
-        .color(0x1A3F0D).secondaryColor(0x425E17).iconSet(METALLIC)
+        .color(0x8479362).secondaryColor(0x425E17).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS, ISGMaterialFlags.RECIPE_MIXER)
         .blastTemp(1924)
         .components(GTMaterials.Manganese, 1, GTMaterials.Oxygen, 1)

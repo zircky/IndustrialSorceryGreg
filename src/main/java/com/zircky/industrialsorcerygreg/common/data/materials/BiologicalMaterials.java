@@ -23,6 +23,7 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.INFINITY;
+import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
 
 public final class BiologicalMaterials {
@@ -122,11 +123,23 @@ public final class BiologicalMaterials {
         .setFormula("?");
 
     Blood = builderISG("blood")
-        .fluid().plasma()
+        .fluid()
         .color(0x5c0606)
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("Blood");
+        .setFormula("blood");
+
+    BloodCells = material("blood_cells")
+        .fluid()
+        .color(0xAD1B00)
+        .iconSet(DULL)
+        .buildAndRegister().setFormula("???");
+
+    BloodPlasma = material("blood_plasma")
+        .fluid()
+        .color(0xA85B00)
+        .iconSet(DULL)
+        .buildAndRegister().setFormula("???");
 
     BFGF = builderISG("bfgf")
         .langValue("Basic fibroblast growth factor")

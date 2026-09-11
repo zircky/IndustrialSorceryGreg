@@ -278,8 +278,10 @@ public class ISGItems {
   public static final ItemEntry<Item> RED_HALIDE_LAMP = register("red_halide_lamp");
   public static final ItemEntry<Item> GREEN_HALIDE_LAMP = register("green_halide_lamp");
   public static final ItemEntry<Item> BLUE_HALIDE_LAMP = register("blue_halide_lamp");
+  public static final ItemEntry<Item> WHITE_HALIDE_LAMP = register("white_halide_lamp");
 
   public static final ItemEntry<Item> ALUMINO_SILICATE_GLASS_TUBE = register("alumino_silicate_glass_tube");
+  public static final ItemEntry<Item> BALLAST = register("ballast");
 
   public static final ItemEntry<Item> LASER_COOLING_UNIT = register("laser_cooling_unit");
   public static final ItemEntry<Item> LASER_DIODE = register("laser_diode");
@@ -373,6 +375,8 @@ public class ISGItems {
   public static final ItemEntry<Item> MICA_BASED_SHEET = register("mica_based_sheet");
   public static final ItemEntry<Item> MICA_INSULATOR_SHEET = register("mica_insulator_sheet");
   public static final ItemEntry<Item> MICA_INSULATOR_FOIL = register("mica_insulator_foil");
+
+  public static final ItemEntry<Item> RAPIDLY_ROTATING_CRUCIBLE = register("rapidly_rotating_crucible");
 
   public static final ItemEntry<Item> COSMIC_FABRIC = register("cosmic_fabric");
 
@@ -474,6 +478,10 @@ public class ISGItems {
       registerTieredCover(OpV, 4) : null;
 
   public static final ItemEntry<Item> CATALYST_BASE = register("catalyst_base");
+
+  public static ItemEntry<Item> NANOTOME = register("nanotome");
+  public static final ItemEntry<Item> AEROGRAPHENE = register("aerographene");
+
 
 
   private static ItemEntry<Item> register(String id) {

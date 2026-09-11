@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.common.data.tag;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.zircky.industrialsorcerygreg.ISGCore;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -48,6 +49,7 @@ public class TagUtil {
   public static TagKey<Item> createModItemTag(String path) {
     return createModTag(Registries.ITEM, path);
   }
+
 
   public static TagKey<Fluid> createFluidTag(String path) {
     return createTag(Registries.FLUID, path, false);

@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.attribute.FluidAttributes;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
@@ -7,7 +8,7 @@ import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.Ethylbenzene;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
@@ -441,6 +442,8 @@ final class MetalProcessingCompoundMaterials {
         .dust()
         .color(GTMaterials.Nickel.getMaterialRGB() + 10)
         .iconSet(ROUGH)
+        .components(Nickel, 1, Chlorine, 2)
+        .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
         .buildAndRegister()
         .setFormula("NiCl2", true);
 
@@ -1054,6 +1057,12 @@ final class MetalProcessingCompoundMaterials {
         .iconSet(SHINY)
         .buildAndRegister()
         .setFormula("Ba(NO3)2", true);
+
+    Piezoelectric = material("piezoelectric")
+        .gem()
+        .color(0xF5F5DC)
+        .iconSet(GEM_HORIZONTAL)
+        .buildAndRegister();
 
   }
 }

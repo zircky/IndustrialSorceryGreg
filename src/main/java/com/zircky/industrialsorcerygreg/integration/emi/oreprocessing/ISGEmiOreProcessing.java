@@ -9,6 +9,7 @@ import dev.emi.emi.api.stack.EmiStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.UnaryOperator;
 
 public class ISGEmiOreProcessing extends ModularUIEmiRecipe {
 
@@ -31,10 +32,10 @@ public class ISGEmiOreProcessing extends ModularUIEmiRecipe {
   public List<EmiIngredient> getInputs() {
     List<EmiIngredient> ingredients = new ArrayList<>();
     ingredients.addAll(byProduct.itemInputs.stream()
-        .map(v -> EmiStackConverter.ITEM.convertTo(v, 1))
+        .map(v -> EmiStackConverter.ITEM.convertTo(v, 1, UnaryOperator.identity()))
         .toList());
     ingredients.addAll(byProduct.fluidInputs.stream()
-        .map(v -> EmiStackConverter.FLUID.convertTo(v, 1))
+        .map(v -> EmiStackConverter.FLUID.convertTo(v, 1, UnaryOperator.identity()))
         .toList());
     return ingredients;
   }

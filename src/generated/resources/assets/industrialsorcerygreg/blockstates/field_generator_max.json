@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "industrialsorcerygreg:block/casings/field_generator/field_generator_max"
+    }
+  }
+}

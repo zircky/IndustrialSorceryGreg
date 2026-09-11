@@ -1,8 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "industrialsorcerygreg:item/material_sets/dull/particle_source",
-    "layer1": "industrialsorcerygreg:item/material_sets/dull/particle_source_secondary",
-    "layer2": "industrialsorcerygreg:item/material_sets/dull/particle_source_overlay"
-  }
-}

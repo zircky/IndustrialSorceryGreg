@@ -1,6 +1,7 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
 import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
@@ -185,6 +186,13 @@ public final class AlloyAndPolymerMaterials {
         .components(GTMaterials.Lithium, 1, GTMaterials.Fluorine, 1)
         .buildAndRegister();
 
+    BerylliumFluoride = builderISG("beryllium_fluoride")
+        .ingot(2).fluid()
+        .color(Beryllium.getMaterialARGB() + Fluorine.getMaterialARGB())
+        .iconSet(SHINY)
+        .components(Beryllium, 1, GTMaterials.Fluorine, 1)
+        .buildAndRegister();
+
     LeadBismuthEutectic = builderISG("lead_bismuth_eutatic")
         .ingot(2).fluid()
         .color(0x757575)
@@ -278,7 +286,7 @@ public final class AlloyAndPolymerMaterials {
         .buildAndRegister();
 
     CarbonNanotubes = builderISG("carbon_nanotubes")
-        .polymer(5).fluid()
+        .ingot(5).fluid()
         .color(0x2c2c2c)
         .iconSet(SHINY)
         .components(GTMaterials.Carbon, 1)
@@ -383,7 +391,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0xfe71a9)
         .iconSet(SHINY)
         .components(GTMaterials.Lithium, 2, GTMaterials.Titanium, 1, GTMaterials.Oxygen, 3)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(GENERATE_FINE_WIRE, DISABLE_DECOMPOSITION)
         .blastTemp(2500)
         .buildAndRegister();
 
@@ -399,7 +407,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0x765A30)
         .iconSet(DULL)
         .components(GTMaterials.Copper, 1, GTMaterials.RareEarth, 1)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
     Polyurethane = builderISG("polyurethane")
@@ -415,7 +423,7 @@ public final class AlloyAndPolymerMaterials {
         .color(GTMaterials.Tungsten.getMaterialRGB())
         .iconSet(SHINY)
         .components(GTMaterials.Thorium, 1, GTMaterials.Tungsten, 9)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(GENERATE_FINE_WIRE, DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
     WoodsGlass = builderISG("woods_glass")
@@ -423,7 +431,7 @@ public final class AlloyAndPolymerMaterials {
         .color(0x730099)
         .iconSet(SHINY)
         .components(GTMaterials.SiliconDioxide, 1, GTMaterials.Barium, 1, GTMaterials.Oxygen, 1, GTMaterials.Garnierite, 1, GTMaterials.SodaAsh, 1)
-        .flags(DISABLE_DECOMPOSITION)
+        .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
     BariumTitanate = builderISG("barium_titanate")
@@ -493,11 +501,17 @@ public final class AlloyAndPolymerMaterials {
         .blastTemp(6700)
         .buildAndRegister();
 
-    HeavyQuarkDegenerateMatter = builderISG("heavy_quark_degenerate_matter")
-        .ingot(6).fluid()
-        .color(0x5dbd3a)
-        .iconSet(SHINY)
-        .blastTemp(13000)
+    HeavyQuarkDegenerateMatter = material("heavy_quark_degenerate_matter")
+        .ingot()
+        .fluid()
+        .plasma()
+        .radioactiveHazard(20)
+        .fluidPipeProperties(1000000, 1000000, true)
+        .element(ISGElement.HEAVY_QUARK_DEGENERATE_MATTER)
+        .blastTemp(178000, HIGHER)
+        .color(0x52a733)
+        .iconSet(BRIGHT)
+        .flags(GENERATE_PLATE, GENERATE_FINE_WIRE)
         .buildAndRegister();
 
     SuperheavyHAlloy = builderISG("superheavy_h_alloy")
@@ -525,6 +539,7 @@ public final class AlloyAndPolymerMaterials {
         .ingot(7).fluid()
         .color(0xeb9e3f)
         .iconSet(SHINY)
+        .flags(GENERATE_FRAME)
         .blastTemp(13100)
         .buildAndRegister();
 
@@ -544,10 +559,25 @@ public final class AlloyAndPolymerMaterials {
         .radioactiveHazard(50)
         .components(GTMaterials.Neutronium, 1)
         .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_SPRING, GENERATE_FINE_WIRE,
-            GENERATE_SPRING_SMALL)
+            GENERATE_SPRING_SMALL, GENERATE_PLATE)
         .blastTemp(14100, HIGHEST, GTValues.VA[GTValues.UIV], ISGValues.HOURS * 6)
         .cableProperties(Integer.MAX_VALUE, 2, 128)
         .buildAndRegister();
+
+    ChromeYellow = material("chrome_yellow")
+        .dust()
+        .color(0xffff00)
+        .iconSet(DULL)
+        .buildAndRegister()
+        .setFormula("PbCrO4");
+
+    ChromeOrange = material("chrome_orange")
+        .dust()
+        .color(0xff6600)
+        .iconSet(DULL)
+        .buildAndRegister()
+        .setFormula("Pb2CrO5");
+
 
     NaquadriaticTaranium = builderISG("naquadriatictaranium")
         .ingot(1).fluid()
@@ -574,6 +604,15 @@ public final class AlloyAndPolymerMaterials {
         .components(GTMaterials.Carbon, 5, GTMaterials.Fluorine, 10)
         .flags(DISABLE_DECOMPOSITION)
         .buildAndRegister();
+
+    Polystyrene = builderISG("polystyrene")
+        .polymer(1).fluid()
+        .color(0x8945785)
+        .iconSet(DULL)
+        .components(GTMaterials.Carbon, 8, GTMaterials.Hydrogen, 8)
+        .flags(DISABLE_DECOMPOSITION, GENERATE_FOIL, GENERATE_PLATE)
+        .buildAndRegister();
+
 
   }
 }

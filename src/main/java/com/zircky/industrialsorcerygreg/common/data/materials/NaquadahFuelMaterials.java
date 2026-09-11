@@ -509,7 +509,7 @@ public final class NaquadahFuelMaterials {
         .buildAndRegister()
         .setFormula("Br(H2O)", true);
 
-    Ethylhexanol = builderISG("ethylhexanol")
+    EthylHexanol = builderISG("ethyl_hexanol")
         .fluid()
         .color(0xfeea9a)
         .iconSet(FLUID)

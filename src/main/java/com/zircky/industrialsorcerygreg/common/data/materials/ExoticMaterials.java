@@ -57,7 +57,7 @@ public final class ExoticMaterials {
         .element(ISGElement.MITHRIL)
         .color(0x4da6ff)
         .iconSet(METALLIC)
-        .flags(GENERATE_PLATE, GENERATE_SPRING, GENERATE_FRAME, GENERATE_SPRING_SMALL)
+        .flags(GENERATE_PLATE, GENERATE_SPRING, GENERATE_FRAME, GENERATE_SPRING_SMALL, GENERATE_FOIL)
         .cableProperties(GTValues.V[GTValues.UEV], 2, 64)
         .buildAndRegister();
 
@@ -76,7 +76,7 @@ public final class ExoticMaterials {
         .element(ISGElement.DRACONIUM)
         .color(0xa300cc)
         .iconSet(RADIOACTIVE)
-        .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_GEAR, NO_SMELTING)
+        .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_PLATE, GENERATE_DENSE, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_GEAR, GENERATE_BOLT_SCREW, NO_SMELTING)
         .buildAndRegister();
 
     Quantanium = builderISG("quantanium")
@@ -86,7 +86,7 @@ public final class ExoticMaterials {
         .element(ISGElement.QUANTANIUM)
         .color(0x0dff02)
         .iconSet(METALLIC)
-        .flags(GENERATE_ROTOR, GENERATE_SMALL_GEAR, GENERATE_FRAME, GENERATE_DENSE)
+        .flags(GENERATE_PLATE, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_FRAME, GENERATE_DENSE)
         .buildAndRegister();
 
     CrystalMatrix = builderISG("crystal_matrix")
@@ -98,7 +98,7 @@ public final class ExoticMaterials {
         .element(ISGElement.CRYSTALMATRIX)
         .color(0x33ffff)
         .iconSet(RADIOACTIVE)
-        .flags(GENERATE_SPRING, GENERATE_SPRING_SMALL)
+        .flags(GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_FOIL)
         .cableProperties(GTValues.V[GTValues.OpV], 2, 128)
         .buildAndRegister();
 
@@ -119,7 +119,7 @@ public final class ExoticMaterials {
         .element(ISGElement.TRANSCENDENTMETAL)
         .color(0xffffff)
         .iconSet(TRANSCENDENT)
-        .flags(ISGMaterialFlags.GENERATE_COMPONENT, ISGMaterialFlags.GENERATE_NANITES, GENERATE_ROUND, GENERATE_ROTOR, GENERATE_GEAR,
+        .flags(ISGMaterialFlags.GENERATE_COMPONENT, ISGMaterialFlags.GENERATE_NANITES, GENERATE_ROUND, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_BOLT_SCREW,
             GENERATE_SMALL_GEAR, GENERATE_LONG_ROD)
         .buildAndRegister();
 
@@ -176,7 +176,7 @@ public final class ExoticMaterials {
         .blastTemp(36000, null, GTValues.VA[GTValues.MAX], 3600)
         .element(ISGElement.ETERNITY)
         .iconSet(ETERNITY)
-        .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_FOIL, GENERATE_FRAME)
+        .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_FOIL, GENERATE_FRAME, GENERATE_ROD)
         .buildAndRegister();
 
     ChaosInfinityAlloy = material("chaos_infinity_alloy")
@@ -190,6 +190,17 @@ public final class ExoticMaterials {
         .flags(GENERATE_FRAME, GENERATE_GEAR, GENERATE_BOLT_SCREW, GENERATE_PLATE)
         .buildAndRegister()
         .setFormula("§8§kc§r§8∞§r§8§kc", false);
+
+    AwakenedDraconium = material("awakened_draconium")
+        .ingot().fluid().plasma()
+        .radioactiveHazard(60)
+        .blastTemp(22600, HIGHEST)
+        .element(ISGElement.AWAKENEDDRACONIUM)
+        .color(0xcc6600)
+        .iconSet(METALLIC)
+        .flags(GENERATE_FINE_WIRE)
+        .cableProperties(GTValues.V[GTValues.OpV], 64, 0, true)
+        .buildAndRegister();
 
     MagnetohydrodynamicallyConstrainedStarMatter = builderISG("magnetohydrodynamically_constrained_star_matter")
         .ingot()
@@ -333,7 +344,7 @@ public final class ExoticMaterials {
         .element(ISGElement.VIBRANIUM)
         .color(0xff0000)
         .iconSet(METALLIC)
-        .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_DENSE)
+        .flags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_PLATE, GENERATE_ROTOR, GENERATE_FRAME, GENERATE_DENSE)
         .buildAndRegister();
 
     Taranium = builderISG("taranium")
@@ -344,7 +355,7 @@ public final class ExoticMaterials {
         .element(ISGElement.TARANIUM)
         .color(0x000033)
         .iconSet(RADIOACTIVE)
-        .flags(GENERATE_SPRING, GENERATE_SPRING_SMALL)
+        .flags(GENERATE_SPRING, GENERATE_SPRING_SMALL, GENERATE_FOIL)
         .cableProperties(GTValues.V[GTValues.UXV], 2, 64)
         .buildAndRegister();
 
@@ -430,7 +441,7 @@ public final class ExoticMaterials {
         .components(Vibranium, 1, Adamantium, 3)
         .color(0xff009c)
         .iconSet(METALLIC)
-        .flags(ISGMaterialFlags.GENERATE_COMPONENT, GENERATE_ROUND, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_LONG_ROD,
+        .flags(ISGMaterialFlags.GENERATE_COMPONENT, GENERATE_ROUND, GENERATE_ROTOR, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_LONG_ROD, GENERATE_BOLT_SCREW,
             DISABLE_DECOMPOSITION)
         .buildAndRegister();
 

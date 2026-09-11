@@ -5,6 +5,7 @@ import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.RotationState;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.machine.*;
+import com.gregtechceu.gtceu.api.machine.multiblock.CoilWorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.MultiblockControllerMachine;
 import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
@@ -25,6 +26,9 @@ import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.ISGValues;
+import brachy.modularui.api.widget.IWidget;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widgets.TextWidget;
 import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -32,6 +36,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
@@ -49,6 +54,17 @@ import static com.zircky.industrialsorcerygreg.api.registries.ISGRegistries.REGI
 public class MachineRegisterUtils {
   public static final int[] NUCLER_TIARS = ISGValues.tiersBetween(ISGValues.EV, ISGValues.LuV);
 
+  public static final BiFunction<MultiblockControllerMachine, PanelSyncManager, List<IWidget>> CHEMICAL_PLANT_DISPLAY = (controller, syncManager) -> {
+    double value = 1 - ((CoilWorkableElectricMultiblockMachine) controller).getCoilTier() * 0.05;
+    return List.of(
+        new TextWidget<>(Component.translatable("isgcore.machine.eut_multiplier.tooltip", FormattingUtil.formatNumbers(value * 0.8))),
+        new TextWidget<>(Component.translatable("isgcore.machine.duration_multiplier.tooltip", FormattingUtil.formatNumbers(value * 0.6))));
+  };
+
+  public static <MACHINE extends MetaMachine> MachineBuilder<MachineDefinition, MACHINE, ?> machine(String name,
+                                                                                             MachineInstanceFactory<MACHINE> blockEntityFactory) {
+    return REGISTRATE.machine(name, blockEntityFactory);
+  }
 
 
   public static <MACHINE extends MultiblockControllerMachine> MultiblockMachineBuilder<MultiblockMachineDefinition, MACHINE, ?> multiblock(String name, MachineInstanceFactory<MACHINE> blockEntityFactory) {

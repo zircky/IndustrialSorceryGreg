@@ -12,7 +12,7 @@ public class ISGMaterialFlags {
   public static final MaterialFlag GENERATE_CATALYST = new MaterialFlag.Builder("generate_catalyst")
       .build();
 
-  public static final MaterialFlag GENERATE_PARTICLE_SOURCE = new MaterialFlag.Builder("generate_particle_source")
+  public static final MaterialFlag GENERATE_FUEL = new MaterialFlag.Builder("generate_fuel")
       .build();
 
   public static final MaterialFlag GENERATE_NANITES = new MaterialFlag.Builder("generate_nanites")

@@ -270,7 +270,7 @@ final class ChemicalPrecursorMaterials {
         .setFormula("H2XeO4", true);
 
     DustyLiquidHelium3 = builderISG("dusty_liquid_helium3")
-        .fluid()
+        .plasma()
         .color(2 * GTMaterials.Helium3.getMaterialRGB() / 3 + ISGMaterials.Taranium.getMaterialRGB() / 5)
         .iconSet(FLUID)
         .buildAndRegister();
@@ -294,13 +294,13 @@ final class ChemicalPrecursorMaterials {
         .buildAndRegister();
 
     TaraniumRichDustyHelium = builderISG("taranium_rich_dusty_helium")
-        .fluid()
+        .plasma()
         .color(GTMaterials.Helium.getMaterialRGB() / 2 + ISGMaterials.Taranium.getMaterialRGB() / 2)
         .iconSet(FLUID)
         .buildAndRegister();
 
     TaraniumDepletedHelium = builderISG("taranium_depleted_helium")
-        .fluid()
+        .plasma()
         .color(GTMaterials.Helium.getMaterialRGB() / 2 + ISGMaterials.Taranium.getMaterialRGB() / 2)
         .iconSet(FLUID)
         .buildAndRegister();

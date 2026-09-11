@@ -1,0 +1,59 @@
+package com.zircky.industrialsorcerygreg.data.recipe.misc.test;
+
+import gregtech.api.recipes.ModHandler;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.MarkerMaterials;
+import gregtech.api.unification.material.type.MarkerMaterial;
+import gregtech.api.unification.ore.OrePrefix;
+import net.minecraft.item.ItemStack;
+
+import static gregicadditions.GAMaterials.*;
+import static gregicadditions.recipes.GARecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.SHAPE_MOLD_PLATE;
+
+/**
+ * This chain is not fully balanced. This chain is so terrible
+ * to work on, that I can't imagine any player ever actually
+ * making anything in it aside from the bare minimum to progress.
+ *
+ * Considering the name of the chain, I think that this chain
+ * deserves to die. At this point, it probably has a positive loop
+ * in it somewhere since I gave up halfway through balancing it.
+ * So let that be even further encouragement.
+ */
+public class Dyes {
+    public static void init(){
+
+
+
+
+
+
+
+
+
+
+        ItemStack[][] color_dyes = {{OreDictUnifier.get(dust,Barite),FinelyPowderedRutile.getItemStack(),OreDictUnifier.get(dust,LeadNitrate), DiaminostilbenedisulfonicAcid.getItemStack()},
+                {OreDictUnifier.get(dust,Carbon),OreDictUnifier.get(dust,Pyrolusite),Nigrosin.getItemStack()},
+                {RawSienna.getItemStack(),DirectBrown.getItemStack()},
+                {BurnedSienna.getItemStack(),MercuryIodide.getItemStack(),OreDictUnifier.get(dust,Cinnabar),Quinacridone.getItemStack()},
+                {CadmiumSulfide.getItemStack(),BismuthVanadate.getItemStack(),TitaniumYellow.getItemStack(),ChromeYellow.getItemStack(),DiarylideYellow.getItemStack()},
+                {OreDictUnifier.get(dust,Malachite),ScheelesGreen.getItemStack(),CobaltZincOxide.getItemStack(),AlizarineCyanineGreen.getItemStack()},
+                {CobaltAluminate.getItemStack(),PrussianBlue.getItemStack(),IndanthroneBlue.getItemStack(),Indigo.getItemStack()},
+                {AmmoniumManganesePhosphate.getItemStack(),HanPurple.getItemStack(),Mauveine.getItemStack()},
+                {ChromeOrange.getItemStack(),Diketopyrrolopyrrole.getItemStack()},
+                {CyanIndigoDye.getItemStack()},{Erythrosine.getItemStack()}};
+        MarkerMaterial[] colors = {MarkerMaterials.Color.White,MarkerMaterials.Color.Black,MarkerMaterials.Color.Brown,MarkerMaterials.Color.Red,MarkerMaterials.Color.Yellow,
+                MarkerMaterials.Color.Green,MarkerMaterials.Color.Blue,MarkerMaterials.Color.Purple,MarkerMaterials.Color.Orange,MarkerMaterials.Color.Cyan,MarkerMaterials.Color.Pink};
+
+        for (int i = 0; i < color_dyes.length ; i++) {
+            for (ItemStack color: color_dyes[i]) {
+                OreDictUnifier.registerOre(color, OrePrefix.dye, colors[i]);
+            }
+        }
+    }
+
+}

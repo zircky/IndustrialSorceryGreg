@@ -11,7 +11,6 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 import com.zircky.industrialsorcerygreg.api.item.component.ICustomRenderer;
 import com.zircky.industrialsorcerygreg.client.renderer.item.HaloItemRenderer;
-import lombok.Getter;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -74,8 +73,25 @@ public class ISGTagPrefix extends TagPrefix {
       .generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_CATALYST));
 
   private static final MaterialIconType NANITES_ICON = new MaterialIconType("nanites");
-  public static final TagPrefix NANITES = new ISGTagPrefix("nanites").idPattern("%s_nanites").defaultTagPath("nanites/%s").unformattedTagPath("nanites").materialAmount(GTValues.M).materialIconType(NANITES_ICON).unificationEnabled(true).generateItem(true).generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_NANITES));
-  public static final TagPrefix CONTAMINABLE_NANITES = new ISGTagPrefix("contaminable_nanites").idPattern("contaminable_%s_nanites").defaultTagPath("contaminable_nanites/%s").unformattedTagPath("contaminable_nanites").materialAmount(GTValues.M).materialIconType(NANITES_ICON).unificationEnabled(true).generateItem(true).generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_NANITES));
+  public static final TagPrefix NANITES = new ISGTagPrefix("nanites")
+      .idPattern("%s_nanites")
+      .defaultTagPath("nanites/%s")
+      .unformattedTagPath("nanites")
+      .materialAmount(GTValues.M)
+      .materialIconType(NANITES_ICON)
+      .unificationEnabled(true)
+      .generateItem(true)
+      .generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_NANITES));
+
+  public static final TagPrefix CONTAMINABLE_NANITES = new ISGTagPrefix("contaminable_nanites")
+      .idPattern("contaminable_%s_nanites")
+      .defaultTagPath("contaminable_nanites/%s")
+      .unformattedTagPath("contaminable_nanites")
+      .materialAmount(GTValues.M)
+      .materialIconType(NANITES_ICON)
+      .unificationEnabled(true)
+      .generateItem(true)
+      .generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_NANITES));
 
   public static final TagPrefix MILLED = new ISGTagPrefix("milled").idPattern("milled_%s").defaultTagPath("milleds/%s").unformattedTagPath("milleds").materialAmount(GTValues.M).materialIconType(new MaterialIconType("milled")).unificationEnabled(true).generateItem(true).generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_MILLED));
 
@@ -212,20 +228,36 @@ public class ISGTagPrefix extends TagPrefix {
       .generateItem(true)
       .generationCondition(mat -> mat.hasFlag(GENERATE_SINGULARITY));
 
-  public static final TagPrefix PARTICLE_SOURCE = new ISGTagPrefix("particle_source")
+  public static final TagPrefix FUEL = new ISGTagPrefix("fuel")
       .useRenderer(() -> HaloItemRenderer.RADIOACTIVE)
-      .idPattern("%s_particle_source")
-      .defaultTagPath("particle_source/%s")
-      .unformattedTagPath("particle_source")
+      .idPattern("fuel_%s")
+      .defaultTagPath("fuel/%s")
+      .unformattedTagPath("fuel")
+      .langValue("Fuel %s")
       .materialAmount(GTValues.M * 2)
-      .materialIconType(new MaterialIconType("particle_source"))
+      .materialIconType(new MaterialIconType("fuel"))
       .unificationEnabled(true)
       .generateItem(true)
-      .generationCondition(mat -> mat.hasFlag(ISGMaterialFlags.GENERATE_PARTICLE_SOURCE));
+      .generationCondition(mat -> mat.hasFlag(GENERATE_FUEL));
+
+  public static final TagPrefix DEPLETED = new ISGTagPrefix("depleted")
+      .useRenderer(() -> HaloItemRenderer.RADIOACTIVE)
+      .idPattern("depleted_%s")
+      .defaultTagPath("depleted/%s")
+      .unformattedTagPath("depleted")
+      .langValue("Depleted %s")
+      .materialAmount(GTValues.M * 2)
+      .materialIconType(new MaterialIconType("depleted"))
+      .unificationEnabled(true)
+      .generateItem(true)
+      .generationCondition(mat -> mat.hasFlag(GENERATE_FUEL));
 
 
-  @Getter
   private ToIntFunction<Material> maxDamageProvider;
+
+  public ToIntFunction<Material> getMaxDamageProvider() {
+    return maxDamageProvider;
+  }
 
   /**
      * @return {@code this}.

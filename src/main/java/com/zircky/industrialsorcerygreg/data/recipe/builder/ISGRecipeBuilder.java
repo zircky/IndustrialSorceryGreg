@@ -7,6 +7,8 @@ import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialEntry;
 import com.gregtechceu.gtceu.api.data.medicalcondition.MedicalCondition;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey;
+import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.item.component.IDataItem;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
@@ -16,6 +18,7 @@ import com.gregtechceu.gtceu.api.recipe.chance.logic.ChanceLogic;
 import com.gregtechceu.gtceu.api.recipe.ingredient.*;
 import com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicate;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
+import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.recipe.ISGRecipeType;
 import com.zircky.industrialsorcerygreg.api.recipe.LayeredRecipeHelper;
 import com.zircky.industrialsorcerygreg.common.data.recipe.NeutronActivatorCondition;
@@ -667,6 +670,14 @@ public class ISGRecipeBuilder extends GTRecipeBuilder {
   public ISGRecipeBuilder outputFluids(FluidIngredient... outputs) {
     super.outputFluids(outputs);
     return this;
+  }
+
+  public ISGRecipeBuilder outputFluids(Material material, int amount) {
+    return outputFluids(material.getFluid(amount));
+  }
+
+  public ISGRecipeBuilder outputFluids(Material material, FluidStorageKey fluidStorageKey, int amount) {
+    return outputFluids(material.getFluid(fluidStorageKey, amount));
   }
 
   @Override

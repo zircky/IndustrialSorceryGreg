@@ -155,15 +155,19 @@ public class LayeredRecipeUIHelper {
     }
   }
 
-  private static RecipeViewerSlotWidget<?> createEmptySlot(RecipeCapability<?> capability, IO io) {
-    var slot = RecipeViewerSlotWidget.create()
-        .recipeSlotRole(io == IO.IN ? RecipeSlotRole.INPUT : RecipeSlotRole.OUTPUT);
+  private static RecipeViewerSlotWidget<?, ?> createEmptySlot(RecipeCapability<?> capability, IO io) {
     if (capability == ItemRecipeCapability.CAP) {
+      var slot = RecipeViewerSlotWidget.create(ItemStack.class)
+          .recipeSlotRole(io == IO.IN ? RecipeSlotRole.INPUT : RecipeSlotRole.OUTPUT);
       slot.value(ItemStackList.of(ItemStack.EMPTY)).background(GuiTextures.SLOT_ITEM, IDrawable.EMPTY);
+      return slot;
     } else if (capability == FluidRecipeCapability.CAP) {
+      var slot = RecipeViewerSlotWidget.create(FluidStack.class)
+          .recipeSlotRole(io == IO.IN ? RecipeSlotRole.INPUT : RecipeSlotRole.OUTPUT);
       slot.value(FluidStackList.of(FluidStack.EMPTY)).background(GuiTextures.SLOT_FLUID, IDrawable.EMPTY);
+      return slot;
     }
-    return slot;
+    throw new IllegalArgumentException("Unsupported recipe capability: " + capability);
   }
 
   private static List<IWidget> getLayerSummaryWidgets(GTRecipe rootRecipe) {

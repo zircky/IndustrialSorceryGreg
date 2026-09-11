@@ -1,6 +1,7 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import igentuman.nc.content.materials.Ingots;
 import vazkii.botania.common.block.BotaniaBlocks;
 import vazkii.botania.common.item.BotaniaItems;
 
@@ -23,5 +24,6 @@ public final class MaterialIgnored {
     TagPrefix.block.setIgnored(ManaDiamond, () -> BotaniaBlocks.manaDiamondBlock);
     TagPrefix.gem.setIgnored(Dragonstone, () -> () -> BotaniaItems.dragonstone);
     TagPrefix.block.setIgnored(Dragonstone, () -> BotaniaBlocks.dragonstoneBlock);
+
   }
 }

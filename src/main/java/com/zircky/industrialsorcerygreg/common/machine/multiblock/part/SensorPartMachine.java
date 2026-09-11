@@ -46,6 +46,18 @@ public class SensorPartMachine extends MultiblockPartMachine implements IMuiMach
     super(info);
   }
 
+  public float getMin() {
+    return min;
+  }
+
+  public float getMax() {
+    return max;
+  }
+
+  public boolean isInverted() {
+    return isInverted;
+  }
+
   @Override
   public void buildMainUI(ParentWidget<?> main, PosGuiData guiData, PanelSyncManager syncManager,
                           UISettings uiSettings) {

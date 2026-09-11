@@ -674,7 +674,7 @@ public class NaquadahLine {
         .inputFluids(LightENaquadahFuel.getFluid(300))
         .inputFluids(NaquadriaSolution.getFluid(200))
         .inputDust(Rutherfordium)
-        .inputFluids(Plutonium244Isotope.getFluid(144))
+        .inputFluids(Plutonium244.getFluid(144))
         .outputFluids(HyperFuelI.getFluid(2000))
         .EUt(1920)
         .duration(200)

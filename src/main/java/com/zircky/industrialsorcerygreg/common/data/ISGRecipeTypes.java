@@ -7,6 +7,7 @@ import brachy.modularui.widgets.layout.Flow;
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.recipe.gui.GTRecipeTypeUILayout;
+import com.gregtechceu.gtceu.common.data.GCYMRecipeTypes;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.common.data.GTSoundEntries;
 import com.gregtechceu.gtceu.common.mui.GTGuiTextures;
@@ -43,7 +44,7 @@ public class ISGRecipeTypes {
   public final static ISGRecipeTypeProxy ELECTROMAGNETIC_SEPARATOR_RECIPES = gt(GTRecipeTypes.ELECTROMAGNETIC_SEPARATOR_RECIPES);
   public final static ISGRecipeTypeProxy EXTRACTOR_RECIPES = gt(GTRecipeTypes.EXTRACTOR_RECIPES);
   public final static ISGRecipeTypeProxy EXTRUDER_RECIPES = gt(GTRecipeTypes.EXTRUDER_RECIPES);
-  public final static ISGRecipeTypeProxy FERMENTING_RECIPES = gt(GTRecipeTypes.FERMENTING_RECIPES);
+  public final static ISGRecipeTypeProxy FERMENTING_RECIPES = gt(GTRecipeTypes.FERMENTING_RECIPES.setMaxIOSize(2, 1, 1, 1));
   public final static ISGRecipeTypeProxy FLUID_HEATER_RECIPES = gt(GTRecipeTypes.FLUID_HEATER_RECIPES);
   public final static ISGRecipeTypeProxy FLUID_SOLIDFICATION_RECIPES = gt(GTRecipeTypes.FLUID_SOLIDFICATION_RECIPES);
   public final static ISGRecipeTypeProxy FORGE_HAMMER_RECIPES = gt(GTRecipeTypes.FORGE_HAMMER_RECIPES);
@@ -78,9 +79,9 @@ public class ISGRecipeTypes {
   public final static ISGRecipeTypeProxy VACUUM_RECIPES = gt(GTRecipeTypes.VACUUM_RECIPES);
   public final static ISGRecipeTypeProxy ASSEMBLY_LINE_RECIPES = gt(GTRecipeTypes.ASSEMBLY_LINE_RECIPES);
   public final static ISGRecipeTypeProxy LARGE_CHEMICAL_RECIPES = gt(GTRecipeTypes.LARGE_CHEMICAL_RECIPES);
-  public final static ISGRecipeTypeProxy FUSION_RECIPES = gt(GTRecipeTypes.FUSION_RECIPES);
+  public final static ISGRecipeTypeProxy FUSION_RECIPES = gt(GTRecipeTypes.FUSION_RECIPES.setMaxIOSize(0, 0 , 2, 2));
   public final static ISGRecipeTypeProxy DUMMY_RECIPES = gt(GTRecipeTypes.DUMMY_RECIPES);
-  public final static ISGRecipeTypeProxy ALLOY_BLAST_RECIPES = gt(GTRecipeTypes.ALLOY_SMELTER_RECIPES);
+  public final static ISGRecipeTypeProxy ALLOY_BLAST_RECIPES = gt(GCYMRecipeTypes.ALLOY_BLAST_RECIPES);
 
   public final static ISGRecipeType LARGE_MIXER_RECIPES = (ISGRecipeType) ISGRecipeType.register("large_mixer_recipes", MULTIBLOCK)
       .setMaxIOSize(9, 1, 6, 1)
@@ -299,6 +300,38 @@ public class ISGRecipeTypes {
           .addRecipeUIModifier(ISGRecipeUIModifiers.NEUTRON_ACTIVATOR_INFO))
       .setSound(GTSoundEntries.COOLING);
 
+  public static final ISGRecipeType VACUUM_DISTILLATION_RECIPES = (ISGRecipeType) ISGRecipeType.register("vacuum_distillation_tower", MULTIBLOCK)
+      .setMaxIOSize(1, 3, 2, 5)
+      .setEUIO(IO.IN)
+      .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_ARROW_MULTIPLE))
+      .setSound(GTSoundEntries.COOLING);
+
+  public static final ISGRecipeType POLYMERIZATION_REACTOR_RECIPES = (ISGRecipeType) ISGRecipeType.register("polymerization_reactor", MULTIBLOCK)
+      .setMaxIOSize(2, 1, 3, 3)
+      .setEUIO(IO.IN)
+      .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_ARROW)
+          .addRecipeUIModifier(GTRecipeUIModifiers.TEMP_COIL_INFO))
+      .setSound(GTSoundEntries.CHEMICAL);
+
+  public static final ISGRecipeType CHEMICAL_PLANT_RECIPES = (ISGRecipeType) ISGRecipeType.register("chemical_plant", MULTIBLOCK)
+      .setMaxIOSize(6, 4, 6,4)
+      .setEUIO(IO.IN)
+      .UI(builder -> builder
+          .setItemSlotsOverlay(IO.IN, 0, 1, GTGuiTextures.MOLECULAR_OVERLAY_1)
+          .setItemSlotOverlay(IO.IN, 2, GTGuiTextures.MOLECULAR_OVERLAY_2)
+          .setFluidSlotsOverlay(IO.IN, 0, 1, GTGuiTextures.MOLECULAR_OVERLAY_3)
+          .setFluidSlotOverlay(IO.IN, 2, GTGuiTextures.MOLECULAR_OVERLAY_4)
+          .setItemSlotOverlay(IO.OUT, 0, GTGuiTextures.VIAL_OVERLAY_1)
+          .setFluidSlotOverlay(IO.OUT, 0, GTGuiTextures.VIAL_OVERLAY_1)
+          .setProgressBar(GTGuiTextures.PROGRESS_ARROW_MULTIPLE))
+      .setSound(GTSoundEntries.CHEMICAL)
+      .setSmallRecipeMap(LARGE_CHEMICAL_RECIPES.recipeType());
+
+  public static final ISGRecipeType BIO_REACTOR_RECIPES = (ISGRecipeType) ISGRecipeType.register("bio_reactor", MULTIBLOCK)
+      .setMaxIOSize(3, 3, 5, 2)
+      .setEUIO(IO.IN)
+      .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_ARROW));
+
   public static final ISGRecipeType TEST_RECIPES = ((ISGRecipeType) ISGRecipeType.register("test", MULTIBLOCK)
       .setMaxIOSize(6, 6, 6, 6)
       .setEUIO(IO.IN)
@@ -312,4 +345,5 @@ public class ISGRecipeTypes {
   public static void init() {
     RecipeTypesModify.init();
   }
+
 }

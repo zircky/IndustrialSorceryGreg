@@ -53,7 +53,6 @@ public class LayeredRecipeLogic extends RecipeLogic {
 
   @SaveField
   @SyncToClient
-  @Getter
   private int layeredRecipeLayerIndex = -1;
 
   @Nullable
@@ -82,6 +81,10 @@ public class LayeredRecipeLogic extends RecipeLogic {
 
   public int getLayeredRecipeSize() {
     return layeredRecipe.size();
+  }
+
+  public int getLayeredRecipeLayerIndex() {
+    return layeredRecipeLayerIndex;
   }
 
   public @NotNull List<GTRecipe> getLayeredRecipe() {

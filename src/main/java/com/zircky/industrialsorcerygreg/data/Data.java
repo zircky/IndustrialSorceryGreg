@@ -1,7 +1,6 @@
 package com.zircky.industrialsorcerygreg.data;
 
 import com.zircky.industrialsorcerygreg.data.recipe.classified.WaterPurificationPlant;
-import com.zircky.industrialsorcerygreg.data.recipe.misc.CosmicChain;
 import com.zircky.industrialsorcerygreg.data.recipe.misc.machines.*;
 import com.zircky.industrialsorcerygreg.data.recipe.generated.ForEachMaterial;
 import com.zircky.industrialsorcerygreg.data.recipe.RecipeRemoval;
@@ -30,31 +29,63 @@ public class Data {
   }
 
   private static void commonInit(Consumer<FinishedRecipe> provider) {
-    MachineRecipe.init(provider);
-
     AppliedEnergistics2Recipe.init(provider);
     AlloyBlast.init(provider);
-    AluminiumLine.init(provider);
     AlloySmelterRecipes.init(provider);
-    AssemblerRecipes.init(provider);
-    AssemblyLine.init(provider);
     ArcFurnaceRecipes.init(provider);
-    MixerRecipes.init(provider);
-    ComponentRecipe.init(provider);
-    CosmicChain.init(provider);
-    ChemicalReactorRecipes.init(provider);
+//    AssemblerRecipes.init(provider);
+//    AssemblyLine.init(provider);
+    BioReactor.init(provider);
+    CannerRecipes.init(provider);
+    Centrifuge.init(provider);
+    ChemicalBath.init(provider);
+//    ChemicalReactorRecipes.init(provider);
     ClusterRecipes.init(provider);
-    IndustrialProcessMaterialsRecipe.init(provider);
-    HighEnergyMaterialsRecipe.init(provider);
+    ComponentRecipe.init(provider);
+    DecayChamber.init(provider);
+    Dehydrator.init(provider);
+//    DistillationTower.init(provider);
+//    ElectricBlastFurnace.init(provider);
+//    Electrolyzer.init(provider);
+//    ElectromagneticSeparator.init(provider);
+//    ImplosionCompressor.init(provider);
+//    IndustrialProcessMaterialsRecipe.init(provider);
+//    HighEnergyMaterialsRecipe.init(provider);
+//    FormingPressRecipes.init(provider);
+    FuelReprocessorRecipes.init(provider);
+//    FusionReactor.init(provider);
+//    GasCentrifuge.init(provider);
+//    Macerator.init(provider);
+    MachineRecipe.init(provider);
+//    MixerRecipes.init(provider);
+//    PolymerizationReactor.init(provider);
+//    PyrolyseOven.init(provider);
+//    Smalting.init(provider);
+//    StellarForge.init(provider);
+//    Vacuum.init(provider);
+//    AutoclaveRecipes.init(provider);
+//    CompressorRecipes.init(provider);
+//    CrackingRecipes.init(provider);
+//    DistilleryRecipes.init(provider);
+//    ExtractorRecipes.init(provider);
+//    FermentingRecipes.init(provider);
+//    FluidHeaterRecipes.init(provider);
+//    FluidSolidificationRecipes.init(provider);
+//    LargeEngraverRecipes.init(provider);
+//    PlasmaCondenserRecipes.init(provider);
+//    PolarizerRecipes.init(provider);
+//    ThermalCentrifugeRecipes.init(provider);
+    MetaTileEntityLoader.init(provider);
+    WaterPurificationPlant.init(provider);
+    processecing(provider);
+    ForEachMaterial.init(provider);
+  }
+
+  private static void processecing(Consumer<FinishedRecipe> provider) {
+    AluminiumLine.init(provider);
     PlatinumLine.init(provider);
     ChromiumLine.init(provider);
     NaquadahLine.init(provider);
-    FuelReprocessorRecipes.init(provider);
-    FormingPressRecipes.init(provider);
     TriniumLine.init(provider);
-    //CannerRecipes.init(provider);
-    MetaTileEntityLoader.init(provider);
-    WaterPurificationPlant.init(provider);
-    ForEachMaterial.init(provider);
   }
 }

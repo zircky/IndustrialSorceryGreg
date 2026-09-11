@@ -1,0 +1,6 @@
+{
+  "parent": "gtceu:block/overlay/front",
+  "textures": {
+    "overlay": "industrialsorcerygreg:block/overlay/machine/me_buffer_hatch_red"
+  }
+}

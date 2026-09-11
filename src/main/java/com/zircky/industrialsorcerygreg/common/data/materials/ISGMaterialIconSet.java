@@ -6,10 +6,7 @@ import com.zircky.industrialsorcerygreg.client.renderer.item.HaloItemRenderer;
 import com.zircky.industrialsorcerygreg.client.renderer.item.ISGItemRenderer;
 import com.zircky.industrialsorcerygreg.client.renderer.item.StereoscopicItemRenderer;
 import com.zircky.industrialsorcerygreg.client.renderer.item.TranslucentRenderer;
-import lombok.Getter;
-import org.jetbrains.annotations.Nullable;
 
-@Getter
 public class ISGMaterialIconSet extends MaterialIconSet {
 
   private final ICustomRenderer customRender;
@@ -21,6 +18,10 @@ public class ISGMaterialIconSet extends MaterialIconSet {
   public ISGMaterialIconSet(String name, MaterialIconSet parentIconset, boolean root, ICustomRenderer renderer) {
     super(name, parentIconset, root);
     this.customRender = renderer;
+  }
+
+  public ICustomRenderer getCustomRender() {
+    return customRender;
   }
 
   public static final MaterialIconSet SPACETIME = new MaterialIconSet("spacetime", MaterialIconSet.DULL);
