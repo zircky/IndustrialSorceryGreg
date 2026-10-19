@@ -1015,12 +1015,20 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("CuGaInSe2", true);
 
-    LanthanumCalciumManganate = builderISG("lanthanum_gallium_manganate")
+    LanthanumCalciumManganate = builderISG("lanthanum_calcium_manganate")
         .dust()
         .color(0x8aa07b)
         .iconSet(SHINY)
         .buildAndRegister()
         .setFormula("LaCaMnO3", true);
+
+    LanthanumGalliumManganate = builderISG("lanthanum_gallium_manganate")
+        .dust()
+        .color(0x8aa07b)
+        .iconSet(SHINY)
+        .buildAndRegister()
+        .setFormula("LaGaMnO3", true);
+
 
     AluminiumComplex = builderISG("aluminium_complex")
         .dust()

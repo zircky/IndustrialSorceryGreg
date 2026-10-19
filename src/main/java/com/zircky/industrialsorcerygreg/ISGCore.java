@@ -10,10 +10,12 @@ import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.common.machine.multiblock.electric.FusionReactorMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.mojang.logging.LogUtils;
+import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import com.zircky.industrialsorcerygreg.api.gregtech.AddonTierNamePatcher;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.client.ClientProxy;
 import com.zircky.industrialsorcerygreg.common.data.*;
+import com.zircky.industrialsorcerygreg.config.ISGConfigHolder;
 import com.zircky.industrialsorcerygreg.data.ISGDatagen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,7 +29,7 @@ import org.slf4j.Logger;
 public class ISGCore {
 
   public static final String MODID = "industrialsorcerygreg";
-  private static final ResourceLocation TEMPLATE_LOCATION = new ResourceLocation(MODID, "");
+  private static final ResourceLocation TEMPLATE_LOCATION = ResourceLocation.fromNamespaceAndPath(MODID, "");
   public static final String NAME = "IndustrialSorceryGreg";
   public static final String TABNAME = "ISGCore";
   public static final Logger LOGGER = LogUtils.getLogger();
@@ -52,9 +54,9 @@ public class ISGCore {
 
 
   public static void init() {
-    ISGCreativeModeTabs.init();
+    ISGConfigHolder.init();
 
-
+    ISGElement.init();
 
     ISGItems.init();
 
@@ -69,7 +71,7 @@ public class ISGCore {
 
     int i = path.indexOf(':');
     if (i > 0) {
-      return new ResourceLocation(path);
+      return ResourceLocation.parse(path);
     } else if (i == 0) {
       path = path.substring(i + 1);
     }
@@ -86,7 +88,11 @@ public class ISGCore {
   }
 
   public static void blockinit() {
+
     ISGBlocks.init();
+
+    ISGCreativeModeTabs.init();
+
     FusionReactorMachine.registerFusionTier(GTValues.UHV, " (MKIV)");
     FusionReactorMachine.registerFusionTier(GTValues.UEV, " (MKV)");
   }

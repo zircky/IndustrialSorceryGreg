@@ -25,7 +25,7 @@ public class ElectromagneticSeparator {
     ELECTROMAGNETIC_SEPARATOR_RECIPES.recipeBuilder("graphene_aligned_cnt").duration(260).EUt(122880)
         .inputDust(GrapheneNanotubeMix)
         .chancedOutput(dust, CarbonNanotubes, 1, 7500)
-        .outputItems(GrapheneAlignedCNT)
+        .outputDust(GrapheneAlignedCNT)
         .save(provider);
     testRecipes(provider);
   }

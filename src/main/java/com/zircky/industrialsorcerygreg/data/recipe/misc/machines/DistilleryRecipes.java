@@ -13,19 +13,19 @@ public class DistilleryRecipes {
 
         // RP1
         DISTILLERY_RECIPES.recipeBuilder("kerosene_to_rp1").duration(16).EUt(120)
-                .circuitMeta(0)
+                .circuitMeta(1)
                 .inputFluids(Kerosene.getFluid(50))
                 .outputFluids(RP1.getFluid(25))
                 .save(provider);
 
         DISTILLERY_RECIPES.recipeBuilder("sulfuric_coal_tar_oil_to_naphthalene").duration(80).EUt(30)
-                .circuitMeta(0)
+                .circuitMeta(1)
                 .inputFluids(SulfuricCoalTarOil.getFluid(50))
                 .outputFluids(Naphthalene.getFluid(50))
                 .save(provider);
 
         DISTILLERY_RECIPES.recipeBuilder("sulfuric_coal_tar_oil_to_naphthalene_circuit_1").duration(5).EUt(480)
-                .circuitMeta(1)
+                .circuitMeta(2)
                 .inputFluids(SulfuricCoalTarOil.getFluid(800))
                 .outputFluids(Naphthalene.getFluid(800))
                 .save(provider);

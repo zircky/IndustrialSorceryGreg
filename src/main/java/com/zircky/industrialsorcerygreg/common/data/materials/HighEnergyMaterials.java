@@ -89,7 +89,7 @@ public final class HighEnergyMaterials {
         .color((Nitrogen.getMaterialRGB() + Carbon.getMaterialRGB()) / 2)
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("(C-12)(C-13)(N-14)(N-15)", true);
+        .setFormula("(C12)(C13)(N14)(N15)", true);
 
     Calcium44 = builderISG("calcium-44")
         .fluid()
@@ -139,7 +139,7 @@ public final class HighEnergyMaterials {
         .color(GTMaterials.Iron.getMaterialRGB())
         .iconSet(FLUID)
         .buildAndRegister()
-        .setFormula("Fe-52", true);
+        .setFormula("Fe52", true);
 
     Nickel56 = builderISG("nickel_56")
         .fluid()

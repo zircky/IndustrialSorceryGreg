@@ -36,9 +36,7 @@ public class ISGSimpleMachines {
   public static final MachineDefinition[] UNPACKER = registerSimpleMachines("unpacker", ISGRecipeTypes.UNPACKER_RECIPES, GTMachineUtils.defaultTankSizeFunction);
   public static final MachineDefinition[] CLUSTER = registerSimpleMachines("cluster", ISGRecipeTypes.CLUSTER_RECIPES, GTMachineUtils.defaultTankSizeFunction);
   public static final MachineDefinition[] ROLLING = registerSimpleMachines("rolling", ISGRecipeTypes.ROLLING_RECIPES, GTMachineUtils.defaultTankSizeFunction);
-  public static final MachineDefinition[] LAMINATOR = registerSimpleMachines("laminator", ISGRecipeTypes.LAMINATOR_RECIPES, GTMachineUtils.defaultTankSizeFunction);
   public static final MachineDefinition[] LOOM = registerSimpleMachines("loom", ISGRecipeTypes.LOOM_RECIPES, GTMachineUtils.defaultTankSizeFunction);
-  public static final MachineDefinition[] LASER_WELDER = registerSimpleMachines("laser_welder", ISGRecipeTypes.LASER_WELDER_RECIPES, GTMachineUtils.defaultTankSizeFunction);
   public static final MachineDefinition[] DECAY_CHAMBER = registerSimpleMachines("decay_chamber", ISGRecipeTypes.DECAY_CHAMBERS_RECIPES, GTMachineUtils.defaultTankSizeFunction);
 
   public static final MachineDefinition[] WIRELESS_ENERGY_INPUT_HATCH = registerWirelessEnergyTieredHatch(

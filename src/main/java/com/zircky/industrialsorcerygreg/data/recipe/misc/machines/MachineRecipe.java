@@ -167,11 +167,8 @@ public class MachineRecipe {
     registerMachineRecipe(provider, ISGSimpleMachines.CLUSTER, "MMM", "CHC", "MMM", 'H', HULL, 'M', MOTOR, 'C', CIRCUIT);
     registerMachineRecipe(provider, ISGSimpleMachines.ROLLING, "EWE", "CMC", "PWP", 'M', HULL, 'E', MOTOR, 'P', PISTON, 'C',
         CIRCUIT, 'W', CABLE);
-    registerMachineRecipe(provider, ISGSimpleMachines.LAMINATOR, "WPW", "CMC", "GGG", 'M', HULL, 'P', PUMP, 'C', CIRCUIT, 'W',
-        CABLE, 'G', CONVEYOR);
     registerMachineRecipe(provider, ISGSimpleMachines.LOOM, "CWC", "EME", "EWE", 'M', HULL, 'E', MOTOR, 'C', CIRCUIT,
         'W', CABLE);
-    registerMachineRecipe(provider, ISGSimpleMachines.LASER_WELDER, "WEW", "CMC", "PPP", 'M', HULL, 'P', PLATE, 'C', CIRCUIT, 'E', EMITTER, 'W', CABLE);
     registerMachineRecipe(provider, ISGSimpleMachines.DECAY_CHAMBER, "RCR", "FMF", "QCQ", 'M', HULL, 'Q', CABLE_DOUBLE, 'C', CIRCUIT, 'F', FIELD_GENERATOR, 'R', ROD_RADIOACTIVE);
 
     ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("hull_ulv")).duration(25).EUt(VA[ULV])

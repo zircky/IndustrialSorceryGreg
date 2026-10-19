@@ -23,8 +23,8 @@ public class FluidHeaterRecipes {
     // Migrated from misc/test recipes.
 
         // CH3NO(H2O) -> CH3NO + H2O
-        FLUID_HEATER_RECIPES.recipeBuilder("wet_formamide_to_formamide").duration(60).EUt(30)
-                .circuitMeta(0)
+        FLUID_HEATER_RECIPES.recipeBuilder("wet_formamide_to_formamide").duration(60).EUt(VA[MV])
+                .circuitMeta(1)
                 .inputFluids(WetFormamide.getFluid(100))
                 .outputFluids(Formamide.getFluid(100))
                 .save(provider);
@@ -38,12 +38,12 @@ public class FluidHeaterRecipes {
         FLUID_HEATER_RECIPES.recipeBuilder("carbon_dioxide_to_supercritical_co2").duration(80).EUt(480)
                 .inputFluids(CarbonDioxide.getFluid(1000))
                 .outputFluids(SupercriticalCO2.getFluid(1000))
-                .circuitMeta(0)
+                .circuitMeta(1)
                 .save(provider);
 
         FLUID_HEATER_RECIPES.recipeBuilder("butanol_to_butanol_gas").duration(130).EUt(480)
                 .inputFluids(Butanol.getFluid(1000))
-                .circuitMeta(0)
+                .circuitMeta(1)
                 .outputFluids(ButanolGas.getFluid(1000))
                 .save(provider);
 
@@ -63,19 +63,18 @@ public class FluidHeaterRecipes {
     //                 .save(provider);
     // 
     // 
-    //         // Lignite Processing ==========================================================================================
-    //         FLUID_HEATER_RECIPES.recipeBuilder("nitrogen_to_hot_nitrogen").duration(120).EUt(120)
-    //                 .circuitMeta(0)
-    //                 .inputFluids(Nitrogen.getFluid(1000))
-    //                 .outputFluids(HotNitrogen.getFluid(1000))
-    //                 .save(provider);
+             // Lignite Processing ==========================================================================================
+             FLUID_HEATER_RECIPES.recipeBuilder("nitrogen_to_hot_nitrogen").duration(120).EUt(120)
+                     .circuitMeta(1)
+                     .inputFluids(Nitrogen.getFluid(1000))
+                     .outputFluids(HotNitrogen.getFluid(1000))
+                     .save(provider);
     // 
     // 
     //         
 
 // [C2H4O + H2O] -> C2H6O2
         FLUID_HEATER_RECIPES.recipeBuilder("wet_ethylene_oxide_to_ethylene_glycol").duration(130).EUt(120)
-                .circuitMeta(0)
                 .inputFluids(WetEthyleneOxide.getFluid(1000))
                 .outputFluids(EthyleneGlycol.getFluid(1000))
                 .save(provider);

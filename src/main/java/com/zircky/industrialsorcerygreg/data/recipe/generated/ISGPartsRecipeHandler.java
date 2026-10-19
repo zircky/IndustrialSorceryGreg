@@ -15,6 +15,7 @@ import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import com.zircky.industrialsorcerygreg.common.data.ISGItems;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
+import com.zircky.industrialsorcerygreg.config.ISGConfigHolder;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -188,7 +189,7 @@ public class ISGPartsRecipeHandler {
       int voltageMultiplier = getVoltageMultiplier(material);
       EXTRUDER_RECIPES.recipeBuilder("extrude_" + material.getName() + "_ingot_to_gear")
           .inputItems(ingot, material, 4)
-          .notConsumable(GTItems.SHAPE_EXTRUDER_GEAR)
+          .notConsumable(GTItems.SHAPE_MOLD_GEAR)
           .outputItems(gearPrefix, material)
           .duration(mass * 5)
           .EUt(8L * voltageMultiplier)
@@ -197,7 +198,7 @@ public class ISGPartsRecipeHandler {
       if (material.hasFlag(NO_SMASHING)) {
         EXTRUDER_RECIPES.recipeBuilder("extrude_" + material.getName() + "_dust_to_gear")
             .inputItems(dust, material, 4)
-            .notConsumable(GTItems.SHAPE_EXTRUDER_GEAR)
+            .notConsumable(GTItems.SHAPE_MOLD_GEAR)
             .outputItems(gearPrefix, material)
             .duration(mass * 5)
             .EUt(8L * voltageMultiplier)
@@ -226,7 +227,7 @@ public class ISGPartsRecipeHandler {
 
         EXTRUDER_RECIPES.recipeBuilder("extrude_" + material.getName() + "_ingot_to_small_gear")
             .inputItems(ingot, material)
-            .notConsumable(GTItems.SHAPE_EXTRUDER_GEAR_SMALL)
+            .notConsumable(GTItems.SHAPE_MOLD_GEAR_SMALL)
             .outputItems(stack)
             .duration(mass)
             .EUt((long) getVoltageMultiplier(material) << 3)
@@ -235,7 +236,7 @@ public class ISGPartsRecipeHandler {
         if (material.hasFlag(NO_SMASHING)) {
           EXTRUDER_RECIPES.recipeBuilder("extrude_" + material.getName() + "_dust_to_small_gear")
               .inputItems(dust, material)
-              .notConsumable(GTItems.SHAPE_EXTRUDER_GEAR_SMALL)
+              .notConsumable(GTItems.SHAPE_MOLD_GEAR_SMALL)
               .outputItems(stack)
               .duration(mass)
               .EUt((long) getVoltageMultiplier(material) << 3)
@@ -618,13 +619,13 @@ public class ISGPartsRecipeHandler {
 
     EXTRUDER_RECIPES.recipeBuilder("extrude_" + material.getName() + "_ingot_to_rotor")
         .inputItems(ingot, material, 5)
-        .notConsumable(GTItems.SHAPE_EXTRUDER_ROTOR)
+        .notConsumable(GTItems.SHAPE_MOLD_ROTOR)
         .outputItems(stack)
         .duration(mass << 2)
         .EUt((long) getVoltageMultiplier(material) << 3)
         .save(provider);
 
-    LASER_WELDER_RECIPES.recipeBuilder(material.getName() + "_to_rotor")
+    WELDER_RECIPES.recipeBuilder(material.getName() + "_to_rotor")
         .inputItems(curvedPlateStack.copyWithCount(4))
         .inputItems(ringStack)
         .circuitMeta(1)
@@ -636,7 +637,7 @@ public class ISGPartsRecipeHandler {
     if (material.hasFlag(NO_SMASHING)) {
       EXTRUDER_RECIPES.recipeBuilder("extrude_" + material.getName() + "_dust_to_rotor")
           .inputItems(dust, material, 5)
-          .notConsumable(GTItems.SHAPE_EXTRUDER_ROTOR)
+          .notConsumable(GTItems.SHAPE_MOLD_ROTOR)
           .outputItems(stack)
           .duration(mass << 2)
           .EUt((long) getVoltageMultiplier(material) << 3)
@@ -658,25 +659,25 @@ public class ISGPartsRecipeHandler {
     CUTTER_RECIPES.recipeBuilder("cut_" + material.getName() + "_screw_to_bolt")
         .inputItems(screw, material)
         .outputItems(boltStack.copyWithCount(1))
-        .duration(20)
+        .duration((int) (material.getMass() << 2))
         .EUt(24)
         .save(provider);
 
     if (!boltStack.isEmpty() && !ingotStack.isEmpty()) {
       EXTRUDER_RECIPES.recipeBuilder("extrude_" + material.getName() + "_ingot_to_bolt")
           .inputItems(ingot, material)
-          .notConsumable(GTItems.SHAPE_EXTRUDER_BOLT)
+          .notConsumable(ISGItems.SHAPE_EXTRUDER_BOLT)
           .outputItems(boltStack)
-          .duration(15)
+          .duration((int) (material.getMass() << 4))
           .EUt((long) getVoltageMultiplier(material) << 2)
           .save(provider);
 
       if (material.hasFlag(NO_SMASHING)) {
         EXTRUDER_RECIPES.recipeBuilder("extrude_" + material.getName() + "_dust_to_bolt")
             .inputItems(dust, material)
-            .notConsumable(GTItems.SHAPE_EXTRUDER_BOLT)
+            .notConsumable(ISGItems.SHAPE_EXTRUDER_BOLT)
             .outputItems(boltStack)
-            .duration(15)
+            .duration((int) (material.getMass() << 4))
             .EUt((long) getVoltageMultiplier(material) << 2)
             .save(provider);
       }
@@ -717,7 +718,7 @@ public class ISGPartsRecipeHandler {
     GTRecipeBuilder builder = CUTTER_RECIPES.recipeBuilder("cut_" + material.getName() + "_long_rod_to_rod")
         .inputItems(stack)
         .duration(mass).EUt(4);
-    if (ConfigHolder.INSTANCE.recipes.harderRods) {
+    if (ISGConfigHolder.INSTANCE.recipes.harderRods) {
       builder.outputItems(stickStack.copyWithCount(1));
       builder.outputItems(dustSmall, material, 2);
     } else {
@@ -732,7 +733,7 @@ public class ISGPartsRecipeHandler {
       VanillaRecipeHelper.addShapedRecipe(provider, String.format("stick_long_stick_%s", material.getName()), stack, "ShS", 'S', stickStack.copyWithCount(1));
 
     if (!material.hasProperty(PropertyKey.WOOD)) {
-      LASER_WELDER_RECIPES.recipeBuilder(material.getName() + "_rod_to_long_rod")
+      WELDER_RECIPES.recipeBuilder(material.getName() + "_rod_to_long_rod")
           .inputItems(stickStack)
           .circuitMeta(2)
           .outputItems(stack)

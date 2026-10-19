@@ -2,13 +2,10 @@ package com.zircky.industrialsorcerygreg;
 
 import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
-import com.gregtechceu.gtceu.api.addon.events.KJSRecipeKeyEvent;
-import com.gregtechceu.gtceu.api.addon.events.MaterialCasingCollectionEvent;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.ISGCovers;
-import com.zircky.industrialsorcerygreg.common.data.ISGElement;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipes;
 import com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet;
 import com.zircky.industrialsorcerygreg.data.recipe.ISGCraftingComponents;
@@ -45,28 +42,8 @@ public class ISGAddon implements IGTAddon {
   }
 
   @Override
-  public void registerElements() {
-    ISGElement.init();
-  }
-
-  @Override
-  public void registerSounds() {
-    IGTAddon.super.registerSounds();
-  }
-
-  @Override
   public void registerCovers() {
     ISGCovers.init();
-  }
-
-  @Override
-  public void registerRecipeCapabilities() {
-    IGTAddon.super.registerRecipeCapabilities();
-  }
-
-  @Override
-  public void registerWorldgenLayers() {
-    IGTAddon.super.registerWorldgenLayers();
   }
 
   @Override
@@ -103,16 +80,6 @@ public class ISGAddon implements IGTAddon {
   @Override
   public void registerBedrockOreVeins() {
     IGTAddon.super.registerBedrockOreVeins();
-  }
-
-  @Override
-  public void collectMaterialCasings(MaterialCasingCollectionEvent event) {
-    IGTAddon.super.collectMaterialCasings(event);
-  }
-
-  @Override
-  public void registerRecipeKeys(KJSRecipeKeyEvent event) {
-    IGTAddon.super.registerRecipeKeys(event);
   }
 
   @Override

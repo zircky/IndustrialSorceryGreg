@@ -28,10 +28,10 @@ public class RecipeRemoval {
     consumer.accept(GTCEu.id("assembly_line/electric_motor_luv"));
     consumer.accept(GTCEu.id("assembly_line/electric_motor_zpm"));
     consumer.accept(GTCEu.id("assembly_line/electric_motor_uv"));
-    consumer.accept(new ResourceLocation("gtceu:shaped/electric_motor_mv"));
-    consumer.accept(new ResourceLocation("gtceu:shaped/electric_motor_hv"));
-    consumer.accept(new ResourceLocation("gtceu:shaped/electric_motor_ev"));
-    consumer.accept(new ResourceLocation("gtceu:shaped/electric_motor_iv"));
+    consumer.accept(GTCEu.id("shaped/electric_motor_mv"));
+    consumer.accept(GTCEu.id("shaped/electric_motor_hv"));
+    consumer.accept(GTCEu.id("shaped/electric_motor_ev"));
+    consumer.accept(GTCEu.id("shaped/electric_motor_iv"));
     consumer.accept(GTCEu.id("assembler/conveyor_module_lv_styrene_butadiene_rubber"));
     consumer.accept(GTCEu.id("assembler/conveyor_module_lv_silicone_rubber"));
     consumer.accept(GTCEu.id("assembler/conveyor_module_lv_rubber"));

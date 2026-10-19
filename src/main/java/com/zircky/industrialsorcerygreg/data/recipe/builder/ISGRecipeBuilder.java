@@ -1038,4 +1038,13 @@ public class ISGRecipeBuilder extends GTRecipeBuilder {
     return this;
   }
 
+//  public ISGRecipeBuilder notConsumableCatalyst(Material material) {
+//
+//  }
+//
+//  public ISGRecipeBuilder notConsumableCatalyst(Material material, int count) {
+//
+//  }
+
+
 }

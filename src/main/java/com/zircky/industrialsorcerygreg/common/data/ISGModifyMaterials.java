@@ -60,7 +60,7 @@ public class ISGModifyMaterials {
     GTMaterials.Iron.addFlags(GENERATE_FINE_WIRE);
     GTMaterials.RhodiumPlatedPalladium.addFlags(GENERATE_GEAR);
 
-    GTMaterials.Neutronium.addFlags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_DENSE, GENERATE_FOIL, GENERATE_RING);
+    GTMaterials.Neutronium.addFlags(ISGMaterialFlags.GENERATE_NANITES, GENERATE_DENSE, GENERATE_FOIL, GENERATE_RING, GENERATE_CURVED_PLATE);
     GTMaterials.Carbon.addFlags(GENERATE_NANITES);
     GTMaterials.Glowstone.addFlags(GENERATE_NANITES);
     GTMaterials.Gold.addFlags(GENERATE_NANITES);
@@ -178,6 +178,7 @@ public class ISGModifyMaterials {
     addLiquid(GTMaterials.Technetium);
     addLiquid(GTMaterials.Thallium);
     addLiquid(GTMaterials.Bohrium);
+    addLiquid(GTMaterials.Helium3);
 
     addPlasma(GTMaterials.Potassium);
     addPlasma(GTMaterials.Neon);

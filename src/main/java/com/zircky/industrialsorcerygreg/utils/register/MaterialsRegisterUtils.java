@@ -5,6 +5,10 @@ import com.gregtechceu.gtceu.utils.FormattingUtil;
 import com.zircky.industrialsorcerygreg.ISGCore;
 
 public final class MaterialsRegisterUtils {
+  private MaterialsRegisterUtils() {
+    /* This utility class should not be instantiated */
+  }
+
   public static Material.Builder material(String name, String en) {
     return new Material.Builder(ISGCore.id(name))
         .langValue(en);
@@ -13,4 +17,6 @@ public final class MaterialsRegisterUtils {
   public static Material.Builder material(String name) {
     return new Material.Builder(ISGCore.id(name));
   }
+
+
 }

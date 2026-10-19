@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
+import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 
@@ -258,7 +259,7 @@ public class AssemblyLine {
     ASSEMBLY_LINE_RECIPES.recipeBuilder("neodymium_magnetic_uv_superconductor_ultimet_naquadah_alloy_titanium_naquadah_enriched_to_plasma_containment_cell")
         .inputItems(rodLong, NeodymiumMagnetic, 2)
         .inputItems(wireGtSingle, EnrichedNaquadahTriniumEuropiumDuranide, 16)
-        .inputItems(pipeLargeFluid, Ultimet, 4)
+        .inputItems(pipeLargeItem, Ultimet, 4)
         .inputItems(ISGTagPrefix.CURVED_PLATE, NaquadahAlloy, 8)
         .inputFluids(Titanium.getFluid(2592))
         .inputFluids(NaquadahEnriched.getFluid(1584))
@@ -288,14 +289,14 @@ public class AssemblyLine {
         .outputItems(TIME_DILATION_CONTAINMENT_UNIT.asStack())
         .save(provider);
 
-//             ASSEMBLY_LINE_RECIPES.recipeBuilder("tritanium_naquadah_alloy_uhv_superconductor_degenerate_rhenium_plate_emitter_uhv_to_time_dilation_containment_unit").duration(100).EUt(800000)
-//                     .inputFluids(Tritanium.getFluid(144))
-//                     .inputItems(rod, NaquadahAlloy, 4)
-//                     .inputItems(wireGtSingle, UHVSuperconductor, 2)
-//                     .inputItems(plate, ElectronDegenerateRhenium, 4)
-//                     .inputItems(EMITTER_UHV, 2)
-//                     .outputItems(TIME_DILATION_CONTAINMENT_UNIT.asStack(4))
-//                     .save(provider);
+    ASSEMBLY_LINE_RECIPES.recipeBuilder("tritanium_naquadah_alloy_uhv_superconductor_degenerate_rhenium_plate_emitter_uhv_to_time_dilation_containment_unit").duration(100).EUt(800000)
+        .inputFluids(Tritanium.getFluid(144))
+        .inputItems(rod, NaquadahAlloy, 4)
+        .inputItems(wireGtSingle, RutheniumTriniumAmericiumNeutronate, 2)
+        .inputItems(plate, ElectronDegenerateRhenium, 4)
+        .inputItems(GTItems.EMITTER_UHV, 2)
+        .outputItems(TIME_DILATION_CONTAINMENT_UNIT.asStack(4))
+        .save(provider);
 //
 //             ASSEMBLY_LINE_RECIPES.recipeBuilder("tritanium_naquadah_alloy_uev_superconductor_qcd_protective_plating_field_generator_uhv_charged_lepton_trap_crystal_to_time_dilation_containment_unit").duration(100).EUt(12800000)
 //                     .inputFluids(Tritanium.getFluid(144))
@@ -308,24 +309,24 @@ public class AssemblyLine {
 //                     .save(provider);
 
     // 
-    //         ASSEMBLY_LINE_RECIPES.recipeBuilder("tritanium_emitter_zpm_field_generator_zpm_contained_kerr_singularity_uv_superconductor_neutronium_to_microwormhole_generator").duration(100).EUt(100000)
-    //                 .inputFluids(Tritanium.getFluid(576))
-    //                 .inputItems(EMITTER_ZPM.asStack(2))
-    //                 .inputItems(FIELD_GENERATOR_ZPM.asStack())
-    //                 .inputItems(CONTAINED_KERR_SINGULARITY.asStack())
-    //                 .inputItems(wireGtSingle, UVSuperconductor, 2)
-    //                 .inputItems(plate, Neutronium, 2)
-    //                 .outputItems(MICROWORMHOLE_GENERATOR.asStack())
-    //                 .save(provider);
+//             ASSEMBLY_LINE_RECIPES.recipeBuilder("tritanium_emitter_zpm_field_generator_zpm_contained_kerr_singularity_uv_superconductor_neutronium_to_microwormhole_generator").duration(100).EUt(100000)
+//                     .inputFluids(Tritanium.getFluid(576))
+//                     .inputItems(GTItems.EMITTER_ZPM.asStack(2))
+//                     .inputItems(GTItems.FIELD_GENERATOR_ZPM.asStack())
+//                     .inputItems(CONTAINED_KERR_SINGULARITY.asStack())
+//                     .inputItems(wireGtSingle, EnrichedNaquadahTriniumEuropiumDuranide, 2)
+//                     .inputItems(plate, Neutronium, 2)
+//                     .outputItems(MICROWORMHOLE_GENERATOR.asStack())
+//                     .save(provider);
     // 
     //         ASSEMBLY_LINE_RECIPES.recipeBuilder("naquadah_alloy_contained_high_density_protonic_matter_microwormhole_generator_contained_kerr_singularity_emitter_uv_field_generator_uv_sensor_uv_battery_small_lis_to_macrowormhole_generator").duration(200).EUt(1000000)
     //                 .inputFluids(NaquadahAlloy.getFluid(576))
     //                 .inputItems(CONTAINED_HIGH_DENSITY_PROTONIC_MATTER.asStack())
     //                 .inputItems(MICROWORMHOLE_GENERATOR.asStack())
     //                 .inputItems(CONTAINED_KERR_SINGULARITY.asStack())
-    //                 .inputItems(EMITTER_UV.asStack(4))
-    //                 .inputItems(FIELD_GENERATOR_UV.asStack(2))
-    //                 .inputItems(SENSOR_UV.asStack(4))
+    //                 .inputItems(GTItems.EMITTER_UV.asStack(4))
+    //                 .inputItems(GTItems.FIELD_GENERATOR_UV.asStack(2))
+    //                 .inputItems(GTItems.SENSOR_UV.asStack(4))
     //                 .inputItems(BATTERY_SMALL_LIS.asStack())
     //                 .outputItems(MACROWORMHOLE_GENERATOR.asStack())
     //                 .save(provider);

@@ -108,7 +108,7 @@ public final class BiologicalMaterials {
         .buildAndRegister()
         .setFormula("C142H230N36O44S", true);
 
-    CleanAmmoniaSolution = builderISG("clear_ammonia_solution")
+    CleanAmmoniaSolution = builderISG("clean_ammonia_solution")
         .fluid()
         .color(0x53c9a0)
         .iconSet(FLUID)
