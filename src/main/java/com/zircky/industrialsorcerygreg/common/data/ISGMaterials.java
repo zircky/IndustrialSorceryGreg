@@ -2448,6 +2448,7 @@ public class ISGMaterials {
   public static Material CopperGalliumIndiumMix;
   public static Material CopperGalliumIndiumSelenide;
   public static Material LanthanumCalciumManganate;
+  public static Material LanthanumGalliumManganate;
   public static Material AluminiumComplex;
   public static Material IronPlatinumCatalyst;
   public static Material YttriumNitrate;

@@ -1,14 +1,5 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
-import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
-import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import net.minecraft.data.recipes.FinishedRecipe;
 
@@ -219,14 +210,6 @@ public class FusionReactor {
                      .EUt(7680)
                      .fusionStartEU(480000000)
                      .save(provider);
-
-             FUSION_RECIPES.recipeBuilder("taranium_enriched_l_helium3_helium3_to_plasma_taranium_rich_dusty_helium_2").duration(100).EUt(120000).fusionStartEU(1200000000L)
-                     .inputFluids(TaraniumEnrichedLHelium3.getFluid(1000))
-                     .inputFluids(Helium3.getFluid(1000))
-                     .outputFluids(TaraniumRichDustyHelium.getFluid(FluidStorageKeys.PLASMA, 3000))
-                     .save(provider);
-
-
 }
 
 }

@@ -54,7 +54,7 @@ public class ISGRecipeTypes {
   public final static ISGRecipeTypeProxy ORE_WASHER_RECIPES = gt(GTRecipeTypes.ORE_WASHER_RECIPES);
   public final static ISGRecipeTypeProxy PACKER_RECIPES = gt(GTRecipeTypes.PACKER_RECIPES);
   public final static ISGRecipeTypeProxy POLARIZER_RECIPES = gt(GTRecipeTypes.POLARIZER_RECIPES);
-  public final static ISGRecipeTypeProxy LASER_ENGRAVER_RECIPES = gt(GTRecipeTypes.LASER_ENGRAVER_RECIPES);
+  public final static ISGRecipeTypeProxy LASER_ENGRAVER_RECIPES = gt(GTRecipeTypes.LASER_ENGRAVER_RECIPES.setMaxIOSize(2, 1, 2, 1));
   public final static ISGRecipeTypeProxy SIFTER_RECIPES = gt(GTRecipeTypes.SIFTER_RECIPES);
   public final static ISGRecipeTypeProxy THERMAL_CENTRIFUGE_RECIPES = gt(GTRecipeTypes.THERMAL_CENTRIFUGE_RECIPES);
   public final static ISGRecipeTypeProxy WIREMILL_RECIPES = gt(GTRecipeTypes.WIREMILL_RECIPES);
@@ -82,6 +82,8 @@ public class ISGRecipeTypes {
   public final static ISGRecipeTypeProxy FUSION_RECIPES = gt(GTRecipeTypes.FUSION_RECIPES.setMaxIOSize(0, 0 , 2, 2));
   public final static ISGRecipeTypeProxy DUMMY_RECIPES = gt(GTRecipeTypes.DUMMY_RECIPES);
   public final static ISGRecipeTypeProxy ALLOY_BLAST_RECIPES = gt(GCYMRecipeTypes.ALLOY_BLAST_RECIPES);
+  public final static ISGRecipeTypeProxy SPOOLING_RECIPES = gt(GTRecipeTypes.SPOOLING_RECIPES);
+  public final static ISGRecipeTypeProxy WELDER_RECIPES = gt(GTRecipeTypes.WELDER_RECIPES);
 
   public final static ISGRecipeType LARGE_MIXER_RECIPES = (ISGRecipeType) ISGRecipeType.register("large_mixer_recipes", MULTIBLOCK)
       .setMaxIOSize(9, 1, 6, 1)
@@ -156,14 +158,6 @@ public class ISGRecipeTypes {
       .setEUIO(IO.IN)
       .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_BENDING))
       .setSound(GTSoundEntries.MOTOR);
-
-  public static final ISGRecipeType LAMINATOR_RECIPES = (ISGRecipeType) ISGRecipeType.register("laminator", ELECTRIC)
-      .setMaxIOSize(3, 1, 1, 0)
-      .setEUIO(IO.IN)
-      .UI(builder -> builder
-          .setProgressBar(GTGuiTextures.PROGRESS_CIRCUIT_ASSEMBLER)
-          .setItemSlotOverlay(IO.IN, 0, GTGuiTextures.CIRCUIT_OVERLAY))
-      .setSound(GTSoundEntries.BATH);
 
   public static final ISGRecipeType LOOM_RECIPES = (ISGRecipeType) ISGRecipeType.register("loom", ELECTRIC)
       .setMaxIOSize(2, 1, 0, 0)

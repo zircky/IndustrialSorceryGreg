@@ -32,7 +32,7 @@ public class ChemicalReactorRecipes {
   public static void init(Consumer<FinishedRecipe> provider) {
     recipesChem(provider);
     recipesLargeChemical(provider);
-    testRecipes(provider);
+//    testRecipes(provider);
   }
 
   private static void recipesChem(Consumer<FinishedRecipe> provider) {

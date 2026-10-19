@@ -25,8 +25,8 @@
     "adastra.AdAstraClientMixin",
     "adastra.AdAstraOverlayScreenMixin",
     "ae2.AE2SearchFillMixin",
-    "emi.EmiSearchDragFillMixin",
-    "emi.EmiSearchFillMixin",
+//    "emi.EmiSearchDragFillMixin",
+//    "emi.EmiSearchFillMixin",
     "modularui.OverlayStackMixin"
   ],
   "injectors": {

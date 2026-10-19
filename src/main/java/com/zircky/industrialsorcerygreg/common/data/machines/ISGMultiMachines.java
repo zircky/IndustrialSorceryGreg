@@ -452,33 +452,6 @@ public class ISGMultiMachines {
           .register(),
       UHV, UEV);
 
-  public static final MultiblockMachineDefinition LARGE_LASER_WELDER = multiblock("large_laser_welder", WorkableElectricMultiblockMachine::new)
-      .rotationState(RotationState.ALL)
-      .recipeTypes(ISGRecipeTypes.LASER_WELDER_RECIPES)
-      .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, OC_PERFECT, BATCH_MODE)
-      .appearanceBlock(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING)
-      .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
-          .slice("AAA", "AAA", "AAA")
-          .slice("ECE", "C C", "FFF")
-          .slice("ECE", "CAC", "FFF")
-          .slice("ECE", "CDC", "FFF")
-          .slice("ACA", "CDC", "CCC")
-          .slice("ACA", "CDC", "CCC")
-          .slice("ACA", "CDC", "CCC")
-          .slice("AAA", "ABA", "AAA")
-          .where('A', blocks(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING.get())
-              .and(autoAbilities(definition.getRecipeTypes()))
-              .and(autoAbilities(true, false, true)))
-          .where('B', controller(blocks(definition.get())))
-          .where('C', blocks(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING.get()))
-          .where('D', blocks(GTBlocks.CASING_TUNGSTENSTEEL_PIPE.get()))
-          .where('E', blocks(GTBlocks.CASING_GRATE.get()))
-          .where('F', blocks(GTBlocks.CASING_TEMPERED_GLASS.get()))
-          .where(' ', any())
-          .build())
-      .workableCasingModel(GTCEu.id("block/casings/gcym/laser_safe_engraving_casing"), GTCEu.id("block/multiblock/gcym/large_assembler"))
-      .register();
-
   public static final MultiblockMachineDefinition NEUTRON_ACTIVATOR = multiblock("neutron_activator", NeutronActivatorMachine::new)
       .rotationState(RotationState.NON_Y_AXIS)
       .tooltips()

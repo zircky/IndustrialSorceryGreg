@@ -2,6 +2,8 @@ package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
+import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
+import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -68,7 +70,7 @@ public class MixerRecipes {
     MIXER_RECIPES.recipeBuilder("polycyclic_aromatic_mix")
         .inputFluids(Anthracene.getFluid(1000))
         .inputDust(Tetracene, 2)
-        .outputItems(PolycyclicAromaticMix, 3)
+        .outputDust(PolycyclicAromaticMix, 3)
         .duration(240).EUt(7680).save(provider);
 
     MIXER_RECIPES.recipeBuilder("yellow_limonite_from_silicon_dioxide_pyrolusite").duration(320).EUt(32)
@@ -106,19 +108,19 @@ public class MixerRecipes {
     MIXER_RECIPES.recipeBuilder("graphene_nanotube_mix").duration(240).EUt(122880)
         .inputItems(foil, Graphene)
         .inputDust(CarbonNanotubes)
-        .outputItems(GrapheneNanotubeMix)
+        .outputDust(GrapheneNanotubeMix)
         .save(provider);
 
     MIXER_RECIPES.recipeBuilder("cycloparaphenylene").duration(200).EUt(983040)
         .notConsumable(NANOTOME)
-        .inputItems(GrapheneAlignedCNT)
+        .inputDust(GrapheneAlignedCNT)
         .outputItems(foil, Graphene)
         .outputFluids(Cycloparaphenylene.getFluid(250))
         .save(provider);
 
     // NH4C(H2O) + H2O -> NH4C(H2O)2
     MIXER_RECIPES.recipeBuilder("titanium_water_rich_nitrogen_mix_oxidised_nitrogen_mix").duration(60).EUt(120)
-        .notConsumableDust(FeCrOCatalyst)
+        .notConsumable(ISGTagPrefix.CATALYST, FeCrOCatalyst)
         .notConsumable(rodLong, Titanium)
         .inputFluids(Water.getFluid(1000))
         .inputFluids(RichNitrogenMix.getFluid(1000))
@@ -181,7 +183,7 @@ public class MixerRecipes {
         .inputDust(SodaAsh, 6)
         .inputDust(Quicklime, 2)
         .inputFluids(BoronFreeSolution.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, CalciumMagnesiumSalts, 16))
+        .outputItems(dust, CalciumMagnesiumSalts, 16)
         .outputFluids(SodiumLithiumSolution.getFluid(1000))
         .save(provider);
 
@@ -196,7 +198,7 @@ public class MixerRecipes {
 
     // NaOH + H2O -> NaOH(H2O)
     MIXER_RECIPES.recipeBuilder("sodium_hydroxide_water_to_sodium_hydroxide_solution").duration(60).EUt(30)
-        .circuitMeta(0)
+        .circuitMeta(1)
         .inputDust(SodiumHydroxide, 3)
         .inputFluids(Water.getFluid(1000))
         .outputFluids(SodiumHydroxideSolution.getFluid(1000))
@@ -216,9 +218,9 @@ public class MixerRecipes {
     MIXER_RECIPES.recipeBuilder("titanium_tetrachloride_aluminium_chloride_to_ti_al_chloride")
         .inputFluids(TitaniumTetrachloride.getFluid(1000))
         .inputDust(AluminiumChloride, 4)
+        .outputItems(ChemicalHelper.get(dust, TiAlChloride, 9))
         .EUt(7680)
         .duration(50)
-        .outputItems(ChemicalHelper.get(dust, TiAlChloride, 9))
         .save(provider);
 
     LARGE_MIXER_RECIPES.recipeBuilder("palladium_iridium_rhenium_cerium_osmium_silicon_oxygen_to_pd_ir_re_o_ce_os_si_catalyst")
@@ -396,7 +398,7 @@ public class MixerRecipes {
 
 
     // 4Tb + 7Ds + 10Fe + 5Co + 2B + Si + C -> [4Tb + 7Ds + 10Fe + 5Co + 2B + Si + C]
-    LARGE_MIXER_RECIPES.recipeBuilder("terbium_dysprosium_iron_cobalt_boron_silicon_carbon_to_magnetorestrictive_alloy").duration(940).EUt(30)
+    LARGE_MIXER_RECIPES.recipeBuilder("terbium_dysprosium_iron_cobalt_boron_silicon_carbon_to_magnetorestrictive_alloy").duration(940).EUt(VA[IV])
         .inputDust(Terbium, 4)
         .inputDust(Dysprosium, 7)
         .inputDust(Iron, 10)
@@ -929,7 +931,7 @@ public class MixerRecipes {
         .inputFluids(BFGF.getFluid(1000))
         .inputFluids(EGF.getFluid(1000))
         .outputFluids(RawGrowthMedium.getFluid(4000))
-        .EUt(480)
+        .EUt(VA[IV])
         .duration(500)
         .save(provider);
 
@@ -989,6 +991,7 @@ public class MixerRecipes {
         .outputFluids(SterileGrowthMedium.getFluid(1250))
         .EUt(7680)
         .duration(100)
+        .cleanroom(CleanroomType.STERILE_CLEANROOM)
         .save(provider);
 
 

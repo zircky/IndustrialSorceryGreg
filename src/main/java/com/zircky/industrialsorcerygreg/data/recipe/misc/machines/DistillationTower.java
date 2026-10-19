@@ -32,8 +32,6 @@ public class DistillationTower {
   }
 
   private static void testRecipes(Consumer<FinishedRecipe> provider) {
-    // Migrated from misc/test recipes.
-
         // CH3NO(H2O) -> CH3NO + H2O
         DISTILLATION_RECIPES.recipeBuilder("wet_formamide_to_water_formamide").duration(200).EUt(120)
                 .inputFluids(WetFormamide.getFluid(1000))
@@ -112,6 +110,7 @@ public class DistillationTower {
                 .save(provider);
 
 
+        // Error ***
         // Liquid Air Distillation =====================================================================================
         DISTILLATION_RECIPES.recipeBuilder("liquid_air_to_nitrogen_oxygen_argon_carbon_dioxide_neon_helium_methane_krypton_hydrogen_xenon").duration(7500).EUt(1920)
                 .inputFluids(LiquidAir.getFluid(100000))
@@ -126,7 +125,7 @@ public class DistillationTower {
                 .outputFluids(Hydrogen.getFluid(5))
                 .outputFluids(Xenon.getFluid(1))
                 .save(provider);
-
+        // ***
 
         // Nuclear Process Distillation ================================================================================
         DISTILLATION_RECIPES.recipeBuilder("red_oil_to_ferrite_mixture_hydrazine_rp1_tributyl_phosphate").duration(75).EUt(120)

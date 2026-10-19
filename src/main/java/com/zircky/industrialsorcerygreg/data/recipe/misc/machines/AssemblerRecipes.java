@@ -2,6 +2,7 @@ package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 
+import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
 import com.gregtechceu.gtceu.GTCEu;
@@ -14,6 +15,7 @@ import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.common.data.ISGCasings;
 import com.zircky.industrialsorcerygreg.common.data.ISGItems;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
+import earth.terrarium.adastra.common.registry.ModItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -23,108 +25,15 @@ import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
 import static com.gregtechceu.gtceu.common.data.GTItems.ELECTRIC_MOTOR_UV;
 import static com.gregtechceu.gtceu.common.data.GTItems.SENSOR_UV;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGItems.NANOTOME;
-import static com.zircky.industrialsorcerygreg.common.data.ISGItems.SEPARATION_ELECTROMAGNET;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.Piezoelectric;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.ASSEMBLER_RECIPES;
 
 public class AssemblerRecipes {
   public static void init(Consumer<FinishedRecipe> provider) {
-    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("coil_cupronickel")).EUt(VA[LV])
-        .inputItems(wireGtDouble, Cupronickel, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(foil, Bronze, 8).inputFluids(TinAlloy, GTValues.L)
-        .outputItems(GTBlocks.COIL_CUPRONICKEL.asItem()).duration(200)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("coil_kanthal")).EUt(VA[MV])
-        .inputItems(wireGtDouble, Kanthal, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(foil, Aluminium, 8).inputFluids(Copper, GTValues.L)
-        .outputItems(GTBlocks.COIL_KANTHAL.asItem()).duration(300)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("coil_nichrome")).EUt(VA[HV])
-        .inputItems(wireGtDouble, Nichrome, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(foil, StainlessSteel, 8).inputFluids(Aluminium, GTValues.L)
-        .outputItems(GTBlocks.COIL_NICHROME.asItem()).duration(400)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("coil_rtm_alloy")).EUt(VA[EV])
-        .inputItems(wireGtDouble, RTMAlloy, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(foil, VanadiumSteel, 8).inputFluids(Nichrome, GTValues.L)
-        .outputItems(GTBlocks.COIL_RTMALLOY.asItem()).duration(500)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("coil_hssg")).EUt(VA[IV])
-        .inputItems(wireGtDouble, HSSG, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(foil, TungstenCarbide, 8).inputFluids(Tungsten, GTValues.L)
-        .outputItems(GTBlocks.COIL_HSSG.asItem()).duration(600)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("coil_naquadah")).EUt(VA[LuV]).inputItems(wireGtDouble, Naquadah, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(foil, Osmium, 8).inputFluids(TungstenSteel, GTValues.L)
-        .outputItems(GTBlocks.COIL_NAQUADAH.asItem()).duration(700)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("coil_trinium")).EUt(VA[ZPM]).inputItems(wireGtDouble, Trinium, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(foil, NaquadahEnriched, 8).inputFluids(Naquadah, GTValues.L)
-        .outputItems(GTBlocks.COIL_TRINIUM.asItem()).duration(800)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder(GTCEu.id("coil_tritanium")).EUt(VA[UV]).inputItems(wireGtDouble, Tritanium, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(foil, Naquadria, 8).inputFluids(Trinium, GTValues.L)
-        .outputItems(GTBlocks.COIL_TRITANIUM.asItem()).duration(900)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("abyssalalloy_coil_block")
-        .inputItems(TagPrefix.wireGtDouble, ISGMaterials.AbyssalAlloy, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(TagPrefix.foil, GTMaterials.Europium, 8)
-        .inputFluids(GTMaterials.Tritanium, 144)
-        .outputItems(ISGCasings.ABYSSALALLOY_COIL_BLOCK.asItem())
-        .EUt(VA[UHV])
-        .duration(800)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("titansteel_coil_block")
-        .inputItems(TagPrefix.wireGtDouble, ISGMaterials.TitanSteel, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(TagPrefix.foil, ISGMaterials.Mithril, 8)
-        .inputFluids(ISGMaterials.AbyssalAlloy, 144)
-        .outputItems(ISGCasings.TITANSTEEL_COIL_BLOCK.asItem())
-        .EUt(VA[UEV])
-        .duration(800)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("adamantine_coil_block")
-        .inputItems(TagPrefix.wireGtDouble, ISGMaterials.Adamantine, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(TagPrefix.foil, GTMaterials.Neutronium, 8)
-        .inputFluids(ISGMaterials.TitanSteel, 144)
-        .outputItems(ISGCasings.ADAMANTINE_COIL_BLOCK.asItem())
-        .EUt(VA[UIV])
-        .duration(800)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("naquadriatictaranium_coil_block")
-        .inputItems(TagPrefix.wireGtDouble, ISGMaterials.NaquadriaticTaranium, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(TagPrefix.foil, ISGMaterials.Taranium, 8)
-        .inputFluids(ISGMaterials.Adamantine, 144)
-        .outputItems(ISGCasings.NAQUADRIATICTARANIUM_COIL_BLOCK.asItem())
-        .EUt(VA[UXV])
-        .duration(800)
-        .save(provider);
-    ASSEMBLER_RECIPES.recipeBuilder("starmetal_coil_block")
-        .inputItems(TagPrefix.wireGtDouble, ISGMaterials.Starmetal, 8)
-        .inputItems(ISGItems.MICA_INSULATOR_FOIL, 8)
-        .inputItems(TagPrefix.foil, ISGMaterials.CrystalMatrix, 8)
-        .inputFluids(ISGMaterials.NaquadriaticTaranium, 144)
-        .outputItems(ISGCasings.STARMETAL_COIL_BLOCK.asItem())
-        .EUt(VA[OpV])
-        .duration(800)
-        .save(provider);
-
     ASSEMBLER_RECIPES.recipeBuilder(ISGCore.id("space_nanomuscle_chestplate"))
         .inputItems(GTItems.NANO_CHESTPLATE)
-        .inputItems("ad_astra:oxygen_gear")
-        .inputItems("ad_astra:large_gas_tank", 2)
+        .inputItems(ModItems.OXYGEN_GEAR)
+        .inputItems(ModItems.LARGE_GAS_TANK, 2)
         .inputItems(GTItems.FLUID_CELL_LARGE_ALUMINIUM.asStack())
         .inputItems(GTItems.ELECTRIC_PUMP_HV, 2)
         .inputItems(GTItems.SENSOR_HV.asStack())
@@ -135,8 +44,8 @@ public class AssemblerRecipes {
 
     ASSEMBLER_RECIPES.recipeBuilder(ISGCore.id("space_advanced_nanomuscle_chestplate"))
         .inputItems(GTItems.NANO_CHESTPLATE_ADVANCED)
-        .inputItems("ad_astra:oxygen_distributor")
-        .inputItems("ad_astra:large_gas_tank", 2)
+        .inputItems(ModItems.OXYGEN_DISTRIBUTOR)
+        .inputItems(ModItems.LARGE_GAS_TANK, 2)
         .inputItems(GTItems.FLUID_CELL_LARGE_STAINLESS_STEEL)
         .inputItems(GTItems.ELECTRIC_PUMP_EV, 2)
         .inputItems(GTItems.SENSOR_EV)
@@ -147,8 +56,8 @@ public class AssemblerRecipes {
 
     ASSEMBLER_RECIPES.recipeBuilder(ISGCore.id("space_quarktech_chestplate"))
         .inputItems(GTItems.QUANTUM_CHESTPLATE)
-        .inputItems("ad_astra:oxygen_distributor", 2)
-        .inputItems("ad_astra:large_gas_tank", 2)
+        .inputItems(ModItems.OXYGEN_DISTRIBUTOR, 2)
+        .inputItems(ModItems.LARGE_GAS_TANK, 2)
         .inputItems(GTItems.FLUID_CELL_LARGE_TITANIUM)
         .inputItems(GTItems.ELECTRIC_PUMP_IV, 2)
         .inputItems(GTItems.SENSOR_IV)
@@ -158,11 +67,10 @@ public class AssemblerRecipes {
         .inputFluids(GTMaterials.TungstenSteel, 576)
         .EUt(VA[GTValues.IV]).duration(800).save(provider);
 
-
     ASSEMBLER_RECIPES.recipeBuilder(ISGCore.id("space_advanced_quarktech_chestplate"))
         .inputItems(GTItems.QUANTUM_CHESTPLATE_ADVANCED)
-        .inputItems("ad_astra:oxygen_distributor", 4)
-        .inputItems("ad_astra:large_gas_tank", 2)
+        .inputItems(ModItems.OXYGEN_DISTRIBUTOR, 4)
+        .inputItems(ModItems.LARGE_GAS_TANK, 2)
         .inputItems(GTItems.FLUID_CELL_LARGE_TUNGSTEN_STEEL)
         .inputItems(GTItems.ELECTRIC_PUMP_LuV, 2)
         .inputItems(GTItems.SENSOR_LuV, 4)
@@ -235,15 +143,15 @@ public class AssemblerRecipes {
     //                 .outputItems(BORON_RETAINING_YARN.asStack())
     //                 .save(provider);
     // 
-    //         ASSEMBLER_RECIPES.recipeBuilder("polyurethane_reinforced_epoxy_resin_memory_foam_block_highly_insulating_foil_aerographene_argon_to_insulation_wire_assembly").duration(210).EUt(30720)
-    //                 .inputItems(rod, Polyurethane)
-    //                 .inputItems(rod, ReinforcedEpoxyResin)
-    //                 .inputItems(MEMORY_FOAM_BLOCK.asStack())
-    //                 .inputItems(HIGHLY_INSULATING_FOIL.asStack())
-    //                 .inputItems(AEROGRAPHENE.asStack())
-    //                 .inputFluids(Argon.getFluid(1000))
-    //                 .outputItems(INSULATION_WIRE_ASSEMBLY.asStack(2))
-    //                 .save(provider);
+//             ASSEMBLER_RECIPES.recipeBuilder("polyurethane_reinforced_epoxy_resin_memory_foam_block_highly_insulating_foil_aerographene_argon_to_insulation_wire_assembly").duration(210).EUt(30720)
+//                     .inputItems(rod, Polyurethane)
+//                     .inputItems(rod, ReinforcedEpoxyResin)
+//                     .inputItems(MEMORY_FOAM_BLOCK.asStack())
+//                     .inputItems(HIGHLY_INSULATING_FOIL.asStack())
+//                     .inputItems(AEROGRAPHENE.asStack())
+//                     .inputFluids(Argon.getFluid(1000))
+//                     .outputItems(INSULATION_WIRE_ASSEMBLY.asStack(2))
+//                     .save(provider);
     // 
     //         ASSEMBLER_RECIPES.recipeBuilder("lead_zirconate_titanate_gold_soldering_alloy_to_piezoelectric_crystal").duration(430).EUt(30720)
     //                 .inputItems(gemExquisite, LeadZirconateTitanate, 2)
@@ -330,7 +238,7 @@ public class AssemblerRecipes {
         .inputItems(foil, Barium, 2)
         .inputItems(foil, Copper, 3)
         .inputItems(foil, Calcium, 2)
-        .outputItems(ChemicalHelper.get(dust, PiledTBCC, 9))
+        .outputItems(dust, PiledTBCC, 9)
         .save(provider);
 
     // TODO migrated disabled: unresolved old test symbol `GAExplosive`.

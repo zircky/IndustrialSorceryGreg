@@ -56,7 +56,13 @@ public class ISGItems {
 
   public static final ItemEntry<Item> SHAPE_EXTRUDER_ROD_LONG = ISGRegistries.REGISTRATE.item("long_rod_extruder_mold", Item::new)
       .lang("Extruder Mold (Long Rod)")
-//      .model((ctx, prov) -> prov.generated(ctx, prov.modLoc("item/long_rod_extruder_mold")))
+      .model((ctx, prov) -> prov.generated(ctx, GTCEu.id("item/long_rod_extruder_mold")))
+      .onRegister(materialInfo(() -> new ItemMaterialInfo(new MaterialStack(GTMaterials.Steel, GTValues.M << 2))))
+      .register();
+
+  public static final ItemEntry<Item> SHAPE_EXTRUDER_BOLT = ISGRegistries.REGISTRATE.item("bolt_extruder_mold", Item::new)
+      .lang("Extruder Mold (Bolt)")
+      .model((ctx, prov) -> prov.generated(ctx, GTCEu.id("item/bolt_extruder_mold")))
       .onRegister(materialInfo(() -> new ItemMaterialInfo(new MaterialStack(GTMaterials.Steel, GTValues.M << 2))))
       .register();
 
