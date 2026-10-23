@@ -776,7 +776,7 @@ public final class IndustrialProcessMaterials {
         .buildAndRegister()
         .setFormula("N2O5", true);
 
-    AcryloNitrile = builderISG("acrylonitrile")
+    AcryloNitrile = builderISG("acrylo_nitrile")
         .fluid()
         .color(0x9999ff)
         .iconSet(FLUID)

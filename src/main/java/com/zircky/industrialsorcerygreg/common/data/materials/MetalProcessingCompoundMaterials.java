@@ -678,7 +678,7 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("?");
 
-    PolystyreneNanoParticles = builderISG("polystryrene_nanoparticles")
+    PolystyreneNanoParticles = builderISG("polystryrene_nano_particles")
         .dust()
         .color(0x888079)
         .iconSet(FINE)
@@ -931,14 +931,14 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("(H2SO4)Ca12Sr6Ba6?ThUNb26O78F26", true);
 
-    PotasssiumFluoroNiobate = builderISG("potassium_fluoroniobate")
+    PotassiumFluoroNiobate = builderISG("potassium_fluoroniobate")
         .dust()
         .color(0x73ff00)
         .iconSet(SHINY)
         .buildAndRegister()
         .setFormula("K2NbF7", true);
 
-    PotasssiumFluoroTantalate = builderISG("potassium_fluorotantalate")
+    PotassiumFluoroTantalate = builderISG("potassium_fluorotantalate")
         .dust()
         .color(0x73ff00)
         .iconSet(SHINY)

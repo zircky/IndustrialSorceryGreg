@@ -2,10 +2,6 @@ package com.zircky.industrialsorcerygreg.common.data;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
-import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
-import com.gregtechceu.gtceu.api.fluids.FluidState;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.materials.*;
@@ -2435,8 +2431,8 @@ public class ISGMaterials {
   public static Material TantaliteMinorOxideResidue;
   public static Material LeachedPyrochlore;
   public static Material AcidicLeachedPyrochlore;
-  public static Material PotasssiumFluoroNiobate;
-  public static Material PotasssiumFluoroTantalate;
+  public static Material PotassiumFluoroNiobate;
+  public static Material PotassiumFluoroTantalate;
   public static Material BariumPeroxide;
   public static Material CassiteriteCokePellets;
   public static Material IronSulfate;

@@ -1,17 +1,8 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 
-import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 
@@ -186,7 +177,7 @@ public class Electrolyzer {
 
 // K2NbF7 + 5Na -> 5NaF + 2KF + Nb
     ELECTROLYZER_RECIPES.recipeBuilder("potasssium_fluoro_niobate_sodium_to_sodium_fluoride_potassium_fluoride_niobium").duration(120).EUt(120)
-        .inputDust(PotasssiumFluoroNiobate, 10)
+        .inputDust(PotassiumFluoroNiobate, 10)
         .inputFluids(Sodium.getFluid(720)) // kekw sodium is an ingot
         .outputDust(SodiumFluoride, 10)
         .outputDust(PotassiumFluoride, 4)
@@ -196,7 +187,7 @@ public class Electrolyzer {
 
     // K2TaF7 + 5Na -> 5NaF + 2KF + Ta
     ELECTROLYZER_RECIPES.recipeBuilder("potasssium_fluoro_tantalate_sodium_to_sodium_fluoride_potassium_fluoride_tantalum").duration(170).EUt(120)
-        .inputDust(PotasssiumFluoroTantalate, 10)
+        .inputDust(PotassiumFluoroTantalate, 10)
         .inputFluids(Sodium.getFluid(720))
         .outputDust(SodiumFluoride, 10)
         .outputDust(PotassiumFluoride, 4)

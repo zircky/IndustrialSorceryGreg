@@ -78,7 +78,7 @@ public class NuclearMaterials {
         .buildAndRegister();
 
     ManganeseDioxide = builderISG("manganese_dioxide")
-        .ingot().dust()
+        .ingot().dust().liquid()
         .color(0x2E2C35).secondaryColor(0x5B556E).iconSet(METALLIC)
         .appendFlags(SNDART_FLAGS)
         .components(GTMaterials.Manganese, 1, GTMaterials.Oxygen, 2)
