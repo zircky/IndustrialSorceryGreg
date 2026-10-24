@@ -618,7 +618,6 @@ public class ISGMaterials {
   public static Material PhosphorousPentoxide;
   public static Material NeutralMatter;
   public static Material PositiveMatter;
-  public static Material IronChloride;
   public static Material HighPressureSteam;
   public static Material RocketFuelH8N4C2O4;
   public static Material CoalTarOil;
@@ -772,7 +771,6 @@ public class ISGMaterials {
   public static Material Dodecene1;
   public static Material OlefinMixture;
   public static Material BoronTrichloride;
-  public static Material Dichloroethane;
   public static Material DissolvedChalcociteSolution;
   public static Material NPropylChloride;
   public static Material PropeneEmulsion;
@@ -1407,7 +1405,6 @@ public class ISGMaterials {
   public static Material BloodPlasma;
   public static Material BFGF;
   public static Material EGF;
-  public static Material NitroBenzene;
   public static Material Aniline;
   public static Material ChlorosulfonicAcid;
   public static Material Sulfanilamide;
@@ -2350,8 +2347,8 @@ public class ISGMaterials {
   public static Material PotassiumUranylTricarbonate;
   public static Material UraniumPeroxideThoriumOxide;
   public static Material UraniumThoriumOxide;
-  public static Material UranylThoriumSulfate;
-  public static Material UranylThoriumNitrate;
+  public static Material UraniumThoriumSulfate;
+  public static Material UraniumThoriumNitrate;
   public static Material UraniumOxideThoriumNitrate;
   public static Material CaesiumHydroxide;
   public static Material AluminiumHydroxide;

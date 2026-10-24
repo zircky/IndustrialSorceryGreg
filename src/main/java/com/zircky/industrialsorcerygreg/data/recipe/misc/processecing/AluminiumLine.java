@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.processecing;
 
+import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -100,7 +101,7 @@ public class AluminiumLine {
     CENTRIFUGE_RECIPES.recipeBuilder("aluminium_line_rare_earth_chlorides_solution").duration(320).EUt(480)
         .inputFluids(FerricREEChloride.getFluid(2000))
         .outputFluids(RareEarthChloridesSolution.getFluid(1000))
-        .outputFluids(IronChloride.getFluid(1000))
+        .outputFluids(Iron3Chloride.getFluid(1000))
         .outputFluids(Water.getFluid(3000))
         .save(provider);
 

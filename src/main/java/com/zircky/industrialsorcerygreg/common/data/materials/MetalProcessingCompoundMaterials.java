@@ -359,14 +359,14 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister()
         .setFormula("UO2ThO2", true);
 
-    UranylThoriumSulfate = builderISG("uranium_thorium_sulfate")
+    UraniumThoriumSulfate = builderISG("uranium_thorium_sulfate")
         .dust()
         .color(0xe7e848)
         .iconSet(SHINY)
         .buildAndRegister()
         .setFormula("(UO2)SO4ThO2", true);
 
-    UranylThoriumNitrate = builderISG("uranium_thorium_nitrate")
+    UraniumThoriumNitrate = builderISG("uranium_thorium_nitrate")
         .dust()
         .color(0xe7e848)
         .iconSet(SHINY)
@@ -834,14 +834,14 @@ final class MetalProcessingCompoundMaterials {
 
     TelluriumOxide = builderISG("tellurium_oxide")
         .dust()
-        .color(0xFFFF66)
+        .color(Tellurium.getMaterialARGB())
         .iconSet(SHINY)
         .buildAndRegister()
         .setFormula("TeO2", true);
 
     SeleniumOxide = builderISG("selenium_oxide")
         .dust()
-        .color(0xFFFF66)
+        .color(Selenium.getMaterialARGB())
         .iconSet(SHINY)
         .buildAndRegister()
         .setFormula("SeO2", true);

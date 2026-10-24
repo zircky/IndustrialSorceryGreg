@@ -1,15 +1,10 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import net.minecraft.world.level.block.Blocks;
 
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -18,6 +13,7 @@ import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Iron3Chloride;
 import static com.zircky.industrialsorcerygreg.common.data.ISGItems.SEPARATION_ELECTROMAGNET;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.CENTRIFUGE_RECIPES;
@@ -38,7 +34,7 @@ public class Centrifuge {
         .inputDust(ApatiteSolidResidue, 11)
         .outputDust(SiliconChloride, 5)
         .outputDust(Salt, 2)
-        .outputFluids(IronChloride.getFluid(500))
+        .outputFluids(Iron3Chloride.getFluid(500))
         .outputFluids(Water.getFluid(750))
         .save(provider);
 
@@ -48,7 +44,7 @@ public class Centrifuge {
         .inputDust(FluoroapatiteSolidResidue, 11)
         .outputFluids(FluorosilicicAcid.getFluid(1000))
         .outputDust(Salt, 2)
-        .outputFluids(IronChloride.getFluid(500))
+        .outputFluids(Iron3Chloride.getFluid(500))
         .outputFluids(Water.getFluid(750))
         .save(provider);
 

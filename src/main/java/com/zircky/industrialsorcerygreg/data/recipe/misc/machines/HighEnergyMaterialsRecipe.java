@@ -2,14 +2,13 @@ package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
+import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.block;
-import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.ingotHot;
-import static com.gregtechceu.gtceu.common.data.GTItems.SHAPE_MOLD_INGOT;
 import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.TitaniumTetrachloride;
@@ -64,7 +63,7 @@ public class HighEnergyMaterialsRecipe {
 
     CENTRIFUGE_RECIPES.recipeBuilder("ferric_ree_chloride")
         .inputFluids(FerricREEChloride.getFluid(2000))
-        .outputFluids(RareEarthChloridesSolution.getFluid(1000), IronChloride.getFluid(1000), Water.getFluid(3000))
+        .outputFluids(RareEarthChloridesSolution.getFluid(1000), Iron3Chloride.getFluid(1000), Water.getFluid(3000))
         .duration(320).EUt(VA[HV]).save(provider);
 
     CHEMICAL_RECIPES.recipeBuilder("titanyl_sulfate")
@@ -207,7 +206,7 @@ public class HighEnergyMaterialsRecipe {
         .duration(50).EUt(VA[ZPM]).save(provider);
 
     MIXER_RECIPES.recipeBuilder("glucose_iron_solution")
-        .inputFluids(IronChloride.getFluid(1000))
+        .inputFluids(Iron3Chloride.getFluid(1000))
         .inputDust(Glucose, 24)
         .outputFluids(GlucoseIronSolution.getFluid(1000))
         .duration(80).EUt(VA[LV]).save(provider);
@@ -338,7 +337,7 @@ public class HighEnergyMaterialsRecipe {
     .inputDust(FluoroapatiteSolidResidue, 11)
     .outputFluids(FluorosilicicAcid.getFluid(1000))
     .outputDust(Salt, 2)
-    .outputFluids(IronChloride.getFluid(500))
+    .outputFluids(Iron3Chloride.getFluid(500))
     .outputFluids(Water.getFluid(750))
     .save(provider);
 
@@ -527,7 +526,7 @@ public class HighEnergyMaterialsRecipe {
     CHEMICAL_RECIPES.recipeBuilder("rare_earth_nitrate_solution").duration(160).EUt(VA[HV])
     .inputFluids(REEThUSulfateSolution.getFluid(2000))
     .inputFluids(NitricAcid.getFluid(7000))
-    .outputDust(UranylThoriumNitrate, 26)
+    .outputDust(UraniumThoriumNitrate, 26)
     .outputFluids(RareEarthNitrateSolution.getFluid(1000))
     .outputFluids(SulfuricAcid.getFluid(4000))
     .save(provider);
@@ -1157,7 +1156,7 @@ public class HighEnergyMaterialsRecipe {
     .inputFluids(Aminophenol.getFluid(1000))
     .inputFluids(Glycerol.getFluid(1000))
     .inputFluids(Oxygen.getFluid(1000))
-    .notConsumableFluid(NitroBenzene.getFluid(1))
+    .notConsumableFluid(Nitrobenzene.getFluid(1))
     .outputFluids(Hydroxyquinoline.getFluid(1000))
     .outputFluids(Water.getFluid(4000))
     .save(provider);

@@ -1,31 +1,16 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
-import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.FluidState;
-import com.gregtechceu.gtceu.api.fluids.attribute.FluidAttributes;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.zircky.industrialsorcerygreg.api.ISGValues;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
-import com.zircky.industrialsorcerygreg.common.data.ISGElement;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
-import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
-import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.Titanium;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
-import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
-import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.INFINITY;
 import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
 
@@ -52,14 +37,6 @@ public final class ChemicalFluidMaterials {
         .fluid()
         .color(11279131)
         .iconSet(FLUID)
-        .flags(DISABLE_DECOMPOSITION)
-        .buildAndRegister();
-
-    IronChloride = builderISG("iron_chloride")
-        .fluid()
-        .color(0x060b0b)
-        .iconSet(FLUID)
-        .components(GTMaterials.Iron, 1, GTMaterials.Chlorine, 3)
         .flags(DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
@@ -1101,12 +1078,6 @@ public final class ChemicalFluidMaterials {
     BoronTrichloride = builderISG("boron_trichloride")
         .fluid()
         .color(0x88C7C1)
-        .iconSet(FLUID)
-        .buildAndRegister();
-
-    Dichloroethane = builderISG("dichloroethane")
-        .fluid()
-        .color(0xA9BBCA)
         .iconSet(FLUID)
         .buildAndRegister();
 

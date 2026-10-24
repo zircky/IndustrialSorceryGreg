@@ -4,17 +4,11 @@ import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 
-import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
 
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.ISGCore;
-import com.zircky.industrialsorcerygreg.api.ISGValues;
 import com.zircky.industrialsorcerygreg.common.data.ISGItems;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -759,7 +753,7 @@ public class MixerRecipes {
     // Graphene ====================================================================================================
     // FeCl3 + C6H12O6 = [FeCl3 + C6H12O6]
     MIXER_RECIPES.recipeBuilder("iron_chloride_glucose_to_glucose_iron_solution").duration(80).EUt(30)
-        .inputFluids(IronChloride.getFluid(1000))
+        .inputFluids(Iron3Chloride.getFluid(1000))
         .inputDust(Glucose, 24)
         .outputFluids(GlucoseIronSolution.getFluid(1000))
         .save(provider);

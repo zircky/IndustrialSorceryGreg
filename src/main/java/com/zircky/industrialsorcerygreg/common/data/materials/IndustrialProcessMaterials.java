@@ -685,14 +685,14 @@ public final class IndustrialProcessMaterials {
         .buildAndRegister()
         .setFormula("ZnHg");
 
-    CadmiumSulfateSolution = builderISG("cadmium_sulfate")
+    CadmiumSulfateSolution = builderISG("cadmium_sulfate_Solution")
         .fluid()
         .color((GTMaterials.Cadmium.getMaterialRGB() + GTMaterials.SulfuricAcid.getMaterialRGB()) / 2)
         .iconSet(FLUID)
         .buildAndRegister()
         .setFormula("CdSO4?", true);
 
-    ThalliumSulfateSolution = builderISG("thallium_sulfate")
+    ThalliumSulfateSolution = builderISG("thallium_sulfate_solution")
         .fluid()
         .color((GTMaterials.Thallium.getMaterialRGB() + GTMaterials.SulfuricAcid.getMaterialRGB()) / 2)
         .iconSet(FLUID)

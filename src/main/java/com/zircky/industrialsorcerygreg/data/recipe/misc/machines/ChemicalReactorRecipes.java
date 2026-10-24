@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
+import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 
@@ -419,7 +420,7 @@ public class ChemicalReactorRecipes {
 
     // (NH4)2SO4 + H2SO4 -> (NH4)2(SO4)2 + H2
     CHEMICAL_RECIPES.recipeBuilder("ammonium_persulfate").duration(220).EUt(120)
-        .circuitMeta(1000)
+        .circuitMeta(32)
         .inputFluids(AmmoniumSulfate.getFluid(1000))
         .inputFluids(SulfuricAcid.getFluid(1000))
         .outputFluids(AmmoniumPersulfate.getFluid(1000))
@@ -537,7 +538,7 @@ public class ChemicalReactorRecipes {
         .inputFluids(Cycloparaphenylene.getFluid(200))
         .inputFluids(Methane.getFluid(800))
         .notConsumable(plate, Rhenium)
-        .circuitMeta(1000)
+        .circuitMeta(32)
         .outputItems(ingot, CarbonNanotubes)
         .save(provider);
 
@@ -894,7 +895,7 @@ public class ChemicalReactorRecipes {
     // BaCO3 -> CO2 + BaO
     CHEMICAL_RECIPES.recipeBuilder("barium_carbonate_to_barium_oxide_carbon_dioxide").duration(100).EUt(30)
         .inputDust(BariumCarbonate, 5)
-        .circuitMeta(1000)
+        .circuitMeta(32)
         .outputDust(BariumOxide, 2)
         .outputFluids(CarbonDioxide.getFluid(1000))
         .save(provider);
@@ -997,7 +998,7 @@ public class ChemicalReactorRecipes {
     CHEMICAL_RECIPES.recipeBuilder("sodium_ammonia_to_hydrogen_sodium_azanide").duration(110).EUt(120)
         .inputDust(Sodium)
         .inputFluids(Ammonia.getFluid(1000))
-        .circuitMeta(1000)
+        .circuitMeta(32)
         .outputFluids(Hydrogen.getFluid(1000))
         .outputDust(SodiumAzanide, 4)
         .save(provider);
@@ -1203,7 +1204,7 @@ public class ChemicalReactorRecipes {
     CHEMICAL_RECIPES.recipeBuilder("hydrogen_cyanide_potassium_hydroxide_to_potassium_cyanide_water")
         .inputFluids(HydrogenCyanide.getFluid(1000))
         .inputFluids(PotassiumHydroxide.getFluid(1000))
-        .circuitMeta(1000)
+        .circuitMeta(32)
         .outputItems(ChemicalHelper.get(dust, PotassiumCyanide, 3))
         .outputFluids(Water.getFluid(1000))
         .EUt(1920)
@@ -1232,7 +1233,7 @@ public class ChemicalReactorRecipes {
     // H + FeCl3 -> FeCl2 + HCl
     CHEMICAL_RECIPES.recipeBuilder("hydrogen_iron_chloride_to_iron2_chloride_hydrochloric_acid").duration(40).EUt(30)
         .inputFluids(Hydrogen.getFluid(1000))
-        .inputFluids(IronChloride.getFluid(1000))
+        .inputFluids(Iron3Chloride.getFluid(1000))
         .outputFluids(Iron2Chloride.getFluid(1000))
         .outputFluids(HydrochloricAcid.getFluid(1000))
         .save(provider);
@@ -1504,7 +1505,7 @@ public class ChemicalReactorRecipes {
     CHEMICAL_RECIPES.recipeBuilder("ree_th_u_sulfate_solution_nitric_acid_to_uranyl_thorium_nitrate_rare_earth_nitrate_solution_sulfuric_acid").duration(160).EUt(480)
         .inputFluids(REEThUSulfateSolution.getFluid(2000))
         .inputFluids(NitricAcid.getFluid(7000))
-        .outputItems(ChemicalHelper.get(dust, UranylThoriumNitrate, 26))
+        .outputItems(ChemicalHelper.get(dust, UraniumThoriumNitrate, 26))
         .outputFluids(RareEarthNitrateSolution.getFluid(1000))
         .outputFluids(SulfuricAcid.getFluid(4000))
         .save(provider);
@@ -1677,7 +1678,1958 @@ public class ChemicalReactorRecipes {
         .outputFluids(Water.getFluid(1000))
         .save(provider);
 
+    //start
+    // Er + 3F -> ErF3
+    CHEMICAL_RECIPES.recipeBuilder("erbium_fluorine_to_erbium_trifluoride").duration(100)
+        .inputDust(Erbium)
+        .inputFluids(Fluorine.getFluid(3000))
+        .outputItems(ChemicalHelper.get(dust, ErbiumTrifluoride, 4))
+        .save(provider);
 
+
+    // Si + 4F -> SiF4
+    CHEMICAL_RECIPES.recipeBuilder("silicon_fluorine_to_silicon_fluoride").duration(150).EUt(480)
+        .inputDust(Silicon)
+        .inputFluids(Fluorine.getFluid(4000))
+        .outputFluids(SiliconFluoride.getFluid(1000))
+        .save(provider);
+
+
+
+    // C2H7NO + NH3 -> C2H8N2 + H2O
+    CHEMICAL_RECIPES.recipeBuilder("ethanolamine_ammonia_to_ethylenediamine_water").duration(180).EUt(120)
+        .inputFluids(Ethanolamine.getFluid(1000))
+        .inputFluids(Ammonia.getFluid(1000))
+        .outputFluids(Ethylenediamine.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .notConsumable(dust, Palladium)
+        .save(provider);
+
+// 2Pr + H2SO4 -> Pr2O3 + H2S + O
+    CHEMICAL_RECIPES.recipeBuilder("praseodymium_sulfuric_acid_to_praseodymium_oxide_hydrogen_sulfide_oxygen").duration(100).EUt(480)
+        .inputDust(Praseodymium, 2)
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, PraseodymiumOxide, 5))
+        .outputFluids(HydrogenSulfide.getFluid(1000))
+        .outputFluids(Oxygen.getFluid(1000))
+        .save(provider);
+
+
+    // 2Ho + H2SO4 -> Ho2O3 + H2S + O
+    CHEMICAL_RECIPES.recipeBuilder("holmium_sulfuric_acid_to_holmium_oxide_hydrogen_sulfide_oxygen").duration(100).EUt(480)
+        .inputDust(Holmium, 2)
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, HolmiumOxide, 5))
+        .outputFluids(HydrogenSulfide.getFluid(1000))
+        .outputFluids(Oxygen.getFluid(1000))
+        .save(provider);
+
+
+    // 2Nd + H2SO4 -> Nd2O3 + H2S + O
+    CHEMICAL_RECIPES.recipeBuilder("neodymium_sulfuric_acid_to_neodymium_oxide_hydrogen_sulfide_oxygen").duration(100).EUt(480)
+        .inputDust(Neodymium, 2)
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, NeodymiumOxide, 5))
+        .outputFluids(HydrogenSulfide.getFluid(1000))
+        .outputFluids(Oxygen.getFluid(1000))
+        .save(provider);
+
+
+    // 2Y + H2SO4 -> Y2O3 + H2S + O
+    CHEMICAL_RECIPES.recipeBuilder("yttrium_sulfuric_acid_to_yttrium_oxide_hydrogen_sulfide_oxygen").duration(100).EUt(480)
+        .inputDust(Yttrium, 2)
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputDust(YttriumOxide, 5)
+        .outputFluids(HydrogenSulfide.getFluid(1000))
+        .outputFluids(Oxygen.getFluid(1000))
+        .save(provider);
+
+// 3C4H10O + NH3 -> C12H27N + 3H2O
+    CHEMICAL_RECIPES.recipeBuilder("butanol_gas_ammonia_to_tributylamine_water").duration(140).EUt(480)
+        .inputFluids(ButanolGas.getFluid(3000))
+        .inputFluids(Ammonia.getFluid(1000))
+        .notConsumable(dust, Zeolite)
+        .outputFluids(Tributylamine.getFluid(1000))
+        .outputFluids(Water.getFluid(3000))
+        .save(provider);
+
+
+    // Al2O3 + 6HNO3 -> 2Al(NO3)3 + 3H2O
+    CHEMICAL_RECIPES.recipeBuilder("alumina_nitric_acid_to_aluminium_nitrate_water").duration(190).EUt(30)
+        .inputDust(Alumina, 5)
+        .inputFluids(NitricAcid.getFluid(6000))
+        .outputItems(ChemicalHelper.get(dust, AluminiumNitrate, 26))
+        .outputFluids(Water.getFluid(3000))
+        .save(provider);
+
+
+    // 2Al(NO3)3 + CH2Cl2 + C12H27N -> [2Al(NO3)3 + CH2Cl2 + C12H27N]
+    CHEMICAL_RECIPES.recipeBuilder("aluminium_nitrate_dichloromethane_tributylamine_to_crude_alumina_solution").duration(290).EUt(120)
+        .inputDust(AluminiumNitrate, 26)
+        .inputFluids(Dichloromethane.getFluid(1000))
+        .inputFluids(Tributylamine.getFluid(1000))
+        .outputFluids(CrudeAluminaSolution.getFluid(1000))
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("methanol_to_dimethylether_water").duration(160).EUt(8000) //2CH4O -> CH3OCH3 + H2O
+        .inputFluids(Methanol.getFluid(2000))
+        .notConsumable(ChemicalHelper.get(dust, Alumina, 1))
+        .notConsumable(dust, SiliconDioxide)
+        .outputFluids(Dimethylether.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("dimethylether_ethylene_oxide_to_dimethoxyethane").duration(160).EUt(2000) //CH3OCH3 + C2H4O -> C4H10O2
+        .inputFluids(Dimethylether.getFluid(1000))
+        .inputFluids(EthyleneOxide.getFluid(1000))
+        .outputFluids(Dimethoxyethane.getFluid(1000))
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("cyclopentadiene_dimethoxyethane_butyl_lithium_to_butane_lithium_cyclopentadienide").duration(160).EUt(2000) //C5H6 + LiC4H9 -> LiC5H5 + C4H10
+        .inputFluids(Cyclopentadiene.getFluid(1000))
+        .inputFluids(Dimethoxyethane.getFluid(500))
+        .inputFluids(ButylLithium.getFluid(1000))
+        .outputFluids(Butane.getFluid(1000))
+        .outputFluids(LithiumCyclopentadienide.getFluid(1000))
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("hydrochloric_acid_californium_trioxide_to_californium_trichloride_water").duration(240).EUt(2000) //6HCl + Cf2O3 -> 2CfCl3 + 3H2O
+        .inputFluids(HydrochloricAcid.getFluid(6000))
+        .inputDust(CaliforniumTrioxide, 5)
+        .outputItems(ChemicalHelper.get(dust, CaliforniumTrichloride, 8))
+        .outputFluids(Water.getFluid(3000))
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("lithium_cyclopentadienide_californium_trichloride_to_lithium_chloride_californium_cyclopentadienide").duration(160).EUt(200000) //3LiC5H5 + CfCl3 -> CfC15H15 + 3LiCf
+        .inputFluids(LithiumCyclopentadienide.getFluid(3000))
+        .inputDust(CaliforniumTrichloride, 4)
+        .outputItems(ChemicalHelper.get(dust, LithiumChloride, 6))
+        .outputFluids(CaliforniumCyclopentadienide.getFluid(1000))
+        .save(provider);
+
+
+    // Na2B4O7(H2O)10 + 2HCl -> 4H3BO3 + 5H2O + 2NaCl
+    CHEMICAL_RECIPES.recipeBuilder("borax_hydrochloric_acid_to_boric_acid_water_salt")
+        .inputDust(Borax, 23)
+        .inputFluids(HydrochloricAcid.getFluid(2000))
+        .outputFluids(BoricAcid.getFluid(4000))
+        .outputFluids(Water.getFluid(5000))
+        .outputDust(Salt, 4)
+        .EUt(120)
+        .duration(150)
+        .save(provider);
+
+
+    // H3BO3 + 4HF -> HBF4 + 3H2O
+    CHEMICAL_RECIPES.recipeBuilder("boric_acid_hydrofluoric_acid_to_fluoro_boric_acid_water")
+        .inputFluids(BoricAcid.getFluid(1000))
+        .inputFluids(HydrofluoricAcid.getFluid(4000))
+        .outputFluids(FluoroBoricAcid.getFluid(1000))
+        .outputFluids(Water.getFluid(3000))
+        .EUt(120)
+        .duration(100)
+        .save(provider);
+
+    // NaNO3(H2O) -> NaNO2 + H2O + O
+    CHEMICAL_RECIPES.recipeBuilder("sodium_nitrate_solution_to_sodium_nitrite_oxygen_water")
+        .inputFluids(SodiumNitrateSolution.getFluid(1000))
+        .notConsumable(ISGTagPrefix.CATALYST, CoAcABCatalyst)
+        .outputItems(ChemicalHelper.get(dust, SodiumNitrite, 4))
+        .outputFluids(Oxygen.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .EUt(30)
+        .duration(300)
+        .save(provider);
+
+
+    // HBF4 + HCl + C6H5NH2 + NaNO2 -> NaCl + C6H5BF4N2 + 2H2O
+    CHEMICAL_RECIPES.recipeBuilder("fluoro_boric_acid_hydrochloric_acid_aniline_sodium_nitrite_to_salt_benzenediazonium_tetrafluoroborate_water")
+        .inputFluids(FluoroBoricAcid.getFluid(1000))
+        .inputFluids(HydrochloricAcid.getFluid(1000))
+        .inputFluids(Aniline.getFluid(1000))
+        .inputDust(SodiumNitrite, 4)
+        .outputDust(Salt, 2)
+        .outputFluids(BenzenediazoniumTetrafluoroborate.getFluid(1000))
+        .outputFluids(Water.getFluid(2000))
+        .duration(130)
+        .EUt(30720)
+        .save(provider);
+
+
+    // C6H5F + CH4 + H2SbF7 -> C7H7F + 4HF + SbF3
+    CHEMICAL_RECIPES.recipeBuilder("fluoro_benzene_methane_fluoroantimonic_acid_to_fluorotoluene_hydrofluoric_acid_antimony_trifluoride")
+        .inputFluids(FluoroBenzene.getFluid(1000))
+        .inputFluids(Methane.getFluid(1000))
+        .inputFluids(FluoroantimonicAcid.getFluid(1000))
+        .outputFluids(Fluorotoluene.getFluid(1000))
+        .outputFluids(HydrofluoricAcid.getFluid(4000))
+        .outputItems(ChemicalHelper.get(dust, AntimonyTrifluoride, 4))
+        .EUt(480)
+        .duration(150)
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("fish_oil_steam_potassium_hydroxide_to_soap").duration(160).EUt(2000)
+        .inputFluids(FishOil.getFluid(1000))
+        .inputFluids(Steam.getFluid(200))
+        .inputFluids(PotassiumHydroxide.getFluid(1000))
+        .outputFluids(Soap.getFluid(1000))
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("seed_oil_steam_potassium_hydroxide_to_soap").duration(160).EUt(2000)
+        .inputFluids(SeedOil.getFluid(1000))
+        .inputFluids(Steam.getFluid(200))
+        .inputFluids(PotassiumHydroxide.getFluid(1000))
+        .outputFluids(Soap.getFluid(1000))
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("soap_salt_to_glycerol_deglycerated_soap").duration(160).EUt(2000)
+        .inputFluids(Soap.getFluid(1000))
+        .inputDust(Salt, 1)
+        .outputFluids(Glycerol.getFluid(200))
+        .outputFluids(DeglyceratedSoap.getFluid(800))
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("octane_phosphorus_to_hydrogen_trioctylphosphine").duration(160).EUt(2000) //3C8H18 + P -> 3H + C24H51P
+        .inputFluids(Octane.getFluid(3000))
+        .inputDust(Phosphorus, 1)
+        .outputFluids(Hydrogen.getFluid(3000))
+        .outputFluids(Trioctylphosphine.getFluid(1000))
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("trioctylphosphine_stearic_acid_selenium_cadmium_to_quantum_dots").duration(160).EUt(500000)
+        .inputFluids(Trioctylphosphine.getFluid(1000))
+        .inputFluids(StearicAcid.getFluid(1000))
+        .inputDust(Selenium, 1)
+        .inputDust(Cadmium, 1)
+        .outputFluids(QuantumDots.getFluid(1000))
+        .save(provider);
+
+
+    // 3NaCl(H2O) + 2Cl + H2SO4 -> H2SO4(NaCl)3(H2O)3Cl2
+    // Formula above multiplied up for simplicity
+    CHEMICAL_RECIPES.recipeBuilder("salt_water_chlorine_sulfuric_acid_to_acidic_salt_water")
+        .inputFluids(SaltWater.getFluid(1500))
+        .inputFluids(Chlorine.getFluid(1000))
+        .inputFluids(SulfuricAcid.getFluid(500))
+        .outputFluids(AcidicSaltWater.getFluid(3000))
+        .EUt(480)
+        .duration(180)
+        .save(provider);
+
+
+    // H2SO4Br(H2O)Cl2 + H2O -> H2SO4Br(H2O)2Cl2
+    CHEMICAL_RECIPES.recipeBuilder("sulfuric_bromine_solution_steam_to_hot_vapour_mixture")
+        .inputFluids(SulfuricBromineSolution.getFluid(2000))
+        .inputFluids(Steam.getFluid(1000))
+        .outputFluids(HotVapourMixture.getFluid(3000))
+        .EUt(480)
+        .duration(150)
+        .save(provider);
+
+
+    // CO + C3H6 + 2H -> C4H8O
+    CHEMICAL_RECIPES.recipeBuilder("carbon_monoxide_propene_hydrogen_to_butyraldehyde")
+        .inputFluids(CarbonMonoxide.getFluid(1000))
+        .inputFluids(Propene.getFluid(1000))
+        .inputFluids(Hydrogen.getFluid(2000))
+        .outputFluids(Butyraldehyde.getFluid(1000))
+        .EUt(480)
+        .duration(200)
+        .save(provider);
+
+
+    // 2C4H8O + 4H -> C8H18O + H2O
+    CHEMICAL_RECIPES.recipeBuilder("butyraldehyde_hydrogen_to_ethyl_hexanol_water")
+        .inputFluids(Butyraldehyde.getFluid(2000))
+        .inputFluids(Hydrogen.getFluid(4000))
+        .outputFluids(EthylHexanol.getFluid(3000))
+        .outputFluids(Water.getFluid(1000))
+        .EUt(480)
+        .duration(200)
+        .save(provider);
+
+
+    // 5C8H18O + 0.5P4O10 -> 2C16H35O4P + 2C4H10O
+    CHEMICAL_RECIPES.recipeBuilder("ethyl_hexanol_phosphorous_pentoxide_to_diethylhexyl_phosphoric_acid_butanol")
+        .inputFluids(EthylHexanol.getFluid(5000))
+        .inputDust(PhosphorousPentoxide, 7)
+        .outputFluids(DiethylhexylPhosphoricAcid.getFluid(2000))
+        .outputFluids(Butanol.getFluid(2000))
+        .EUt(480)
+        .duration(200)
+        .save(provider);
+
+// [REE] + 3 [NaOH + H2O] + 3 H2O -> [REE(OH)3 + 3 NaOH + 3 H2O] + 3 H
+    CHEMICAL_RECIPES.recipeBuilder("rare_earth_sodium_hydroxide_solution_water_to_rare_earth_hydroxides_solution_hydrogen")
+        .inputDust(RareEarth)
+        .inputFluids(SodiumHydroxideSolution.getFluid(3000))
+        .inputFluids(Water.getFluid(3000))
+        .outputFluids(RareEarthHydroxidesSolution.getFluid(1000))
+        .outputFluids(Hydrogen.getFluid(3000))
+        .EUt(480)
+        .duration(200)
+        .save(provider);
+
+
+    // 3 HCl + [REE(OH)3 + 3 NaOH] -> ThU + [REECl3 + 3 H2O] + 3 [NaOH + H2O]
+    CHEMICAL_RECIPES.recipeBuilder("hydrochloric_acid_rare_earth_hydroxides_solution_to_rare_earth_chlorides_solution_sodium_hydroxide_solution_th_u_sludge")
+        .inputFluids(HydrochloricAcid.getFluid(3000))
+        .inputFluids(RareEarthHydroxidesSolution.getFluid(1000))
+        .outputFluids(RareEarthChloridesSolution.getFluid(3000))
+        .outputFluids(SodiumHydroxideSolution.getFluid(3000))
+        .outputItems(ChemicalHelper.get(dust, ThUSludge, 2))
+        .EUt(480)
+        .duration(200)
+        .save(provider);
+
+    // 2HCN + O + 2Na -> 2NaCN + H2O
+    CHEMICAL_RECIPES.recipeBuilder("hydrogen_cyanide_oxygen_sodium_to_sodium_cyanide_water")
+        .inputFluids(HydrogenCyanide.getFluid(2000))
+        .inputFluids(Oxygen.getFluid(1000))
+        .inputDust(Sodium, 2)
+        .outputFluids(SodiumCyanide.getFluid(2000))
+        .outputFluids(Water.getFluid(1000))
+        .EUt(1920)
+        .duration(12)
+        .save(provider);
+
+
+    // MoS2 + NaCN -> AuCN + MoS2(depl.)
+    CHEMICAL_RECIPES.recipeBuilder("molybdenite_sodium_cyanide_to_gold_cyanide_gold_deplete_molybdenite")
+        .inputDust(Molybdenite, 3)
+        .inputFluids(SodiumCyanide.getFluid(1000))
+        .outputFluids(GoldCyanide.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, GoldDepleteMolybdenite, 3))
+        .EUt(7680)
+        .duration(100)
+        .save(provider);
+
+
+    // AuCN + Na -> NaCN + Au
+    CHEMICAL_RECIPES.recipeBuilder("gold_cyanide_sodium_to_sodium_cyanide_gold")
+        .inputFluids(GoldCyanide.getFluid(1000))
+        .inputDust(Sodium)
+        .outputFluids(SodiumCyanide.getFluid(1000))
+        .outputDust(Gold)
+        .EUt(1920)
+        .duration(150)
+        .save(provider);
+
+
+    // MoS2 + FeCl3 ->
+    CHEMICAL_RECIPES.recipeBuilder("gold_deplete_molybdenite_iron_chloride_to_molybdenum_concentrate_chloride_leached_solution")
+        .inputDust(GoldDepleteMolybdenite, 3)
+        .inputFluids(Iron3Chloride.getFluid(500))
+        .outputItems(ChemicalHelper.get(dust, MolybdenumConcentrate, 4))
+        .outputFluids(ChlorideLeachedSolution.getFluid(500))
+        .EUt(1920)
+        .duration(10)
+        .save(provider);
+
+
+    // FeCl2 + Cl -> FeCl3
+    CHEMICAL_RECIPES.recipeBuilder("iron2_chloride_chlorine_to_iron_chloride")
+        .inputFluids(Iron2Chloride.getFluid(1000))
+        .inputFluids(Chlorine.getFluid(1000))
+        .outputFluids(Iron3Chloride.getFluid(1000))
+        .EUt(30)
+        .duration(150)
+        .save(provider);
+
+
+    // ? + 0.5NH3 -> 3SO2 + 0.5NH4ReO4
+    CHEMICAL_RECIPES.recipeBuilder("rhenium_sulfuric_solution_ammonia_to_sulfur_dioxide_ammonium_perrhenate")
+        .inputFluids(RheniumSulfuricSolution.getFluid(3000))
+        .inputFluids(Ammonia.getFluid(500))
+        .outputFluids(SulfurDioxide.getFluid(3000))
+        .outputFluids(AmmoniumPerrhenate.getFluid(500))
+        .EUt(480)
+        .duration(90)
+        .save(provider);
+
+
+    // NH4ReO4 + 7H -> Re + NH3 + 4H2O
+    CHEMICAL_RECIPES.recipeBuilder("ammonium_perrhenate_hydrogen_to_rhenium_ammonia_water")
+        .inputFluids(AmmoniumPerrhenate.getFluid(1000))
+        .inputFluids(Hydrogen.getFluid(7000))
+        .outputDust(Rhenium)
+        .outputFluids(Ammonia.getFluid(1000))
+        .outputFluids(Water.getFluid(4000))
+        .EUt(480)
+        .duration(110)
+        .save(provider);
+
+
+    // Hg + 2CH3COOH -> C4H6O4Hg + H2
+    CHEMICAL_RECIPES.recipeBuilder("mercury_acetic_acid_to_mercury_acetate_hydrogen")
+        .inputFluids(Mercury.getFluid(1000))
+        .inputFluids(AceticAcid.getFluid(2000))
+        .outputItems(ChemicalHelper.get(dust, MercuryAcetate, 15))
+        .outputFluids(Hydrogen.getFluid(2000))
+        .EUt(480)
+        .duration(90)
+        .save(provider);
+
+
+    // C2H4O + CH3NH2 -> C3H9NO
+    CHEMICAL_RECIPES.recipeBuilder("ethylene_oxide_methylamine_to_methylethanolamine")
+        .inputFluids(EthyleneOxide.getFluid(1000))
+        .inputFluids(Methylamine.getFluid(1000))
+        .outputFluids(Methylethanolamine.getFluid(1000))
+        .EUt(480)
+        .duration(90)
+        .save(provider);
+
+
+
+    // C2H7N3 + HNO3 + H2SO4 + HCl + NaNO2 -> 2H2SO4(dil.) + C2H5N5O3 + NaCl
+    // Not perfect, but was the best way to try and conserve acids
+    CHEMICAL_RECIPES.recipeBuilder("methylguanidine_nitration_mixture_hydrochloric_acid_sodium_nitrite_to_diluted_sulfuric_acid_methylnitronitrosoguanidine_salt")
+        .inputFluids(Methylguanidine.getFluid(1000))
+        .inputFluids(NitrationMixture.getFluid(2000))
+        .inputFluids(HydrochloricAcid.getFluid(1000))
+        .inputDust(SodiumNitrite, 4)
+        .outputFluids(DilutedSulfuricAcid.getFluid(2000))
+        .outputFluids(Methylnitronitrosoguanidine.getFluid(1000))
+        .outputDust(Salt, 2)
+        .EUt(480)
+        .duration(220)
+        .save(provider);
+
+
+    // C8H16 + H2O -> C8H18O
+    CHEMICAL_RECIPES.recipeBuilder("oct1ene_water_phosphoric_acid_to_octanol")
+        .inputFluids(Oct1ene.getFluid(1000))
+        .inputFluids(Water.getFluid(1000))
+        .outputFluids(Octanol.getFluid(1000))
+        .inputFluids(PhosphoricAcid.getFluid(1000))
+        .notConsumable(ChemicalHelper.get(dust, PalladiumLoadedRutileNanoparticles))
+        .notConsumable(UVA_HALIDE_LAMP.asStack())
+        .EUt(30720)
+        .duration(110)
+        .save(provider);
+
+
+    // 3C8H18O + NH3 -> 3H2O + C24H51N
+    CHEMICAL_RECIPES.recipeBuilder("octanol_ammonia_to_water_trioctylamine")
+        .inputFluids(Octanol.getFluid(3000))
+        .inputFluids(Ammonia.getFluid(1000))
+        .outputFluids(Water.getFluid(3000))
+        .outputFluids(Trioctylamine.getFluid(1000))
+        .EUt(480)
+        .duration(90)
+        .save(provider);
+
+
+    // ? + 5HF -> H2NbOF5
+    CHEMICAL_RECIPES.recipeBuilder("purified_columbite_hydrofluoric_acid_to_fluoroniobic_acid")
+        .inputDust(PurifiedColumbite)
+        .inputFluids(HydrofluoricAcid.getFluid(5000))
+        .outputFluids(FluoroniobicAcid.getFluid(1000))
+        .EUt(480)
+        .duration(180)
+        .save(provider);
+
+
+    // Nb(H2O) + 5HF -> H2NbOF5
+    CHEMICAL_RECIPES.recipeBuilder("purified_pyrochlore_hydrofluoric_acid_to_fluoroniobic_acid")
+        .inputDust(PurifiedPyrochlore)
+        .inputFluids(HydrofluoricAcid.getFluid(5000))
+        .outputFluids(FluoroniobicAcid.getFluid(1000))
+        .EUt(480)
+        .duration(180)
+        .save(provider);
+
+
+    // Re + 3NH3 + H2SO4 -> (NH4)2SO4 + NH4ReO4
+    CHEMICAL_RECIPES.recipeBuilder("rhenium_scrubbed_solution_ammonia_sulfuric_acid_to_ammonium_sulfate_ammonium_perrhenate")
+        .inputFluids(RheniumScrubbedSolution.getFluid(1000))
+        .inputFluids(Ammonia.getFluid(3000))
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputFluids(AmmoniumSulfate.getFluid(1000))
+        .outputFluids(AmmoniumPerrhenate.getFluid(1000))
+        .EUt(1920)
+        .duration(110)
+        .save(provider);
+
+
+    // Cu + H2SO4 -> CuH2SO4
+    CHEMICAL_RECIPES.recipeBuilder("electrically_impure_copper_sulfuric_acid_to_copper_refining_solution").duration(200).EUt(120)
+        .inputDust(ElectricallyImpureCopper)
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputFluids(CopperRefiningSolution.getFluid(1000))
+        .save(provider);
+
+    // SeO2 + 2SO2 -> Se + 2SO3
+    CHEMICAL_RECIPES.recipeBuilder("selenium_oxide_sulfur_dioxide_to_selenium_sulfur_trioxide").duration(260).EUt(120)
+        .inputDust(SeleniumOxide, 3)
+        .inputFluids(SulfurDioxide.getFluid(2000))
+        .outputDust(Selenium)
+        .outputFluids(SulfurTrioxide.getFluid(2000))
+        .save(provider);
+
+
+    // TeO2 + 2SO2 -> Te + 2SO3
+    CHEMICAL_RECIPES.recipeBuilder("tellurium_oxide_sulfur_dioxide_to_tellurium_sulfur_trioxide").duration(260).EUt(120)
+        .inputDust(TelluriumOxide, 3)
+        .inputFluids(SulfurDioxide.getFluid(2000))
+        .outputDust(Tellurium)
+        .outputFluids(SulfurTrioxide.getFluid(2000))
+        .save(provider);
+
+
+    // Ti + 2O -> TiO2
+    CHEMICAL_RECIPES.recipeBuilder("titanium_oxygen_to_rutile").duration(100).EUt(1920)
+        .inputDust(Titanium)
+        .inputFluids(Oxygen.getFluid(2000))
+        .outputDust(Rutile, 3)
+        .save(provider);
+
+
+    // TiO2 + 4C3H8O -> C12H28O4Ti + 2H2O
+    CHEMICAL_RECIPES.recipeBuilder("rutile_isopropyl_alcohol_to_titanium_isopropoxide_water").duration(240).EUt(480)
+        .inputDust(Rutile, 3)
+        .inputFluids(IsopropylAlcohol.getFluid(4000))
+        .outputFluids(TitaniumIsopropoxide.getFluid(1000))
+        .outputFluids(Water.getFluid(2000))
+        .save(provider);
+
+    // C5H10O2 + H2O -> C3H8O + CH3COOH
+    CHEMICAL_RECIPES.recipeBuilder("isopropyl_acetate_water_to_isopropyl_alcohol_acetic_acid").duration(200).EUt(480)
+        .notConsumable(dust, PhosphorousPentoxide)
+        .inputFluids(IsopropylAcetate.getFluid(1000))
+        .inputFluids(Water.getFluid(1000))
+        .outputFluids(IsopropylAlcohol.getFluid(1000))
+        .outputFluids(AceticAcid.getFluid(1000))
+        .save(provider);
+
+
+    // 9H2O + 2F7K2Ta -> Ta2O5 + 14HF + 4KOH
+    CHEMICAL_RECIPES.recipeBuilder("potasssium_fluoro_tantalate_water_to_tantalum_oxide_hydrofluoric_acid_potassium_hydroxide").duration(130).EUt(120)
+        .inputDust(PotassiumFluoroTantalate, 20)
+        .inputFluids(Water.getFluid(9000))
+        .outputItems(ChemicalHelper.get(dust, TantalumOxide, 7))
+        .outputFluids(HydrofluoricAcid.getFluid(14000))
+        .outputFluids(PotassiumHydroxide.getFluid(4000))
+        .save(provider);
+
+
+    // 2Ta + 10Cl + 5H2O -> Ta2O5 + 10HCl
+    CHEMICAL_RECIPES.recipeBuilder("tantalum_chlorine_water_to_tantalum_oxide_hydrochloric_acid").duration(480).EUt(120)
+        .inputDust(Tantalum, 2)
+        .inputFluids(Chlorine.getFluid(10000))
+        .inputFluids(Water.getFluid(5000))
+        .outputItems(ChemicalHelper.get(dust, TantalumOxide, 7))
+        .outputFluids(HydrochloricAcid.getFluid(10000))
+        .save(provider);
+
+
+    // 2Sc + 6Cl + 3H2O -> Sc2O3 + 6HCl
+    CHEMICAL_RECIPES.recipeBuilder("scandium_chlorine_water_to_scandium_oxide_hydrochloric_acid").duration(480).EUt(120)
+        .inputDust(Scandium, 2)
+        .inputFluids(Chlorine.getFluid(6000))
+        .inputFluids(Water.getFluid(3000))
+        .outputItems(ChemicalHelper.get(dust, ScandiumOxide, 5))
+        .outputFluids(HydrochloricAcid.getFluid(6000))
+        .save(provider);
+
+
+    // 2Lu + 6Cl + 3H2O -> Lu2O3 + 6HCl
+    CHEMICAL_RECIPES.recipeBuilder("lutetium_chlorine_water_to_lutetium_oxide_hydrochloric_acid").duration(480).EUt(120)
+        .inputDust(Lutetium, 2)
+        .inputFluids(Chlorine.getFluid(6000))
+        .inputFluids(Water.getFluid(3000))
+        .outputItems(ChemicalHelper.get(dust, LutetiumOxide, 5))
+        .outputFluids(HydrochloricAcid.getFluid(6000))
+        .save(provider);
+
+
+    // 2Tm + 6Cl + 3H2O -> Tm2O3 + 6HCl
+    CHEMICAL_RECIPES.recipeBuilder("thulium_chlorine_water_to_thulium_oxide_hydrochloric_acid").duration(480).EUt(120)
+        .inputDust(Thulium, 2)
+        .inputFluids(Chlorine.getFluid(6000))
+        .inputFluids(Water.getFluid(3000))
+        .outputItems(ChemicalHelper.get(dust, ThuliumOxide, 5))
+        .outputFluids(HydrochloricAcid.getFluid(6000))
+        .save(provider);
+
+
+    // 2Eu + 6Cl + 3H2O -> Eu2O3 + 6HCl
+    CHEMICAL_RECIPES.recipeBuilder("europium_chlorine_water_to_europium_oxide_hydrochloric_acid").duration(480).EUt(120)
+        .inputDust(Europium, 2)
+        .inputFluids(Chlorine.getFluid(6000))
+        .inputFluids(Water.getFluid(3000))
+        .outputItems(ChemicalHelper.get(dust, EuropiumOxide, 5))
+        .outputFluids(HydrochloricAcid.getFluid(6000))
+        .save(provider);
+
+
+    // Pb + Se -> PbSe
+    CHEMICAL_RECIPES.recipeBuilder("lead_selenium_to_lead_senenide").duration(240).EUt(120)
+        .inputDust(Lead)
+        .inputDust(Selenium)
+        .outputItems(ChemicalHelper.get(dust, LeadSenenide, 2))
+        .save(provider);
+
+
+    // Zn + Se -> ZnSe
+    CHEMICAL_RECIPES.recipeBuilder("zinc_selenium_to_zinc_selenide").duration(240).EUt(120)
+        .inputDust(Zinc)
+        .inputDust(Selenium)
+        .outputItems(ChemicalHelper.get(dust, ZincSelenide, 2))
+        .save(provider);
+
+    // C6H6O2 + NH3 -> C6H7NO + H2O
+    CHEMICAL_RECIPES.recipeBuilder("resorcinol_ammonia_to_amino3phenol_water").duration(220).EUt(480)
+        .inputFluids(Resorcinol.getFluid(1000))
+        .inputFluids(Ammonia.getFluid(1000))
+        .outputFluids(Amino3phenol.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .save(provider);
+
+
+    // C2H4 + NH3 -> C2H5NH2
+    CHEMICAL_RECIPES.recipeBuilder("ethylene_ammonia_to_ethylamine").duration(130).EUt(480)
+        .inputFluids(Ethylene.getFluid(1000))
+        .inputFluids(Ammonia.getFluid(1000))
+        .outputFluids(Ethylamine.getFluid(2000))
+        .notConsumable(ChemicalHelper.get(dust, SodiumAzanide))
+        .save(provider);
+
+    // KOH + NH4ReO4 -> KReO4 + NH3 + H2O
+    CHEMICAL_RECIPES.recipeBuilder("potassium_hydroxide_ammonium_perrhenate_to_potassium_perrhenate_ammonia_water").duration(280).EUt(480)
+        .inputFluids(PotassiumHydroxide.getFluid(1000))
+        .inputFluids(AmmoniumPerrhenate.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, PotassiumPerrhenate, 6))
+        .outputFluids(Ammonia.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .save(provider);
+
+
+    // KReO4 + 18K + 13C2H5OH + 4O -> 4KOH + H9K2ReO4 + 13C2H5KO
+    CHEMICAL_RECIPES.recipeBuilder("potassium_perrhenate_potassium_ethanol_oxygen_to_potassium_hydroxide_potassium_nonahydridorhenate_potassium_ethoxide").duration(240).EUt(1920)
+        .inputDust(PotassiumPerrhenate, 6)
+        .inputDust(Potassium, 18)
+        .inputFluids(Ethanol.getFluid(13000))
+        .inputFluids(Oxygen.getFluid(4000))
+        .outputFluids(PotassiumHydroxide.getFluid(4000))
+        .outputItems(ChemicalHelper.get(dust, PotassiumNonahydridorhenate, 16))
+        .outputFluids(PotassiumEthoxide.getFluid(13000))
+        .save(provider);
+
+
+    // KTcO4 + 18K + 13C2H5OH + 4O -> 4KOH + H9K2TcO4 + 13C2H5KO
+    CHEMICAL_RECIPES.recipeBuilder("potassium_pertechnate_potassium_ethanol_oxygen_to_potassium_hydroxide_potassium_nonahydridotechnetate_potassium_ethoxide").duration(240).EUt(1920)
+        .inputDust(PotassiumPertechnate, 6)
+        .inputDust(Potassium, 18)
+        .inputFluids(Ethanol.getFluid(13000))
+        .inputFluids(Oxygen.getFluid(4000))
+        .outputFluids(PotassiumHydroxide.getFluid(4000))
+        .outputItems(ChemicalHelper.get(dust, PotassiumNonahydridotechnetate, 16))
+        .outputFluids(PotassiumEthoxide.getFluid(13000))
+        .save(provider);
+
+
+    // C2H5KO + HCl -> C2H5OH + KCl
+    CHEMICAL_RECIPES.recipeBuilder("potassium_ethoxide_hydrochloric_acid_to_ethanol_rock_salt").duration(200).EUt(480)
+        .inputFluids(PotassiumEthoxide.getFluid(1000))
+        .inputFluids(HydrochloricAcid.getFluid(1000))
+        .outputFluids(Ethanol.getFluid(1000))
+        .outputDust(RockSalt, 2)
+        .save(provider);
+
+    // KI + C6H7NO + C4H9Li -> C10H15N + KOH + LiI
+    CHEMICAL_RECIPES.recipeBuilder("potassium_iodide_aminophenol_butyl_lithium_to_butylaniline_potassium_hydroxide_lithium_iodide").duration(200).EUt(480)
+        .inputDust(PotassiumIodide, 2)
+        .inputFluids(Aminophenol.getFluid(1000))
+        .inputFluids(ButylLithium.getFluid(1000))
+        .outputFluids(Butylaniline.getFluid(1000))
+        .outputFluids(PotassiumHydroxide.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, LithiumIodide, 2))
+        .save(provider);
+
+
+    // NaH + C3H9SiCl -> C3H10Si + NaCl
+    CHEMICAL_RECIPES.recipeBuilder("sodium_hydride_trimethylchlorosilane_to_trimethylsilane_salt").duration(170).EUt(1920)
+        .inputDust(SodiumHydride, 2)
+        .inputFluids(Trimethylchlorosilane.getFluid(1000))
+        .outputFluids(Trimethylsilane.getFluid(1000))
+        .outputDust(Salt, 2)
+        .save(provider);
+
+
+    // K + Br -> KBr
+    CHEMICAL_RECIPES.recipeBuilder("potassium_bromine_to_potassium_bromide").duration(240).EUt(120)
+        .inputDust(Potassium)
+        .inputFluids(Bromine.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, PotassiumBromide, 2))
+        .save(provider);
+
+
+    // KBr + O3 -> KBrO3
+    CHEMICAL_RECIPES.recipeBuilder("potassium_bromide_ozone_to_potassium_bromate").duration(200).EUt(480)
+        .inputDust(PotassiumBromide, 2)
+        .inputFluids(Ozone.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, PotassiumBromate, 5))
+        .save(provider);
+
+
+
+
+    // 3C7H5IO2 + H2SO4 + 2O -> H2S + 3C7H5IO4
+    CHEMICAL_RECIPES.recipeBuilder("iodobenzoic_acid_sulfuric_acid_oxygen_to_hydrogen_sulfide_ibx").duration(200).EUt(1920)
+        .notConsumable(ChemicalHelper.get(dust, PotassiumBromate))
+        .inputFluids(IodobenzoicAcid.getFluid(3000))
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .inputFluids(Oxygen.getFluid(2000))
+        .outputFluids(HydrogenSulfide.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, IBX, 51))
+        .save(provider);
+
+
+    // C8H8O2 + C10H15N -> C18H21NO + H2O
+    CHEMICAL_RECIPES.recipeBuilder("methoxybenzaldehyde_butylaniline_to_mbba_water").duration(190).EUt(122880)
+        .inputFluids(Methoxybenzaldehyde.getFluid(1000))
+        .inputFluids(Butylaniline.getFluid(1000))
+        .notConsumable(ChemicalHelper.get(dust, TetraethylammoniumNonahydridides))
+        .outputFluids(MBBA.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .save(provider);
+
+
+    // PdCl2 + 2CH3COOH -> C4H6O4Pd + 2HCl
+    CHEMICAL_RECIPES.recipeBuilder("palladium_chloride_acetic_acid_to_palladium_acetate_hydrochloric_acid").duration(260).EUt(480)
+        .inputDust(PalladiumChloride, 3)
+        .inputFluids(AceticAcid.getFluid(2000))
+        .outputItems(ChemicalHelper.get(dust, PalladiumAcetate, 15))
+        .outputFluids(HydrochloricAcid.getFluid(2000))
+        .save(provider);
+
+
+    // I + Cl -> ICl
+    CHEMICAL_RECIPES.recipeBuilder("iodine_chlorine_to_iodine_monochloride").duration(240).EUt(120)
+        .inputDust(Iodine)
+        .inputFluids(Chlorine.getFluid(1000))
+        .outputFluids(IodineMonochloride.getFluid(1000))
+        .save(provider);
+
+
+    // Mg + 2Cl -> MgCl2
+    CHEMICAL_RECIPES.recipeBuilder("magnesium_chlorine_to_magnesium_chloride").duration(50).EUt(120)
+        .inputDust(Magnesium)
+        .inputFluids(Chlorine.getFluid(2000))
+        .outputDust(MagnesiumChloride, 3)
+        .save(provider);
+
+    // C10H8 + 2CH4O -> 2H2O + C12H12
+    CHEMICAL_RECIPES.recipeBuilder("naphthalene_methanol_to_water_dimethylnaphthalene").duration(260).EUt(120)
+        .inputFluids(Naphthalene.getFluid(1000))
+        .inputFluids(Methanol.getFluid(2000))
+        .outputFluids(Water.getFluid(2000))
+        .outputFluids(Dimethylnaphthalene.getFluid(1000))
+        .save(provider);
+
+
+
+// 2H + Se -> H2Se
+    CHEMICAL_RECIPES.recipeBuilder("hydrogen_selenium_to_hydroselenic_acid").duration(180).EUt(120)
+        .inputFluids(Hydrogen.getFluid(2000))
+        .inputDust(Selenium)
+        .outputFluids(HydroselenicAcid.getFluid(1000))
+        .save(provider);
+
+
+    // 2H2Se + CuInGa -> CuInGaSe2 + 4 H
+    CHEMICAL_RECIPES.recipeBuilder("hydroselenic_acid_copper_gallium_indium_mix_to_copper_gallium_indium_selenide_hydrogen").duration(180).EUt(480)
+        .inputFluids(HydroselenicAcid.getFluid(2000))
+        .inputDust(CopperGalliumIndiumMix, 3)
+        .outputItems(ChemicalHelper.get(dust, CopperGalliumIndiumSelenide, 5))
+        .outputFluids(Hydrogen.getFluid(4000))
+        .save(provider);
+
+
+    // MnO2 + 2KOH + O -> K2MnO4 + H2O
+    CHEMICAL_RECIPES.recipeBuilder("pyrolusite_potassium_hydroxide_oxygen_to_potassium_manganate_water").duration(170).EUt(30)
+        .inputDust(Pyrolusite, 3)
+        .inputFluids(PotassiumHydroxide.getFluid(2000))
+        .inputFluids(Oxygen.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, PotassiumManganate, 7))
+        .outputFluids(Water.getFluid(1000))
+        .save(provider);
+
+
+    // C6H5OH + HNO3 + 6H -> 3H2O + C6H7NO
+    CHEMICAL_RECIPES.recipeBuilder(GTCEu.id("aminophenol")).duration(240).EUt(120)
+        .inputFluids(Phenol.getFluid(1000))
+        .inputFluids(NitrationMixture.getFluid(1000))
+        .notConsumable(ISGTagPrefix.CATALYST, IronPlatinumCatalyst)
+        .outputFluids(DilutedSulfuricAcid.getFluid(1000))
+        .outputFluids(AminoPhenol.getFluid(1000))
+        .save(provider);
+
+
+    // 2IrO2 + 2[Bi(NO3)3 + H2O] + H -> Bi2Ir2O7 + 5HNO2 + NO2
+    CHEMICAL_RECIPES.recipeBuilder("iridium_dioxide_bismuth_nitrate_soluton_hydrogen_to_bismuth_iridiate_nitric_acid_nitrogen_dioxide").duration(300).EUt(1920)
+        .inputDust(IridiumDioxide, 6)
+        .inputFluids(BismuthNitrateSoluton.getFluid(2000))
+        .inputFluids(Hydrogen.getFluid(1000))
+        .outputDust(BismuthIridiate, 11)
+        .outputFluids(NitricAcid.getFluid(5000))
+        .outputFluids(NitrogenDioxide.getFluid(1000))
+        .save(provider);
+
+
+    // TiCl4 + [NaOH + H2O] + [BaCl2 + H2O] -> BaTiO3 + NaCl + 5HCl
+    CHEMICAL_RECIPES.recipeBuilder("titanium_tetrachloride_sodium_hydroxide_solution_barium_chloride_solution_to_salt_barium_titanate_preparation_hydrochloric_acid").duration(320).EUt(120)
+        .inputFluids(TitaniumTetrachloride.getFluid(1000))
+        .inputFluids(SodiumHydroxideSolution.getFluid(1000))
+        .inputFluids(BariumChlorideSolution.getFluid(1000))
+        .outputDust(Salt, 2)
+        .outputFluids(BariumTitanatePreparation.getFluid(1000))
+        .outputFluids(HydrochloricAcid.getFluid(4000))
+        .save(provider);
+
+    // C2H6O2 + C6H8S -> C6H6O2S + 2CH4
+    CHEMICAL_RECIPES.recipeBuilder("ethylene_glycol_diethoxythiophene_to_edot_ethanol").duration(140).EUt(120)
+        .notConsumable(GELLED_TOLUENE)
+        .inputFluids(EthyleneGlycol.getFluid(1000))
+        .inputFluids(Diethoxythiophene.getFluid(1000))
+        .outputFluids(EDOT.getFluid(1000))
+        .outputFluids(Ethanol.getFluid(2000))
+        .save(provider);
+
+    // Fe + H2SO4 -> FeSO4 + 2H
+    CHEMICAL_RECIPES.recipeBuilder("iron_sulfuric_acid_to_iron_sulfate_hydrogen").duration(250).EUt(30)
+        .inputDust(Iron)
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputItems(dust, IronSulfate, 6)
+        .outputFluids(Hydrogen.getFluid(2000))
+        .save(provider);
+
+    // ZrCl4 + 2H2O -> ZrOCl2 + 2HCl
+    CHEMICAL_RECIPES.recipeBuilder("zirconium_tetrachloride_water_to_zirconyl_chloride_hydrochloric_acid").duration(150).EUt(120)
+        .inputDust(ZirconiumTetrachloride, 5)
+        .inputFluids(Water.getFluid(2000))
+        .outputItems(ChemicalHelper.get(dust, ZirconylChloride, 4))
+        .outputFluids(HydrochloricAcid.getFluid(2000))
+        .save(provider);
+
+
+    // Pb + N2O4 + 2O -> Pb(NO3)2
+    CHEMICAL_RECIPES.recipeBuilder("lead_dinitrogen_tetroxide_oxygen_to_lead_nitrate").EUt(120).duration(150)
+        .inputDust(Lead)
+        .inputFluids(DinitrogenTetroxide.getFluid(1000))
+        .inputFluids(Oxygen.getFluid(2000))
+        .outputDust(LeadNitrate, 9)
+        .save(provider);
+
+    // Fe + 2I -> FeI2
+    CHEMICAL_RECIPES.recipeBuilder("iron_iodine_to_iron_iodide").duration(150).EUt(120)
+        .inputDust(Iron)
+        .inputDust(Iodine, 2)
+        .outputItems(ChemicalHelper.get(dust, IronIodide, 3))
+        .save(provider);
+
+
+    // Tl + I -> TlI
+    CHEMICAL_RECIPES.recipeBuilder("thallium_iodine_to_thallium_iodide").duration(150).EUt(120)
+        .inputDust(Thallium)
+        .inputDust(Iodine)
+        .outputItems(ChemicalHelper.get(dust, ThalliumIodide, 2))
+        .save(provider);
+
+
+    // Rb + I -> RbI
+    CHEMICAL_RECIPES.recipeBuilder("rubidium_iodine_to_rubidium_iodide").duration(150).EUt(120)
+        .inputDust(Rubidium)
+        .inputDust(Iodine)
+        .outputItems(ChemicalHelper.get(dust, RubidiumIodide, 2))
+        .save(provider);
+
+
+    // K + I -> KI
+    CHEMICAL_RECIPES.recipeBuilder("potassium_iodine_to_potassium_iodide").duration(150).EUt(120)
+        .inputDust(Potassium)
+        .inputDust(Iodine)
+        .outputItems(ChemicalHelper.get(dust, PotassiumIodide, 2))
+        .save(provider);
+
+
+    // In + 3I -> InI3
+    CHEMICAL_RECIPES.recipeBuilder("indium_iodine_to_indium_iodide").duration(150).EUt(120)
+        .inputDust(Indium)
+        .inputDust(Iodine, 3)
+        .outputItems(ChemicalHelper.get(dust, IndiumIodide, 4))
+        .save(provider);
+
+
+    // Ga + 3I -> GaI3
+    CHEMICAL_RECIPES.recipeBuilder("gallium_iodine_to_gallium_iodide").duration(150).EUt(120)
+        .inputDust(Gallium)
+        .inputDust(Iodine, 3)
+        .outputItems(ChemicalHelper.get(dust, GalliumIodide, 4))
+        .save(provider);
+
+
+    // Sc + 3I -> ScI3
+    CHEMICAL_RECIPES.recipeBuilder("scandium_iodine_to_scandium_iodide").duration(150).EUt(120)
+        .inputDust(Scandium)
+        .inputDust(Iodine, 3)
+        .outputItems(ChemicalHelper.get(dust, ScandiumIodide, 4))
+        .save(provider);
+
+    // SrCl2 + H2SO4 -> SrSO4 + 2HCl
+    CHEMICAL_RECIPES.recipeBuilder("strontium_chloride_sulfuric_acid_to_celestine_hydrochloric_acid").duration(160).EUt(480)
+        .inputDust(StrontiumChloride, 3)
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputDust(Celestine, 6)
+        .outputFluids(HydrochloricAcid.getFluid(2000))
+        .save(provider);
+
+
+    // 6F + 2CS2 -> C2F6S2 + 2S
+    CHEMICAL_RECIPES.recipeBuilder("fluorine_carbon_sulfide_to_biperfluoromethanedisulfide_sulfur").duration(250).EUt(120)
+        .notConsumable(dust, Iodine)
+        .inputFluids(Fluorine.getFluid(6000))
+        .inputFluids(CarbonSulfide.getFluid(2000))
+        .outputFluids(Biperfluoromethanedisulfide.getFluid(1000))
+        .outputDust(Sulfur, 2)
+        .save(provider);
+
+
+    // Hg + 3H2O2 + C2F6S2 + BaCO3 -> [C2BaF6O6S2 + 3H2O + Hg] + C
+    CHEMICAL_RECIPES.recipeBuilder("mercury_water_biperfluoromethanedisulfide_barium_carbonate_to_barium_triflate_solution_carbon").duration(240).EUt(480)
+        .inputFluids(Mercury.getFluid(1000))
+        .inputFluids(Water.getFluid(3000))
+        .inputFluids(Biperfluoromethanedisulfide.getFluid(1000))
+        .inputDust(BariumCarbonate, 5)
+        .notConsumable(UVA_HALIDE_LAMP.asStack())
+        .outputFluids(BariumTriflateSolution.getFluid(3000))
+        .outputDust(Carbon)
+        .save(provider);
+
+    // 2HNO3 + BaS -> H2S + Ba(NO3)2
+    CHEMICAL_RECIPES.recipeBuilder("nitric_acid_barium_sulfide_to_hydrogen_sulfide_barium_nitrate").duration(240).EUt(120)
+        .inputFluids(NitricAcid.getFluid(2000))
+        .inputDust(BariumSulfide, 2)
+        .outputFluids(HydrogenSulfide.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, BariumNitrate, 9))
+        .save(provider);
+
+
+    // 2HNO3 + Cu -> 2H + Cu(NO3)2
+    CHEMICAL_RECIPES.recipeBuilder("nitric_acid_copper_to_nitrogen_dioxide_hydrogen_copper_nitrate").duration(240).EUt(120)
+        .inputFluids(NitricAcid.getFluid(2000))
+        .inputDust(Copper)
+        .outputFluids(NitrogenDioxide.getFluid(1000))
+        .outputFluids(Hydrogen.getFluid(2000))
+        .outputItems(ChemicalHelper.get(dust, CopperNitrate, 9))
+        .save(provider);
+
+
+    // 6HNO3 + Y2O3 -> 3H2O + 2Y(NO3)3
+    CHEMICAL_RECIPES.recipeBuilder("nitric_acid_yttrium_oxide_to_water_yttrium_nitrate").duration(240).EUt(120)
+        .inputFluids(NitricAcid.getFluid(6000))
+        .inputDust(YttriumOxide, 5)
+        .circuitMeta(32)
+        .outputFluids(Water.getFluid(3000))
+        .outputItems(ChemicalHelper.get(dust, YttriumNitrate, 26))
+        .save(provider);
+
+    // 9O + C6H12O6 -> 3C2H2O4 + 3H2O
+    CHEMICAL_RECIPES.recipeBuilder("oxygen_glucose_to_water_oxalic_acid").duration(120).EUt(480)
+        .notConsumable(ChemicalHelper.get(dust, VanadiumOxide))
+        .inputFluids(Oxygen.getFluid(9000))
+        .inputDust(Glucose, 24)
+        .outputFluids(Water.getFluid(3000))
+        .outputFluids(OxalicAcid.getFluid(3000))
+        .save(provider);
+
+
+    // 2C2H2O4 + 2O + Ac -> Ac(C2O4)2 + 2H2O
+    CHEMICAL_RECIPES.recipeBuilder("oxalic_acid_oxygen_actinium_to_water_actinium_oxalate").duration(180).EUt(30720)
+        .inputFluids(OxalicAcid.getFluid(2000))
+        .inputFluids(Oxygen.getFluid(2000))
+        .inputDust(Actinium)
+        .outputFluids(Water.getFluid(2000))
+        .outputItems(ChemicalHelper.get(dust, ActiniumOxalate, 13))
+        .save(provider);
+
+
+    // C + 4Cl -> CCl4
+    CHEMICAL_RECIPES.recipeBuilder("carbon_chlorine_to_carbon_tetrachloride").duration(320).EUt(30)
+        .inputDust(Carbon)
+        .circuitMeta(32)
+        .inputFluids(Chlorine.getFluid(4000))
+        .outputFluids(CarbonTetrachloride.getFluid(1000))
+        .save(provider);
+
+
+    // (CH3)2SiHCl + CH4 -> (CH3)3SiCl + 2H
+    CHEMICAL_RECIPES.recipeBuilder("dimethyldichlorosilane_methane_to_trimethylchlorosilane_hydrogen").duration(110).EUt(1920)
+        .inputFluids(Dimethyldichlorosilane.getFluid(1000))
+        .inputFluids(Methane.getFluid(1000))
+        .outputFluids(Trimethylchlorosilane.getFluid(1000))
+        .outputFluids(Hydrogen.getFluid(2000))
+        .save(provider);
+
+    // 2Cl + C2H6 -> C2H5Cl + HCl
+    CHEMICAL_RECIPES.recipeBuilder("chlorine_ethane_to_chloroethane_hydrochloric_acid").duration(200).EUt(3340)
+        .inputFluids(Chlorine.getFluid(2000))
+        .inputFluids(Ethane.getFluid(1000))
+        .outputFluids(Chloroethane.getFluid(1000))
+        .outputFluids(HydrochloricAcid.getFluid(1000))
+        .notConsumable(UVA_HALIDE_LAMP.asStack())
+        .save(provider);
+
+
+    // C4H4S2Br2 + 2Se + 2C4H9Li -> C4H4S2Li2Se2 + 2C4H9Br
+    CHEMICAL_RECIPES.recipeBuilder("bromohydrothiine_butyl_lithium_selenium_to_bromobutane_lithiumthiinediselenide").duration(290).EUt(30720)
+        .inputFluids(Bromohydrothiine.getFluid(1000))
+        .inputFluids(ButylLithium.getFluid(2000))
+        .inputDust(Selenium, 2)
+        .outputFluids(Bromobutane.getFluid(2000))
+        .outputItems(ChemicalHelper.get(dust, Lithiumthiinediselenide, 14))
+        .save(provider);
+
+
+    // C3H6 + C4H8 -> C3H4 + C4H10
+    CHEMICAL_RECIPES.recipeBuilder("propene_butene_to_propadiene_butane").duration(200).EUt(480)
+        .inputFluids(Propene.getFluid(1000))
+        .inputFluids(Butene.getFluid(1000))
+        .notConsumable(ISGTagPrefix.CATALYST, DehydrogenationCatalyst)
+        .outputFluids(Propadiene.getFluid(1000))
+        .outputFluids(Butane.getFluid(1000))
+        .save(provider);
+
+
+    // TiCl4 + 2 C3H4 + 2 C2H2 -> 2 HCl + (C5H5)2Cl2Ti
+    CHEMICAL_RECIPES.recipeBuilder("titanium_tetrachloride_propadiene_acetylene_to_hydrochloric_acid_titanium_cyclopentadienyl").duration(260).EUt(7680)
+        .inputFluids(TitaniumTetrachloride.getFluid(1000))
+        .inputFluids(Propadiene.getFluid(2000))
+        .inputFluids(Acetylene.getFluid(2000))
+        .notConsumableDust(ScandiumTriflate)
+        .outputFluids(HydrochloricAcid.getFluid(2000))
+        .outputItems(ChemicalHelper.get(dust, TitaniumCyclopentadienyl, 23))
+        .save(provider);
+
+
+    // C4H9Br + NaOH -> NaBr + C4H10O
+    CHEMICAL_RECIPES.recipeBuilder("bromobutane_sodium_hydroxide_to_sodium_bromide_butanol").duration(40).EUt(120)
+        .inputFluids(Bromobutane.getFluid(1000))
+        .inputDust(SodiumHydroxide, 3)
+        .outputItems(ChemicalHelper.get(dust, SodiumBromide, 2))
+        .outputFluids(Butanol.getFluid(1000))
+        .save(provider);
+
+
+    // 2Fr + C2H2 -> Fr2C2 + 2H
+    CHEMICAL_RECIPES.recipeBuilder("francium_acetylene_to_francium_carbide_hydrogen").duration(260).EUt(480)
+        .inputDust(Francium, 2)
+        .inputFluids(Acetylene.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, FranciumCarbide, 4))
+        .outputFluids(Hydrogen.getFluid(2000))
+        .save(provider);
+
+
+    // 2Fr2C2 + B4C3 -> Fr4B4C7
+    CHEMICAL_RECIPES.recipeBuilder("francium_carbide_boron_carbide_to_boron_francium_carbide").duration(260).EUt(1920)
+        .inputDust(FranciumCarbide, 8)
+        .inputDust(BoronCarbide, 7)
+        .outputItems(ChemicalHelper.get(dust, BoronFranciumCarbide, 15))
+        .save(provider);
+
+    // Sg + 2 NaOH + 6 F + 2H2O -> 6HF + Na2SgO4
+    CHEMICAL_RECIPES.recipeBuilder("seaborgium_sodium_hydroxide_fluorine_water_to_hydrofluoric_acid_sodium_seaborgate").duration(820).EUt(30720)
+        .inputDust(Seaborgium)
+        .inputDust(SodiumHydroxide, 6)
+        .inputFluids(Fluorine.getFluid(6000))
+        .inputFluids(Water.getFluid(2000))
+        .outputFluids(HydrofluoricAcid.getFluid(6000))
+        .outputItems(ChemicalHelper.get(dust, SodiumSeaborgate, 7))
+        .save(provider);
+
+
+    // Sr + 2Cl -> SrCl2
+    CHEMICAL_RECIPES.recipeBuilder("strontium_chlorine_to_strontium_chloride").duration(320).EUt(120)
+        .inputDust(Strontium)
+        .inputFluids(Chlorine.getFluid(2000))
+        .outputItems(ChemicalHelper.get(dust, StrontiumChloride, 3))
+        .save(provider);
+
+
+    // NaIO4 + C3H6O -> NaIO3 + CH2O + C2H4O
+    CHEMICAL_RECIPES.recipeBuilder("sodium_periodate_acetone_to_sodium_iodate_formaldehyde_acetaldehyde").duration(220).EUt(7680)
+        .notConsumable(ChemicalHelper.get(dust, OsmiumTetroxide))
+        .inputDust(SodiumPeriodate, 6)
+        .inputFluids(Acetone.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, SodiumIodate, 5))
+        .outputFluids(Formaldehyde.getFluid(1000))
+        .outputFluids(Acetaldehyde.getFluid(1000))
+        .save(provider);
+
+
+    // C4H10 + 2Br -> C4H9Br + HBr
+    CHEMICAL_RECIPES.recipeBuilder("butane_bromine_to_bromobutane_hydrobromic_acid").duration(210).EUt(7680)
+        .notConsumable(UVA_HALIDE_LAMP.asStack())
+        .inputFluids(Butane.getFluid(1000))
+        .inputFluids(Bromine.getFluid(2000))
+        .outputFluids(Bromobutane.getFluid(1000))
+        .outputFluids(HydrobromicAcid.getFluid(1000))
+        .save(provider);
+
+
+    // Kr + 2F -> KrF2
+    CHEMICAL_RECIPES.recipeBuilder("krypton_fluorine_to_krypton_difluoride").duration(170).EUt(480)
+        .notConsumable(UVA_HALIDE_LAMP.asStack())
+        .inputFluids(Krypton.getFluid(1000))
+        .inputFluids(Fluorine.getFluid(2000))
+        .outputFluids(KryptonDifluoride.getFluid(1000))
+        .save(provider);
+
+
+    // Mn + KrF2 -> MnF2 + Kr
+    CHEMICAL_RECIPES.recipeBuilder("manganese_krypton_difluoride_to_manganese_fluoride_krypton").duration(170).EUt(480)
+        .inputDust(Manganese)
+        .inputFluids(KryptonDifluoride.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, ManganeseFluoride, 3))
+        .outputFluids(Krypton.getFluid(1000))
+        .save(provider);
+
+
+    // MnF2 + O + H2O -> MnO2 + 2HF
+    CHEMICAL_RECIPES.recipeBuilder("manganese_fluoride_water_oxygen_to_pyrolusite_hydrofluoric_acid").duration(160).EUt(120)
+        .inputDust(ManganeseFluoride, 3)
+        .inputFluids(Water.getFluid(1000))
+        .inputFluids(Oxygen.getFluid(1000))
+        .outputDust(Pyrolusite, 3)
+        .outputFluids(HydrofluoricAcid.getFluid(2000))
+        .save(provider);
+
+    // NaSCN + HCl + 2CH3CH2NH2 -> NH3 + (C2H5NH)2CS + NaCl
+    CHEMICAL_RECIPES.recipeBuilder("sodium_thiocyanate_hydrochloric_acid_ethylamine_to_ammonia_diethylthiourea_salt").duration(210).EUt(30720)
+        .inputFluids(SodiumThiocyanate.getFluid(1000))
+        .inputFluids(HydrochloricAcid.getFluid(1000))
+        .inputFluids(Ethylamine.getFluid(2000))
+        .outputFluids(Ammonia.getFluid(1000))
+        .outputFluids(Diethylthiourea.getFluid(1000))
+        .outputDust(Salt, 2)
+        .save(provider);
+
+    // SbF5 + PCl3 + HF -> SbCl3 + HPF6
+    CHEMICAL_RECIPES.recipeBuilder("antimony_pentafluoride_phosphorus_trichloride_hydrofluoric_acid_to_antimony_trichloride_fluorophosphoric_acid").duration(280).EUt(7680)
+        .inputFluids(AntimonyPentafluoride.getFluid(1000))
+        .inputFluids(PhosphorusTrichloride.getFluid(1000))
+        .inputFluids(HydrofluoricAcid.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, AntimonyTrichloride, 4))
+        .outputFluids(FluorophosphoricAcid.getFluid(1000))
+        .save(provider);
+
+
+    // SbCl3 + 3HF -> SbF3 + 3HCl
+    CHEMICAL_RECIPES.recipeBuilder("antimony_trichloride_hydrofluoric_acid_to_antimony_trifluoride_hydrochloric_acid").duration(210).EUt(480)
+        .inputDust(AntimonyTrichloride, 4)
+        .inputFluids(HydrofluoricAcid.getFluid(3000))
+        .outputItems(ChemicalHelper.get(dust, AntimonyTrifluoride, 4))
+        .outputFluids(HydrochloricAcid.getFluid(3000))
+        .save(provider);
+
+    // C8N2Cl2(OH)2 + H2O2 -> C8Cl2N2O2 + 2H2O
+    CHEMICAL_RECIPES.recipeBuilder("dichlorodicyanohydroquinone_hydrogen_peroxide_to_dichlorodicyanobenzoquinone_water").duration(250).EUt(480)
+        .inputFluids(Dichlorodicyanohydroquinone.getFluid(1000))
+        .inputFluids(HydrogenPeroxide.getFluid(1000))
+        .outputFluids(Dichlorodicyanobenzoquinone.getFluid(1000))
+        .outputFluids(Water.getFluid(2000))
+        .notConsumable(ChemicalHelper.get(dust, VanadiumOxide))
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("cycloparaphenylene_methane_lanthanum_embedded_fullerene_to_lanthanum_fullerene_nanotubes").duration(290).EUt(320000)
+        .inputFluids(Cycloparaphenylene.getFluid(200))
+        .inputFluids(Methane.getFluid(800))
+        .inputDust(LanthanumEmbeddedFullerene)
+        .notConsumable(plate, Rhenium)
+        .outputItems(ChemicalHelper.get(dust, LanthanumFullereneNanotubes))
+        .save(provider);
+
+
+    // 2La + H2SO4 = La2O3 + H2S + O
+    CHEMICAL_RECIPES.recipeBuilder("lanthanum_sulfuric_acid_to_lanthanum_oxide_hydrogen_sulfide_oxygen").duration(100).EUt(120)
+        .inputDust(Lanthanum, 2)
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, LanthanumOxide, 5))
+        .outputFluids(HydrogenSulfide.getFluid(1000))
+        .outputFluids(Oxygen.getFluid(1000))
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("stone_residue_sodium_hydroxide_solution_to_uncommon_residues_dust_sodium_hydroxide_solution_red_mud")
+        .inputDust(StoneResidue, 24)
+        .inputFluids(SodiumHydroxideSolution.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, UncommonResidues))
+        .chancedOutput(dust, Magnetite, 1, 2500)
+        .outputFluids(SodiumHydroxideSolution.getFluid(925))
+        .outputFluids(RedMud.getFluid(75))
+        .duration(40)
+        .EUt(100)
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("liquid_oxygen_liquid_fluorine_to_dioxygendifluoride")
+        .inputFluids(Oxygen.getFluid(FluidStorageKeys.LIQUID, 2000))
+        .inputFluids(LiquidFluorine.getFluid(2000))
+        .notConsumable(MICROFOCUS_X_RAY_TUBE.asStack())
+        .outputFluids(Dioxygendifluoride.getFluid(1000))
+        .duration(80)
+        .EUt(200)
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("uncommon_residues_dioxygendifluoride_to_partially_oxidized_residues")
+        .inputDust(UncommonResidues)
+        .inputFluids(Dioxygendifluoride.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, PartiallyOxidizedResidues))
+        .duration(80)
+        .EUt(100)
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("tritium_hydrogen_to_tritium_hydride")
+        .inputFluids(Tritium.getFluid(1000))
+        .inputFluids(Hydrogen.getFluid(1000))
+        .outputFluids(TritiumHydride.getFluid(1000))
+        .duration(160)
+        .EUt(2000)
+        .save(provider);
+
+
+    // CaCl2 + Na2WO4 + 2H2O -> WCaO4 + 2NaCl(H2O)
+    CHEMICAL_RECIPES.recipeBuilder("calcium_chloride_sodium_tungstate_water_to_calcium_tungstate_salt_water")
+        .inputDust(CalciumChloride, 3)
+        .inputFluids(SodiumTungstate.getFluid(1000))
+        .inputFluids(Water.getFluid(2000))
+        .outputDust(CalciumTungstate, 6)
+        .outputFluids(SaltWater.getFluid(2000))
+        .EUt(480)
+        .duration(60)
+        .save(provider);
+
+
+    // WO3 + 6H -> W + 3H2O
+    CHEMICAL_RECIPES.recipeBuilder("tungsten_trioxide_hydrogen_to_tungsten_water")
+        .inputDust(TungstenTrioxide, 4)
+        .inputFluids(Hydrogen.getFluid(6000))
+        .outputDust(Tungsten)
+        .outputFluids(Water.getFluid(3000))
+        .EUt(1920)
+        .duration(65)
+        .save(provider);
+
+
+    // W + 6Cl -> WCl6
+    CHEMICAL_RECIPES.recipeBuilder("tungsten_chlorine_to_tungsten_hexachloride")
+        .inputDust(Tungsten)
+        .inputFluids(Chlorine.getFluid(6000))
+        .outputDust(TungstenHexachloride, 7)
+        .duration(120)
+        .EUt(120)
+        .save(provider);
+
+
+    // WCl6 + CH4 + 2H -> WC + 6HCl
+    CHEMICAL_RECIPES.recipeBuilder("tungsten_hexachloride_methane_hydrogen_to_tungsten_carbide_hydrochloric_acid")
+        .inputDust(TungstenHexachloride, 7)
+        .inputFluids(Methane.getFluid(1000))
+        .inputFluids(Hydrogen.getFluid(2000))
+        .outputDust(TungstenCarbide, 2)
+        .outputFluids(HydrochloricAcid.getFluid(6000))
+        .EUt(480)
+        .duration(100)
+        .save(provider);
+
+
+    CHEMICAL_RECIPES.recipeBuilder("cycloparaphenylene_methane_neutronium_to_neutronium_doped_nanotubes").duration(290).EUt(VA[UV])
+        .inputFluids(Cycloparaphenylene.getFluid(200))
+        .inputFluids(Methane.getFluid(800))
+        .inputDust(Neutronium)
+        .notConsumable(plate, Rhenium)
+        .outputFluids(NeutroniumDopedNanotubes.getFluid(1000))
+        .save(provider);
+
+
+    // Pitchblende Processing was removed to save 2 steps
+    // and was simplified to just electrolysis into Uraninite.
+
+    // UO2 + 2 Cl + H2O -> [UO2Cl2 + H2O + ?]
+    CHEMICAL_RECIPES.recipeBuilder("uraninite_chlorine_water_to_uranyl_chloride_solution").duration(50).EUt(120)
+        .inputDust(Uraninite, 3)
+        .inputFluids(Chlorine.getFluid(2000))
+        .inputFluids(Water.getFluid(1000))
+        .outputFluids(UranylChlorideSolution.getFluid(1000))
+        .save(provider);
+
+
+    // [UO2Cl2 + H2O + ?] + 2HNO3 -> [UO2(NO3)2 + H2O + ?] + 2HCl
+    CHEMICAL_RECIPES.recipeBuilder("uranyl_chloride_solution_nitric_acid_to_uranyl_nitrate_solution_hydrochloric_acid").duration(100).EUt(120)
+        .inputFluids(UranylChlorideSolution.getFluid(1000))
+        .inputFluids(NitricAcid.getFluid(2000))
+        .outputFluids(UranylNitrateSolution.getFluid(1000))
+        .outputFluids(HydrochloricAcid.getFluid(2000))
+        .save(provider);
+
+
+    // [UO2(NO3)2 + H2O + ?] + H2SO4 -> [UO2(NO3)2 + H2O] + [? + SO4]
+    CHEMICAL_RECIPES.recipeBuilder("uranyl_nitrate_solution_sulfuric_acid_to_purified_uranyl_nitrate_uranium_sulfate_waste_solution").duration(40).EUt(120)
+        .inputFluids(UranylNitrateSolution.getFluid(1000))
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputFluids(PurifiedUranylNitrate.getFluid(1000))
+        .outputFluids(UraniumSulfateWasteSolution.getFluid(1000))
+        .save(provider);
+
+
+    // CO2 + 2KOH -> K2CO3 + H2O
+    CHEMICAL_RECIPES.recipeBuilder("potassium_hydroxide_carbon_dioxide_to_potassium_carbonate_water").duration(90).EUt(30)
+        .inputFluids(PotassiumHydroxide.getFluid(2000))
+        .inputFluids(CarbonDioxide.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, PotassiumCarbonate, 6))
+        .outputFluids(Water.getFluid(1000))
+        .save(provider);
+
+    // UO2(CO3) + [H2O2 + H2SO4] -> [UO3â€¢H2O2 + ThO2] + [? + C + H2SO4]
+    CHEMICAL_RECIPES.recipeBuilder("potassium_uranyl_tricarbonate_piranha_solution_to_uranium_refinement_waste_solution_uranium_peroxide_thorium_oxide").duration(200).EUt(480)
+        .inputDust(PotassiumUranylTricarbonate, 5)
+        .inputFluids(PiranhaSolution.getFluid(2000))
+        .outputFluids(UraniumRefinementWasteSolution.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, UraniumPeroxideThoriumOxide, 8))
+        .save(provider);
+
+
+    // [UO2 + ThO2] + H2SO4 + S -> [UO2SO4 + ThO2] + H2S
+    CHEMICAL_RECIPES.recipeBuilder("uranium_thorium_oxide_sulfur_sulfuric_acid_to_uranyl_thorium_sulfate_hydrogen_sulfide").duration(110).EUt(120)
+        .inputDust(UraniumThoriumOxide, 6)
+        .inputDust(Sulfur)
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, UraniumThoriumSulfate, 11))
+        .outputFluids(HydrogenSulfide.getFluid(1000))
+        .save(provider);
+
+
+    // [UO2SO4 + ThO2] + 6HNO3 -> [UO2(NO3)2 + Th(NO3)4] + 2H2O + H2SO4
+    CHEMICAL_RECIPES.recipeBuilder("uranyl_thorium_sulfate_nitric_acid_to_uranyl_thorium_nitrate_sulfuric_acid_water").duration(120).EUt(120)
+        .inputDust(UraniumThoriumSulfate, 11)
+        .inputFluids(NitricAcid.getFluid(6000))
+        .outputItems(ChemicalHelper.get(dust, UraniumThoriumNitrate, 26))
+        .outputFluids(SulfuricAcid.getFluid(1000))
+        .outputFluids(Water.getFluid(2000))
+        .save(provider);
+
+
+    // NaNO3 + H2O -> NaOH + HNO3
+    CHEMICAL_RECIPES.recipeBuilder("sodium_nitrate_water_to_sodium_hydroxide_nitric_acid").duration(100).EUt(120)
+        .inputDust(SodiumNitrate, 5)
+        .inputFluids(Water.getFluid(1000))
+        .outputDust(SodiumHydroxide, 3)
+        .outputFluids(NitricAcid.getFluid(1000))
+        .save(provider);
+
+
+    // H2SO4 + NH4Cl + Na3VO4 = NH4VO3 + [Cl + 3Na + O + H2SO4]
+    CHEMICAL_RECIPES.recipeBuilder("sulfuric_acid_sodium_vanadate_ammonium_chloride_to_ammonium_vanadate_vanadium_waste_solution").duration(120).EUt(120)
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .inputDust(SodiumVanadate, 8)
+        .inputFluids(AmmoniumChloride.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, AmmoniumVanadate, 9))
+        .outputFluids(VanadiumWasteSolution.getFluid(1000))
+        .save(provider);
+
+
+    // Na2SO4 + H2 -> H2SO4 + 2Na
+    CHEMICAL_RECIPES.recipeBuilder("sodium_sulfate_hydrogen_to_sodium_sulfuric_acid").duration(90).EUt(30)
+        .inputDust(SodiumSulfate, 7)
+        .inputFluids(Hydrogen.getFluid(2000))
+        .outputDust(Sodium, 2)
+        .outputFluids(SulfuricAcid.getFluid(1000))
+        .save(provider);
+
+    // HClO + NaOH -> H2O + NaClO
+    CHEMICAL_RECIPES.recipeBuilder("hypochlorous_acid_sodium_hydroxide_to_water_sodium_hypochlorite").duration(90).EUt(120)
+        .inputFluids(HypochlorousAcid.getFluid(1000))
+        .inputDust(SodiumHydroxide, 3)
+        .circuitMeta(32)
+        .outputFluids(Water.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, SodiumHypochlorite, 3))
+        .save(provider);
+
+
+    // 2 NaClO + CO2 + H2O -> 2 HClO + Na2CO3
+    CHEMICAL_RECIPES.recipeBuilder("sodium_hypochlorite_carbon_dioxide_water_to_soda_ash_hypochlorous_acid").duration(90).EUt(120)
+        .inputDust(SodiumHypochlorite, 6)
+        .inputFluids(CarbonDioxide.getFluid(1000))
+        .inputFluids(Water.getFluid(1000))
+        .outputDust(SodaAsh, 6)
+        .outputFluids(HypochlorousAcid.getFluid(2000))
+        .save(provider);
+
+
+
+// Pyrotheum ===================================================================================================
+    CHEMICAL_RECIPES.recipeBuilder(GTCEu.id("blaze_powder")).duration(80).EUt(480)
+        .inputDust(Coal)
+        .inputDust(Sulfur)
+        .inputFluids(Lava.getFluid(1000))
+        .outputDust(Blaze, 2)
+        .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder(GTCEu.id("blaze_powder_charcoal")).duration(80).EUt(480)
+        .inputDust(Charcoal)
+        .inputDust(Sulfur)
+        .inputFluids(Lava.getFluid(1000))
+        .outputDust(Blaze, 2)
+        .save(provider);
+
+
+    // Cryotheum ===================================================================================================
+    CHEMICAL_RECIPES.recipeBuilder("snow_redstone_ice_to_blizz").duration(80).EUt(480)
+        .inputDust(Snow)
+        .inputDust(Redstone)
+        .inputFluids(Ice.getFluid(1000))
+        .outputDust(Blizz, 2)
+        .save(provider);
+
+
+    // 3Cl + P -> PCl3
+    CHEMICAL_RECIPES.recipeBuilder("chlorine_phosphorus_to_phosphorus_trichloride").duration(60)
+        .inputFluids(Chlorine.getFluid(3000))
+        .inputDust(Phosphorus)
+        .circuitMeta(3)
+        .outputFluids(PhosphorusTrichloride.getFluid(1000))
+        .save(provider);
+
+
+    // PCl3 + O -> POCl3
+    CHEMICAL_RECIPES.recipeBuilder("phosphorus_trichloride_oxygen_to_phosphoryl_chloride").duration(100).EUt(VA[MV])
+        .inputFluids(PhosphorusTrichloride.getFluid(1000))
+        .inputFluids(Oxygen.getFluid(1000))
+        .outputFluids(PhosphorylChloride.getFluid(1000))
+        .save(provider);
+
+
+    // POCl3 + 3C4H10O -> C12H27O4P + 3HCl
+    CHEMICAL_RECIPES.recipeBuilder("phosphoryl_chloride_butanol_to_hydrochloric_acid_tributyl_phosphate").duration(100)
+        .inputFluids(PhosphorylChloride.getFluid(1000))
+        .inputFluids(Butanol.getFluid(3000))
+        .outputFluids(HydrochloricAcid.getFluid(3000))
+        .outputFluids(TributylPhosphate.getFluid(1000))
+        .save(provider);
+
+
+    // Formic acid =================================================================================================
+    // CO + NaOH -> HCOONa
+    CHEMICAL_RECIPES.recipeBuilder("carbon_monoxide_sodium_hydroxide_to_sodium_formate").EUt(30).duration(60)
+        .inputFluids(CarbonMonoxide.getFluid(1000))
+        .inputDust(SodiumHydroxide, 3)
+        .circuitMeta(32)
+        .outputFluids(SodiumFormate.getFluid(1000))
+        .save(provider);
+
+
+    // HCOONa + H2SO4 -> CH2O2 + NaHSO4
+    CHEMICAL_RECIPES.recipeBuilder("sodium_formate_sulfuric_acid_to_formic_acid_sodium_bisulfate").EUt(30).duration(60)
+        .inputFluids(SodiumFormate.getFluid(1000))
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputFluids(FormicAcid.getFluid(1000))
+        .outputDust(SodiumBisulfate, 7)
+        .save(provider);
+
+
+    // Misc Reactions ==============================================================================================
+    // 3Ca + 3PO4 + H + O -> [3Ca + 3PO4 + H + O]
+    CHEMICAL_RECIPES.recipeBuilder("calcium_phosphate_hydrogen_oxygen_to_organic_fertilizer").EUt(30).duration(100)
+        .inputDust(Calcium, 3)
+        .inputDust(Phosphate, 3) // this is probably wrong
+        .inputFluids(Hydrogen.getFluid(1000))
+        .inputFluids(Oxygen.getFluid(1000))
+        .outputDust(OrganicFertilizer, 10)
+        .save(provider);
+
+
+    // 2HCl + CaCO3 -> H2O + CO2 + CaCl2
+    CHEMICAL_RECIPES.recipeBuilder("hydrochloric_acid_calcite_to_water_carbon_dioxide_calcium_chloride").duration(100).EUt(30)
+        .inputFluids(HydrochloricAcid.getFluid(2000))
+        .inputDust(Calcite, 5)
+        .outputFluids(Water.getFluid(1000))
+        .outputFluids(CarbonDioxide.getFluid(1000))
+        .outputDust(CalciumChloride, 3)
+        .save(provider);
+
+
+    // Zr + 4Cl -> ZrCl4
+    CHEMICAL_RECIPES.recipeBuilder("zirconium_chlorine_to_zirconium_tetrachloride").duration(100).EUt(120)
+        .inputDust(Zirconium)
+        .inputFluids(Chlorine.getFluid(4000))
+        .outputItems(ChemicalHelper.get(dust, ZirconiumTetrachloride, 5))
+        .save(provider);
+
+
+    // Fe + 3HCl -> FeCl3 + 3H
+    CHEMICAL_RECIPES.recipeBuilder("iron_hydrochloric_acid_to_iron_chloride_hydrogen").duration(100).EUt(30)
+        .inputDust(Iron)
+        .inputFluids(HydrochloricAcid.getFluid(3000))
+        .outputFluids(Iron3Chloride.getFluid(1000))
+        .outputFluids(Hydrogen.getFluid(3000))
+        .save(provider);
+
+
+    // Li + Cl -> LiCl
+    CHEMICAL_RECIPES.recipeBuilder("lithium_chlorine_to_lithium_chloride").duration(125).EUt(120)
+        .inputDust(Lithium)
+        .inputFluids(Chlorine.getFluid(1000))
+        .circuitMeta(1)
+        .outputItems(ChemicalHelper.get(dust, LithiumChloride, 2))
+        .save(provider);
+
+
+    // Al + 3Cl -> AlCl3
+    CHEMICAL_RECIPES.recipeBuilder("aluminium_chlorine_to_aluminium_chloride").duration(100).EUt(30)
+        .inputDust(Aluminium)
+        .inputFluids(Chlorine.getFluid(3000))
+        .circuitMeta(1)
+        .outputItems(ChemicalHelper.get(dust, AluminiumChloride, 4))
+        .save(provider);
+
+
+    // C16H12O2H2 + 2O + C14H10 (catalyst) -> H2O2 + C16H12O2
+    CHEMICAL_RECIPES.recipeBuilder(GTCEu.id("hydrogen_peroxide")).duration(600).EUt(240)
+        .inputFluids(Oxygen.getFluid(2000))
+        .inputFluids(EthylAnthraHydroQuinone.getFluid(1000))
+        .notConsumableFluid(Anthracene.getFluid(345))
+        .outputFluids(HydrogenPeroxide.getFluid(2000))
+        .outputFluids(EthylAnthraQuinone.getFluid(1000))
+        .save(provider);
+
+
+    // 2H + C16H12O2 -> C16H12O2H2
+    CHEMICAL_RECIPES.recipeBuilder("hydrogen_ethyl_anthra_quinone_to_ethyl_anthra_hydro_quinone").duration(600).EUt(120)
+        .inputFluids(Hydrogen.getFluid(2000))
+        .inputFluids(EthylAnthraQuinone.getFluid(1000))
+        .outputFluids(EthylAnthraHydroQuinone.getFluid(1000))
+        .save(provider);
+
+
+    // C8H4O3 + C8H10 -> C16H12O2 + H2O
+    CHEMICAL_RECIPES.recipeBuilder("phthalic_anhydride_ethylbenzene_to_ethyl_anthra_quinone_water").duration(300).EUt(120)
+        .inputDust(PhthalicAnhydride, 15)
+        .inputFluids(Ethylbenzene.getFluid(1000))
+        .outputFluids(EthylAnthraQuinone.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .save(provider);
+
+    // C2H4 + C6H6 -> C8H10
+    CHEMICAL_RECIPES.recipeBuilder("ethylene_benzene_to_ethylbenzene").duration(300).EUt(60)
+        .circuitMeta(1)
+        .inputFluids(Ethylene.getFluid(1000))
+        .inputFluids(Benzene.getFluid(1000))
+        .outputFluids(Ethylbenzene.getFluid(1000))
+        .save(provider);
+
+
+// 21O + 4 C10H8 -> 5C8H6O4 + H2O
+    CHEMICAL_RECIPES.recipeBuilder("oxygen_naphthalene_to_phthalic_acid_water").duration(210).EUt(120)
+        .notConsumable(dust, Lithium)
+        .inputFluids(Oxygen.getFluid(21000))
+        .inputFluids(Naphthalene.getFluid(4000))
+        .outputFluids(PhthalicAcid.getFluid(5000))
+        .outputFluids(Water.getFluid(1000))
+        .save(provider);
+
+
+    // HClO + C2H4 -> C2H5ClO
+    CHEMICAL_RECIPES.recipeBuilder("hypochlorous_acid_ethylene_to_chloroethanol").duration(120).EUt(480)
+        .inputFluids(HypochlorousAcid.getFluid(1000))
+        .inputFluids(Ethylene.getFluid(1000))
+        .outputFluids(Chloroethanol.getFluid(1000))
+        .save(provider);
+
+
+    // C2H5ClO + C3H9N + Na -> C5H14NO + NaCl
+    CHEMICAL_RECIPES.recipeBuilder("sodium_chloroethanol_trimethylamine_to_salt_choline").duration(120).EUt(480)
+        .inputDust(Sodium)
+        .inputFluids(Chloroethanol.getFluid(1000))
+        .inputFluids(Trimethylamine.getFluid(1000))
+        .outputDust(Salt, 2)
+        .outputFluids(Choline.getFluid(1000))
+        .save(provider);
+
+    // C2(H2O)4C + C5H14NO -> ATL
+    CHEMICAL_RECIPES.recipeBuilder("coal_choline_to_atl").duration(120).EUt(120)
+        .inputDust(Coal)
+        .inputFluids(Choline.getFluid(1000))
+        .outputFluids(ATL.getFluid(1000))
+        .save(provider);
+
+    // C9H6N2O2 + 4C2H6O2 + O -> C17H16N2O4 + 7H2O
+    CHEMICAL_RECIPES.recipeBuilder("toluene_diisocyanate_ethylene_glycol_oxygen_to_polyurethane_water").duration(110).EUt(480)
+        .inputFluids(TolueneDiisocyanate.getFluid(1000))
+        .inputFluids(EthyleneGlycol.getFluid(4000))
+        .inputFluids(Oxygen.getFluid(1000))
+        .outputFluids(Polyurethane.getFluid(1000))
+        .outputFluids(Water.getFluid(7000))
+        .save(provider);
+
+    // 2NO2 = N2O4
+    CHEMICAL_RECIPES.recipeBuilder(GTCEu.id("dinitrogen_tetroxide_from_dioxide")).duration(320).EUt(480)
+        .notConsumable(dust, Copper)
+        .circuitMeta(2)
+        .inputFluids(NitrogenDioxide.getFluid(2000))
+        .outputFluids(DinitrogenTetroxide.getFluid(1000))
+        .save(provider);
+
+    // 2NO2 = N2O4
+    CHEMICAL_RECIPES.recipeBuilder(GTCEu.id("dinitrogen_tetroxide_from_ammonia")).duration(320).EUt(480)
+        .notConsumable(dust, Copper)
+        .circuitMeta(3)
+        .inputFluids(Oxygen.getFluid(7000))
+        .inputFluids(Ammonia.getFluid(2000))
+        .outputFluids(DinitrogenTetroxide.getFluid(1000))
+        .outputFluids(Water.getFluid(2000))
+        .save(provider);
+
+
+    // Rocket fuel chemicals
+    // 2NH3 + H2O2 = N2H4 + H2O
+    CHEMICAL_RECIPES.recipeBuilder("ammonia_hydrogen_peroxide_to_hydrazine_water").duration(320).EUt(30)
+        .inputFluids(Ammonia.getFluid(2000))
+        .inputFluids(HydrogenPeroxide.getFluid(1000))
+        .outputFluids(Hydrazine.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .save(provider);
+
+// Ca(OH)2 + 2HCl -> 2H2O + CaCl2
+    CHEMICAL_RECIPES.recipeBuilder("calcium_hydroxide_hydrochloric_acid_to_water_calcium_chloride")
+        .inputDust(CalciumHydroxide, 5)
+        .inputFluids(HydrochloricAcid.getFluid(2000))
+        .outputFluids(Water.getFluid(2000))
+        .outputDust(CalciumChloride, 3)
+        .EUt(120)
+        .duration(60)
+        .save(provider);
+
+
+    // O + CH3OH -> CH2O + H2O
+    CHEMICAL_RECIPES.recipeBuilder("oxygen_methanol_to_formaldehyde_water")
+        .notConsumable(dust, Silver)
+        .inputFluids(Oxygen.getFluid(1000))
+        .inputFluids(Methanol.getFluid(1000))
+        .outputFluids(Formaldehyde.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .EUt(30720)
+        .duration(200)
+        .save(provider);
+
+
+    // CH2O + C2H2 -> C3H4O
+    CHEMICAL_RECIPES.recipeBuilder("formaldehyde_acetylene_to_propargyl_alcohol")
+        .notConsumable(dust, Copper)
+        .inputFluids(Formaldehyde.getFluid(1000))
+        .inputFluids(Acetylene.getFluid(1000))
+        .outputFluids(PropargylAlcohol.getFluid(1000))
+        .EUt(120)
+        .duration(120)
+        .save(provider);
+
+
+    // C3H4O + HCl -> C3H3Cl + H2O
+    CHEMICAL_RECIPES.recipeBuilder("propargyl_alcohol_hydrochloric_acid_to_propargyl_chloride_water")
+        .inputFluids(PropargylAlcohol.getFluid(1000))
+        .inputFluids(HydrochloricAcid.getFluid(1000))
+        .outputFluids(PropargylChloride.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .EUt(120)
+        .duration(100)
+        .save(provider);
+
+
+    // C10H16 + H2SO4 -> C10H16 + H2SO4
+    CHEMICAL_RECIPES.recipeBuilder("turpentine_sulfuric_acid_to_beta_pinene_sulfuric_acid")
+        .inputFluids(Turpentine.getFluid(1000))
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, BetaPinene, 26))
+        .outputFluids(SulfuricAcid.getFluid(1000))
+        .EUt(480)
+        .duration(110)
+        .save(provider);
+
+
+    // C10H16 + 2C5H8 + 2O -> 2C10H16O
+    CHEMICAL_RECIPES.recipeBuilder("beta_pinene_isoprene_oxygen_to_citral")
+        .inputDust(BetaPinene, 26)
+        .inputFluids(Isoprene.getFluid(2000))
+        .inputFluids(Oxygen.getFluid(2000))
+        .outputFluids(Citral.getFluid(2000))
+        .EUt(480)
+        .duration(100)
+        .save(provider);
+
+
+    // C10H16O + C3H6O -> C13H20O + H2O
+    CHEMICAL_RECIPES.recipeBuilder("citral_acetone_to_beta_ionone_water")
+        .inputFluids(Citral.getFluid(1000))
+        .inputFluids(Acetone.getFluid(1000))
+        .outputFluids(BetaIonone.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .EUt(120)
+        .duration(250)
+        .save(provider);
+
+    // C2H4 + O -> C2H4O
+    CHEMICAL_RECIPES.recipeBuilder("ethylene_oxygen_to_ethylene_oxide")
+        .circuitMeta(10)
+        .inputFluids(Ethylene.getFluid(1000))
+        .inputFluids(Oxygen.getFluid(1000))
+        .outputFluids(EthyleneOxide.getFluid(1000))
+        .EUt(480)
+        .duration(100)
+        .save(provider);
+
+
+    // NH3 + C2H4O -> C2H7NO
+    CHEMICAL_RECIPES.recipeBuilder("ammonia_ethylene_oxide_to_ethanolamine")
+        .inputFluids(Ammonia.getFluid(1000))
+        .inputFluids(EthyleneOxide.getFluid(1000))
+        .outputFluids(Ethanolamine.getFluid(1000))
+        .EUt(7680)
+        .duration(60)
+        .save(provider);
+
+    // 6H + C6H5NO2 -> C6H5NH2 + 2H2O
+    CHEMICAL_RECIPES.recipeBuilder("hydrogen_nitro_benzene_to_aniline_water")
+        .inputFluids(Hydrogen.getFluid(6000))
+        .inputFluids(Nitrobenzene.getFluid(1000))
+        .notConsumable(dust, Zinc)
+        .outputFluids(Aniline.getFluid(1000))
+        .outputFluids(Water.getFluid(2000))
+        .EUt(30)
+        .duration(100)
+        .save(provider);
+
+
+    // Metal Rich Slag Slurry [Contains: H2O] + H3PO4 = Acidic Metal Slurry [Contains: H2O + H3PO4]
+    CHEMICAL_RECIPES.recipeBuilder("metal_rich_slag_slurry_phosphoric_acid_to_acidic_metal_slurry").duration(140).EUt(30)
+        .inputFluids(MetalRichSlagSlurry.getFluid(1000))
+        .inputFluids(PhosphoricAcid.getFluid(1000))
+        .outputFluids(AcidicMetalSlurry.getFluid(1000))
+        .save(provider);
+
+
+    // 2 Acidic Metal Slurry [Contains: H2O + H3PO4] + H3PO4 = Separated Metal Slurry [Contains: 3 H3PO4 + H2O] + Metal Rich Slag Slurry [Contains: H2O]
+    CHEMICAL_RECIPES.recipeBuilder("acidic_metal_slurry_phosphoric_acid_to_separated_metal_slurry_metal_rich_slag_slurry").duration(180).EUt(30)
+        .inputFluids(AcidicMetalSlurry.getFluid(2000))
+        .inputFluids(PhosphoricAcid.getFluid(1000))
+        .outputFluids(SeparatedMetalSlurry.getFluid(1000))
+        .outputFluids(MetalRichSlagSlurry.getFluid(1000))
+        .save(provider);
+
+
+    // Separated Metal Slurry [Contains: 3 H3PO4 + H2O] + 2NaOH = Metal Hydroxide Mix + Na2HPO4 + 2H2O
+    // 3 H3PO4 + 6 NaOH + H2O = 3 Na2HPO4 + 7 H2O
+    CHEMICAL_RECIPES.recipeBuilder("separated_metal_slurry_sodium_hydroxide_to_metal_hydroxide_mix_water_disodium_phosphate").duration(150).EUt(30)
+        .inputFluids(SeparatedMetalSlurry.getFluid(1000))
+        .inputDust(SodiumHydroxide, 18)
+        .outputFluids(MetalHydroxideMix.getFluid(1000))
+        .outputFluids(Water.getFluid(7000))
+        .outputItems(ChemicalHelper.get(dust, DisodiumPhosphate, 24))
+        .save(provider);
+
+    // Cadmium Zinc Dust [Contains: Cd + Zn + H2SO4] + Hg = Cadmium Thallium Liquor [Contains: Cd + Tl + H2SO4] + Zinc Amalgam [Contains: Zn + Hg]
+    CHEMICAL_RECIPES.recipeBuilder("cadmium_zinc_mercury_to_cadmium_thallium_liquor_zinc_amalgam").duration(140).EUt(120)
+        .inputDust(CadmiumZinc, 3)
+        .inputFluids(Mercury.getFluid(1000))
+        .outputFluids(CadmiumThalliumLiquor.getFluid(1000))
+        .outputFluids(ZincAmalgam.getFluid(1000))
+        .save(provider);
+
+
+// Thallium Residue [Contains: 2 Tl] + H2SO4 = Thallium Sulfate Solution [Contains: Tl2SO4]
+    CHEMICAL_RECIPES.recipeBuilder("thallium_residue_sulfuric_acid_water_to_thallium_sulfate_solution").duration(120).EUt(120)
+        .inputDust(ThalliumResidue)
+        .inputFluids(SulfuricAcid.getFluid(1000))
+        .inputFluids(Water.getFluid(1000))
+        .outputFluids(ThalliumSulfateSolution.getFluid(1000))
+        .save(provider);
+
+
+    // Thallium Sulfate Solution [Contains: Tl2SO4 + H2O] + 2 HCl  = 2TlCl + H2SO4 + H2O (because solution)
+    CHEMICAL_RECIPES.recipeBuilder("thallium_sulfate_solution_hydrochloric_acid_to_thallium_chloride_sulfuric_acid_water").duration(230).EUt(120)
+        .inputFluids(ThalliumSulfateSolution.getFluid(1000))
+        .inputFluids(HydrochloricAcid.getFluid(2000))
+        .outputItems(ChemicalHelper.get(dust, ThalliumChloride, 4))
+        .outputFluids(SulfuricAcid.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .save(provider);
+
+
+    // Na2CO3 + SO2 = Na2SO3 + CO2
+    CHEMICAL_RECIPES.recipeBuilder("soda_ash_sulfur_dioxide_to_sodium_sulfite_carbon_dioxide").duration(70).EUt(30)
+        .inputDust(SodaAsh, 6)
+        .inputFluids(SulfurDioxide.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, SodiumSulfite, 6))
+        .outputFluids(CarbonDioxide.getFluid(1000))
+        .save(provider);
+
+
+    // 2 Wood + Na2SO4 + H2O2 + [NaOH + H2O] = 2C6H10O5 + Polyphenol Mix
+    // This recipe is close enough
+    CHEMICAL_RECIPES.recipeBuilder("wood_sodium_sulfite_hydrogen_peroxide_sodium_hydroxide_solution_to_cellulose_polyphenol_mix").duration(90).EUt(30)
+        .inputDust(Wood, 2)
+        .inputDust(SodiumSulfite, 6)
+        .inputFluids(HydrogenPeroxide.getFluid(1000))
+        .inputFluids(SodiumHydroxideSolution.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, Cellulose, 42))
+        .outputFluids(PolyphenolMix.getFluid(1000))
+        .save(provider);
+
+
+    // Polyphenol Mix = Acidified Polyphenol Mix
+    CHEMICAL_RECIPES.recipeBuilder("polyphenol_mix_hydrochloric_acid_to_acidified_polyphenol_mix").duration(200).EUt(30)
+        .inputFluids(PolyphenolMix.getFluid(1000))
+        .inputFluids(HydrochloricAcid.getFluid(1000))
+        .outputFluids(AcidifiedPolyphenolMix.getFluid(1000))
+        .save(provider);
+
+
+    // 0.5(C2H5)2O + Acidified Polyphenol Mix = 1 Tannic Acid + 0.5 Wood Tar
+    CHEMICAL_RECIPES.recipeBuilder("diethylether_acidified_polyphenol_mix_to_tannic_acid_wood_tar").duration(100).EUt(120)
+        .inputFluids(Diethylether.getFluid(500))
+        .inputFluids(AcidifiedPolyphenolMix.getFluid(1000))
+        .outputFluids(TannicAcid.getFluid(1000))
+        .outputFluids(WoodTar.getFluid(500))
+        .save(provider);
+
+
+    // ZincLeachingResidue [Contains: (H2O)(H2SO4)] -> FeSO4 + 0.5H4GeO4
+    CHEMICAL_RECIPES.recipeBuilder("zinc_leaching_residue_tannic_acid_to_iron_sulfate_germanic_acid_solution").duration(100).EUt(480)
+        .inputDust(ZincLeachingResidue)
+        .inputFluids(TannicAcid.getFluid(1))
+        .outputItems(ChemicalHelper.get(dust, IronSulfate, 6))
+        .outputFluids(GermanicAcidSolution.getFluid(500))
+        .save(provider);
+
+
+// H4GeO4 + 4HCl = [GeCl4 + 4H2O]
+    CHEMICAL_RECIPES.recipeBuilder("germanic_acid_solution_hydrochloric_acid_to_germanium_chloride").duration(130).EUt(120)
+        .inputFluids(GermanicAcidSolution.getFluid(1000))
+        .inputFluids(HydrochloricAcid.getFluid(4000))
+        .outputFluids(GermaniumChloride.getFluid(1000))
+        .save(provider);
+
+
+    // Ba + H2O2 = Ba(OH)2
+    CHEMICAL_RECIPES.recipeBuilder("barium_hydrogen_peroxide_to_barium_hydroxide").duration(125).EUt(480)
+        .inputDust(Barium)
+        .inputFluids(HydrogenPeroxide.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, BariumHydroxide, 5))
+        .save(provider);
+
+
+    // 2C3H6O = C6H10O + H2O
+    CHEMICAL_RECIPES.recipeBuilder("acetone_to_mesityl_oxide_water").duration(100).EUt(120)
+        .notConsumable(ChemicalHelper.get(dust, BariumHydroxide))
+        .inputFluids(Acetone.getFluid(2000))
+        .outputFluids(MesitylOxide.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .save(provider);
+
+
+    // C6H10O + C + H2O = C6H12O + CO
+    CHEMICAL_RECIPES.recipeBuilder("carbon_mesityl_oxide_water_to_methyl_isobutyl_ketone_carbon_monoxide").duration(130).EUt(480)
+        .notConsumable(ChemicalHelper.get(dust, PdCCatalyst))
+        .inputDust(Carbon)
+        .inputFluids(MesitylOxide.getFluid(1000))
+        .inputFluids(Water.getFluid(1000))
+        .outputFluids(MethylIsobutylKetone.getFluid(1000))
+        .outputFluids(CarbonMonoxide.getFluid(1000))
+        .save(provider);
+
+
+    // S + HCN = HSCN
+    CHEMICAL_RECIPES.recipeBuilder("sulfur_hydrogen_cyanide_to_thiocyanic_acid").duration(100).EUt(120)
+        .inputDust(Sulfur)
+        .inputFluids(HydrogenCyanide.getFluid(1000))
+        .outputFluids(ThiocyanicAcid.getFluid(1000))
+        .save(provider);
+
+
+    // ZrSiO4 + 8Cl = ZrHfCl4 + SiCl4?
+    CHEMICAL_RECIPES.recipeBuilder("zircon_chlorine_to_zr_hf_chloride_zircon_chlorinating_residue").duration(120).EUt(120)
+        .inputDust(Zircon, 6)
+        .inputFluids(Chlorine.getFluid(8000))
+        .outputFluids(ZrHfChloride.getFluid(1000))
+        .outputFluids(ZirconChlorinatingResidue.getFluid(1000))
+        .save(provider);
+
+
+    // ZrHfCl4 + H2O = Cl2HfOZr + 2HCl
+    CHEMICAL_RECIPES.recipeBuilder("water_zr_hf_chloride_to_zr_hf_oxy_chloride_hydrochloric_acid").duration(100).EUt(480)
+        .inputFluids(Water.getFluid(1000))
+        .inputFluids(ZrHfChloride.getFluid(1000))
+        .outputFluids(ZrHfOxyChloride.getFluid(1000))
+        .outputFluids(HydrochloricAcid.getFluid(2000))
+        .save(provider);
+
+    // C + 4Cl + ZrO2 = CO2 + ZrCl4
+    CHEMICAL_RECIPES.recipeBuilder("carbon_chlorine_cubic_zirconia_to_carbon_dioxide_zirconium_tetrachloride").duration(150).EUt(480)
+        .inputDust(Carbon)
+        .inputFluids(Chlorine.getFluid(4000))
+        .inputDust(CubicZirconia, 3)
+        .outputFluids(CarbonDioxide.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, ZirconiumTetrachloride, 5))
+        .save(provider);
+
+
+    // C + 4Cl + HfO2 = CO2 + HfCl4
+    CHEMICAL_RECIPES.recipeBuilder("carbon_chlorine_hafnium_oxide_to_carbon_dioxide_hafnium_chloride").duration(150).EUt(120)
+        .inputDust(Carbon)
+        .inputFluids(Chlorine.getFluid(4000))
+        .inputDust(HafniumOxide, 3)
+        .outputFluids(CarbonDioxide.getFluid(1000))
+        .outputItems(ChemicalHelper.get(dust, HafniumChloride, 5))
+        .save(provider);
+
+
+    // C8H10 + O + 2Br -> C8H8Br2 + H2O
+    CHEMICAL_RECIPES.recipeBuilder("para_xylene_oxygen_bromine_to_dibromomethylbenzene_water")
+        .inputFluids(ParaXylene.getFluid(1000))
+        .inputFluids(Oxygen.getFluid(1000))
+        .inputFluids(Bromine.getFluid(2000))
+        .outputFluids(Dibromomethylbenzene.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .EUt(7680)
+        .duration(150)
+        .save(provider);
+
+    // HCl + C3H6 -> C3H7Cl
+    CHEMICAL_RECIPES.recipeBuilder("hydrochloric_acid_propene_to_isochloropropane")
+        .inputFluids(HydrochloricAcid.getFluid(1000))
+        .inputFluids(Propene.getFluid(1000))
+        .outputFluids(Isochloropropane.getFluid(1000))
+        .EUt(480)
+        .duration(110)
+        .save(provider);
+
+    // C2H2O + CH3COOH -> C4H6O3
+    CHEMICAL_RECIPES.recipeBuilder("ethenone_acetic_acid_to_acetic_anhydride")
+        .inputFluids(Ethenone.getFluid(1000))
+        .inputFluids(AceticAcid.getFluid(1000))
+        .outputFluids(AceticAnhydride.getFluid(1000))
+        .EUt(480)
+        .duration(80)
+        .save(provider);
+
+    // C12H16O2(NO2)2 + C8H6O2 -> C20H22N2O2 + 6O
+    CHEMICAL_RECIPES.recipeBuilder("dinitrodipropanyloxybenzene_terephthalaldehyde_to_pre_zylon_oxygen")
+        .inputFluids(Dinitrodipropanyloxybenzene.getFluid(1000))
+        .inputDust(Terephthalaldehyde, 16)
+        .notConsumable(ISGTagPrefix.CATALYST, AuPdCCatalyst)
+        .outputItems(ChemicalHelper.get(dust, PreZylon))
+        .outputFluids(Oxygen.getFluid(6000))
+        .EUt(1966080)
+        .duration(50)
+        .save(provider);
   }
 
   private static void recipesLargeChemical(Consumer<FinishedRecipe> provider) {
@@ -1782,7 +3734,7 @@ public class ChemicalReactorRecipes {
 
     // 4 C6H7N + 2 C6H5NO2 + HCl + 2 H2SO4 + 2 NaOH -> C36H26N5ClNa2S2O6 + 8 H2O + NH3
     LARGE_CHEMICAL_RECIPES.recipeBuilder("nigrosin").duration(200).EUt(1400)
-        .inputFluids(NitroBenzene.getFluid(1000))
+        .inputFluids(Nitrobenzene.getFluid(1000))
         .inputFluids(Aniline.getFluid(2000))
         .inputFluids(HydrochloricAcid.getFluid(500))
         .inputFluids(SulfuricAcid.getFluid(1000))
@@ -2425,1988 +4377,7 @@ public class ChemicalReactorRecipes {
 
 
 
-    // Er + 3F -> ErF3
-    CHEMICAL_RECIPES.recipeBuilder("erbium_fluorine_to_erbium_trifluoride").duration(100)
-        .inputDust(Erbium)
-        .inputFluids(Fluorine.getFluid(3000))
-        .outputItems(ChemicalHelper.get(dust, ErbiumTrifluoride, 4))
-        .save(provider);
 
-
-    // Si + 4F -> SiF4
-    CHEMICAL_RECIPES.recipeBuilder("silicon_fluorine_to_silicon_fluoride").duration(150).EUt(480)
-        .inputDust(Silicon)
-        .inputFluids(Fluorine.getFluid(4000))
-        .outputFluids(SiliconFluoride.getFluid(1000))
-        .save(provider);
-
-
-
-    // C2H7NO + NH3 -> C2H8N2 + H2O
-    CHEMICAL_RECIPES.recipeBuilder("ethanolamine_ammonia_to_ethylenediamine_water").duration(180).EUt(120)
-        .inputFluids(Ethanolamine.getFluid(1000))
-        .inputFluids(Ammonia.getFluid(1000))
-        .outputFluids(Ethylenediamine.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .notConsumable(dust, Palladium)
-        .save(provider);
-
-// 2Pr + H2SO4 -> Pr2O3 + H2S + O
-    CHEMICAL_RECIPES.recipeBuilder("praseodymium_sulfuric_acid_to_praseodymium_oxide_hydrogen_sulfide_oxygen").duration(100).EUt(480)
-        .inputDust(Praseodymium, 2)
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, PraseodymiumOxide, 5))
-        .outputFluids(HydrogenSulfide.getFluid(1000))
-        .outputFluids(Oxygen.getFluid(1000))
-        .save(provider);
-
-
-    // 2Ho + H2SO4 -> Ho2O3 + H2S + O
-    CHEMICAL_RECIPES.recipeBuilder("holmium_sulfuric_acid_to_holmium_oxide_hydrogen_sulfide_oxygen").duration(100).EUt(480)
-        .inputDust(Holmium, 2)
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, HolmiumOxide, 5))
-        .outputFluids(HydrogenSulfide.getFluid(1000))
-        .outputFluids(Oxygen.getFluid(1000))
-        .save(provider);
-
-
-    // 2Nd + H2SO4 -> Nd2O3 + H2S + O
-    CHEMICAL_RECIPES.recipeBuilder("neodymium_sulfuric_acid_to_neodymium_oxide_hydrogen_sulfide_oxygen").duration(100).EUt(480)
-        .inputDust(Neodymium, 2)
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, NeodymiumOxide, 5))
-        .outputFluids(HydrogenSulfide.getFluid(1000))
-        .outputFluids(Oxygen.getFluid(1000))
-        .save(provider);
-
-
-    // 2Y + H2SO4 -> Y2O3 + H2S + O
-    CHEMICAL_RECIPES.recipeBuilder("yttrium_sulfuric_acid_to_yttrium_oxide_hydrogen_sulfide_oxygen").duration(100).EUt(480)
-        .inputDust(Yttrium, 2)
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputDust(YttriumOxide, 5)
-        .outputFluids(HydrogenSulfide.getFluid(1000))
-        .outputFluids(Oxygen.getFluid(1000))
-        .save(provider);
-
-// 3C4H10O + NH3 -> C12H27N + 3H2O
-    CHEMICAL_RECIPES.recipeBuilder("butanol_gas_ammonia_to_tributylamine_water").duration(140).EUt(480)
-        .inputFluids(ButanolGas.getFluid(3000))
-        .inputFluids(Ammonia.getFluid(1000))
-        .notConsumable(dust, Zeolite)
-        .outputFluids(Tributylamine.getFluid(1000))
-        .outputFluids(Water.getFluid(3000))
-        .save(provider);
-
-
-    // Al2O3 + 6HNO3 -> 2Al(NO3)3 + 3H2O
-    CHEMICAL_RECIPES.recipeBuilder("alumina_nitric_acid_to_aluminium_nitrate_water").duration(190).EUt(30)
-        .inputDust(Alumina, 5)
-        .inputFluids(NitricAcid.getFluid(6000))
-        .outputItems(ChemicalHelper.get(dust, AluminiumNitrate, 26))
-        .outputFluids(Water.getFluid(3000))
-        .save(provider);
-
-
-    // 2Al(NO3)3 + CH2Cl2 + C12H27N -> [2Al(NO3)3 + CH2Cl2 + C12H27N]
-    CHEMICAL_RECIPES.recipeBuilder("aluminium_nitrate_dichloromethane_tributylamine_to_crude_alumina_solution").duration(290).EUt(120)
-        .inputDust(AluminiumNitrate, 26)
-        .inputFluids(Dichloromethane.getFluid(1000))
-        .inputFluids(Tributylamine.getFluid(1000))
-        .outputFluids(CrudeAluminaSolution.getFluid(1000))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("methanol_to_dimethylether_water").duration(160).EUt(8000) //2CH4O -> CH3OCH3 + H2O
-        .inputFluids(Methanol.getFluid(2000))
-        .notConsumable(ChemicalHelper.get(dust, Alumina, 1))
-        .notConsumable(dust, SiliconDioxide)
-        .outputFluids(Dimethylether.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("dimethylether_ethylene_oxide_to_dimethoxyethane").duration(160).EUt(2000) //CH3OCH3 + C2H4O -> C4H10O2
-        .inputFluids(Dimethylether.getFluid(1000))
-        .inputFluids(EthyleneOxide.getFluid(1000))
-        .outputFluids(Dimethoxyethane.getFluid(1000))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("cyclopentadiene_dimethoxyethane_butyl_lithium_to_butane_lithium_cyclopentadienide").duration(160).EUt(2000) //C5H6 + LiC4H9 -> LiC5H5 + C4H10
-        .inputFluids(Cyclopentadiene.getFluid(1000))
-        .inputFluids(Dimethoxyethane.getFluid(500))
-        .inputFluids(ButylLithium.getFluid(1000))
-        .outputFluids(Butane.getFluid(1000))
-        .outputFluids(LithiumCyclopentadienide.getFluid(1000))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("hydrochloric_acid_californium_trioxide_to_californium_trichloride_water").duration(240).EUt(2000) //6HCl + Cf2O3 -> 2CfCl3 + 3H2O
-        .inputFluids(HydrochloricAcid.getFluid(6000))
-        .inputDust(CaliforniumTrioxide, 5)
-        .outputItems(ChemicalHelper.get(dust, CaliforniumTrichloride, 8))
-        .outputFluids(Water.getFluid(3000))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("lithium_cyclopentadienide_californium_trichloride_to_lithium_chloride_californium_cyclopentadienide").duration(160).EUt(200000) //3LiC5H5 + CfCl3 -> CfC15H15 + 3LiCf
-        .inputFluids(LithiumCyclopentadienide.getFluid(3000))
-        .inputDust(CaliforniumTrichloride, 4)
-        .outputItems(ChemicalHelper.get(dust, LithiumChloride, 6))
-        .outputFluids(CaliforniumCyclopentadienide.getFluid(1000))
-        .save(provider);
-
-
-    // Na2B4O7(H2O)10 + 2HCl -> 4H3BO3 + 5H2O + 2NaCl
-    CHEMICAL_RECIPES.recipeBuilder("borax_hydrochloric_acid_to_boric_acid_water_salt")
-        .inputDust(Borax, 23)
-        .inputFluids(HydrochloricAcid.getFluid(2000))
-        .outputFluids(BoricAcid.getFluid(4000))
-        .outputFluids(Water.getFluid(5000))
-        .outputDust(Salt, 4)
-        .EUt(120)
-        .duration(150)
-        .save(provider);
-
-
-    // H3BO3 + 4HF -> HBF4 + 3H2O
-    CHEMICAL_RECIPES.recipeBuilder("boric_acid_hydrofluoric_acid_to_fluoro_boric_acid_water")
-        .inputFluids(BoricAcid.getFluid(1000))
-        .inputFluids(HydrofluoricAcid.getFluid(4000))
-        .outputFluids(FluoroBoricAcid.getFluid(1000))
-        .outputFluids(Water.getFluid(3000))
-        .EUt(120)
-        .duration(100)
-        .save(provider);
-
-    // NaNO3(H2O) -> NaNO2 + H2O + O
-    CHEMICAL_RECIPES.recipeBuilder("sodium_nitrate_solution_to_sodium_nitrite_oxygen_water")
-        .inputFluids(SodiumNitrateSolution.getFluid(1000))
-        .notConsumable(ChemicalHelper.get(dust, CoAcABCatalyst))
-        .outputItems(ChemicalHelper.get(dust, SodiumNitrite, 4))
-        .outputFluids(Oxygen.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .EUt(30)
-        .duration(300)
-        .save(provider);
-
-
-    // HBF4 + HCl + C6H5NH2 + NaNO2 -> NaCl + C6H5BF4N2 + 2H2O
-    CHEMICAL_RECIPES.recipeBuilder("fluoro_boric_acid_hydrochloric_acid_aniline_sodium_nitrite_to_salt_benzenediazonium_tetrafluoroborate_water")
-        .inputFluids(FluoroBoricAcid.getFluid(1000))
-        .inputFluids(HydrochloricAcid.getFluid(1000))
-        .inputFluids(Aniline.getFluid(1000))
-        .inputDust(SodiumNitrite, 4)
-        .outputDust(Salt, 2)
-        .outputFluids(BenzenediazoniumTetrafluoroborate.getFluid(1000))
-        .outputFluids(Water.getFluid(2000))
-        .duration(130)
-        .EUt(30720)
-        .save(provider);
-
-
-    // C6H5F + CH4 + H2SbF7 -> C7H7F + 4HF + SbF3
-    CHEMICAL_RECIPES.recipeBuilder("fluoro_benzene_methane_fluoroantimonic_acid_to_fluorotoluene_hydrofluoric_acid_antimony_trifluoride")
-        .inputFluids(FluoroBenzene.getFluid(1000))
-        .inputFluids(Methane.getFluid(1000))
-        .inputFluids(FluoroantimonicAcid.getFluid(1000))
-        .outputFluids(Fluorotoluene.getFluid(1000))
-        .outputFluids(HydrofluoricAcid.getFluid(4000))
-        .outputItems(ChemicalHelper.get(dust, AntimonyTrifluoride, 4))
-        .EUt(480)
-        .duration(150)
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("fish_oil_steam_potassium_hydroxide_to_soap").duration(160).EUt(2000)
-        .inputFluids(FishOil.getFluid(1000))
-        .inputFluids(Steam.getFluid(200))
-        .inputFluids(PotassiumHydroxide.getFluid(1000))
-        .outputFluids(Soap.getFluid(1000))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("seed_oil_steam_potassium_hydroxide_to_soap").duration(160).EUt(2000)
-        .inputFluids(SeedOil.getFluid(1000))
-        .inputFluids(Steam.getFluid(200))
-        .inputFluids(PotassiumHydroxide.getFluid(1000))
-        .outputFluids(Soap.getFluid(1000))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("soap_salt_to_glycerol_deglycerated_soap").duration(160).EUt(2000)
-        .inputFluids(Soap.getFluid(1000))
-        .inputDust(Salt, 1)
-        .outputFluids(Glycerol.getFluid(200))
-        .outputFluids(DeglyceratedSoap.getFluid(800))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("octane_phosphorus_to_hydrogen_trioctylphosphine").duration(160).EUt(2000) //3C8H18 + P -> 3H + C24H51P
-        .inputFluids(Octane.getFluid(3000))
-        .inputDust(Phosphorus, 1)
-        .outputFluids(Hydrogen.getFluid(3000))
-        .outputFluids(Trioctylphosphine.getFluid(1000))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("trioctylphosphine_stearic_acid_selenium_cadmium_to_quantum_dots").duration(160).EUt(500000)
-        .inputFluids(Trioctylphosphine.getFluid(1000))
-        .inputFluids(StearicAcid.getFluid(1000))
-        .inputDust(Selenium, 1)
-        .inputDust(Cadmium, 1)
-        .outputFluids(QuantumDots.getFluid(1000))
-        .save(provider);
-
-
-    // 3NaCl(H2O) + 2Cl + H2SO4 -> H2SO4(NaCl)3(H2O)3Cl2
-    // Formula above multiplied up for simplicity
-    CHEMICAL_RECIPES.recipeBuilder("salt_water_chlorine_sulfuric_acid_to_acidic_salt_water")
-        .inputFluids(SaltWater.getFluid(1500))
-        .inputFluids(Chlorine.getFluid(1000))
-        .inputFluids(SulfuricAcid.getFluid(500))
-        .outputFluids(AcidicSaltWater.getFluid(3000))
-        .EUt(480)
-        .duration(180)
-        .save(provider);
-
-
-    // H2SO4Br(H2O)Cl2 + H2O -> H2SO4Br(H2O)2Cl2
-    CHEMICAL_RECIPES.recipeBuilder("sulfuric_bromine_solution_steam_to_hot_vapour_mixture")
-        .inputFluids(SulfuricBromineSolution.getFluid(2000))
-        .inputFluids(Steam.getFluid(1000))
-        .outputFluids(HotVapourMixture.getFluid(3000))
-        .EUt(480)
-        .duration(150)
-        .save(provider);
-
-
-    // CO + C3H6 + 2H -> C4H8O
-    CHEMICAL_RECIPES.recipeBuilder("carbon_monoxide_propene_hydrogen_to_butyraldehyde")
-        .inputFluids(CarbonMonoxide.getFluid(1000))
-        .inputFluids(Propene.getFluid(1000))
-        .inputFluids(Hydrogen.getFluid(2000))
-        .outputFluids(Butyraldehyde.getFluid(1000))
-        .EUt(480)
-        .duration(200)
-        .save(provider);
-
-
-    // 2C4H8O + 4H -> C8H18O + H2O
-    CHEMICAL_RECIPES.recipeBuilder("butyraldehyde_hydrogen_to_ethyl_hexanol_water")
-        .inputFluids(Butyraldehyde.getFluid(2000))
-        .inputFluids(Hydrogen.getFluid(4000))
-        .outputFluids(EthylHexanol.getFluid(3000))
-        .outputFluids(Water.getFluid(1000))
-        .EUt(480)
-        .duration(200)
-        .save(provider);
-
-
-    // 5C8H18O + 0.5P4O10 -> 2C16H35O4P + 2C4H10O
-    CHEMICAL_RECIPES.recipeBuilder("ethyl_hexanol_phosphorous_pentoxide_to_diethylhexyl_phosphoric_acid_butanol")
-        .inputFluids(EthylHexanol.getFluid(5000))
-        .inputDust(PhosphorousPentoxide, 7)
-        .outputFluids(DiethylhexylPhosphoricAcid.getFluid(2000))
-        .outputFluids(Butanol.getFluid(2000))
-        .EUt(480)
-        .duration(200)
-        .save(provider);
-
-// [REE] + 3 [NaOH + H2O] + 3 H2O -> [REE(OH)3 + 3 NaOH + 3 H2O] + 3 H
-    CHEMICAL_RECIPES.recipeBuilder("rare_earth_sodium_hydroxide_solution_water_to_rare_earth_hydroxides_solution_hydrogen")
-        .inputDust(RareEarth)
-        .inputFluids(SodiumHydroxideSolution.getFluid(3000))
-        .inputFluids(Water.getFluid(3000))
-        .outputFluids(RareEarthHydroxidesSolution.getFluid(1000))
-        .outputFluids(Hydrogen.getFluid(3000))
-        .EUt(480)
-        .duration(200)
-        .save(provider);
-
-
-    // 3 HCl + [REE(OH)3 + 3 NaOH] -> ThU + [REECl3 + 3 H2O] + 3 [NaOH + H2O]
-    CHEMICAL_RECIPES.recipeBuilder("hydrochloric_acid_rare_earth_hydroxides_solution_to_rare_earth_chlorides_solution_sodium_hydroxide_solution_th_u_sludge")
-        .inputFluids(HydrochloricAcid.getFluid(3000))
-        .inputFluids(RareEarthHydroxidesSolution.getFluid(1000))
-        .outputFluids(RareEarthChloridesSolution.getFluid(3000))
-        .outputFluids(SodiumHydroxideSolution.getFluid(3000))
-        .outputItems(ChemicalHelper.get(dust, ThUSludge, 2))
-        .EUt(480)
-        .duration(200)
-        .save(provider);
-
-
-    // CH4 + NH3 + 3O -> HCN + 3H2O
-    CHEMICAL_RECIPES.recipeBuilder("methane_ammonia_oxygen_to_hydrogen_cyanide_water")
-        .inputFluids(Methane.getFluid(1000))
-        .inputFluids(Ammonia.getFluid(1000))
-        .inputFluids(Oxygen.getFluid(3000))
-        .outputFluids(HydrogenCyanide.getFluid(1000))
-        .outputFluids(Water.getFluid(3000))
-        .EUt(1920)
-        .duration(50)
-        .save(provider);
-
-
-    // 2HCN + O + 2Na -> 2NaCN + H2O
-    CHEMICAL_RECIPES.recipeBuilder("hydrogen_cyanide_oxygen_sodium_to_sodium_cyanide_water")
-        .inputFluids(HydrogenCyanide.getFluid(2000))
-        .inputFluids(Oxygen.getFluid(1000))
-        .inputDust(Sodium, 2)
-        .outputFluids(SodiumCyanide.getFluid(2000))
-        .outputFluids(Water.getFluid(1000))
-        .EUt(1920)
-        .duration(12)
-        .save(provider);
-
-
-    // MoS2 + NaCN -> AuCN + MoS2(depl.)
-    CHEMICAL_RECIPES.recipeBuilder("molybdenite_sodium_cyanide_to_gold_cyanide_gold_deplete_molybdenite")
-        .inputDust(Molybdenite, 3)
-        .inputFluids(SodiumCyanide.getFluid(1000))
-        .outputFluids(GoldCyanide.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, GoldDepleteMolybdenite, 3))
-        .EUt(7680)
-        .duration(100)
-        .save(provider);
-
-
-    // AuCN + Na -> NaCN + Au
-    CHEMICAL_RECIPES.recipeBuilder("gold_cyanide_sodium_to_sodium_cyanide_gold")
-        .inputFluids(GoldCyanide.getFluid(1000))
-        .inputDust(Sodium)
-        .outputFluids(SodiumCyanide.getFluid(1000))
-        .outputDust(Gold)
-        .EUt(1920)
-        .duration(150)
-        .save(provider);
-
-
-    // MoS2 + FeCl3 ->
-    CHEMICAL_RECIPES.recipeBuilder("gold_deplete_molybdenite_iron_chloride_to_molybdenum_concentrate_chloride_leached_solution")
-        .inputDust(GoldDepleteMolybdenite, 3)
-        .inputFluids(IronChloride.getFluid(500))
-        .outputItems(ChemicalHelper.get(dust, MolybdenumConcentrate, 4))
-        .outputFluids(ChlorideLeachedSolution.getFluid(500))
-        .EUt(1920)
-        .duration(10)
-        .save(provider);
-
-
-    // FeCl2 + Cl -> FeCl3
-    CHEMICAL_RECIPES.recipeBuilder("iron2_chloride_chlorine_to_iron_chloride")
-        .inputFluids(Iron2Chloride.getFluid(1000))
-        .inputFluids(Chlorine.getFluid(1000))
-        .outputFluids(IronChloride.getFluid(1000))
-        .EUt(30)
-        .duration(150)
-        .save(provider);
-
-
-    // ? + 0.5NH3 -> 3SO2 + 0.5NH4ReO4
-    CHEMICAL_RECIPES.recipeBuilder("rhenium_sulfuric_solution_ammonia_to_sulfur_dioxide_ammonium_perrhenate")
-        .inputFluids(RheniumSulfuricSolution.getFluid(3000))
-        .inputFluids(Ammonia.getFluid(500))
-        .outputFluids(SulfurDioxide.getFluid(3000))
-        .outputFluids(AmmoniumPerrhenate.getFluid(500))
-        .EUt(480)
-        .duration(90)
-        .save(provider);
-
-
-    // NH4ReO4 + 7H -> Re + NH3 + 4H2O
-    CHEMICAL_RECIPES.recipeBuilder("ammonium_perrhenate_hydrogen_to_rhenium_ammonia_water")
-        .inputFluids(AmmoniumPerrhenate.getFluid(1000))
-        .inputFluids(Hydrogen.getFluid(7000))
-        .outputDust(Rhenium)
-        .outputFluids(Ammonia.getFluid(1000))
-        .outputFluids(Water.getFluid(4000))
-        .EUt(480)
-        .duration(110)
-        .save(provider);
-
-
-    // Hg + 2CH3COOH -> C4H6O4Hg + H2
-    CHEMICAL_RECIPES.recipeBuilder("mercury_acetic_acid_to_mercury_acetate_hydrogen")
-        .inputFluids(Mercury.getFluid(1000))
-        .inputFluids(AceticAcid.getFluid(2000))
-        .outputItems(ChemicalHelper.get(dust, MercuryAcetate, 15))
-        .outputFluids(Hydrogen.getFluid(2000))
-        .EUt(480)
-        .duration(90)
-        .save(provider);
-
-
-    // C2H4O + CH3NH2 -> C3H9NO
-    CHEMICAL_RECIPES.recipeBuilder("ethylene_oxide_methylamine_to_methylethanolamine")
-        .inputFluids(EthyleneOxide.getFluid(1000))
-        .inputFluids(Methylamine.getFluid(1000))
-        .outputFluids(Methylethanolamine.getFluid(1000))
-        .EUt(480)
-        .duration(90)
-        .save(provider);
-
-
-
-    // C2H7N3 + HNO3 + H2SO4 + HCl + NaNO2 -> 2H2SO4(dil.) + C2H5N5O3 + NaCl
-    // Not perfect, but was the best way to try and conserve acids
-    CHEMICAL_RECIPES.recipeBuilder("methylguanidine_nitration_mixture_hydrochloric_acid_sodium_nitrite_to_diluted_sulfuric_acid_methylnitronitrosoguanidine_salt")
-        .inputFluids(Methylguanidine.getFluid(1000))
-        .inputFluids(NitrationMixture.getFluid(2000))
-        .inputFluids(HydrochloricAcid.getFluid(1000))
-        .inputDust(SodiumNitrite, 4)
-        .outputFluids(DilutedSulfuricAcid.getFluid(2000))
-        .outputFluids(Methylnitronitrosoguanidine.getFluid(1000))
-        .outputDust(Salt, 2)
-        .EUt(480)
-        .duration(220)
-        .save(provider);
-
-
-    // C8H16 + H2O -> C8H18O
-    CHEMICAL_RECIPES.recipeBuilder("oct1ene_water_phosphoric_acid_to_octanol")
-        .inputFluids(Oct1ene.getFluid(1000))
-        .inputFluids(Water.getFluid(1000))
-        .outputFluids(Octanol.getFluid(1000))
-        .inputFluids(PhosphoricAcid.getFluid(1000))
-        .notConsumable(ChemicalHelper.get(dust, PalladiumLoadedRutileNanoparticles))
-        .notConsumable(UVA_HALIDE_LAMP.asStack())
-        .EUt(30720)
-        .duration(110)
-        .save(provider);
-
-
-    // 3C8H18O + NH3 -> 3H2O + C24H51N
-    CHEMICAL_RECIPES.recipeBuilder("octanol_ammonia_to_water_trioctylamine")
-        .inputFluids(Octanol.getFluid(3000))
-        .inputFluids(Ammonia.getFluid(1000))
-        .outputFluids(Water.getFluid(3000))
-        .outputFluids(Trioctylamine.getFluid(1000))
-        .EUt(480)
-        .duration(90)
-        .save(provider);
-
-
-    // ? + 5HF -> H2NbOF5
-    CHEMICAL_RECIPES.recipeBuilder("purified_columbite_hydrofluoric_acid_to_fluoroniobic_acid")
-        .inputDust(PurifiedColumbite)
-        .inputFluids(HydrofluoricAcid.getFluid(5000))
-        .outputFluids(FluoroniobicAcid.getFluid(1000))
-        .EUt(480)
-        .duration(180)
-        .save(provider);
-
-
-    // Nb(H2O) + 5HF -> H2NbOF5
-    CHEMICAL_RECIPES.recipeBuilder("purified_pyrochlore_hydrofluoric_acid_to_fluoroniobic_acid")
-        .inputDust(PurifiedPyrochlore)
-        .inputFluids(HydrofluoricAcid.getFluid(5000))
-        .outputFluids(FluoroniobicAcid.getFluid(1000))
-        .EUt(480)
-        .duration(180)
-        .save(provider);
-
-
-    // Re + 3NH3 + H2SO4 -> (NH4)2SO4 + NH4ReO4
-    CHEMICAL_RECIPES.recipeBuilder("rhenium_scrubbed_solution_ammonia_sulfuric_acid_to_ammonium_sulfate_ammonium_perrhenate")
-        .inputFluids(RheniumScrubbedSolution.getFluid(1000))
-        .inputFluids(Ammonia.getFluid(3000))
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputFluids(AmmoniumSulfate.getFluid(1000))
-        .outputFluids(AmmoniumPerrhenate.getFluid(1000))
-        .EUt(1920)
-        .duration(110)
-        .save(provider);
-
-
-    // Cu + H2SO4 -> CuH2SO4
-    CHEMICAL_RECIPES.recipeBuilder("electrically_impure_copper_sulfuric_acid_to_copper_refining_solution").duration(200).EUt(120)
-        .inputDust(ElectricallyImpureCopper)
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputFluids(CopperRefiningSolution.getFluid(1000))
-        .save(provider);
-
-    // SeO2 + 2SO2 -> Se + 2SO3
-    CHEMICAL_RECIPES.recipeBuilder("selenium_oxide_sulfur_dioxide_to_selenium_sulfur_trioxide").duration(260).EUt(120)
-        .inputDust(SeleniumOxide, 3)
-        .inputFluids(SulfurDioxide.getFluid(2000))
-        .outputDust(Selenium)
-        .outputFluids(SulfurTrioxide.getFluid(2000))
-        .save(provider);
-
-
-    // TeO2 + 2SO2 -> Te + 2SO3
-    CHEMICAL_RECIPES.recipeBuilder("tellurium_oxide_sulfur_dioxide_to_tellurium_sulfur_trioxide").duration(260).EUt(120)
-        .inputDust(TelluriumOxide, 3)
-        .inputFluids(SulfurDioxide.getFluid(2000))
-        .outputDust(Tellurium)
-        .outputFluids(SulfurTrioxide.getFluid(2000))
-        .save(provider);
-
-
-    // Ti + 2O -> TiO2
-    CHEMICAL_RECIPES.recipeBuilder("titanium_oxygen_to_rutile").duration(100).EUt(1920)
-        .inputDust(Titanium)
-        .inputFluids(Oxygen.getFluid(2000))
-        .outputDust(Rutile, 3)
-        .save(provider);
-
-
-    // TiO2 + 4C3H8O -> C12H28O4Ti + 2H2O
-    CHEMICAL_RECIPES.recipeBuilder("rutile_isopropyl_alcohol_to_titanium_isopropoxide_water").duration(240).EUt(480)
-        .inputDust(Rutile, 3)
-        .inputFluids(IsopropylAlcohol.getFluid(4000))
-        .outputFluids(TitaniumIsopropoxide.getFluid(1000))
-        .outputFluids(Water.getFluid(2000))
-        .save(provider);
-
-    // C5H10O2 + H2O -> C3H8O + CH3COOH
-    CHEMICAL_RECIPES.recipeBuilder("isopropyl_acetate_water_to_isopropyl_alcohol_acetic_acid").duration(200).EUt(480)
-        .notConsumable(dust, PhosphorousPentoxide)
-        .inputFluids(IsopropylAcetate.getFluid(1000))
-        .inputFluids(Water.getFluid(1000))
-        .outputFluids(IsopropylAlcohol.getFluid(1000))
-        .outputFluids(AceticAcid.getFluid(1000))
-        .save(provider);
-
-
-    // 9H2O + 2F7K2Ta -> Ta2O5 + 14HF + 4KOH
-    CHEMICAL_RECIPES.recipeBuilder("potasssium_fluoro_tantalate_water_to_tantalum_oxide_hydrofluoric_acid_potassium_hydroxide").duration(130).EUt(120)
-        .inputDust(PotassiumFluoroTantalate, 20)
-        .inputFluids(Water.getFluid(9000))
-        .outputItems(ChemicalHelper.get(dust, TantalumOxide, 7))
-        .outputFluids(HydrofluoricAcid.getFluid(14000))
-        .outputFluids(PotassiumHydroxide.getFluid(4000))
-        .save(provider);
-
-
-    // 2Ta + 10Cl + 5H2O -> Ta2O5 + 10HCl
-    CHEMICAL_RECIPES.recipeBuilder("tantalum_chlorine_water_to_tantalum_oxide_hydrochloric_acid").duration(480).EUt(120)
-        .inputDust(Tantalum, 2)
-        .inputFluids(Chlorine.getFluid(10000))
-        .inputFluids(Water.getFluid(5000))
-        .outputItems(ChemicalHelper.get(dust, TantalumOxide, 7))
-        .outputFluids(HydrochloricAcid.getFluid(10000))
-        .save(provider);
-
-
-    // 2Sc + 6Cl + 3H2O -> Sc2O3 + 6HCl
-    CHEMICAL_RECIPES.recipeBuilder("scandium_chlorine_water_to_scandium_oxide_hydrochloric_acid").duration(480).EUt(120)
-        .inputDust(Scandium, 2)
-        .inputFluids(Chlorine.getFluid(6000))
-        .inputFluids(Water.getFluid(3000))
-        .outputItems(ChemicalHelper.get(dust, ScandiumOxide, 5))
-        .outputFluids(HydrochloricAcid.getFluid(6000))
-        .save(provider);
-
-
-    // 2Lu + 6Cl + 3H2O -> Lu2O3 + 6HCl
-    CHEMICAL_RECIPES.recipeBuilder("lutetium_chlorine_water_to_lutetium_oxide_hydrochloric_acid").duration(480).EUt(120)
-        .inputDust(Lutetium, 2)
-        .inputFluids(Chlorine.getFluid(6000))
-        .inputFluids(Water.getFluid(3000))
-        .outputItems(ChemicalHelper.get(dust, LutetiumOxide, 5))
-        .outputFluids(HydrochloricAcid.getFluid(6000))
-        .save(provider);
-
-
-    // 2Tm + 6Cl + 3H2O -> Tm2O3 + 6HCl
-    CHEMICAL_RECIPES.recipeBuilder("thulium_chlorine_water_to_thulium_oxide_hydrochloric_acid").duration(480).EUt(120)
-        .inputDust(Thulium, 2)
-        .inputFluids(Chlorine.getFluid(6000))
-        .inputFluids(Water.getFluid(3000))
-        .outputItems(ChemicalHelper.get(dust, ThuliumOxide, 5))
-        .outputFluids(HydrochloricAcid.getFluid(6000))
-        .save(provider);
-
-
-    // 2Eu + 6Cl + 3H2O -> Eu2O3 + 6HCl
-    CHEMICAL_RECIPES.recipeBuilder("europium_chlorine_water_to_europium_oxide_hydrochloric_acid").duration(480).EUt(120)
-        .inputDust(Europium, 2)
-        .inputFluids(Chlorine.getFluid(6000))
-        .inputFluids(Water.getFluid(3000))
-        .outputItems(ChemicalHelper.get(dust, EuropiumOxide, 5))
-        .outputFluids(HydrochloricAcid.getFluid(6000))
-        .save(provider);
-
-
-    // Pb + Se -> PbSe
-    CHEMICAL_RECIPES.recipeBuilder("lead_selenium_to_lead_senenide").duration(240).EUt(120)
-        .inputDust(Lead)
-        .inputDust(Selenium)
-        .outputItems(ChemicalHelper.get(dust, LeadSenenide, 2))
-        .save(provider);
-
-
-    // Zn + Se -> ZnSe
-    CHEMICAL_RECIPES.recipeBuilder("zinc_selenium_to_zinc_selenide").duration(240).EUt(120)
-        .inputDust(Zinc)
-        .inputDust(Selenium)
-        .outputItems(ChemicalHelper.get(dust, ZincSelenide, 2))
-        .save(provider);
-
-    // C6H6O2 + NH3 -> C6H7NO + H2O
-    CHEMICAL_RECIPES.recipeBuilder("resorcinol_ammonia_to_amino3phenol_water").duration(220).EUt(480)
-        .inputFluids(Resorcinol.getFluid(1000))
-        .inputFluids(Ammonia.getFluid(1000))
-        .outputFluids(Amino3phenol.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .save(provider);
-
-
-    // C2H4 + NH3 -> C2H5NH2
-    CHEMICAL_RECIPES.recipeBuilder("ethylene_ammonia_to_ethylamine").duration(130).EUt(480)
-        .inputFluids(Ethylene.getFluid(1000))
-        .inputFluids(Ammonia.getFluid(1000))
-        .outputFluids(Ethylamine.getFluid(2000))
-        .notConsumable(ChemicalHelper.get(dust, SodiumAzanide))
-        .save(provider);
-
-    // KOH + NH4ReO4 -> KReO4 + NH3 + H2O
-    CHEMICAL_RECIPES.recipeBuilder("potassium_hydroxide_ammonium_perrhenate_to_potassium_perrhenate_ammonia_water").duration(280).EUt(480)
-        .inputFluids(PotassiumHydroxide.getFluid(1000))
-        .inputFluids(AmmoniumPerrhenate.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, PotassiumPerrhenate, 6))
-        .outputFluids(Ammonia.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .save(provider);
-
-
-    // KReO4 + 18K + 13C2H5OH + 4O -> 4KOH + H9K2ReO4 + 13C2H5KO
-    CHEMICAL_RECIPES.recipeBuilder("potassium_perrhenate_potassium_ethanol_oxygen_to_potassium_hydroxide_potassium_nonahydridorhenate_potassium_ethoxide").duration(240).EUt(1920)
-        .inputDust(PotassiumPerrhenate, 6)
-        .inputDust(Potassium, 18)
-        .inputFluids(Ethanol.getFluid(13000))
-        .inputFluids(Oxygen.getFluid(4000))
-        .outputFluids(PotassiumHydroxide.getFluid(4000))
-        .outputItems(ChemicalHelper.get(dust, PotassiumNonahydridorhenate, 16))
-        .outputFluids(PotassiumEthoxide.getFluid(13000))
-        .save(provider);
-
-
-    // KTcO4 + 18K + 13C2H5OH + 4O -> 4KOH + H9K2TcO4 + 13C2H5KO
-    CHEMICAL_RECIPES.recipeBuilder("potassium_pertechnate_potassium_ethanol_oxygen_to_potassium_hydroxide_potassium_nonahydridotechnetate_potassium_ethoxide").duration(240).EUt(1920)
-        .inputDust(PotassiumPertechnate, 6)
-        .inputDust(Potassium, 18)
-        .inputFluids(Ethanol.getFluid(13000))
-        .inputFluids(Oxygen.getFluid(4000))
-        .outputFluids(PotassiumHydroxide.getFluid(4000))
-        .outputItems(ChemicalHelper.get(dust, PotassiumNonahydridotechnetate, 16))
-        .outputFluids(PotassiumEthoxide.getFluid(13000))
-        .save(provider);
-
-
-    // C2H5KO + HCl -> C2H5OH + KCl
-    CHEMICAL_RECIPES.recipeBuilder("potassium_ethoxide_hydrochloric_acid_to_ethanol_rock_salt").duration(200).EUt(480)
-        .inputFluids(PotassiumEthoxide.getFluid(1000))
-        .inputFluids(HydrochloricAcid.getFluid(1000))
-        .outputFluids(Ethanol.getFluid(1000))
-        .outputDust(RockSalt, 2)
-        .save(provider);
-
-    // KI + C6H7NO + C4H9Li -> C10H15N + KOH + LiI
-    CHEMICAL_RECIPES.recipeBuilder("potassium_iodide_aminophenol_butyl_lithium_to_butylaniline_potassium_hydroxide_lithium_iodide").duration(200).EUt(480)
-        .inputDust(PotassiumIodide, 2)
-        .inputFluids(Aminophenol.getFluid(1000))
-        .inputFluids(ButylLithium.getFluid(1000))
-        .outputFluids(Butylaniline.getFluid(1000))
-        .outputFluids(PotassiumHydroxide.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, LithiumIodide, 2))
-        .save(provider);
-
-
-    // NaH + C3H9SiCl -> C3H10Si + NaCl
-    CHEMICAL_RECIPES.recipeBuilder("sodium_hydride_trimethylchlorosilane_to_trimethylsilane_salt").duration(170).EUt(1920)
-        .inputDust(SodiumHydride, 2)
-        .inputFluids(Trimethylchlorosilane.getFluid(1000))
-        .outputFluids(Trimethylsilane.getFluid(1000))
-        .outputDust(Salt, 2)
-        .save(provider);
-
-
-    // K + Br -> KBr
-    CHEMICAL_RECIPES.recipeBuilder("potassium_bromine_to_potassium_bromide").duration(240).EUt(120)
-        .inputDust(Potassium)
-        .inputFluids(Bromine.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, PotassiumBromide, 2))
-        .save(provider);
-
-
-    // KBr + O3 -> KBrO3
-    CHEMICAL_RECIPES.recipeBuilder("potassium_bromide_ozone_to_potassium_bromate").duration(200).EUt(480)
-        .inputDust(PotassiumBromide, 2)
-        .inputFluids(Ozone.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, PotassiumBromate, 5))
-        .save(provider);
-
-
-
-
-    // 3C7H5IO2 + H2SO4 + 2O -> H2S + 3C7H5IO4
-    CHEMICAL_RECIPES.recipeBuilder("iodobenzoic_acid_sulfuric_acid_oxygen_to_hydrogen_sulfide_ibx").duration(200).EUt(1920)
-        .notConsumable(ChemicalHelper.get(dust, PotassiumBromate))
-        .inputFluids(IodobenzoicAcid.getFluid(3000))
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .inputFluids(Oxygen.getFluid(2000))
-        .outputFluids(HydrogenSulfide.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, IBX, 51))
-        .save(provider);
-
-
-    // C8H8O2 + C10H15N -> C18H21NO + H2O
-    CHEMICAL_RECIPES.recipeBuilder("methoxybenzaldehyde_butylaniline_to_mbba_water").duration(190).EUt(122880)
-        .inputFluids(Methoxybenzaldehyde.getFluid(1000))
-        .inputFluids(Butylaniline.getFluid(1000))
-        .notConsumable(ChemicalHelper.get(dust, TetraethylammoniumNonahydridides))
-        .outputFluids(MBBA.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .save(provider);
-
-
-    // PdCl2 + 2CH3COOH -> C4H6O4Pd + 2HCl
-    CHEMICAL_RECIPES.recipeBuilder("palladium_chloride_acetic_acid_to_palladium_acetate_hydrochloric_acid").duration(260).EUt(480)
-        .inputDust(PalladiumChloride, 3)
-        .inputFluids(AceticAcid.getFluid(2000))
-        .outputItems(ChemicalHelper.get(dust, PalladiumAcetate, 15))
-        .outputFluids(HydrochloricAcid.getFluid(2000))
-        .save(provider);
-
-
-    // I + Cl -> ICl
-    CHEMICAL_RECIPES.recipeBuilder("iodine_chlorine_to_iodine_monochloride").duration(240).EUt(120)
-        .inputDust(Iodine)
-        .inputFluids(Chlorine.getFluid(1000))
-        .outputFluids(IodineMonochloride.getFluid(1000))
-        .save(provider);
-
-
-    // Mg + 2Cl -> MgCl2
-    CHEMICAL_RECIPES.recipeBuilder("magnesium_chlorine_to_magnesium_chloride").duration(50).EUt(120)
-        .inputDust(Magnesium)
-        .inputFluids(Chlorine.getFluid(2000))
-        .outputDust(MagnesiumChloride, 3)
-        .save(provider);
-
-    // C10H8 + 2CH4O -> 2H2O + C12H12
-    CHEMICAL_RECIPES.recipeBuilder("naphthalene_methanol_to_water_dimethylnaphthalene").duration(260).EUt(120)
-        .inputFluids(Naphthalene.getFluid(1000))
-        .inputFluids(Methanol.getFluid(2000))
-        .outputFluids(Water.getFluid(2000))
-        .outputFluids(Dimethylnaphthalene.getFluid(1000))
-        .save(provider);
-
-
-
-// 2H + Se -> H2Se
-    CHEMICAL_RECIPES.recipeBuilder("hydrogen_selenium_to_hydroselenic_acid").duration(180).EUt(120)
-        .inputFluids(Hydrogen.getFluid(2000))
-        .inputDust(Selenium)
-        .outputFluids(HydroselenicAcid.getFluid(1000))
-        .save(provider);
-
-
-    // 2H2Se + CuInGa -> CuInGaSe2 + 4 H
-    CHEMICAL_RECIPES.recipeBuilder("hydroselenic_acid_copper_gallium_indium_mix_to_copper_gallium_indium_selenide_hydrogen").duration(180).EUt(480)
-        .inputFluids(HydroselenicAcid.getFluid(2000))
-        .inputDust(CopperGalliumIndiumMix, 3)
-        .outputItems(ChemicalHelper.get(dust, CopperGalliumIndiumSelenide, 5))
-        .outputFluids(Hydrogen.getFluid(4000))
-        .save(provider);
-
-
-    // MnO2 + 2KOH + O -> K2MnO4 + H2O
-    CHEMICAL_RECIPES.recipeBuilder("pyrolusite_potassium_hydroxide_oxygen_to_potassium_manganate_water").duration(170).EUt(30)
-        .inputDust(Pyrolusite, 3)
-        .inputFluids(PotassiumHydroxide.getFluid(2000))
-        .inputFluids(Oxygen.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, PotassiumManganate, 7))
-        .outputFluids(Water.getFluid(1000))
-        .save(provider);
-
-
-    // C6H5OH + HNO3 + 6H -> 3H2O + C6H7NO
-    CHEMICAL_RECIPES.recipeBuilder("phenol_nitric_acid_hydrogen_to_water_aminophenol").duration(240).EUt(120)
-        .inputFluids(Phenol.getFluid(1000))
-        .inputFluids(NitricAcid.getFluid(1000))
-        .inputFluids(Hydrogen.getFluid(6000))
-        .notConsumable(ChemicalHelper.get(dust, IronPlatinumCatalyst))
-        .outputFluids(Water.getFluid(3000))
-        .outputFluids(Aminophenol.getFluid(1000))
-        .save(provider);
-
-
-    // 2IrO2 + 2[Bi(NO3)3 + H2O] + H -> Bi2Ir2O7 + 5HNO2 + NO2
-    CHEMICAL_RECIPES.recipeBuilder("iridium_dioxide_bismuth_nitrate_soluton_hydrogen_to_bismuth_iridiate_nitric_acid_nitrogen_dioxide").duration(300).EUt(1920)
-        .inputDust(IridiumDioxide, 6)
-        .inputFluids(BismuthNitrateSoluton.getFluid(2000))
-        .inputFluids(Hydrogen.getFluid(1000))
-        .outputDust(BismuthIridiate, 11)
-        .outputFluids(NitricAcid.getFluid(5000))
-        .outputFluids(NitrogenDioxide.getFluid(1000))
-        .save(provider);
-
-
-    // TiCl4 + [NaOH + H2O] + [BaCl2 + H2O] -> BaTiO3 + NaCl + 5HCl
-    CHEMICAL_RECIPES.recipeBuilder("titanium_tetrachloride_sodium_hydroxide_solution_barium_chloride_solution_to_salt_barium_titanate_preparation_hydrochloric_acid").duration(320).EUt(120)
-        .inputFluids(TitaniumTetrachloride.getFluid(1000))
-        .inputFluids(SodiumHydroxideSolution.getFluid(1000))
-        .inputFluids(BariumChlorideSolution.getFluid(1000))
-        .outputDust(Salt, 2)
-        .outputFluids(BariumTitanatePreparation.getFluid(1000))
-        .outputFluids(HydrochloricAcid.getFluid(4000))
-        .save(provider);
-
-    // C2H6O2 + C6H8S -> C6H6O2S + 2CH4
-    CHEMICAL_RECIPES.recipeBuilder("ethylene_glycol_diethoxythiophene_to_edot_ethanol").duration(140).EUt(120)
-        .notConsumable(GELLED_TOLUENE)
-        .inputFluids(EthyleneGlycol.getFluid(1000))
-        .inputFluids(Diethoxythiophene.getFluid(1000))
-        .outputFluids(EDOT.getFluid(1000))
-        .outputFluids(Ethanol.getFluid(2000))
-        .save(provider);
-
-    // Fe + H2SO4 -> FeSO4 + 2H
-    CHEMICAL_RECIPES.recipeBuilder("iron_sulfuric_acid_to_iron_sulfate_hydrogen").duration(250).EUt(30)
-        .inputDust(Iron)
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, IronSulfate, 6))
-        .outputFluids(Hydrogen.getFluid(2000))
-        .save(provider);
-
-    // ZrCl4 + 2H2O -> ZrOCl2 + 2HCl
-    CHEMICAL_RECIPES.recipeBuilder("zirconium_tetrachloride_water_to_zirconyl_chloride_hydrochloric_acid").duration(150).EUt(120)
-        .inputDust(ZirconiumTetrachloride, 5)
-        .inputFluids(Water.getFluid(2000))
-        .outputItems(ChemicalHelper.get(dust, ZirconylChloride, 4))
-        .outputFluids(HydrochloricAcid.getFluid(2000))
-        .save(provider);
-
-
-    // Pb + N2O4 + 2O -> Pb(NO3)2
-    CHEMICAL_RECIPES.recipeBuilder("lead_dinitrogen_tetroxide_oxygen_to_lead_nitrate").EUt(120).duration(150)
-        .inputDust(Lead)
-        .inputFluids(DinitrogenTetroxide.getFluid(1000))
-        .inputFluids(Oxygen.getFluid(2000))
-        .outputDust(LeadNitrate, 9)
-        .save(provider);
-
-    // Fe + 2I -> FeI2
-    CHEMICAL_RECIPES.recipeBuilder("iron_iodine_to_iron_iodide").duration(150).EUt(120)
-        .inputDust(Iron)
-        .inputDust(Iodine, 2)
-        .outputItems(ChemicalHelper.get(dust, IronIodide, 3))
-        .save(provider);
-
-
-    // Tl + I -> TlI
-    CHEMICAL_RECIPES.recipeBuilder("thallium_iodine_to_thallium_iodide").duration(150).EUt(120)
-        .inputDust(Thallium)
-        .inputDust(Iodine)
-        .outputItems(ChemicalHelper.get(dust, ThalliumIodide, 2))
-        .save(provider);
-
-
-    // Rb + I -> RbI
-    CHEMICAL_RECIPES.recipeBuilder("rubidium_iodine_to_rubidium_iodide").duration(150).EUt(120)
-        .inputDust(Rubidium)
-        .inputDust(Iodine)
-        .outputItems(ChemicalHelper.get(dust, RubidiumIodide, 2))
-        .save(provider);
-
-
-    // K + I -> KI
-    CHEMICAL_RECIPES.recipeBuilder("potassium_iodine_to_potassium_iodide").duration(150).EUt(120)
-        .inputDust(Potassium)
-        .inputDust(Iodine)
-        .outputItems(ChemicalHelper.get(dust, PotassiumIodide, 2))
-        .save(provider);
-
-
-    // In + 3I -> InI3
-    CHEMICAL_RECIPES.recipeBuilder("indium_iodine_to_indium_iodide").duration(150).EUt(120)
-        .inputDust(Indium)
-        .inputDust(Iodine, 3)
-        .outputItems(ChemicalHelper.get(dust, IndiumIodide, 4))
-        .save(provider);
-
-
-    // Ga + 3I -> GaI3
-    CHEMICAL_RECIPES.recipeBuilder("gallium_iodine_to_gallium_iodide").duration(150).EUt(120)
-        .inputDust(Gallium)
-        .inputDust(Iodine, 3)
-        .outputItems(ChemicalHelper.get(dust, GalliumIodide, 4))
-        .save(provider);
-
-
-    // Sc + 3I -> ScI3
-    CHEMICAL_RECIPES.recipeBuilder("scandium_iodine_to_scandium_iodide").duration(150).EUt(120)
-        .inputDust(Scandium)
-        .inputDust(Iodine, 3)
-        .outputItems(ChemicalHelper.get(dust, ScandiumIodide, 4))
-        .save(provider);
-
-    // SrCl2 + H2SO4 -> SrSO4 + 2HCl
-    CHEMICAL_RECIPES.recipeBuilder("strontium_chloride_sulfuric_acid_to_celestine_hydrochloric_acid").duration(160).EUt(480)
-        .inputDust(StrontiumChloride, 3)
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputDust(Celestine, 6)
-        .outputFluids(HydrochloricAcid.getFluid(2000))
-        .save(provider);
-
-
-    // 6F + 2CS2 -> C2F6S2 + 2S
-    CHEMICAL_RECIPES.recipeBuilder("fluorine_carbon_sulfide_to_biperfluoromethanedisulfide_sulfur").duration(250).EUt(120)
-        .notConsumable(dust, Iodine)
-        .inputFluids(Fluorine.getFluid(6000))
-        .inputFluids(CarbonSulfide.getFluid(2000))
-        .outputFluids(Biperfluoromethanedisulfide.getFluid(1000))
-        .outputDust(Sulfur, 2)
-        .save(provider);
-
-
-    // Hg + 3H2O2 + C2F6S2 + BaCO3 -> [C2BaF6O6S2 + 3H2O + Hg] + C
-    CHEMICAL_RECIPES.recipeBuilder("mercury_water_biperfluoromethanedisulfide_barium_carbonate_to_barium_triflate_solution_carbon").duration(240).EUt(480)
-        .inputFluids(Mercury.getFluid(1000))
-        .inputFluids(Water.getFluid(3000))
-        .inputFluids(Biperfluoromethanedisulfide.getFluid(1000))
-        .inputDust(BariumCarbonate, 5)
-        .notConsumable(UVA_HALIDE_LAMP.asStack())
-        .outputFluids(BariumTriflateSolution.getFluid(3000))
-        .outputDust(Carbon)
-        .save(provider);
-
-    // 2HNO3 + BaS -> H2S + Ba(NO3)2
-    CHEMICAL_RECIPES.recipeBuilder("nitric_acid_barium_sulfide_to_hydrogen_sulfide_barium_nitrate").duration(240).EUt(120)
-        .inputFluids(NitricAcid.getFluid(2000))
-        .inputDust(BariumSulfide, 2)
-        .outputFluids(HydrogenSulfide.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, BariumNitrate, 9))
-        .save(provider);
-
-
-    // 2HNO3 + Cu -> 2H + Cu(NO3)2
-    CHEMICAL_RECIPES.recipeBuilder("nitric_acid_copper_to_nitrogen_dioxide_hydrogen_copper_nitrate").duration(240).EUt(120)
-        .inputFluids(NitricAcid.getFluid(2000))
-        .inputDust(Copper)
-        .outputFluids(NitrogenDioxide.getFluid(1000))
-        .outputFluids(Hydrogen.getFluid(2000))
-        .outputItems(ChemicalHelper.get(dust, CopperNitrate, 9))
-        .save(provider);
-
-
-    // 6HNO3 + Y2O3 -> 3H2O + 2Y(NO3)3
-    CHEMICAL_RECIPES.recipeBuilder("nitric_acid_yttrium_oxide_to_water_yttrium_nitrate").duration(240).EUt(120)
-        .inputFluids(NitricAcid.getFluid(6000))
-        .inputDust(YttriumOxide, 5)
-        .circuitMeta(1000)
-        .outputFluids(Water.getFluid(3000))
-        .outputItems(ChemicalHelper.get(dust, YttriumNitrate, 26))
-        .save(provider);
-
-    // 9O + C6H12O6 -> 3C2H2O4 + 3H2O
-    CHEMICAL_RECIPES.recipeBuilder("oxygen_glucose_to_water_oxalic_acid").duration(120).EUt(480)
-        .notConsumable(ChemicalHelper.get(dust, VanadiumOxide))
-        .inputFluids(Oxygen.getFluid(9000))
-        .inputDust(Glucose, 24)
-        .outputFluids(Water.getFluid(3000))
-        .outputFluids(OxalicAcid.getFluid(3000))
-        .save(provider);
-
-
-    // 2C2H2O4 + 2O + Ac -> Ac(C2O4)2 + 2H2O
-    CHEMICAL_RECIPES.recipeBuilder("oxalic_acid_oxygen_actinium_to_water_actinium_oxalate").duration(180).EUt(30720)
-        .inputFluids(OxalicAcid.getFluid(2000))
-        .inputFluids(Oxygen.getFluid(2000))
-        .inputDust(Actinium)
-        .outputFluids(Water.getFluid(2000))
-        .outputItems(ChemicalHelper.get(dust, ActiniumOxalate, 13))
-        .save(provider);
-
-
-    // C + 4Cl -> CCl4
-    CHEMICAL_RECIPES.recipeBuilder("carbon_chlorine_to_carbon_tetrachloride").duration(320).EUt(30)
-        .inputDust(Carbon)
-        .circuitMeta(1000)
-        .inputFluids(Chlorine.getFluid(4000))
-        .outputFluids(CarbonTetrachloride.getFluid(1000))
-        .save(provider);
-
-
-    // (CH3)2SiHCl + CH4 -> (CH3)3SiCl + 2H
-    CHEMICAL_RECIPES.recipeBuilder("dimethyldichlorosilane_methane_to_trimethylchlorosilane_hydrogen").duration(110).EUt(1920)
-        .inputFluids(Dimethyldichlorosilane.getFluid(1000))
-        .inputFluids(Methane.getFluid(1000))
-        .outputFluids(Trimethylchlorosilane.getFluid(1000))
-        .outputFluids(Hydrogen.getFluid(2000))
-        .save(provider);
-
-    // 2Cl + C2H6 -> C2H5Cl + HCl
-    CHEMICAL_RECIPES.recipeBuilder("chlorine_ethane_to_chloroethane_hydrochloric_acid").duration(200).EUt(3340)
-        .inputFluids(Chlorine.getFluid(2000))
-        .inputFluids(Ethane.getFluid(1000))
-        .outputFluids(Chloroethane.getFluid(1000))
-        .outputFluids(HydrochloricAcid.getFluid(1000))
-        .notConsumable(UVA_HALIDE_LAMP.asStack())
-        .save(provider);
-
-
-    // C4H4S2Br2 + 2Se + 2C4H9Li -> C4H4S2Li2Se2 + 2C4H9Br
-    CHEMICAL_RECIPES.recipeBuilder("bromohydrothiine_butyl_lithium_selenium_to_bromobutane_lithiumthiinediselenide").duration(290).EUt(30720)
-        .inputFluids(Bromohydrothiine.getFluid(1000))
-        .inputFluids(ButylLithium.getFluid(2000))
-        .inputDust(Selenium, 2)
-        .outputFluids(Bromobutane.getFluid(2000))
-        .outputItems(ChemicalHelper.get(dust, Lithiumthiinediselenide, 14))
-        .save(provider);
-
-
-    // C3H6 + C4H8 -> C3H4 + C4H10
-    CHEMICAL_RECIPES.recipeBuilder("propene_butene_to_propadiene_butane").duration(200).EUt(480)
-        .inputFluids(Propene.getFluid(1000))
-        .inputFluids(Butene.getFluid(1000))
-        .notConsumable(ChemicalHelper.get(dust, DehydrogenationCatalyst))
-        .outputFluids(Propadiene.getFluid(1000))
-        .outputFluids(Butane.getFluid(1000))
-        .save(provider);
-
-
-    // TiCl4 + 2 C3H4 + 2 C2H2 -> 2 HCl + (C5H5)2Cl2Ti
-    CHEMICAL_RECIPES.recipeBuilder("titanium_tetrachloride_propadiene_acetylene_to_hydrochloric_acid_titanium_cyclopentadienyl").duration(260).EUt(7680)
-        .inputFluids(TitaniumTetrachloride.getFluid(1000))
-        .inputFluids(Propadiene.getFluid(2000))
-        .inputFluids(Acetylene.getFluid(2000))
-        .notConsumableDust(ScandiumTriflate)
-        .outputFluids(HydrochloricAcid.getFluid(2000))
-        .outputItems(ChemicalHelper.get(dust, TitaniumCyclopentadienyl, 23))
-        .save(provider);
-
-
-    // C4H9Br + NaOH -> NaBr + C4H10O
-    CHEMICAL_RECIPES.recipeBuilder("bromobutane_sodium_hydroxide_to_sodium_bromide_butanol").duration(40).EUt(120)
-        .inputFluids(Bromobutane.getFluid(1000))
-        .inputDust(SodiumHydroxide, 3)
-        .outputItems(ChemicalHelper.get(dust, SodiumBromide, 2))
-        .outputFluids(Butanol.getFluid(1000))
-        .save(provider);
-
-
-    // 2Fr + C2H2 -> Fr2C2 + 2H
-    CHEMICAL_RECIPES.recipeBuilder("francium_acetylene_to_francium_carbide_hydrogen").duration(260).EUt(480)
-        .inputDust(Francium, 2)
-        .inputFluids(Acetylene.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, FranciumCarbide, 4))
-        .outputFluids(Hydrogen.getFluid(2000))
-        .save(provider);
-
-
-    // 2Fr2C2 + B4C3 -> Fr4B4C7
-    CHEMICAL_RECIPES.recipeBuilder("francium_carbide_boron_carbide_to_boron_francium_carbide").duration(260).EUt(1920)
-        .inputDust(FranciumCarbide, 8)
-        .inputDust(BoronCarbide, 7)
-        .outputItems(ChemicalHelper.get(dust, BoronFranciumCarbide, 15))
-        .save(provider);
-
-    // Sg + 2 NaOH + 6 F + 2H2O -> 6HF + Na2SgO4
-    CHEMICAL_RECIPES.recipeBuilder("seaborgium_sodium_hydroxide_fluorine_water_to_hydrofluoric_acid_sodium_seaborgate").duration(820).EUt(30720)
-        .inputDust(Seaborgium)
-        .inputDust(SodiumHydroxide, 6)
-        .inputFluids(Fluorine.getFluid(6000))
-        .inputFluids(Water.getFluid(2000))
-        .outputFluids(HydrofluoricAcid.getFluid(6000))
-        .outputItems(ChemicalHelper.get(dust, SodiumSeaborgate, 7))
-        .save(provider);
-
-
-    // Sr + 2Cl -> SrCl2
-    CHEMICAL_RECIPES.recipeBuilder("strontium_chlorine_to_strontium_chloride").duration(320).EUt(120)
-        .inputDust(Strontium)
-        .inputFluids(Chlorine.getFluid(2000))
-        .outputItems(ChemicalHelper.get(dust, StrontiumChloride, 3))
-        .save(provider);
-
-
-    // NaIO4 + C3H6O -> NaIO3 + CH2O + C2H4O
-    CHEMICAL_RECIPES.recipeBuilder("sodium_periodate_acetone_to_sodium_iodate_formaldehyde_acetaldehyde").duration(220).EUt(7680)
-        .notConsumable(ChemicalHelper.get(dust, OsmiumTetroxide))
-        .inputDust(SodiumPeriodate, 6)
-        .inputFluids(Acetone.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, SodiumIodate, 5))
-        .outputFluids(Formaldehyde.getFluid(1000))
-        .outputFluids(Acetaldehyde.getFluid(1000))
-        .save(provider);
-
-
-    // C4H10 + 2Br -> C4H9Br + HBr
-    CHEMICAL_RECIPES.recipeBuilder("butane_bromine_to_bromobutane_hydrobromic_acid").duration(210).EUt(7680)
-        .notConsumable(UVA_HALIDE_LAMP.asStack())
-        .inputFluids(Butane.getFluid(1000))
-        .inputFluids(Bromine.getFluid(2000))
-        .outputFluids(Bromobutane.getFluid(1000))
-        .outputFluids(HydrobromicAcid.getFluid(1000))
-        .save(provider);
-
-
-    // Kr + 2F -> KrF2
-    CHEMICAL_RECIPES.recipeBuilder("krypton_fluorine_to_krypton_difluoride").duration(170).EUt(480)
-        .notConsumable(UVA_HALIDE_LAMP.asStack())
-        .inputFluids(Krypton.getFluid(1000))
-        .inputFluids(Fluorine.getFluid(2000))
-        .outputFluids(KryptonDifluoride.getFluid(1000))
-        .save(provider);
-
-
-    // Mn + KrF2 -> MnF2 + Kr
-    CHEMICAL_RECIPES.recipeBuilder("manganese_krypton_difluoride_to_manganese_fluoride_krypton").duration(170).EUt(480)
-        .inputDust(Manganese)
-        .inputFluids(KryptonDifluoride.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, ManganeseFluoride, 3))
-        .outputFluids(Krypton.getFluid(1000))
-        .save(provider);
-
-
-    // MnF2 + O + H2O -> MnO2 + 2HF
-    CHEMICAL_RECIPES.recipeBuilder("manganese_fluoride_water_oxygen_to_pyrolusite_hydrofluoric_acid").duration(160).EUt(120)
-        .inputDust(ManganeseFluoride, 3)
-        .inputFluids(Water.getFluid(1000))
-        .inputFluids(Oxygen.getFluid(1000))
-        .outputDust(Pyrolusite, 3)
-        .outputFluids(HydrofluoricAcid.getFluid(2000))
-        .save(provider);
-
-    // NaSCN + HCl + 2CH3CH2NH2 -> NH3 + (C2H5NH)2CS + NaCl
-    CHEMICAL_RECIPES.recipeBuilder("sodium_thiocyanate_hydrochloric_acid_ethylamine_to_ammonia_diethylthiourea_salt").duration(210).EUt(30720)
-        .inputFluids(SodiumThiocyanate.getFluid(1000))
-        .inputFluids(HydrochloricAcid.getFluid(1000))
-        .inputFluids(Ethylamine.getFluid(2000))
-        .outputFluids(Ammonia.getFluid(1000))
-        .outputFluids(Diethylthiourea.getFluid(1000))
-        .outputDust(Salt, 2)
-        .save(provider);
-
-    // SbF5 + PCl3 + HF -> SbCl3 + HPF6
-    CHEMICAL_RECIPES.recipeBuilder("antimony_pentafluoride_phosphorus_trichloride_hydrofluoric_acid_to_antimony_trichloride_fluorophosphoric_acid").duration(280).EUt(7680)
-        .inputFluids(AntimonyPentafluoride.getFluid(1000))
-        .inputFluids(PhosphorusTrichloride.getFluid(1000))
-        .inputFluids(HydrofluoricAcid.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, AntimonyTrichloride, 4))
-        .outputFluids(FluorophosphoricAcid.getFluid(1000))
-        .save(provider);
-
-
-    // SbCl3 + 3HF -> SbF3 + 3HCl
-    CHEMICAL_RECIPES.recipeBuilder("antimony_trichloride_hydrofluoric_acid_to_antimony_trifluoride_hydrochloric_acid").duration(210).EUt(480)
-        .inputDust(AntimonyTrichloride, 4)
-        .inputFluids(HydrofluoricAcid.getFluid(3000))
-        .outputItems(ChemicalHelper.get(dust, AntimonyTrifluoride, 4))
-        .outputFluids(HydrochloricAcid.getFluid(3000))
-        .save(provider);
-
-    // C8N2Cl2(OH)2 + H2O2 -> C8Cl2N2O2 + 2H2O
-    CHEMICAL_RECIPES.recipeBuilder("dichlorodicyanohydroquinone_hydrogen_peroxide_to_dichlorodicyanobenzoquinone_water").duration(250).EUt(480)
-        .inputFluids(Dichlorodicyanohydroquinone.getFluid(1000))
-        .inputFluids(HydrogenPeroxide.getFluid(1000))
-        .outputFluids(Dichlorodicyanobenzoquinone.getFluid(1000))
-        .outputFluids(Water.getFluid(2000))
-        .notConsumable(ChemicalHelper.get(dust, VanadiumOxide))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("cycloparaphenylene_methane_lanthanum_embedded_fullerene_to_lanthanum_fullerene_nanotubes").duration(290).EUt(320000)
-        .inputFluids(Cycloparaphenylene.getFluid(200))
-        .inputFluids(Methane.getFluid(800))
-        .inputDust(LanthanumEmbeddedFullerene)
-        .notConsumable(plate, Rhenium)
-        .outputItems(ChemicalHelper.get(dust, LanthanumFullereneNanotubes))
-        .save(provider);
-
-
-    // 2La + H2SO4 = La2O3 + H2S + O
-    CHEMICAL_RECIPES.recipeBuilder("lanthanum_sulfuric_acid_to_lanthanum_oxide_hydrogen_sulfide_oxygen").duration(100).EUt(120)
-        .inputDust(Lanthanum, 2)
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, LanthanumOxide, 5))
-        .outputFluids(HydrogenSulfide.getFluid(1000))
-        .outputFluids(Oxygen.getFluid(1000))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("stone_residue_sodium_hydroxide_solution_to_uncommon_residues_dust_sodium_hydroxide_solution_red_mud")
-        .inputDust(StoneResidue, 24)
-        .inputFluids(SodiumHydroxideSolution.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, UncommonResidues))
-        .chancedOutput(dust, Magnetite, 1, 2500)
-        .outputFluids(SodiumHydroxideSolution.getFluid(925))
-        .outputFluids(RedMud.getFluid(75))
-        .duration(40)
-        .EUt(100)
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("liquid_oxygen_liquid_fluorine_to_dioxygendifluoride")
-        .inputFluids(Oxygen.getFluid(FluidStorageKeys.LIQUID, 2000))
-        .inputFluids(LiquidFluorine.getFluid(2000))
-        .notConsumable(MICROFOCUS_X_RAY_TUBE.asStack())
-        .outputFluids(Dioxygendifluoride.getFluid(1000))
-        .duration(80)
-        .EUt(200)
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("uncommon_residues_dioxygendifluoride_to_partially_oxidized_residues")
-        .inputDust(UncommonResidues)
-        .inputFluids(Dioxygendifluoride.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, PartiallyOxidizedResidues))
-        .duration(80)
-        .EUt(100)
-        .save(provider);
-
-
-
-    CHEMICAL_RECIPES.recipeBuilder("tritium_hydrogen_to_tritium_hydride")
-        .inputFluids(Tritium.getFluid(1000))
-        .inputFluids(Hydrogen.getFluid(1000))
-        .outputFluids(TritiumHydride.getFluid(1000))
-        .duration(160)
-        .EUt(2000)
-        .save(provider);
-
-
-    // CaCl2 + Na2WO4 + 2H2O -> WCaO4 + 2NaCl(H2O)
-    CHEMICAL_RECIPES.recipeBuilder("calcium_chloride_sodium_tungstate_water_to_calcium_tungstate_salt_water")
-        .inputDust(CalciumChloride, 3)
-        .inputFluids(SodiumTungstate.getFluid(1000))
-        .inputFluids(Water.getFluid(2000))
-        .outputDust(CalciumTungstate, 6)
-        .outputFluids(SaltWater.getFluid(2000))
-        .EUt(480)
-        .duration(60)
-        .save(provider);
-
-
-    // WO3 + 6H -> W + 3H2O
-    CHEMICAL_RECIPES.recipeBuilder("tungsten_trioxide_hydrogen_to_tungsten_water")
-        .inputDust(TungstenTrioxide, 4)
-        .inputFluids(Hydrogen.getFluid(6000))
-        .outputDust(Tungsten)
-        .outputFluids(Water.getFluid(3000))
-        .EUt(1920)
-        .duration(65)
-        .save(provider);
-
-
-    // W + 6Cl -> WCl6
-    CHEMICAL_RECIPES.recipeBuilder("tungsten_chlorine_to_tungsten_hexachloride")
-        .inputDust(Tungsten)
-        .inputFluids(Chlorine.getFluid(6000))
-        .outputDust(TungstenHexachloride, 7)
-        .duration(120)
-        .EUt(120)
-        .save(provider);
-
-
-    // WCl6 + CH4 + 2H -> WC + 6HCl
-    CHEMICAL_RECIPES.recipeBuilder("tungsten_hexachloride_methane_hydrogen_to_tungsten_carbide_hydrochloric_acid")
-        .inputDust(TungstenHexachloride, 7)
-        .inputFluids(Methane.getFluid(1000))
-        .inputFluids(Hydrogen.getFluid(2000))
-        .outputDust(TungstenCarbide, 2)
-        .outputFluids(HydrochloricAcid.getFluid(6000))
-        .EUt(480)
-        .duration(100)
-        .save(provider);
-
-
-    CHEMICAL_RECIPES.recipeBuilder("cycloparaphenylene_methane_neutronium_to_neutronium_doped_nanotubes").duration(290).EUt(320000)
-        .inputFluids(Cycloparaphenylene.getFluid(200))
-        .inputFluids(Methane.getFluid(800))
-        .inputDust(Neutronium)
-        .notConsumable(plate, Rhenium)
-        .outputFluids(NeutroniumDopedNanotubes.getFluid(1000))
-        .save(provider);
-
-
-    // Pitchblende Processing was removed to save 2 steps
-    // and was simplified to just electrolysis into Uraninite.
-
-    // UO2 + 2 Cl + H2O -> [UO2Cl2 + H2O + ?]
-    CHEMICAL_RECIPES.recipeBuilder("uraninite_chlorine_water_to_uranyl_chloride_solution").duration(50).EUt(120)
-        .inputDust(Uraninite, 3)
-        .inputFluids(Chlorine.getFluid(2000))
-        .inputFluids(Water.getFluid(1000))
-        .outputFluids(UranylChlorideSolution.getFluid(1000))
-        .save(provider);
-
-
-    // [UO2Cl2 + H2O + ?] + 2HNO3 -> [UO2(NO3)2 + H2O + ?] + 2HCl
-    CHEMICAL_RECIPES.recipeBuilder("uranyl_chloride_solution_nitric_acid_to_uranyl_nitrate_solution_hydrochloric_acid").duration(100).EUt(120)
-        .inputFluids(UranylChlorideSolution.getFluid(1000))
-        .inputFluids(NitricAcid.getFluid(2000))
-        .outputFluids(UranylNitrateSolution.getFluid(1000))
-        .outputFluids(HydrochloricAcid.getFluid(2000))
-        .save(provider);
-
-
-    // [UO2(NO3)2 + H2O + ?] + H2SO4 -> [UO2(NO3)2 + H2O] + [? + SO4]
-    CHEMICAL_RECIPES.recipeBuilder("uranyl_nitrate_solution_sulfuric_acid_to_purified_uranyl_nitrate_uranium_sulfate_waste_solution").duration(40).EUt(120)
-        .inputFluids(UranylNitrateSolution.getFluid(1000))
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputFluids(PurifiedUranylNitrate.getFluid(1000))
-        .outputFluids(UraniumSulfateWasteSolution.getFluid(1000))
-        .save(provider);
-
-
-    // CO2 + 2KOH -> K2CO3 + H2O
-    CHEMICAL_RECIPES.recipeBuilder("potassium_hydroxide_carbon_dioxide_to_potassium_carbonate_water").duration(90).EUt(30)
-        .inputFluids(PotassiumHydroxide.getFluid(2000))
-        .inputFluids(CarbonDioxide.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, PotassiumCarbonate, 6))
-        .outputFluids(Water.getFluid(1000))
-        .save(provider);
-
-    // UO2(CO3) + [H2O2 + H2SO4] -> [UO3â€¢H2O2 + ThO2] + [? + C + H2SO4]
-    CHEMICAL_RECIPES.recipeBuilder("potassium_uranyl_tricarbonate_piranha_solution_to_uranium_refinement_waste_solution_uranium_peroxide_thorium_oxide").duration(200).EUt(480)
-        .inputDust(PotassiumUranylTricarbonate, 5)
-        .inputFluids(PiranhaSolution.getFluid(2000))
-        .outputFluids(UraniumRefinementWasteSolution.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, UraniumPeroxideThoriumOxide, 8))
-        .save(provider);
-
-
-    // [UO2 + ThO2] + H2SO4 + S -> [UO2SO4 + ThO2] + H2S
-    CHEMICAL_RECIPES.recipeBuilder("uranium_thorium_oxide_sulfur_sulfuric_acid_to_uranyl_thorium_sulfate_hydrogen_sulfide").duration(110).EUt(120)
-        .inputDust(UraniumThoriumOxide, 6)
-        .inputDust(Sulfur)
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, UranylThoriumSulfate, 11))
-        .outputFluids(HydrogenSulfide.getFluid(1000))
-        .save(provider);
-
-
-    // [UO2SO4 + ThO2] + 6HNO3 -> [UO2(NO3)2 + Th(NO3)4] + 2H2O + H2SO4
-    CHEMICAL_RECIPES.recipeBuilder("uranyl_thorium_sulfate_nitric_acid_to_uranyl_thorium_nitrate_sulfuric_acid_water").duration(120).EUt(120)
-        .inputDust(UranylThoriumSulfate, 11)
-        .inputFluids(NitricAcid.getFluid(6000))
-        .outputItems(ChemicalHelper.get(dust, UranylThoriumNitrate, 26))
-        .outputFluids(SulfuricAcid.getFluid(1000))
-        .outputFluids(Water.getFluid(2000))
-        .save(provider);
-
-
-    // NaNO3 + H2O -> NaOH + HNO3
-    CHEMICAL_RECIPES.recipeBuilder("sodium_nitrate_water_to_sodium_hydroxide_nitric_acid").duration(100).EUt(120)
-        .inputDust(SodiumNitrate, 5)
-        .inputFluids(Water.getFluid(1000))
-        .outputDust(SodiumHydroxide, 3)
-        .outputFluids(NitricAcid.getFluid(1000))
-        .save(provider);
-
-
-    // H2SO4 + NH4Cl + Na3VO4 = NH4VO3 + [Cl + 3Na + O + H2SO4]
-    CHEMICAL_RECIPES.recipeBuilder("sulfuric_acid_sodium_vanadate_ammonium_chloride_to_ammonium_vanadate_vanadium_waste_solution").duration(120).EUt(120)
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .inputDust(SodiumVanadate, 8)
-        .inputFluids(AmmoniumChloride.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, AmmoniumVanadate, 9))
-        .outputFluids(VanadiumWasteSolution.getFluid(1000))
-        .save(provider);
-
-
-    // Na2SO4 + H2 -> H2SO4 + 2Na
-    CHEMICAL_RECIPES.recipeBuilder("sodium_sulfate_hydrogen_to_sodium_sulfuric_acid").duration(90).EUt(30)
-        .inputDust(SodiumSulfate, 7)
-        .inputFluids(Hydrogen.getFluid(2000))
-        .outputDust(Sodium, 2)
-        .outputFluids(SulfuricAcid.getFluid(1000))
-        .save(provider);
-
-    // HClO + NaOH -> H2O + NaClO
-    CHEMICAL_RECIPES.recipeBuilder("hypochlorous_acid_sodium_hydroxide_to_water_sodium_hypochlorite").duration(90).EUt(120)
-        .inputFluids(HypochlorousAcid.getFluid(1000))
-        .inputDust(SodiumHydroxide, 3)
-        .circuitMeta(1000)
-        .outputFluids(Water.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, SodiumHypochlorite, 3))
-        .save(provider);
-
-
-    // 2 NaClO + CO2 + H2O -> 2 HClO + Na2CO3
-    CHEMICAL_RECIPES.recipeBuilder("sodium_hypochlorite_carbon_dioxide_water_to_soda_ash_hypochlorous_acid").duration(90).EUt(120)
-        .inputDust(SodiumHypochlorite, 6)
-        .inputFluids(CarbonDioxide.getFluid(1000))
-        .inputFluids(Water.getFluid(1000))
-        .outputDust(SodaAsh, 6)
-        .outputFluids(HypochlorousAcid.getFluid(2000))
-        .save(provider);
-
-
-
-// Pyrotheum ===================================================================================================
-    CHEMICAL_RECIPES.recipeBuilder("coal_sulfur_lava_to_blaze").duration(80).EUt(480)
-        .inputDust(Coal)
-        .inputDust(Sulfur)
-        .inputFluids(Lava.getFluid(1000))
-        .outputDust(Blaze, 2)
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("charcoal_sulfur_lava_to_blaze").duration(80).EUt(480)
-        .inputDust(Charcoal)
-        .inputDust(Sulfur)
-        .inputFluids(Lava.getFluid(1000))
-        .outputDust(Blaze, 2)
-        .save(provider);
-
-
-    // Cryotheum ===================================================================================================
-    CHEMICAL_RECIPES.recipeBuilder("snow_redstone_ice_to_blizz").duration(80).EUt(480)
-        .inputDust(Snow)
-        .inputDust(Redstone)
-        .inputFluids(Ice.getFluid(1000))
-        .outputDust(Blizz, 2)
-        .save(provider);
-
-
-    // 3Cl + P -> PCl3
-    CHEMICAL_RECIPES.recipeBuilder("chlorine_phosphorus_to_phosphorus_trichloride").duration(60)
-        .inputFluids(Chlorine.getFluid(3000))
-        .inputDust(Phosphorus)
-        .circuitMeta(3)
-        .outputFluids(PhosphorusTrichloride.getFluid(1000))
-        .save(provider);
-
-
-    // PCl3 + O -> POCl3
-    CHEMICAL_RECIPES.recipeBuilder("phosphorus_trichloride_oxygen_to_phosphoryl_chloride").duration(100)
-        .inputFluids(PhosphorusTrichloride.getFluid(1000))
-        .inputFluids(Oxygen.getFluid(1000))
-        .outputFluids(PhosphorylChloride.getFluid(1000))
-        .save(provider);
-
-
-    // POCl3 + 3C4H10O -> C12H27O4P + 3HCl
-    CHEMICAL_RECIPES.recipeBuilder("phosphoryl_chloride_butanol_to_hydrochloric_acid_tributyl_phosphate").duration(100)
-        .inputFluids(PhosphorylChloride.getFluid(1000))
-        .inputFluids(Butanol.getFluid(3000))
-        .outputFluids(HydrochloricAcid.getFluid(3000))
-        .outputFluids(TributylPhosphate.getFluid(1000))
-        .save(provider);
-
-
-    // Formic acid =================================================================================================
-    // CO + NaOH -> HCOONa
-    CHEMICAL_RECIPES.recipeBuilder("carbon_monoxide_sodium_hydroxide_to_sodium_formate").EUt(30).duration(60)
-        .inputFluids(CarbonMonoxide.getFluid(1000))
-        .inputDust(SodiumHydroxide, 3)
-        .circuitMeta(1000)
-        .outputFluids(SodiumFormate.getFluid(1000))
-        .save(provider);
-
-
-    // HCOONa + H2SO4 -> CH2O2 + NaHSO4
-    CHEMICAL_RECIPES.recipeBuilder("sodium_formate_sulfuric_acid_to_formic_acid_sodium_bisulfate").EUt(30).duration(60)
-        .inputFluids(SodiumFormate.getFluid(1000))
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputFluids(FormicAcid.getFluid(1000))
-        .outputDust(SodiumBisulfate, 7)
-        .save(provider);
-
-
-    // Misc Reactions ==============================================================================================
-    // 3Ca + 3PO4 + H + O -> [3Ca + 3PO4 + H + O]
-    CHEMICAL_RECIPES.recipeBuilder("calcium_phosphate_hydrogen_oxygen_to_organic_fertilizer").EUt(30).duration(100)
-        .inputDust(Calcium, 3)
-        .inputDust(Phosphate, 3) // this is probably wrong
-        .inputFluids(Hydrogen.getFluid(1000))
-        .inputFluids(Oxygen.getFluid(1000))
-        .outputDust(OrganicFertilizer, 10)
-        .save(provider);
-
-
-    // 2HCl + CaCO3 -> H2O + CO2 + CaCl2
-    CHEMICAL_RECIPES.recipeBuilder("hydrochloric_acid_calcite_to_water_carbon_dioxide_calcium_chloride").duration(100).EUt(30)
-        .inputFluids(HydrochloricAcid.getFluid(2000))
-        .inputDust(Calcite, 5)
-        .outputFluids(Water.getFluid(1000))
-        .outputFluids(CarbonDioxide.getFluid(1000))
-        .outputDust(CalciumChloride, 3)
-        .save(provider);
-
-
-    // Zr + 4Cl -> ZrCl4
-    CHEMICAL_RECIPES.recipeBuilder("zirconium_chlorine_to_zirconium_tetrachloride").duration(100).EUt(120)
-        .inputDust(Zirconium)
-        .inputFluids(Chlorine.getFluid(4000))
-        .outputItems(ChemicalHelper.get(dust, ZirconiumTetrachloride, 5))
-        .save(provider);
-
-
-    // Fe + 3HCl -> FeCl3 + 3H
-    CHEMICAL_RECIPES.recipeBuilder("iron_hydrochloric_acid_to_iron_chloride_hydrogen").duration(100).EUt(30)
-        .inputDust(Iron)
-        .inputFluids(HydrochloricAcid.getFluid(3000))
-        .outputFluids(IronChloride.getFluid(1000))
-        .outputFluids(Hydrogen.getFluid(3000))
-        .save(provider);
-
-
-    // Li + Cl -> LiCl
-    CHEMICAL_RECIPES.recipeBuilder("lithium_chlorine_to_lithium_chloride").duration(125).EUt(120)
-        .inputDust(Lithium)
-        .inputFluids(Chlorine.getFluid(1000))
-        .circuitMeta(1)
-        .outputItems(ChemicalHelper.get(dust, LithiumChloride, 2))
-        .save(provider);
-
-
-    // Al + 3Cl -> AlCl3
-    CHEMICAL_RECIPES.recipeBuilder("aluminium_chlorine_to_aluminium_chloride").duration(100).EUt(30)
-        .inputDust(Aluminium)
-        .inputFluids(Chlorine.getFluid(3000))
-        .circuitMeta(1)
-        .outputItems(ChemicalHelper.get(dust, AluminiumChloride, 4))
-        .save(provider);
-
-
-    // C16H12O2H2 + 2O + C14H10 (catalyst) -> H2O2 + C16H12O2
-    CHEMICAL_RECIPES.recipeBuilder("oxygen_ethyl_anthra_hydro_quinone_to_hydrogen_peroxide_ethyl_anthra_quinone").duration(600).EUt(240)
-        .inputFluids(Oxygen.getFluid(2000))
-        .inputFluids(EthylAnthraHydroQuinone.getFluid(1000))
-        .notConsumableDust(Anthracene)
-        .outputFluids(HydrogenPeroxide.getFluid(2000))
-        .outputFluids(EthylAnthraQuinone.getFluid(1000))
-        .save(provider);
-
-
-    // 2H + C16H12O2 -> C16H12O2H2
-    CHEMICAL_RECIPES.recipeBuilder("hydrogen_ethyl_anthra_quinone_to_ethyl_anthra_hydro_quinone").duration(600).EUt(120)
-        .inputFluids(Hydrogen.getFluid(2000))
-        .inputFluids(EthylAnthraQuinone.getFluid(1000))
-        .outputFluids(EthylAnthraHydroQuinone.getFluid(1000))
-        .save(provider);
-
-
-    // C8H4O3 + C8H10 -> C16H12O2 + H2O
-    CHEMICAL_RECIPES.recipeBuilder("phthalic_anhydride_ethylbenzene_to_ethyl_anthra_quinone_water").duration(300).EUt(120)
-        .inputDust(PhthalicAnhydride, 15)
-        .inputFluids(Ethylbenzene.getFluid(1000))
-        .outputFluids(EthylAnthraQuinone.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .save(provider);
-
-// C2H4 + C6H6 -> C8H10
-    CHEMICAL_RECIPES.recipeBuilder("ethylene_benzene_to_ethylbenzene").duration(300).EUt(60)
-        .circuitMeta(1)
-        .inputFluids(Ethylene.getFluid(1000))
-        .inputFluids(Benzene.getFluid(1000))
-        .outputFluids(Ethylbenzene.getFluid(1000))
-        .save(provider);
-
-
-// 21O + 4 C10H8 -> 5C8H6O4 + H2O
-    CHEMICAL_RECIPES.recipeBuilder("oxygen_naphthalene_to_phthalic_acid_water").duration(210).EUt(120)
-        .notConsumable(dust, Lithium)
-        .inputFluids(Oxygen.getFluid(21000))
-        .inputFluids(Naphthalene.getFluid(4000))
-        .outputFluids(PhthalicAcid.getFluid(5000))
-        .outputFluids(Water.getFluid(1000))
-        .save(provider);
-
-
-    // HClO + C2H4 -> C2H5ClO
-    CHEMICAL_RECIPES.recipeBuilder("hypochlorous_acid_ethylene_to_chloroethanol").duration(120).EUt(480)
-        .inputFluids(HypochlorousAcid.getFluid(1000))
-        .inputFluids(Ethylene.getFluid(1000))
-        .outputFluids(Chloroethanol.getFluid(1000))
-        .save(provider);
-
-
-    // C2H5ClO + C3H9N + Na -> C5H14NO + NaCl
-    CHEMICAL_RECIPES.recipeBuilder("sodium_chloroethanol_trimethylamine_to_salt_choline").duration(120).EUt(480)
-        .inputDust(Sodium)
-        .inputFluids(Chloroethanol.getFluid(1000))
-        .inputFluids(Trimethylamine.getFluid(1000))
-        .outputDust(Salt, 2)
-        .outputFluids(Choline.getFluid(1000))
-        .save(provider);
-
-    // C2(H2O)4C + C5H14NO -> ATL
-    CHEMICAL_RECIPES.recipeBuilder("coal_choline_to_atl").duration(120).EUt(120)
-        .inputDust(Coal)
-        .inputFluids(Choline.getFluid(1000))
-        .outputFluids(ATL.getFluid(1000))
-        .save(provider);
-
-    // C9H6N2O2 + 4C2H6O2 + O -> C17H16N2O4 + 7H2O
-    CHEMICAL_RECIPES.recipeBuilder("toluene_diisocyanate_ethylene_glycol_oxygen_to_polyurethane_water").duration(110).EUt(480)
-        .inputFluids(TolueneDiisocyanate.getFluid(1000))
-        .inputFluids(EthyleneGlycol.getFluid(4000))
-        .inputFluids(Oxygen.getFluid(1000))
-        .outputFluids(Polyurethane.getFluid(1000))
-        .outputFluids(Water.getFluid(7000))
-        .save(provider);
-
-    // Gasoline
-    CHEMICAL_RECIPES.recipeBuilder("raw_gasoline_toluene_to_gasoline").duration(10).EUt(480)
-        .inputFluids(RawGasoline.getFluid(10000))
-        .inputFluids(Toluene.getFluid(1000))
-        .outputFluids(Gasoline.getFluid(11000))
-        .save(provider);
-
-    CHEMICAL_RECIPES.recipeBuilder("ethanol_butane_to_ethyl_tert_butyl_ether").duration(400).EUt(480)
-        .inputFluids(Ethanol.getFluid(1000))
-        .inputFluids(Butane.getFluid(1000))
-        .outputFluids(EthylTertButylEther.getFluid(2000))
-        .save(provider);
-
-
-    // 2NO2 = N2O4
-    CHEMICAL_RECIPES.recipeBuilder("nitrogen_dioxide_to_dinitrogen_tetroxide").duration(320).EUt(480)
-        .notConsumable(dust, Copper)
-        .inputFluids(NitrogenDioxide.getFluid(2000))
-        .outputFluids(DinitrogenTetroxide.getFluid(1000))
-        .save(provider);
-
-
-    // Rocket fuel chemicals
-    // 2NH3 + H2O2 = N2H4 + H2O
-    CHEMICAL_RECIPES.recipeBuilder("ammonia_hydrogen_peroxide_to_hydrazine_water").duration(320).EUt(30)
-        .inputFluids(Ammonia.getFluid(2000))
-        .inputFluids(HydrogenPeroxide.getFluid(1000))
-        .outputFluids(Hydrazine.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .save(provider);
-
-// Ca(OH)2 + 2HCl -> 2H2O + CaCl2
-    CHEMICAL_RECIPES.recipeBuilder("calcium_hydroxide_hydrochloric_acid_to_water_calcium_chloride")
-        .inputDust(CalciumHydroxide, 5)
-        .inputFluids(HydrochloricAcid.getFluid(2000))
-        .outputFluids(Water.getFluid(2000))
-        .outputDust(CalciumChloride, 3)
-        .EUt(120)
-        .duration(60)
-        .save(provider);
-
-
-    // O + CH3OH -> CH2O + H2O
-    CHEMICAL_RECIPES.recipeBuilder("oxygen_methanol_to_formaldehyde_water")
-        .notConsumable(dust, Silver)
-        .inputFluids(Oxygen.getFluid(1000))
-        .inputFluids(Methanol.getFluid(1000))
-        .outputFluids(Formaldehyde.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .EUt(30720)
-        .duration(200)
-        .save(provider);
-
-
-    // CH2O + C2H2 -> C3H4O
-    CHEMICAL_RECIPES.recipeBuilder("formaldehyde_acetylene_to_propargyl_alcohol")
-        .notConsumable(dust, Copper)
-        .inputFluids(Formaldehyde.getFluid(1000))
-        .inputFluids(Acetylene.getFluid(1000))
-        .outputFluids(PropargylAlcohol.getFluid(1000))
-        .EUt(120)
-        .duration(120)
-        .save(provider);
-
-
-    // C3H4O + HCl -> C3H3Cl + H2O
-    CHEMICAL_RECIPES.recipeBuilder("propargyl_alcohol_hydrochloric_acid_to_propargyl_chloride_water")
-        .inputFluids(PropargylAlcohol.getFluid(1000))
-        .inputFluids(HydrochloricAcid.getFluid(1000))
-        .outputFluids(PropargylChloride.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .EUt(120)
-        .duration(100)
-        .save(provider);
-
-
-    // C10H16 + H2SO4 -> C10H16 + H2SO4
-    CHEMICAL_RECIPES.recipeBuilder("turpentine_sulfuric_acid_to_beta_pinene_sulfuric_acid")
-        .inputFluids(Turpentine.getFluid(1000))
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, BetaPinene, 26))
-        .outputFluids(SulfuricAcid.getFluid(1000))
-        .EUt(480)
-        .duration(110)
-        .save(provider);
-
-
-    // C10H16 + 2C5H8 + 2O -> 2C10H16O
-    CHEMICAL_RECIPES.recipeBuilder("beta_pinene_isoprene_oxygen_to_citral")
-        .inputDust(BetaPinene, 26)
-        .inputFluids(Isoprene.getFluid(2000))
-        .inputFluids(Oxygen.getFluid(2000))
-        .outputFluids(Citral.getFluid(2000))
-        .EUt(480)
-        .duration(100)
-        .save(provider);
-
-
-    // C10H16O + C3H6O -> C13H20O + H2O
-    CHEMICAL_RECIPES.recipeBuilder("citral_acetone_to_beta_ionone_water")
-        .inputFluids(Citral.getFluid(1000))
-        .inputFluids(Acetone.getFluid(1000))
-        .outputFluids(BetaIonone.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .EUt(120)
-        .duration(250)
-        .save(provider);
-
-    // C2H4 + O -> C2H4O
-    CHEMICAL_RECIPES.recipeBuilder("ethylene_oxygen_to_ethylene_oxide")
-        .circuitMeta(10)
-        .inputFluids(Ethylene.getFluid(1000))
-        .inputFluids(Oxygen.getFluid(1000))
-        .outputFluids(EthyleneOxide.getFluid(1000))
-        .EUt(480)
-        .duration(100)
-        .save(provider);
-
-
-    // NH3 + C2H4O -> C2H7NO
-    CHEMICAL_RECIPES.recipeBuilder("ammonia_ethylene_oxide_to_ethanolamine")
-        .inputFluids(Ammonia.getFluid(1000))
-        .inputFluids(EthyleneOxide.getFluid(1000))
-        .outputFluids(Ethanolamine.getFluid(1000))
-        .EUt(7680)
-        .duration(60)
-        .save(provider);
-
-
-    // [H2SO4 + HNO3] + C6H6 -> C6H5NO2 + H2O + H2SO4
-    CHEMICAL_RECIPES.recipeBuilder("nitration_mixture_benzene_to_nitro_benzene_diluted_sulfuric_acid")
-        .inputFluids(NitrationMixture.getFluid(2000))
-        .inputFluids(Benzene.getFluid(1000))
-        .outputFluids(NitroBenzene.getFluid(1000))
-        .outputFluids(DilutedSulfuricAcid.getFluid(2000))
-        .EUt(30)
-        .duration(100)
-        .save(provider);
-
-
-    // 6H + C6H5NO2 -> C6H5NH2 + 2H2O
-    CHEMICAL_RECIPES.recipeBuilder("hydrogen_nitro_benzene_to_aniline_water")
-        .inputFluids(Hydrogen.getFluid(6000))
-        .inputFluids(NitroBenzene.getFluid(1000))
-        .notConsumable(dust, Zinc)
-        .outputFluids(Aniline.getFluid(1000))
-        .outputFluids(Water.getFluid(2000))
-        .EUt(30)
-        .duration(100)
-        .save(provider);
-
-
-    // Metal Rich Slag Slurry [Contains: H2O] + H3PO4 = Acidic Metal Slurry [Contains: H2O + H3PO4]
-    CHEMICAL_RECIPES.recipeBuilder("metal_rich_slag_slurry_phosphoric_acid_to_acidic_metal_slurry").duration(140).EUt(30)
-        .inputFluids(MetalRichSlagSlurry.getFluid(1000))
-        .inputFluids(PhosphoricAcid.getFluid(1000))
-        .outputFluids(AcidicMetalSlurry.getFluid(1000))
-        .save(provider);
-
-
-    // 2 Acidic Metal Slurry [Contains: H2O + H3PO4] + H3PO4 = Separated Metal Slurry [Contains: 3 H3PO4 + H2O] + Metal Rich Slag Slurry [Contains: H2O]
-    CHEMICAL_RECIPES.recipeBuilder("acidic_metal_slurry_phosphoric_acid_to_separated_metal_slurry_metal_rich_slag_slurry").duration(180).EUt(30)
-        .inputFluids(AcidicMetalSlurry.getFluid(2000))
-        .inputFluids(PhosphoricAcid.getFluid(1000))
-        .outputFluids(SeparatedMetalSlurry.getFluid(1000))
-        .outputFluids(MetalRichSlagSlurry.getFluid(1000))
-        .save(provider);
-
-
-    // Separated Metal Slurry [Contains: 3 H3PO4 + H2O] + 2NaOH = Metal Hydroxide Mix + Na2HPO4 + 2H2O
-    // 3 H3PO4 + 6 NaOH + H2O = 3 Na2HPO4 + 7 H2O
-    CHEMICAL_RECIPES.recipeBuilder("separated_metal_slurry_sodium_hydroxide_to_metal_hydroxide_mix_water_disodium_phosphate").duration(150).EUt(30)
-        .inputFluids(SeparatedMetalSlurry.getFluid(1000))
-        .inputDust(SodiumHydroxide, 18)
-        .outputFluids(MetalHydroxideMix.getFluid(1000))
-        .outputFluids(Water.getFluid(7000))
-        .outputItems(ChemicalHelper.get(dust, DisodiumPhosphate, 24))
-        .save(provider);
-
-    // Cadmium Zinc Dust [Contains: Cd + Zn + H2SO4] + Hg = Cadmium Thallium Liquor [Contains: Cd + Tl + H2SO4] + Zinc Amalgam [Contains: Zn + Hg]
-    CHEMICAL_RECIPES.recipeBuilder("cadmium_zinc_mercury_to_cadmium_thallium_liquor_zinc_amalgam").duration(140).EUt(120)
-        .inputDust(CadmiumZinc, 3)
-        .inputFluids(Mercury.getFluid(1000))
-        .outputFluids(CadmiumThalliumLiquor.getFluid(1000))
-        .outputFluids(ZincAmalgam.getFluid(1000))
-        .save(provider);
-
-
-// Thallium Residue [Contains: 2 Tl] + H2SO4 = Thallium Sulfate Solution [Contains: Tl2SO4]
-    CHEMICAL_RECIPES.recipeBuilder("thallium_residue_sulfuric_acid_water_to_thallium_sulfate_solution").duration(120).EUt(120)
-        .inputDust(ThalliumResidue)
-        .inputFluids(SulfuricAcid.getFluid(1000))
-        .inputFluids(Water.getFluid(1000))
-        .outputFluids(ThalliumSulfateSolution.getFluid(1000))
-        .save(provider);
-
-
-    // Thallium Sulfate Solution [Contains: Tl2SO4 + H2O] + 2 HCl  = 2TlCl + H2SO4 + H2O (because solution)
-    CHEMICAL_RECIPES.recipeBuilder("thallium_sulfate_solution_hydrochloric_acid_to_thallium_chloride_sulfuric_acid_water").duration(230).EUt(120)
-        .inputFluids(ThalliumSulfateSolution.getFluid(1000))
-        .inputFluids(HydrochloricAcid.getFluid(2000))
-        .outputItems(ChemicalHelper.get(dust, ThalliumChloride, 4))
-        .outputFluids(SulfuricAcid.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .save(provider);
-
-
-    // Na2CO3 + SO2 = Na2SO3 + CO2
-    CHEMICAL_RECIPES.recipeBuilder("soda_ash_sulfur_dioxide_to_sodium_sulfite_carbon_dioxide").duration(70).EUt(30)
-        .inputDust(SodaAsh, 6)
-        .inputFluids(SulfurDioxide.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, SodiumSulfite, 6))
-        .outputFluids(CarbonDioxide.getFluid(1000))
-        .save(provider);
-
-
-    // 2 Wood + Na2SO4 + H2O2 + [NaOH + H2O] = 2C6H10O5 + Polyphenol Mix
-    // This recipe is close enough
-    CHEMICAL_RECIPES.recipeBuilder("wood_sodium_sulfite_hydrogen_peroxide_sodium_hydroxide_solution_to_cellulose_polyphenol_mix").duration(90).EUt(30)
-        .inputDust(Wood, 2)
-        .inputDust(SodiumSulfite, 6)
-        .inputFluids(HydrogenPeroxide.getFluid(1000))
-        .inputFluids(SodiumHydroxideSolution.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, Cellulose, 42))
-        .outputFluids(PolyphenolMix.getFluid(1000))
-        .save(provider);
-
-
-    // Polyphenol Mix = Acidified Polyphenol Mix
-    CHEMICAL_RECIPES.recipeBuilder("polyphenol_mix_hydrochloric_acid_to_acidified_polyphenol_mix").duration(200).EUt(30)
-        .inputFluids(PolyphenolMix.getFluid(1000))
-        .inputFluids(HydrochloricAcid.getFluid(1000))
-        .outputFluids(AcidifiedPolyphenolMix.getFluid(1000))
-        .save(provider);
-
-
-    // 0.5(C2H5)2O + Acidified Polyphenol Mix = 1 Tannic Acid + 0.5 Wood Tar
-    CHEMICAL_RECIPES.recipeBuilder("diethylether_acidified_polyphenol_mix_to_tannic_acid_wood_tar").duration(100).EUt(120)
-        .inputFluids(Diethylether.getFluid(500))
-        .inputFluids(AcidifiedPolyphenolMix.getFluid(1000))
-        .outputFluids(TannicAcid.getFluid(1000))
-        .outputFluids(WoodTar.getFluid(500))
-        .save(provider);
-
-
-    // ZincLeachingResidue [Contains: (H2O)(H2SO4)] -> FeSO4 + 0.5H4GeO4
-    CHEMICAL_RECIPES.recipeBuilder("zinc_leaching_residue_tannic_acid_to_iron_sulfate_germanic_acid_solution").duration(100).EUt(480)
-        .inputDust(ZincLeachingResidue)
-        .inputFluids(TannicAcid.getFluid(1))
-        .outputItems(ChemicalHelper.get(dust, IronSulfate, 6))
-        .outputFluids(GermanicAcidSolution.getFluid(500))
-        .save(provider);
-
-
-// H4GeO4 + 4HCl = [GeCl4 + 4H2O]
-    CHEMICAL_RECIPES.recipeBuilder("germanic_acid_solution_hydrochloric_acid_to_germanium_chloride").duration(130).EUt(120)
-        .inputFluids(GermanicAcidSolution.getFluid(1000))
-        .inputFluids(HydrochloricAcid.getFluid(4000))
-        .outputFluids(GermaniumChloride.getFluid(1000))
-        .save(provider);
-
-
-    // Ba + H2O2 = Ba(OH)2
-    CHEMICAL_RECIPES.recipeBuilder("barium_hydrogen_peroxide_to_barium_hydroxide").duration(125).EUt(480)
-        .inputDust(Barium)
-        .inputFluids(HydrogenPeroxide.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, BariumHydroxide, 5))
-        .save(provider);
-
-
-    // 2C3H6O = C6H10O + H2O
-    CHEMICAL_RECIPES.recipeBuilder("acetone_to_mesityl_oxide_water").duration(100).EUt(120)
-        .notConsumable(ChemicalHelper.get(dust, BariumHydroxide))
-        .inputFluids(Acetone.getFluid(2000))
-        .outputFluids(MesitylOxide.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .save(provider);
-
-
-    // C6H10O + C + H2O = C6H12O + CO
-    CHEMICAL_RECIPES.recipeBuilder("carbon_mesityl_oxide_water_to_methyl_isobutyl_ketone_carbon_monoxide").duration(130).EUt(480)
-        .notConsumable(ChemicalHelper.get(dust, PdCCatalyst))
-        .inputDust(Carbon)
-        .inputFluids(MesitylOxide.getFluid(1000))
-        .inputFluids(Water.getFluid(1000))
-        .outputFluids(MethylIsobutylKetone.getFluid(1000))
-        .outputFluids(CarbonMonoxide.getFluid(1000))
-        .save(provider);
-
-
-    // S + HCN = HSCN
-    CHEMICAL_RECIPES.recipeBuilder("sulfur_hydrogen_cyanide_to_thiocyanic_acid").duration(100).EUt(120)
-        .inputDust(Sulfur)
-        .inputFluids(HydrogenCyanide.getFluid(1000))
-        .outputFluids(ThiocyanicAcid.getFluid(1000))
-        .save(provider);
-
-
-    // ZrSiO4 + 8Cl = ZrHfCl4 + SiCl4?
-    CHEMICAL_RECIPES.recipeBuilder("zircon_chlorine_to_zr_hf_chloride_zircon_chlorinating_residue").duration(120).EUt(120)
-        .inputDust(Zircon, 6)
-        .inputFluids(Chlorine.getFluid(8000))
-        .outputFluids(ZrHfChloride.getFluid(1000))
-        .outputFluids(ZirconChlorinatingResidue.getFluid(1000))
-        .save(provider);
-
-
-    // ZrHfCl4 + H2O = Cl2HfOZr + 2HCl
-    CHEMICAL_RECIPES.recipeBuilder("water_zr_hf_chloride_to_zr_hf_oxy_chloride_hydrochloric_acid").duration(100).EUt(480)
-        .inputFluids(Water.getFluid(1000))
-        .inputFluids(ZrHfChloride.getFluid(1000))
-        .outputFluids(ZrHfOxyChloride.getFluid(1000))
-        .outputFluids(HydrochloricAcid.getFluid(2000))
-        .save(provider);
-
-    // C + 4Cl + ZrO2 = CO2 + ZrCl4
-    CHEMICAL_RECIPES.recipeBuilder("carbon_chlorine_cubic_zirconia_to_carbon_dioxide_zirconium_tetrachloride").duration(150).EUt(480)
-        .inputDust(Carbon)
-        .inputFluids(Chlorine.getFluid(4000))
-        .inputDust(CubicZirconia, 3)
-        .outputFluids(CarbonDioxide.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, ZirconiumTetrachloride, 5))
-        .save(provider);
-
-
-    // C + 4Cl + HfO2 = CO2 + HfCl4
-    CHEMICAL_RECIPES.recipeBuilder("carbon_chlorine_hafnium_oxide_to_carbon_dioxide_hafnium_chloride").duration(150).EUt(120)
-        .inputDust(Carbon)
-        .inputFluids(Chlorine.getFluid(4000))
-        .inputDust(HafniumOxide, 3)
-        .outputFluids(CarbonDioxide.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, HafniumChloride, 5))
-        .save(provider);
-
-
-    // C8H10 + O + 2Br -> C8H8Br2 + H2O
-    CHEMICAL_RECIPES.recipeBuilder("para_xylene_oxygen_bromine_to_dibromomethylbenzene_water")
-        .inputFluids(ParaXylene.getFluid(1000))
-        .inputFluids(Oxygen.getFluid(1000))
-        .inputFluids(Bromine.getFluid(2000))
-        .outputFluids(Dibromomethylbenzene.getFluid(1000))
-        .outputFluids(Water.getFluid(1000))
-        .EUt(7680)
-        .duration(150)
-        .save(provider);
-
-    // HCl + C3H6 -> C3H7Cl
-    CHEMICAL_RECIPES.recipeBuilder("hydrochloric_acid_propene_to_isochloropropane")
-        .inputFluids(HydrochloricAcid.getFluid(1000))
-        .inputFluids(Propene.getFluid(1000))
-        .outputFluids(Isochloropropane.getFluid(1000))
-        .EUt(480)
-        .duration(110)
-        .save(provider);
-
-    // C2H2O + CH3COOH -> C4H6O3
-    CHEMICAL_RECIPES.recipeBuilder("ethenone_acetic_acid_to_acetic_anhydride")
-        .inputFluids(Ethenone.getFluid(1000))
-        .inputFluids(AceticAcid.getFluid(1000))
-        .outputFluids(AceticAnhydride.getFluid(1000))
-        .EUt(480)
-        .duration(80)
-        .save(provider);
-
-    // C12H16O2(NO2)2 + C8H6O2 -> C20H22N2O2 + 6O
-    CHEMICAL_RECIPES.recipeBuilder("dinitrodipropanyloxybenzene_terephthalaldehyde_to_pre_zylon_oxygen")
-        .inputFluids(Dinitrodipropanyloxybenzene.getFluid(1000))
-        .inputDust(Terephthalaldehyde, 16)
-        .notConsumable(ChemicalHelper.get(dust, AuPdCCatalyst))
-        .outputItems(ChemicalHelper.get(dust, PreZylon))
-        .outputFluids(Oxygen.getFluid(6000))
-        .EUt(1966080)
-        .duration(50)
-        .save(provider);
 
 
     // NH4NO3 + 2 SO2 + 3 H2O + 2 NH3 = [(NH3OH)2SO4 + (NH4)2SO4]
@@ -4596,8 +4567,8 @@ public class ChemicalReactorRecipes {
         .inputFluids(Phenylpentanoicacid.getFluid(2000))
         .inputFluids(Dimethylsulfide.getFluid(1000))
         .inputFluids(Chlorobenzene.getFluid(2000))
-        .inputFluids(BenzoylPeroxide.getFluid(1000)  
-            .outputFluids(Toluene.getFluid(2000))
+        .inputFluids(BenzoylPeroxide.getFluid(1000))
+        .outputFluids(Toluene.getFluid(2000))
         .outputFluids(HydrogenSulfide.getFluid(1000))
         .outputFluids(HydrochloricAcid.getFluid(2000))
         .outputFluids(PCBA.getFluid(2000))
@@ -5014,7 +4985,7 @@ public class ChemicalReactorRecipes {
         .inputFluids(Aminophenol.getFluid(1000))
         .inputFluids(Glycerol.getFluid(1000))
         .inputFluids(Oxygen.getFluid(1000))
-        .inputFluids(NitroBenzene.getFluid(1000))
+        .inputFluids(Nitrobenzene.getFluid(1000))
         .outputFluids(Hydroxyquinoline.getFluid(1000))
         .outputFluids(Water.getFluid(4000))
         .save(provider);
@@ -5102,7 +5073,7 @@ public class ChemicalReactorRecipes {
         .inputFluids(HydrogenCyanide.getFluid(3000))
         .inputFluids(Water.getFluid(3000))
         .notConsumable(dust, PotassiumDichromate)
-        .circuitMeta(1000)
+        .circuitMeta(32)
         .outputFluids(CitricAcid.getFluid(1000))
         .outputFluids(AmmoniumChloride.getFluid(3000))
         .save(provider);

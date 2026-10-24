@@ -1,16 +1,10 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 
@@ -910,7 +904,7 @@ public class ElectricBlastFurnace {
 
     // [UO2(NO3)2 + Th(NO3)4] + 2H -> [UO2 + Th(NO3)4] + 2HNO3
     BLAST_RECIPES.recipeBuilder("uranyl_thorium_nitrate_hydrogen_to_uranium_oxide_thorium_nitrate_nitric_acid").duration(200).EUt(120).blastFurnaceTemp(500)
-        .inputDust(UranylThoriumNitrate, 26)
+        .inputDust(UraniumThoriumNitrate, 26)
         .inputFluids(Hydrogen.getFluid(2000))
         .outputItems(ChemicalHelper.get(dust, UraniumOxideThoriumNitrate, 18))
         .outputFluids(NitricAcid.getFluid(2000))
