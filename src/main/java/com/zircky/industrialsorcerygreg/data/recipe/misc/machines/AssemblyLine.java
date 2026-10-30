@@ -1,6 +1,10 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
+import com.gregtechceu.gtceu.api.GTValues;
+import com.gregtechceu.gtceu.common.data.GCYMBlocks;
+import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTItems;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 
@@ -16,6 +20,7 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.zircky.industrialsorcerygreg.common.data.ISGCasings;
 import com.zircky.industrialsorcerygreg.common.data.ISGItems;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
+import com.zircky.industrialsorcerygreg.common.data.machines.ISGMultiMachines;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -296,6 +301,27 @@ public class AssemblyLine {
         .inputItems(plate, ElectronDegenerateRhenium, 4)
         .inputItems(GTItems.EMITTER_UHV, 2)
         .outputItems(TIME_DILATION_CONTAINMENT_UNIT.asStack(4))
+        .save(provider);
+
+    ASSEMBLY_LINE_RECIPES
+        .recipeBuilder("singularity_controller")
+        .inputItems(GCYMBlocks.CASING_ATOMIC.asStack(), 8)
+        .inputItems(GTBlocks.FUSION_COIL.asStack(), 8)
+        .inputItems(GTItems.FIELD_GENERATOR_UV, 4)
+        .inputItems(GTItems.EMITTER_UV, 4)
+        .inputItems(GTItems.SENSOR_UV, 4)
+        .inputItems(GTItems.GRAVI_STAR, 2)
+        .inputItems(CustomTags.UV_CIRCUITS, 4)
+        .inputItems(ISGTagPrefix.superdensePlate, Neutronium, 8)
+        .inputFluids(GTMaterials.SolderingAlloy.getFluid(2304))
+        .inputFluids(GTMaterials.Naquadria.getFluid(576))
+        .outputItems(ISGMultiMachines.SINGULARITY_COMPRESSOR.asStack())
+        .stationResearch(builder -> builder
+            .researchStack(GTItems.GRAVI_STAR.asStack())
+            .CWUt(64)
+            .EUt(GTValues.VA[GTValues.UV]))
+        .duration(2400)
+        .EUt(GTValues.VA[GTValues.UV])
         .save(provider);
 //
 //             ASSEMBLY_LINE_RECIPES.recipeBuilder("tritanium_naquadah_alloy_uev_superconductor_qcd_protective_plating_field_generator_uhv_charged_lepton_trap_crystal_to_time_dilation_containment_unit").duration(100).EUt(12800000)

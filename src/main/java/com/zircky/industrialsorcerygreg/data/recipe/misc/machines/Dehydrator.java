@@ -77,6 +77,21 @@ public class Dehydrator {
         .duration(100)
         .save(provider);
 
+    // [NaNO3·KNO3·KCl·NaOH + H2O] = NaNO3 + KNO3 + KCl + NaOH + H2O (Water voided - Dehydrator)
+    DEHYDRATOR_RECIPES.recipeBuilder("sodium_nitrate").duration(120).EUt(30)
+        .inputFluids(CalicheNitrateSolution.getFluid(1000))
+        .outputDust(SodiumNitrate, 5)
+        .outputDust(Niter, 5)
+        .outputDust(RockSalt, 2)
+        .outputDust(SodiumHydroxide, 3)
+        .save(provider);
+
+    // I? = I
+    DEHYDRATOR_RECIPES.recipeBuilder("iodine").duration(200).EUt(7680)
+        .inputFluids(IodineSlurry.getFluid(1000))
+        .outputDust(Iodine)
+        .save(provider);
+
     testRecipes(provider);
   }
 

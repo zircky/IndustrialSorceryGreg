@@ -15,7 +15,6 @@ import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.common.data.ISGCasings;
 import com.zircky.industrialsorcerygreg.common.data.ISGItems;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
-import earth.terrarium.adastra.common.registry.ModItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -30,57 +29,6 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.ASSEMB
 
 public class AssemblerRecipes {
   public static void init(Consumer<FinishedRecipe> provider) {
-    ASSEMBLER_RECIPES.recipeBuilder(ISGCore.id("space_nanomuscle_chestplate"))
-        .inputItems(GTItems.NANO_CHESTPLATE)
-        .inputItems(ModItems.OXYGEN_GEAR)
-        .inputItems(ModItems.LARGE_GAS_TANK, 2)
-        .inputItems(GTItems.FLUID_CELL_LARGE_ALUMINIUM.asStack())
-        .inputItems(GTItems.ELECTRIC_PUMP_HV, 2)
-        .inputItems(GTItems.SENSOR_HV.asStack())
-        .inputItems(plate, GTMaterials.SterlingSilver, 4)
-        .outputItems(ISGItems.SPACE_NANOMUSCLE_CHESTPLATE)
-        .inputFluids(GTMaterials.StainlessSteel, 288)
-        .EUt(VA[GTValues.HV]).duration(800).save(provider);
-
-    ASSEMBLER_RECIPES.recipeBuilder(ISGCore.id("space_advanced_nanomuscle_chestplate"))
-        .inputItems(GTItems.NANO_CHESTPLATE_ADVANCED)
-        .inputItems(ModItems.OXYGEN_DISTRIBUTOR)
-        .inputItems(ModItems.LARGE_GAS_TANK, 2)
-        .inputItems(GTItems.FLUID_CELL_LARGE_STAINLESS_STEEL)
-        .inputItems(GTItems.ELECTRIC_PUMP_EV, 2)
-        .inputItems(GTItems.SENSOR_EV)
-        .inputItems(plate, GTMaterials.Chromium, 4)
-        .outputItems(ISGItems.SPACE_ADVANCED_NANOMUSCLE_CHESTPLATE.asItem())
-        .inputFluids(GTMaterials.Titanium, 288)
-        .EUt(VA[GTValues.EV]).duration(800).save(provider);
-
-    ASSEMBLER_RECIPES.recipeBuilder(ISGCore.id("space_quarktech_chestplate"))
-        .inputItems(GTItems.QUANTUM_CHESTPLATE)
-        .inputItems(ModItems.OXYGEN_DISTRIBUTOR, 2)
-        .inputItems(ModItems.LARGE_GAS_TANK, 2)
-        .inputItems(GTItems.FLUID_CELL_LARGE_TITANIUM)
-        .inputItems(GTItems.ELECTRIC_PUMP_IV, 2)
-        .inputItems(GTItems.SENSOR_IV)
-        .inputItems(GTItems.FIELD_GENERATOR_IV)
-        .inputItems(plate, GTMaterials.Ruthenium, 4)
-        .outputItems(ISGItems.SPACE_QUARKTECH_CHESTPLATE.asItem())
-        .inputFluids(GTMaterials.TungstenSteel, 576)
-        .EUt(VA[GTValues.IV]).duration(800).save(provider);
-
-    ASSEMBLER_RECIPES.recipeBuilder(ISGCore.id("space_advanced_quarktech_chestplate"))
-        .inputItems(GTItems.QUANTUM_CHESTPLATE_ADVANCED)
-        .inputItems(ModItems.OXYGEN_DISTRIBUTOR, 4)
-        .inputItems(ModItems.LARGE_GAS_TANK, 2)
-        .inputItems(GTItems.FLUID_CELL_LARGE_TUNGSTEN_STEEL)
-        .inputItems(GTItems.ELECTRIC_PUMP_LuV, 2)
-        .inputItems(GTItems.SENSOR_LuV, 4)
-        .inputItems(GTItems.FIELD_GENERATOR_ZPM)
-        .inputItems(plate, Trinium, 4)
-        .outputItems(ISGItems.SPACE_ADVANCED_QUARKTECH_CHESTPLATE.asItem())
-        .inputFluids(GTMaterials.RhodiumPlatedPalladium, 2304)
-        .EUt(VA[GTValues.ZPM]).duration(800).save(provider);
-
-
     ASSEMBLER_RECIPES.recipeBuilder("uruium_coil_block")
         .inputItems(TagPrefix.wireGtDouble, ISGMaterials.Uruium, 64)
         .inputItems(TagPrefix.wireGtDouble, ISGMaterials.Uruium, 64)

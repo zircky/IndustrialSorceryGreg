@@ -60,8 +60,8 @@ public class ChemicalBath {
     CHEMICAL_BATH_RECIPES.recipeBuilder("sugar_water_to_glucose_fructose").duration(300).EUt(480)
         .inputDust(Sugar, 2)
         .inputFluids(Water.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, Glucose, 24))
-        .outputItems(ChemicalHelper.get(dust, Fructose, 24))
+        .outputItems(dust, Glucose, 6)
+        .outputItems(dust, Fructose, 6)
         .save(provider);
 
 

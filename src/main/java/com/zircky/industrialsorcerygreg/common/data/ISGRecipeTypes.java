@@ -326,6 +326,12 @@ public class ISGRecipeTypes {
       .setEUIO(IO.IN)
       .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_ARROW));
 
+  public static final ISGRecipeType SINGULARITY_COMPRESSION_RECIPES = (ISGRecipeType) ISGRecipeType.register("singularity_compression", MULTIBLOCK)
+      .setMaxIOSize(1, 1, 0, 0)
+      .setEUIO(IO.IN)
+      .UI(builder -> builder.setProgressBar(GTGuiTextures.PROGRESS_COMPRESS))
+      .setSound(GTSoundEntries.COMPRESSOR);
+
   public static final ISGRecipeType TEST_RECIPES = ((ISGRecipeType) ISGRecipeType.register("test", MULTIBLOCK)
       .setMaxIOSize(6, 6, 6, 6)
       .setEUIO(IO.IN)

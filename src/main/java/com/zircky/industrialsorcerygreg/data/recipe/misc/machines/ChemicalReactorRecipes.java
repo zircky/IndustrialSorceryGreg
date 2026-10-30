@@ -28,21 +28,22 @@ public class ChemicalReactorRecipes {
   public static void init(Consumer<FinishedRecipe> provider) {
     recipesChem(provider);
     recipesLargeChemical(provider);
-//    testRecipes(provider);
+    testRecipes(provider);
+    recipesChemicalPlant(provider);
   }
 
   private static void recipesChem(Consumer<FinishedRecipe> provider) {
     CHEMICAL_RECIPES.recipeBuilder("manganese_oxide_dioxide")
-        .inputDust(ISGMaterials.ManganeseOxide)
-        .inputFluids(GTMaterials.Oxygen.getFluid(1000))
-        .outputDust(ISGMaterials.ManganeseDioxide)
-        .duration(230).EUt(GTValues.VA[GTValues.HV]).save(provider);
+        .inputDust(ManganeseOxide)
+        .inputFluids(Oxygen.getFluid(1000))
+        .outputDust(ManganeseDioxide)
+        .duration(230).EUt(VA[HV]).save(provider);
 
     CHEMICAL_RECIPES.recipeBuilder("manganese_dioxide")
-        .inputDust(GTMaterials.Manganese)
-        .inputFluids(GTMaterials.Oxygen.getFluid(2000))
-        .outputDust(ISGMaterials.ManganeseDioxide)
-        .duration(230).EUt(GTValues.VA[GTValues.EV]).save(provider);
+        .inputDust(Manganese)
+        .inputFluids(Oxygen.getFluid(2000))
+        .outputDust(ManganeseDioxide)
+        .duration(230).EUt(VA[EV]).save(provider);
 
     // 3HCl + Fl -> FlCl3 + 3H
     CHEMICAL_RECIPES.recipeBuilder("trichloroferane").duration(150).EUt(VA[IV])
@@ -348,7 +349,7 @@ public class ChemicalReactorRecipes {
     // 2C6H5NH2 + C2H5OH -> C12H12N2O + 2CH4
     CHEMICAL_RECIPES.recipeBuilder("oxydianiline")
         .notConsumableDust(Tin)
-        .notConsumableDust(HydrochloricAcid)
+        .notConsumableFluid(HydrochloricAcid.getFluid(1000))
         .inputFluids(Aniline.getFluid(2000))
         .inputFluids(Phenol.getFluid(1000))
         .outputFluids(Oxydianiline.getFluid(1000))
@@ -3630,6 +3631,43 @@ public class ChemicalReactorRecipes {
         .EUt(1966080)
         .duration(50)
         .save(provider);
+
+    CHEMICAL_RECIPES.recipeBuilder("ortho_xylene")
+        .inputFluids(Toluene.getFluid(1000))
+        .inputFluids(Methanol.getFluid(1000))
+        .outputFluids(OrthoXylene.getFluid(1000))
+        .outputFluids(Water.getFluid(1000))
+        .EUt(120)
+        .duration(800)
+        .save(provider);
+
+    // 6O + C8H10 -> 2H2O + C8H6O4
+    CHEMICAL_RECIPES.recipeBuilder("phthalic_acid")
+        .notConsumable(dust, PotassiumDichromate)
+        .inputFluids(Oxygen.getFluid(6000))
+        .inputFluids(OrthoXylene.getFluid(1000))
+        .outputFluids(Water.getFluid(2000))
+        .outputFluids(PhthalicAcid.getFluid(1000))
+        .EUt(1920)
+        .duration(100)
+        .save(provider);
+
+    // [NaNO3·KNO3·KCl·NaIO3 + H2O] + 3H2O + 3SO2 = [NaNO3·KNO3·KCl·NaI + H2O] + 3H2SO4
+    CHEMICAL_RECIPES.recipeBuilder("iodide_solution").duration(160).EUt(120)
+        .inputFluids(CalicheIodateBrine.getFluid(1000))
+        .inputFluids(SulfurDioxide.getFluid(3000))
+        .inputFluids(Water.getFluid(3000))
+        .outputFluids(IodideSolution.getFluid(1000))
+        .outputFluids(SulfuricAcid.getFluid(3000))
+        .save(provider);
+
+    // [NaNO3·KNO3·KCl·NaOH + H2O + I] +  Kerosene ->  [NaNO3·KNO3·KCl·NaOH + H2O] + [Kerosene + I]
+    CHEMICAL_RECIPES.recipeBuilder("caliche_nitrate_solution").duration(90).EUt(480)
+        .inputFluids(CalicheIodineBrine.getFluid(1000))
+        .inputFluids(Kerosene.getFluid(1000))
+        .outputFluids(CalicheNitrateSolution.getFluid(1000))
+        .outputFluids(KeroseneIodineSolution.getFluid(1000))
+        .save(provider);
   }
 
   private static void recipesLargeChemical(Consumer<FinishedRecipe> provider) {
@@ -4269,41 +4307,6 @@ public class ChemicalReactorRecipes {
     //                 .save(provider);
     //
     //
-    //
-    //    // Naquadric Compound [Nq] + KHSO5 + 2H -> Nq + KOH + H2SO4
-    //    CHEMICAL_PLANT_RECIPES.recipeBuilder("naquadric_compound_potassium_peroxymonosulfate_hydrogen_to_naquadah_potassium_hydroxide_sulfuric_acid").duration(20).EUt(GAValues.VA[GAValues.UHV]) // UHV
-    //        .inputDust(NaquadricCompound)
-    //        .inputDust(PotassiumPeroxymonosulfate, 8)
-    //        .inputFluids(Hydrogen.getFluid(2000))
-    //        .outputDust(Naquadah)
-    //        .outputFluids(PotassiumHydroxide.getFluid(1000))
-    //        .outputFluids(SulfuricAcid.getFluid(1000))
-    //        .save(provider);
-
-    //    // Enriched Naquadric Compound [Nq+] + Au2Cl6 + Xe + 3O -> Nq+ + 2Au + 6Cl + XeO3
-    //    CHEMICAL_PLANT_RECIPES.recipeBuilder("enriched_naquadric_compound_auric_chloride_xenon_oxygen_to_naquadah_enriched_gold_chlorine_xenon_trioxide").duration(20).EUt(GAValues.VA[GAValues.UHV])// UHV
-    //        .inputDust(EnrichedNaquadricCompound)
-    //        .inputFluids(AuricChloride.getFluid(1000))
-    //        .inputFluids(Xenon.getFluid(1000))
-    //        .inputFluids(Oxygen.getFluid(3000))
-    //        .outputDust(NaquadahEnriched)
-    //        .outputDust(Gold, 2)
-    //        .outputFluids(Chlorine.getFluid(6000))
-    //        .outputFluids(XenonTrioxide.getFluid(1000))
-    //        .save(provider);
-
-
-  //    // Naquadriatic Compound [*Nq*] + Rn + Xe + 6O -> *Nq* + RnO3 + XeO3
-  //    // TODO migrated disabled: unresolved old test symbol `Polystyrene`.
-  //             CHEMICAL_PLANT_RECIPES.recipeBuilder("naquadriatic_compound_radon_xenon_oxygen_to_naquadria_radon_trioxide_xenon_trioxide").duration(20).EUt(GAValues.VA[GAValues.UHV])// UHV
-  //                     .inputDust(NaquadriaticCompound)
-  //                     .inputFluids(Radon.getFluid(1000))
-  //                     .inputFluids(Xenon.getFluid(1000))
-  //                     .inputFluids(Oxygen.getFluid(6000))
-  //                     .outputDust(Naquadria)
-  //                     .outputFluids(RadonTrioxide.getFluid(1000))
-  //                     .outputFluids(XenonTrioxide.getFluid(1000))
-  //                     .save(provider);
 
   // 2C6H6 + 8O + 2C2H4 + C3H6 -> C2H4O + CO2 + 3H2O (gtce epoxy is not balanced)
 
@@ -4328,7 +4331,6 @@ public class ChemicalReactorRecipes {
     //                 .save(provider);
     //
     //
-    //
     // TODO migrated disabled: unresolved old test symbol `LEPTON_TRAP_CRYSTAL`.
     //
     //         CHEMICAL_RECIPES.recipeBuilder("lepton_trap_crystal_vibranium_heavy_lepton_mix_free_electron_gas_to_charged_lepton_trap_crystal").duration(240).EUt(491520)
@@ -4351,8 +4353,6 @@ public class ChemicalReactorRecipes {
     //                 .EUt(200)
     //                 .save(provider);
     //
-    //
-    // TODO migrated disabled: unresolved old test symbol `WHITE_HALIDE_LAMP`.
     //         CHEMICAL_RECIPES.recipeBuilder("graphene_oxide_hydrazine_to_graphene").duration(30).EUt(480)
     //                 .inputDust(GrapheneOxide, 3)
     //                 .notConsumable(WHITE_HALIDE_LAMP.asStack())

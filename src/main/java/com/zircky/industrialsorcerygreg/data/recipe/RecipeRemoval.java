@@ -5,8 +5,11 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Consumer;
 
+import static com.zircky.industrialsorcerygreg.data.recipe.generated.ForEachMaterial.removeMaterialInit;
+
 public class RecipeRemoval {
   public static void init(Consumer<ResourceLocation> consumer) {
+    removeMaterialInit(consumer);
     consumer.accept(GTCEu.id("assembler/casing_ulv"));
     consumer.accept(GTCEu.id("assembler/casing_lv"));
     consumer.accept(GTCEu.id("assembler/casing_mv"));
@@ -156,6 +159,12 @@ public class RecipeRemoval {
     consumer.accept(GTCEu.id("large_chemical_reactor/antimony_trioxide"));
     consumer.accept(GTCEu.id("electric_blast_furnace/nickel_zinc_ferrite"));
     consumer.accept(GTCEu.id("alloy_blast_smelter/nickel_zinc_ferrite"));
+    consumer.accept(GTCEu.id("large_chemical_reactor/epoxy_shortcut"));
+    consumer.accept(GTCEu.id("large_chemical_reactor/epoxy_from_bisphenol_a"));
+    consumer.accept(GTCEu.id("chemical_reactor/epoxy_from_bisphenol_a"));
+    consumer.accept(GTCEu.id("mixer/graphene"));
+    consumer.accept(GTCEu.id("large_chemical_reactor/polybenzimidazole"));
+    consumer.accept(GTCEu.id("chemical_reactor/polybenzimidazole"));
 
   }
 }

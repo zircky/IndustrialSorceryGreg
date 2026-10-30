@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
+import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
 import com.gregtechceu.gtceu.api.fluids.FluidState;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
@@ -10,6 +11,7 @@ import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
@@ -172,14 +174,6 @@ public final class ChemicalFluidMaterials {
         .flags(DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
-    Diphenylisophtalate = builderISG("diphenylisophtalate")
-        .fluid()
-        .color(0x246E57)
-        .iconSet(DULL)
-        .components(GTMaterials.Carbon, 20, GTMaterials.Hydrogen, 14, GTMaterials.Oxygen, 4)
-        .flags(DISABLE_DECOMPOSITION)
-        .buildAndRegister();
-
     SodiumTungstate = builderISG("sodium_tungstate")
         .fluid()
         .color(0x7a7777)
@@ -291,7 +285,8 @@ public final class ChemicalFluidMaterials {
         .dust(2)
         .color(0x6B5E6A)
         .iconSet(DULL)
-        .components(GTMaterials.Calcium, 2, GTMaterials.Thorium, 2, GTMaterials.Cerium, 1, GTMaterials.Zirconium, 7, GTMaterials.Rutile, 6, GTMaterials.Niobium, 4, GTMaterials.Oxygen, 10)
+        .components(Calcium, 2, Thorium, 2, Cerium, 1, Zirconium, 7, Rutile, 6, Niobium, 4, GTMaterials.Oxygen, 10)
+        .addOreByproducts(Thorium, Zirconium, Cerium)
         .buildAndRegister();
 
     PlatinumResidue = builderISG("platinum_residue")
@@ -309,6 +304,7 @@ public final class ChemicalFluidMaterials {
         .iconSet(ROUGH)
         .components(GTMaterials.Iridium, 2, GTMaterials.Oxygen, 4, GTMaterials.SiliconDioxide, 2, GTMaterials.Gold, 3)
         .flags(DISABLE_DECOMPOSITION)
+        .addOreByproducts(PlatinumMetallicPowder, RarestMetalResidue)
         .buildAndRegister();
 
     Triniite = builderISG("triniite")
@@ -318,6 +314,7 @@ public final class ChemicalFluidMaterials {
         .iconSet(SHINY)
         .components(GTMaterials.Trinium, 3, GTMaterials.Actinium, 3, GTMaterials.Selenium, 4, GTMaterials.Astatine, 4)
         .flags(DISABLE_DECOMPOSITION)
+        .addOreByproducts(NaquadriaOxideMixture, Bismuth, Thallium)
         .buildAndRegister();
 
     SilverOxide = builderISG("silver_oxide")
@@ -3677,39 +3674,28 @@ public final class ChemicalFluidMaterials {
         .iconSet(FLUID)
         .buildAndRegister();
 
-    Rawneutronium = builderISG("rawneutronium")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID).dust()
-        .color(0x734ca4)
+    RawNeutronium = builderISG("raw_neutronium")
+        .dust()
+        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .liquid(new FluidBuilder()
+            .temperature(293)
+            .color(Neutronium.getMaterialARGB() + Helium.getMaterialARGB())
+            .name("liquid_raw_neutronium")
+            .translation("gtceu.fluid.liquid_generic"))
+        .color(Neutronium.getMaterialARGB() + Helium.getMaterialARGB())
         .iconSet(DULL)
         .buildAndRegister();
+    RawNeutronium.getProperty(PropertyKey.FLUID).setPrimaryKey(FluidStorageKeys.MOLTEN);
 
-    Hyperreactiveliquid = builderISG("hyperreactiveliquid")
-        .fluid()
+    LiquidHyperReactive = builderISG("liquid_hyper_reactive")
+        .liquid()
         .color(0x773693)
         .iconSet(FLUID)
         .buildAndRegister();
 
-    Lanthanumfullerenenanotubes = builderISG("lanthanumfullerenenanotubes")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
-        .color(0x6099C4)
-        .iconSet(FLUID)
-        .buildAndRegister();
-
-    Actiniumsuperhydride = builderISG("actiniumsuperhydride")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
-        .color(0x8c273f)
-        .iconSet(FLUID)
-        .buildAndRegister();
-
-    Rheniumhassiumthalliumisophtaloylbisdiethylthiourea = builderISG("rheniumhassiumthalliumisophtaloylbisdiethylthiourea")
+    RheniumHassiumThalliumIsophtaloylbisdiethylthiourea = builderISG("rhenium_hassium_thallium_isophtaloylbisdiethylthiourea")
         .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
         .color(0x85428a)
-        .iconSet(FLUID)
-        .buildAndRegister();
-
-    Chargedcesiumceriumcobaltindium = builderISG("chargedcesiumceriumcobaltindium")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
-        .color(0x296b0a)
         .iconSet(FLUID)
         .buildAndRegister();
 
@@ -3811,12 +3797,6 @@ public final class ChemicalFluidMaterials {
         .iconSet(FLUID)
         .buildAndRegister();
 
-    Liquidrawneutronium = builderISG("liquidrawneutronium")
-        .fluid()
-        .color(0xF5F2D6)
-        .iconSet(FLUID)
-        .buildAndRegister();
-
     Photopolymer = builderISG("photopolymer")
         .fluid()
         .color(0x4CAF50)
@@ -3911,12 +3891,6 @@ public final class ChemicalFluidMaterials {
     Aluminosilicatewoolsolution = builderISG("aluminosilicatewoolsolution")
         .fluid()
         .color(0x8A8A8A)
-        .iconSet(FLUID)
-        .buildAndRegister();
-
-    RadioactiveSludge = builderISG("radioactive_sludge")
-        .fluid()
-        .color(0x495B49)
         .iconSet(FLUID)
         .buildAndRegister();
 

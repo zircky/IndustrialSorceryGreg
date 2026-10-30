@@ -47,5 +47,26 @@ public class ISGMaterialFlagAddition {
     oreProperty = Iridium.getProperty(PropertyKey.ORE);
     oreProperty.setOreByProducts(PlatinumMetallicPowder, RarestMetalResidue, PlatinumMetallicPowder, RarestMetalResidue);
     oreProperty.setWashedIn(Mercury);
+
+    oreProperty = Bornite.getProperty(PropertyKey.ORE);
+    oreProperty.getOreByProducts().clear();
+    oreProperty.setOreByProducts(Pyrite, Cobalt, Cadmium, PreciousMetal);
+    oreProperty.setWashedIn(Mercury);
+    oreProperty.setDirectSmeltResult(Copper);
+
+    oreProperty = Chalcopyrite.getProperty(PropertyKey.ORE);
+    oreProperty.getOreByProducts().clear();
+    oreProperty.setOreByProducts(Pyrite, Cobalt, Cadmium, PreciousMetal);
+    oreProperty.setWashedIn(Mercury);
+    oreProperty.setDirectSmeltResult(Copper);
+
+    oreProperty = Magnetite.getProperty(PropertyKey.ORE);
+    oreProperty.setOreByProducts(Iron, PreciousMetal);
+    oreProperty.setSeparatedInto(PreciousMetal);
+    oreProperty.setWashedIn(Mercury);
+    oreProperty.setDirectSmeltResult(Iron);
+
+    oreProperty = Prasiolite.getProperty(PropertyKey.ORE);
+    oreProperty.addOreByProducts(Prasiolite, Iron, SiliconDioxide);
   }
 }

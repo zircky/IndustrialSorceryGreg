@@ -17,16 +17,19 @@
     "gregtech.GTValuesAccessor",
     "gregtech.MEPatternBufferPartMachineMixin",
     "gregtech.RecipeLogicMixin",
-    "gregtech.item.ComponentItemMixin",
     "gregtech.chemical.TagPrefixItemMixin",
+    "gregtech.item.ComponentItemMixin",
+    "gregtech.item.ItemModuleMixin",
+    "gregtech.recipe.RecyclingRecipesMixin",
+    "minecraft.ItemMixin",
     "nuclearcraft.NuclearCraftBEMixin"
   ],
   "client": [
     "adastra.AdAstraClientMixin",
     "adastra.AdAstraOverlayScreenMixin",
     "ae2.AE2SearchFillMixin",
-//    "emi.EmiSearchDragFillMixin",
-//    "emi.EmiSearchFillMixin",
+    //    "emi.EmiSearchDragFillMixin",
+    //    "emi.EmiSearchFillMixin",
     "modularui.OverlayStackMixin"
   ],
   "injectors": {

@@ -2,7 +2,8 @@ package com.zircky.industrialsorcerygreg.mixin.adastra;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.zircky.industrialsorcerygreg.client.hud.AdAstraHUD;
-import com.zircky.industrialsorcerygreg.common.item.armor.SpaceArmorComponentItem;
+import com.zircky.industrialsorcerygreg.common.data.ISGItemModules;
+import com.zircky.industrialsorcerygreg.common.item.module.OxygenTankFluidHandler;
 import earth.terrarium.adastra.api.systems.PlanetData;
 import earth.terrarium.adastra.client.config.AdAstraConfigClient;
 import earth.terrarium.adastra.client.screens.player.OverlayScreen;
@@ -33,9 +34,10 @@ public abstract class AdAstraOverlayScreenMixin {
     var font = minecraft.font;
     PoseStack poseStack = graphics.pose();
     var chestplate = player.getInventory().getArmor(2);
-    if (SpaceSuitItem.hasFullSet(player) && chestplate.getItem() instanceof SpaceArmorComponentItem spaceSuit) {
-      long amount = SpaceArmorComponentItem.getOxygenAmount(player);
-      long capacity = spaceSuit.getFluidContainer(chestplate).getTankCapacity(0);
+    final var context = ISGItemModules.getOxygenTank(chestplate);
+    if (SpaceSuitItem.hasFullSet(player) && context != null) {
+      long amount = new OxygenTankFluidHandler(context).getOxygenAmount();
+      long capacity = OxygenTankFluidHandler.CAPACITY;
       double ratio = (double) amount / capacity;
       int barHeight = (int) (ratio * 52);
 

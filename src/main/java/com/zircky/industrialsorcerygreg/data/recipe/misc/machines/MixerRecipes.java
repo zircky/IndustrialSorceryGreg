@@ -1074,6 +1074,27 @@ public class MixerRecipes {
         .EUt(2000000)
         .duration(60)
         .save(provider);
+
+    // NaNO3·KNO3·KCl·NaIO3 + H2O = [NaNO3·KNO3·KCl·NaIO3 + H2O]
+    MIXER_RECIPES.recipeBuilder("caliche_iodate_drine").duration(30).EUt(7680)
+        .inputDust(Caliche)
+        .inputFluids(Water.getFluid(1000))
+        .outputFluids(CalicheIodateBrine.getFluid(1000))
+        .save(provider);
+
+    // 5[NaNO3·KNO3·KCl·NaI] + [NaNO3·KNO3·KCl·NaIO3 + H2O] -> 6[NaNO3·KNO3·KCl·NaOH + H2O + I]
+    MIXER_RECIPES.recipeBuilder("caliche_iodine_brine").duration(140).EUt(120)
+        .inputFluids(CalicheIodateBrine.getFluid(1000))
+        .inputFluids(IodideSolution.getFluid(5000))
+        .outputFluids(CalicheIodineBrine.getFluid(6000))
+        .save(provider);
+
+    // I? + 0.3Cl = 1.3I??
+    MIXER_RECIPES.recipeBuilder("iodine_brine_mix").duration(240).EUt(7680)
+        .inputFluids(IodizedBrine.getFluid(1000))
+        .inputFluids(Chlorine.getFluid(300))
+        .outputFluids(IodineBrineMix.getFluid(1300))
+        .save(provider);
   }
 
 }

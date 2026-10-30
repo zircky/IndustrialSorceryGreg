@@ -7,6 +7,7 @@ import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.ISGCreativeModeTabs;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Calcium;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
@@ -160,8 +161,9 @@ public class NuclearMaterials {
 
     Fluorite = builderISG("fluorite")
         .gem().dust().liquid()
-        .color(GTMaterials.Calcium.getMaterialRGB()).iconSet(DULL)
+        .color(Calcium.getMaterialRGB()).iconSet(DULL)
         .appendFlags(GEM_FLAGS)
+        .addOreByproducts(Calcium)
         .buildAndRegister();
 
     BoronNitride = builderISG("boron_nitride")
@@ -178,7 +180,7 @@ public class NuclearMaterials {
 
     BismuthStrontiumCalciumCuprate = builderISG("bismuth_strontium_calcium_cuprate")
         .ingot()
-        .color(GTMaterials.Bismuth.getMaterialRGB() + GTMaterials.Strontium.getMaterialRGB() + GTMaterials.Calcium.getMaterialRGB() + GTMaterials.Copper.getMaterialRGB())
+        .color(GTMaterials.Bismuth.getMaterialRGB() + GTMaterials.Strontium.getMaterialRGB() + Calcium.getMaterialRGB() + GTMaterials.Copper.getMaterialRGB())
         .iconSet(DULL)
         .appendFlags(SNDART_FLAGS)
         .buildAndRegister();

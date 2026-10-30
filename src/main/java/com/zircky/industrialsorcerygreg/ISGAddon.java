@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.ISGCovers;
+import com.zircky.industrialsorcerygreg.common.data.ISGItemModules;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipes;
 import com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet;
 import com.zircky.industrialsorcerygreg.data.recipe.ISGCraftingComponents;
@@ -27,6 +28,7 @@ public class ISGAddon implements IGTAddon {
 
   @Override
   public void initializeAddon() {
+    ISGItemModules.init();
 //    ISGPlaceholders.register();
     ISGCore.LOGGER.info("IndustrialSorceryGregAddon has loaded!");
   }

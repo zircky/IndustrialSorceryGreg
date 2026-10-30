@@ -589,7 +589,26 @@ public class Centrifuge {
         .duration(100)
         .save(provider);
 
-    // Migrated from misc/test recipes.
+    // [Kerosene + I] = Kerosene + I
+    CENTRIFUGE_RECIPES.recipeBuilder("kerosene_iodine_solution_from_kerosene_iodine").duration(140).EUt(120)
+        .inputFluids(KeroseneIodineSolution.getFluid(1000))
+        .outputFluids(Kerosene.getFluid(1000))
+        .outputDust(Iodine)
+        .save(provider);
+
+    // 2[I + Oil] = Oil + I?
+    CENTRIFUGE_RECIPES.recipeBuilder("iodized_oil_from_oil_iodized_brine").duration(160).EUt(30)
+        .inputFluids(IodizedOil.getFluid(2000))
+        .outputFluids(Oil.getFluid(1000))
+        .outputFluids(IodizedBrine.getFluid(1000))
+        .save(provider);
+
+    // 1.3I?? = Br? + 0.3I?
+    CENTRIFUGE_RECIPES.recipeBuilder("iodine_brine_mix_from_brominated_brine_iodine_slurry").duration(150).EUt(7680)
+        .inputFluids(IodineBrineMix.getFluid(1300))
+        .outputFluids(BrominatedBrine.getFluid(1000))
+        .outputFluids(IodineSlurry.getFluid(300))
+        .save(provider);
 
 
     // TODO migrated disabled: unresolved old test symbol `NUCLEAR_WASTE_REACTIVE_NONMETAL`.

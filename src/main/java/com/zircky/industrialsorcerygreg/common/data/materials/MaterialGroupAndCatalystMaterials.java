@@ -105,7 +105,7 @@ final class MaterialGroupAndCatalystMaterials {
         .setFormula("Ta2O5Nb18O45", true);
 
     ChargedCesiumCeriumCobaltIndium = builderISG("charged_cesium_cerium_cobalt_indium")
-        .dust()
+        .dust().fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
         .color(0x52ad25)
         .iconSet(SHINY)
         .buildAndRegister()
@@ -233,7 +233,7 @@ final class MaterialGroupAndCatalystMaterials {
         .setFormula("B4C7Fr4At6Ho2Th2Fl2Cn2", true);
 
     ActiniumSuperhydride = builderISG("actinium_superhydride")
-        .dust().plasma()
+        .dust().plasma().fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
         .color(GTMaterials.Actinium.getMaterialRGB() * 9 / 8)
         .iconSet(SHINY)
         .buildAndRegister()
@@ -275,7 +275,7 @@ final class MaterialGroupAndCatalystMaterials {
         .setFormula("NqNq+*Nq*DrTrKeTnAdVb");
 
     LanthanumFullereneNanotubes = builderISG("lanthanum_fullerene_nanotubes")
-        .dust()
+        .dust().fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
         .color(LanthanumFullereneMix.getMaterialRGB() * 3 / 5)
         .iconSet(SHINY)
         .buildAndRegister()
@@ -705,8 +705,8 @@ final class MaterialGroupAndCatalystMaterials {
         .iconSet(DULL)
         .buildAndRegister();
 
-    Radioactivesludge = builderISG("radioactivesludge")
-        .dust()
+    RadioactiveSludge = builderISG("radioactive_sludge")
+        .dust().fluid()
         .color(0x704c0a)
         .iconSet(SHINY)
         .buildAndRegister();
@@ -1419,12 +1419,6 @@ final class MaterialGroupAndCatalystMaterials {
     BiphenylTetracarboxylicacidDianhydride = builderISG("biphenyl_tetracarboxylicacid_dianhydride")
         .dust()
         .color(0x1520b3)
-        .iconSet(SHINY)
-        .buildAndRegister();
-
-    Cupriavidusnecator = builderISG("cupriavidusnecator")
-        .dust()
-        .color(0xa69e30)
         .iconSet(SHINY)
         .buildAndRegister();
 

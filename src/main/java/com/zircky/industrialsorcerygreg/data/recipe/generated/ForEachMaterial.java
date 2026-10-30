@@ -1,10 +1,16 @@
 package com.zircky.industrialsorcerygreg.data.recipe.generated;
 
+import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.ItemMaterialInfo;
+import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.function.Consumer;
 
 public class ForEachMaterial {
@@ -19,6 +25,16 @@ public class ForEachMaterial {
       ISGRecyclingRecipeHandler.run(provider, material);
       ISGRecipeMixerHandler.run(provider, material);
       ISGWireCombiningHandler.run(provider, material);
+    }
+  }
+
+  public static void removeMaterialInit(Consumer<ResourceLocation> consumer) {
+    for (Material material : GTRegistries.MATERIALS.values()) {
+      if (material.hasFlag(MaterialFlags.NO_UNIFICATION)) {
+        continue;
+      }
+
+      ISGPartsRecipeHandler.remove(consumer, material);
     }
   }
 }
