@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.data.recipe.generated;
 
+import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
@@ -9,7 +10,9 @@ import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.data.recipe.misc.RecyclingRecipes;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes;
+import com.zircky.industrialsorcerygreg.utils.ItemUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -61,7 +64,7 @@ public class ISGRecyclingRecipeHandler {
         ignoreArcSmelting, prefix);
 
     if (!material.hasProperty(PropertyKey.FLUID) || material.getFluid() == null || (prefix == TagPrefix.dust && material.hasProperty(PropertyKey.BLAST))) return;
-    ISGRecipeTypes.LIQUEFACTION_FURNACE_RECIPES.recipeBuilder("extract_" + prefix.name + "_" + material.getName())
+    ISGRecipeTypes.LIQUEFACTION_FURNACE_RECIPES.recipeBuilder(GTCEu.id("extract_" + ItemUtils.getIdLocation(stack.getItem()).getPath()))
         .outputFluids(material.getFluid((int) (amount * L / M)))
         .duration((int) Math.max(1, amount * material.getMass() / M))
         .blastFurnaceTemp(Math.max(800, (int) (material.getBlastTemperature() * 0.6)))
@@ -83,4 +86,5 @@ public class ISGRecyclingRecipeHandler {
       return VA[ULV];
     }
   }
+
 }

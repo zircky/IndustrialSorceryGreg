@@ -4,17 +4,11 @@ import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.api.machine.multiblock.CleanroomType;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 
-import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
 
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.ISGCore;
-import com.zircky.industrialsorcerygreg.api.ISGValues;
 import com.zircky.industrialsorcerygreg.common.data.ISGItems;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -759,7 +753,7 @@ public class MixerRecipes {
     // Graphene ====================================================================================================
     // FeCl3 + C6H12O6 = [FeCl3 + C6H12O6]
     MIXER_RECIPES.recipeBuilder("iron_chloride_glucose_to_glucose_iron_solution").duration(80).EUt(30)
-        .inputFluids(IronChloride.getFluid(1000))
+        .inputFluids(Iron3Chloride.getFluid(1000))
         .inputDust(Glucose, 24)
         .outputFluids(GlucoseIronSolution.getFluid(1000))
         .save(provider);
@@ -1079,6 +1073,27 @@ public class MixerRecipes {
         .outputItems(ChemicalHelper.get(dust, AuPdCCatalyst, 3))
         .EUt(2000000)
         .duration(60)
+        .save(provider);
+
+    // NaNO3·KNO3·KCl·NaIO3 + H2O = [NaNO3·KNO3·KCl·NaIO3 + H2O]
+    MIXER_RECIPES.recipeBuilder("caliche_iodate_drine").duration(30).EUt(7680)
+        .inputDust(Caliche)
+        .inputFluids(Water.getFluid(1000))
+        .outputFluids(CalicheIodateBrine.getFluid(1000))
+        .save(provider);
+
+    // 5[NaNO3·KNO3·KCl·NaI] + [NaNO3·KNO3·KCl·NaIO3 + H2O] -> 6[NaNO3·KNO3·KCl·NaOH + H2O + I]
+    MIXER_RECIPES.recipeBuilder("caliche_iodine_brine").duration(140).EUt(120)
+        .inputFluids(CalicheIodateBrine.getFluid(1000))
+        .inputFluids(IodideSolution.getFluid(5000))
+        .outputFluids(CalicheIodineBrine.getFluid(6000))
+        .save(provider);
+
+    // I? + 0.3Cl = 1.3I??
+    MIXER_RECIPES.recipeBuilder("iodine_brine_mix").duration(240).EUt(7680)
+        .inputFluids(IodizedBrine.getFluid(1000))
+        .inputFluids(Chlorine.getFluid(300))
+        .outputFluids(IodineBrineMix.getFluid(1300))
         .save(provider);
   }
 

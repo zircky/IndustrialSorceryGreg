@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
+import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.common.data.GTBlocks;
 import com.gregtechceu.gtceu.common.data.GTItems;
@@ -31,7 +32,7 @@ public class CannerRecipes {
                 .outputItems(GTBlocks.BATTERY_LAPOTRONIC_IV.asStack(1))
                 .duration(200).EUt(GTValues.VA[GTValues.IV]).save(provider);
 
-        CANNER_RECIPES.recipeBuilder("luv_lapotronic_battery")
+        CANNER_RECIPES.recipeBuilder(GTCEu.id("luv_lapotronic_battery"))
                 .inputItems(GTBlocks.BATTERY_EMPTY_TIER_II.asStack(1))
                 .inputItems(GTItems.ENERGY_LAPOTRONIC_ORB_CLUSTER, 6)
                 .outputItems(GTBlocks.BATTERY_LAPOTRONIC_LuV.asStack(1))

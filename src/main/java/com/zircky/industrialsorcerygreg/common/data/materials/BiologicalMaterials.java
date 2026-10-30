@@ -157,13 +157,6 @@ public final class BiologicalMaterials {
         .buildAndRegister()
         .setFormula("C257H381N73O83S7", true);
 
-    NitroBenzene = builderISG("nitro_benzene")
-        .fluid()
-        .color(0x81c951)
-        .iconSet(FLUID)
-        .buildAndRegister()
-        .setFormula("C6H5NO2", true);
-
     Aniline = builderISG("aniline")
         .fluid()
         .color(0x4c911d)

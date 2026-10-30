@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.data.recipe.generated;
 
+import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
@@ -11,12 +12,15 @@ import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
+import com.zircky.industrialsorcerygreg.ISGCore;
+import com.zircky.industrialsorcerygreg.api.ISGValues;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import com.zircky.industrialsorcerygreg.common.data.ISGItems;
 import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import com.zircky.industrialsorcerygreg.config.ISGConfigHolder;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
@@ -26,12 +30,16 @@ import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.BENDER_RECIPES;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.EXTRUDER_RECIPES;
+import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.FORGE_HAMMER_RECIPES;
 import static com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags.*;
 import static com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 
 public class ISGPartsRecipeHandler {
-  private ISGPartsRecipeHandler() {}
+  private ISGPartsRecipeHandler() {
+  }
 
 
   public static void init(Consumer<FinishedRecipe> provider, @NotNull Material material) {
@@ -89,6 +97,8 @@ public class ISGPartsRecipeHandler {
 
     processCatalyst(provider, material);
 
+    processSingularity(provider, material);
+
 //    processroughBlank(provider, material);
 
 //    processCrystallization(provider, material);
@@ -120,7 +130,7 @@ public class ISGPartsRecipeHandler {
       VanillaRecipeHelper.addShapedRecipe(provider, String.format("foil_%s", material.getName()),
           stack.copyWithCount(2), "hP ", 'P', stack1);
 
-    CLUSTER_RECIPES.recipeBuilder("bend_" + material.getName() + "_plate_to_foil")
+    CLUSTER_RECIPES.recipeBuilder("cluster_" + material.getName() + "_plate_to_foil")
         .inputItems(stack1)
         .outputItems(stack)
         .duration(mass)
@@ -252,6 +262,10 @@ public class ISGPartsRecipeHandler {
   }
 
   private static void processPlate(Consumer<FinishedRecipe> provider, Material material) {
+    var magMaterial = material.hasFlag(IS_MAGNETIC) ?
+        material.getPropertyOrThrow(PropertyKey.INGOT).getMacerateInto() : material;
+    if (magMaterial == null) magMaterial = material;
+
     ItemStack stack = ChemicalHelper.get(plate, material);
     if (stack.isEmpty()) return;
     if (material.hasFluid()) {
@@ -266,9 +280,24 @@ public class ISGPartsRecipeHandler {
             .save(provider);
       }
     }
+
+    if (material.hasFlag(GENERATE_PLATE) && !material.hasFlag(NO_WORKING) && !material.hasFlag(NO_SMASHING)) {
+        ItemStack plateStack = ChemicalHelper.get(plate, magMaterial);
+        if (!plateStack.isEmpty()) {
+          ROLLING_RECIPES.recipeBuilder("rolling_" + material.getName() + "_to_plate")
+              .circuitMeta(1)
+              .inputItems(ingot, material)
+              .outputItems(plateStack)
+              .EUt(24).duration((int) (material.getMass()))
+              .save(provider);
+        }
+      }
+
   }
 
   private static void processPlateDouble(Consumer<FinishedRecipe> provider, Material material) {
+    if (!material.shouldGenerateRecipesFor(plateDouble) || !material.hasProperty(PropertyKey.INGOT)) return;
+
     ItemStack stack = ChemicalHelper.get(TagPrefix.plateDouble, material);
     if (stack.isEmpty()) return;
     int mass = (int) material.getMass();
@@ -277,11 +306,11 @@ public class ISGPartsRecipeHandler {
           stack, "h", "P", "P", 'P', new MaterialEntry(plate, material));
     }
 
-    ROLLING_RECIPES.recipeBuilder("bend_" + material.getName() + "_plate_to_double_plate")
+    ROLLING_RECIPES.recipeBuilder("rolling_" + material.getName() + "_plate_to_double_plate")
         .EUt(96).duration(mass << 1)
-        .inputItems(ingot, material, 2)
+        .inputItems(doubleIngot, material)
         .outputItems(stack)
-        .circuitMeta(2)
+        .circuitMeta(1)
         .save(provider);
   }
 
@@ -289,7 +318,7 @@ public class ISGPartsRecipeHandler {
     ItemStack stack = ChemicalHelper.get(TagPrefix.plateDouble, material);
     if (stack.isEmpty()) return;
     int mass = (int) material.getMass();
-    if (!material.shouldGenerateRecipesFor(triplePlate) || !material.hasProperty(PropertyKey.INGOT)){
+    if (!material.shouldGenerateRecipesFor(triplePlate) || !material.hasProperty(PropertyKey.INGOT)) {
       return;
     }
 
@@ -301,15 +330,15 @@ public class ISGPartsRecipeHandler {
             ChemicalHelper.get(triplePlate, magMaterial),
             "h", "P", "D",
             'P', new MaterialEntry(plate, material),
-            'D', new MaterialEntry(plateDouble,material)
+            'D', new MaterialEntry(plateDouble, material)
         );
         VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_plates_to_triple_plate_2", material.getName()),
             ChemicalHelper.get(triplePlate, magMaterial),
             "h", "D", "P",
-            'D', new MaterialEntry(plateDouble,material),
+            'D', new MaterialEntry(plateDouble, material),
             'P', new MaterialEntry(plate, material)
         );
-        if(material.hasFlag(GENERATE_TRIPLE_INGOT)) {
+        if (material.hasFlag(GENERATE_TRIPLE_INGOT)) {
           VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_ingots_to_triple_plate", material.getName()),
               ChemicalHelper.get(triplePlate, magMaterial),
               "h", "I", "I",
@@ -319,16 +348,8 @@ public class ISGPartsRecipeHandler {
 
       }
 
-      ROLLING_RECIPES.recipeBuilder("bend_" + material.getName() + "_ingot_to_triple_plate")
-          .inputItems(ingot, material, 3)
-          .circuitMeta(3)
-          .outputItems(triplePlate, magMaterial)
-          .duration((int) material.getMass() * 3)
-          .EUt(96)
-          .save(provider);
-
-      if(material.hasFlag(GENERATE_TRIPLE_INGOT)){
-        ROLLING_RECIPES.recipeBuilder("bend_" + material.getName() + "_triple_ingot_to_triple_plate")
+      if (material.hasFlag(GENERATE_TRIPLE_INGOT)) {
+        ROLLING_RECIPES.recipeBuilder("rolling_" + material.getName() + "_triple_ingot_to_triple_plate")
             .EUt(96).duration((int) material.getMass() * 3)
             .inputItems(tripleIngot, material)
             .outputItems(triplePlate, magMaterial)
@@ -342,7 +363,7 @@ public class ISGPartsRecipeHandler {
 
   private static void processPlateQuadruple(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
     int mass = (int) material.getMass();
-    if (!material.shouldGenerateRecipesFor(quadruplePlate) || !material.hasProperty(PropertyKey.INGOT)){
+    if (!material.shouldGenerateRecipesFor(quadruplePlate) || !material.hasProperty(PropertyKey.INGOT)) {
       return;
     }
 
@@ -355,13 +376,13 @@ public class ISGPartsRecipeHandler {
             ChemicalHelper.get(quadruplePlate, magMaterial),
             "h", "P", "D",
             'P', new MaterialEntry(plate, material),
-            'D', new MaterialEntry(triplePlate,material)
+            'D', new MaterialEntry(triplePlate, material)
         );
 
         VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_plates_to_quadruple_plate_2", material.getName()),
             ChemicalHelper.get(quadruplePlate, magMaterial),
             "h", "D", "P",
-            'D', new MaterialEntry(triplePlate,material),
+            'D', new MaterialEntry(triplePlate, material),
             'P', new MaterialEntry(plate, material)
         );
 
@@ -370,7 +391,7 @@ public class ISGPartsRecipeHandler {
             "h", "P", "P",
             'P', new MaterialEntry(plateDouble, material)
         );
-        if(material.hasFlag(GENERATE_QUADRUPLE_INGOT)) {
+        if (material.hasFlag(GENERATE_QUADRUPLE_INGOT)) {
           VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_ingots_to_quadruple_plate", material.getName()),
               ChemicalHelper.get(quadruplePlate, magMaterial),
               "h", "P", "P",
@@ -380,28 +401,13 @@ public class ISGPartsRecipeHandler {
 
       }
 
-      ROLLING_RECIPES.recipeBuilder("bend_" + material.getName() + "_ingot_to_quadruple_plate")
-          .inputItems(ingot, material, 4)
-          .circuitMeta(4)
-          .outputItems(quadruplePlate, magMaterial)
-          .duration(mass * 4)
-          .EUt(96)
-          .save(provider);
-
-      if(material.hasFlag(GENERATE_QUADRUPLE_PLATE)){
-        ROLLING_RECIPES.recipeBuilder("bend_" + material.getName() + "_quadruple_ingot_to_quadruple_plate")
+      if (material.hasFlag(GENERATE_QUADRUPLE_PLATE)) {
+        ROLLING_RECIPES.recipeBuilder("rolling_" + material.getName() + "_quadruple_ingot_to_quadruple_plate")
             .EUt(96).duration(mass * 4)
             .inputItems(quadrupleIngot, material)
             .outputItems(quadruplePlate, magMaterial)
             .circuitMeta(1)
             .save(provider);
-        ROLLING_RECIPES.recipeBuilder("bend_" + material.getName() + "_double_ingots_to_quadruple_plate")
-            .EUt(96).duration(mass * 4)
-            .inputItems(doubleIngot, material,2)
-            .outputItems(quadruplePlate, magMaterial)
-            .circuitMeta(2)
-            .save(provider);
-
       }
     }
   }
@@ -410,7 +416,7 @@ public class ISGPartsRecipeHandler {
     ItemStack stack = ChemicalHelper.get(quintuplePlate, material);
     if (stack.isEmpty()) return;
     int mass = (int) material.getMass();
-    if (!material.shouldGenerateRecipesFor(quintuplePlate) || !material.hasProperty(PropertyKey.INGOT)){
+    if (!material.shouldGenerateRecipesFor(quintuplePlate) || !material.hasProperty(PropertyKey.INGOT)) {
       return;
     }
 
@@ -423,24 +429,24 @@ public class ISGPartsRecipeHandler {
             ChemicalHelper.get(quintuplePlate, magMaterial),
             "h", "P", "D",
             'P', new MaterialEntry(plate, material),
-            'D', new MaterialEntry(quadruplePlate,material));
+            'D', new MaterialEntry(quadruplePlate, material));
         VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_plates_to_quintuple_plate_2", material.getName()),
             ChemicalHelper.get(quintuplePlate, magMaterial),
             "h", "D", "P",
             'P', new MaterialEntry(plate, material),
-            'D', new MaterialEntry(quadruplePlate,material));
+            'D', new MaterialEntry(quadruplePlate, material));
 
         VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_double_plates_to_quintuple_plate_1", material.getName()),
             ChemicalHelper.get(quintuplePlate, magMaterial),
             "h", "P", "D",
             'P', new MaterialEntry(plateDouble, material),
-            'D', new MaterialEntry(triplePlate,material));
+            'D', new MaterialEntry(triplePlate, material));
         VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_double_plates_to_quintuple_plate_2", material.getName()),
             ChemicalHelper.get(quintuplePlate, magMaterial),
             "h", "D", "P",
             'P', new MaterialEntry(plateDouble, material),
-            'D', new MaterialEntry(triplePlate,material));
-        if(material.hasFlag(GENERATE_QUINTUPLE_INGOT)) {
+            'D', new MaterialEntry(triplePlate, material));
+        if (material.hasFlag(GENERATE_QUINTUPLE_INGOT)) {
           VanillaRecipeHelper.addShapedRecipe(provider, String.format("%s_ingots_to_quintuple_plate", material.getName()),
               ChemicalHelper.get(quadruplePlate, magMaterial),
               "h", "P", "P",
@@ -449,16 +455,8 @@ public class ISGPartsRecipeHandler {
         }
       }
 
-      ROLLING_RECIPES.recipeBuilder("bend_" + material.getName() + "_ingot_to_quintuple_plate")
-          .inputItems(ingot, material, 5)
-          .circuitMeta(5)
-          .outputItems(quintuplePlate, magMaterial)
-          .duration(mass * 5)
-          .EUt(96)
-          .save(provider);
-
-      if(material.hasFlag(GENERATE_QUINTUPLE_PLATE)){
-        ROLLING_RECIPES.recipeBuilder("bend_" + material.getName() + "_quintuple_ingot_to_quintuple_plate")
+      if (material.hasFlag(GENERATE_QUINTUPLE_PLATE)) {
+        ROLLING_RECIPES.recipeBuilder("rolling_" + material.getName() + "_quintuple_ingot_to_quintuple_plate")
             .EUt(96).duration(mass * 5)
             .inputItems(quintupleIngot, material)
             .outputItems(quintuplePlate, magMaterial)
@@ -500,7 +498,7 @@ public class ISGPartsRecipeHandler {
 
     var magMaterial = material.hasFlag(IS_MAGNETIC) && material.hasProperty(PropertyKey.INGOT) ?
         material.getProperty(PropertyKey.INGOT).getMacerateInto() : material;
-    BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_plate_to_superdense_plate")
+    ROLLING_RECIPES.recipeBuilder("bend_" + material.getName() + "_plate_to_superdense_plate")
         .inputItems(plate, material, 64)
         .circuitMeta(6)
         .outputItems(superdensePlate, magMaterial)
@@ -509,12 +507,12 @@ public class ISGPartsRecipeHandler {
         .save(provider);
 
     if (material.hasProperty(PropertyKey.INGOT)) {
-      BENDER_RECIPES.recipeBuilder("bend_" + material.getName() + "_ingot_to_superdense_plate")
+      ROLLING_RECIPES.recipeBuilder("bend_" + material.getName() + "_ingot_to_superdense_plate")
           .inputItems(ingot, material, 64)
           .circuitMeta(6)
           .outputItems(superdensePlate, magMaterial)
           .duration((int) Math.max(mass * 64L, 1L))
-          .EUt(96)
+          .EUt(VA[IV])
           .save(provider);
     }
   }
@@ -1009,6 +1007,17 @@ public class ISGPartsRecipeHandler {
         .save(provider);
   }
 
+  private static void processSingularity(Consumer<FinishedRecipe> provider, Material material) {
+    ItemStack stack = ChemicalHelper.get(singularity, material);
+    if (stack.isEmpty()) return;
+
+    SINGULARITY_COMPRESSION_RECIPES.recipeBuilder("singularity_compression_" + material.getName())
+        .inputItems(block, material, 512)
+        .outputItems(stack)
+        .duration(ISGValues.SECONDS * 512)
+        .EUt(VA[UHV]).save(provider);
+  }
+
 //  private static void processroughBlank(Consumer<FinishedRecipe> provider, Material material) {
 //    ItemStack stack2 = ChemicalHelper.get(BRICK, material);
 //    if (stack2.isEmpty()) return;
@@ -1061,5 +1070,23 @@ public class ISGPartsRecipeHandler {
   private static int getVoltageMultiplier(@NotNull Material material) {
     if (material.hasProperty(PropertyKey.POLYMER)) return 4;
     return material.getBlastTemperature() > 2800 ? VA[LV] : VA[ULV];
+  }
+
+  public static void remove(Consumer<ResourceLocation> consumer, Material material) {
+    if (material.hasFlag(GENERATE_PLATE) && !material.hasFlag(NO_WORKING) && !material.hasFlag(NO_SMASHING)) {
+      consumer.accept(GTCEu.id("bender/bend_" + material.getName() + "_to_plate"));
+      consumer.accept(GTCEu.id("bender/bend_" + material.getName() + "_plate_to_double_plate"));
+      consumer.accept(GTCEu.id("bender/bend_" + material.getName() + "_ingot_to_double_plate"));
+    }
+    if (material.hasFlag(GENERATE_DENSE) && !material.hasFlag(NO_WORKING) && !material.hasFlag(NO_SMASHING)) {
+      consumer.accept(GTCEu.id("bender/bend_" + material.getName() + "_plate_to_dense_plate"));
+      consumer.accept(GTCEu.id("bender/bend_" + material.getName() + "_ingot_to_dense_plate"));
+    }
+    if (material.hasFlag(GENERATE_FOIL) && !material.hasFlag(NO_WORKING) && !material.hasFlag(NO_SMASHING)) {
+      consumer.accept(GTCEu.id("bender/bend_" + material.getName() + "_plate_to_foil"));
+      consumer.accept(GTCEu.id("bender/bend_" + material.getName() + "_ingot_to_foil"));
+    }
+
+
   }
 }

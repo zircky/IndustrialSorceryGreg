@@ -1,15 +1,10 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 import net.minecraft.world.level.block.Blocks;
 
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -18,6 +13,7 @@ import java.util.function.Consumer;
 
 import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Iron3Chloride;
 import static com.zircky.industrialsorcerygreg.common.data.ISGItems.SEPARATION_ELECTROMAGNET;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.CENTRIFUGE_RECIPES;
@@ -38,7 +34,7 @@ public class Centrifuge {
         .inputDust(ApatiteSolidResidue, 11)
         .outputDust(SiliconChloride, 5)
         .outputDust(Salt, 2)
-        .outputFluids(IronChloride.getFluid(500))
+        .outputFluids(Iron3Chloride.getFluid(500))
         .outputFluids(Water.getFluid(750))
         .save(provider);
 
@@ -48,7 +44,7 @@ public class Centrifuge {
         .inputDust(FluoroapatiteSolidResidue, 11)
         .outputFluids(FluorosilicicAcid.getFluid(1000))
         .outputDust(Salt, 2)
-        .outputFluids(IronChloride.getFluid(500))
+        .outputFluids(Iron3Chloride.getFluid(500))
         .outputFluids(Water.getFluid(750))
         .save(provider);
 
@@ -593,7 +589,26 @@ public class Centrifuge {
         .duration(100)
         .save(provider);
 
-    // Migrated from misc/test recipes.
+    // [Kerosene + I] = Kerosene + I
+    CENTRIFUGE_RECIPES.recipeBuilder("kerosene_iodine_solution_from_kerosene_iodine").duration(140).EUt(120)
+        .inputFluids(KeroseneIodineSolution.getFluid(1000))
+        .outputFluids(Kerosene.getFluid(1000))
+        .outputDust(Iodine)
+        .save(provider);
+
+    // 2[I + Oil] = Oil + I?
+    CENTRIFUGE_RECIPES.recipeBuilder("iodized_oil_from_oil_iodized_brine").duration(160).EUt(30)
+        .inputFluids(IodizedOil.getFluid(2000))
+        .outputFluids(Oil.getFluid(1000))
+        .outputFluids(IodizedBrine.getFluid(1000))
+        .save(provider);
+
+    // 1.3I?? = Br? + 0.3I?
+    CENTRIFUGE_RECIPES.recipeBuilder("iodine_brine_mix_from_brominated_brine_iodine_slurry").duration(150).EUt(7680)
+        .inputFluids(IodineBrineMix.getFluid(1300))
+        .outputFluids(BrominatedBrine.getFluid(1000))
+        .outputFluids(IodineSlurry.getFluid(300))
+        .save(provider);
 
 
     // TODO migrated disabled: unresolved old test symbol `NUCLEAR_WASTE_REACTIVE_NONMETAL`.

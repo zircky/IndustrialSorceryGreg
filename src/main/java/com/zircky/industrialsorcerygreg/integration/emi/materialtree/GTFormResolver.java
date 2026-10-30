@@ -101,6 +101,7 @@ public class GTFormResolver {
     addFluid(out, material, FluidStorageKeys.LIQUID);
     addFluid(out, material, FluidStorageKeys.GAS);
     addFluid(out, material, FluidStorageKeys.PLASMA);
+    addFluid(out, material, FluidStorageKeys.MOLTEN);
 
     for (final TagPrefix prefix : DEFAULT_FORMS) {
       final ItemStack stack = ChemicalHelper.get(prefix, material, 1);
@@ -127,7 +128,8 @@ public class GTFormResolver {
     return firstFluid(material,
         FluidStorageKeys.LIQUID,
         FluidStorageKeys.GAS,
-        FluidStorageKeys.PLASMA
+        FluidStorageKeys.PLASMA,
+        FluidStorageKeys.MOLTEN
     );
   }
 

@@ -13,6 +13,7 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIcon
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
+import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
 
 public final class HighEnergyMaterials {
@@ -445,7 +446,7 @@ public final class HighEnergyMaterials {
         .buildAndRegister()
         .setFormula("C4H2(OC2H5)2S", true);
 
-    EDOT = builderISG("ethylenedioxythiophene")
+    EDOT = material("ethylenedioxythiophene", "Ethylenedioxythiophene [EDOT]")
         .fluid()
         .color(0x7a9996)
         .iconSet(FLUID)

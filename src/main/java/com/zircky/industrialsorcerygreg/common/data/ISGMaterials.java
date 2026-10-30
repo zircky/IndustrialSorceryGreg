@@ -2,10 +2,6 @@ package com.zircky.industrialsorcerygreg.common.data;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlag;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.*;
-import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
-import com.gregtechceu.gtceu.api.fluids.FluidState;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.zircky.industrialsorcerygreg.ISGCore;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.materials.*;
@@ -622,7 +618,6 @@ public class ISGMaterials {
   public static Material PhosphorousPentoxide;
   public static Material NeutralMatter;
   public static Material PositiveMatter;
-  public static Material IronChloride;
   public static Material HighPressureSteam;
   public static Material RocketFuelH8N4C2O4;
   public static Material CoalTarOil;
@@ -639,7 +634,6 @@ public class ISGMaterials {
   public static Material RP1;
   public static Material FermentationBase;
   public static Material LiquidHydrogen;
-  public static Material Diphenylisophtalate;
   public static Material SodiumTungstate;
   public static Material IodizedOil;
   public static Material Pyrotheum;
@@ -776,7 +770,6 @@ public class ISGMaterials {
   public static Material Dodecene1;
   public static Material OlefinMixture;
   public static Material BoronTrichloride;
-  public static Material Dichloroethane;
   public static Material DissolvedChalcociteSolution;
   public static Material NPropylChloride;
   public static Material PropeneEmulsion;
@@ -1208,13 +1201,10 @@ public class ISGMaterials {
   public static Material Naquadahactivationliquid;
   public static Material Infnite;
   public static Material Zeliusactivationfluid;
-  public static Material Rawneutronium;
-  public static Material Hyperreactiveliquid;
-  public static Material Lanthanumfullerenenanotubes;
-  public static Material Actiniumsuperhydride;
-  public static Material Rheniumhassiumthalliumisophtaloylbisdiethylthiourea;
-  public static Material Chargedcesiumceriumcobaltindium;
-  public static Material Fullerenesuperconductor;
+  public static Material RawNeutronium;
+  public static Material LiquidHyperReactive;
+  public static Material RheniumHassiumThalliumIsophtaloylbisdiethylthiourea;
+  public static Material Fullerenesuperconductor; //?
   public static Material Creatium;
   public static Material Thoriumleach;
   public static Material Activatedthoriumsolution;
@@ -1230,7 +1220,6 @@ public class ISGMaterials {
   public static Material Explosivehydrazine;
   public static Material Livingsolder;
   public static Material Mutatedlivingsolder;
-  public static Material Liquidrawneutronium;
   public static Material Photopolymer;
   public static Material Pcbb;
   public static Material Fluorohydrideammoniumcarbamat;
@@ -1247,7 +1236,6 @@ public class ISGMaterials {
   public static Material Quaternaryammonium;
   public static Material Dissolvingfluid;
   public static Material Aluminosilicatewoolsolution;
-  public static Material RadioactiveSludge;
   public static Material LowThoriumSolution;
   public static Material ThoriumEmulsion;
   public static Material RadiumEmulsion;
@@ -1319,6 +1307,7 @@ public class ISGMaterials {
   public static Material LeadZirconateTitanate;
   public static Material Jasper;
   public static Material UuAmplifier;
+  public static Material Niter;
 
   /**
    * AlloyAndPolymerMaterials
@@ -1411,7 +1400,6 @@ public class ISGMaterials {
   public static Material BloodPlasma;
   public static Material BFGF;
   public static Material EGF;
-  public static Material NitroBenzene;
   public static Material Aniline;
   public static Material ChlorosulfonicAcid;
   public static Material Sulfanilamide;
@@ -2057,7 +2045,7 @@ public class ISGMaterials {
   public static Material Titaniumtetrachloride;
   public static Material Graphiteuraniummixture;
   public static Material Unprocessedboron;
-  public static Material Radioactivesludge;
+  public static Material RadioactiveSludge;
   public static Material Thoria;
   public static Material Sunnariumoxide;
   public static Material Sunnariumdioxide;
@@ -2175,7 +2163,6 @@ public class ISGMaterials {
   public static Material PrChlorophyte;
   public static Material PrEuglena;
   public static Material BiphenylTetracarboxylicacidDianhydride;
-  public static Material Cupriavidusnecator;
   public static Material CucrmgbaCatalyst;
   public static Material DefattedSoybeanFlour;
   public static Material CrushedSoybean;
@@ -2354,8 +2341,8 @@ public class ISGMaterials {
   public static Material PotassiumUranylTricarbonate;
   public static Material UraniumPeroxideThoriumOxide;
   public static Material UraniumThoriumOxide;
-  public static Material UranylThoriumSulfate;
-  public static Material UranylThoriumNitrate;
+  public static Material UraniumThoriumSulfate;
+  public static Material UraniumThoriumNitrate;
   public static Material UraniumOxideThoriumNitrate;
   public static Material CaesiumHydroxide;
   public static Material AluminiumHydroxide;
@@ -2435,8 +2422,8 @@ public class ISGMaterials {
   public static Material TantaliteMinorOxideResidue;
   public static Material LeachedPyrochlore;
   public static Material AcidicLeachedPyrochlore;
-  public static Material PotasssiumFluoroNiobate;
-  public static Material PotasssiumFluoroTantalate;
+  public static Material PotassiumFluoroNiobate;
+  public static Material PotassiumFluoroTantalate;
   public static Material BariumPeroxide;
   public static Material CassiteriteCokePellets;
   public static Material IronSulfate;
@@ -2588,15 +2575,14 @@ public class ISGMaterials {
   /**
    * UnsortedMaterials
    */
+
+  public static Material Test;
 //  public static Material Krypton;
   public static Material Uranium238Isotope;
   public static Material Uranium235Isotope;
   public static Material AmericiumRadioactive;
 
   public static Material LiquidZBLAN;
-
-
-
   public static Material Waterplasma;
   public static Material Ultimentium;
   public static Material UltimentiumMatterCrystal;

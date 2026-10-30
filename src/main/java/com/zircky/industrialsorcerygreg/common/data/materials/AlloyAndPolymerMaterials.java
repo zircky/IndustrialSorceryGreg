@@ -1,14 +1,8 @@
 package com.zircky.industrialsorcerygreg.common.data.materials;
 
 import com.gregtechceu.gtceu.api.GTValues;
-import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
-import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.gregtechceu.gtceu.api.fluids.FluidBuilder;
-import com.gregtechceu.gtceu.api.fluids.attribute.FluidAttributes;
-import com.gregtechceu.gtceu.common.data.GTElements;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.zircky.industrialsorcerygreg.api.ISGValues;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
@@ -17,13 +11,10 @@ import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.*;
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.*;
-import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
-import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
-import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.INFINITY;
 import static com.zircky.industrialsorcerygreg.utils.register.MaterialsRegisterUtils.material;
 
 
@@ -32,6 +23,14 @@ public final class AlloyAndPolymerMaterials {
   }
 
   public static void register() {
+    Test = material("test")
+        .ingot().liquid().gas()
+        .itemPipeProperties(100, 4)
+        .blastTemp(4000, HIGHER)
+        .components(ISGMaterials.EglinSteelBase, 10, GTMaterials.Sulfur, 1, GTMaterials.Silicon, 1, GTMaterials.Carbon, 1)
+        .appendFlags(SNDART_FLAGS)
+        .buildAndRegister();
+
     EglinSteel = builderISG("eglin_steel")
         .ingot(6).fluid()
         .color(0x8B4513)
@@ -177,6 +176,7 @@ public final class AlloyAndPolymerMaterials {
         .iconSet(SHINY)
         .components(GTMaterials.Gold, 1, GTMaterials.RareEarth, 1)
         .flags(DISABLE_DECOMPOSITION)
+        .addOreByproducts(Lead, Silver, Nickel)
         .buildAndRegister();
 
     LithiumFluoride = builderISG("lithium_fluoride")

@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.fluids.FluidState;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 
+import static com.gregtechceu.gtceu.common.data.GTMaterials.Nickel;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
 public class PlatinumLine {
@@ -181,7 +182,7 @@ public class PlatinumLine {
         .color(0x846649)
         .iconSet(MaterialIconSet.DULL)
         .flags(MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING)
-        .components(GTMaterials.Nickel, 1, GTMaterials.Copper, 1)
+        .components(Nickel, 1, GTMaterials.Copper, 1)
         .buildAndRegister();
 
     CrudeRhodiumMetal = builderISG("crude_rhodium_metal")

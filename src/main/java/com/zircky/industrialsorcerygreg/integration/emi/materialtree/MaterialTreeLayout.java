@@ -127,6 +127,7 @@ public final class MaterialTreeLayout {
     if (entry.fluidKey() == FluidStorageKeys.LIQUID) return new SlotPos(43, 3);
     if (entry.fluidKey() == FluidStorageKeys.GAS) return new SlotPos(43, 21);
     if (entry.fluidKey() == FluidStorageKeys.PLASMA) return new SlotPos(63, 3);
+    if (entry.fluidKey() == FluidStorageKeys.MOLTEN) return new SlotPos(63, 21);
     return SlotPos.HIDDEN;
   }
 

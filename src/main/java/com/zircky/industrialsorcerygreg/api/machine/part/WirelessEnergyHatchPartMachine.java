@@ -35,7 +35,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @MethodsReturnNonnullByDefault
 public class WirelessEnergyHatchPartMachine extends TieredIOPartMachine {
 
-  protected static final long TICKS_BETWEEN_SAVE_DATA_OPERATIONS = 5 * 20L;
+  protected static final long TICKS_BETWEEN_SAVE_DATA_OPERATIONS = 20L;
 
   @SaveField
   public final NotifiableEnergyContainer energyContainer;

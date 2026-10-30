@@ -12,6 +12,7 @@ import com.gregtechceu.gtceu.api.machine.multiblock.PartAbility;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 import com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties;
 import com.gregtechceu.gtceu.api.machine.trait.recipe.RecipeLogic;
+import com.gregtechceu.gtceu.api.multiblock.OriginOffset;
 import com.gregtechceu.gtceu.api.multiblock.Predicates;
 import com.gregtechceu.gtceu.api.multiblock.pattern.MultiblockPatternBuilder;
 import com.gregtechceu.gtceu.api.recipe.OverclockingLogic;
@@ -652,6 +653,351 @@ public class ISGMultiMachines {
           .where('#', air())
           .build())
       .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_clean_stainless_steel"), GTCEu.id("block/multiblock/large_chemical_reactor"))
+      .register();
+
+  public static final MultiblockMachineDefinition SINGULARITY_COMPRESSOR = multiblock("singularity_compressor", WorkableElectricMultiblockMachine::new)
+      .rotationState(RotationState.NON_Y_AXIS)
+      .recipeType(ISGRecipeTypes.SINGULARITY_COMPRESSION_RECIPES)
+      .recipeModifier(GTRecipeModifiers.OC_NON_PERFECT_SUBTICK)
+      .appearanceBlock(GCYMBlocks.CASING_ATOMIC)
+      .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
+          .startOffset(new OriginOffset(10, -1, -20))
+          .slice(
+              "    BBBBBBBBBBBBB    ",
+              "    BBAAAABAAAABB    ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     "
+          )
+          .slice(
+              " BBBBBBBBBBBBBBBBBBB ",
+              " BBBB           BBBB ",
+              "  A               A  ",
+              "  X               X  ",
+              "  P               P  ",
+              "  P               P  ",
+              "  O               O  ",
+              "  A               A  ",
+              "  A               A  ",
+              "  P               P  ",
+              "  O               O  ",
+              " AAA             AAA ",
+              " G G             G G "
+          )
+          .slice(
+              " BBBBBBBBBBBBBBBBBBB ",
+              " BBB     BBB     BBB ",
+              " AGA     XXX     AGA ",
+              " XPX      X      XPX ",
+              " PGP  GOOOAOOOG  PGP ",
+              " PGP      G      PGP ",
+              " OOO             OOO ",
+              " AGA             AGA ",
+              " AGA             AGA ",
+              " PGP             PGP ",
+              " OOO             OOO ",
+              " AGA             AGA ",
+              "  P               P  "
+          )
+          .slice(
+              " BBBBBBBBBBBBBBBBBBB ",
+              " BBB     BBB     BBB ",
+              "  A               A  ",
+              "  X       P       X  ",
+              "  P  GO   P   OO  P  ",
+              "  P               P  ",
+              "  O               O  ",
+              "  A               A  ",
+              "  A               A  ",
+              "  P               P  ",
+              "  O               O  ",
+              " AAA             AAA ",
+              " G G             G G "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "BB       BBB       BB",
+              "    X           X    ",
+              "    X     P     X    ",
+              "    GO    P    OG    ",
+              "    G           G    ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "    A           A    ",
+              "                     ",
+              "                     ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "B        BBB        B",
+              "                     ",
+              "          P          ",
+              "   GO     P     OO   ",
+              "     P    P    P     ",
+              "     PP   P   PP     ",
+              "          G          ",
+              "        OOGOO        ",
+              "     A    G    A     ",
+              "        OOAOO        ",
+              "                     ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "A        BBB        A",
+              "                     ",
+              "          P          ",
+              "  GO      P      OG  ",
+              "                     ",
+              "      X       X      ",
+              "      XG     GX      ",
+              "       OO   OO       ",
+              "       P     P       ",
+              "       OO   OO       ",
+              "                     ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "A        BBB        A",
+              "                     ",
+              "                     ",
+              "  O       P       O  ",
+              "                     ",
+              "                     ",
+              "      G       G      ",
+              "      OG     GO      ",
+              "      P       P      ",
+              "      OG     GO      ",
+              "                     ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "A       BBBBB       A",
+              "        XPPPX        ",
+              "                     ",
+              "  O       P       O  ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "     OO       OO     ",
+              "                     ",
+              "     OO       OO     ",
+              "                     ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "A BBBBBBBBBBBBBBBBB A",
+              "  X     P   P     X  ",
+              "                     ",
+              "  O      ###      O  ",
+              "         ###         ",
+              "         ###         ",
+              "         ###         ",
+              "     O   ###   O     ",
+              "         ###         ",
+              "     O   ###   O     ",
+              "         ###         ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "A BBBBBBBBBBBBBBBBB A",
+              "  X     P   P     X  ",
+              "  XPPPP       PPPPX  ",
+              "  XPPPPPP###PPPPPPX  ",
+              "  G  P   ###   P  G  ",
+              "     P   ###   P     ",
+              "     G   ###   G     ",
+              "     G   ###   G     ",
+              "     G   ###   G     ",
+              "     A   ###   A     ",
+              "         ###         ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "A BBBBBBBBBBBBBBBBB A",
+              "  X     P   P     X  ",
+              "                     ",
+              "  O      ###      O  ",
+              "         ###         ",
+              "         ###         ",
+              "         ###         ",
+              "     O   ###   O     ",
+              "         ###         ",
+              "     O   ###   O     ",
+              "         ###         ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "A       BBBBB       A",
+              "        XPPPX        ",
+              "                     ",
+              "  O       P       O  ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "     OO       OO     ",
+              "                     ",
+              "     OO       OO     ",
+              "                     ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "A        BBB        A",
+              "                     ",
+              "                     ",
+              "  O       P       O  ",
+              "                     ",
+              "                     ",
+              "      G       G      ",
+              "      OG     GO      ",
+              "      P       P      ",
+              "      OG     GO      ",
+              "                     ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "A        BBB        A",
+              "                     ",
+              "          P          ",
+              "  GO      P      OG  ",
+              "                     ",
+              "      X       X      ",
+              "      XG     GX      ",
+              "       OO   OO       ",
+              "       P     P       ",
+              "       OO   OO       ",
+              "                     ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "B        BBB        B",
+              "                     ",
+              "          P          ",
+              "   OO     P     OG   ",
+              "     P    P    P     ",
+              "     PP   P   PP     ",
+              "          G          ",
+              "        OOGOO        ",
+              "     A    G    A     ",
+              "        OOXOO        ",
+              "                     ",
+              "                     "
+          )
+          .slice(
+              "BBBBBBBBBBBBBBBBBBBBB",
+              "BB       BBB       BB",
+              "    X           X    ",
+              "    X     P     X    ",
+              "    GO    P    OG    ",
+              "    G           G    ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "    A           A    ",
+              "                     ",
+              "                     ",
+              "                     "
+          )
+          .slice(
+              " BBBBBBBBBBBBBBBBBBB ",
+              " BBB     BBB     BBB ",
+              "  A               A  ",
+              "  X       P       X  ",
+              "  P  OO   P   OG  P  ",
+              "  P               P  ",
+              "  O               O  ",
+              "  A               A  ",
+              "  A               A  ",
+              "  P               P  ",
+              "  O               O  ",
+              " AAA             AAA ",
+              " G G             G G "
+          )
+          .slice(
+              " BBBBBBBBBBBBBBBBBBB ",
+              " BBB     BBB     BBB ",
+              " AGA     XXX     AGA ",
+              " XPX      X      XPX ",
+              " PGP  GOOOAOOOG  PGP ",
+              " PGP      G      PGP ",
+              " OOO             OOO ",
+              " AGA             AGA ",
+              " AGA             AGA ",
+              " PGP             PGP ",
+              " OOO             OOO ",
+              " AGA             AGA ",
+              "  P               P  "
+          )
+          .slice(
+              " BBBBBBBBBBBBBBBBBBB ",
+              " BBBB           BBBB ",
+              "  A               A  ",
+              "  X               X  ",
+              "  P               P  ",
+              "  P               P  ",
+              "  O               O  ",
+              "  A               A  ",
+              "  A               A  ",
+              "  P               P  ",
+              "  O               O  ",
+              " AAA             AAA ",
+              " G G             G G "
+          )
+          .slice(
+              "    BBBBBBBBBBBBB    ",
+              "    BBAAAASAAAABB    ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     ",
+              "                     "
+          )
+          .where('S', Predicates.controller(
+              Predicates.blocks(definition.getBlock())))
+          .where('B', Predicates.blocks(
+                  GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get())
+              .setMinGlobalLimited(601)
+              .and(Predicates.autoAbilities(definition.getRecipeTypes()))
+              .and(Predicates.autoAbilities(true, false, false)))
+          .where('A', Predicates.blocks(
+              GCYMBlocks.CASING_ATOMIC.get()))
+          .where('X', Predicates.blocks(
+              GTBlocks.CASING_TUNGSTENSTEEL_ROBUST.get()))
+          .where('G', Predicates.blocks(
+              GTBlocks.FUSION_GLASS.get()))
+          .where('O', Predicates.blocks(
+              GTBlocks.FUSION_COIL.get()))
+          .where('P', Predicates.blocks(
+              GTBlocks.CASING_TUNGSTENSTEEL_PIPE.get()))
+          .where('#', Predicates.air())
+          .build()
+      )
+      .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_robust_tungstensteel"), GTCEu.id("block/multiblock/vacuum_freezer"))
       .register();
 
   public static final MultiblockMachineDefinition TEST = multiblock("test", LayeredWorkableElectricMultiblockMachine::new)

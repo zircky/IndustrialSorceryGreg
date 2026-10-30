@@ -10,26 +10,20 @@ import com.gregtechceu.gtceu.api.item.ComponentItem;
 import com.gregtechceu.gtceu.api.item.component.ElectricStats;
 import com.gregtechceu.gtceu.api.item.component.IItemComponent;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
-import com.gregtechceu.gtceu.common.item.armor.*;
 import com.gregtechceu.gtceu.common.item.behavior.CoverPlaceBehavior;
 import com.gregtechceu.gtceu.common.item.behavior.DataItemBehavior;
 import com.gregtechceu.gtceu.common.item.behavior.TooltipBehavior;
-import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.data.recipe.CustomTags;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.client.renderer.item.MaterialsColorMap;
-import com.zircky.industrialsorcerygreg.common.data.tag.item.ISGItemTag;
-import com.zircky.industrialsorcerygreg.common.item.armor.SpaceArmorComponentItem;
 import com.zircky.industrialsorcerygreg.utils.StringUtils;
-import earth.terrarium.adastra.common.tags.ModItemTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.ItemLike;
@@ -134,7 +128,7 @@ public class ISGItems {
   ItemEntry<Item> MAX_FIELD_GENERATOR = registerLang("max_field_generator", "MAX Field Generator");
   ItemEntry<Item> MAX_EMITTER = registerLang("max_emitter", "MAX Emitte");
   ItemEntry<Item> MAX_SENSOR = registerLang("max_sensor", "MAX Sensor");
-  
+
 
 //  public static final ItemEntry<Item> SMD_CAPACITOR_REFINED = registerLang("smd_capacitor_refined", "Refined SMD Capacitor");
 //  public static final ItemEntry<Item> SMD_DIODE_REFINED = registerSmd("smd_diode_refined", "Refined SMD Diode");
@@ -385,60 +379,6 @@ public class ISGItems {
   public static final ItemEntry<Item> RAPIDLY_ROTATING_CRUCIBLE = register("rapidly_rotating_crucible");
 
   public static final ItemEntry<Item> COSMIC_FABRIC = register("cosmic_fabric");
-
-  public static ItemEntry<SpaceArmorComponentItem> SPACE_NANOMUSCLE_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_nanomuscle_chestplate",
-          (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR,
-              ArmorItem.Type.CHESTPLATE, 8000, p)
-              .setArmorLogic(new NanoMuscleSuite(
-                  ArmorItem.Type.CHESTPLATE,
-                  (int) GTValues.V[HV],
-                  6_400_000L * (long) Math.max(1, Math.pow(4, ConfigHolder.INSTANCE.tools.voltageTierNanoSuit - 3)),
-                  ConfigHolder.INSTANCE.tools.voltageTierNanoSuit)))
-      .lang("NanoMuscle™ Space Suite Chestplate")
-      .properties(p -> p.rarity(Rarity.RARE))
-      .tag(ISGItemTag.NANOMUSCLE_SPACE_SUITE, ModItemTags.SPACE_SUITS, ModItemTags.FREEZE_RESISTANT_ARMOR,
-          ModItemTags.HEAT_RESISTANT_ARMOR, Tags.Items.ARMORS_CHESTPLATES, CustomTags.PPE_ARMOR)
-      .register();
-
-  public static ItemEntry<SpaceArmorComponentItem> SPACE_ADVANCED_NANOMUSCLE_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_advanced_nanomuscle_chestplate",
-          (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.CHESTPLATE, 16000, p)
-              .setArmorLogic(new AdvancedNanoMuscleSuite(
-                  (int) GTValues.V[HV],
-                  12_800_000L * (long) Math.max(1, Math.pow(4,
-                      ConfigHolder.INSTANCE.tools.voltageTierAdvNanoSuit - 3)),
-                  ConfigHolder.INSTANCE.tools.voltageTierAdvNanoSuit)))
-      .lang("Advanced NanoMuscle™ Space Suite Chestplate")
-      .properties(p -> p.rarity(Rarity.EPIC))
-      .tag(ISGItemTag.NANOMUSCLE_SPACE_SUITE, ModItemTags.SPACE_SUITS, ModItemTags.FREEZE_RESISTANT_ARMOR,
-          ModItemTags.HEAT_RESISTANT_ARMOR, Tags.Items.ARMORS_CHESTPLATES, CustomTags.PPE_ARMOR)
-      .register();
-
-  public static ItemEntry<SpaceArmorComponentItem> SPACE_QUARKTECH_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_quarktech_chestplate",
-          (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.CHESTPLATE, 32000, p)
-              .setArmorLogic(new QuarkTechSuite(
-                  ArmorItem.Type.CHESTPLATE,
-                  (int) GTValues.V[GTValues.IV],
-                  100_000_000L * (long) Math.max(1, Math.pow(4,
-                      ConfigHolder.INSTANCE.tools.voltageTierQuarkTech - 5)),
-                  ConfigHolder.INSTANCE.tools.voltageTierQuarkTech)))
-      .lang("QuarkTech™ Space Suite Chestplate")
-      .properties(p -> p.rarity(Rarity.RARE))
-      .tag(ISGItemTag.QUARKTECH_SPACE_SUITE, ModItemTags.SPACE_SUITS, ModItemTags.FREEZE_RESISTANT_ARMOR,
-          ModItemTags.HEAT_RESISTANT_ARMOR, Tags.Items.ARMORS_CHESTPLATES, CustomTags.PPE_ARMOR)
-      .register();
-
-  public static ItemEntry<SpaceArmorComponentItem> SPACE_ADVANCED_QUARKTECH_CHESTPLATE = ISGRegistries.REGISTRATE.item("space_advanced_quarktech_chestplate",
-          (p) -> new SpaceArmorComponentItem(GTArmorMaterials.ARMOR, ArmorItem.Type.CHESTPLATE, 128000, p)
-              .setArmorLogic(new AdvancedQuarkTechSuite(
-                  (int) GTValues.V[GTValues.IV],
-                  1_000_000_000L * (long) Math.max(1, Math.pow(4,
-                      ConfigHolder.INSTANCE.tools.voltageTierAdvQuarkTech - 6)),
-                  ConfigHolder.INSTANCE.tools.voltageTierAdvQuarkTech)))
-      .lang("Advanced QuarkTech™ Space Suite Chestplate")
-      .properties(p -> p.rarity(Rarity.EPIC))
-      .tag(ISGItemTag.QUARKTECH_SPACE_SUITE, ModItemTags.SPACE_SUITS, ModItemTags.FREEZE_RESISTANT_ARMOR,
-          ModItemTags.HEAT_RESISTANT_ARMOR, Tags.Items.ARMORS_CHESTPLATES, CustomTags.PPE_ARMOR)
-      .register();
 
   public static ItemEntry<Item> RADIOACTIVE_WASTE = ISGRegistries.REGISTRATE.item("radioactive_waste", Item::new)
       .lang("Radioactive Waste")

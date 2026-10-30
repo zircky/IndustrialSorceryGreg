@@ -7,6 +7,9 @@ import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 public class ItemLang {
   public static void init(RegistrateLangProvider provider) {
     initGeneratedNames(provider);
+    provider.add("module.industrialsorcerygreg.oxygen_tank", "Oxygen Tank");
+    provider.add("module.industrialsorcerygreg.oxygen_tank.description", "Stores %s mB of oxygen for breathing in space and underwater.");
+    provider.add("module.industrialsorcerygreg.oxygen_tank.stored", "Oxygen: %s/%s mB");
 
     provider.add("isgcore.tooltip.item.tier_circuit", "%s Tier Circuit");
     provider.add("isgcore.tooltip.item.catalyst.1", "§7When not in the catalyst hatch or pattern buffer, §cthe recipe process will completely consume the catalyst§r");

@@ -1,29 +1,26 @@
 package com.zircky.industrialsorcerygreg.mixin.adastra;
 
-import com.zircky.industrialsorcerygreg.common.item.armor.SpaceArmorComponentItem;
+import com.zircky.industrialsorcerygreg.common.data.ISGItemModules;
+import com.zircky.industrialsorcerygreg.common.item.module.OxygenTankFluidHandler;
+import earth.terrarium.botarium.common.fluid.FluidConstants;
 import earth.terrarium.adastra.common.items.armor.SpaceSuitItem;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Debug(export = true)
 @Mixin(value = SpaceSuitItem.class, remap = false)
 public class AdAstraSpaceSuitItemMixin {
-  /**
-   * @author
-   * @reason
-   */
-  @Overwrite
-  public static long getOxygenAmount(Entity entity) {
-    if (!(entity instanceof LivingEntity livingEntity)) return 0;
+  @Inject(method = "getOxygenAmount", at = @At("HEAD"), cancellable = true)
+  private static void isg$getModuleOxygen(Entity entity, CallbackInfoReturnable<Long> cir) {
+    if (!(entity instanceof LivingEntity livingEntity)) return;
     var stack = livingEntity.getItemBySlot(EquipmentSlot.CHEST);
-    if (stack.getItem() instanceof SpaceSuitItem suit) {
-      return suit.getFluidContainer(stack).getFirstFluid().getFluidAmount();
-    } else if (stack.getItem() instanceof SpaceArmorComponentItem suit) {
-      return suit.getFluidContainer(stack).getFirstFluid().getFluidAmount();
-    } else return 0;
+    final var context = ISGItemModules.getOxygenTank(stack);
+    if (context != null) {
+      cir.setReturnValue(FluidConstants.fromMillibuckets(new OxygenTankFluidHandler(context).getOxygenAmount()));
+    }
   }
 }

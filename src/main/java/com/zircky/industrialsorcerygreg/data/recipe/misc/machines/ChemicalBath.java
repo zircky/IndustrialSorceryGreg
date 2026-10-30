@@ -1,17 +1,11 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
+import com.zircky.industrialsorcerygreg.common.data.ISGMaterials;
 
-import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
 import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 
@@ -42,7 +36,7 @@ public class ChemicalBath {
     // 3 K4Fe(CN)6 + 4 FeCl3 -> Fe7(CN)18 + 12 KCl
     CHEMICAL_BATH_RECIPES.recipeBuilder("prussian_blue").duration(300).EUt(720)
         .outputDust(PotassiumFerrocyanide, 51)
-        .inputFluids(IronChloride.getFluid(4000))
+        .inputFluids(Iron3Chloride.getFluid(4000))
         .outputDust(PrussianBlue, 43)
         .outputDust(RockSalt, 24)
         .save(provider);
@@ -66,8 +60,8 @@ public class ChemicalBath {
     CHEMICAL_BATH_RECIPES.recipeBuilder("sugar_water_to_glucose_fructose").duration(300).EUt(480)
         .inputDust(Sugar, 2)
         .inputFluids(Water.getFluid(1000))
-        .outputItems(ChemicalHelper.get(dust, Glucose, 24))
-        .outputItems(ChemicalHelper.get(dust, Fructose, 24))
+        .outputItems(dust, Glucose, 6)
+        .outputItems(dust, Fructose, 6)
         .save(provider);
 
 

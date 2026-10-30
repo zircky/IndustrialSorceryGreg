@@ -17,8 +17,10 @@ import net.minecraft.world.item.Item;
 import java.util.stream.Stream;
 
 public class ISGItemTagsLoader {
-  public static ItemEntry<?>[] NANO_SPACE_SUITE = { GTItems.NANO_HELMET, GTItems.NANO_LEGGINGS, GTItems.NANO_BOOTS };
-  public static ItemEntry<?>[] QUANTUM_SPACE_SUITE = { GTItems.QUANTUM_HELMET, GTItems.QUANTUM_LEGGINGS,
+  public static ItemEntry<?>[] NANO_SPACE_SUITE = { GTItems.NANO_CHESTPLATE, GTItems.NANO_HELMET,
+      GTItems.NANO_LEGGINGS, GTItems.NANO_BOOTS };
+  public static ItemEntry<?>[] QUANTUM_SPACE_SUITE = { GTItems.QUANTUM_CHESTPLATE, GTItems.QUANTUM_HELMET,
+      GTItems.QUANTUM_LEGGINGS,
       GTItems.QUANTUM_BOOTS };
   public static ItemEntry<?>[] SPACE_SUITES = Stream.of(NANO_SPACE_SUITE, QUANTUM_SPACE_SUITE).flatMap(Stream::of)
       .toArray(ItemEntry<?>[]::new);

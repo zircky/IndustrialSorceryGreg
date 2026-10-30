@@ -329,7 +329,7 @@ public final class ExoticMaterials {
         .ingot().fluid()
         .color(0x7C370D).secondaryColor(0x8B4513)
         .iconSet(SHINY)
-        .appendFlags(SNDART_FLAGS)
+        .appendFlags(SNDART_FLAGS, ISGMaterialFlags.GENERATE_SINGULARITY)
         .blastTemp(3870, HIGH, GTValues.VA[GTValues.IV], 2800)
         .buildAndRegister()
         .setFormula("", true);

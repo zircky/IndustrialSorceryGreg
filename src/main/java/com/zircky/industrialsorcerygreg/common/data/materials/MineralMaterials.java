@@ -19,8 +19,7 @@ import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIcon
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet.FLUID;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGH;
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.HIGHEST;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.Boron;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.Talc;
+import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.SNDART_FLAGS;
 import static com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet.CHAOS;
@@ -57,6 +56,14 @@ public final class MineralMaterials {
         .flags(DISABLE_DECOMPOSITION)
         .buildAndRegister();
 
+    Niter = material("niter")
+        .dust().ore()
+        .color(0xFFC8C8)
+        .iconSet(FLINT)
+        .components(Saltpeter, 1)
+        .flags(NO_SMASHING, NO_SMELTING)
+        .addOreByproducts(Saltpeter)
+        .buildAndRegister();
 
     Caliche = builderISG("caliche")
         .ore()
@@ -65,6 +72,7 @@ public final class MineralMaterials {
         .iconSet(DULL)
         .components(SodiumNitrate, 1,GTMaterials.Potassium, 1, GTMaterials.Nitrogen, 1, GTMaterials.Oxygen, 3, GTMaterials.RockSalt, 1, GTMaterials.Sodium, 1, GTMaterials.Iodine, 1, GTMaterials.Oxygen, 3)
         .flags(DISABLE_DECOMPOSITION)
+        .addOreByproducts(Niter, Saltpeter, Lepidolite)
         .buildAndRegister();
 
     Rhodocrosite = builderISG("rhodocrosite")
@@ -73,6 +81,7 @@ public final class MineralMaterials {
         .color(0xff6699)
         .iconSet(SHINY)
         .components(GTMaterials.Manganese, 1, GTMaterials.Carbon, 1, GTMaterials.Oxygen, 3)
+        .addOreByproducts(Calcium, Manganese)
         .buildAndRegister();
 
     Columbite = builderISG("columbite")
@@ -81,6 +90,7 @@ public final class MineralMaterials {
         .color(0xCCCC00)
         .iconSet(SHINY)
         .components(GTMaterials.Iron, 1, GTMaterials.Niobium, 2, GTMaterials.Oxygen, 6)
+        .addOreByproducts(Iron, Manganese, Niobium)
         .buildAndRegister();
 
     FluoroApatite = builderISG("fluoroapatite")
@@ -89,6 +99,7 @@ public final class MineralMaterials {
         .color(GTMaterials.Apatite.getMaterialRGB())
         .iconSet(DULL)
         .components(GTMaterials.Calcium, 5, GTMaterials.Phosphate, 3, GTMaterials.Fluorine, 1)
+        .addOreByproducts(Apatite, Fluorite, Phosphorus)
         .buildAndRegister();
 
     NdYAG = builderISG("nd_yag")
@@ -126,6 +137,7 @@ public final class MineralMaterials {
         .iconSet(SHINY)
         .components(GTMaterials.Barium, 1, GTMaterials.Calcium, 1, GTMaterials.Carbon, 2, GTMaterials.Oxygen, 6)
         .flags(DISABLE_DECOMPOSITION)
+        .addOreByproducts(Calcite, Magnesium, Barite)
         .buildAndRegister();
 
     Witherite = builderISG("witherite")
@@ -135,6 +147,7 @@ public final class MineralMaterials {
         .iconSet(ROUGH)
         .components(GTMaterials.Barium, 1, GTMaterials.Carbon, 1, GTMaterials.Oxygen, 3)
         .flags(DISABLE_DECOMPOSITION)
+        .addOreByproducts(Calcite, Barite, Lead)
         .buildAndRegister();
 
     Arsenopyrite = builderISG("arsenopyrite")
@@ -143,6 +156,7 @@ public final class MineralMaterials {
         .color(0xaa9663)
         .iconSet(METALLIC)
         .components(GTMaterials.Iron, 1, GTMaterials.Arsenic, 1, GTMaterials.Sulfur, 1)
+        .addOreByproducts(Iron, Cobaltite, Cobalt)
         .buildAndRegister();
 
     Gallite = builderISG("gallite")
@@ -151,6 +165,7 @@ public final class MineralMaterials {
         .color(0x7f7b9e)
         .iconSet(SHINY)
         .components(GTMaterials.Copper, 1, GTMaterials.Gallium, 1, GTMaterials.Sulfur, 2)
+        .addOreByproducts(Sulfur, Copper, Copper, Gallium)
         .buildAndRegister();
 
     Bowieite = builderISG("bowieite")
@@ -160,6 +175,7 @@ public final class MineralMaterials {
         .iconSet(ROUGH)
         .components(GTMaterials.Rhodium, 1, GTMaterials.Iridium, 1, GTMaterials.Platinum, 1, GTMaterials.Sulfur, 3)
         .flags(DISABLE_DECOMPOSITION)
+        .addOreByproducts(Nickel, PlatinumMetallicPowder, RarestMetalResidue, CrudeRhodiumMetal)
         .buildAndRegister();
 
     Celestine = builderISG("celestine")
@@ -168,6 +184,7 @@ public final class MineralMaterials {
         .color(0x9db1b8)
         .iconSet(SHINY)
         .components(GTMaterials.Strontium, 1, GTMaterials.Sulfur, 1, GTMaterials.Oxygen, 4)
+        .addOreByproducts(Gypsum, Calcite, Calcite, Strontium)
         .buildAndRegister();
 
     CubicZirconia = builderISG("cubic_zirconia")
@@ -201,6 +218,7 @@ public final class MineralMaterials {
         .iconSet(GEM_VERTICAL)
         .components(GTMaterials.Zirconium, 1, GTMaterials.Silicon, 1, GTMaterials.Oxygen, 4)
         .flags(DISABLE_DECOMPOSITION)
+        .addOreByproducts(Cobalt, Lead, Uranium238)
         .buildAndRegister();
 
     LeadZirconateTitanate = builderISG("lead_zirconate_titanate")
@@ -224,5 +242,6 @@ public final class MineralMaterials {
         .color(0xaa2b9f)
         .iconSet(BRIGHT)
         .buildAndRegister().setFormula("?", false);
+
   }
 }
