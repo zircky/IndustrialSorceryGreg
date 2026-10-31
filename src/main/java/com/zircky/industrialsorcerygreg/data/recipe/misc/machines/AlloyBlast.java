@@ -30,7 +30,7 @@ public class AlloyBlast {
         .inputDust(GTMaterials.Copper, 3)
         .circuitMeta(3)
         .inputFluids(GTMaterials.Oxygen, 7000)
-        .outputFluids(GTMaterials.YttriumBariumCuprate.getFluid(FluidStorageKeys.MOLTEN, 1872))
+        .outputFluids(GTMaterials.YttriumBariumCuprate.getFluid(FluidStorageKeys.LIQUID, 1872))
         .EUt(524288)
         .blastFurnaceTemp(12288)
         .duration(3450)

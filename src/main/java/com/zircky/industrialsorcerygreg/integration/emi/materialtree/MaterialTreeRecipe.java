@@ -18,7 +18,7 @@ public final class MaterialTreeRecipe extends BasicEmiRecipe {
       final EmiStack materialKey,
       final List<FormEntry> forms
   ) {
-    super(category, id, 186, 180);
+    super(category, id, MaterialTreeLayout.WIDTH, MaterialTreeLayout.HEIGHT);
 
 //    this.materialKey = materialKey;
     this.forms = List.copyOf(forms);

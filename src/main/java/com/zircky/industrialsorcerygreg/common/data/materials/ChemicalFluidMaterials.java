@@ -2905,7 +2905,7 @@ public final class ChemicalFluidMaterials {
         .buildAndRegister();
 
     AdamantiumDioxide = builderISG("adamantium_dioxide")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .fluid()
         .color(0x132E58)
         .iconSet(FLUID)
         .buildAndRegister();
@@ -3536,19 +3536,19 @@ public final class ChemicalFluidMaterials {
         .buildAndRegister();
 
     Compressediron = builderISG("compressediron")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .fluid()
         .color(0x363636)
         .iconSet(FLUID)
         .buildAndRegister();
 
     Modularium = builderISG("modularium")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .fluid()
         .color(0xFFFFFF)
         .iconSet(FLUID)
         .buildAndRegister();
 
     Resonantseaborgium = builderISG("resonantseaborgium")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID).dust()
+        .fluid().dust()
         .color(0x54D66B)
         .iconSet(FLUID)
         .buildAndRegister();
@@ -3638,7 +3638,7 @@ public final class ChemicalFluidMaterials {
         .buildAndRegister();
 
     Protoadamantiumplatedalloy = builderISG("protoadamantiumplatedalloy")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .fluid()
         .color(0x252b7a)
         .iconSet(FLUID)
         .buildAndRegister();
@@ -3663,7 +3663,7 @@ public final class ChemicalFluidMaterials {
         .buildAndRegister();
 
     Infnite = builderISG("infnite")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .fluid()
         .color(0x6099C4)
         .iconSet(FLUID)
         .buildAndRegister();
@@ -3676,7 +3676,6 @@ public final class ChemicalFluidMaterials {
 
     RawNeutronium = builderISG("raw_neutronium")
         .dust()
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
         .liquid(new FluidBuilder()
             .temperature(293)
             .color(Neutronium.getMaterialARGB() + Helium.getMaterialARGB())
@@ -3685,7 +3684,6 @@ public final class ChemicalFluidMaterials {
         .color(Neutronium.getMaterialARGB() + Helium.getMaterialARGB())
         .iconSet(DULL)
         .buildAndRegister();
-    RawNeutronium.getProperty(PropertyKey.FLUID).setPrimaryKey(FluidStorageKeys.MOLTEN);
 
     LiquidHyperReactive = builderISG("liquid_hyper_reactive")
         .liquid()
@@ -3694,13 +3692,13 @@ public final class ChemicalFluidMaterials {
         .buildAndRegister();
 
     RheniumHassiumThalliumIsophtaloylbisdiethylthiourea = builderISG("rhenium_hassium_thallium_isophtaloylbisdiethylthiourea")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .fluid()
         .color(0x85428a)
         .iconSet(FLUID)
         .buildAndRegister();
 
     Fullerenesuperconductor = builderISG("fullerenesuperconductor")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .fluid()
         .color(0x74eb1a)
         .iconSet(FLUID)
         .buildAndRegister();
@@ -3768,13 +3766,13 @@ public final class ChemicalFluidMaterials {
 
     Enhancedenderium = builderISG("enhancedenderium")
         .dust()
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .fluid()
         .color(0x113817)
         .iconSet(FLUID)
         .buildAndRegister();
 
     Awakenedcompressedmetal = builderISG("awakenedcompressedmetal")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .fluid()
         .color(0xab4b1b)
         .iconSet(FLUID)
         .buildAndRegister();
@@ -3834,7 +3832,7 @@ public final class ChemicalFluidMaterials {
         .buildAndRegister();
 
     Ceriumdopedlanthanum = builderISG("ceriumdopedlanthanum")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID).dust()
+        .fluid().dust()
         .color(0xF3EDBF)
         .iconSet(FLUID)
         .buildAndRegister();
@@ -3846,14 +3844,14 @@ public final class ChemicalFluidMaterials {
         .buildAndRegister();
 
     Celananoparticles = builderISG("celananoparticles")
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .fluid()
         .color(0x9C27B0)
         .iconSet(FLUID)
         .buildAndRegister();
 
     Ceriumlanthanum = builderISG("ceriumlanthanum")
         .dust()
-        .fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .fluid()
         .color(0xD9DF95)
         .iconSet(FLUID)
         .buildAndRegister();

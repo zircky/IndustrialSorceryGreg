@@ -155,12 +155,6 @@ final class ChemicalPrecursorMaterials {
         .iconSet(FLUID)
         .buildAndRegister();
 
-    MoltenCalciumSalts = builderISG("molten_calcium_salts")
-        .fluid()
-        .color((ISGMaterials.Fluorite.getMaterialRGB() + GTMaterials.Calcium.getMaterialRGB()) / 2)
-        .iconSet(FLUID)
-        .buildAndRegister();
-
     EthylTrifluoroacetate = builderISG("ethyl_trifluoroacetate")
         .fluid()
         .color(0x88a12d)

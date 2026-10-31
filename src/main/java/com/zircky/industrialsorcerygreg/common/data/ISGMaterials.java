@@ -1840,7 +1840,6 @@ public class ISGMaterials {
   public static Material NitratedTriniiteSolution;
   public static Material ResidualTriniiteSolution;
   public static Material HeavilyFluorinatedTriniumSolution;
-  public static Material MoltenCalciumSalts;
   public static Material EthylTrifluoroacetate;
   public static Material Acetothienone;
   public static Material TheonylTrifluoroacetate;

@@ -15,9 +15,14 @@ import net.minecraft.world.level.material.Fluid;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GTFormResolver {
+public class ISGFormResolver {
   public static final TagPrefix[] DEFAULT_FORMS = new TagPrefix[]{
       TagPrefix.ingot,
+      TagPrefix.ingotHot,
+      ISGTagPrefix.tripleIngot,
+      ISGTagPrefix.quadrupleIngot,
+      ISGTagPrefix.quintupleIngot,
+
       TagPrefix.nugget,
 
       TagPrefix.dustSmall,
@@ -33,6 +38,10 @@ public class GTFormResolver {
       TagPrefix.plate,
       TagPrefix.plateDouble,
       TagPrefix.plateDense,
+      ISGTagPrefix.triplePlate,
+      ISGTagPrefix.quadruplePlate,
+      ISGTagPrefix.quintuplePlate,
+      ISGTagPrefix.superdensePlate,
 
       TagPrefix.rod,
       TagPrefix.rodLong,
@@ -66,7 +75,9 @@ public class GTFormResolver {
       TagPrefix.block,
       TagPrefix.frameGt,
 
-
+      ISGTagPrefix.NANITES,
+      ISGTagPrefix.CONTAMINABLE_NANITES,
+      ISGTagPrefix.singularity,
 
       TagPrefix.pipeTinyFluid,
       TagPrefix.pipeSmallFluid,
@@ -101,7 +112,6 @@ public class GTFormResolver {
     addFluid(out, material, FluidStorageKeys.LIQUID);
     addFluid(out, material, FluidStorageKeys.GAS);
     addFluid(out, material, FluidStorageKeys.PLASMA);
-    addFluid(out, material, FluidStorageKeys.MOLTEN);
 
     for (final TagPrefix prefix : DEFAULT_FORMS) {
       final ItemStack stack = ChemicalHelper.get(prefix, material, 1);
@@ -128,8 +138,7 @@ public class GTFormResolver {
     return firstFluid(material,
         FluidStorageKeys.LIQUID,
         FluidStorageKeys.GAS,
-        FluidStorageKeys.PLASMA,
-        FluidStorageKeys.MOLTEN
+        FluidStorageKeys.PLASMA
     );
   }
 

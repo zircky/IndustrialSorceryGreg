@@ -35,7 +35,7 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Water;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.*;
 import static com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix.crushedLeached;
-import static com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix.prismaFrothed;
+import static com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix.frothed;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.Prisma;
 
 public final class ISGOreRecipeHandler {
@@ -462,7 +462,7 @@ public final class ISGOreRecipeHandler {
 
   private static void processRefinedFrothed(Consumer<FinishedRecipe> provider, @NotNull OreProperty property, Material material) {
     if (!material.shouldGenerateRecipesFor(crushedRefined) || !material.hasProperty(PropertyKey.ORE)) return;
-    ItemStack frothedStack = ChemicalHelper.get(prismaFrothed, material);
+    ItemStack frothedStack = ChemicalHelper.get(frothed, material);
 
     Material byproduct = property.getOreByProduct(0, material);
     Material byproduct2 = property.getOreByProduct(1, material);
@@ -521,8 +521,8 @@ public final class ISGOreRecipeHandler {
   }
 
   public static void processFrothedPure(Consumer<FinishedRecipe> provider, @NotNull OreProperty property, Material material) {
-    if (!material.shouldGenerateRecipesFor(prismaFrothed)) return;
-    ItemStack refinedStack = ChemicalHelper.get(prismaFrothed, material);
+    if (!material.shouldGenerateRecipesFor(frothed)) return;
+    ItemStack refinedStack = ChemicalHelper.get(frothed, material);
     ItemStack pureStack = ChemicalHelper.get(dustPure, material);
 
     Material byproduct = property.getOreByProduct(0, material);

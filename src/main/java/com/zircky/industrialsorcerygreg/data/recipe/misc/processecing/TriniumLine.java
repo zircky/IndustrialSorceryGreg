@@ -223,16 +223,16 @@ public class TriniumLine {
         .outputDust(Fluorite, 3)
         .save(provider);
 
-    MIXER_RECIPES.recipeBuilder("trinium_line_molten_calcium_salts").duration(160).EUt(30)
+    MIXER_RECIPES.recipeBuilder("trinium_line_calcium_salts").duration(160).EUt(30)
         .inputDust(Calcium)
         .inputFluids(Fluorite.getFluid(432))
-        .outputFluids(MoltenCalciumSalts.getFluid(1000))
+        .outputFluids(CalciumSalts.getFluid(1000))
         .save(provider);
 
     ELECTROLYZER_RECIPES.recipeBuilder("trinium_line_trinium_from_tetrafluoride").duration(200).EUt(2000)
         .inputDust(TriniumTetrafluoride, 5)
         .inputDust(Sulfur)
-        .inputFluids(MoltenCalciumSalts.getFluid(1000))
+        .inputFluids(CalciumSalts.getFluid(1000))
         .outputDust(TriniumSulfide, 2)
         .outputDust(Calcium, 2)
         .outputFluids(Fluorine.getFluid(6000))
