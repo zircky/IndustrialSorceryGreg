@@ -105,7 +105,7 @@ final class MaterialGroupAndCatalystMaterials {
         .setFormula("Ta2O5Nb18O45", true);
 
     ChargedCesiumCeriumCobaltIndium = builderISG("charged_cesium_cerium_cobalt_indium")
-        .dust().fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .dust().fluid()
         .color(0x52ad25)
         .iconSet(SHINY)
         .buildAndRegister()
@@ -226,14 +226,14 @@ final class MaterialGroupAndCatalystMaterials {
         .setFormula("TlBa2Ca2Cu3O10", true);
 
     Borocarbide = builderISG("borocarbide")
-        .dust().fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .dust().fluid()
         .color(0x9a9a2a)
         .iconSet(SHINY)
         .buildAndRegister()
         .setFormula("B4C7Fr4At6Ho2Th2Fl2Cn2", true);
 
     ActiniumSuperhydride = builderISG("actinium_superhydride")
-        .dust().plasma().fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .dust().plasma().fluid()
         .color(GTMaterials.Actinium.getMaterialRGB() * 9 / 8)
         .iconSet(SHINY)
         .buildAndRegister()
@@ -268,14 +268,14 @@ final class MaterialGroupAndCatalystMaterials {
         .setFormula("ReHsTlC60PN12H84S6O12F6", true);
 
     Legendarium = builderISG("legendarium")
-        .dust().fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .dust().fluid()
         .color(0xc3c3c3)
         .iconSet(SHINY)
         .buildAndRegister()
         .setFormula("NqNq+*Nq*DrTrKeTnAdVb");
 
     LanthanumFullereneNanotubes = builderISG("lanthanum_fullerene_nanotubes")
-        .dust().fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .dust().fluid()
         .color(LanthanumFullereneMix.getMaterialRGB() * 3 / 5)
         .iconSet(SHINY)
         .buildAndRegister()

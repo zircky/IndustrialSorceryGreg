@@ -101,7 +101,7 @@ public class PlatinumLine {
         .buildAndRegister();
 
     PotassiumDisulfate = builderISG("potassium_disulfate")
-        .dust().fluid(FluidStorageKeys.MOLTEN, FluidState.LIQUID)
+        .dust().fluid()
         .color(0xfbbb66)
         .iconSet(MaterialIconSet.DULL)
         .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)

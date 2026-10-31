@@ -594,7 +594,7 @@ final class MetalProcessingCompoundMaterials {
         .buildAndRegister();
 
     CalciumSalts = builderISG("calcium_salts")
-        .dust()
+        .dust().fluid()
         .color(GTMaterials.Calcium.getMaterialRGB() - 10)
         .iconSet(ROUGH)
         .components(GTMaterials.Calcite, 1, GTMaterials.Gypsum, 1)

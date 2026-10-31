@@ -10,10 +10,10 @@ import java.util.List;
 
 public class MaterialTreeRecipeFactory {
   private final MaterialTreeCategory category;
-  private final GTMaterialAccess materialAccess;
-  private final GTFormResolver formResolver;
+  private final ISGMaterialAccess materialAccess;
+  private final ISGFormResolver formResolver;
 
-  public MaterialTreeRecipeFactory(final MaterialTreeCategory category, final GTMaterialAccess materialAccess, final GTFormResolver formResolver) {
+  public MaterialTreeRecipeFactory(final MaterialTreeCategory category, final ISGMaterialAccess materialAccess, final ISGFormResolver formResolver) {
     this.category = category;
     this.materialAccess = materialAccess;
     this.formResolver = formResolver;

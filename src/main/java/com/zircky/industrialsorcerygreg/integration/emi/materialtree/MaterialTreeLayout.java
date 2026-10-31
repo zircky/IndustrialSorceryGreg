@@ -1,142 +1,76 @@
 package com.zircky.industrialsorcerygreg.integration.emi.materialtree;
 
-
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import it.unimi.dsi.fastutil.ints.IntImmutableList;
+import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 
-
-import static com.zircky.industrialsorcerygreg.integration.emi.materialtree.GTFormResolver.DEFAULT_FORMS;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class MaterialTreeLayout {
-  public static final IntImmutableList ITEM_LOCATIONS = IntImmutableList.of(
-      // base column (0)
-      3, 3,    // ingot
-      3, 21,   // nugget
-      3, 47,   // dustSmall
-      3, 65,   // dust
-      3, 83,   // dustTiny
+  private static final int MARGIN = 3;
+  private static final int SPACING = 20;
+  public static final int WIDTH = MARGIN * 2 + SPACING * 12;
+  public static final int HEIGHT = MARGIN * 2 + SPACING * 9;
+  private static final Map<TagPrefix, SlotPos> POSITIONS = createPositions();
 
-      // gems column (1)
-      23, 47,  // gem
-      23, 65,  // gemChipped
-      23, 83,  // gemFlawed
-      23, 101, // gemFlawless
-      23, 119, // gemExquisite
+  private MaterialTreeLayout() {}
 
-      // plates column (2)
-      43, 47,  // plate
-      43, 65,  // plateDouble
-      43, 83,  // plateDense
+  private static Map<TagPrefix, SlotPos> createPositions() {
+    final Map<TagPrefix, SlotPos> positions = new HashMap<>();
+    addGroup(positions, 0, 0, 3,
+        TagPrefix.ingot, TagPrefix.ingotHot, TagPrefix.nugget, ISGTagPrefix.tripleIngot, ISGTagPrefix.quadrupleIngot, ISGTagPrefix.quintupleIngot);
+    addGroup(positions, 0, 3, 3,
+        TagPrefix.dust, TagPrefix.dustSmall, TagPrefix.dustTiny, TagPrefix.gem, TagPrefix.gemChipped, TagPrefix.gemFlawed, TagPrefix.gemFlawless, TagPrefix.gemExquisite);
+    addGroup(positions, 0, 6, 4,
+        TagPrefix.rod, TagPrefix.rodLong, TagPrefix.bolt, TagPrefix.screw, TagPrefix.spring, TagPrefix.springSmall, TagPrefix.ring, TagPrefix.round);
+    addGroup(positions, 4, 0, 3,
+        TagPrefix.plate, TagPrefix.plateDouble, TagPrefix.plateDense, ISGTagPrefix.triplePlate, ISGTagPrefix.quadruplePlate, ISGTagPrefix.quintuplePlate, ISGTagPrefix.superdensePlate, TagPrefix.foil, ISGTagPrefix.CURVED_PLATE);
+    addGroup(positions, 4, 3, 3,
+        TagPrefix.gear, TagPrefix.gearSmall, TagPrefix.rotor, TagPrefix.block, TagPrefix.frameGt);
+    addGroup(positions, 4, 5, 3,
+        ISGTagPrefix.NANITES, ISGTagPrefix.CONTAMINABLE_NANITES, ISGTagPrefix.singularity, ISGTagPrefix.MOTOR_ENCLOSURE, ISGTagPrefix.PUMP_BARREL, ISGTagPrefix.PISTON_HOUSING, ISGTagPrefix.EMITTER_BASES, ISGTagPrefix.SENSOR_CASING, ISGTagPrefix.FIELD_GENERATOR_CASING);
+    addGroup(positions, 0, 8, 8,
+        TagPrefix.pipeSmallItem, TagPrefix.pipeNormalItem, TagPrefix.pipeLargeItem, TagPrefix.pipeHugeItem, TagPrefix.pipeSmallRestrictive, TagPrefix.pipeNormalRestrictive, TagPrefix.pipeLargeRestrictive, TagPrefix.pipeHugeRestrictive);
+    addGroup(positions, 10, 3, 2,
+        TagPrefix.pipeTinyFluid, TagPrefix.pipeSmallFluid, TagPrefix.pipeNormalFluid, TagPrefix.pipeLargeFluid, TagPrefix.pipeHugeFluid, TagPrefix.pipeQuadrupleFluid, TagPrefix.pipeNonupleFluid);
+    addGroup(positions, 8, 0, 1,
+        TagPrefix.wireFine, TagPrefix.wireGtSingle, TagPrefix.wireGtDouble, TagPrefix.wireGtQuadruple, TagPrefix.wireGtOctal, TagPrefix.wireGtHex);
+    addGroup(positions, 9, 1, 1,
+        TagPrefix.cableGtSingle, TagPrefix.cableGtDouble, TagPrefix.cableGtQuadruple, TagPrefix.cableGtOctal, TagPrefix.cableGtHex);
+    return Map.copyOf(positions);
+  }
 
-      // rods column (3)
-      63, 47,  // rod
-      63, 65,  // rodLong
-
-      // fasteners column (4)
-      83, 47,  // bolt
-      83, 65,  // screw
-
-      // gears column (5)
-      103, 47, // gear
-      103, 65, // gearSmall
-
-      // wire column (6)
-      126, 3,  // wireFine
-      126, 21, // wireGtSingle
-      126, 39, // wireGtDouble
-      126, 57, // wireGtQuadruple
-      126, 75, // wireGtOctal
-      126, 93, // wireGtHex
-
-      // cable column (7)
-      146, 21, // cableGtSingle
-      146, 39, // cableGtDouble
-      146, 57, // cableGtQuadruple
-      146, 75, // cableGtOctal
-      146, 93, // cableGtHex
-
-      // misc column (2/3 lower)
-      43, 101, // foil
-      63, 101, // spring
-      63, 119, // springSmall
-      83, 101, // ring
-      83, 119, // round
-      103, 101,// rotor
-
-      // blocks/frames column (0/1 top)
-      23, 3,   // block
-      23, 21,   // frameGt
-
-      // fluid pipes area (bottom right)
-      3, 140,  // pipeTinyFluid
-      23, 140, // pipeSmallFluid
-      43, 140, // pipeNormalFluid
-      63, 140, // pipeLargeFluid
-      3, 158, // pipeHugeFluid
-      23, 158,// pipeQuadrupleFluid
-      43, 158,// pipeNonupleFluid
-
-      // item pipes row
-      3, 140,  // pipeSmallItem
-      23, 140, // pipeNormalItem
-      43, 140, // pipeLargeItem
-      63, 140, // pipeHugeItem
-
-      // restrictive pipes row
-      3, 158,  // pipeSmallRestrictive
-      23, 158, // pipeNormalRestrictive
-      43, 158, // pipeLargeRestrictive
-      63, 158,  // pipeHugeRestrictive
-
-      103, 140, // curvedPlate
-      123, 140, // motorEnclosure
-      143, 140, // pumpBarrel
-      163, 140, // pistonHousing
-      103, 158, // emitterBase
-      123, 158, // sensorCasing
-      143, 158 // fieldGeneratorCasing
-  );
-
-  static {
-    if (ITEM_LOCATIONS.size() != DEFAULT_FORMS.length * 2) {
-      throw new IllegalStateException("MaterialTreeLayout mismatch: locations=" + ITEM_LOCATIONS.size()
-          + " order=" + DEFAULT_FORMS.length);
+  private static void addGroup(final Map<TagPrefix, SlotPos> positions, final int column,
+      final int row, final int columns, final TagPrefix... prefixes) {
+    for (int i = 0; i < prefixes.length; i++) {
+      if (positions.put(prefixes[i], cell(column + i % columns, row + i / columns)) != null) {
+        throw new IllegalStateException("Duplicate material form: " + prefixes[i]);
+      }
     }
+  }
+
+  private static SlotPos cell(final int column, final int row) {
+    return new SlotPos(MARGIN + column * SPACING, MARGIN + row * SPACING);
   }
 
   public static SlotPos pos(final TagPrefix prefix) {
-    final int idx = indexOf(prefix);
-    if (idx < 0) return SlotPos.HIDDEN;
-
-    final int base = idx * 2;
-    return new SlotPos(ITEM_LOCATIONS.getInt(base), ITEM_LOCATIONS.getInt(base + 1));
-  }
-
-  private static int indexOf(final TagPrefix prefix) {
-    for (int i = 0; i < DEFAULT_FORMS.length; i++) {
-      if (DEFAULT_FORMS[i] == prefix) {
-        return i;
-      }
-    }
-    return -1;
+    return POSITIONS.getOrDefault(prefix, SlotPos.HIDDEN);
   }
 
   public static SlotPos pos(final FormEntry entry) {
     if (!entry.isFluid()) return pos(entry.prefix());
-    if (entry.fluidKey() == FluidStorageKeys.LIQUID) return new SlotPos(43, 3);
-    if (entry.fluidKey() == FluidStorageKeys.GAS) return new SlotPos(43, 21);
-    if (entry.fluidKey() == FluidStorageKeys.PLASMA) return new SlotPos(63, 3);
-    if (entry.fluidKey() == FluidStorageKeys.MOLTEN) return new SlotPos(63, 21);
+    if (entry.fluidKey() == FluidStorageKeys.LIQUID) return cell(10, 0);
+    if (entry.fluidKey() == FluidStorageKeys.GAS) return cell(11, 0);
+    if (entry.fluidKey() == FluidStorageKeys.PLASMA) return cell(10, 1);
     return SlotPos.HIDDEN;
   }
 
   public record SlotPos(int x, int y) {
-    public static final SlotPos HIDDEN = new SlotPos(-9999, -9999);
+    public static final SlotPos HIDDEN = new SlotPos(-1, -1);
 
     public boolean hidden() {
       return x < 0;
     }
   }
-
 }

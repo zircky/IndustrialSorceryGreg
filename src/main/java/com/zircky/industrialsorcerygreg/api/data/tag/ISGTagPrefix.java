@@ -1,28 +1,17 @@
 package com.zircky.industrialsorcerygreg.api.data.tag;
 
-import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconType;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
-import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 import com.zircky.industrialsorcerygreg.api.item.component.ICustomRenderer;
 import com.zircky.industrialsorcerygreg.client.renderer.item.HaloItemRenderer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-import java.util.Set;
 import java.util.function.*;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags.NO_SMASHING;
@@ -49,12 +38,12 @@ public class ISGTagPrefix extends TagPrefix {
       .unificationEnabled(true)
       .generateItem(true)
       .generationCondition(hasOreProperty);
-  public static final TagPrefix prismaFrothed = new ISGTagPrefix("prismaFrothedOre")
-      .idPattern("prisma_frothed_%s_ore")
-      .defaultTagPath("prisma_frothed_ores/%s")
-      .langValue("Prisma Frothed %s Ore")
-      .defaultTagPath("prisma_frothed_ores")
-      .materialIconType(new MaterialIconType("prismaFrothed"))
+  public static final TagPrefix frothed = new ISGTagPrefix("FrothedOre")
+      .idPattern("frothed_%s_ore")
+      .defaultTagPath("frothed_ores/%s")
+      .langValue("Frothed %s Ore")
+      .defaultTagPath("frothed_ores")
+      .materialIconType(new MaterialIconType("Frothed"))
       .unificationEnabled(true)
       .generateItem(true)
       .generationCondition(hasOreProperty);

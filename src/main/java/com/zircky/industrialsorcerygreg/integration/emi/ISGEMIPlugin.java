@@ -2,8 +2,8 @@ package com.zircky.industrialsorcerygreg.integration.emi;
 
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.integration.recipeviewer.emi.GTOreProcessingEmiCategory;
-import com.zircky.industrialsorcerygreg.integration.emi.materialtree.GTFormResolver;
-import com.zircky.industrialsorcerygreg.integration.emi.materialtree.GTMaterialAccess;
+import com.zircky.industrialsorcerygreg.integration.emi.materialtree.ISGFormResolver;
+import com.zircky.industrialsorcerygreg.integration.emi.materialtree.ISGMaterialAccess;
 import com.zircky.industrialsorcerygreg.integration.emi.materialtree.MaterialTreeCategory;
 import com.zircky.industrialsorcerygreg.integration.emi.materialtree.MaterialTreeRecipeFactory;
 import com.zircky.industrialsorcerygreg.integration.emi.oreprocessing.ISGOreProcessingEmiCategory;
@@ -41,8 +41,8 @@ public class ISGEMIPlugin implements EmiPlugin {
     final MaterialTreeRecipeFactory factory =
         new MaterialTreeRecipeFactory(
             category,
-            new GTMaterialAccess(),
-            new GTFormResolver()
+            new ISGMaterialAccess(),
+            new ISGFormResolver()
         );
 
     factory.createAll().forEach(registry::addRecipe);
