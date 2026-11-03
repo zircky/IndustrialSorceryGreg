@@ -51,8 +51,7 @@ import static com.gregtechceu.gtceu.common.data.GTBlocks.*;
 import static com.gregtechceu.gtceu.common.data.GTRecipeModifiers.*;
 import static com.gregtechceu.gtceu.common.data.models.GTMachineModels.createWorkableCasingMachineModel;
 import static com.gregtechceu.gtceu.utils.FormattingUtil.toRomanNumeral;
-import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.LIQUEFACTION_FURNACE_RECIPES;
-import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.ROCKET_ASSEMBLER_RECIPES;
+import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 import static com.zircky.industrialsorcerygreg.utils.register.MachineRegisterUtils.*;
 
 public class ISGMultiMachines {
@@ -84,7 +83,7 @@ public class ISGMultiMachines {
 
   public final static MultiblockMachineDefinition ROCKET_ASSEMBLER = multiblock("rocket_assembler", WorkableElectricMultiblockMachine::new)
       .langValue("Rocker Assembler")
-      .recipeType(ROCKET_ASSEMBLER_RECIPES)
+      .recipeType(ROCKET_ASSEMBLER_RECIPES.recipeType())
       .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
           .slice("     AABABAA     ", "     AA   AA     ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ", "                 ")
@@ -123,7 +122,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition LIQUEFACTION_FURNACE = multiblock("liquefaction_furnace", CoilWorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.ALL)
-      .recipeType(LIQUEFACTION_FURNACE_RECIPES)
+      .recipeType(LIQUEFACTION_FURNACE_RECIPES.recipeType())
       .recipeModifiers(GTRecipeModifiers::ebfOverclock, GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.BATCH_MODE)
       .appearanceBlock(GTBlocks.CASING_INVAR_HEATPROOF)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
@@ -167,7 +166,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition FUEL_REPROCESSOR = multiblock("fuel_reprocessor", WorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.ALL)
-      .recipeType(ISGRecipeTypes.FUEL_REPROCESSOR_RECIPES)
+      .recipeType(ISGRecipeTypes.FUEL_REPROCESSOR_RECIPES.recipeType())
       .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, OC_NON_PERFECT_SUBTICK, BATCH_MODE)
       .appearanceBlock(GCYMBlocks.CASING_ATOMIC)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
@@ -192,7 +191,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition DIGESTION_TANK = multiblock("digestion_tank", CoilWorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.NON_Y_AXIS)
-      .recipeTypes(ISGRecipeTypes.DIGESTION_TREATMENT_RECIPES)
+      .recipeTypes(ISGRecipeTypes.DIGESTION_TREATMENT_RECIPES.recipeType())
       .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, BATCH_MODE)
       .appearanceBlock(GTBlocks.CASING_TUNGSTENSTEEL_ROBUST)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
@@ -217,7 +216,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition DISSOLVING_TANK = multiblock("dissolving_tank", DissolvingTankMachine::new)
       .rotationState(RotationState.NON_Y_AXIS)
-      .recipeTypes(ISGRecipeTypes.DISSOLUTION_TREATMENT_RECIPES)
+      .recipeTypes(ISGRecipeTypes.DISSOLUTION_TREATMENT_RECIPES.recipeType())
       .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
           .slice("X###X", "OOOOO", "XGGGX", "XGGGX", "#XXX#")
@@ -239,7 +238,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition LEACHING_PLANT = multiblock("leaching_plant", WorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.NON_Y_AXIS)
-      .recipeType(ISGRecipeTypes.LEACHING_PLANT_RECIPES)
+      .recipeType(ISGRecipeTypes.LEACHING_PLANT_RECIPES.recipeType())
       .recipeModifiers(ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK), GTRecipeModifiers.PARALLEL_HATCH, BATCH_MODE)
       .appearanceBlock(CASING_STAINLESS_CLEAN)
       .pattern(definition -> MultiblockPatternBuilder.start()
@@ -261,7 +260,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition CHROMATIC_FLOTATION_PLANT = multiblock("chromatic_flotation_plant", WorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.NON_Y_AXIS)
-      .recipeType(ISGRecipeTypes.CHROMATIC_FLOTATION_PLANT_RECIPES)
+      .recipeType(ISGRecipeTypes.CHROMATIC_FLOTATION_PLANT_RECIPES.recipeType())
       .recipeModifiers(ELECTRIC_OVERCLOCK.apply(OverclockingLogic.NON_PERFECT_OVERCLOCK),
           GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.BATCH_MODE)
       .appearanceBlock(CASING_WATERTIGHT)
@@ -329,7 +328,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition PLASMA_CONDENSER = multiblock("plasma_condenser", WorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.ALL)
-      .recipeType(ISGRecipeTypes.PLASMA_CONDENSER_RECIPES)
+      .recipeType(ISGRecipeTypes.PLASMA_CONDENSER_RECIPES.recipeType())
       .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, OC_PERFECT, BATCH_MODE)
       .appearanceBlock(ISGCasings.ANTIFREEZE_HEATPROOF_MACHINE_CASING)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
@@ -354,7 +353,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition GAS_CENTRIFUGE = multiblock("gas_centrifuge", WorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.ALL)
-      .recipeType(ISGRecipeTypes.GAS_CENTRIFUGE_RECIPES)
+      .recipeType(ISGRecipeTypes.GAS_CENTRIFUGE_RECIPES.recipeType())
       .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, OC_PERFECT, BATCH_MODE)
       .appearanceBlock(CASING_STAINLESS_CLEAN)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
@@ -377,7 +376,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition STELLAR_FORGE = multiblock("stellar_forge", WorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.ALL)
-      .recipeType(ISGRecipeTypes.STELLAR_FORGE_RECIPES)
+      .recipeType(ISGRecipeTypes.STELLAR_FORGE_RECIPES.recipeType())
       .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, OC_PERFECT, BATCH_MODE)
       .appearanceBlock(ISGCasings.ANTIFREEZE_HEATPROOF_MACHINE_CASING)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
@@ -456,7 +455,7 @@ public class ISGMultiMachines {
   public static final MultiblockMachineDefinition NEUTRON_ACTIVATOR = multiblock("neutron_activator", NeutronActivatorMachine::new)
       .rotationState(RotationState.NON_Y_AXIS)
       .tooltips()
-      .recipeType(ISGRecipeTypes.NEUTRON_ACTIVATOR_RECIPES)
+      .recipeType(ISGRecipeTypes.NEUTRON_ACTIVATOR_RECIPES.recipeType())
       .recipeModifiers(true, NeutronActivatorMachine::recipeModifier, OC_NON_PERFECT)
       .appearanceBlock(CASING_STAINLESS_CLEAN)
       .pattern(definition -> MultiblockPatternBuilder.start(UP, RIGHT, BACK)
@@ -485,7 +484,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition VACUUM_DISTILLATION_TOWER = multiblock("vacuum_distillation_tower", WorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.ALL)
-      .recipeType(ISGRecipeTypes.VACUUM_DISTILLATION_RECIPES)
+      .recipeType(ISGRecipeTypes.VACUUM_DISTILLATION_RECIPES.recipeType())
       .appearanceBlock(CASING_STAINLESS_CLEAN)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
           .slice(" SSSSS ", " S   S ", "       ", "       ", "       ", "       ", "       ", "  CCC  ", "  CCC  ", "  CCC  ", "  CCC  ", "  CCC  ", "       ", "       ", "       ", "       ")
@@ -510,7 +509,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition POLYMERIZATION_REACTOR = multiblock("polymerization_reactor", CoilWorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.ALL)
-      .recipeType(ISGRecipeTypes.POLYMERIZATION_REACTOR_RECIPES)
+      .recipeType(ISGRecipeTypes.POLYMERIZATION_REACTOR_RECIPES.recipeType())
       .recipeModifiers(OC_PERFECT_SUBTICK, BATCH_MODE)
       .appearanceBlock(GTBlocks.CASING_STAINLESS_CLEAN)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
@@ -605,8 +604,8 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition CHEMICAL_PLANT = multiblock("chemical_plant", CoilWorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.ALL)
-      .recipeType(ISGRecipeTypes.CHEMICAL_PLANT_RECIPES)
-      .recipeModifier(BATCH_MODE)
+      .recipeTypes(ISGRecipeTypes.CHEMICAL_PLANT_RECIPES.recipeType(), LARGE_CHEMICAL_RECIPES.recipeType())
+      .recipeModifiers(DEFAULT_ENVIRONMENT_REQUIREMENT, OC_PERFECT_SUBTICK, BATCH_MODE)
       .appearanceBlock(CASING_PTFE_INERT)
       .pattern((definition) -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
           .slice("b   b", "bbbbb", "b   b", "bbbbb", "b   b")
@@ -619,18 +618,18 @@ public class ISGMultiMachines {
               .setMinGlobalLimited(60)
               .or(autoAbilities(definition.getRecipeTypes()))
               .or(abilities(PARALLEL_HATCH).setMaxGlobalLimited(1))
-              .or(abilities(MAINTENANCE).setExactLimit(1)))
+              .or(abilities(MAINTENANCE).setExactLimit(1))
+              .or(abilities(ISGPartAbility.CATALYST_HATCH).setMaxGlobalLimited(1)))
           .where('c', heatingCoils())
           .where('d', blocks(GTBlocks.CASING_POLYTETRAFLUOROETHYLENE_PIPE.get()))
           .where(' ', any())
           .build())
-      .additionalDisplay(CHEMICAL_PLANT_DISPLAY)
       .workableCasingModel(GTCEu.id("block/casings/solid/machine_casing_inert_ptfe"), GTCEu.id("block/multiblock/large_chemical_reactor"))
       .register();
 
   public static final MultiblockMachineDefinition BIO_REACTOR = multiblock("bio_reactor", CoilWorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.ALL)
-      .recipeType(ISGRecipeTypes.BIO_REACTOR_RECIPES)
+      .recipeType(ISGRecipeTypes.BIO_REACTOR_RECIPES.recipeType())
       .recipeModifier(BATCH_MODE)
       .appearanceBlock(CASING_STAINLESS_CLEAN)
       .pattern((definition) -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
@@ -657,7 +656,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition SINGULARITY_COMPRESSOR = multiblock("singularity_compressor", WorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.NON_Y_AXIS)
-      .recipeType(ISGRecipeTypes.SINGULARITY_COMPRESSION_RECIPES)
+      .recipeType(ISGRecipeTypes.SINGULARITY_COMPRESSION_RECIPES.recipeType())
       .recipeModifier(GTRecipeModifiers.OC_NON_PERFECT_SUBTICK)
       .appearanceBlock(GCYMBlocks.CASING_ATOMIC)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
@@ -1002,7 +1001,7 @@ public class ISGMultiMachines {
 
   public static final MultiblockMachineDefinition TEST = multiblock("test", LayeredWorkableElectricMultiblockMachine::new)
       .rotationState(RotationState.ALL)
-      .recipeType(ISGRecipeTypes.TEST_RECIPES)
+      .recipeType(ISGRecipeTypes.TEST_RECIPES.recipeType())
       .appearanceBlock(GCYMBlocks.CASING_LASER_SAFE_ENGRAVING)
       .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)
           .slice("AAA", "AAA", "AAA")

@@ -34,7 +34,7 @@ public class GTMachineModify {
         .tooltips(Component.translatable("gtceu.machine.available_recipe_map_1.tooltip",
             Component.translatable("gtceu.mixer")))
         .rotationState(RotationState.ALL)
-        .recipeType(LARGE_MIXER_RECIPES)
+        .recipeType(LARGE_MIXER_RECIPES.recipeType())
         .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, OC_NON_PERFECT_SUBTICK, BATCH_MODE)
         .appearanceBlock(CASING_REACTION_SAFE)
         .pattern(definition -> MultiblockPatternBuilder.start(FRONT, UP, RIGHT)

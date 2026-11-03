@@ -1,5 +1,6 @@
 package com.zircky.industrialsorcerygreg.common.data.machines;
 
+import com.zircky.industrialsorcerygreg.api.machine.multiblock.ISGPartAbility;
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
@@ -13,9 +14,10 @@ import com.gregtechceu.gtceu.common.machine.multiblock.part.DualHatchPartMachine
 import com.gregtechceu.gtceu.common.machine.multiblock.part.EnergyHatchPartMachine;
 import com.gregtechceu.gtceu.common.machine.multiblock.part.ItemBusPartMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
-import com.zircky.industrialsorcerygreg.api.machine.multiblock.ISGPartAbility;
+
 import com.zircky.industrialsorcerygreg.api.machine.part.WirelessEnergyHatchPartMachine;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes;
+import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.CatalystHatchPartMachine;
 import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.IndicatorHatchPartMachine;
 import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.NeutronAcceleratorPartMachine;
 import com.zircky.industrialsorcerygreg.common.machine.multiblock.part.SensorPartMachine;
@@ -27,17 +29,16 @@ import static com.gregtechceu.gtceu.api.capability.recipe.IO.OUT;
 import static com.gregtechceu.gtceu.api.machine.property.GTMachineModelProperties.IS_FORMED;
 import static com.gregtechceu.gtceu.common.data.machines.GTMachineUtils.HIGH_TIERS;
 import static com.zircky.industrialsorcerygreg.api.registries.ISGRegistries.REGISTRATE;
-import static com.zircky.industrialsorcerygreg.utils.register.MachineRegisterUtils.registerSimpleMachines;
-import static com.zircky.industrialsorcerygreg.utils.register.MachineRegisterUtils.registerTieredMachines;
+import static com.zircky.industrialsorcerygreg.utils.register.MachineRegisterUtils.*;
 
 public class ISGSimpleMachines {
 
-  public static final MachineDefinition[] DEHYDRATOR = registerSimpleMachines("dehydrator", ISGRecipeTypes.DEHYDRATOR_RECIPES, GTMachineUtils.defaultTankSizeFunction);
-  public static final MachineDefinition[] UNPACKER = registerSimpleMachines("unpacker", ISGRecipeTypes.UNPACKER_RECIPES, GTMachineUtils.defaultTankSizeFunction);
-  public static final MachineDefinition[] CLUSTER = registerSimpleMachines("cluster", ISGRecipeTypes.CLUSTER_RECIPES, GTMachineUtils.defaultTankSizeFunction);
-  public static final MachineDefinition[] ROLLING = registerSimpleMachines("rolling", ISGRecipeTypes.ROLLING_RECIPES, GTMachineUtils.defaultTankSizeFunction);
-  public static final MachineDefinition[] LOOM = registerSimpleMachines("loom", ISGRecipeTypes.LOOM_RECIPES, GTMachineUtils.defaultTankSizeFunction);
-  public static final MachineDefinition[] DECAY_CHAMBER = registerSimpleMachines("decay_chamber", ISGRecipeTypes.DECAY_CHAMBERS_RECIPES, GTMachineUtils.defaultTankSizeFunction);
+  public static final MachineDefinition[] DEHYDRATOR = registerSimpleMachines("dehydrator", ISGRecipeTypes.DEHYDRATOR_RECIPES.recipeType(), GTMachineUtils.defaultTankSizeFunction);
+  public static final MachineDefinition[] UNPACKER = registerSimpleMachines("unpacker", ISGRecipeTypes.UNPACKER_RECIPES.recipeType(), GTMachineUtils.defaultTankSizeFunction);
+  public static final MachineDefinition[] CLUSTER = registerSimpleMachines("cluster", ISGRecipeTypes.CLUSTER_RECIPES.recipeType(), GTMachineUtils.defaultTankSizeFunction);
+  public static final MachineDefinition[] ROLLING = registerSimpleMachines("rolling", ISGRecipeTypes.ROLLING_RECIPES.recipeType(), GTMachineUtils.defaultTankSizeFunction);
+  public static final MachineDefinition[] LOOM = registerSimpleMachines("loom", ISGRecipeTypes.LOOM_RECIPES.recipeType(), GTMachineUtils.defaultTankSizeFunction);
+  public static final MachineDefinition[] DECAY_CHAMBER = registerSimpleMachines("decay_chamber", ISGRecipeTypes.DECAY_CHAMBERS_RECIPES.recipeType(), GTMachineUtils.defaultTankSizeFunction);
 
   public static final MachineDefinition[] WIRELESS_ENERGY_INPUT_HATCH = registerWirelessEnergyTieredHatch(
       "wireless_energy_hatch", "Wireless Energy Hatch", "wireless_energy_1a",
@@ -145,6 +146,14 @@ public class ISGSimpleMachines {
       .rotationState(RotationState.ALL)
       .appearanceBlock(GTMachines.ITEM_IMPORT_BUS[EV])
       .colorOverlayTieredHullModel(GTCEu.id("block/overlay/machine/overlay_item_hatch_input"), GTCEu.id("block/overlay/machine/overlay_pipe"), GTCEu.id("block/overlay/machine/overlay_pipe_in_emissive"))
+      .register();
+
+  public static final MachineDefinition CATALYST_HATCH = machine("catalyst_hatch", CatalystHatchPartMachine::new)
+      .tier(MV)
+      .rotationState(RotationState.ALL)
+      .overlayTieredHullModel("catalyst_hatch")
+      .abilities(ISGPartAbility.CATALYST_HATCH)
+      .allowCoverOnFront(true)
       .register();
 
   public static final MachineDefinition LENS_INDICATOR_HATCH = REGISTRATE.machine("lens_indicator_hatch", IndicatorHatchPartMachine::new)

@@ -20,6 +20,8 @@
     "gregtech.chemical.TagPrefixItemMixin",
     "gregtech.item.ComponentItemMixin",
     "gregtech.item.ItemModuleMixin",
+    "gregtech.recipe.GTRecipeBuilderAccessor",
+    "gregtech.recipe.GTRecipeTypeAccessor",
     "gregtech.recipe.RecyclingRecipesMixin",
     "minecraft.ItemMixin",
     "nuclearcraft.NuclearCraftBEMixin"
@@ -28,8 +30,6 @@
     "adastra.AdAstraClientMixin",
     "adastra.AdAstraOverlayScreenMixin",
     "ae2.AE2SearchFillMixin",
-    //    "emi.EmiSearchDragFillMixin",
-    //    "emi.EmiSearchFillMixin",
     "modularui.OverlayStackMixin"
   ],
   "injectors": {

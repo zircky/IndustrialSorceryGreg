@@ -19,6 +19,7 @@ import com.gregtechceu.gtceu.api.recipe.ingredient.*;
 import com.gregtechceu.gtceu.api.recipe.ingredient.nbtpredicate.NBTPredicate;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
 import com.zircky.industrialsorcerygreg.ISGCore;
+import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import com.zircky.industrialsorcerygreg.api.recipe.ISGRecipeType;
 import com.zircky.industrialsorcerygreg.api.recipe.LayeredRecipeHelper;
 import com.zircky.industrialsorcerygreg.common.data.recipe.NeutronActivatorCondition;
@@ -998,7 +999,7 @@ public class ISGRecipeBuilder extends GTRecipeBuilder {
   }
 
   public ISGRecipeBuilder layeredRecipe(Consumer<LayeredRecipeInfo.Builder> config) {
-    if (!(recipeType instanceof ISGRecipeType isgRecipeType) || !isgRecipeType.isLayered()) {
+    if (!ISGRecipeType.isLayered(recipeType)) {
       GTCEu.LOGGER.error("Can't use layeredRecipe on a non-layered recipe type");
       return this;
     }
@@ -1015,6 +1016,11 @@ public class ISGRecipeBuilder extends GTRecipeBuilder {
 
   public ISGRecipeBuilder inputDust(Material material, int count) {
     inputItems(TagPrefix.dust, material, count);
+    return this;
+  }
+
+  public ISGRecipeBuilder catalyst(Material material) {
+    inputItems(ISGTagPrefix.CATALYST, material);
     return this;
   }
 
