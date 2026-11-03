@@ -81,6 +81,10 @@ public class ISGMaterials {
   public static Material Gaiasteel;
   public static Material GaiaCore;
   public static Material Gaia;
+  public static Material Photonium;
+  public static Material Orichalcos;
+  public static Material Shadowium;
+  public static Material Aerialite;
 
   public static Material Piezoelectric;
 
@@ -2051,8 +2055,8 @@ public class ISGMaterials {
   public static Material Vanadiumtitaniumconentrate;
   public static Material Sunaricoreresidue;
   public static Material Samaricinfusedresidue;
-  public static Material Infusedgoldtrioxide;
-  public static Material Plutoniumoxideuraniummixture;
+  public static Material InfusedGoldTrioxide;
+  public static Material PlutoniumOxideUraniumMixture;
   public static Material Boronnanoparticles;
   public static Material Tungsticnaquadah;
   public static Material Endsteelconcentrate;

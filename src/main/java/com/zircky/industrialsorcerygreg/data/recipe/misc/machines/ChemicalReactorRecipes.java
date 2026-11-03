@@ -4802,22 +4802,6 @@ public class ChemicalReactorRecipes {
         .duration(100)
         .save(provider);
 
-
-    // C6H6O2 + C13H8OF2 + Na2CO3 -> [(OC6H4)3C]n + H2O + 2NaF
-    // Not perfectly balanced, but is probably fine
-    LARGE_CHEMICAL_RECIPES.recipeBuilder("hydroquinone_difluorobenzophenone_soda_ash_to_polyetheretherketone_water_carbon_dioxide_sodium_fluoride")
-        .inputFluids(Hydroquinone.getFluid(1000))
-        .inputDust(Difluorobenzophenone, 24)
-        .inputDust(SodaAsh, 6)
-        .outputFluids(Polyetheretherketone.getFluid(2592))
-        .outputFluids(Water.getFluid(1000))
-        .outputFluids(CarbonDioxide.getFluid(1000))
-        .outputDust(SodiumFluoride, 4)
-        .EUt(122880)
-        .duration(250)
-        .save(provider);
-
-
     // C3H6 + C6H6 + 3O -> C3H6O + C6H6O2
     LARGE_CHEMICAL_RECIPES.recipeBuilder("propene_benzene_oxygen_to_acetone_hydroquinone_resorcinol")
         .inputFluids(Propene.getFluid(1000))

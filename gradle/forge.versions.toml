@@ -16,8 +16,14 @@ resourcefullConfig = "2.1.2"
 yabn = "1.0.3"
 byteCodecs = "1.0.2"
 
-botania = "1.20.1-446-FORGE"
+## botania ##
+botania = "1.20.1-448-FORGE"
 patchouli = "1.20.1-84-FORGE"
+
+extrabotany = "7182385"
+eventwrapper = "7182179"
+mythicbotany = "6702112"
+libx = "5207625"
 
 ftblibrary = "2001.2.4"
 ftbteams = "2001.3.0"
@@ -28,6 +34,8 @@ flywheel = "1.0.5"
 
 ## modrinth maven ##
 jade = "11.12.3+forge"
+
+
 
 ## cursemaven ##
 ftblibrary-cm = "5567591"
@@ -72,6 +80,10 @@ ftbteams = { module = "dev.ftb.mods:ftb-teams-forge", version.ref = "ftbteams" }
 
 botania = { module = "vazkii.botania:Botania", version.ref = "botania" }
 patchouli = { module = "vazkii.patchouli:Patchouli", version.ref = "patchouli" }
+extrabotany = {module = "curse.maven:extrabotany-reburn-1271869", version.ref = "extrabotany"}
+eventwrapper = {module = "curse.maven:event-wrapper-1256971", version.ref = "eventwrapper"}
+mythicbotany = {module = "curse.maven:mythicbotany-400058", version.ref = "mythicbotany"}
+libx = {module = "curse.maven:libx-412525", version.ref = "libx"}
 
 jei-common-api = { module = "mezz.jei:jei-1.20.1-common-api", version.ref = "jei" }
 jei-forge-api = { module = "mezz.jei:jei-1.20.1-forge-api", version.ref = "jei" }
