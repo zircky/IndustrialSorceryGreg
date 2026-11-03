@@ -998,7 +998,7 @@ public class ISGRecipeBuilder extends GTRecipeBuilder {
   }
 
   public ISGRecipeBuilder layeredRecipe(Consumer<LayeredRecipeInfo.Builder> config) {
-    if (!(recipeType instanceof ISGRecipeType isgRecipeType) || !isgRecipeType.isLayered()) {
+    if (!ISGRecipeType.isLayered(recipeType)) {
       GTCEu.LOGGER.error("Can't use layeredRecipe on a non-layered recipe type");
       return this;
     }

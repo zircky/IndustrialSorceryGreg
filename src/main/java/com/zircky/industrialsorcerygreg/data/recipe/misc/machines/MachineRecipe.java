@@ -88,74 +88,74 @@ public class MachineRecipe {
     VanillaRecipeHelper.addShapedRecipe(provider, true, "casing_max", GTBlocks.MACHINE_CASING_MAX.asStack(),
         "DPD", "PwP", "DPD", 'P', new MaterialEntry(TagPrefix.plate, ISGMaterials.ChaosInfinityAlloy), 'D', new MaterialEntry(plateDouble, ISGMaterials.ChaosInfinityAlloy));
 
-    LASER_WELDER_RECIPES.recipeBuilder("casing_ulv").EUt(VA[ULV]).inputItems(plate, GTMaterials.WroughtIron, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_ULV.asStack())
-        .circuitMeta(8).duration(25)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_lv").EUt(VA[ULV]).inputItems(plate, GTMaterials.Steel, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_LV.asStack())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_mv").EUt(VA[LV]).inputItems(plate, GTMaterials.Aluminium, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_MV.asStack())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_hv").EUt(VA[MV]).inputItems(plate, GTMaterials.StainlessSteel, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_HV.asStack())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_ev").EUt(VA[HV]).inputItems(plate, GTMaterials.Titanium, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_EV.asStack())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_iv").EUt(VA[EV]).inputItems(plate, GTMaterials.TungstenSteel, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_IV.asStack())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_luv").EUt(VA[LuV]).inputItems(plate, GTMaterials.RhodiumPlatedPalladium, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_LuV.asStack())
-        .circuitMeta(8)/*.scannerResearch(b -> b
-            .researchStack(GTBlocks.MACHINE_CASING_IV.asStack())
-            .dataStack(GTItems.TOOL_DATA_STICK.asStack())
-            .duration(ISGValues.SECONDS * 240)
-            .EUt(VA[IV]))*/.duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_zpm").EUt(VA[ZPM]).inputItems(plate, GTMaterials.NaquadahAlloy, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_ZPM.asStack())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_uv").EUt(VA[UV]).inputItems(plate, GTMaterials.Darmstadtium, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_UV.asStack())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_uhv").EUt(VA[UHV]).inputItems(plate, GTMaterials.Neutronium, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_UHV.asStack())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_uev").EUt(VA[UEV]).inputItems(plate, ISGMaterials.Quantanium, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_UEV.asItem())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_uiv").EUt(VA[UIV])
-        .inputItems(plate, ISGMaterials.Adamantium, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_UIV.asItem())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_uxv").EUt(VA[UXV])
-        .inputItems(plate, ISGMaterials.Vibranium, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_UXV.asItem())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_opv").EUt(VA[OpV])
-        .inputItems(plate, ISGMaterials.Draconium, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_OpV.asItem())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
-    LASER_WELDER_RECIPES.recipeBuilder("casing_max").EUt(VA[MAX])
-        .inputItems(plate, ISGMaterials.ChaosInfinityAlloy, 8)
-        .outputItems(GTBlocks.MACHINE_CASING_MAX.asItem())
-        .circuitMeta(8).duration(50)
-        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_ulv").EUt(VA[ULV]).inputItems(plate, GTMaterials.WroughtIron, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_ULV.asStack())
+//        .circuitMeta(8).duration(25)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_lv").EUt(VA[ULV]).inputItems(plate, GTMaterials.Steel, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_LV.asStack())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_mv").EUt(VA[LV]).inputItems(plate, GTMaterials.Aluminium, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_MV.asStack())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_hv").EUt(VA[MV]).inputItems(plate, GTMaterials.StainlessSteel, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_HV.asStack())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_ev").EUt(VA[HV]).inputItems(plate, GTMaterials.Titanium, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_EV.asStack())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_iv").EUt(VA[EV]).inputItems(plate, GTMaterials.TungstenSteel, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_IV.asStack())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_luv").EUt(VA[LuV]).inputItems(plate, GTMaterials.RhodiumPlatedPalladium, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_LuV.asStack())
+//        .circuitMeta(8)/*.scannerResearch(b -> b
+//            .researchStack(GTBlocks.MACHINE_CASING_IV.asStack())
+//            .dataStack(GTItems.TOOL_DATA_STICK.asStack())
+//            .duration(ISGValues.SECONDS * 240)
+//            .EUt(VA[IV]))*/.duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_zpm").EUt(VA[ZPM]).inputItems(plate, GTMaterials.NaquadahAlloy, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_ZPM.asStack())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_uv").EUt(VA[UV]).inputItems(plate, GTMaterials.Darmstadtium, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_UV.asStack())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_uhv").EUt(VA[UHV]).inputItems(plate, GTMaterials.Neutronium, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_UHV.asStack())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_uev").EUt(VA[UEV]).inputItems(plate, ISGMaterials.Quantanium, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_UEV.asItem())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_uiv").EUt(VA[UIV])
+//        .inputItems(plate, ISGMaterials.Adamantium, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_UIV.asItem())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_uxv").EUt(VA[UXV])
+//        .inputItems(plate, ISGMaterials.Vibranium, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_UXV.asItem())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_opv").EUt(VA[OpV])
+//        .inputItems(plate, ISGMaterials.Draconium, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_OpV.asItem())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
+//    LASER_WELDER_RECIPES.recipeBuilder("casing_max").EUt(VA[MAX])
+//        .inputItems(plate, ISGMaterials.ChaosInfinityAlloy, 8)
+//        .outputItems(GTBlocks.MACHINE_CASING_MAX.asItem())
+//        .circuitMeta(8).duration(50)
+//        .addMaterialInfo(true).save(provider);
 
     registerMachineRecipe(provider, false, GTMachines.HULL, "PLP", "CHC", "PLP", 'P', HULL_PLATE, 'L', PLATE, 'C', CABLE,
         'H', CASING);

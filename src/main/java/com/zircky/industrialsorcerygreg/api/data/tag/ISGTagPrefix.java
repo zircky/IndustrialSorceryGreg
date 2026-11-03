@@ -9,7 +9,6 @@ import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
 import com.zircky.industrialsorcerygreg.api.item.component.ICustomRenderer;
 import com.zircky.industrialsorcerygreg.client.renderer.item.HaloItemRenderer;
-import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.*;
@@ -48,11 +47,7 @@ public class ISGTagPrefix extends TagPrefix {
       .generateItem(true)
       .generationCondition(hasOreProperty);
 
-  public static final TagPrefix CATALYST = new ISGTagPrefix("catalyst").maxDamage(m -> 10000).tooltip((mat, list) -> {
-    list.add(Component.translatable("isgcore.tooltip.item.catalyst.1"));
-    list.add(Component.translatable("isgcore.tooltip.item.catalyst.2"));
-    list.add(Component.translatable("isgcore.tooltip.item.catalyst.3"));
-  }).idPattern("%s_catalyst")
+  public static final TagPrefix CATALYST = new ISGTagPrefix("catalyst").maxDamage(m -> 10000).idPattern("%s_catalyst")
       .defaultTagPath("catalyst/%s")
       .unformattedTagPath("catalyst")
       .materialAmount(GTValues.M)

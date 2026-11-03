@@ -465,7 +465,7 @@ public class ChemicalReactorRecipes {
     // 2C5H5N -> C10H8N2 + H2
     CHEMICAL_RECIPES.recipeBuilder("bipyridine").duration(300).EUt(1920)
         .inputFluids(Pyridine.getFluid(2000))
-        .notConsumable(ISGTagPrefix.CATALYST, NiAlCatalyst)
+        .inputItems(ISGTagPrefix.CATALYST, NiAlCatalyst)
         .outputDust(Bipyridine, 20)
         .outputFluids(Hydrogen.getFluid(2000))
         .save(provider);
@@ -4118,7 +4118,7 @@ public class ChemicalReactorRecipes {
         .inputFluids(AceticAcid.getFluid(500))
         .notConsumableDust(SodiumEthoxide)
         .notConsumableDust(AluminiumChloride)
-        .notConsumableDust(Chloroform)
+        .notConsumableFluid(Chloroform.getFluid(1500))
         .outputDust(PdFullereneMatrix)
         .outputFluids(Oxygen.getFluid(1000))
         .save(provider);
@@ -4523,9 +4523,9 @@ public class ChemicalReactorRecipes {
     LARGE_CHEMICAL_RECIPES.recipeBuilder("ferrocenylfulleropyrrolidine_palladium_to_pd_fullerene_matrix")
         .inputFluids(Ferrocenylfulleropyrrolidine.getFluid(1000))
         .inputDust(Palladium)
-        .notConsumableDust(AceticAcid)
-        .notConsumableDust(NitricAcid)
-        .outputItems(ChemicalHelper.get(dust, PdFullereneMatrix))
+        .notConsumableFluid(AceticAcid.getFluid(1000))
+        .notConsumableFluid(NitricAcid.getFluid(1000))
+        .outputDust(PdFullereneMatrix)
         .EUt(2000000)
         .duration(200)
         .save(provider);
