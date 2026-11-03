@@ -578,7 +578,6 @@ public final class AlloyAndPolymerMaterials {
         .buildAndRegister()
         .setFormula("Pb2CrO5");
 
-
     NaquadriaticTaranium = builderISG("naquadriatictaranium")
         .ingot(1).fluid()
         .color((GTMaterials.Naquadria.getMaterialRGB() + ISGMaterials.Taranium.getMaterialRGB()) / 2)

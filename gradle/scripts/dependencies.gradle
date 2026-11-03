@@ -44,6 +44,11 @@ dependencies {
   // Re-enable only when the mod actually needs Botania integration.
    modImplementation(forge.botania)
 
+  modImplementation(forge.extrabotany)
+  modImplementation(forge.eventwrapper)
+  modImplementation(forge.mythicbotany)
+  modImplementation(forge.libx)
+
   // Ad Astra
   modRuntimeOnly(forge.yabn)
   modRuntimeOnly(forge.byteCodecs)
