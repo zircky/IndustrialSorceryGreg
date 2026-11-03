@@ -165,6 +165,5 @@ public class RecipeRemoval {
     consumer.accept(GTCEu.id("mixer/graphene"));
     consumer.accept(GTCEu.id("large_chemical_reactor/polybenzimidazole"));
     consumer.accept(GTCEu.id("chemical_reactor/polybenzimidazole"));
-
   }
 }

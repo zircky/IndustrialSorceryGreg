@@ -747,13 +747,13 @@ final class MaterialGroupAndCatalystMaterials {
         .iconSet(DULL)
         .buildAndRegister();
 
-    Infusedgoldtrioxide = builderISG("infusedgoldtrioxide")
+    InfusedGoldTrioxide = builderISG("infused_gold_trioxide")
         .dust()
         .color(0xA8801B)
         .iconSet(SHINY)
         .buildAndRegister();
 
-    Plutoniumoxideuraniummixture = builderISG("plutoniumoxideuraniummixture")
+    PlutoniumOxideUraniumMixture = builderISG("plutonium_oxide_uranium_mixture")
         .dust()
         .color(0xC40424)
         .iconSet(SHINY)
