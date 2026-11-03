@@ -465,7 +465,7 @@ public class ChemicalReactorRecipes {
     // 2C5H5N -> C10H8N2 + H2
     CHEMICAL_RECIPES.recipeBuilder("bipyridine").duration(300).EUt(1920)
         .inputFluids(Pyridine.getFluid(2000))
-        .inputItems(ISGTagPrefix.CATALYST, NiAlCatalyst)
+        .catalyst(NiAlCatalyst)
         .outputDust(Bipyridine, 20)
         .outputFluids(Hydrogen.getFluid(2000))
         .save(provider);
@@ -473,7 +473,7 @@ public class ChemicalReactorRecipes {
     // C7H5ClO + 2H -> C7H6O + HCl
     CHEMICAL_RECIPES.recipeBuilder("benzaldehyde").duration(270).EUt(480)
         .notConsumableDust(Barite)
-        .notConsumable(ISGTagPrefix.CATALYST, PdCCatalyst)
+        .catalyst(PdCCatalyst)
         .inputFluids(BenzoylChloride.getFluid(1000))
         .inputFluids(Hydrogen.getFluid(1000))
         .outputFluids(Benzaldehyde.getFluid(1000))
@@ -843,7 +843,7 @@ public class ChemicalReactorRecipes {
 
     // CH4 + H2O + N -> NH4C(H2O)
     CHEMICAL_RECIPES.recipeBuilder("nitrogen_steam_methane_to_rich_nitrogen_mix").duration(60).EUt(120)
-        .notConsumable(ISGTagPrefix.CATALYST, NiAlOCatalyst)
+        .catalyst(NiAlOCatalyst)
         .inputFluids(Methane.getFluid(1000))
         .inputFluids(Steam.getFluid(960))
         .inputFluids(Nitrogen.getFluid(1000))
@@ -1834,7 +1834,7 @@ public class ChemicalReactorRecipes {
     // NaNO3(H2O) -> NaNO2 + H2O + O
     CHEMICAL_RECIPES.recipeBuilder("sodium_nitrate_solution_to_sodium_nitrite_oxygen_water")
         .inputFluids(SodiumNitrateSolution.getFluid(1000))
-        .notConsumable(ISGTagPrefix.CATALYST, CoAcABCatalyst)
+        .catalyst(CoAcABCatalyst)
         .outputItems(ChemicalHelper.get(dust, SodiumNitrite, 4))
         .outputFluids(Oxygen.getFluid(1000))
         .outputFluids(Water.getFluid(1000))
@@ -2463,7 +2463,7 @@ public class ChemicalReactorRecipes {
     CHEMICAL_RECIPES.recipeBuilder(GTCEu.id("aminophenol")).duration(240).EUt(120)
         .inputFluids(Phenol.getFluid(1000))
         .inputFluids(NitrationMixture.getFluid(1000))
-        .notConsumable(ISGTagPrefix.CATALYST, IronPlatinumCatalyst)
+        .catalyst(IronPlatinumCatalyst)
         .outputFluids(DilutedSulfuricAcid.getFluid(1000))
         .outputFluids(AminoPhenol.getFluid(1000))
         .save(provider);
@@ -2698,7 +2698,7 @@ public class ChemicalReactorRecipes {
     CHEMICAL_RECIPES.recipeBuilder("propene_butene_to_propadiene_butane").duration(200).EUt(480)
         .inputFluids(Propene.getFluid(1000))
         .inputFluids(Butene.getFluid(1000))
-        .notConsumable(ISGTagPrefix.CATALYST, DehydrogenationCatalyst)
+        .catalyst(DehydrogenationCatalyst)
         .outputFluids(Propadiene.getFluid(1000))
         .outputFluids(Butane.getFluid(1000))
         .save(provider);
@@ -3625,7 +3625,7 @@ public class ChemicalReactorRecipes {
     CHEMICAL_RECIPES.recipeBuilder("dinitrodipropanyloxybenzene_terephthalaldehyde_to_pre_zylon_oxygen")
         .inputFluids(Dinitrodipropanyloxybenzene.getFluid(1000))
         .inputDust(Terephthalaldehyde, 16)
-        .notConsumable(ISGTagPrefix.CATALYST, AuPdCCatalyst)
+        .catalyst(AuPdCCatalyst)
         .outputItems(ChemicalHelper.get(dust, PreZylon))
         .outputFluids(Oxygen.getFluid(6000))
         .EUt(1966080)
@@ -4016,7 +4016,7 @@ public class ChemicalReactorRecipes {
         .inputDust(Hexabenzylhexaazaisowurtzitane, 102)
         .inputDust(SuccinimidylAcetate, 72)
         .inputFluids(Hydrogen.getFluid(8000))
-        .inputItems(ISGTagPrefix.CATALYST, PdCCatalyst)
+        .catalyst(PdCCatalyst)
         .notConsumableFluid(Ethylbenzene.getFluid(1000))
         .notConsumableFluid(HydrobromicAcid.getFluid(10000))
         .notConsumableFluid(Dimethylformamide.getFluid(1000))
@@ -4099,7 +4099,7 @@ public class ChemicalReactorRecipes {
     // Zylon
     // C6H6O2 + 2HNO3 + C8H10 -> C14H6N2O2 + 6H2O
     CHEMICAL_PLANT_RECIPES.recipeBuilder("resorcinol_nitric_acid_ortho_xylene_to_zylon_water").duration(30).EUt(31457280) // UIV
-        .notConsumable(ISGTagPrefix.CATALYST, AuPdCCatalyst)
+        .catalyst(AuPdCCatalyst)
         .inputFluids(Resorcinol.getFluid(1000))
         .inputFluids(NitricAcid.getFluid(2000))
         .inputFluids(OrthoXylene.getFluid(1000))

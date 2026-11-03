@@ -35,7 +35,7 @@ public class NotifiableNotConsumableItemHandler extends NotifiableItemStackHandl
   }
 
   @Override
-  public List<Ingredient> handleRecipeInner(IO io, @Nullable GTRecipe recipe, List<Ingredient> left, boolean simulate) {
+  public List<Ingredient> handleRecipeInner(IO io, GTRecipe recipe, List<Ingredient> left, boolean simulate) {
     if (simulate && io == IO.IN) {
       left = new ObjectArrayList<>(left);
       for (var it = left.listIterator(); it.hasNext();) {
@@ -66,6 +66,6 @@ public class NotifiableNotConsumableItemHandler extends NotifiableItemStackHandl
         }
       }
     }
-    return left.isEmpty() ? null : left;
+    return left;
   }
 }

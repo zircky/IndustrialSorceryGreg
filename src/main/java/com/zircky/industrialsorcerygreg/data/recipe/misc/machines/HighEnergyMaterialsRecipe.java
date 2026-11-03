@@ -1094,7 +1094,7 @@ public class HighEnergyMaterialsRecipe {
     .inputFluids(IodineMonochloride.getFluid(1000))
     .inputFluids(Chlorine.getFluid(2000))
     .inputDust(Bromosuccinimide, 12)
-    .notConsumable(ISGTagPrefix.CATALYST, RhodiumRheniumNaquadahCatalyst)
+    .catalyst(RhodiumRheniumNaquadahCatalyst)
     .outputDust(MgClBromide, 6)
     .outputDust(Succinimide, 12)
     .outputFluids(Dihydroiodotetracene.getFluid(1000))

@@ -13,6 +13,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -62,8 +63,7 @@ public class NotifiableCatalystHandler extends NotifiableNotConsumableItemHandle
   public void importFromNearby(Direction... facings) {}
 
   @Override
-  @Nullable
-  public List<Ingredient> handleRecipeInner(IO io, @Nullable GTRecipe recipe, List<Ingredient> left, boolean simulate) {
+  public List<Ingredient> handleRecipeInner(IO io, GTRecipe recipe, List<Ingredient> left, boolean simulate) {
     if (io == IO.IN && getMachine() instanceof IControllable controllable && controllable.isWorkingEnabled()) {
       left = new ObjectArrayList<>(left);
       for (var it = left.listIterator(); it.hasNext();) {
@@ -99,6 +99,6 @@ public class NotifiableCatalystHandler extends NotifiableNotConsumableItemHandle
         }
       }
     }
-    return left.isEmpty() ? null : left;
+    return left;
   }
 }

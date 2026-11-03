@@ -114,7 +114,7 @@ public class MixerRecipes {
 
     // NH4C(H2O) + H2O -> NH4C(H2O)2
     MIXER_RECIPES.recipeBuilder("titanium_water_rich_nitrogen_mix_oxidised_nitrogen_mix").duration(60).EUt(120)
-        .notConsumable(ISGTagPrefix.CATALYST, FeCrOCatalyst)
+        .catalyst(FeCrOCatalyst)
         .notConsumable(rodLong, Titanium)
         .inputFluids(Water.getFluid(1000))
         .inputFluids(RichNitrogenMix.getFluid(1000))
