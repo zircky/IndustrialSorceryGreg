@@ -7,10 +7,9 @@ import static com.zircky.industrialsorcerygreg.api.ISGValues.SECONDS;
 
 public class WaterPurificationPlantMachine extends WorkableElectricMultiblockMachine {
 
-  public static final int CYCLE_TIME_TICKS = 120 * SECONDS;
+    public static final int CYCLE_TIME_TICKS = 120 * SECONDS;
 
-  public WaterPurificationPlantMachine(BlockEntityCreationInfo info) {
-    super(info);
-  }
-
+    public WaterPurificationPlantMachine(BlockEntityCreationInfo info) {
+        super(info);
+    }
 }

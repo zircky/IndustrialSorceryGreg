@@ -1,6 +1,7 @@
 package com.zircky.industrialsorcerygreg.api.data.chemical.material;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.MaterialProperties;
+
 import net.minecraft.world.item.Rarity;
 
 public interface IISGMaterial {
@@ -18,5 +19,4 @@ public interface IISGMaterial {
   int isgcore$temp();
 
   void isgcore$setTemp(int temp);
-
 }

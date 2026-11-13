@@ -8,19 +8,20 @@ import com.gregtechceu.gtceu.common.module.FluidStorageModule;
 
 import net.minecraft.world.item.ItemStack;
 
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = ItemModule.class, remap = false)
 public abstract class ItemModuleMixin {
-  @Inject(method = "canApplyTo", at = @At("HEAD"), cancellable = true)
-  private void isg$preventConflictingFluidTank(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-    if (!((Object) this instanceof FluidStorageModule)) return;
-    final var modular = GTCapabilityHelper.getModularItem(stack);
-    if (modular != null && modular.getModuleContext(ISGItemModules.OXYGEN_TANK) != null) {
-      cir.setReturnValue(false);
+
+    @Inject(method = "canApplyTo", at = @At("HEAD"), cancellable = true)
+    private void isg$preventConflictingFluidTank(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        if (!((Object) this instanceof FluidStorageModule)) return;
+        final var modular = GTCapabilityHelper.getModularItem(stack);
+        if (modular != null && modular.getModuleContext(ISGItemModules.OXYGEN_TANK) != null) {
+            cir.setReturnValue(false);
+        }
     }
-  }
 }

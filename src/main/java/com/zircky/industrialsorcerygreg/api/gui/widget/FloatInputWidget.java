@@ -7,11 +7,11 @@ import brachy.modularui.widgets.textfield.TextFieldWidget;
 
 public class FloatInputWidget extends TextFieldWidget {
 
-  public FloatInputWidget(int x, int y, int width, int height, FloatSupplier valueSupplier,
-                          FloatConsumer onChanged) {
-    pos(x, y);
-    size(width, height);
-    value(new FloatSyncValue(valueSupplier, onChanged));
-    setNumbersDouble(() -> 0, () -> Float.MAX_VALUE);
-  }
+    public FloatInputWidget(int x, int y, int width, int height, FloatSupplier valueSupplier,
+                            FloatConsumer onChanged) {
+        pos(x, y);
+        size(width, height);
+        value(new FloatSyncValue(valueSupplier, onChanged));
+        setNumbersDouble(() -> 0, () -> Float.MAX_VALUE);
+    }
 }

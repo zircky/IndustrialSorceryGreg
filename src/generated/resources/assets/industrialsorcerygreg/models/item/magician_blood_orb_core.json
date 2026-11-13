@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "industrialsorcerygreg:item/orb/magician_blood_orb_core"
+  }
+}

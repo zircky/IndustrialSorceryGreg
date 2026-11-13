@@ -2,254 +2,251 @@ package com.zircky.industrialsorcerygreg.common.data.materials;
 
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
-import com.gregtechceu.gtceu.api.fluids.FluidState;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
 
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Nickel;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
 public class PlatinumLine {
-  public static void register() {
-    PlatinumConcentrate = builderISG("platinum_concentrate")
-        .langValue("Platinum Concentrate")
-        .liquid()
-        .iconSet(MaterialIconSet.FLUID)
-        .color(GTMaterials.Platinum.getMaterialARGB())
-        .buildAndRegister()
-        .setFormula("Pt?Pd?");
 
-    PlatinumSalt = builderISG("platinum_salt")
-        .langValue("Platinum Salt")
-        .dust()
-        .iconSet(MaterialIconSet.DULL)
-        .color(GTMaterials.Platinum.getMaterialARGB())
-        .flags(MaterialFlags.NO_UNIFICATION)
-        .buildAndRegister()
-        .setFormula("Pt?");
+    public static void register() {
+        PlatinumConcentrate = builderISG("platinum_concentrate")
+                .langValue("Platinum Concentrate")
+                .liquid()
+                .iconSet(MaterialIconSet.FLUID)
+                .color(GTMaterials.Platinum.getMaterialARGB())
+                .buildAndRegister()
+                .setFormula("Pt?Pd?");
 
-    RefinedPlatinumSalt = builderISG("refined_platinum_salt")
-        .dust(2)
-        .color(GTMaterials.Platinum.getMaterialARGB())
-        .iconSet(MaterialIconSet.METALLIC)
-        .flags(MaterialFlags.NO_UNIFICATION)
-        .buildAndRegister()
-        .setFormula("Pt?");
+        PlatinumSalt = builderISG("platinum_salt")
+                .langValue("Platinum Salt")
+                .dust()
+                .iconSet(MaterialIconSet.DULL)
+                .color(GTMaterials.Platinum.getMaterialARGB())
+                .flags(MaterialFlags.NO_UNIFICATION)
+                .buildAndRegister()
+                .setFormula("Pt?");
 
-    PlatinumMetallicPowder = builderISG("platinum_metallic_powder")
-        .dust().ore()
-        .color(GTMaterials.Platinum.getMaterialARGB())
-        .iconSet(MaterialIconSet.METALLIC)
-        .buildAndRegister()
-        .setFormula("Pt?Pd?Ir?Os?Rh?Ru?");
+        RefinedPlatinumSalt = builderISG("refined_platinum_salt")
+                .dust(2)
+                .color(GTMaterials.Platinum.getMaterialARGB())
+                .iconSet(MaterialIconSet.METALLIC)
+                .flags(MaterialFlags.NO_UNIFICATION)
+                .buildAndRegister()
+                .setFormula("Pt?");
 
-    ReprecipitatedPlatinum = builderISG("reprecipitated_platinum")
-        .dust()
-        .color(GTMaterials.Platinum.getMaterialARGB())
-        .iconSet(MaterialIconSet.METALLIC)
-        .flags(MaterialFlags.NO_UNIFICATION)
-        .buildAndRegister()
-        .setFormula("PtCl");
+        PlatinumMetallicPowder = builderISG("platinum_metallic_powder")
+                .dust().ore()
+                .color(GTMaterials.Platinum.getMaterialARGB())
+                .iconSet(MaterialIconSet.METALLIC)
+                .buildAndRegister()
+                .setFormula("Pt?Pd?Ir?Os?Rh?Ru?");
 
-    PalladiumEnrichedAmmonia = builderISG("palladium_enriched_ammonia")
-        .liquid()
-        .color(GTMaterials.Palladium.getMaterialARGB())
-        .iconSet(MaterialIconSet.FLUID)
-        .components(GTMaterials.Ammonia, 1, GTMaterials.Palladium, 1)
-        .flags(MaterialFlags.DISABLE_DECOMPOSITION)
-        .buildAndRegister()
-        .setFormula("Pd?");
+        ReprecipitatedPlatinum = builderISG("reprecipitated_platinum")
+                .dust()
+                .color(GTMaterials.Platinum.getMaterialARGB())
+                .iconSet(MaterialIconSet.METALLIC)
+                .flags(MaterialFlags.NO_UNIFICATION)
+                .buildAndRegister()
+                .setFormula("PtCl");
 
-    PalladiumMetallicPowder = builderISG("palladium_metallic_powder")
-        .dust()
-        .color(GTMaterials.Palladium.getMaterialARGB())
-        .iconSet(MaterialIconSet.METALLIC)
-        .flags(MaterialFlags.NO_UNIFICATION)
-        .buildAndRegister()
-        .setFormula("Pd?");
+        PalladiumEnrichedAmmonia = builderISG("palladium_enriched_ammonia")
+                .liquid()
+                .color(GTMaterials.Palladium.getMaterialARGB())
+                .iconSet(MaterialIconSet.FLUID)
+                .components(GTMaterials.Ammonia, 1, GTMaterials.Palladium, 1)
+                .flags(MaterialFlags.DISABLE_DECOMPOSITION)
+                .buildAndRegister()
+                .setFormula("Pd?");
 
-    ReprecipitatedPalladium = builderISG("reprecipitated_palladium")
-        .dust()
-        .color(GTMaterials.Palladium.getMaterialARGB())
-        .iconSet(MaterialIconSet.METALLIC)
-        .flags(MaterialFlags.NO_UNIFICATION)
-        .buildAndRegister()
-        .setFormula("Pd?");
+        PalladiumMetallicPowder = builderISG("palladium_metallic_powder")
+                .dust()
+                .color(GTMaterials.Palladium.getMaterialARGB())
+                .iconSet(MaterialIconSet.METALLIC)
+                .flags(MaterialFlags.NO_UNIFICATION)
+                .buildAndRegister()
+                .setFormula("Pd?");
 
-    PalladiumSalt = builderISG("palladium_salt")
-        .dust()
-        .color(GTMaterials.Palladium.getMaterialARGB())
-        .iconSet(MaterialIconSet.METALLIC)
-        .flags(MaterialFlags.NO_UNIFICATION)
-        .buildAndRegister()
-        .setFormula("Pd?");
+        ReprecipitatedPalladium = builderISG("reprecipitated_palladium")
+                .dust()
+                .color(GTMaterials.Palladium.getMaterialARGB())
+                .iconSet(MaterialIconSet.METALLIC)
+                .flags(MaterialFlags.NO_UNIFICATION)
+                .buildAndRegister()
+                .setFormula("Pd?");
 
-    SodiumFormate = builderISG("sodium_formate")
-        .liquid()
-        .color(0xffaaaa)
-        .iconSet(MaterialIconSet.FLUID)
-        .components(GTMaterials.SodiumHydroxide, 1, GTMaterials.CarbonMonoxide, 1)
-        .buildAndRegister()
-        .setFormula("HCOONa");
+        PalladiumSalt = builderISG("palladium_salt")
+                .dust()
+                .color(GTMaterials.Palladium.getMaterialARGB())
+                .iconSet(MaterialIconSet.METALLIC)
+                .flags(MaterialFlags.NO_UNIFICATION)
+                .buildAndRegister()
+                .setFormula("Pd?");
 
-    SodiumSulfate = builderISG("sodium_sulfate")
-        .dust()
-        .color(0xc6c6c6)
-        .iconSet(MaterialIconSet.FLUID)
-        .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
-        .components(GTMaterials.Sodium, 3, GTMaterials.Sulfur, 1, GTMaterials.Oxygen, 4)
-        .buildAndRegister();
+        SodiumFormate = builderISG("sodium_formate")
+                .liquid()
+                .color(0xffaaaa)
+                .iconSet(MaterialIconSet.FLUID)
+                .components(GTMaterials.SodiumHydroxide, 1, GTMaterials.CarbonMonoxide, 1)
+                .buildAndRegister()
+                .setFormula("HCOONa");
 
-    PotassiumDisulfate = builderISG("potassium_disulfate")
-        .dust().fluid()
-        .color(0xfbbb66)
-        .iconSet(MaterialIconSet.DULL)
-        .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
-        .components(GTMaterials.Potassium, 2, GTMaterials.Sulfur, 2, GTMaterials.Oxygen, 7)
-        .buildAndRegister();
+        SodiumSulfate = builderISG("sodium_sulfate")
+                .dust()
+                .color(0xc6c6c6)
+                .iconSet(MaterialIconSet.FLUID)
+                .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
+                .components(GTMaterials.Sodium, 3, GTMaterials.Sulfur, 1, GTMaterials.Oxygen, 4)
+                .buildAndRegister();
 
-    LeachResidue = builderISG("leach_residue")
-        .dust()
-        .color(0x644629)
-        .iconSet(MaterialIconSet.ROUGH)
-        .buildAndRegister().setFormula("Is?Os?Ru?");
+        PotassiumDisulfate = builderISG("potassium_disulfate")
+                .dust().fluid()
+                .color(0xfbbb66)
+                .iconSet(MaterialIconSet.DULL)
+                .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
+                .components(GTMaterials.Potassium, 2, GTMaterials.Sulfur, 2, GTMaterials.Oxygen, 7)
+                .buildAndRegister();
 
-    RhodiumSulfateSolution = builderISG("rhodium_sulfate_solution")
-        .liquid()
-        .color(0xffbb66)
-        .iconSet(MaterialIconSet.FLUID)
-        .buildAndRegister().setFormula("Rh?S?O?");
+        LeachResidue = builderISG("leach_residue")
+                .dust()
+                .color(0x644629)
+                .iconSet(MaterialIconSet.ROUGH)
+                .buildAndRegister().setFormula("Is?Os?Ru?");
 
-    SodiumRuthenate = builderISG("sodium_ruthenate")
-        .dust()
-        .color(0x3a40cd)
-        .iconSet(MaterialIconSet.SHINY)
-        .buildAndRegister()
-        .setFormula("Na?Ru?");
+        RhodiumSulfateSolution = builderISG("rhodium_sulfate_solution")
+                .liquid()
+                .color(0xffbb66)
+                .iconSet(MaterialIconSet.FLUID)
+                .buildAndRegister().setFormula("Rh?S?O?");
 
-    HotRutheniumTetroxideSolution = builderISG("hot_ruthenium_tetroxide_solution")
-        .gas(700)
-        .color(0xc7c7c7)
-        .iconSet(MaterialIconSet.FLUID)
-        .buildAndRegister()
-        .setFormula("Ru?O?");
+        SodiumRuthenate = builderISG("sodium_ruthenate")
+                .dust()
+                .color(0x3a40cd)
+                .iconSet(MaterialIconSet.SHINY)
+                .buildAndRegister()
+                .setFormula("Na?Ru?");
 
-    RutheniumTetroxideSolution = builderISG("ruthenium_tetroxide_solution")
-        .liquid(313)
-        .color(0xc7c7c7)
-        .iconSet(MaterialIconSet.FLUID)
-        .buildAndRegister()
-        .setFormula("Ru?O?");
+        HotRutheniumTetroxideSolution = builderISG("hot_ruthenium_tetroxide_solution")
+                .gas(700)
+                .color(0xc7c7c7)
+                .iconSet(MaterialIconSet.FLUID)
+                .buildAndRegister()
+                .setFormula("Ru?O?");
 
-    RarestMetalResidue = builderISG("rarest_metal_residue")
-        .dust()
-        .color(0x644629)
-        .iconSet(MaterialIconSet.ROUGH)
-        .buildAndRegister()
-        .setFormula("Os?Ir?");
+        RutheniumTetroxideSolution = builderISG("ruthenium_tetroxide_solution")
+                .liquid(313)
+                .color(0xc7c7c7)
+                .iconSet(MaterialIconSet.FLUID)
+                .buildAndRegister()
+                .setFormula("Ru?O?");
 
-    SludgeResidue = builderISG("sludge_residue")
-        .dust()
-        .color(0x846649)
-        .iconSet(MaterialIconSet.DULL)
-        .components(GTMaterials.SiliconDioxide, 3, GTMaterials.Gold, 2)
-        .flags(MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING)
-        .buildAndRegister();
+        RarestMetalResidue = builderISG("rarest_metal_residue")
+                .dust()
+                .color(0x644629)
+                .iconSet(MaterialIconSet.ROUGH)
+                .buildAndRegister()
+                .setFormula("Os?Ir?");
 
-    IridiumDioxide = builderISG("iridium_dioxide")
-        .dust()
-        .color(0x846649)
-        .iconSet(MaterialIconSet.FLUID)
-        .buildAndRegister()
-        .setFormula("Ir?O?");
+        SludgeResidue = builderISG("sludge_residue")
+                .dust()
+                .color(0x846649)
+                .iconSet(MaterialIconSet.DULL)
+                .components(GTMaterials.SiliconDioxide, 3, GTMaterials.Gold, 2)
+                .flags(MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING)
+                .buildAndRegister();
 
-    OsmiumSolution = builderISG("osmium_solution")
-        .liquid()
-        .color(0x846649)
-        .iconSet(MaterialIconSet.FLUID)
-        .buildAndRegister()
-        .setFormula("Os?Cl?");
+        IridiumDioxide = builderISG("iridium_dioxide")
+                .dust()
+                .color(0x846649)
+                .iconSet(MaterialIconSet.FLUID)
+                .buildAndRegister()
+                .setFormula("Ir?O?");
 
-    AcidicIridiumSolution = builderISG("acidic_iridium_solution")
-        .liquid()
-        .color(0x846649)
-        .iconSet(MaterialIconSet.FLUID)
-        .buildAndRegister()
-        .setFormula("Ir?Cl?");
+        OsmiumSolution = builderISG("osmium_solution")
+                .liquid()
+                .color(0x846649)
+                .iconSet(MaterialIconSet.FLUID)
+                .buildAndRegister()
+                .setFormula("Os?Cl?");
 
-    MetallicSludgeResidue = builderISG("metallic_sludge_residue")
-        .dust()
-        .color(0x846649)
-        .iconSet(MaterialIconSet.DULL)
-        .flags(MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING)
-        .components(Nickel, 1, GTMaterials.Copper, 1)
-        .buildAndRegister();
+        AcidicIridiumSolution = builderISG("acidic_iridium_solution")
+                .liquid()
+                .color(0x846649)
+                .iconSet(MaterialIconSet.FLUID)
+                .buildAndRegister()
+                .setFormula("Ir?Cl?");
 
-    CrudeRhodiumMetal = builderISG("crude_rhodium_metal")
-        .dust()
-        .color(0x666666)
-        .iconSet(MaterialIconSet.DULL)
-        .buildAndRegister()
-        .setFormula("Rh?");
+        MetallicSludgeResidue = builderISG("metallic_sludge_residue")
+                .dust()
+                .color(0x846649)
+                .iconSet(MaterialIconSet.DULL)
+                .flags(MaterialFlags.DECOMPOSITION_BY_CENTRIFUGING)
+                .components(Nickel, 1, GTMaterials.Copper, 1)
+                .buildAndRegister();
 
-    RhodiumSalt = builderISG("rhodium_salt")
-        .dust()
-        .color(0x848484)
-        .iconSet(MaterialIconSet.GEM_VERTICAL)
-        .buildAndRegister()
-        .setFormula("Rh?Na?Cl?");
+        CrudeRhodiumMetal = builderISG("crude_rhodium_metal")
+                .dust()
+                .color(0x666666)
+                .iconSet(MaterialIconSet.DULL)
+                .buildAndRegister()
+                .setFormula("Rh?");
 
-    RhodiumSaltSolution = builderISG("rhodium_salt_solution")
-        .liquid()
-        .color(0x667788)
-        .iconSet(MaterialIconSet.FLUID)
-        .buildAndRegister()
-        .setFormula("Rh?Na?Cl?");
+        RhodiumSalt = builderISG("rhodium_salt")
+                .dust()
+                .color(0x848484)
+                .iconSet(MaterialIconSet.GEM_VERTICAL)
+                .buildAndRegister()
+                .setFormula("Rh?Na?Cl?");
 
-    SodiumNitrate = builderISG("sodium_nitrate")
-        .dust()
-        .color(0x846674)
-        .iconSet(MaterialIconSet.ROUGH)
-        .components(GTMaterials.Sodium, 1, GTMaterials.Nitrogen, 1, GTMaterials.Oxygen, 3)
-        .buildAndRegister()
-        .setFormula("NaNO3");
+        RhodiumSaltSolution = builderISG("rhodium_salt_solution")
+                .liquid()
+                .color(0x667788)
+                .iconSet(MaterialIconSet.FLUID)
+                .buildAndRegister()
+                .setFormula("Rh?Na?Cl?");
 
-    RhodiumNitrate = builderISG("rhodium_nitrate")
-        .dust()
-        .color(0x776649)
-        .iconSet(MaterialIconSet.QUARTZ)
-        .buildAndRegister()
-        .setFormula("Rh?N?O?");
+        SodiumNitrate = builderISG("sodium_nitrate")
+                .dust()
+                .color(0x846674)
+                .iconSet(MaterialIconSet.ROUGH)
+                .components(GTMaterials.Sodium, 1, GTMaterials.Nitrogen, 1, GTMaterials.Oxygen, 3)
+                .buildAndRegister()
+                .setFormula("NaNO3");
 
-    ZincSulfate = builderISG("zinc_sulfate")
-        .dust()
-        .color(0x846649)
-        .iconSet(MaterialIconSet.QUARTZ)
-        .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
-        .components(GTMaterials.Zinc, 1, GTMaterials.Sulfur, 1, GTMaterials.Oxygen, 4)
-        .buildAndRegister();
+        RhodiumNitrate = builderISG("rhodium_nitrate")
+                .dust()
+                .color(0x776649)
+                .iconSet(MaterialIconSet.QUARTZ)
+                .buildAndRegister()
+                .setFormula("Rh?N?O?");
 
-    RhodiumFilterCake = builderISG("rhodium_filter_cake")
-        .dust()
-        .color(0x776649)
-        .iconSet(MaterialIconSet.QUARTZ)
-        .buildAndRegister()
-        .setFormula("Rh?N?O?");
+        ZincSulfate = builderISG("zinc_sulfate")
+                .dust()
+                .color(0x846649)
+                .iconSet(MaterialIconSet.QUARTZ)
+                .flags(MaterialFlags.DECOMPOSITION_BY_ELECTROLYZING)
+                .components(GTMaterials.Zinc, 1, GTMaterials.Sulfur, 1, GTMaterials.Oxygen, 4)
+                .buildAndRegister();
 
-    RhodiumFilterCakeSolution = builderISG("rhodium_filter_cake_solution")
-        .liquid()
-        .color(0x667788)
-        .iconSet(MaterialIconSet.FLUID)
-        .buildAndRegister()
-        .setFormula("Rh?N?");
+        RhodiumFilterCake = builderISG("rhodium_filter_cake")
+                .dust()
+                .color(0x776649)
+                .iconSet(MaterialIconSet.QUARTZ)
+                .buildAndRegister()
+                .setFormula("Rh?N?O?");
 
-    ReprecipitatedRhodium = builderISG("reprecipitated_rhodium")
-        .dust()
-        .color(0x776649)
-        .iconSet(MaterialIconSet.QUARTZ)
-        .buildAndRegister()
-        .setFormula("Rh?N?H?");
+        RhodiumFilterCakeSolution = builderISG("rhodium_filter_cake_solution")
+                .liquid()
+                .color(0x667788)
+                .iconSet(MaterialIconSet.FLUID)
+                .buildAndRegister()
+                .setFormula("Rh?N?");
 
-  }
-
+        ReprecipitatedRhodium = builderISG("reprecipitated_rhodium")
+                .dust()
+                .color(0x776649)
+                .iconSet(MaterialIconSet.QUARTZ)
+                .buildAndRegister()
+                .setFormula("Rh?N?H?");
+    }
 }

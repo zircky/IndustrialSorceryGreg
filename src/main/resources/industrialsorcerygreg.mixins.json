@@ -8,6 +8,7 @@
     "adastra.AdAstraSpaceSuitItemMixin",
     "adastra.GasTankItemMixin",
     "adastra.OxygenDistributorBlockEntityMixin",
+    "emi.ForgePluginFinderMixin",
     "gregtech.CleanroomLogicMixin",
     "gregtech.CleanroomMachineAccessor",
     "gregtech.CleanroomMachineMixin",
@@ -17,7 +18,10 @@
     "gregtech.GTValuesAccessor",
     "gregtech.MEPatternBufferPartMachineMixin",
     "gregtech.RecipeLogicMixin",
+    "gregtech.chemical.MaterialMixin",
     "gregtech.chemical.TagPrefixItemMixin",
+    "gregtech.config.ISGRecipeConfigsMixin",
+    "gregtech.fuidpipe.FluidPipeTypeMixin",
     "gregtech.item.ComponentItemMixin",
     "gregtech.item.ItemModuleMixin",
     "gregtech.recipe.GTRecipeBuilderAccessor",
@@ -30,6 +34,8 @@
     "adastra.AdAstraClientMixin",
     "adastra.AdAstraOverlayScreenMixin",
     "ae2.AE2SearchFillMixin",
+    "botania.ManaWidgetMixin",
+    "emi.EmiItemAmountMixin",
     "modularui.OverlayStackMixin"
   ],
   "injectors": {

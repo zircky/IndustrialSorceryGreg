@@ -1,48 +1,44 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
-import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
+
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
 
+import static com.gregtechceu.gtceu.api.GTValues.*;
 import static com.gregtechceu.gtceu.api.GTValues.LuV;
 import static com.gregtechceu.gtceu.api.GTValues.VA;
+import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
+import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
+import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
+import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.BIO_REACTOR_RECIPES;
 
 public class BioReactor {
-  public static void init(Consumer<FinishedRecipe> provider) {
-    BIO_REACTOR_RECIPES.recipeBuilder("brevibacterium_flavium_succinimide_to_succinic_anhydride_ammonia")
-        .inputDust(BrevibacteriumFlavium)
-        .inputDust(Succinimide, 12)
-        .outputDust(SuccinicAnhydride, 11)
-        .outputFluids(Ammonia.getFluid(1000))
-        .EUt(VA[LuV])
-        .duration(100)
-        .save(provider);
-    testRecipes(provider);
-  }
 
-  private static void testRecipes(Consumer<FinishedRecipe> provider) {
+    public static void init(Consumer<FinishedRecipe> provider) {
+        BIO_REACTOR_RECIPES.recipeBuilder("brevibacterium_flavium_succinimide_to_succinic_anhydride_ammonia")
+                .inputDust(BrevibacteriumFlavium)
+                .inputDust(Succinimide, 12)
+                .outputDust(SuccinicAnhydride, 11)
+                .outputFluids(Ammonia.getFluid(1000))
+                .EUt(VA[LuV])
+                .duration(100)
+                .save(provider);
+        testRecipes(provider);
+    }
 
+    private static void testRecipes(Consumer<FinishedRecipe> provider) {
         // C6H10O5 + bacteria -> C6H12O6
         BIO_REACTOR_RECIPES.recipeBuilder("cellulose_eschericia_coli_to_glucose").duration(150).EUt(120)
                 .inputDust(Cellulose, 21)
                 .inputDust(EschericiaColi)
                 .outputItems(ChemicalHelper.get(dust, Glucose, 24))
                 .save(provider);
-
 
         // [C6H11NO4]n + bacteria -> C6H13NO5
         BIO_REACTOR_RECIPES.recipeBuilder("chitosan_eschericia_coli_to_glucosamine").duration(100).EUt(4096)
@@ -59,7 +55,6 @@ public class BioReactor {
                 .duration(200)
                 .save(provider);
 
-
         // C6H12O6 + bacteria -> C5H12O
         BIO_REACTOR_RECIPES.recipeBuilder("glucose_ammonia_to_isoamyl_alcohol")
                 .inputDust(Glucose, 24)
@@ -70,7 +65,9 @@ public class BioReactor {
                 .duration(20)
                 .save(provider);
 
-        BIO_REACTOR_RECIPES.recipeBuilder("cupriavidus_necator_methylnitronitrosoguanidine_to_selectively_mutated_cupriavidius_necator")
+        BIO_REACTOR_RECIPES
+                .recipeBuilder(
+                        "cupriavidus_necator_methylnitronitrosoguanidine_to_selectively_mutated_cupriavidius_necator")
                 .inputDust(CupriavidusNecator, 2)
                 .notConsumable(UVA_HALIDE_LAMP)
                 .inputFluids(Methylnitronitrosoguanidine.getFluid(250))
@@ -79,19 +76,19 @@ public class BioReactor {
                 .duration(20)
                 .save(provider);
 
-    // TODO migrated disabled: unresolved old test symbol `ULTRASONIC_HOMOGENIZER`.
-    //         BIO_REACTOR_RECIPES.recipeBuilder("biomass_yeast_to_linoleic_acid")
-    //                 .inputFluids(Biomass.getFluid(1000))
-    //                 .inputDust(Yeast)
-    //                 .notConsumable(ULTRASONIC_HOMOGENIZER.asStack())
-    //                 .outputFluids(LinoleicAcid.getFluid(1000))
-    //                 .EUt(1920)
-    //                 .duration(200)
-    //                 .save(provider);
-    // 
-    //         
+        // TODO migrated disabled: unresolved old test symbol `ULTRASONIC_HOMOGENIZER`.
+        // BIO_REACTOR_RECIPES.recipeBuilder("biomass_yeast_to_linoleic_acid")
+        // .inputFluids(Biomass.getFluid(1000))
+        // .inputDust(Yeast)
+        // .notConsumable(ULTRASONIC_HOMOGENIZER.asStack())
+        // .outputFluids(LinoleicAcid.getFluid(1000))
+        // .EUt(1920)
+        // .duration(200)
+        // .save(provider);
+        //
+        //
 
-BIO_REACTOR_RECIPES.recipeBuilder("cupriavidus_necator_sugar_nitrogen_hydrogen_to_biotin")
+        BIO_REACTOR_RECIPES.recipeBuilder("cupriavidus_necator_sugar_nitrogen_hydrogen_to_biotin")
                 .inputDust(CupriavidusNecator)
                 .inputDust(Sugar)
                 .inputFluids(Nitrogen.getFluid(1000))
@@ -167,20 +164,21 @@ BIO_REACTOR_RECIPES.recipeBuilder("cupriavidus_necator_sugar_nitrogen_hydrogen_t
                 .EUt(480)
                 .duration(100)
                 .save(provider);
-    // TODO migrated disabled: unresolved old test symbol `ULTRASONIC_HOMOGENIZER`.
-    // 
-    //         BIO_REACTOR_RECIPES.recipeBuilder("streptococcus_pyogenes_distilled_water_to_cas9")
-    //                 .notConsumable(ULTRASONIC_HOMOGENIZER.asStack())
-    //                 .inputDust(StreptococcusPyogenes)
-    //                 .inputFluids(DistilledWater.getFluid(1000))
-    //                 .outputFluids(Cas9.getFluid(1000))
-    //                 .EUt(480)
-    //                 .duration(100)
-    //                 .save(provider);
-    // 
-    //         
+        // TODO migrated disabled: unresolved old test symbol `ULTRASONIC_HOMOGENIZER`.
+        //
+        // BIO_REACTOR_RECIPES.recipeBuilder("streptococcus_pyogenes_distilled_water_to_cas9")
+        // .notConsumable(ULTRASONIC_HOMOGENIZER.asStack())
+        // .inputDust(StreptococcusPyogenes)
+        // .inputFluids(DistilledWater.getFluid(1000))
+        // .outputFluids(Cas9.getFluid(1000))
+        // .EUt(480)
+        // .duration(100)
+        // .save(provider);
+        //
+        //
 
-BIO_REACTOR_RECIPES.recipeBuilder("cas9_myc_gene_oct4_gene_sox2_gene_kfl4_gene_eschericia_coli_to_gene_plasmids")
+        BIO_REACTOR_RECIPES
+                .recipeBuilder("cas9_myc_gene_oct4_gene_sox2_gene_kfl4_gene_eschericia_coli_to_gene_plasmids")
                 .inputFluids(Cas9.getFluid(1000))
                 .inputFluids(MycGene.getFluid(1000))
                 .inputFluids(Oct4Gene.getFluid(1000))
@@ -199,6 +197,5 @@ BIO_REACTOR_RECIPES.recipeBuilder("cas9_myc_gene_oct4_gene_sox2_gene_kfl4_gene_e
                 .EUt(120)
                 .duration(100)
                 .save(provider);
-  }
-
+    }
 }

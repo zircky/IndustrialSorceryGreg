@@ -16,6 +16,9 @@ resourcefullConfig = "2.1.2"
 yabn = "1.0.3"
 byteCodecs = "1.0.2"
 
+# BloodMagic
+bloodmagic = "8516586"
+
 ## botania ##
 botania = "1.20.1-448-FORGE"
 patchouli = "1.20.1-84-FORGE"
@@ -40,6 +43,7 @@ jade = "11.12.3+forge"
 ## cursemaven ##
 ftblibrary-cm = "5567591"
 ftbteams-cm = "6130786"
+ftbquests-cm = "8078538"
 nuclearcraft = "8581060"
 #deafission = "7633771"
 ae2wtlib = "7251206"
@@ -77,6 +81,7 @@ adAstra = { module = "earth.terrarium.adastra:ad_astra-forge-1.20.1", version.re
 ftblibrary = { module = "dev.ftb.mods:ftb-library-forge", version.ref = "ftblibrary" }
 ftbteams = { module = "dev.ftb.mods:ftb-teams-forge", version.ref = "ftbteams" }
 
+bloodmagic = { module = "curse.maven:blood-magic-224791", version.ref = "bloodmagic"}
 
 botania = { module = "vazkii.botania:Botania", version.ref = "botania" }
 patchouli = { module = "vazkii.patchouli:Patchouli", version.ref = "patchouli" }
@@ -98,6 +103,7 @@ jade = { module = "maven.modrinth:jade", version.ref = "jade" }
 ## cursemaven ##
 ftblibrary-cm = { module = "curse.maven:ftb-library-forge-404465", version.ref = "ftblibrary-cm" }
 ftbteams-cm = { module = "curse.maven:ftb-teams-forge-404468", version.ref = "ftbteams-cm" }
+ftbquests-cm = { module = "curse.maven:ftb-quests-forge-289412", version.ref = "ftbquests-cm" }
 nuclearcraft = { module = "curse.maven:nuclearcraft-neoteric-840010", version.ref = "nuclearcraft" }
 #deafission = { module = "curse.maven:deafission-1354541", version.ref = "deafission" }
 

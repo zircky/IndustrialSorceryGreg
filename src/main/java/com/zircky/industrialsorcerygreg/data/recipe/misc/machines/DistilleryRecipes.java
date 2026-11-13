@@ -9,8 +9,8 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 
 public class DistilleryRecipes {
-  public static void init(Consumer<FinishedRecipe> provider) {
 
+    public static void init(Consumer<FinishedRecipe> provider) {
         // RP1
         DISTILLERY_RECIPES.recipeBuilder("kerosene_to_rp1").duration(16).EUt(120)
                 .circuitMeta(1)
@@ -29,5 +29,5 @@ public class DistilleryRecipes {
                 .inputFluids(SulfuricCoalTarOil.getFluid(800))
                 .outputFluids(Naphthalene.getFluid(800))
                 .save(provider);
-  }
+    }
 }

@@ -8,14 +8,15 @@ import com.zircky.industrialsorcerygreg.common.data.machines.WaterPurificationUn
 
 public class ISGMachines {
 
-  static {
-    ISGRegistries.REGISTRATE.creativeModeTab(() -> ISGCreativeModeTabs.ISG_MACHINE);
-  }
+    static {
+        ISGRegistries.REGISTRATE.creativeModeTab(() -> ISGCreativeModeTabs.ISG_MACHINE);
+    }
 
-  public static void init() {
-    ISGAEMachines.init();
-    ISGMultiMachines.init();
-    ISGSimpleMachines.init();
-    WaterPurificationUnit.init();
-  }
+    public static void init() {
+        com.zircky.industrialsorcerygreg.common.thermal.ThermalMachines.init();
+        ISGAEMachines.init();
+        ISGMultiMachines.init();
+        ISGSimpleMachines.init();
+        WaterPurificationUnit.init();
+    }
 }

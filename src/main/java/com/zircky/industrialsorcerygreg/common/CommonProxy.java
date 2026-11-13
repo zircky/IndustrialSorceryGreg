@@ -1,4 +1,3 @@
 package com.zircky.industrialsorcerygreg.common;
 
-public class CommonProxy {
-}
+public class CommonProxy {}

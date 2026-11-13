@@ -4,8 +4,8 @@ import com.gregtechceu.gtceu.api.blockentity.BlockEntityCreationInfo;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 
 public class AbsoluteBaryonicPerfectionPurificationUnitMachine extends WorkableElectricMultiblockMachine {
-  public AbsoluteBaryonicPerfectionPurificationUnitMachine(BlockEntityCreationInfo info) {
-    super(info);
-  }
 
+    public AbsoluteBaryonicPerfectionPurificationUnitMachine(BlockEntityCreationInfo info) {
+        super(info);
+    }
 }

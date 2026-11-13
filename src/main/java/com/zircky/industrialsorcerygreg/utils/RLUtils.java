@@ -1,12 +1,14 @@
 package com.zircky.industrialsorcerygreg.utils;
 
-import earth.terrarium.adastra.AdAstra;
 import net.minecraft.resources.ResourceLocation;
+
+import earth.terrarium.adastra.AdAstra;
 import vazkii.botania.api.BotaniaAPI;
 
 public final class RLUtils {
 
-  private RLUtils() {}
+  private RLUtils() {
+  }
 
   public static ResourceLocation mc(String path) {
     return new ResourceLocation("minecraft", path);
@@ -40,7 +42,7 @@ public final class RLUtils {
     return new ResourceLocation(AdAstra.MOD_ID, path);
   }
 
-  public static ResourceLocation bot(String path) {
+  public static ResourceLocation botania(String path) {
     return new ResourceLocation(BotaniaAPI.MODID, path);
   }
 }

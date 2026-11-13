@@ -4,8 +4,8 @@ import com.gregtechceu.gtceu.api.blockentity.BlockEntityCreationInfo;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 
 public class OzonationPurificationUnitMachine extends WorkableElectricMultiblockMachine {
-  public OzonationPurificationUnitMachine(BlockEntityCreationInfo info) {
-    super(info);
-  }
 
+    public OzonationPurificationUnitMachine(BlockEntityCreationInfo info) {
+        super(info);
+    }
 }

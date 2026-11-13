@@ -1,5 +1,7 @@
 package com.zircky.industrialsorcerygreg.data.recipe.generated;
 
+import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
+
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
@@ -8,12 +10,13 @@ import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
 import com.gregtechceu.gtceu.utils.GTMath;
-import com.zircky.industrialsorcerygreg.api.data.material.ISGMaterialFlags;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -23,8 +26,8 @@ import java.util.function.Consumer;
 import static com.gregtechceu.gtceu.common.data.GTRecipeTypes.MIXER_RECIPES;
 
 public class ISGRecipeMixerHandler {
-    protected ISGRecipeMixerHandler() {
-    }
+
+    protected ISGRecipeMixerHandler() {}
 
     public static void run(@NotNull Consumer<FinishedRecipe> provider, @NotNull Material material) {
         processMixer(provider, material);
@@ -88,8 +91,9 @@ public class ISGRecipeMixerHandler {
         GTRecipeBuilder builder;
         long dura = material.getProtons() * totalOutputAmount * 2L;
         builder = MIXER_RECIPES.recipeBuilder("recipe_mixer_", material.getName())
-                    .duration(GTMath.saturatedCast(dura))
-                    .EUt(material.getMaterialComponents().size() <= 2 ? GTValues.VA[GTValues.LV] : 2L * GTValues.VA[GTValues.LV]);
+                .duration(GTMath.saturatedCast(dura))
+                .EUt(material.getMaterialComponents().size() <= 2 ? GTValues.VA[GTValues.LV] :
+                        2L * GTValues.VA[GTValues.LV]);
         builder.inputItems(inputs.toArray(ItemStack[]::new));
         builder.inputFluids(fluidInputs.toArray(FluidStack[]::new));
 
@@ -100,9 +104,6 @@ public class ISGRecipeMixerHandler {
         }
 
         builder.save(provider);
-
-
-
     }
 
     private static boolean isEveryMaterialReducible(int divisor, LongList materialAmounts) {
