@@ -1,5 +1,7 @@
 package com.zircky.industrialsorcerygreg.integration.emi.materialtree;
 
+import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
+
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.FluidProperty;
@@ -7,174 +9,173 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKey;
 import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
-import dev.emi.emi.api.stack.EmiStack;
+
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
+
+import dev.emi.emi.api.stack.EmiStack;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ISGFormResolver {
-  public static final TagPrefix[] DEFAULT_FORMS = new TagPrefix[]{
-      TagPrefix.ingot,
-      TagPrefix.ingotHot,
-      ISGTagPrefix.tripleIngot,
-      ISGTagPrefix.quadrupleIngot,
-      ISGTagPrefix.quintupleIngot,
 
-      TagPrefix.nugget,
+    public static final TagPrefix[] DEFAULT_FORMS = new TagPrefix[] {
+            TagPrefix.ingot,
+            TagPrefix.ingotHot,
+            ISGTagPrefix.tripleIngot,
+            ISGTagPrefix.quadrupleIngot,
+            ISGTagPrefix.quintupleIngot,
 
-      TagPrefix.dustSmall,
-      TagPrefix.dust,
-      TagPrefix.dustTiny,
+            TagPrefix.nugget,
 
-      TagPrefix.gem,
-      TagPrefix.gemChipped,
-      TagPrefix.gemFlawed,
-      TagPrefix.gemFlawless,
-      TagPrefix.gemExquisite,
+            TagPrefix.dustSmall,
+            TagPrefix.dust,
+            TagPrefix.dustTiny,
 
-      TagPrefix.plate,
-      TagPrefix.plateDouble,
-      TagPrefix.plateDense,
-      ISGTagPrefix.triplePlate,
-      ISGTagPrefix.quadruplePlate,
-      ISGTagPrefix.quintuplePlate,
-      ISGTagPrefix.superdensePlate,
+            TagPrefix.gem,
+            TagPrefix.gemChipped,
+            TagPrefix.gemFlawed,
+            TagPrefix.gemFlawless,
+            TagPrefix.gemExquisite,
 
-      TagPrefix.rod,
-      TagPrefix.rodLong,
+            TagPrefix.plate,
+            TagPrefix.plateDouble,
+            TagPrefix.plateDense,
+            ISGTagPrefix.triplePlate,
+            ISGTagPrefix.quadruplePlate,
+            ISGTagPrefix.quintuplePlate,
+            ISGTagPrefix.superdensePlate,
 
-      TagPrefix.bolt,
-      TagPrefix.screw,
+            TagPrefix.rod,
+            TagPrefix.rodLong,
 
-      TagPrefix.gear,
-      TagPrefix.gearSmall,
+            TagPrefix.bolt,
+            TagPrefix.screw,
 
-      TagPrefix.wireFine,
-      TagPrefix.wireGtSingle,
-      TagPrefix.wireGtDouble,
-      TagPrefix.wireGtQuadruple,
-      TagPrefix.wireGtOctal,
-      TagPrefix.wireGtHex,
+            TagPrefix.gear,
+            TagPrefix.gearSmall,
 
-      TagPrefix.cableGtSingle,
-      TagPrefix.cableGtDouble,
-      TagPrefix.cableGtQuadruple,
-      TagPrefix.cableGtOctal,
-      TagPrefix.cableGtHex,
+            TagPrefix.wireFine,
+            TagPrefix.wireGtSingle,
+            TagPrefix.wireGtDouble,
+            TagPrefix.wireGtQuadruple,
+            TagPrefix.wireGtOctal,
+            TagPrefix.wireGtHex,
 
-      TagPrefix.foil,
-      TagPrefix.spring,
-      TagPrefix.springSmall,
-      TagPrefix.ring,
-      TagPrefix.round,
-      TagPrefix.rotor,
+            TagPrefix.cableGtSingle,
+            TagPrefix.cableGtDouble,
+            TagPrefix.cableGtQuadruple,
+            TagPrefix.cableGtOctal,
+            TagPrefix.cableGtHex,
 
-      TagPrefix.block,
-      TagPrefix.frameGt,
+            TagPrefix.foil,
+            TagPrefix.spring,
+            TagPrefix.springSmall,
+            TagPrefix.ring,
+            TagPrefix.round,
+            TagPrefix.rotor,
 
-      ISGTagPrefix.NANITES,
-      ISGTagPrefix.CONTAMINABLE_NANITES,
-      ISGTagPrefix.singularity,
+            TagPrefix.block,
+            TagPrefix.frameGt,
 
-      TagPrefix.pipeTinyFluid,
-      TagPrefix.pipeSmallFluid,
-      TagPrefix.pipeNormalFluid,
-      TagPrefix.pipeLargeFluid,
-      TagPrefix.pipeHugeFluid,
-      TagPrefix.pipeQuadrupleFluid,
-      TagPrefix.pipeNonupleFluid,
+            ISGTagPrefix.NANITES,
+            ISGTagPrefix.CONTAMINABLE_NANITES,
+            ISGTagPrefix.singularity,
 
-      TagPrefix.pipeSmallItem,
-      TagPrefix.pipeNormalItem,
-      TagPrefix.pipeLargeItem,
-      TagPrefix.pipeHugeItem,
+            TagPrefix.pipeTinyFluid,
+            TagPrefix.pipeSmallFluid,
+            TagPrefix.pipeNormalFluid,
+            TagPrefix.pipeLargeFluid,
+            TagPrefix.pipeHugeFluid,
+            TagPrefix.pipeQuadrupleFluid,
+            TagPrefix.pipeNonupleFluid,
 
-      TagPrefix.pipeSmallRestrictive,
-      TagPrefix.pipeNormalRestrictive,
-      TagPrefix.pipeLargeRestrictive,
-      TagPrefix.pipeHugeRestrictive,
+            TagPrefix.pipeSmallItem,
+            TagPrefix.pipeNormalItem,
+            TagPrefix.pipeLargeItem,
+            TagPrefix.pipeHugeItem,
 
-      ISGTagPrefix.CURVED_PLATE,
-      ISGTagPrefix.MOTOR_ENCLOSURE,
-      ISGTagPrefix.PUMP_BARREL,
-      ISGTagPrefix.PISTON_HOUSING,
-      ISGTagPrefix.EMITTER_BASES,
-      ISGTagPrefix.SENSOR_CASING,
-      ISGTagPrefix.FIELD_GENERATOR_CASING
-  };
+            TagPrefix.pipeSmallRestrictive,
+            TagPrefix.pipeNormalRestrictive,
+            TagPrefix.pipeLargeRestrictive,
+            TagPrefix.pipeHugeRestrictive,
 
-  public List<FormEntry> resolveForms(final Material material) {
-    final List<FormEntry> out = new ArrayList<>();
+            ISGTagPrefix.CURVED_PLATE,
+            ISGTagPrefix.MOTOR_ENCLOSURE,
+            ISGTagPrefix.PUMP_BARREL,
+            ISGTagPrefix.PISTON_HOUSING,
+            ISGTagPrefix.EMITTER_BASES,
+            ISGTagPrefix.SENSOR_CASING,
+            ISGTagPrefix.FIELD_GENERATOR_CASING
+    };
 
-    addFluid(out, material, FluidStorageKeys.LIQUID);
-    addFluid(out, material, FluidStorageKeys.GAS);
-    addFluid(out, material, FluidStorageKeys.PLASMA);
+    public List<FormEntry> resolveForms(final Material material) {
+        final List<FormEntry> out = new ArrayList<>();
 
-    for (final TagPrefix prefix : DEFAULT_FORMS) {
-      final ItemStack stack = ChemicalHelper.get(prefix, material, 1);
-      if (stack == null || stack.isEmpty()) continue;
-      out.add(new FormEntry(prefix, EmiStack.of(stack)));
+        addFluid(out, material, FluidStorageKeys.LIQUID);
+        addFluid(out, material, FluidStorageKeys.GAS);
+        addFluid(out, material, FluidStorageKeys.PLASMA);
+
+        for (final TagPrefix prefix : DEFAULT_FORMS) {
+            final ItemStack stack = ChemicalHelper.get(prefix, material, 1);
+            if (stack == null || stack.isEmpty()) continue;
+            out.add(new FormEntry(prefix, EmiStack.of(stack)));
+        }
+
+        return List.copyOf(out);
     }
 
-    return List.copyOf(out);
-  }
+    public EmiStack pickKey(final Material material) {
+        final EmiStack itemKey = firstNonEmpty(material,
+                TagPrefix.ingot,
+                TagPrefix.gem,
+                TagPrefix.dust,
+                TagPrefix.plate,
+                TagPrefix.rod,
+                TagPrefix.wireFine,
+                TagPrefix.nugget,
+                TagPrefix.block);
+        if (!itemKey.isEmpty()) return itemKey;
 
-  public EmiStack pickKey(final Material material) {
-    final EmiStack itemKey = firstNonEmpty(material,
-        TagPrefix.ingot,
-        TagPrefix.gem,
-        TagPrefix.dust,
-        TagPrefix.plate,
-        TagPrefix.rod,
-        TagPrefix.wireFine,
-        TagPrefix.nugget,
-        TagPrefix.block
-    );
-    if (!itemKey.isEmpty()) return itemKey;
-
-    return firstFluid(material,
-        FluidStorageKeys.LIQUID,
-        FluidStorageKeys.GAS,
-        FluidStorageKeys.PLASMA
-    );
-  }
-
-  private EmiStack firstNonEmpty(final Material material, final TagPrefix... order) {
-    for (final TagPrefix prefix : order) {
-      final ItemStack stack = ChemicalHelper.get(prefix, material, 1);
-      if (stack != null && !stack.isEmpty()) {
-        return EmiStack.of(stack);
-      }
+        return firstFluid(material,
+                FluidStorageKeys.LIQUID,
+                FluidStorageKeys.GAS,
+                FluidStorageKeys.PLASMA);
     }
-    return EmiStack.EMPTY;
-  }
 
-  private EmiStack firstFluid(final Material material, final FluidStorageKey... order) {
-    for (final FluidStorageKey key : order) {
-      final EmiStack stack = fluidStack(material, key);
-      if (!stack.isEmpty()) return stack;
+    private EmiStack firstNonEmpty(final Material material, final TagPrefix... order) {
+        for (final TagPrefix prefix : order) {
+            final ItemStack stack = ChemicalHelper.get(prefix, material, 1);
+            if (stack != null && !stack.isEmpty()) {
+                return EmiStack.of(stack);
+            }
+        }
+        return EmiStack.EMPTY;
     }
-    return EmiStack.EMPTY;
-  }
 
-  private void addFluid(final List<FormEntry> out, final Material material, final FluidStorageKey key) {
-    final EmiStack stack = fluidStack(material, key);
-    if (!stack.isEmpty()) {
-      out.add(new FormEntry(key, stack));
+    private EmiStack firstFluid(final Material material, final FluidStorageKey... order) {
+        for (final FluidStorageKey key : order) {
+            final EmiStack stack = fluidStack(material, key);
+            if (!stack.isEmpty()) return stack;
+        }
+        return EmiStack.EMPTY;
     }
-  }
 
-  private EmiStack fluidStack(final Material material, final FluidStorageKey key) {
-    final FluidProperty property = material.getProperty(PropertyKey.FLUID);
-    if (property == null) return EmiStack.EMPTY;
+    private void addFluid(final List<FormEntry> out, final Material material, final FluidStorageKey key) {
+        final EmiStack stack = fluidStack(material, key);
+        if (!stack.isEmpty()) {
+            out.add(new FormEntry(key, stack));
+        }
+    }
 
-    final Fluid fluid = property.get(key);
-    if (fluid == null) return EmiStack.EMPTY;
+    private EmiStack fluidStack(final Material material, final FluidStorageKey key) {
+        final FluidProperty property = material.getProperty(PropertyKey.FLUID);
+        if (property == null) return EmiStack.EMPTY;
 
-    return EmiStack.of(fluid, 1000);
-  }
+        final Fluid fluid = property.get(key);
+        if (fluid == null) return EmiStack.EMPTY;
 
+        return EmiStack.of(fluid, 1000);
+    }
 }

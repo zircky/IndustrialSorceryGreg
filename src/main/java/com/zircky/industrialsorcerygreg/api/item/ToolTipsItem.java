@@ -5,6 +5,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,18 +14,19 @@ import java.util.function.Supplier;
 
 public class ToolTipsItem extends Item {
 
-  private final Supplier<Component>[] componentSupplier;
+    private final Supplier<Component>[] componentSupplier;
 
-  public ToolTipsItem(Properties properties, Supplier<Component>[] componentSupplier) {
-    super(properties);
-    this.componentSupplier = componentSupplier;
-  }
-
-  @Override
-  public void appendHoverText(@NotNull ItemStack itemstack, @Nullable Level world, @NotNull List<Component> list, @NotNull TooltipFlag flag) {
-    super.appendHoverText(itemstack, world, list, flag);
-    for (Supplier<Component> component : componentSupplier) {
-      list.add(component.get());
+    public ToolTipsItem(Properties properties, Supplier<Component>[] componentSupplier) {
+        super(properties);
+        this.componentSupplier = componentSupplier;
     }
-  }
+
+    @Override
+    public void appendHoverText(@NotNull ItemStack itemstack, @Nullable Level world, @NotNull List<Component> list,
+                                @NotNull TooltipFlag flag) {
+        super.appendHoverText(itemstack, world, list, flag);
+        for (Supplier<Component> component : componentSupplier) {
+            list.add(component.get());
+        }
+    }
 }

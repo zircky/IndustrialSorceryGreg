@@ -1,11 +1,6 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
-import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Consumer;
 
@@ -19,8 +14,9 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 
 public class FluidHeaterRecipes {
-  public static void init(Consumer<FinishedRecipe> provider) {
-    // Migrated from misc/test recipes.
+
+    public static void init(Consumer<FinishedRecipe> provider) {
+        // Migrated from misc/test recipes.
 
         // CH3NO(H2O) -> CH3NO + H2O
         FLUID_HEATER_RECIPES.recipeBuilder("wet_formamide_to_formamide").duration(60).EUt(VA[MV])
@@ -53,30 +49,30 @@ public class FluidHeaterRecipes {
                 .outputFluids(PurifiedIronCarbonyl.getFluid(900))
                 .save(provider);
 
-    // TODO migrated disabled: unresolved old test symbol `Lignite`.
-    //         FLUID_HEATER_RECIPES.recipeBuilder("helium3_to_plasma_helium3")
-    //                 .inputFluids(Helium3.getFluid(1000))
-    //                 .outputFluids(Helium3.getFluid(FluidStorageKeys.PLASMA, 1000))
-    //                 .circuitMeta(0)
-    //                 .duration(60)
-    //                 .EUt(8000)
-    //                 .save(provider);
-    // 
-    // 
-             // Lignite Processing ==========================================================================================
-             FLUID_HEATER_RECIPES.recipeBuilder("nitrogen_to_hot_nitrogen").duration(120).EUt(120)
-                     .circuitMeta(1)
-                     .inputFluids(Nitrogen.getFluid(1000))
-                     .outputFluids(HotNitrogen.getFluid(1000))
-                     .save(provider);
-    // 
-    // 
-    //         
+        // TODO migrated disabled: unresolved old test symbol `Lignite`.
+        // FLUID_HEATER_RECIPES.recipeBuilder("helium3_to_plasma_helium3")
+        // .inputFluids(Helium3.getFluid(1000))
+        // .outputFluids(Helium3.getFluid(FluidStorageKeys.PLASMA, 1000))
+        // .circuitMeta(0)
+        // .duration(60)
+        // .EUt(8000)
+        // .save(provider);
+        //
+        //
+        // Lignite Processing ==========================================================================================
+        FLUID_HEATER_RECIPES.recipeBuilder("nitrogen_to_hot_nitrogen").duration(120).EUt(120)
+                .circuitMeta(1)
+                .inputFluids(Nitrogen.getFluid(1000))
+                .outputFluids(HotNitrogen.getFluid(1000))
+                .save(provider);
+        //
+        //
+        //
 
-// [C2H4O + H2O] -> C2H6O2
+        // [C2H4O + H2O] -> C2H6O2
         FLUID_HEATER_RECIPES.recipeBuilder("wet_ethylene_oxide_to_ethylene_glycol").duration(130).EUt(120)
                 .inputFluids(WetEthyleneOxide.getFluid(1000))
                 .outputFluids(EthyleneGlycol.getFluid(1000))
                 .save(provider);
-  }
+    }
 }

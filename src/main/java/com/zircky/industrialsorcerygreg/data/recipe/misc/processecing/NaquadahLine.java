@@ -1,9 +1,12 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.processecing;
 
+import com.zircky.industrialsorcerygreg.api.ISGValues;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
 
+import static com.gregtechceu.gtceu.api.GTValues.HV;
+import static com.gregtechceu.gtceu.api.GTValues.VA;
 import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.dust;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.Plutonium239;
@@ -11,8 +14,10 @@ import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 
 public class NaquadahLine {
+
   public static void init(Consumer<FinishedRecipe> provider) {
     registerOreTapProcessing(provider);
+    registerConcentrateActivation(provider);
 
     // Sb2O3 + 6HF = 2SbF3 + 3H2O
     CHEMICAL_RECIPES.recipeBuilder("naquadah_line_antimony_trifluoride")
@@ -23,14 +28,6 @@ public class NaquadahLine {
         .EUt(480)
         .duration(200)
         .save(provider);
-
-    NEUTRON_ACTIVATOR_RECIPES.recipeBuilder("naquadah_line_antimony_trifluoride_alt")
-        .inputDust(AntimonyTrioxide, 5)
-        .inputFluids(HydrofluoricAcid.getFluid(6000))
-        .outputDust(AntimonyTrifluoride, 8)
-        .outputFluids(Water.getFluid(3000))
-        .neutronKineticEnergy(220, 230, 54)
-        .duration(500).save(provider);
 
     // SbF3 + 2F = SbF5
     CHEMICAL_RECIPES.recipeBuilder("naquadah_line_antimony_pentafluoride")
@@ -146,7 +143,7 @@ public class NaquadahLine {
     // 6F + Naquadria Concentrate [Nq] = Naquadria Hexafluoride [NqF6]
     CHEMICAL_RECIPES.recipeBuilder("naquadah_line_naquadria_hexafluoride")
         .inputFluids(Fluorine.getFluid(6000))
-        .inputDust(NaquadriaConcentrate)
+        .inputDust(ActivatedNaquadriaConcentrate)
         .outputFluids(NaquadriaHexafluoride.getFluid(1000))
         .EUt(480)
         .duration(100)
@@ -266,7 +263,7 @@ public class NaquadahLine {
 
     // Enriched Naquadah Concentrate [Nq] + 6F = NqF6
     CHEMICAL_RECIPES.recipeBuilder("naquadah_line_enriched_naquadahhexafluoride")
-        .inputDust(EnrichedNaquadahConcentrate)
+        .inputDust(ActivatedEnrichedNaquadahConcentrate)
         .inputFluids(Fluorine.getFluid(6000))
         .outputFluids(EnrichedNaquadahhexafluoride.getFluid(1000))
         .EUt(480)
@@ -361,7 +358,7 @@ public class NaquadahLine {
     CHEMICAL_RECIPES.recipeBuilder("naquadah_line_naquadah_sulfate")
         .inputFluids(HydrofluoricAcid.getFluid(1000))
         .inputDust(PotassiumPeroxymonosulfate, 8)
-        .inputDust(NaquadahConcentrate)
+        .inputDust(ActivatedNaquadahConcentrate)
         .outputFluids(Water.getFluid(1000))
         .outputDust(PotassiumFluoride, 2)
         .outputFluids(NaquadahSulfate.getFluid(1000))
@@ -712,6 +709,27 @@ public class NaquadahLine {
         .save(provider);
   }
 
+  private static void registerConcentrateActivation(Consumer<FinishedRecipe> provider) {
+    NEUTRON_ACTIVATOR_RECIPES.recipeBuilder("naquadah_line_activate_naquadah_concentrate")
+        .inputDust(NaquadahConcentrate)
+        .outputDust(ActivatedNaquadahConcentrate)
+        .neutronKineticEnergy(200, 230, 54)
+        .duration(100).save(provider);
+
+    NEUTRON_ACTIVATOR_RECIPES.recipeBuilder("naquadah_line_activate_enriched_naquadah_concentrate")
+        .inputDust(EnrichedNaquadahConcentrate)
+        .outputDust(ActivatedEnrichedNaquadahConcentrate)
+        .neutronKineticEnergy(460, 480, 120)
+        .duration(120).save(provider);
+
+    NEUTRON_ACTIVATOR_RECIPES.recipeBuilder("naquadah_line_activate_naquadria_concentrate")
+        .inputDust(NaquadriaConcentrate)
+        .outputDust(ActivatedNaquadriaConcentrate)
+        .neutronKineticEnergy(1050, 1100,
+            248)
+        .duration(100).save(provider);
+  }
+
   private static void registerOreTapProcessing(Consumer<FinishedRecipe> provider) {
     registerBaseNaquadahTap(provider);
     registerEnrichedNaquadahTap(provider);
@@ -820,15 +838,22 @@ public class NaquadahLine {
   private static void registerEnrichedNaquadahTap(Consumer<FinishedRecipe> provider) {
     LEACHING_PLANT_RECIPES.recipeBuilder("naquadah_line_impure_enriched_naquadah_solution")
         .inputDust(EnrichedNaquadahOxideMixture, 4)
-        .inputDust(TriniumSulphate, 6)
         .inputFluids(SulfuricAcid.getFluid(3000))
         .inputFluids(HydrogenPeroxide.getFluid(1000))
         .outputDust(ConcentratedEnrichedNaquadahSludge, 3)
+        .outputDust(TriniumSulphate)
         .outputFluids(ImpureEnrichedNaquadahSolution.getFluid(2000))
         .outputFluids(EnrichedNaquadahWaste.getFluid(1000))
         .EUt(7680)
         .duration(360)
         .save(provider);
+
+    LARGE_CHEMICAL_RECIPES.recipeBuilder("naquadah_line_trinium_sulphate_from_trinium")
+        .inputDust(TriniumSulphate, 6)
+        .inputFluids(Hydrogen.getFluid(2000))
+        .outputDust(Trinium)
+        .outputFluids(SulfuricAcid.getFluid(1000))
+        .duration(ISGValues.SECONDS * 6).EUt(VA[HV]).save(provider);
 
     CENTRIFUGE_RECIPES.recipeBuilder("naquadah_line_enriched_naquadah_solution_from_impure")
         .inputFluids(ImpureEnrichedNaquadahSolution.getFluid(2000))

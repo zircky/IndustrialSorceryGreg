@@ -1,8 +1,5 @@
 package com.zircky.industrialsorcerygreg;
 
-import com.gregtechceu.gtceu.api.addon.GTAddon;
-import com.gregtechceu.gtceu.api.addon.IGTAddon;
-import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
 import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
 import com.zircky.industrialsorcerygreg.common.data.ISGCovers;
@@ -10,6 +7,11 @@ import com.zircky.industrialsorcerygreg.common.data.ISGItemModules;
 import com.zircky.industrialsorcerygreg.common.data.ISGRecipes;
 import com.zircky.industrialsorcerygreg.common.data.materials.ISGMaterialIconSet;
 import com.zircky.industrialsorcerygreg.data.recipe.ISGCraftingComponents;
+
+import com.gregtechceu.gtceu.api.addon.GTAddon;
+import com.gregtechceu.gtceu.api.addon.IGTAddon;
+import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
+
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 
@@ -17,75 +19,76 @@ import java.util.function.Consumer;
 
 @GTAddon
 public class ISGAddon implements IGTAddon {
-  static {
-    ISGMaterialIconSet.init();
-  }
 
-  @Override
-  public GTRegistrate getRegistrate() {
-    return ISGRegistries.REGISTRATE;
-  }
+    static {
+        ISGMaterialIconSet.init();
+    }
 
-  @Override
-  public void initializeAddon() {
-    ISGItemModules.init();
-//    ISGPlaceholders.register();
-    ISGCore.LOGGER.info("IndustrialSorceryGregAddon has loaded!");
-  }
+    @Override
+    public GTRegistrate getRegistrate() {
+        return ISGRegistries.REGISTRATE;
+    }
 
-  @Override
-  public String addonModId() {
-    return ISGCore.MODID;
-  }
+    @Override
+    public void initializeAddon() {
+        ISGItemModules.init();
+        // ISGPlaceholders.register();
+        ISGCore.LOGGER.info("IndustrialSorceryGregAddon has loaded!");
+    }
 
-  @Override
-  public void registerTagPrefixes() {
-    ISGTagPrefix.init();
-  }
+    @Override
+    public String addonModId() {
+        return ISGCore.MODID;
+    }
 
-  @Override
-  public void registerCovers() {
-    ISGCovers.init();
-  }
+    @Override
+    public void registerTagPrefixes() {
+        ISGTagPrefix.init();
+    }
 
-  @Override
-  public void registerVeinGenerators() {
-    IGTAddon.super.registerVeinGenerators();
-  }
+    @Override
+    public void registerCovers() {
+        ISGCovers.init();
+    }
 
-  @Override
-  public void registerIndicatorGenerators() {
-    IGTAddon.super.registerIndicatorGenerators();
-  }
+    @Override
+    public void registerVeinGenerators() {
+        IGTAddon.super.registerVeinGenerators();
+    }
 
-  @Override
-  public void addRecipes(Consumer<FinishedRecipe> provider) {
-    ISGCraftingComponents.init();
-    ISGRecipes.recipeAddition(provider);
-  }
+    @Override
+    public void registerIndicatorGenerators() {
+        IGTAddon.super.registerIndicatorGenerators();
+    }
 
-  @Override
-  public void removeRecipes(Consumer<ResourceLocation> consumer) {
-    ISGRecipes.recipeRemoval(consumer);
-  }
+    @Override
+    public void addRecipes(Consumer<FinishedRecipe> provider) {
+        ISGCraftingComponents.init();
+        ISGRecipes.recipeAddition(provider);
+    }
 
-  @Override
-  public void registerOreVeins() {
-    IGTAddon.super.registerOreVeins();
-  }
+    @Override
+    public void removeRecipes(Consumer<ResourceLocation> consumer) {
+        ISGRecipes.recipeRemoval(consumer);
+    }
 
-  @Override
-  public void registerFluidVeins() {
-    IGTAddon.super.registerFluidVeins();
-  }
+    @Override
+    public void registerOreVeins() {
+        IGTAddon.super.registerOreVeins();
+    }
 
-  @Override
-  public void registerBedrockOreVeins() {
-    IGTAddon.super.registerBedrockOreVeins();
-  }
+    @Override
+    public void registerFluidVeins() {
+        IGTAddon.super.registerFluidVeins();
+    }
 
-  @Override
-  public boolean requiresHighTier() {
-    return true;
-  }
+    @Override
+    public void registerBedrockOreVeins() {
+        IGTAddon.super.registerBedrockOreVeins();
+    }
+
+    @Override
+    public boolean requiresHighTier() {
+        return true;
+    }
 }

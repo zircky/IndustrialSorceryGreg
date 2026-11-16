@@ -1,13 +1,16 @@
 package com.zircky.industrialsorcerygreg.mixin.gregtech.chemical;
 
-import com.google.common.collect.ImmutableList;
+import com.zircky.industrialsorcerygreg.api.data.chemical.material.IISGMaterial;
+import com.zircky.industrialsorcerygreg.client.renderer.item.MaterialsColorMap;
+
 import com.gregtechceu.gtceu.GTCEu;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.MaterialProperties;
 import com.gregtechceu.gtceu.api.data.chemical.material.stack.MaterialStack;
-import com.zircky.industrialsorcerygreg.api.data.chemical.material.IISGMaterial;
-import com.zircky.industrialsorcerygreg.client.renderer.item.MaterialsColorMap;
+
 import net.minecraft.world.item.Rarity;
+
+import com.google.common.collect.ImmutableList;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,6 +24,7 @@ import java.util.function.IntSupplier;
 
 @Mixin(Material.class)
 public abstract class MaterialMixin implements IISGMaterial {
+
   @Shadow(remap = false)
   @Final
   private @NotNull MaterialProperties properties;
@@ -75,19 +79,25 @@ public abstract class MaterialMixin implements IISGMaterial {
     iSGCore$temp = temp;
   }
 
-  @Inject(method = { "getMaterialRGB()I", "getMaterialSecondaryRGB" }, at = @At("HEAD"), remap = false, cancellable = true)
+  @Inject(method = {"getMaterialRGB()I", "getMaterialSecondaryRGB"},
+      at = @At("HEAD"),
+      remap = false,
+      cancellable = true)
   private void getMaterialRGB(CallbackInfoReturnable<Integer> cir) {
     if (GTCEu.isClientSide()) {
-      IntSupplier supplier = MaterialsColorMap.MaterialColors.get(this);
+      IntSupplier supplier = MaterialsColorMap.getColorSupplier((Material) (Object) this);
       if (supplier == null) return;
       cir.setReturnValue(supplier.getAsInt() & 0xFFFFFF);
     }
   }
 
-  @Inject(method = { "getMaterialARGB(I)I", "getMaterialSecondaryARGB" }, at = @At("HEAD"), remap = false, cancellable = true)
+  @Inject(method = {"getMaterialARGB(I)I", "getMaterialSecondaryARGB"},
+      at = @At("HEAD"),
+      remap = false,
+      cancellable = true)
   private void getMaterialARGB(CallbackInfoReturnable<Integer> cir) {
     if (GTCEu.isClientSide()) {
-      IntSupplier supplier = MaterialsColorMap.MaterialColors.get(this);
+      IntSupplier supplier = MaterialsColorMap.getColorSupplier((Material) (Object) this);
       if (supplier == null) return;
       if ((supplier.getAsInt() & 0xFF000000) == 0) {
         cir.setReturnValue(supplier.getAsInt() | 0xFF000000);

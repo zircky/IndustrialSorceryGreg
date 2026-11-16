@@ -9,10 +9,10 @@ import java.util.function.Consumer;
 @Mixin(AdAstraClient.class)
 public class AdAstraClientMixin {
 
-  /**
-   * @author
-   * @reason
-   */
-  @org.spongepowered.asm.mixin.Overwrite(remap = false)
-  public static void onRegisterHud(Consumer<ClientPlatformUtils.RenderHud> consumer) {}
+    /**
+     * @author
+     * @reason
+     */
+    @org.spongepowered.asm.mixin.Overwrite(remap = false)
+    public static void onRegisterHud(Consumer<ClientPlatformUtils.RenderHud> consumer) {}
 }

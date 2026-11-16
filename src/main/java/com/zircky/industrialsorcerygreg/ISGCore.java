@@ -1,5 +1,12 @@
 package com.zircky.industrialsorcerygreg;
 
+import com.zircky.industrialsorcerygreg.api.gregtech.AddonTierNamePatcher;
+import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
+import com.zircky.industrialsorcerygreg.client.ClientProxy;
+import com.zircky.industrialsorcerygreg.common.data.*;
+import com.zircky.industrialsorcerygreg.config.ISGConfigHolder;
+import com.zircky.industrialsorcerygreg.data.ISGDatagen;
+
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
@@ -9,118 +16,109 @@ import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.common.machine.multiblock.electric.FusionReactorMachine;
 import com.gregtechceu.gtceu.utils.FormattingUtil;
-import com.mojang.logging.LogUtils;
-import com.zircky.industrialsorcerygreg.api.data.tag.ISGTagPrefix;
-import com.zircky.industrialsorcerygreg.api.gregtech.AddonTierNamePatcher;
-import com.zircky.industrialsorcerygreg.api.registries.ISGRegistries;
-import com.zircky.industrialsorcerygreg.client.ClientProxy;
-import com.zircky.industrialsorcerygreg.common.data.*;
-import com.zircky.industrialsorcerygreg.config.ISGConfigHolder;
-import com.zircky.industrialsorcerygreg.data.ISGDatagen;
+
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
+
+import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
 @Mod(ISGCore.MODID)
 public class ISGCore {
 
-  public static final String MODID = "industrialsorcerygreg";
-  private static final ResourceLocation TEMPLATE_LOCATION = ResourceLocation.fromNamespaceAndPath(MODID, "");
-  public static final String NAME = "IndustrialSorceryGreg";
-  public static final String TABNAME = "ISGCore";
-  public static final Logger LOGGER = LogUtils.getLogger();
-  public static MaterialRegistry MATERIAL_REGISTRY;
+    public static final String MODID = "industrialsorcerygreg";
+    private static final ResourceLocation TEMPLATE_LOCATION = ResourceLocation.fromNamespaceAndPath(MODID, "");
+    public static final String NAME = "IndustrialSorceryGreg";
+    public static final String TABNAME = "ISGCore";
+    public static final Logger LOGGER = LogUtils.getLogger();
+    public static MaterialRegistry MATERIAL_REGISTRY;
 
-  public ISGCore() {
-    ISGCore.init();
-    var bus = FMLJavaModLoadingContext.get().getModEventBus();
+    public ISGCore() {
+        ISGCore.init();
+        var bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-    ISGRegistries.REGISTRATE.registerEventListeners(bus);
+        ISGRegistries.REGISTRATE.registerEventListeners(bus);
 
-    bus.register(this);
-    bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
-    bus.addGenericListener(MachineDefinition.class, this::registerMachines);
+        bus.register(this);
+        bus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
+        bus.addGenericListener(MachineDefinition.class, this::registerMachines);
 
-    bus.addListener(this::commonSetup);
+        bus.addListener(this::commonSetup);
 
-    if (FMLEnvironment.dist.isClient()) {
-      ClientProxy.init(bus);
-    }
-  }
-
-
-  public static void init() {
-    ISGConfigHolder.init();
-
-    ISGElement.init();
-
-    ISGItems.init();
-
-    ISGDatagen.initPost();
-  }
-
-
-  public static ResourceLocation id(String path) {
-    if (path.isBlank()) {
-      return TEMPLATE_LOCATION;
+        if (FMLEnvironment.dist.isClient()) {
+            ClientProxy.init(bus);
+        }
     }
 
-    int i = path.indexOf(':');
-    if (i > 0) {
-      return ResourceLocation.parse(path);
-    } else if (i == 0) {
-      path = path.substring(i + 1);
+    public static void init() {
+        ISGConfigHolder.init();
+
+        ISGElement.init();
+
+        ISGItems.init();
+
+        ISGDatagen.initPost();
     }
-    // only convert it to camel_case if it has any uppercase to begin with
-    if (FormattingUtil.hasUpperCase(path)) {
-      path = FormattingUtil.toLowerCaseUnderscore(path);
+
+    public static ResourceLocation id(String path) {
+        if (path.isBlank()) {
+            return TEMPLATE_LOCATION;
+        }
+
+        int i = path.indexOf(':');
+        if (i > 0) {
+            return ResourceLocation.parse(path);
+        } else if (i == 0) {
+            path = path.substring(i + 1);
+        }
+        // only convert it to camel_case if it has any uppercase to begin with
+        if (FormattingUtil.hasUpperCase(path)) {
+            path = FormattingUtil.toLowerCaseUnderscore(path);
+        }
+        return TEMPLATE_LOCATION.withPath(path);
     }
-    return TEMPLATE_LOCATION.withPath(path);
-  }
 
-  private void commonSetup(final FMLCommonSetupEvent event) {
-    blockinit();
-    event.enqueueWork(AddonTierNamePatcher::apply);
-  }
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        blockinit();
+        event.enqueueWork(AddonTierNamePatcher::apply);
+    }
 
-  public static void blockinit() {
+    public static void blockinit() {
+        ISGBlocks.init();
 
-    ISGBlocks.init();
+        ISGCreativeModeTabs.init();
 
-    ISGCreativeModeTabs.init();
+        FusionReactorMachine.registerFusionTier(GTValues.UHV, " (MKIV)");
+        FusionReactorMachine.registerFusionTier(GTValues.UEV, " (MKV)");
+    }
 
-    FusionReactorMachine.registerFusionTier(GTValues.UHV, " (MKIV)");
-    FusionReactorMachine.registerFusionTier(GTValues.UEV, " (MKV)");
-  }
+    @SubscribeEvent
+    public void registerMaterialRegistryEvent(MaterialEvent event) {
+        MATERIAL_REGISTRY = ISGRegistries.MATERIALS;
+    }
 
-  @SubscribeEvent
-  public void registerMaterialRegistryEvent(MaterialEvent event) {
-    MATERIAL_REGISTRY = ISGRegistries.MATERIALS;
-  }
+    @SubscribeEvent
+    public void registerMaterials(MaterialEvent event) {
+        ISGModifyMaterials.initFluidStorage();
+        ISGMaterials.init();
+    }
 
-  @SubscribeEvent
-  public void registerMaterials(MaterialEvent event) {
-    ISGModifyMaterials.initFluidStorage();
-    ISGMaterials.init();
-  }
+    @SubscribeEvent
+    public void modifyMaterials(PostMaterialEvent event) {
+        ISGMaterials.modifyMaterials();
+    }
 
-  @SubscribeEvent
-  public void modifyMaterials(PostMaterialEvent event) {
-    ISGMaterials.modifyMaterials();
-  }
+    @SubscribeEvent
+    public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
+        ISGRecipeTypes.init();
+    }
 
-  @SubscribeEvent
-  public void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
-    ISGRecipeTypes.init();
-  }
-
-  @SubscribeEvent
-  public void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
-    ISGMachines.init();
-  }
-
+    @SubscribeEvent
+    public void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
+        ISGMachines.init();
+    }
 }

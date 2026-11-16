@@ -35,10 +35,13 @@ dependencies {
   modImplementation(forge.architectury)
 
   modCompileOnly(forge.bundles.jei)
+  modRuntimeOnly(forge.bundles.jei)
   modImplementation(forge.emi)
 
   // Patchouli
   modRuntimeOnly(forge.patchouli)
+
+  modImplementation(forge.bloodmagic)
 
   // Botania currently crashes in dev on Forge 47.4.x by reading client config before it is loaded.
   // Re-enable only when the mod actually needs Botania integration.
@@ -60,6 +63,8 @@ dependencies {
   // FTB
   modImplementation(forge.ftblibrary.cm)
   modImplementation(forge.ftbteams.cm)
+  modImplementation(forge.ftbquests.cm)
+
 
 
 

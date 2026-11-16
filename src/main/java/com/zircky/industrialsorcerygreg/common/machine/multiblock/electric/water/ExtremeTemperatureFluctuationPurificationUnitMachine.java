@@ -4,8 +4,8 @@ import com.gregtechceu.gtceu.api.blockentity.BlockEntityCreationInfo;
 import com.gregtechceu.gtceu.api.machine.multiblock.WorkableElectricMultiblockMachine;
 
 public class ExtremeTemperatureFluctuationPurificationUnitMachine extends WorkableElectricMultiblockMachine {
-  public ExtremeTemperatureFluctuationPurificationUnitMachine(BlockEntityCreationInfo info) {
-    super(info);
-  }
 
+    public ExtremeTemperatureFluctuationPurificationUnitMachine(BlockEntityCreationInfo info) {
+        super(info);
+    }
 }

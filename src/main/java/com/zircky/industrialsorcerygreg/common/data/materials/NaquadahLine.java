@@ -11,6 +11,7 @@ import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
 
 public class NaquadahLine {
+
   public static void register() {
     Adamantium = builderISG("adamantium")
         .ingot().ore()
@@ -136,6 +137,7 @@ public class NaquadahLine {
         .color(0xdadada)
         .iconSet(MaterialIconSet.METALLIC)
         .components(Trinium, 1, Sulfur, 1, Oxygen, 4)
+        .flags(MaterialFlags.DISABLE_DECOMPOSITION)
         .buildAndRegister()
         .setFormula("KeSO4", true);
 

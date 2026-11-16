@@ -1,4 +1,3 @@
 package com.zircky.industrialsorcerygreg.integration.jei;
 
-public class ISGJEIPlugin {
-}
+public class ISGJEIPlugin {}

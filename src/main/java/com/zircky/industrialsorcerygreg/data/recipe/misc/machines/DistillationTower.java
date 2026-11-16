@@ -1,37 +1,36 @@
 package com.zircky.industrialsorcerygreg.data.recipe.misc.machines;
 
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
-import com.gregtechceu.gtceu.api.fluids.store.FluidStorageKeys;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
-import static com.gregtechceu.gtceu.api.GTValues.*;
-import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
-import static com.gregtechceu.gtceu.common.data.GTItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
-import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
+
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
 
+import static com.gregtechceu.gtceu.api.GTValues.*;
+import static com.gregtechceu.gtceu.api.data.tag.TagPrefix.*;
+import static com.gregtechceu.gtceu.common.data.GTItems.*;
 import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
+import static com.zircky.industrialsorcerygreg.common.data.ISGCasings.*;
+import static com.zircky.industrialsorcerygreg.common.data.ISGItems.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGMaterials.*;
+import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.*;
 import static com.zircky.industrialsorcerygreg.common.data.ISGRecipeTypes.DISTILLATION_RECIPES;
 
 public class DistillationTower {
-  public static void init(Consumer<FinishedRecipe> provider) {
-    // [C2H7NO + 0.5CO2 + 0.5H2O] -> C2H7NO + 0.5CO2 + 0.5H2O
-    DISTILLATION_RECIPES.recipeBuilder("carbonated_ethanolamine_to_ethanolamine_carbon_dioxide_water").duration(100).EUt(120)
-        .inputFluids(CarbonatedEthanolamine.getFluid(2000))
-        .outputFluids(Ethanolamine.getFluid(1000))
-        .outputFluids(CarbonDioxide.getFluid(500))
-        .outputFluids(Water.getFluid(500))
-        .save(provider);
-    testRecipes(provider);
-  }
 
-  private static void testRecipes(Consumer<FinishedRecipe> provider) {
+    public static void init(Consumer<FinishedRecipe> provider) {
+        // [C2H7NO + 0.5CO2 + 0.5H2O] -> C2H7NO + 0.5CO2 + 0.5H2O
+        DISTILLATION_RECIPES.recipeBuilder("carbonated_ethanolamine_to_ethanolamine_carbon_dioxide_water").duration(100)
+                .EUt(120)
+                .inputFluids(CarbonatedEthanolamine.getFluid(2000))
+                .outputFluids(Ethanolamine.getFluid(1000))
+                .outputFluids(CarbonDioxide.getFluid(500))
+                .outputFluids(Water.getFluid(500))
+                .save(provider);
+        testRecipes(provider);
+    }
+
+    private static void testRecipes(Consumer<FinishedRecipe> provider) {
         // CH3NO(H2O) -> CH3NO + H2O
         DISTILLATION_RECIPES.recipeBuilder("wet_formamide_to_water_formamide").duration(200).EUt(120)
                 .inputFluids(WetFormamide.getFluid(1000))
@@ -45,13 +44,13 @@ public class DistillationTower {
                 .outputFluids(NitricAcid.getFluid(1000))
                 .save(provider);
 
-        DISTILLATION_RECIPES.recipeBuilder("amine_mixture_to_trimethylamine_dimethylamine_methylamine").duration(200).EUt(480)
+        DISTILLATION_RECIPES.recipeBuilder("amine_mixture_to_trimethylamine_dimethylamine_methylamine").duration(200)
+                .EUt(480)
                 .inputFluids(AmineMixture.getFluid(2000))
                 .outputFluids(Trimethylamine.getFluid(500))
                 .outputFluids(Dimethylamine.getFluid(800))
                 .outputFluids(Methylamine.getFluid(700))
                 .save(provider);
-
 
         // [3[C10H16N2O8 + C2H8N2 + 2O] + 8NaCl] -> 8NaCl + 3C10H16N2O8 + 3[C2H8N2 + 2O]
         // 3[C2H8N2 + 2O] -> 3C2H5NO2 + 3NH3
@@ -63,10 +62,11 @@ public class DistillationTower {
                 .outputFluids(Glycine.getFluid(3000))
                 .save(provider);
 
-
         // 2[2CH4 + 5Cl] -> 1.33CH3Cl + 2.17CH2Cl2 + 2.17CHCl3 + 1.33CCl4
         // Not chemically balanced, but is a convenient, not too OP recipe
-        DISTILLATION_RECIPES.recipeBuilder("chlorinated_solvents_to_chloromethane_dichloromethane_chloroform_carbon_tetrachloride").duration(240).EUt(1920)
+        DISTILLATION_RECIPES
+                .recipeBuilder("chlorinated_solvents_to_chloromethane_dichloromethane_chloroform_carbon_tetrachloride")
+                .duration(240).EUt(1920)
                 .inputFluids(ChlorinatedSolvents.getFluid(14000))
                 .outputFluids(Chloromethane.getFluid(1330))
                 .outputFluids(Dichloromethane.getFluid(2170))
@@ -74,9 +74,9 @@ public class DistillationTower {
                 .outputFluids(CarbonTetrachloride.getFluid(1330))
                 .save(provider);
 
-
         // C6H5BF4N2 -> BF3 + 2N + C6H5F
-        DISTILLATION_RECIPES.recipeBuilder("benzenediazonium_tetrafluoroborate_to_boron_fluoride_nitrogen_fluoro_benzene")
+        DISTILLATION_RECIPES
+                .recipeBuilder("benzenediazonium_tetrafluoroborate_to_boron_fluoride_nitrogen_fluoro_benzene")
                 .inputFluids(BenzenediazoniumTetrafluoroborate.getFluid(1000))
                 .outputFluids(BoronFluoride.getFluid(1000))
                 .outputFluids(Nitrogen.getFluid(2000))
@@ -109,10 +109,12 @@ public class DistillationTower {
                 .EUt(200)
                 .save(provider);
 
-
         // Error ***
         // Liquid Air Distillation =====================================================================================
-        DISTILLATION_RECIPES.recipeBuilder("liquid_air_to_nitrogen_oxygen_argon_carbon_dioxide_neon_helium_methane_krypton_hydrogen_xenon").duration(7500).EUt(1920)
+        DISTILLATION_RECIPES
+                .recipeBuilder(
+                        "liquid_air_to_nitrogen_oxygen_argon_carbon_dioxide_neon_helium_methane_krypton_hydrogen_xenon")
+                .duration(7500).EUt(1920)
                 .inputFluids(LiquidAir.getFluid(100000))
                 .outputFluids(Nitrogen.getFluid(78000))
                 .outputFluids(Oxygen.getFluid(20000))
@@ -128,7 +130,8 @@ public class DistillationTower {
         // ***
 
         // Nuclear Process Distillation ================================================================================
-        DISTILLATION_RECIPES.recipeBuilder("red_oil_to_ferrite_mixture_hydrazine_rp1_tributyl_phosphate").duration(75).EUt(120)
+        DISTILLATION_RECIPES.recipeBuilder("red_oil_to_ferrite_mixture_hydrazine_rp1_tributyl_phosphate").duration(75)
+                .EUt(120)
                 .inputFluids(RedOil.getFluid(3000))
                 .outputDust(FerriteMixture)
                 .outputFluids(Hydrazine.getFluid(1000))
@@ -136,7 +139,8 @@ public class DistillationTower {
                 .outputFluids(TributylPhosphate.getFluid(1000))
                 .save(provider);
 
-        DISTILLATION_RECIPES.recipeBuilder("coal_tar_to_coal_tar_oil_kerosene_ethylbenzene_naphtha_anthracene").duration(900).EUt(60)
+        DISTILLATION_RECIPES.recipeBuilder("coal_tar_to_coal_tar_oil_kerosene_ethylbenzene_naphtha_anthracene")
+                .duration(900).EUt(60)
                 .inputFluids(CoalTar.getFluid(1000))
                 .outputFluids(CoalTarOil.getFluid(500))
                 .outputFluids(Kerosene.getFluid(200))
@@ -153,6 +157,5 @@ public class DistillationTower {
                 .EUt(480)
                 .duration(500)
                 .save(provider);
-  }
-
+    }
 }

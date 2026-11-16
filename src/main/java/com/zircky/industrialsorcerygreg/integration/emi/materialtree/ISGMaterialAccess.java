@@ -6,7 +6,8 @@ import com.gregtechceu.gtceu.api.registry.GTRegistries;
 import java.util.Collection;
 
 public final class ISGMaterialAccess {
-  public Collection<Material> getAllMaterials() {
-    return GTRegistries.MATERIALS.values();
-  }
+
+    public Collection<Material> getAllMaterials() {
+        return GTRegistries.MATERIALS.values();
+    }
 }
