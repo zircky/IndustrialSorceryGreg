@@ -5,7 +5,7 @@ import com.zircky.industrialsorcerygreg.data.recipe.RecipeRemoval;
 import com.zircky.industrialsorcerygreg.data.recipe.classified.WaterPurificationPlant;
 import com.zircky.industrialsorcerygreg.data.recipe.generated.ForEachMaterial;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.ae2.AppliedEnergistics2Recipe;
-import com.zircky.industrialsorcerygreg.data.recipe.integration.bloodmagic.BloodAltarRecipe;
+import com.zircky.industrialsorcerygreg.data.recipe.integration.bloodmagic.BloodMagicRecipe;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.bloodmagic.BloodMagicRemove;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.botania.BotaniaRecipe;
 import com.zircky.industrialsorcerygreg.data.recipe.integration.botania.BotaniaRemove;
@@ -36,11 +36,12 @@ public class Data {
         BloodMagicRemove.init(consumer);
         BotaniaRemove.init(consumer);
         ChromiumLine.remove(consumer);
+        TungstenLine.remove(consumer);
     }
 
     private static void commonInit(Consumer<FinishedRecipe> provider) {
         AppliedEnergistics2Recipe.init(provider);
-        BloodAltarRecipe.init(provider);
+        BloodMagicRecipe.init(provider);
         BotaniaRecipe.init(provider);
         AlloyBlast.init(provider);
         AlloySmelterRecipes.init(provider);
@@ -102,7 +103,6 @@ public class Data {
         ChromiumLine.init(provider);
         NaquadahLine.init(provider);
         TriniumLine.init(provider);
+        TungstenLine.init(provider);
     }
-
-
 }

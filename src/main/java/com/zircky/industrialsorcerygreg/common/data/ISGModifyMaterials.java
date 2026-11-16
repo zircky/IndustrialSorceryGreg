@@ -111,6 +111,7 @@ public class ISGModifyMaterials {
         GTMaterials.Ruby.addFlags(DECOMPOSITION_BY_ELECTROLYZING, DISABLE_DECOMPOSITION);
         GTMaterials.RubySlurry.addFlags(DECOMPOSITION_BY_CENTRIFUGING);
         GTMaterials.Chromite.addFlags(DECOMPOSITION_BY_ELECTROLYZING, DISABLE_DECOMPOSITION);
+        PlatinumRaw.addFlags(DISABLE_DECOMPOSITION);
 
         singularity(Iron, Gold, Lapis, Redstone, NetherQuartz, Copper, Tin, Lead, Silver, Nickel, Enderium, Clay, Coal,
                 Emerald, Diamond, Water,

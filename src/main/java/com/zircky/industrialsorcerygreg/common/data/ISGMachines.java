@@ -13,7 +13,6 @@ public class ISGMachines {
     }
 
     public static void init() {
-        com.zircky.industrialsorcerygreg.common.thermal.ThermalMachines.init();
         ISGAEMachines.init();
         ISGMultiMachines.init();
         ISGSimpleMachines.init();

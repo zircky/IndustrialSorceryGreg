@@ -537,28 +537,6 @@ public class MixerRecipes {
         //
         //
 
-        // WCa2O4 + 2NaOH + H2O2 -> 2Ca(OH)2 + Na2WO4
-        MIXER_RECIPES
-                .recipeBuilder("scheelite_sodium_hydroxide_hydrogen_peroxide_to_calcium_hydroxide_sodium_tungstate")
-                .inputDust(Scheelite, 7)
-                .inputDust(SodiumHydroxide, 6)
-                .inputFluids(HydrogenPeroxide.getFluid(1000))
-                .outputItems(ChemicalHelper.get(dust, CalciumHydroxide, 10))
-                .outputFluids(SodiumTungstate.getFluid(1000))
-                .EUt(480)
-                .duration(110)
-                .save(provider);
-
-        // WLi2O4 + 2NaOH -> 2LiOH + Na2WO4
-        MIXER_RECIPES.recipeBuilder("tungstate_sodium_hydroxide_to_lithium_hydroxide_sodium_tungstate")
-                .inputDust(Tungstate, 7)
-                .inputDust(SodiumHydroxide, 6)
-                .outputItems(ChemicalHelper.get(dust, LithiumHydroxide, 6))
-                .outputFluids(SodiumTungstate.getFluid(1000))
-                .EUt(480)
-                .duration(160)
-                .save(provider);
-
         // LiOH + H2O -> LiOH(H2O)
         MIXER_RECIPES.recipeBuilder("water_lithium_hydroxide_to_lithium_hydroxide_solution")
                 .inputFluids(Water.getFluid(1000))

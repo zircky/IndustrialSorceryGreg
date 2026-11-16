@@ -38,8 +38,6 @@ public class ISGCore {
     public static MaterialRegistry MATERIAL_REGISTRY;
 
     public ISGCore() {
-        com.zircky.industrialsorcerygreg.common.thermal.ThermalItems.ITEMS
-                .register(FMLJavaModLoadingContext.get().getModEventBus());
         ISGCore.init();
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
 

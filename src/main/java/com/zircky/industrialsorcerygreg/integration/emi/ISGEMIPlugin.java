@@ -5,12 +5,9 @@ import com.zircky.industrialsorcerygreg.integration.emi.materialtree.ISGMaterial
 import com.zircky.industrialsorcerygreg.integration.emi.materialtree.MaterialTreeCategory;
 import com.zircky.industrialsorcerygreg.integration.emi.materialtree.MaterialTreeRecipeFactory;
 import com.zircky.industrialsorcerygreg.integration.emi.oreprocessing.ISGOreProcessingEmiCategory;
-import com.zircky.industrialsorcerygreg.integration.emi.productionline.NaquadahProductionLines;
 
 import com.gregtechceu.gtceu.config.ConfigHolder;
 import com.gregtechceu.gtceu.integration.recipeviewer.emi.GTOreProcessingEmiCategory;
-
-import net.minecraftforge.fml.loading.FMLEnvironment;
 
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiInitRegistry;
@@ -50,10 +47,6 @@ public class ISGEMIPlugin implements EmiPlugin {
                 new ISGFormResolver());
 
         factory.createAll().forEach(registry::addRecipe);
-
-        if (!FMLEnvironment.production) {
-            NaquadahProductionLines.register(registry);
-        }
     }
 
     @Override

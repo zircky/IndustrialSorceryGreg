@@ -22,7 +22,6 @@ public class ISGRecipes {
 
     public static void recipeAddition(Consumer<FinishedRecipe> provider) {
         Data.init(provider);
-        com.zircky.industrialsorcerygreg.common.thermal.ThermalRecipes.init(provider);
         EquipmentFoundryRecipeHelper.addEquipmentFoundryRecipe(
                 provider, ISGCore.id("oxygen_tank"),
                 Ingredient.of(Tags.Items.ARMORS_CHESTPLATES),

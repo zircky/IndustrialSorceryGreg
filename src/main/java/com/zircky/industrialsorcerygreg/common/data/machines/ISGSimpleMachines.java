@@ -72,6 +72,8 @@ public class ISGSimpleMachines {
             "substation_wireless_energy_dynamo_64a", "64A Substation Wireless Energy Dynamo", "wireless_energy_16a",
             OUT, HIGH_TIERS, 64, PartAbility.SUBSTATION_OUTPUT_ENERGY);
 
+
+
     public static final MachineDefinition[] SUBSTATION_ENERGY_INPUT_HATCH_256A = registerTieredMachines(REGISTRATE,
             "substation_input_hatch_256a",
             (holder, tier) -> new EnergyHatchPartMachine(holder, tier, IN, 256),

@@ -36,6 +36,7 @@
     "ae2.AE2SearchFillMixin",
     "botania.ManaWidgetMixin",
     "emi.EmiItemAmountMixin",
+    "ftbquests.QuestItemTaskMixin",
     "modularui.OverlayStackMixin"
   ],
   "injectors": {

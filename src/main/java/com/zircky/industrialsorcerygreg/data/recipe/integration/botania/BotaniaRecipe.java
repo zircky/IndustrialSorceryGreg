@@ -53,8 +53,10 @@ public class BotaniaRecipe {
       ManaInfusionRecipe(provider, "mana_diamond_gem_flawed", Ingredient.of(ChemicalHelper.getItem(gemFlawed, Diamond)),
           new ItemStack(ChemicalHelper.getItem(gemFlawed, ManaDiamond)), 20000, null, null);
     }
-    ManaInfusionRecipe(provider, "mana_diamond_gem_chipped", Ingredient.of(ChemicalHelper.getItem(gemChipped, Diamond)),
-        new ItemStack(ChemicalHelper.getItem(gemChipped, ManaDiamond)), 10000, null, null);
+    if (com.gregtechceu.gtceu.config.ConfigHolder.INSTANCE.recipes.generateLowQualityGems) {
+      ManaInfusionRecipe(provider, "mana_diamond_gem_chipped", Ingredient.of(ChemicalHelper.getItem(gemChipped, Diamond)),
+          new ItemStack(ChemicalHelper.getItem(gemChipped, ManaDiamond)), 10000, null, null);
+    }
 
 
     RunicAltarRecipe(provider, "runerock_block", 1000000, new ItemStack(ChemicalHelper.getItem(ingot, Runerock), 1),

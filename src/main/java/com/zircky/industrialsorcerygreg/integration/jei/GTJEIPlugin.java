@@ -1,11 +1,13 @@
 package com.zircky.industrialsorcerygreg.integration.jei;
 
 import com.zircky.industrialsorcerygreg.ISGCore;
+import com.zircky.industrialsorcerygreg.integration.ftbquests.QuestRecipeViewer;
 
 import net.minecraft.resources.ResourceLocation;
 
 import dev.emi.emi.jemi.JemiPlugin;
 import mezz.jei.api.IModPlugin;
+import mezz.jei.api.runtime.IJeiRuntime;
 import mezz.jei.library.plugins.jei.JeiInternalPlugin;
 import mythicbotany.jei.MythicJei;
 import org.jetbrains.annotations.NotNull;
@@ -28,5 +30,15 @@ public final class GTJEIPlugin implements IModPlugin {
     @Override
     public @NotNull ResourceLocation getPluginUid() {
         return ISGCore.id("jei_plugin");
+    }
+
+    @Override
+    public void onRuntimeAvailable(@NotNull IJeiRuntime runtime) {
+        QuestRecipeViewer.setJeiRuntime(runtime);
+    }
+
+    @Override
+    public void onRuntimeUnavailable() {
+        QuestRecipeViewer.setJeiRuntime(null);
     }
 }

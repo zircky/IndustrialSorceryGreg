@@ -36,6 +36,7 @@ public class ISGMaterials {
         RadioactiveIsotopeMaterials.register();
         RareEarthMaterial.register();
         MineralMaterials.register();
+        TungstenLineMaterials.register();
         AlloyAndPolymerMaterials.register();
         NaquadahFuelMaterials.register();
         BiologicalMaterials.register();
@@ -1309,6 +1310,15 @@ public class ISGMaterials {
      */
     public static Material CalciumTungstate;
     public static Material TungstenTrioxide;
+    public static Material MilledScheelite;
+    public static Material WashedScheelite;
+    public static Material DriedScheelite;
+    public static Material DemagnetizedScheelite;
+    public static Material ScheeliteConcentrate;
+    public static Material ScheeliteSlurry;
+    public static Material DigestedScheeliteSlurry;
+    public static Material PurifiedTungstateSolution;
+    public static Material TungsticAcidSuspension;
     public static Material TungstenHexachloride;
     public static Material Caliche;
     public static Material Rhodocrosite;
@@ -1898,6 +1908,9 @@ public class ISGMaterials {
     public static Material NaquadahConcentrate;
     public static Material EnrichedNaquadahConcentrate;
     public static Material NaquadriaConcentrate;
+    public static Material ActivatedNaquadahConcentrate;
+    public static Material ActivatedEnrichedNaquadahConcentrate;
+    public static Material ActivatedNaquadriaConcentrate;
     public static Material AuricFluoride;
     public static Material ThUSludge;
     public static Material LanthanumOxide;

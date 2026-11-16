@@ -371,6 +371,25 @@ final class ChemicalPrecursorMaterials {
                 .buildAndRegister()
                 .setFormula("*Nq*?");
 
+        // Distinct process grades prevent untreated concentrate from bypassing neutron activation.
+        ActivatedNaquadahConcentrate = builderISG("activated_naquadah_concentrate")
+                .langValue("Neutron-Activated Naquadah Concentrate")
+                .dust().color(GTMaterials.Naquadah.getMaterialRGB()).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION, NO_SMELTING)
+                .buildAndRegister().setFormula("Nq?");
+
+        ActivatedEnrichedNaquadahConcentrate = builderISG("activated_enriched_naquadah_concentrate")
+                .langValue("Neutron-Activated Enriched Naquadah Concentrate")
+                .dust().color(GTMaterials.NaquadahEnriched.getMaterialRGB()).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION, NO_SMELTING)
+                .buildAndRegister().setFormula("Nq+?");
+
+        ActivatedNaquadriaConcentrate = builderISG("activated_naquadria_concentrate")
+                .langValue("Neutron-Activated Naquadria Concentrate")
+                .dust().color(GTMaterials.Naquadria.getMaterialRGB()).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION, NO_SMELTING)
+                .buildAndRegister().setFormula("*Nq*?");
+
         AuricFluoride = builderISG("auric_fluoride")
                 .dust()
                 .color(0xdffb50)

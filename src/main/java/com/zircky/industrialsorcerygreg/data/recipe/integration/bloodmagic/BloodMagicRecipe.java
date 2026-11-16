@@ -6,15 +6,13 @@ import com.zircky.industrialsorcerygreg.data.recipe.builder.bloodmagic.BloodAlta
 
 import net.minecraft.data.recipes.FinishedRecipe;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
 import vazkii.botania.common.item.BotaniaItems;
 import wayoftime.bloodmagic.BloodMagic;
 import wayoftime.bloodmagic.common.item.BloodMagicItems;
 
 import java.util.function.Consumer;
 
-public class BloodAltarRecipe {
+public class BloodMagicRecipe {
 
   public static void init(Consumer<FinishedRecipe> provider) {
     BloodAltarRecipeBuilder.builder("weak_blood_orb")
